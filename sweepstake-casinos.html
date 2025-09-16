@@ -463,121 +463,91 @@
             });
         }
 
-        // Google Sheets data fetching using embed HTML - Enhanced version
+        // Google Sheets API Integration with your credentials
         async function loadCasinoData() {
+            // Your Google Sheets credentials
+            const API_KEY = 'AIzaSyD37V89cGBJWn7DLO9ZkRN1qTst-MLYvck';
+            const SHEET_ID = '1bugB-SV6FP4HjLC8SpPvpshsYVkmm8DfqJIYYJiVm3g';
+            const SHEET_NAME = 'Daily Casinos';
+            
+            // Build the API URL
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+            
             try {
-                console.log('Starting to load casino data from Google Sheets...');
+                console.log('Loading casino data from Google Sheets...');
                 
-                // Use the embed URL to fetch HTML table data
-                const embedUrl = '<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRaBjWtAHpT7hu09u13vZMbxjWTTtII4R32Un5PdqrUxcj7Ur_OG55WN3V4Yncw9GIQ7YbbA-G8hS-B/pubhtml?widget=true&amp;headers=false"></iframe>';
+                // Fetch the data from Google Sheets API
+                const response = await fetch(url);
                 
-                let htmlContent;
-                
-                try {
-                    console.log('Attempting direct fetch...');
-                    const response = await fetch(embedUrl, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                        }
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-                    
-                    htmlContent = await response.text();
-                    console.log('Direct fetch successful, HTML length:', htmlContent.length);
-                } catch (corsError) {
-                    console.log('Direct fetch failed:', corsError.message);
-                    console.log('Trying CORS proxy...');
-                    
-                    // Fallback to CORS proxy
-                    const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(embedUrl);
-                    const response = await fetch(proxyUrl);
-                    
-                    if (!response.ok) {
-                        throw new Error(`Proxy failed: HTTP ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    htmlContent = data.contents;
-                    console.log('CORS proxy successful, HTML length:', htmlContent.length);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                // Parse the HTML to extract table data
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlContent, 'text/html');
+                const data = await response.json();
+                console.log('Google Sheets data received:', data);
                 
-                console.log('Parsed HTML document, looking for tables...');
-                
-                // Find all tables and log them for debugging
-                const tables = doc.querySelectorAll('table');
-                console.log(`Found ${tables.length} tables total`);
-                
-                let targetTable = null;
-                let maxRows = 0;
-                
-                // Find the table with the most data rows
-                tables.forEach((table, index) => {
-                    const rows = table.querySelectorAll('tr');
-                    console.log(`Table ${index + 1}: ${rows.length} rows`);
+                if (data.values && data.values.length > 0) {
+                    // First row is headers
+                    const headers = data.values[0];
+                    console.log('Headers:', headers);
                     
-                    if (rows.length > maxRows) {
-                        maxRows = rows.length;
-                        targetTable = table;
-                    }
-                });
-                
-                if (!targetTable || maxRows < 2) {
-                    console.error('No suitable data table found');
-                    throw new Error('No data table found in the sheet');
-                }
-                
-                console.log(`Using table with ${maxRows} rows`);
-                
-                const rows = targetTable.querySelectorAll('tr');
-                
-                // Extract headers from first row
-                const headerCells = rows[0].querySelectorAll('td, th');
-                const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
-                console.log('Sheet headers:', headers);
-                
-                if (headers.length === 0) {
-                    throw new Error('No headers found in the table');
-                }
-                
-                // Extract data rows
-                const casinos = [];
-                for (let i = 1; i < rows.length; i++) {
-                    const cells = rows[i].querySelectorAll('td, th');
-                    const values = Array.from(cells).map(cell => cell.textContent.trim());
-                    
-                    // Skip completely empty rows
-                    if (values.some(value => value && value !== '')) {
+                    // Process the rest as data rows
+                    const casinos = [];
+                    for (let i = 1; i < data.values.length; i++) {
+                        const row = data.values[i];
+                        
+                        // Create casino object from row data
                         const casino = {};
                         headers.forEach((header, index) => {
-                            casino[header] = values[index] || '';
+                            casino[header] = row[index] || '';
                         });
                         
-                        // Only add if we have at least a name
-                        if (casino[headers[0]] && casino[headers[0]] !== '') {
+                        // Only add if we have at least a casino name
+                        if (casino[headers[0]] && casino[headers[0]].trim() !== '') {
                             casinos.push(casino);
                         }
                     }
-                }
-                
-                console.log(`Extracted ${casinos.length} casino entries:`, casinos);
-                
-                if (casinos.length > 0) {
-                    displayCasinos(casinos);
+                    
+                    console.log(`Loaded ${casinos.length} casinos:`, casinos);
+                    
+                    if (casinos.length > 0) {
+                        displayCasinos(casinos);
+                    } else {
+                        throw new Error('No casino data found in sheet');
+                    }
                 } else {
-                    throw new Error('No casino data found in the sheet');
+                    throw new Error('No data in spreadsheet');
                 }
                 
             } catch (error) {
                 console.error('Error loading casino data:', error);
-                displayDefaultCasinos();
+                
+                // Show error message with helpful information
+                const loadingElement = document.getElementById('loading');
+                loadingElement.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+                        <h3 style="color: #FFD700; margin-bottom: 1rem;">Unable to Load Casino Data</h3>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+                            ${error.message}
+                        </p>
+                        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Make sure your Google Sheet is published and accessible.
+                        </p>
+                        <button onclick="location.reload()" style="
+                            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 25px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                        ">
+                            🔄 Retry
+                        </button>
+                    </div>
+                `;
             }
         }
 
@@ -585,6 +555,7 @@
             const loadingElement = document.getElementById('loading');
             const gridElement = document.getElementById('casinos-grid');
             
+            // Hide loading, show grid
             loadingElement.style.display = 'none';
             gridElement.style.display = 'grid';
             gridElement.innerHTML = '';
@@ -594,11 +565,23 @@
                 casinoCard.className = 'casino-card';
                 casinoCard.style.animationDelay = `${index * 0.1}s`;
                 
-                // Try multiple possible column names for flexibility
+                // Map the columns from your sheet (adjust these based on your actual column names)
+                // Common column names: 'Casino Name', 'Name', 'Casino', 'Title'
                 const name = casino['Casino Name'] || casino['Name'] || casino['Casino'] || casino['Title'] || `Casino ${index + 1}`;
-                const bonus = casino['Bonus'] || casino['Welcome Offer'] || casino['Offer'] || casino['Promotion'] || 'Special Bonus';
-                const featuresText = casino['Features'] || casino['Benefits'] || casino['Description'] || 'No deposit required,Daily free coins,Real cash prizes,Legal in 48 states';
-                const features = featuresText.split(/[,;|]/).map(f => f.trim()).filter(f => f);
+                
+                // Common column names: 'Bonus', 'Welcome Offer', 'Offer', 'Promotion'
+                const bonus = casino['Bonus'] || casino['Welcome Offer'] || casino['Offer'] || casino['Promotion'] || 'Special Bonus Available';
+                
+                // Common column names: 'Features', 'Benefits', 'Description'
+                const featuresText = casino['Features'] || casino['Benefits'] || casino['Description'] || '';
+                const features = featuresText ? featuresText.split(/[,;|]/).map(f => f.trim()).filter(f => f) : [
+                    'No deposit required',
+                    'Daily free coins',
+                    'Real cash prizes',
+                    'Legal in most states'
+                ];
+                
+                // Common column names: 'Link', 'URL', 'Website'
                 const link = casino['Link'] || casino['URL'] || casino['Website'] || '#';
                 
                 // Take only first 4 features to keep card clean
@@ -615,35 +598,8 @@
                 
                 gridElement.appendChild(casinoCard);
             });
-        }
-
-        function displayDefaultCasinos() {
-            const loadingElement = document.getElementById('loading');
-            const gridElement = document.getElementById('casinos-grid');
             
-            loadingElement.innerHTML = `
-                <div style="text-align: center; padding: 3rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                    <h3 style="color: #FFD700; margin-bottom: 1rem;">Unable to Load Casino Data</h3>
-                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;">
-                        We're having trouble connecting to the casino database. Please try refreshing the page.
-                    </p>
-                    <button onclick="location.reload()" style="
-                        background: linear-gradient(135deg, #4CAF50, #8BC34A);
-                        color: white;
-                        border: none;
-                        padding: 0.75rem 1.5rem;
-                        border-radius: 25px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s;
-                    ">
-                        🔄 Refresh Page
-                    </button>
-                </div>
-            `;
-            loadingElement.style.display = 'block';
-            gridElement.style.display = 'none';
+            console.log(`Displayed ${casinos.length} casino cards`);
         }
 
         // Initialize page
