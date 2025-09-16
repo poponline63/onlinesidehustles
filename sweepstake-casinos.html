@@ -18,6 +18,30 @@
             color: white;
         }
         
+        /* Loading Spinner */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            color: #4CAF50;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(76, 175, 80, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #4CAF50;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Header */
         header {
             background-color: rgba(0, 0, 0, 0.9);
@@ -75,9 +99,71 @@
             color: white;
         }
         
+        /* Active Users Indicator */
+        .active-users {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            z-index: 999;
+            min-width: 200px;
+        }
+        
+        .active-users-title {
+            font-size: 0.9rem;
+            color: #4CAF50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .active-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .user-avatars {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: white;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
         /* Main Content */
         main {
-            padding-top: 100px;
+            padding-top: 120px;
             padding-bottom: 100px;
             max-width: 1200px;
             margin: 0 auto;
@@ -120,6 +206,12 @@
             padding: 2rem;
             transition: all 0.3s;
             backdrop-filter: blur(10px);
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .casino-card:hover {
@@ -231,6 +323,31 @@
             transform: translateX(-50%) translateY(-2px);
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
         }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .active-users {
+                right: 10px;
+                top: 80px;
+                min-width: 150px;
+                padding: 0.75rem;
+            }
+            
+            .user-avatar {
+                width: 25px;
+                height: 25px;
+                font-size: 0.7rem;
+            }
+            
+            main {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .casinos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -246,6 +363,15 @@
         </nav>
     </header>
     
+    <!-- Active Users Indicator -->
+    <div class="active-users">
+        <div class="active-users-title">
+            <div class="active-dot"></div>
+            <span id="user-count">3 people viewing</span>
+        </div>
+        <div class="user-avatars" id="user-avatars"></div>
+    </div>
+    
     <!-- Main Content -->
     <main>
         <h1 class="page-title">🎰 Sweepstake Casinos</h1>
@@ -255,44 +381,14 @@
             These platforms use a sweepstakes model that allows you to play in most US states legally.
         </p>
         
-        <!-- Casino Cards -->
-        <div class="casinos-grid">
-            <div class="casino-card">
-                <h2 class="casino-name">Example Casino 1</h2>
-                <span class="bonus-tag">$25 Free Bonus</span>
-                <ul class="casino-features">
-                    <li>No deposit required</li>
-                    <li>Daily free coins</li>
-                    <li>Real cash prizes</li>
-                    <li>Legal in 48 states</li>
-                </ul>
-                <a href="#" class="play-btn">Play Now</a>
-            </div>
-            
-            <div class="casino-card">
-                <h2 class="casino-name">Example Casino 2</h2>
-                <span class="bonus-tag">50 Free Spins</span>
-                <ul class="casino-features">
-                    <li>Instant play available</li>
-                    <li>Mobile friendly</li>
-                    <li>Weekly tournaments</li>
-                    <li>24/7 support</li>
-                </ul>
-                <a href="#" class="play-btn">Play Now</a>
-            </div>
-            
-            <div class="casino-card">
-                <h2 class="casino-name">Example Casino 3</h2>
-                <span class="bonus-tag">100% Match Bonus</span>
-                <ul class="casino-features">
-                    <li>Over 200 games</li>
-                    <li>Fast withdrawals</li>
-                    <li>VIP program</li>
-                    <li>Crypto accepted</li>
-                </ul>
-                <a href="#" class="play-btn">Play Now</a>
-            </div>
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <span>Loading latest casino offers...</span>
         </div>
+        
+        <!-- Casino Cards Container -->
+        <div class="casinos-grid" id="casinos-grid" style="display: none;"></div>
         
         <!-- Information Section -->
         <div class="info-section">
@@ -320,5 +416,244 @@
     <a href="https://discord.com/invite/onlinesidehustles" class="discord-link" target="_blank">
         💬 Join our Community!
     </a>
+
+    <script>
+        // Fun user avatars with various emojis and colors
+        const userAvatars = [
+            { emoji: '🎮', color: '#FF6B6B' },
+            { emoji: '🎰', color: '#4ECDC4' },
+            { emoji: '🎲', color: '#45B7D1' },
+            { emoji: '🃏', color: '#96CEB4' },
+            { emoji: '🎯', color: '#FFEAA7' },
+            { emoji: '🎨', color: '#DDA0DD' },
+            { emoji: '🚀', color: '#FF7675' },
+            { emoji: '⚡', color: '#FDCB6E' },
+            { emoji: '🔥', color: '#E17055' },
+            { emoji: '💎', color: '#74B9FF' },
+            { emoji: '🎪', color: '#A29BFE' },
+            { emoji: '🌟', color: '#FD79A8' },
+        ];
+
+        // Active users simulation
+        function updateActiveUsers() {
+            const userCount = Math.floor(Math.random() * 8) + 2; // 2-9 users
+            const avatarsContainer = document.getElementById('user-avatars');
+            const userCountElement = document.getElementById('user-count');
+            
+            userCountElement.textContent = `${userCount} people viewing`;
+            avatarsContainer.innerHTML = '';
+            
+            // Randomly select users
+            const selectedAvatars = [];
+            for (let i = 0; i < userCount; i++) {
+                const randomAvatar = userAvatars[Math.floor(Math.random() * userAvatars.length)];
+                if (!selectedAvatars.find(a => a.emoji === randomAvatar.emoji)) {
+                    selectedAvatars.push(randomAvatar);
+                }
+            }
+            
+            selectedAvatars.forEach((avatar, index) => {
+                setTimeout(() => {
+                    const avatarDiv = document.createElement('div');
+                    avatarDiv.className = 'user-avatar';
+                    avatarDiv.style.backgroundColor = avatar.color;
+                    avatarDiv.textContent = avatar.emoji;
+                    avatarsContainer.appendChild(avatarDiv);
+                }, index * 200);
+            });
+        }
+
+        // Google Sheets data fetching using embed HTML - Enhanced version
+        async function loadCasinoData() {
+            try {
+                console.log('Starting to load casino data from Google Sheets...');
+                
+                // Use the embed URL to fetch HTML table data
+                const embedUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRaBjWtAHpT7hu09u13vZMbxjWTTtII4R32Un5PdqrUxcj7Ur_OG55WN3V4Yncw9GIQ7YbbA-G8hS-B/pubhtml?widget=true&headers=false';
+                
+                let htmlContent;
+                
+                try {
+                    console.log('Attempting direct fetch...');
+                    const response = await fetch(embedUrl, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    htmlContent = await response.text();
+                    console.log('Direct fetch successful, HTML length:', htmlContent.length);
+                } catch (corsError) {
+                    console.log('Direct fetch failed:', corsError.message);
+                    console.log('Trying CORS proxy...');
+                    
+                    // Fallback to CORS proxy
+                    const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(embedUrl);
+                    const response = await fetch(proxyUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Proxy failed: HTTP ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    htmlContent = data.contents;
+                    console.log('CORS proxy successful, HTML length:', htmlContent.length);
+                }
+                
+                // Parse the HTML to extract table data
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, 'text/html');
+                
+                console.log('Parsed HTML document, looking for tables...');
+                
+                // Find all tables and log them for debugging
+                const tables = doc.querySelectorAll('table');
+                console.log(`Found ${tables.length} tables total`);
+                
+                let targetTable = null;
+                let maxRows = 0;
+                
+                // Find the table with the most data rows
+                tables.forEach((table, index) => {
+                    const rows = table.querySelectorAll('tr');
+                    console.log(`Table ${index + 1}: ${rows.length} rows`);
+                    
+                    if (rows.length > maxRows) {
+                        maxRows = rows.length;
+                        targetTable = table;
+                    }
+                });
+                
+                if (!targetTable || maxRows < 2) {
+                    console.error('No suitable data table found');
+                    throw new Error('No data table found in the sheet');
+                }
+                
+                console.log(`Using table with ${maxRows} rows`);
+                
+                const rows = targetTable.querySelectorAll('tr');
+                
+                // Extract headers from first row
+                const headerCells = rows[0].querySelectorAll('td, th');
+                const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
+                console.log('Sheet headers:', headers);
+                
+                if (headers.length === 0) {
+                    throw new Error('No headers found in the table');
+                }
+                
+                // Extract data rows
+                const casinos = [];
+                for (let i = 1; i < rows.length; i++) {
+                    const cells = rows[i].querySelectorAll('td, th');
+                    const values = Array.from(cells).map(cell => cell.textContent.trim());
+                    
+                    // Skip completely empty rows
+                    if (values.some(value => value && value !== '')) {
+                        const casino = {};
+                        headers.forEach((header, index) => {
+                            casino[header] = values[index] || '';
+                        });
+                        
+                        // Only add if we have at least a name
+                        if (casino[headers[0]] && casino[headers[0]] !== '') {
+                            casinos.push(casino);
+                        }
+                    }
+                }
+                
+                console.log(`Extracted ${casinos.length} casino entries:`, casinos);
+                
+                if (casinos.length > 0) {
+                    displayCasinos(casinos);
+                } else {
+                    throw new Error('No casino data found in the sheet');
+                }
+                
+            } catch (error) {
+                console.error('Error loading casino data:', error);
+                displayDefaultCasinos();
+            }
+        }
+
+        function displayCasinos(casinos) {
+            const loadingElement = document.getElementById('loading');
+            const gridElement = document.getElementById('casinos-grid');
+            
+            loadingElement.style.display = 'none';
+            gridElement.style.display = 'grid';
+            gridElement.innerHTML = '';
+            
+            casinos.forEach((casino, index) => {
+                const casinoCard = document.createElement('div');
+                casinoCard.className = 'casino-card';
+                casinoCard.style.animationDelay = `${index * 0.1}s`;
+                
+                // Try multiple possible column names for flexibility
+                const name = casino['Casino Name'] || casino['Name'] || casino['Casino'] || casino['Title'] || `Casino ${index + 1}`;
+                const bonus = casino['Bonus'] || casino['Welcome Offer'] || casino['Offer'] || casino['Promotion'] || 'Special Bonus';
+                const featuresText = casino['Features'] || casino['Benefits'] || casino['Description'] || 'No deposit required,Daily free coins,Real cash prizes,Legal in 48 states';
+                const features = featuresText.split(/[,;|]/).map(f => f.trim()).filter(f => f);
+                const link = casino['Link'] || casino['URL'] || casino['Website'] || '#';
+                
+                // Take only first 4 features to keep card clean
+                const displayFeatures = features.slice(0, 4);
+                
+                casinoCard.innerHTML = `
+                    <h2 class="casino-name">${name}</h2>
+                    <span class="bonus-tag">${bonus}</span>
+                    <ul class="casino-features">
+                        ${displayFeatures.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <a href="${link}" class="play-btn" target="_blank" rel="noopener noreferrer">Play Now</a>
+                `;
+                
+                gridElement.appendChild(casinoCard);
+            });
+        }
+
+        function displayDefaultCasinos() {
+            const loadingElement = document.getElementById('loading');
+            const gridElement = document.getElementById('casinos-grid');
+            
+            loadingElement.innerHTML = `
+                <div style="text-align: center; padding: 3rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="color: #FFD700; margin-bottom: 1rem;">Unable to Load Casino Data</h3>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;">
+                        We're having trouble connecting to the casino database. Please try refreshing the page.
+                    </p>
+                    <button onclick="location.reload()" style="
+                        background: linear-gradient(135deg, #4CAF50, #8BC34A);
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 25px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">
+                        🔄 Refresh Page
+                    </button>
+                </div>
+            `;
+            loadingElement.style.display = 'block';
+            gridElement.style.display = 'none';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateActiveUsers();
+            loadCasinoData();
+            
+            // Update active users every 10-30 seconds
+            setInterval(updateActiveUsers, Math.random() * 20000 + 10000);
+        });
+    </script>
 </body>
 </html>
