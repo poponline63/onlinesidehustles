@@ -1,11 +1,436 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sweepstake Casinos - Online Sidehustles</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sidehustles - Website by Crossroads</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .browse-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+        
+        .browse-btn:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: rgba(40, 40, 40, 0.98);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 80px;
+            padding-bottom: 350px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .content-section {
+            flex: 1;
+        }
+        
+        .yellow-accent {
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(180deg, #FFD700, #FFA500);
+            margin-right: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+        }
+        
+        .graphic-section {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .coin-graphic {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, #8BC34A, #4CAF50);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(76, 175, 80, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .coin-graphic::before {
+            content: "$";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Cards Grid */
+        .cards-container {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            padding: 2rem;
+            max-height: 35vh;
+        }
+        
+        .cards-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .card:nth-child(1) .card-icon { background: linear-gradient(135deg, #FFD700, #FFA500); }
+        .card:nth-child(2) .card-icon { background: linear-gradient(135deg, #4CAF50, #8BC34A); }
+        .card:nth-child(3) .card-icon { background: linear-gradient(135deg, #2196F3, #03A9F4); }
+        .card:nth-child(4) .card-icon { background: linear-gradient(135deg, #9C27B0, #E91E63); }
+        .card:nth-child(5) .card-icon { background: linear-gradient(135deg, #FF5722, #FF9800); }
+        .card:nth-child(6) .card-icon { background: linear-gradient(135deg, #607D8B, #90A4AE); }
+        
+        .card-content {
+            flex: 1;
+        }
+        
+        .card-title {
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .card-arrow {
+            color: #666;
+            font-size: 1.5rem;
+        }
+        
+        /* Discord Link */
+        .discord-link {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+            z-index: 100;
+        }
+        
+        .discord-link:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+            background: linear-gradient(135deg, #7289DA, #5865F2);
+        }
+        
+        .discord-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .yellow-accent {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .coin-graphic {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .coin-graphic::before {
+                font-size: 100px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body style="background: #1a1a1a; color: white; font-family: Arial; padding: 50px;">
-    <h1>Sweepstake Casinos</h1>
-    <p>Coming soon!</p>
-    <a href="index.html" style="color: #4CAF50;">← Back to Home</a>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">OS</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <div class="dropdown">
+                <button class="browse-btn">
+                    Browse
+                    <span>▼</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="sweepstake-casinos.html">Sweepstake Casinos</a>
+                    <a href="#section2">Section 2</a>
+                    <a href="#section3">Section 3</a>
+                    <a href="#section4">Section 4</a>
+                    <a href="#section5">Section 5</a>
+                    <a href="#section6">Section 6</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="yellow-accent"></div>
+            <div class="content-section">
+                <h1>Online Sidehustles: Transform Your Passive Income Into Your Main Income</h1>
+                <p class="description">
+                    Online Sidehustles is dedicated to helping you discover and master the most effective ways to generate passive income streams. Our comprehensive platform provides you with proven strategies, in-depth guides, and exclusive opportunities designed to transform your side hustles into sustainable main income sources. Whether you're just starting or looking to scale, we're here to guide you on your journey to financial freedom.
+                </p>
+                <p style="color: #8BC34A; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">
+                    Website by Crossroads
+                </p>
+            </div>
+            <div class="graphic-section">
+                <div class="coin-graphic"></div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Cards -->
+    <div class="cards-container">
+        <div class="cards-grid">
+            <a href="sweepstake-casinos.html" class="card">
+                <div class="card-icon">🎰</div>
+                <div class="card-content">
+                    <div class="card-title">Sweepstake Casinos</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+            
+            <a href="#section2" class="card">
+                <div class="card-icon">🆕</div>
+                <div class="card-content">
+                    <div class="card-title">Section 2</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+            
+            <a href="#section3" class="card">
+                <div class="card-icon">🎁</div>
+                <div class="card-content">
+                    <div class="card-title">Section 3</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+            
+            <a href="#section4" class="card">
+                <div class="card-icon">🚫</div>
+                <div class="card-content">
+                    <div class="card-title">Section 4</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+            
+            <a href="#section5" class="card">
+                <div class="card-icon">⭐</div>
+                <div class="card-content">
+                    <div class="card-title">Section 5</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+            
+            <a href="#section6" class="card">
+                <div class="card-icon">💬</div>
+                <div class="card-content">
+                    <div class="card-title">Section 6</div>
+                </div>
+                <div class="card-arrow">›</div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Discord Link -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-link" target="_blank">
+        <span class="discord-icon">💬</span>
+        Join our Community!
+    </a>
 </body>
 </html>
