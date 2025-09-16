@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweepstake Casinos - Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .back-btn {
+            background: none;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+            text-align: center;
+        }
+        
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Casino Cards Grid */
+        .casinos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .casino-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .casino-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+            border-color: #4CAF50;
+        }
+        
+        .casino-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .bonus-tag {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .casino-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .casino-features li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+        }
+        
+        .casino-features li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .play-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-top: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-content {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .info-content p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Discord Link */
+        .discord-link {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+            z-index: 100;
+        }
+        
+        .discord-link:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">OS</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">🎰 Sweepstake Casinos</h1>
+        
+        <p class="intro-text">
+            Discover the best sweepstake casinos that offer legal ways to play casino games and win real prizes. 
+            These platforms use a sweepstakes model that allows you to play in most US states legally.
+        </p>
+        
+        <!-- Casino Cards -->
+        <div class="casinos-grid">
+            <div class="casino-card">
+                <h2 class="casino-name">Example Casino 1</h2>
+                <span class="bonus-tag">$25 Free Bonus</span>
+                <ul class="casino-features">
+                    <li>No deposit required</li>
+                    <li>Daily free coins</li>
+                    <li>Real cash prizes</li>
+                    <li>Legal in 48 states</li>
+                </ul>
+                <a href="#" class="play-btn">Play Now</a>
+            </div>
+            
+            <div class="casino-card">
+                <h2 class="casino-name">Example Casino 2</h2>
+                <span class="bonus-tag">50 Free Spins</span>
+                <ul class="casino-features">
+                    <li>Instant play available</li>
+                    <li>Mobile friendly</li>
+                    <li>Weekly tournaments</li>
+                    <li>24/7 support</li>
+                </ul>
+                <a href="#" class="play-btn">Play Now</a>
+            </div>
+            
+            <div class="casino-card">
+                <h2 class="casino-name">Example Casino 3</h2>
+                <span class="bonus-tag">100% Match Bonus</span>
+                <ul class="casino-features">
+                    <li>Over 200 games</li>
+                    <li>Fast withdrawals</li>
+                    <li>VIP program</li>
+                    <li>Crypto accepted</li>
+                </ul>
+                <a href="#" class="play-btn">Play Now</a>
+            </div>
+        </div>
+        
+        <!-- Information Section -->
+        <div class="info-section">
+            <h2 class="info-title">What Are Sweepstake Casinos?</h2>
+            <div class="info-content">
+                <p>
+                    Sweepstake casinos are a legal alternative to traditional online casinos in most US states. 
+                    They operate using a dual-currency system where you can play games with virtual currency 
+                    and have the chance to win real cash prizes.
+                </p>
+                <p>
+                    Unlike traditional online gambling, sweepstakes casinos are legal in most states because 
+                    they operate under sweepstakes laws. You can purchase virtual currency or receive it for 
+                    free through various promotions and bonuses.
+                </p>
+                <p>
+                    Always remember to play responsibly and within your means. These platforms are meant for 
+                    entertainment, and while you can win real prizes, they should be enjoyed as a fun side activity.
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Discord Link -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-link" target="_blank">
+        💬 Join our Community!
+    </a>
+</body>
+</html>
