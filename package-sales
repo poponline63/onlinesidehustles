@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Sales - Live Deals & Discounts | Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateX(-5px);
+        }
+        
+        /* Quick Navigation Bar */
+        .quick-nav {
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        
+        .quick-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-nav-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 3px;
+        }
+        
+        .quick-nav-content {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            min-width: fit-content;
+        }
+        
+        .nav-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(139, 195, 74, 0.2));
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .nav-link-new {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-left: 0.3rem;
+        }
+        
+        /* Main Container */
+        .main-container {
+            padding-top: 140px;
+            min-height: 100vh;
+        }
+        
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(156, 39, 176, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(156, 39, 176, 0.6); }
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gold-text {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(156, 39, 176, 0.3);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        /* Live Links Section */
+        .live-links-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .refresh-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(156, 39, 176, 0.1);
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #E91E63;
+        }
+        
+        .refresh-icon {
+            animation: rotate 2s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Links Grid */
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            animation: slideIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .link-card.new {
+            border-color: rgba(156, 39, 176, 0.5);
+            background: rgba(156, 39, 176, 0.05);
+        }
+        
+        .link-card.new::after {
+            content: 'NEW';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .link-card.hot-deal {
+            border-color: rgba(255, 87, 34, 0.5);
+            background: rgba(255, 87, 34, 0.05);
+        }
+        
+        .link-card.hot-deal::after {
+            content: '🔥 HOT';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #FF5722, #FF9800);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(156, 39, 176, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .link-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .casino-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .link-time {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+        
+        .giveaway-amount {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(233, 30, 99, 0.1));
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .amount-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .amount-type {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .link-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .detail-tag.highlight {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #FFD700;
+        }
+        
+        .claim-link {
+            width: 100%;
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .claim-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(156, 39, 176, 0.3);
+        }
+        
+        .signup-link {
+            width: 100%;
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .signup-link:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #FFD700;
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .empty-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .empty-description {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(156, 39, 176, 0.05);
+            border: 1px solid rgba(156, 39, 176, 0.2);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+        
+        .update-time {
+            background: linear-gradient(135deg, #9C27B0, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-credit {
+            color: #4CAF50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        /* Discord Float Button */
+        .discord-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            font-weight: 600;
+        }
+        
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💵</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <a href="index.html" class="back-button">
+                <span>←</span>
+                Back to Home
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Quick Navigation Bar -->
+    <div class="quick-nav">
+        <div class="quick-nav-container">
+            <div class="quick-nav-content">
+                <a href="sweepstake-casinos.html" class="nav-link">
+                    <span>📖</span>
+                    Sweepstake Casinos Guide
+                </a>
+                <a href="daily-free-sc.html" class="nav-link">
+                    <span>🎁</span>
+                    Daily Free SC
+                </a>
+                <a href="package-sales.html" class="nav-link active">
+                    <span>📦</span>
+                    Package Sales
+                </a>
+                <a href="vip-guide.html" class="nav-link">
+                    <span>👑</span>
+                    VIP Guide
+                </a>
+                <a href="bonus-collection-software.html" class="nav-link">
+                    <span>🤖</span>
+                    Daily Bonus Collection Software
+                    <span class="nav-link-new">NEW</span>
+                </a>
+                <a href="auto-giveaways-software.html" class="nav-link">
+                    <span>✨</span>
+                    Auto Giveaways Signup Software
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="live-badge">
+                    <div class="live-dot"></div>
+                    LIVE PACKAGE DEALS
+                </div>
+                <h1>Exclusive <span class="gold-text">Package Sales</span></h1>
+                <p class="hero-description">
+                    Premium package deals and limited-time offers from top sweepstake casinos. 
+                    Get massive bonuses, extra SC, and exclusive VIP perks at discounted rates. 
+                    Updated live as new deals become available!
+                </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-value">20-200%</div>
+                    <div class="stat-label">Bonus Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💎</div>
+                    <div class="stat-value">VIP</div>
+                    <div class="stat-label">Fast Track Access</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-value">Limited</div>
+                    <div class="stat-label">Time Offers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value">2x</div>
+                    <div class="stat-label">ROI Potential</div>
+                </div>
+            </div>
+            
+            <!-- Live Links Section -->
+            <div class="live-links-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        📦 Active Package Deals
+                    </h2>
+                    <div class="refresh-indicator">
+                        <span class="refresh-icon">🔄</span>
+                        Auto-refreshing
+                    </div>
+                </div>
+                
+                <!-- Links will be dynamically loaded here -->
+                <div class="links-container" id="linksContainer">
+                    <!-- Example package cards -->
+                    <div class="link-card hot-deal">
+                        <div class="link-header">
+                            <h3 class="casino-name">Stake.us</h3>
+                            <span class="link-time">2 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                <span class="original-price">$99.99</span>
+                                $49.99
+                                <span class="discount-badge">50% OFF</span>
+                            </div>
+                            <div class="amount-type">Gold Coin Package + 50 SC Free</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag highlight">Limited Time</span>
+                            <span class="detail-tag">VIP Points 2x</span>
+                            <span class="detail-tag">Instant Delivery</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                    
+                    <div class="link-card new">
+                        <div class="link-header">
+                            <h3 class="casino-name">McLuck</h3>
+                            <span class="link-time">5 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                $24.99
+                                <span class="discount-badge">MEGA BONUS</span>
+                            </div>
+                            <div class="amount-type">57,500 GC + 27.5 SC Bundle</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag">First Purchase</span>
+                            <span class="detail-tag">200% Bonus</span>
+                            <span class="detail-tag">Auto VIP</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                    
+                    <div class="link-card">
+                        <div class="link-header">
+                            <h3 class="casino-name">Chumba Casino</h3>
+                            <span class="link-time">15 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                $19.99
+                            </div>
+                            <div class="amount-type">VIP Starter Pack + 20 SC</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag">VIP Status</span>
+                            <span class="detail-tag">Daily Bonuses</span>
+                            <span class="detail-tag">Priority Support</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                    
+                    <div class="link-card">
+                        <div class="link-header">
+                            <h3 class="casino-name">WOW Vegas</h3>
+                            <span class="link-time">22 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                <span class="original-price">$39.99</span>
+                                $29.99
+                            </div>
+                            <div class="amount-type">Premium Bundle + 35 SC</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag">25% Savings</span>
+                            <span class="detail-tag">Bonus Spins</span>
+                            <span class="detail-tag">Weekend Special</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                    
+                    <div class="link-card">
+                        <div class="link-header">
+                            <h3 class="casino-name">Pulsz</h3>
+                            <span class="link-time">30 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                $9.99
+                                <span class="discount-badge">BEST VALUE</span>
+                            </div>
+                            <div class="amount-type">Starter Bundle + 15 SC</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag">New Players</span>
+                            <span class="detail-tag">300% Bonus</span>
+                            <span class="detail-tag">Level Boost</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                    
+                    <div class="link-card hot-deal">
+                        <div class="link-header">
+                            <h3 class="casino-name">High 5 Casino</h3>
+                            <span class="link-time">45 mins ago</span>
+                        </div>
+                        <div class="giveaway-amount">
+                            <div class="amount-value">
+                                $4.99
+                                <span class="discount-badge">FLASH SALE</span>
+                            </div>
+                            <div class="amount-type">250 SC + 600 Diamonds + 5M GC</div>
+                        </div>
+                        <div class="link-details">
+                            <span class="detail-tag highlight">Ends in 2 hours</span>
+                            <span class="detail-tag">Triple Rewards</span>
+                            <span class="detail-tag">No Code Needed</span>
+                        </div>
+                        <a href="#" class="claim-link" target="_blank">Claim Now →</a>
+                        <a href="#" class="signup-link" target="_blank">New? Sign Up Here</a>
+                    </div>
+                </div>
+                
+                <!-- Empty state (shown when no deals available) -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-icon">📦</div>
+                    <h3 class="empty-title">No Active Package Deals Right Now</h3>
+                    <p class="empty-description">New package sales are added throughout the day. Check back soon!</p>
+                </div>
+            </div>
+            
+            <!-- Last Updated -->
+            <div class="last-updated">
+                <p>Last updated: <span class="update-time" id="updateTime">Just now</span></p>
+                <p style="color: rgba(255, 255, 255, 0.5); margin-top: 0.5rem; font-size: 0.9rem;">
+                    This page automatically refreshes every 30 seconds
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
+            <p class="footer-credit">Website by Crossroads</p>
+        </div>
+    </footer>
+    
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
+    </a>
+    
+    <!-- Live Refresh Script -->
+    <script>
+        // Update time display
+        function updateLastRefreshTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true 
+            });
+            document.getElementById('updateTime').textContent = timeString;
+        }
+        
+        // Function to fetch and update deals (placeholder for actual implementation)
+        async function fetchLatestDeals() {
+            // This would connect to your backend/API to fetch latest package deals
+            console.log('Fetching latest package deals...');
+            updateLastRefreshTime();
+            
+            // Add visual feedback for refresh
+            const refreshIcon = document.querySelector('.refresh-icon');
+            if (refreshIcon) {
+                refreshIcon.style.animation = 'none';
+                setTimeout(() => {
+                    refreshIcon.style.animation = 'rotate 2s linear infinite';
+                }, 10);
+            }
+            
+            // Here you would fetch actual data from your server
+            // Example:
+            // const response = await fetch('/api/package-deals');
+            // const deals = await response.json();
+            // updateDealsDisplay(deals);
+        }
+        
+        // Function to format time ago
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            if (seconds < 60) return 'just now';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes} min${minutes > 1 ? 's' : ''} ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            return `${Math.floor(hours / 24)} day${Math.floor(hours / 24) > 1 ? 's' : ''} ago`;
+        }
+        
+        // Auto-refresh every 30 seconds
+        setInterval(fetchLatestDeals, 30000);
+        
+        // Initial load
+        updateLastRefreshTime();
+        
+        // Update "time ago" displays every minute
+        setInterval(() => {
+            const timeElements = document.querySelectorAll('.link-time');
+            // This would update based on actual timestamps
+        }, 60000);
+        
+        // Visual feedback when page gains focus
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                fetchLatestDeals();
+            }
+        });
+    </script>
+</body>
+</html>
