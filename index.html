@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Sidehustles - Website by Crossroads</title>
+    <title>Online Sidehustles - Your Path to Financial Freedom</title>
     <style>
         * {
             margin: 0;
@@ -13,424 +13,990 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
+            min-height: 100vh;
         }
         
-        /* Header */
+        /* Header Styles */
         header {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            gap: 0.75rem;
             text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
         }
         
         .logo-icon {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-        }
-        
-        .browse-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: opacity 0.3s;
-        }
-        
-        .browse-btn:hover {
-            opacity: 0.8;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: rgba(40, 40, 40, 0.98);
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 0.5rem;
-            backdrop-filter: blur(10px);
-        }
-        
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        
-        .dropdown-content a:hover {
-            background-color: rgba(76, 175, 80, 0.3);
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        /* Main Content */
-        main {
-            padding-top: 80px;
-            padding-bottom: 350px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .content-section {
-            flex: 1;
-        }
-        
-        .yellow-accent {
-            width: 4px;
-            height: 200px;
-            background: linear-gradient(180deg, #FFD700, #FFA500);
-            margin-right: 2rem;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-        
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-        }
-        
-        .graphic-section {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .coin-graphic {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle at 30% 30%, #8BC34A, #4CAF50);
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(76, 175, 80, 0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .coin-graphic::before {
-            content: "$";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 150px;
-            font-weight: bold;
-            color: #FFD700;
-            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Cards Grid */
-        .cards-container {
-            position: fixed;
-            bottom: 60px;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
-            padding: 2rem;
-            max-height: 35vh;
-        }
-        
-        .cards-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 0.75rem;
-        }
-        
-        .card {
-            background: white;
             border-radius: 12px;
-            padding: 0.75rem 1rem;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            flex-shrink: 0;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
         
-        .card:nth-child(1) .card-icon { background: linear-gradient(135deg, #FFD700, #FFA500); }
-        .card:nth-child(2) .card-icon { background: linear-gradient(135deg, #4CAF50, #8BC34A); }
-        .card:nth-child(3) .card-icon { background: linear-gradient(135deg, #2196F3, #03A9F4); }
-        .card:nth-child(4) .card-icon { background: linear-gradient(135deg, #9C27B0, #E91E63); }
-        .card:nth-child(5) .card-icon { background: linear-gradient(135deg, #FF5722, #FF9800); }
-        .card:nth-child(6) .card-icon { background: linear-gradient(135deg, #607D8B, #90A4AE); }
-        
-        .card-content {
-            flex: 1;
+        /* Mega Menu Dropdown */
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
         
-        .card-title {
-            color: #333;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+        .mega-dropdown {
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: -10px;
         }
         
-        .card-arrow {
-            color: #666;
-            font-size: 1.5rem;
-        }
-        
-        /* Discord Link */
-        .discord-link {
-            position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #5865F2, #7289DA);
+        .browse-btn {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             color: white;
-            padding: 0.5rem 1.25rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
-            z-index: 100;
         }
         
-        .discord-link:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
-            background: linear-gradient(135deg, #7289DA, #5865F2);
+        .browse-btn:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateY(-2px);
         }
         
-        .discord-icon {
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            background: rgba(20, 20, 20, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            min-width: 600px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .mega-dropdown:hover .mega-menu,
+        .mega-menu:hover {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Add invisible bridge to prevent menu from closing when moving mouse */
+        .mega-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: none;
+        }
+        
+        .mega-dropdown:hover::after {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        .mega-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .menu-category {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .menu-category-title {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .menu-item {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .menu-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .menu-item-new {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 2rem 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text {
+            animation: slideInLeft 0.8s ease;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #4CAF50;
+        }
+        
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-description {
             font-size: 1.2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
         }
         
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .hero-graphic {
+            position: relative;
+            animation: slideInRight 0.8s ease;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .money-graphic {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .money-circle {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 80px rgba(76, 175, 80, 0.3);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .money-circle::before {
+            content: "💰";
+            font-size: 120px;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            animation: orbit 10s linear infinite;
+        }
+        
+        .floating-icon:nth-child(2) { animation-delay: -2.5s; }
+        .floating-icon:nth-child(3) { animation-delay: -5s; }
+        .floating-icon:nth-child(4) { animation-delay: -7.5s; }
+        
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .category-card:hover::before {
+            opacity: 1;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-card:nth-child(2) .category-icon { background: linear-gradient(135deg, #FFD700, #FFA500); }
+        .category-card:nth-child(3) .category-icon { background: linear-gradient(135deg, #2196F3, #03A9F4); }
+        .category-card:nth-child(4) .category-icon { background: linear-gradient(135deg, #9C27B0, #E91E63); }
+        .category-card:nth-child(5) .category-icon { background: linear-gradient(135deg, #FF5722, #FF9800); }
+        .category-card:nth-child(6) .category-icon { background: linear-gradient(135deg, #607D8B, #90A4AE); }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+        
+        .category-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .category-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+        
+        .category-link:hover {
+            gap: 1rem;
+        }
+        
+        /* Featured Section */
+        .featured-section {
+            background: rgba(76, 175, 80, 0.05);
+            border-top: 1px solid rgba(76, 175, 80, 0.2);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+        
+        .featured-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .featured-item {
+            padding: 2rem;
+        }
+        
+        .featured-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+        
+        .featured-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .discord-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            font-weight: 600;
+        }
+        
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
                 text-align: center;
-            }
-            
-            .yellow-accent {
-                display: none;
             }
             
             h1 {
                 font-size: 2.5rem;
             }
             
-            .coin-graphic {
+            .money-graphic {
                 width: 300px;
                 height: 300px;
             }
             
-            .coin-graphic::before {
-                font-size: 100px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
+            .mega-menu {
+                min-width: 90vw;
             }
             
-            h1 {
-                font-size: 2rem;
+            .mega-menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Mega Menu -->
     <header>
         <nav>
             <a href="#" class="logo">
-                <div class="logo-icon">OS</div>
+                <div class="logo-icon">💵</div>
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
             
-            <div class="dropdown">
-                <button class="browse-btn">
-                    Browse
-                    <span>▼</span>
-                </button>
-                <div class="dropdown-content">
-                    <a href="sweepstake-casinos.html">Sweepstake Casinos</a>
-                    <a href="#section2">Section 2</a>
-                    <a href="#section3">Section 3</a>
-                    <a href="#section4">Section 4</a>
-                    <a href="#section5">Section 5</a>
-                    <a href="#section6">Section 6</a>
+            <div class="nav-menu">
+                <div class="mega-dropdown">
+                    <button class="browse-btn">
+                        Browse All Hustles
+                        <span>▼</span>
+                    </button>
+                    
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="menu-category">
+                                <div class="menu-category-title">
+                                    <span>🎰</span>
+                                    Sweepstakes & Gaming
+                                </div>
+                                <div class="menu-items">
+                                    <a href="sweepstake-casinos.html" class="menu-item">
+                                        <span>🎲</span>
+                                        Sweepstake Casinos
+                                        <span class="menu-item-new">HOT</span>
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🎮</span>
+                                        Play-to-Earn Games
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🏆</span>
+                                        Daily Contests
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🎯</span>
+                                        Skill-Based Gaming
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-category">
+                                <div class="menu-category-title">
+                                    <span>💼</span>
+                                    Online Business
+                                </div>
+                                <div class="menu-items">
+                                    <a href="#" class="menu-item">
+                                        <span>📦</span>
+                                        Dropshipping
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🖨️</span>
+                                        Print on Demand
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🔗</span>
+                                        Affiliate Marketing
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>📱</span>
+                                        Social Media Management
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-category">
+                                <div class="menu-category-title">
+                                    <span>💻</span>
+                                    Digital Services
+                                </div>
+                                <div class="menu-items">
+                                    <a href="#" class="menu-item">
+                                        <span>✍️</span>
+                                        Freelance Writing
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🎨</span>
+                                        Graphic Design
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🎥</span>
+                                        Video Editing
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🤖</span>
+                                        AI Services
+                                        <span class="menu-item-new">NEW</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-category">
+                                <div class="menu-category-title">
+                                    <span>📊</span>
+                                    Investing & Trading
+                                </div>
+                                <div class="menu-items">
+                                    <a href="#" class="menu-item">
+                                        <span>₿</span>
+                                        Crypto Staking
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>📈</span>
+                                        Micro-Investing Apps
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🏦</span>
+                                        High-Yield Savings
+                                    </a>
+                                    <a href="#" class="menu-item">
+                                        <span>🎯</span>
+                                        Cashback Programs
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
     
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <div class="yellow-accent"></div>
-            <div class="content-section">
-                <h1>Online Sidehustles: Transform Your Passive Income Into Your Main Income</h1>
-                <p class="description">
-                    Online Sidehustles is dedicated to helping you discover and master the most effective ways to generate passive income streams. Our comprehensive platform provides you with proven strategies, in-depth guides, and exclusive opportunities designed to transform your side hustles into sustainable main income sources. Whether you're just starting or looking to scale, we're here to guide you on your journey to financial freedom.
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <div class="hero-badge-dot"></div>
+                    <span>500+ Active Members</span>
+                </div>
+                
+                <h1>
+                    Turn Your <span class="highlight">Side Hustle</span><br>
+                    Into Your Main Income
+                </h1>
+                
+                <p class="hero-description">
+                    Discover proven methods to generate passive income online. 
+                    From sweepstakes to digital services, we provide the roadmap 
+                    to your financial independence.
                 </p>
-                <p style="color: #8BC34A; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">$50K+</div>
+                        <div class="stat-label">Average Monthly Earnings</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Income Streams</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Community Support</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-graphic">
+                <div class="money-graphic">
+                    <div class="money-circle"></div>
+                    <div class="floating-icon">💎</div>
+                    <div class="floating-icon">🚀</div>
+                    <div class="floating-icon">💳</div>
+                    <div class="floating-icon">📈</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Categories -->
+    <section class="categories-section">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Path to Success</h2>
+            <p class="section-subtitle">Explore our top-performing sidehustle categories</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🎰</div>
+                <h3 class="category-title">Sweepstakes & Gaming</h3>
+                <p class="category-description">
+                    Legal sweepstake casinos, play-to-earn games, and skill-based competitions 
+                    with real cash prizes.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">Sweepstake Casinos</span>
+                    <span class="category-tag">Daily Contests</span>
+                    <span class="category-tag">P2E Games</span>
+                </div>
+                <a href="#" class="category-link">
+                    Explore Gaming →
+                </a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💼</div>
+                <h3 class="category-title">E-Commerce</h3>
+                <p class="category-description">
+                    Start your online store with minimal investment through dropshipping, 
+                    print-on-demand, and more.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">Dropshipping</span>
+                    <span class="category-tag">Amazon FBA</span>
+                    <span class="category-tag">POD</span>
+                </div>
+                <a href="#" class="category-link">
+                    Start Selling →
+                </a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🔗</div>
+                <h3 class="category-title">Affiliate Marketing</h3>
+                <p class="category-description">
+                    Earn commissions by promoting products you love. Access our exclusive 
+                    high-paying affiliate programs.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">High Commissions</span>
+                    <span class="category-tag">Recurring Revenue</span>
+                </div>
+                <a href="#" class="category-link">
+                    View Programs →
+                </a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💻</div>
+                <h3 class="category-title">Freelancing</h3>
+                <p class="category-description">
+                    Turn your skills into income. Writing, design, programming, and AI 
+                    services in high demand.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">AI Services</span>
+                    <span class="category-tag">Content Creation</span>
+                    <span class="category-tag">Coding</span>
+                </div>
+                <a href="#" class="category-link">
+                    Find Gigs →
+                </a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">📊</div>
+                <h3 class="category-title">Passive Investing</h3>
+                <p class="category-description">
+                    Grow your wealth with crypto staking, dividend stocks, and automated 
+                    investment strategies.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">Crypto Staking</span>
+                    <span class="category-tag">DeFi Yield</span>
+                    <span class="category-tag">REITs</span>
+                </div>
+                <a href="#" class="category-link">
+                    Start Investing →
+                </a>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3 class="category-title">Content Creation</h3>
+                <p class="category-description">
+                    Monetize your creativity through YouTube, TikTok, blogging, and 
+                    online courses.
+                </p>
+                <div class="category-items">
+                    <span class="category-tag">YouTube</span>
+                    <span class="category-tag">Online Courses</span>
+                    <span class="category-tag">Podcasting</span>
+                </div>
+                <a href="#" class="category-link">
+                    Create Content →
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <div class="featured-content">
+            <div class="featured-item">
+                <div class="featured-icon">🎯</div>
+                <h3 class="featured-title">Beginner Friendly</h3>
+                <p class="featured-text">
+                    No experience needed. Step-by-step guides for every hustle.
+                </p>
+            </div>
+            
+            <div class="featured-item">
+                <div class="featured-icon">💰</div>
+                <h3 class="featured-title">Low Investment</h3>
+                <p class="featured-text">
+                    Most opportunities require $0 to start. Scale as you grow.
+                </p>
+            </div>
+            
+            <div class="featured-item">
+                <div class="featured-icon">📈</div>
+                <h3 class="featured-title">Proven Results</h3>
+                <p class="featured-text">
+                    Real success stories from our community members.
+                </p>
+            </div>
+            
+            <div class="featured-item">
+                <div class="featured-icon">🤝</div>
+                <h3 class="featured-title">24/7 Support</h3>
+                <p class="featured-text">
+                    Active Discord community with experienced mentors.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ONLINE SIDEHUSTLES</h3>
+                <p>
+                    Your trusted partner in building multiple income streams. 
+                    Join thousands who've transformed their financial future.
+                </p>
+                <p style="color: #4CAF50; font-style: italic;">
                     Website by Crossroads
                 </p>
             </div>
-            <div class="graphic-section">
-                <div class="coin-graphic"></div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Getting Started</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="sweepstake-casinos.html">Sweepstakes</a></li>
+                    <li><a href="#">E-Commerce</a></li>
+                    <li><a href="#">Freelancing</a></li>
+                    <li><a href="#">Investing</a></li>
+                </ul>
             </div>
         </div>
-    </main>
-    
-    <!-- Bottom Cards -->
-    <div class="cards-container">
-        <div class="cards-grid">
-            <a href="sweepstake-casinos.html" class="card">
-                <div class="card-icon">🎰</div>
-                <div class="card-content">
-                    <div class="card-title">Sweepstake Casinos</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
-            
-            <a href="#section2" class="card">
-                <div class="card-icon">🆕</div>
-                <div class="card-content">
-                    <div class="card-title">Section 2</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
-            
-            <a href="#section3" class="card">
-                <div class="card-icon">🎁</div>
-                <div class="card-content">
-                    <div class="card-title">Section 3</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
-            
-            <a href="#section4" class="card">
-                <div class="card-icon">🚫</div>
-                <div class="card-content">
-                    <div class="card-title">Section 4</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
-            
-            <a href="#section5" class="card">
-                <div class="card-icon">⭐</div>
-                <div class="card-content">
-                    <div class="card-title">Section 5</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
-            
-            <a href="#section6" class="card">
-                <div class="card-icon">💬</div>
-                <div class="card-content">
-                    <div class="card-title">Section 6</div>
-                </div>
-                <div class="card-arrow">›</div>
-            </a>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
     
-    <!-- Discord Link -->
-    <a href="https://discord.com/invite/onlinesidehustles" class="discord-link" target="_blank">
-        <span class="discord-icon">💬</span>
-        Join our Community!
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
     </a>
 </body>
 </html>
