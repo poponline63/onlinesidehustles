@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweepstake Casinos - Online Sidehustles</title>
+    <title>Sweepstake Casino Guide - Online Sidehustles</title>
     <style>
         * {
             margin: 0;
@@ -13,603 +13,464 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
+            min-height: 100vh;
         }
         
-        /* Loading Spinner */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3rem;
-            color: #4CAF50;
-        }
-        
-        .spinner {
-            border: 3px solid rgba(76, 175, 80, 0.3);
-            border-radius: 50%;
-            border-top: 3px solid #4CAF50;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin-right: 1rem;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Header */
+        /* Header Styles */
         header {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            gap: 0.75rem;
             text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
         }
         
         .logo-icon {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
             font-weight: bold;
-            font-size: 12px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
         
-        .back-btn {
-            background: none;
-            border: 2px solid #4CAF50;
-            color: #4CAF50;
-            padding: 0.5rem 1.5rem;
+        .back-button {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateX(-5px);
+        }
+        
+        /* Quick Navigation Bar */
+        .quick-nav {
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        
+        .quick-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-nav-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 3px;
+        }
+        
+        .quick-nav-content {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            min-width: fit-content;
+        }
+        
+        .nav-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .back-btn:hover {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        /* Active Users Indicator */
-        .active-users {
-            position: fixed;
-            top: 90px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 1rem;
-            z-index: 999;
-            min-width: 200px;
-        }
-        
-        .active-users-title {
-            font-size: 0.9rem;
-            color: #4CAF50;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .active-dot {
-            width: 8px;
-            height: 8px;
-            background: #4CAF50;
-            border-radius: 50%;
+        .nav-link:hover {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(139, 195, 74, 0.2));
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .nav-link-new {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-left: 0.3rem;
+        }
+        
+        /* Main Content */
+        .main-container {
+            padding-top: 140px;
+            min-height: 100vh;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero Section */
+        .guide-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: black;
+            font-weight: bold;
+        }
+        
+        .guide-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .guide-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(255, 215, 0, 0.05));
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .highlight-box p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box strong {
+            color: #4CAF50;
+        }
+        
+        /* Google Sheets Integration Area */
+        .sheets-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .sheets-container:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+        
+        .sheets-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sheets-container h3 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sheets-container p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .coming-soon-badge {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
             animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
         }
         
-        .user-avatars {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .user-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: white;
-            font-weight: bold;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        /* Main Content */
-        main {
-            padding-top: 120px;
-            padding-bottom: 100px;
-            max-width: 1200px;
+        .footer-content {
+            max-width: 1400px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-        
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            color: #FFD700;
             text-align: center;
+            color: rgba(255, 255, 255, 0.5);
         }
         
-        .intro-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .footer-content p {
+            margin-bottom: 0.5rem;
         }
         
-        /* Casino Cards Grid */
-        .casinos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .casino-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.6s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .casino-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
-            border-color: #4CAF50;
-        }
-        
-        .casino-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #FFD700;
-            margin-bottom: 1rem;
-        }
-        
-        .bonus-tag {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .casino-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-        
-        .casino-features li {
-            padding: 0.5rem 0;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-        }
-        
-        .casino-features li:before {
-            content: "✓";
+        .footer-credit {
             color: #4CAF50;
-            font-weight: bold;
-            margin-right: 10px;
+            font-style: italic;
+            margin-top: 1rem;
         }
         
-        .play-btn {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
-            display: inline-block;
-            font-weight: bold;
-            transition: all 0.3s;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .play-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-        
-        /* Info Section */
-        .info-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 3rem;
-            margin-top: 4rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .info-title {
-            font-size: 2rem;
-            color: #FFD700;
-            margin-bottom: 1.5rem;
-        }
-        
-        .info-content {
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .info-content p {
-            margin-bottom: 1rem;
-        }
-        
-        /* Discord Link */
-        .discord-link {
+        /* Discord Float Button */
+        .discord-float {
             position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 20px;
+            right: 20px;
             background: linear-gradient(135deg, #5865F2, #7289DA);
             color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 25px;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
-            z-index: 100;
+            z-index: 999;
+            font-weight: 600;
         }
         
-        .discord-link:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
         
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
-            .active-users {
-                right: 10px;
-                top: 80px;
-                min-width: 150px;
-                padding: 0.75rem;
+            .guide-hero h1 {
+                font-size: 2rem;
             }
             
-            .user-avatar {
-                width: 25px;
-                height: 25px;
-                font-size: 0.7rem;
+            .quick-nav-content {
+                gap: 0.5rem;
             }
             
-            main {
-                padding-left: 1rem;
-                padding-right: 1rem;
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
             }
             
-            .casinos-grid {
-                grid-template-columns: 1fr;
+            .sheets-container {
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
+    <!-- Header -->
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <div class="logo-icon">OS</div>
+                <div class="logo-icon">💵</div>
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
             
-            <a href="index.html" class="back-btn">← Back to Home</a>
+            <a href="index.html" class="back-button">
+                <span>←</span>
+                Back to Home
+            </a>
         </nav>
     </header>
     
-    <!-- Active Users Indicator -->
-    <div class="active-users">
-        <div class="active-users-title">
-            <div class="active-dot"></div>
-            <span id="user-count">3 people viewing</span>
+    <!-- Quick Navigation Bar -->
+    <div class="quick-nav">
+        <div class="quick-nav-container">
+            <div class="quick-nav-content">
+                <a href="#" class="nav-link active">
+                    <span>📖</span>
+                    Sweepstake Casinos Guide
+                </a>
+                <a href="daily-free-sc.html" class="nav-link">
+                    <span>🎁</span>
+                    Daily Free SC
+                </a>
+                <a href="package-sales.html" class="nav-link">
+                    <span>📦</span>
+                    Package Sales
+                </a>
+                <a href="vip-guide.html" class="nav-link">
+                    <span>👑</span>
+                    VIP Guide
+                </a>
+                <a href="bonus-collection-software.html" class="nav-link">
+                    <span>🤖</span>
+                    Daily Bonus Collection Software
+                    <span class="nav-link-new">NEW</span>
+                </a>
+                <a href="auto-giveaways-software.html" class="nav-link">
+                    <span>✨</span>
+                    Auto Giveaways Signup Software
+                </a>
+            </div>
         </div>
-        <div class="user-avatars" id="user-avatars"></div>
     </div>
     
     <!-- Main Content -->
-    <main>
-        <h1 class="page-title">🎰 Sweepstake Casinos</h1>
-        
-        <p class="intro-text">
-            Discover the best sweepstake casinos that offer legal ways to play casino games and win real prizes. 
-            These platforms use a sweepstakes model that allows you to play in most US states legally.
-        </p>
-        
-        <!-- Loading State -->
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <span>Loading latest casino offers...</span>
-        </div>
-        
-        <!-- Casino Cards Container -->
-        <div class="casinos-grid" id="casinos-grid" style="display: none;"></div>
-        
-        <!-- Information Section -->
-        <div class="info-section">
-            <h2 class="info-title">What Are Sweepstake Casinos?</h2>
-            <div class="info-content">
-                <p>
-                    Sweepstake casinos are a legal alternative to traditional online casinos in most US states. 
-                    They operate using a dual-currency system where you can play games with virtual currency 
-                    and have the chance to win real cash prizes.
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="guide-hero">
+                <div class="guide-badge">
+                    🔥 MOST COMPREHENSIVE GUIDE
+                </div>
+                <h1>Sweepstake Casinos Complete Guide</h1>
+                <p class="guide-description">
+                    Master the world of sweepstake casinos with our constantly updated guide. 
+                    Earn up to $1,050 monthly from daily free SC collections, plus $3,000+ from 
+                    strategic package purchases and bonuses.
                 </p>
+                
+                <div class="highlight-box">
+                    <p>
+                        <strong>No deposits required to start</strong> • 
+                        Real cash prizes • Updated daily with new opportunities
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Google Sheets Integration Area -->
+            <div class="sheets-container">
+                <div class="sheets-icon">📊</div>
+                <h3>Interactive Sweepstake Casino Database</h3>
                 <p>
-                    Unlike traditional online gambling, sweepstakes casinos are legal in most states because 
-                    they operate under sweepstakes laws. You can purchase virtual currency or receive it for 
-                    free through various promotions and bonuses.
+                    Our comprehensive Google Sheets guide will be embedded here, featuring:
                 </p>
-                <p>
-                    Always remember to play responsibly and within your means. These platforms are meant for 
-                    entertainment, and while you can win real prizes, they should be enjoyed as a fun side activity.
+                <p style="color: #4CAF50; font-weight: 600;">
+                    • 50+ Verified Sweepstake Casinos<br>
+                    • Daily Bonus Tracking System<br>
+                    • Promo Codes & Exclusive Offers<br>
+                    • VIP Program Comparisons<br>
+                    • ROI Calculator & Earning Tracker<br>
+                    • Community-Verified Strategies
                 </p>
+                <div class="coming-soon-badge">
+                    GOOGLE SHEETS INTEGRATION COMING SOON
+                </div>
             </div>
         </div>
-    </main>
+    </div>
     
-    <!-- Discord Link -->
-    <a href="https://discord.com/invite/onlinesidehustles" class="discord-link" target="_blank">
-        💬 Join our Community!
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
+            <p class="footer-credit">Website by Crossroads</p>
+        </div>
+    </footer>
+    
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
     </a>
-
-    <script>
-        // Fun user avatars with various emojis and colors
-        const userAvatars = [
-            { emoji: '🎮', color: '#FF6B6B' },
-            { emoji: '🎰', color: '#4ECDC4' },
-            { emoji: '🎲', color: '#45B7D1' },
-            { emoji: '🃏', color: '#96CEB4' },
-            { emoji: '🎯', color: '#FFEAA7' },
-            { emoji: '🎨', color: '#DDA0DD' },
-            { emoji: '🚀', color: '#FF7675' },
-            { emoji: '⚡', color: '#FDCB6E' },
-            { emoji: '🔥', color: '#E17055' },
-            { emoji: '💎', color: '#74B9FF' },
-            { emoji: '🎪', color: '#A29BFE' },
-            { emoji: '🌟', color: '#FD79A8' },
-        ];
-
-        // Active users simulation
-        function updateActiveUsers() {
-            const userCount = Math.floor(Math.random() * 8) + 2; // 2-9 users
-            const avatarsContainer = document.getElementById('user-avatars');
-            const userCountElement = document.getElementById('user-count');
-            
-            userCountElement.textContent = `${userCount} people viewing`;
-            avatarsContainer.innerHTML = '';
-            
-            // Randomly select users
-            const selectedAvatars = [];
-            for (let i = 0; i < userCount; i++) {
-                const randomAvatar = userAvatars[Math.floor(Math.random() * userAvatars.length)];
-                if (!selectedAvatars.find(a => a.emoji === randomAvatar.emoji)) {
-                    selectedAvatars.push(randomAvatar);
-                }
-            }
-            
-            selectedAvatars.forEach((avatar, index) => {
-                setTimeout(() => {
-                    const avatarDiv = document.createElement('div');
-                    avatarDiv.className = 'user-avatar';
-                    avatarDiv.style.backgroundColor = avatar.color;
-                    avatarDiv.textContent = avatar.emoji;
-                    avatarsContainer.appendChild(avatarDiv);
-                }, index * 200);
-            });
-        }
-
-        // Google Sheets API Integration with your credentials
-        async function loadCasinoData() {
-            // Your Google Sheets credentials
-            const API_KEY = 'AIzaSyD37V89cGBJWn7DLO9ZkRN1qTst-MLYvck';
-            const SHEET_ID = '1bugB-SV6FP4HjLC8SpPvpshsYVkmm8DfqJIYYJiVm3g';
-            const SHEET_NAME = 'Daily Casinos';
-            
-            // Build the API URL
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-            
-            try {
-                console.log('Loading casino data from Google Sheets...');
-                
-                // Fetch the data from Google Sheets API
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                console.log('Google Sheets data received:', data);
-                
-                if (data.values && data.values.length > 0) {
-                    // First row is headers
-                    const headers = data.values[0];
-                    console.log('Headers:', headers);
-                    
-                    // Process the rest as data rows
-                    const casinos = [];
-                    for (let i = 1; i < data.values.length; i++) {
-                        const row = data.values[i];
-                        
-                        // Create casino object from row data
-                        const casino = {};
-                        headers.forEach((header, index) => {
-                            casino[header] = row[index] || '';
-                        });
-                        
-                        // Only add if we have at least a casino name
-                        if (casino[headers[0]] && casino[headers[0]].trim() !== '') {
-                            casinos.push(casino);
-                        }
-                    }
-                    
-                    console.log(`Loaded ${casinos.length} casinos:`, casinos);
-                    
-                    if (casinos.length > 0) {
-                        displayCasinos(casinos);
-                    } else {
-                        throw new Error('No casino data found in sheet');
-                    }
-                } else {
-                    throw new Error('No data in spreadsheet');
-                }
-                
-            } catch (error) {
-                console.error('Error loading casino data:', error);
-                
-                // Show error message with helpful information
-                const loadingElement = document.getElementById('loading');
-                loadingElement.innerHTML = `
-                    <div style="text-align: center; padding: 3rem;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
-                        <h3 style="color: #FFD700; margin-bottom: 1rem;">Unable to Load Casino Data</h3>
-                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
-                            ${error.message}
-                        </p>
-                        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                            Make sure your Google Sheet is published and accessible.
-                        </p>
-                        <button onclick="location.reload()" style="
-                            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-                            color: white;
-                            border: none;
-                            padding: 0.75rem 1.5rem;
-                            border-radius: 25px;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                        ">
-                            🔄 Retry
-                        </button>
-                    </div>
-                `;
-            }
-        }
-
-        function displayCasinos(casinos) {
-            const loadingElement = document.getElementById('loading');
-            const gridElement = document.getElementById('casinos-grid');
-            
-            // Hide loading, show grid
-            loadingElement.style.display = 'none';
-            gridElement.style.display = 'grid';
-            gridElement.innerHTML = '';
-            
-            casinos.forEach((casino, index) => {
-                const casinoCard = document.createElement('div');
-                casinoCard.className = 'casino-card';
-                casinoCard.style.animationDelay = `${index * 0.1}s`;
-                
-                // Map the columns from your sheet (adjust these based on your actual column names)
-                // Common column names: 'Casino Name', 'Name', 'Casino', 'Title'
-                const name = casino['Casino Name'] || casino['Name'] || casino['Casino'] || casino['Title'] || `Casino ${index + 1}`;
-                
-                // Common column names: 'Bonus', 'Welcome Offer', 'Offer', 'Promotion'
-                const bonus = casino['Bonus'] || casino['Welcome Offer'] || casino['Offer'] || casino['Promotion'] || 'Special Bonus Available';
-                
-                // Common column names: 'Features', 'Benefits', 'Description'
-                const featuresText = casino['Features'] || casino['Benefits'] || casino['Description'] || '';
-                const features = featuresText ? featuresText.split(/[,;|]/).map(f => f.trim()).filter(f => f) : [
-                    'No deposit required',
-                    'Daily free coins',
-                    'Real cash prizes',
-                    'Legal in most states'
-                ];
-                
-                // Common column names: 'Link', 'URL', 'Website'
-                const link = casino['Link'] || casino['URL'] || casino['Website'] || '#';
-                
-                // Take only first 4 features to keep card clean
-                const displayFeatures = features.slice(0, 4);
-                
-                casinoCard.innerHTML = `
-                    <h2 class="casino-name">${name}</h2>
-                    <span class="bonus-tag">${bonus}</span>
-                    <ul class="casino-features">
-                        ${displayFeatures.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                    <a href="${link}" class="play-btn" target="_blank" rel="noopener noreferrer">Play Now</a>
-                `;
-                
-                gridElement.appendChild(casinoCard);
-            });
-            
-            console.log(`Displayed ${casinos.length} casino cards`);
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            updateActiveUsers();
-            loadCasinoData();
-            
-            // Update active users every 10-30 seconds
-            setInterval(updateActiveUsers, Math.random() * 20000 + 10000);
-        });
-    </script>
 </body>
 </html>
