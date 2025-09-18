@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Shop Automation - Sell on TikTok Automated | Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #fff;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 5px 20px rgba(255, 0, 80, 0.3);
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #FF0050;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 0, 80, 0.5);
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .date-note {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, rgba(255, 0, 80, 0.1), rgba(255, 69, 0, 0.1));
+            border: 2px solid rgba(255, 0, 80, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            box-shadow: 0 10px 40px rgba(255, 0, 80, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Why It Works Section */
+        .why-section {
+            padding: 2rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 0, 80, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF0050, #FF4500);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .why-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .why-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 80, 0.2);
+            border-color: rgba(255, 0, 80, 0.4);
+        }
+        
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(255, 0, 80, 0.3);
+        }
+        
+        .why-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .why-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .why-highlight {
+            color: #FF0050;
+            font-weight: bold;
+        }
+        
+        /* Video Section */
+        .video-section {
+            background: linear-gradient(135deg, rgba(255, 0, 80, 0.05), rgba(255, 69, 0, 0.05));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 0, 80, 0.2);
+        }
+        
+        .video-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #FF0000;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .video-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+        
+        /* Strategy Section */
+        .strategy-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .strategy-box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid rgba(255, 0, 80, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .strategy-box::after {
+            content: '🚀';
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 40px;
+            background: #1a1a1a;
+            padding: 0 15px;
+        }
+        
+        .strategy-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+        }
+        
+        .strategy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .strategy-step {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 0, 80, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .strategy-step:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.2);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .opportunity-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .opportunity-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .opportunity-box h3 {
+            font-size: 2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        .opportunity-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #FF0050, #FF4500);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 80, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #5865F2;
+            color: #7289DA;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(88, 101, 242, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Requirements Section */
+        .requirements-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 0, 80, 0.2);
+        }
+        
+        .requirements-title {
+            font-size: 1.5rem;
+            color: #FF0050;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .requirements-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .requirements-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .requirements-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #8BC34A;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+            }
+            
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .strategy-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            nav {
+                padding: 1rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💵</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">← Back to Home</a>
+                <a href="#get-started" class="nav-btn" style="background: linear-gradient(135deg, #FF0050, #FF4500); border: none;">Get Started</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            🔥 GEN Z'S SECRET MONEY METHOD
+        </div>
+        
+        <h1 class="hero-title">TikTok Shop Automation</h1>
+        
+        <div class="hero-subtitle">$1,500+/Month—Zero Content Creation Required</div>
+        
+        <p class="hero-description">
+            I'm getting <strong>20+ orders daily</strong> using this strategy. 
+            I'm simply posting listings and using SEO to make me sales. No dancing, no videos, 
+            just pure profit through TikTok's powerful search algorithm.
+        </p>
+        
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">$1,500+</div>
+                <div class="stat-label">Per Month Per Account</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Daily Orders</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">ZERO</div>
+                <div class="stat-label">Videos Required</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why It Works Section -->
+    <section class="why-section">
+        <div class="section-header">
+            <h2 class="section-title">Why This Works</h2>
+        </div>
+        
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">📱</div>
+                <h3 class="why-title">No Video Posting Required</h3>
+                <p class="why-description">
+                    Forget about creating content or going viral. <span class="why-highlight">TikTok SEO does all the work</span> for you. 
+                    Your products get discovered through search, not through the For You page.
+                </p>
+            </div>
+            
+            <div class="why-card">
+                <div class="why-icon">📈</div>
+                <h3 class="why-title">Infinitely Scalable</h3>
+                <p class="why-description">
+                    Run multiple accounts using your <span class="why-highlight">Social Security # + EINs</span>. 
+                    Each account can generate $1,500+/month. Scale to your income goals.
+                </p>
+            </div>
+            
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <h3 class="why-title">Low Effort, High Returns</h3>
+                <p class="why-description">
+                    <span class="why-highlight">$1,500/month per account with minimal work</span>. 
+                    Set it up once, optimize your listings, and watch the orders roll in daily.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Tutorial Section -->
+    <section class="video-section">
+        <div class="video-badge">
+            📺 YOUTUBE TUTORIAL
+        </div>
+        <h2>Watch the Complete Step-by-Step Guide</h2>
+        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+            Learn exactly how to set up your TikTok Shop and start making sales without creating any content
+        </p>
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/jeJt_7lUoW8" 
+                title="TikTok Shop Tutorial"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    
+    <!-- Strategy Section -->
+    <section class="strategy-section">
+        <div class="strategy-box">
+            <h2 class="strategy-title">The Simple 4-Step Process</h2>
+            
+            <div class="strategy-steps">
+                <div class="strategy-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Set Up Shop</div>
+                    <p class="step-description">
+                        Create your TikTok Shop account using your SSN or EIN. 
+                        Takes less than 10 minutes.
+                    </p>
+                </div>
+                
+                <div class="strategy-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Post Listings</div>
+                    <p class="step-description">
+                        Add products with optimized titles and descriptions. 
+                        No videos or content creation needed.
+                    </p>
+                </div>
+                
+                <div class="strategy-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Optimize SEO</div>
+                    <p class="step-description">
+                        Use trending keywords and smart pricing to rank in 
+                        TikTok search results.
+                    </p>
+                </div>
+                
+                <div class="strategy-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Scale & Profit</div>
+                    <p class="step-description">
+                        Watch orders come in daily. Scale by adding more 
+                        products or creating additional accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Requirements Section -->
+    <section class="requirements-section">
+        <h3 class="requirements-title">What You Need to Get Started</h3>
+        <ul class="requirements-list">
+            <li>US-based Social Security Number or EIN</li>
+            <li>Basic computer or smartphone</li>
+            <li>30 minutes to set up your first shop</li>
+            <li>Products to list (or use dropshipping)</li>
+            <li>Basic understanding of keywords (we teach you)</li>
+        </ul>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <div class="opportunity-box">
+            <span class="opportunity-badge">HOT OPPORTUNITY</span>
+            <h3>The Window Is Wide Open Right Now</h3>
+            <p>
+                While everyone's focused on creating viral content, smart sellers are quietly banking $1,500+ monthly 
+                through TikTok Shop SEO. This untapped strategy is working incredibly well because most people 
+                don't realize you can make serious money on TikTok <strong>without ever posting a single video.</strong> 
+                The early adopters are seeing massive results—don't miss your chance to get in while competition is still low.
+            </p>
+        </div>
+        
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Ready to Start Making Money on TikTok?</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;">
+            This strategy is working RIGHT NOW. The sooner you start, the sooner you'll see results.
+        </p>
+        <p style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">
+            Some members are seeing their first sales within 48 hours of setup!
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="https://www.youtube.com/watch?v=jeJt_7lUoW8" class="cta-button cta-primary" target="_blank">
+                🎬 Watch Full Tutorial Now
+            </a>
+            <a href="https://discord.com/invite/onlinesidehustles" class="cta-button cta-secondary" target="_blank">
+                💬 Join Discord Community
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="back-link">← Back to Homepage</a>
+            </p>
+            <p style="color: #4CAF50; font-style: italic; margin-top: 1rem;">
+                Website by Crossroads
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
