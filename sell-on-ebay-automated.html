@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,13 +164,7 @@
             font-size: 0.95rem;
         }
         
-        /* Features Section */
-        .features-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
+        /* Features Section - Now integrated into hero */
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -186,9 +179,18 @@
         
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-bottom: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .feature-card {
@@ -344,10 +346,183 @@
             line-height: 1.6;
         }
         
+        /* Pricing Plans */
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 600px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(76, 175, 80, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pricing-card.popular {
+            border-color: #FFD700;
+            background: rgba(20, 20, 20, 0.9);
+        }
+        
+        .popular-badge {
+            background: #FFD700;
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            height: 30px;
+        }
+        
+        .popular-spacer {
+            height: 30px;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .plan-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .pricing-card.popular .plan-name {
+            color: #FFD700;
+        }
+        
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .plan-billing {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            height: 60px;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .plan-cta {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+            width: 80%;
+            max-width: 200px;
+        }
+        
+        .plan-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+            background: #5CBF60;
+        }
+        
+        .popular .plan-cta {
+            background: #FFD700;
+            color: #000;
+        }
+        
+        .popular .plan-cta:hover {
+            background: #FFE030;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .plan-features-wrapper {
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .plan-features-title {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .plan-features {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+        }
+        
+        .plan-features li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .plan-features .listings-number {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 1024px) {
+            .pricing-plans {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* CTA Section */
         .cta-section {
             padding: 4rem 2rem;
-            max-width: 800px;
+            max-width: 1400px;
             margin: 0 auto;
             text-align: center;
         }
@@ -497,6 +672,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .pricing-plans {
+                grid-template-columns: 1fr;
+            }
+            
             .cta-buttons {
                 flex-direction: column;
             }
@@ -536,25 +715,24 @@
             Forget the manual grind—this software takes care of the heavy lifting so you can focus on growing your store.
         </p>
         
+        <!-- Combined Stats and Results Bar -->
         <div class="stats-bar">
             <div class="stat-item">
                 <div class="stat-number">$1K+</div>
-                <div class="stat-label">Monthly Earnings</div>
+                <div class="stat-label">Personal Monthly Results</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">$10K</div>
-                <div class="stat-label">Top Earners</div>
+                <div class="stat-label">Top Performers Monthly</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">100s</div>
-                <div class="stat-label">Orders Automated</div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Orders Automated Monthly</div>
             </div>
         </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="section-header">
+        
+        <!-- What It Does - Features Grid -->
+        <div class="section-header" style="margin-top: 4rem;">
             <h2 class="section-title">What It Does</h2>
         </div>
         
@@ -616,41 +794,99 @@
         </div>
     </section>
     
-    <!-- Results Section -->
-    <section class="results-section">
-        <div class="section-header">
-            <h2 class="section-title">Real Results</h2>
-        </div>
-        
-        <div class="results-container">
-            <div class="result-card">
-                <div class="result-amount">$1,000/month</div>
-                <div class="result-description">
-                    Personal results with minimal effort. Set up the automation and let it run while 
-                    focusing on other income streams.
-                </div>
-            </div>
-            
-            <div class="result-card">
-                <div class="result-amount">$10,000/month</div>
-                <div class="result-description">
-                    Top performers running multiple stores. Scaled operations handling hundreds of 
-                    orders monthly on complete autopilot.
-                </div>
-            </div>
-            
-            <div class="result-card">
-                <div class="result-amount">100+ Orders</div>
-                <div class="result-description">
-                    Automated monthly order processing. From listing to shipping, everything handled 
-                    by the software seamlessly.
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- CTA Section -->
     <section class="cta-section" id="get-started">
+        <!-- Pricing Section -->
+        <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05)); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 3rem 2rem 3rem 2rem; margin-bottom: 3rem;">
+            <h3 style="font-size: 1.8rem; color: #FFD700; margin-bottom: 2rem; text-align: center;">Simple, Transparent Pricing</h3>
+            
+            <!-- Dashboard Screenshot -->
+            <div style="margin-bottom: 3rem;">
+                <div class="placeholder-img" style="height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📊 Dashboard Screenshot</p>
+                    <p>dropship-calendar-portal.png</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Actual screenshot of the dropshipping calendar portal - Your command center for automated eBay success</p>
+                </div>
+            </div>
+            
+            <!-- Pricing Plans Container -->
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="pricing-plans">
+                    <!-- Starter Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <div class="popular-spacer"></div>
+                            <h4 class="plan-name">Starter</h4>
+                            <div class="plan-price">$59/mo</div>
+                            <div class="plan-billing">Billed Monthly</div>
+                            <p class="plan-description">Built for getting your first eBay store off the ground.</p>
+                            <a href="#" class="plan-cta">Sign up now!</a>
+                        </div>
+                        <div class="plan-features-wrapper">
+                            <div class="plan-features-title">What's included:</div>
+                            <ul class="plan-features">
+                                <li>Active Listings: <span class="listings-number">1,000</span></li>
+                                <li>Product Discovery</li>
+                                <li>Automatic Listing</li>
+                                <li>Smart Inventory</li>
+                                <li>Auto Ordering</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Basic Plan - Most Popular -->
+                    <div class="pricing-card popular">
+                        <div class="plan-header">
+                            <div class="popular-badge">MOST POPULAR</div>
+                            <h4 class="plan-name">Basic</h4>
+                            <div class="plan-price">$89/mo</div>
+                            <div class="plan-billing">Billed Monthly</div>
+                            <p class="plan-description">Designed for consistent sellers ready to scale.</p>
+                            <a href="#" class="plan-cta">Sign up now!</a>
+                        </div>
+                        <div class="plan-features-wrapper">
+                            <div class="plan-features-title">What's included:</div>
+                            <ul class="plan-features">
+                                <li>Active Listings: <span class="listings-number">2,000</span></li>
+                                <li>Product Discovery</li>
+                                <li>Automatic Listing</li>
+                                <li>Smart Inventory</li>
+                                <li>Auto Ordering</li>
+                                <li>Volume Checker</li>
+                                <li>Automator</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Pro Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <div class="popular-spacer"></div>
+                            <h4 class="plan-name">Pro</h4>
+                            <div class="plan-price">$119/mo</div>
+                            <div class="plan-billing">Billed Monthly</div>
+                            <p class="plan-description">Best for high-volume sellers.</p>
+                            <a href="#" class="plan-cta">Sign up now!</a>
+                        </div>
+                        <div class="plan-features-wrapper">
+                            <div class="plan-features-title">What's included:</div>
+                            <ul class="plan-features">
+                                <li>Active Listings: <span class="listings-number">UNLIMITED</span></li>
+                                <li>Product Discovery</li>
+                                <li>Automatic Listing</li>
+                                <li>Smart Inventory</li>
+                                <li>Auto Ordering</li>
+                                <li>Volume Checker</li>
+                                <li>Automator</li>
+                                <li>2 eBay Stores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Limited Offer - Listing Service -->
         <div class="limited-offer">
             <span class="offer-badge">LIMITED TIME</span>
             <h3>Exclusive Posting Service Included!</h3>
@@ -664,38 +900,6 @@
             </p>
         </div>
         
-        <!-- Pricing Section -->
-        <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05)); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;">
-            <h3 style="font-size: 1.8rem; color: #FFD700; margin-bottom: 2rem;">Simple, Transparent Pricing</h3>
-            
-            <!-- Dashboard Screenshot -->
-            <div style="margin-bottom: 3rem;">
-                <div class="placeholder-img" style="height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📊 Dashboard Screenshot</p>
-                    <p>dropship-calendar-portal.png</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Actual screenshot of the dropshipping calendar portal - Your command center for automated eBay success</p>
-                </div>
-            </div>
-            
-            <!-- Pricing Plans -->
-            <div style="margin-bottom: 2rem;">
-                <div class="placeholder-img" style="height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">💰 All Pricing Plans</p>
-                    <p>pricing-plans.png</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Choose the plan that fits your business goals</p>
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 2rem 0 1rem;">
-                <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">Starting at just</span>
-                <span style="font-size: 3rem; font-weight: bold; color: #4CAF50;">$59</span>
-                <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">per month</span>
-            </div>
-            <p style="color: rgba(255, 255, 255, 0.8); font-size: 1rem;">
-                Full access to all automation features • 1,000 product listings (Starter) • 24/7 support
-            </p>
-        </div>
-        
         <h2 style="font-size: 2rem; margin-bottom: 1rem;">Interested?</h2>
         <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 2rem;">
             Join the community and start your eBay automation journey today. 
@@ -704,7 +908,7 @@
         
         <div class="cta-buttons">
             <a href="#" class="cta-button cta-primary">
-                🚀 Get Started Now - $59/month
+                🚀 Get Started Now - From $59/month
             </a>
             <a href="#" class="cta-button cta-secondary">
                 💬 Join Discord Community
