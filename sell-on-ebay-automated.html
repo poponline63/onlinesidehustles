@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -434,6 +435,17 @@
             transform: translateY(-3px);
         }
         
+        /* Placeholder images */
+        .placeholder-img {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+        
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.8);
@@ -637,21 +649,6 @@
         </div>
     </section>
     
-    <!-- Proof Section -->
-    <section class="proof-section" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
-        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-            <h2 class="section-title" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; color: #4CAF50;">See It In Action</h2>
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 1.1rem;">Take a look at the actual dashboard and see the power of automation</p>
-        </div>
-        
-        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);">
-            <img src="dropship-calendar-portal.png" alt="eBay Automation Dashboard Portal" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
-            <p style="text-align: center; color: rgba(255, 255, 255, 0.6); margin-top: 1.5rem; font-style: italic;">
-                Actual screenshot of the dropshipping calendar portal - Your command center for automated eBay success
-            </p>
-        </div>
-    </section>
-    
     <!-- CTA Section -->
     <section class="cta-section" id="get-started">
         <div class="limited-offer">
@@ -669,14 +666,33 @@
         
         <!-- Pricing Section -->
         <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05)); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;">
-            <h3 style="font-size: 1.8rem; color: #FFD700; margin-bottom: 1rem;">Simple, Transparent Pricing</h3>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.8rem; color: #FFD700; margin-bottom: 2rem;">Simple, Transparent Pricing</h3>
+            
+            <!-- Dashboard Screenshot -->
+            <div style="margin-bottom: 3rem;">
+                <div class="placeholder-img" style="height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📊 Dashboard Screenshot</p>
+                    <p>dropship-calendar-portal.png</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Actual screenshot of the dropshipping calendar portal - Your command center for automated eBay success</p>
+                </div>
+            </div>
+            
+            <!-- Pricing Plans -->
+            <div style="margin-bottom: 2rem;">
+                <div class="placeholder-img" style="height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">💰 All Pricing Plans</p>
+                    <p>pricing-plans.png</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Choose the plan that fits your business goals</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 2rem 0 1rem;">
                 <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">Starting at just</span>
                 <span style="font-size: 3rem; font-weight: bold; color: #4CAF50;">$59</span>
                 <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">per month</span>
             </div>
             <p style="color: rgba(255, 255, 255, 0.8); font-size: 1rem;">
-                Full access to all automation features • Unlimited product listings • 24/7 support
+                Full access to all automation features • 1,000 product listings (Starter) • 24/7 support
             </p>
         </div>
         
