@@ -603,6 +603,199 @@
             gap: 1rem;
         }
         
+        /* Skrill Section */
+        .skrill-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .skrill-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(129, 41, 144, 0.3), transparent);
+        }
+        
+        .skrill-container {
+            margin-top: 3rem;
+        }
+        
+        .skrill-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .benefit-card {
+            background: rgba(129, 41, 144, 0.05);
+            border: 1px solid rgba(129, 41, 144, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            background: rgba(129, 41, 144, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(129, 41, 144, 0.4);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefit-card h4 {
+            color: #C2185B;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .skrill-sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .skrill-site-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skrill-site-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #812990, #C2185B);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .skrill-site-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .skrill-site-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: rgba(129, 41, 144, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .site-badge {
+            background: linear-gradient(135deg, #812990, #C2185B);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        .skrill-site-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .site-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .site-features .feature {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .skrill-link {
+            color: #C2185B;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: gap 0.3s;
+            gap: 0.5rem;
+        }
+        
+        .skrill-link:hover {
+            gap: 1rem;
+        }
+        
+        .skrill-cta {
+            background: linear-gradient(135deg, rgba(129, 41, 144, 0.1), rgba(194, 24, 91, 0.1));
+            border: 2px solid rgba(129, 41, 144, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .skrill-cta:hover {
+            border-color: rgba(194, 24, 91, 0.5);
+            background: linear-gradient(135deg, rgba(129, 41, 144, 0.15), rgba(194, 24, 91, 0.15));
+        }
+        
+        .skrill-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .skrill-cta p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .skrill-signup-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(129, 41, 144, 0.3);
+        }
+        
+        .skrill-signup-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(129, 41, 144, 0.4);
+        }
+        
         /* Featured Section */
         .featured-section {
             background: rgba(76, 175, 80, 0.05);
@@ -790,6 +983,10 @@
                                         <span>📖</span>
                                         Sweepstake Casinos Guide
                                         <span class="menu-item-new">HOT</span>
+                                    </a>
+                                    <a href="skrill-casinos.html" class="menu-item">
+                                        <span>💳</span>
+                                        Skrill Eligible Sites
                                     </a>
                                     <a href="daily-free-sc.html" class="menu-item">
                                         <span>🎁</span>
@@ -1044,6 +1241,117 @@
                 </div>
                 <a href="#" class="category-link">
                     Create Content →
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skrill Section -->
+    <section class="skrill-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span style="background: linear-gradient(135deg, #812990, #C2185B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Skrill-Eligible</span> Platforms
+            </h2>
+            <p class="section-subtitle">Trusted sites that accept Skrill for easy deposits and withdrawals</p>
+        </div>
+        
+        <div class="skrill-container">
+            <div class="skrill-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Instant Transfers</h4>
+                    <p>Lightning-fast deposits and withdrawals globally</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h4>200+ Countries</h4>
+                    <p>Available worldwide with multi-currency support</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h4>Secure & Private</h4>
+                    <p>Bank-level security without sharing card details</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💳</div>
+                    <h4>Low Fees</h4>
+                    <p>Competitive rates for international transactions</p>
+                </div>
+            </div>
+            
+            <div class="skrill-sites-grid">
+                <div class="skrill-site-card">
+                    <div class="site-badge">SWEEPSTAKES</div>
+                    <h3>Stake.us</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ Instant deposits</span>
+                        <span class="feature">✓ No fees</span>
+                        <span class="feature">✓ VIP eligible</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+                
+                <div class="skrill-site-card">
+                    <div class="site-badge">GAMING</div>
+                    <h3>Chumba Casino</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ Quick processing</span>
+                        <span class="feature">✓ Bonus eligible</span>
+                        <span class="feature">✓ 24hr support</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+                
+                <div class="skrill-site-card">
+                    <div class="site-badge">CASINO</div>
+                    <h3>McLuck</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ Same-day withdrawal</span>
+                        <span class="feature">✓ Secure transfers</span>
+                        <span class="feature">✓ Rewards program</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+                
+                <div class="skrill-site-card">
+                    <div class="site-badge">BETTING</div>
+                    <h3>WOW Vegas</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ Fast payouts</span>
+                        <span class="feature">✓ Multi-currency</span>
+                        <span class="feature">✓ Mobile friendly</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+                
+                <div class="skrill-site-card">
+                    <div class="site-badge">SOCIAL</div>
+                    <h3>Pulsz</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ Instant verification</span>
+                        <span class="feature">✓ Loyalty points</span>
+                        <span class="feature">✓ Daily bonuses</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+                
+                <div class="skrill-site-card">
+                    <div class="site-badge">PREMIUM</div>
+                    <h3>High 5 Casino</h3>
+                    <div class="site-features">
+                        <span class="feature">✓ VIP treatment</span>
+                        <span class="feature">✓ Priority processing</span>
+                        <span class="feature">✓ Exclusive offers</span>
+                    </div>
+                    <a href="#" class="skrill-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <div class="skrill-cta">
+                <h3>Don't Have Skrill Yet?</h3>
+                <p>Join millions using Skrill for secure online payments</p>
+                <a href="https://www.skrill.com" class="skrill-signup-btn" target="_blank">
+                    Create Free Account →
                 </a>
             </div>
         </div>
