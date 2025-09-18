@@ -293,6 +293,84 @@
             transition: all 0.3s;
         }
         
+        /* Google Sheets Table Styles */
+        .sheets-table {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sheets-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .sheets-table th {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .sheets-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+        
+        .sheets-table tr:hover {
+            background: rgba(76, 175, 80, 0.05);
+        }
+        
+        .sheets-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Column-specific styling */
+        .sheets-table td:nth-child(3) { /* Daily Bonuses column */
+            background: rgba(255, 235, 59, 0.15);
+            color: #FFEB3B;
+            font-weight: 600;
+        }
+        
+        .sheets-table td:nth-child(5) { /* Notes column */
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+        
+        /* Loading and Error States */
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #ff6b6b;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
         .sheets-container:hover {
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(76, 175, 80, 0.5);
@@ -512,23 +590,9 @@
             </div>
             
             <!-- Google Sheets Integration Area -->
-            <div class="sheets-container">
-                <div class="sheets-icon">📊</div>
-                <h3>Interactive Sweepstake Casino Database</h3>
-                <p>
-                    Our comprehensive Google Sheets guide will be embedded here, featuring:
-                </p>
-                <p style="color: #4CAF50; font-weight: 600;">
-                    • 50+ Verified Sweepstake Casinos<br>
-                    • Daily Bonus Tracking System<br>
-                    • Promo Codes & Exclusive Offers<br>
-                    • VIP Program Comparisons<br>
-                    • ROI Calculator & Earning Tracker<br>
-                    • Community-Verified Strategies
-                </p>
-                <div class="coming-soon-badge">
-                    GOOGLE SHEETS INTEGRATION COMING SOON
-                </div>
+            <div class="sheets-container" id="sheets-container">
+                <div class="loading-spinner"></div>
+                <p style="color: rgba(255, 255, 255, 0.7);">Loading sweepstake casino data...</p>
             </div>
         </div>
     </div>
