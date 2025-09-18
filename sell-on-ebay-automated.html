@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBay Automation Software - Sell on eBay Automated | Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #000;
+            animation: pulse-badge 2s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .feature-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* Why Amazing Section */
+        .why-amazing {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-amazing::before {
+            content: '✨';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 150px;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .why-amazing h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+        
+        .why-amazing p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Results Section */
+        .results-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .result-card::after {
+            content: '💰';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 30px;
+            background: #1a1a1a;
+            padding: 0 10px;
+        }
+        
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .limited-offer {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .limited-offer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            color: #FFD700;
+        }
+        
+        .limited-offer p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #5865F2;
+            color: #7289DA;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(88, 101, 242, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #8BC34A;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💵</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">← Back to Home</a>
+                <a href="#get-started" class="nav-btn" style="background: linear-gradient(135deg, #4CAF50, #8BC34A); border: none;">Get Started</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            🔥 LIMITED TIME OFFER
+        </div>
+        
+        <h1 class="hero-title">eBay Automation Made Simple</h1>
+        
+        <p class="hero-subtitle">
+            Forget the manual grind—this software takes care of the heavy lifting so you can focus on growing your store.
+        </p>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">$1K+</div>
+                <div class="stat-label">Monthly Earnings</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$10K</div>
+                <div class="stat-label">Top Earners</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100s</div>
+                <div class="stat-label">Orders Automated</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">What It Does</h2>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Smart Product Discovery</h3>
+                <ul class="feature-list">
+                    <li>Finds profitable products with solid margins</li>
+                    <li>Analyzes market trends automatically</li>
+                    <li>Filters out low-profit items</li>
+                    <li>Updates product database daily</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Profit Calculator</h3>
+                <ul class="feature-list">
+                    <li>Calculates earnings upfront</li>
+                    <li>Shows exactly what you'll make per sale</li>
+                    <li>Factors in all eBay fees</li>
+                    <li>Tracks profit margins in real-time</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3 class="feature-title">Full Automation</h3>
+                <ul class="feature-list">
+                    <li>Auto-lists items saving hours of work</li>
+                    <li>Automatically processes customer orders</li>
+                    <li>Provides tracking information automatically</li>
+                    <li>Manages inventory levels</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Worthwhile Products</h3>
+                <ul class="feature-list">
+                    <li>Compiles all profitable products for you</li>
+                    <li>Ready-to-list product catalog</li>
+                    <li>Pre-vetted for profitability</li>
+                    <li>Updated with trending items</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="why-amazing">
+            <h2>Why It's Amazing</h2>
+            <p>
+                Instead of spending hours hunting products and tracking profits, this tool does it all. 
+                It will compile all of the 'worthwhile' products for you so you can auto-list them. 
+                It also will automatically order your customer's items and provide tracking information for them. 
+                This minimizes all of the busywork with selling on a platform like eBay, letting you focus 
+                on scaling your business instead of getting bogged down in day-to-day operations.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="section-header">
+            <h2 class="section-title">Real Results</h2>
+        </div>
+        
+        <div class="results-container">
+            <div class="result-card">
+                <div class="result-amount">$1,000/month</div>
+                <div class="result-description">
+                    Personal results with minimal effort. Set up the automation and let it run while 
+                    focusing on other income streams.
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-amount">$10,000/month</div>
+                <div class="result-description">
+                    Top performers running multiple stores. Scaled operations handling hundreds of 
+                    orders monthly on complete autopilot.
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-amount">100+ Orders</div>
+                <div class="result-description">
+                    Automated monthly order processing. From listing to shipping, everything handled 
+                    by the software seamlessly.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proof Section -->
+    <section class="proof-section" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+            <h2 class="section-title" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; color: #4CAF50;">See It In Action</h2>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 1.1rem;">Take a look at the actual dashboard and see the power of automation</p>
+        </div>
+        
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);">
+            <img src="dropship-calendar-portal.png" alt="eBay Automation Dashboard Portal" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.6); margin-top: 1.5rem; font-style: italic;">
+                Actual screenshot of the dropshipping calendar portal - Your command center for automated eBay success
+            </p>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <div class="limited-offer">
+            <span class="offer-badge">LIMITED TIME</span>
+            <h3>Exclusive Posting Service Included!</h3>
+            <p>
+                For a limited time, they are also running a Posting Service meaning they will list 
+                items for you and run your store automatically at the beginning of your membership!
+            </p>
+            <p>
+                Get your store set up and running without lifting a finger. This hands-off approach 
+                lets you start earning from day one while you learn the system.
+            </p>
+        </div>
+        
+        <!-- Pricing Section -->
+        <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05)); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;">
+            <h3 style="font-size: 1.8rem; color: #FFD700; margin-bottom: 1rem;">Simple, Transparent Pricing</h3>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">Starting at just</span>
+                <span style="font-size: 3rem; font-weight: bold; color: #4CAF50;">$59</span>
+                <span style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.6);">per month</span>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 1rem;">
+                Full access to all automation features • Unlimited product listings • 24/7 support
+            </p>
+        </div>
+        
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Interested?</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+            Join the community and start your eBay automation journey today. 
+            They also have a Public Discord where you can ask questions and connect with other sellers.
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="#" class="cta-button cta-primary">
+                🚀 Get Started Now - $59/month
+            </a>
+            <a href="#" class="cta-button cta-secondary">
+                💬 Join Discord Community
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="back-link">← Back to Homepage</a>
+            </p>
+            <p style="color: #4CAF50; font-style: italic; margin-top: 1rem;">
+                Website by Crossroads
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
