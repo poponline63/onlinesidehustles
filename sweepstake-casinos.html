@@ -610,5 +610,71 @@
         <span>💬</span>
         Join Discord Community
     </a>
+    
+    <!-- Google Sheets JavaScript Integration -->
+    <script>
+        // Google Sheets Integration
+        const SHEET_ID = '1bugB-SV6FP4HjLC8SpPvpshsYVkmm8DfqJIYYJiVm3g';
+        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=1364419437`;
+        
+        async function loadGoogleSheet() {
+            const container = document.getElementById('sheets-container');
+            
+            try {
+                const response = await fetch(SHEET_URL);
+                const text = await response.text();
+                
+                // Parse Google's JSON response
+                const json = JSON.parse(text.substring(47).slice(0, -2));
+                
+                // Extract headers and rows
+                const headers = json.table.cols.map(col => col.label || '');
+                const rows = json.table.rows;
+                
+                // Create table HTML
+                let tableHTML = '<div class="sheets-table"><table><thead><tr>';
+                
+                // Add headers
+                headers.forEach(header => {
+                    tableHTML += `<th>${header}</th>`;
+                });
+                tableHTML += '</tr></thead><tbody>';
+                
+                // Add rows
+                rows.forEach(row => {
+                    tableHTML += '<tr>';
+                    row.c.forEach((cell, index) => {
+                        const value = cell ? (cell.v || '') : '';
+                        const formattedValue = cell && cell.f ? cell.f : value;
+                        tableHTML += `<td>${formattedValue}</td>`;
+                    });
+                    tableHTML += '</tr>';
+                });
+                
+                tableHTML += '</tbody></table></div>';
+                
+                // Update container with table
+                container.innerHTML = tableHTML;
+                container.style.padding = '2rem';
+                container.style.minHeight = 'auto';
+                
+            } catch (error) {
+                console.error('Error loading Google Sheet:', error);
+                container.innerHTML = `
+                    <div class="error-message">
+                        <h3>Unable to load data</h3>
+                        <p>There was an error loading the sweepstake casino data. Please try refreshing the page.</p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;">Error details: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load sheet when page loads
+        document.addEventListener('DOMContentLoaded', loadGoogleSheet);
+        
+        // Refresh data every 5 minutes
+        setInterval(loadGoogleSheet, 300000);
+    </script>
 </body>
 </html>
