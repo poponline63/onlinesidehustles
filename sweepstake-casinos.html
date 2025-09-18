@@ -236,6 +236,48 @@
             color: #4CAF50;
         }
         
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(76, 175, 80, 0.05);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            background: rgba(76, 175, 80, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(76, 175, 80, 0.4);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
         /* Google Sheets Integration Area */
         .sheets-container {
             background: rgba(255, 255, 255, 0.03);
@@ -362,6 +404,10 @@
             .sheets-container {
                 padding: 2rem;
             }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -388,6 +434,10 @@
                 <a href="sweepstake-casinos.html" class="nav-link active">
                     <span>📖</span>
                     Sweepstake Casinos Guide
+                </a>
+                <a href="skrill-casinos.html" class="nav-link">
+                    <span>💳</span>
+                    Skrill-Eligible Sites
                 </a>
                 <a href="daily-free-sc.html" class="nav-link">
                     <span>🎁</span>
@@ -434,6 +484,30 @@
                         <strong>No deposits required to start</strong> • 
                         Real cash prizes • Updated daily with new opportunities
                     </p>
+                </div>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value">$35+</div>
+                    <div class="stat-label">Daily Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎰</div>
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Verified Casinos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-value">$1,050</div>
+                    <div class="stat-label">Monthly Potential</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value">15 min</div>
+                    <div class="stat-label">Daily Time Investment</div>
                 </div>
             </div>
             
