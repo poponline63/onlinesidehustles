@@ -36,6 +36,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         
         .logo {
@@ -59,6 +61,25 @@
             font-size: 18px;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
         }
         
         /* Mega Menu Dropdown */
@@ -194,6 +215,108 @@
             border-radius: 10px;
             font-weight: bold;
             margin-left: auto;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .mega-menu {
+                left: auto;
+                right: 0;
+                transform: none;
+                min-width: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            /* Show mobile toggle, hide desktop menu */
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 1rem;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mega-dropdown {
+                width: 100%;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            
+            .browse-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .mega-menu {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                min-width: 100%;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 1.5rem;
+                display: none;
+            }
+            
+            .mega-dropdown.active .mega-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mega-menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .menu-category {
+                padding: 0.75rem;
+            }
+            
+            .menu-category-title {
+                font-size: 1rem;
+            }
+            
+            .menu-item {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.6rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .mega-menu {
+                padding: 1rem;
+            }
+            
+            .menu-items {
+                gap: 0.25rem;
+            }
         }
         
         /* Hero Section */
@@ -602,7 +725,7 @@
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
         
-        /* Responsive */
+        /* Additional Mobile Responsive */
         @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -618,14 +741,6 @@
                 height: 300px;
             }
             
-            .mega-menu {
-                min-width: 90vw;
-            }
-            
-            .mega-menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -633,6 +748,11 @@
             
             .categories-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -646,9 +766,14 @@
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
             
-            <div class="nav-menu">
-                <div class="mega-dropdown">
-                    <button class="browse-btn">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                Menu ☰
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <div class="mega-dropdown" id="megaDropdown">
+                    <button class="browse-btn" onclick="toggleMegaMenu(event)">
                         Browse All Hustles
                         <span>▼</span>
                     </button>
@@ -1006,5 +1131,47 @@
         <span>💬</span>
         Join Discord Community
     </a>
+    
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+        
+        function toggleMegaMenu(event) {
+            event.stopPropagation();
+            const megaDropdown = document.getElementById('megaDropdown');
+            
+            // Only toggle on mobile
+            if (window.innerWidth <= 768) {
+                megaDropdown.classList.toggle('active');
+            }
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const megaDropdown = document.getElementById('megaDropdown');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (!event.target.closest('.mega-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
+                megaDropdown.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+        
+        // Reset menu state on window resize
+        window.addEventListener('resize', function() {
+            const megaDropdown = document.getElementById('megaDropdown');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (window.innerWidth > 768) {
+                megaDropdown.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
