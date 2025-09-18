@@ -333,6 +333,8 @@
         .floating-icon {
             position: absolute;
             font-size: 2rem;
+            top: 50%;
+            left: 50%;
             animation: orbit 10s linear infinite;
         }
         
@@ -341,8 +343,12 @@
         .floating-icon:nth-child(4) { animation-delay: -7.5s; }
         
         @keyframes orbit {
-            from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+            from { 
+                transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg); 
+            }
+            to { 
+                transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg); 
+            }
         }
         
         /* Categories Section */
@@ -635,7 +641,7 @@
     <!-- Header with Mega Menu -->
     <header>
         <nav>
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">💵</div>
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
@@ -668,16 +674,16 @@
                                         <span>📦</span>
                                         Package Sales
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="vip-guide.html" class="menu-item">
                                         <span>👑</span>
                                         VIP Guide
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="bonus-collection-software.html" class="menu-item">
                                         <span>🤖</span>
                                         Daily Bonus Collection Software
                                         <span class="menu-item-new">NEW</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="auto-giveaways-software.html" class="menu-item">
                                         <span>✨</span>
                                         Auto Giveaways Signup Software
                                     </a>
