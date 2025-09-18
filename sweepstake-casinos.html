@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60">
     <title>Sweepstake Casino Guide - Online Sidehustles</title>
     <style>
         * {
@@ -560,7 +561,8 @@
                 <div class="highlight-box">
                     <p>
                         <strong>No deposits required to start</strong> • 
-                        Real cash prizes • Updated daily with new opportunities
+                        Real cash prizes • Updated daily with new opportunities • 
+                        <strong>Auto-refreshes every minute</strong>
                     </p>
                 </div>
             </div>
@@ -673,8 +675,8 @@
         // Load sheet when page loads
         document.addEventListener('DOMContentLoaded', loadGoogleSheet);
         
-        // Refresh data every 5 minutes
-        setInterval(loadGoogleSheet, 300000);
+        // Refresh data every minute
+        setInterval(loadGoogleSheet, 60000);
     </script>
 </body>
 </html>
