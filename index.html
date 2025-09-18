@@ -321,9 +321,14 @@
         
         /* Hero Section */
         .hero {
-            padding: 120px 2rem 80px;
+            padding: 180px 2rem 80px;
             max-width: 1400px;
             margin: 0 auto;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(255, 215, 0, 0.6); }
         }
         
         .hero-content {
@@ -427,7 +432,7 @@
             width: 400px;
             height: 400px;
             position: relative;
-            margin: 0 auto;
+            margin: 50px auto 0;
         }
         
         .money-circle {
@@ -455,7 +460,7 @@
         
         .floating-icon {
             position: absolute;
-            font-size: 2rem;
+            font-size: 3rem;
             top: 50%;
             left: 50%;
             animation: orbit 10s linear infinite;
@@ -932,6 +937,11 @@
             .money-graphic {
                 width: 300px;
                 height: 300px;
+                margin-top: 30px;
+            }
+            
+            .floating-icon {
+                font-size: 2.5rem;
             }
             
             .footer-content {
@@ -979,14 +989,10 @@
                                     Sweepstakes & Gaming
                                 </div>
                                 <div class="menu-items">
-                                    <a href="24-to-1000-guide.html" class="menu-item">
-                                        <span>💰</span>
-                                        Turn $24 to $1000 Guide
-                                        <span class="menu-item-new">HOT</span>
-                                    </a>
                                     <a href="sweepstake-casinos.html" class="menu-item">
                                         <span>📖</span>
                                         Sweepstake Casinos Ultimate Guide
+                                        <span class="menu-item-new">HOT</span>
                                     </a>
                                     <a href="skrill-casinos.html" class="menu-item">
                                         <span>💳</span>
@@ -1090,6 +1096,26 @@
             </div>
         </nav>
     </header>
+    
+    <!-- $24 to $1000 Guide Banner (Sticky) -->
+    <div id="moneyGuideBanner" style="position: fixed; top: 70px; left: 0; right: 0; z-index: 999; background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(76, 175, 80, 0.2)); backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 215, 0, 0.4); padding: 1.5rem; text-align: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); opacity: 0; transform: translateY(-20px); transition: all 0.5s ease; display: none;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 2rem; animation: pulse 2s infinite;">💰</span>
+                <div style="text-align: left;">
+                    <h3 style="font-size: 1.4rem; font-weight: bold; margin: 0; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Best Way to Start Making Money?
+                    </h3>
+                    <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
+                        Transform <strong style="color: #FFD700;">$24 into $1000+</strong> with our proven guide
+                    </p>
+                </div>
+            </div>
+            <a href="24-to-1000-guide.html" style="display: inline-block; background: linear-gradient(135deg, #FFD700, #FFA500); color: black; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: all 0.3s; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); animation: glow 3s ease-in-out infinite;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 8px 30px rgba(255, 215, 0, 0.6)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 5px 20px rgba(255, 215, 0, 0.4)';">
+                Start Your Journey →
+            </a>
+        </div>
+    </div>
     
     <!-- Hero Section -->
     <section class="hero">
@@ -1250,117 +1276,6 @@
         </div>
     </section>
     
-    <!-- Skrill Section -->
-    <section class="skrill-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span style="background: linear-gradient(135deg, #812990, #C2185B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Skrill-Eligible</span> Platforms
-            </h2>
-            <p class="section-subtitle">Trusted sites that accept Skrill for easy deposits and withdrawals</p>
-        </div>
-        
-        <div class="skrill-container">
-            <div class="skrill-benefits">
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h4>Instant Transfers</h4>
-                    <p>Lightning-fast deposits and withdrawals globally</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🌍</div>
-                    <h4>200+ Countries</h4>
-                    <p>Available worldwide with multi-currency support</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🔒</div>
-                    <h4>Secure & Private</h4>
-                    <p>Bank-level security without sharing card details</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💳</div>
-                    <h4>Low Fees</h4>
-                    <p>Competitive rates for international transactions</p>
-                </div>
-            </div>
-            
-            <div class="skrill-sites-grid">
-                <div class="skrill-site-card">
-                    <div class="site-badge">SWEEPSTAKES</div>
-                    <h3>Stake.us</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ Instant deposits</span>
-                        <span class="feature">✓ No fees</span>
-                        <span class="feature">✓ VIP eligible</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-                
-                <div class="skrill-site-card">
-                    <div class="site-badge">GAMING</div>
-                    <h3>Chumba Casino</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ Quick processing</span>
-                        <span class="feature">✓ Bonus eligible</span>
-                        <span class="feature">✓ 24hr support</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-                
-                <div class="skrill-site-card">
-                    <div class="site-badge">CASINO</div>
-                    <h3>McLuck</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ Same-day withdrawal</span>
-                        <span class="feature">✓ Secure transfers</span>
-                        <span class="feature">✓ Rewards program</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-                
-                <div class="skrill-site-card">
-                    <div class="site-badge">BETTING</div>
-                    <h3>WOW Vegas</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ Fast payouts</span>
-                        <span class="feature">✓ Multi-currency</span>
-                        <span class="feature">✓ Mobile friendly</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-                
-                <div class="skrill-site-card">
-                    <div class="site-badge">SOCIAL</div>
-                    <h3>Pulsz</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ Instant verification</span>
-                        <span class="feature">✓ Loyalty points</span>
-                        <span class="feature">✓ Daily bonuses</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-                
-                <div class="skrill-site-card">
-                    <div class="site-badge">PREMIUM</div>
-                    <h3>High 5 Casino</h3>
-                    <div class="site-features">
-                        <span class="feature">✓ VIP treatment</span>
-                        <span class="feature">✓ Priority processing</span>
-                        <span class="feature">✓ Exclusive offers</span>
-                    </div>
-                    <a href="skrill-casinos.html" class="skrill-link">Learn More →</a>
-                </div>
-            </div>
-            
-            <div class="skrill-cta">
-                <h3>Don't Have Skrill Yet?</h3>
-                <p>Join millions using Skrill for secure online payments</p>
-                <a href="https://www.skrill.com" class="skrill-signup-btn" target="_blank">
-                    Create Free Account →
-                </a>
-            </div>
-        </div>
-    </section>
-    
     <!-- Featured Section -->
     <section class="featured-section">
         <div class="featured-content">
@@ -1448,6 +1363,18 @@
     
     <!-- JavaScript for Mobile Menu -->
     <script>
+        // Show money guide banner after 5 seconds
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const banner = document.getElementById('moneyGuideBanner');
+                banner.style.display = 'block';
+                // Trigger reflow to ensure the transition works
+                banner.offsetHeight;
+                banner.style.opacity = '1';
+                banner.style.transform = 'translateY(0)';
+            }, 5000);
+        });
+        
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
