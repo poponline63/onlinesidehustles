@@ -171,9 +171,9 @@
         }
         
         .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
+            width: 100%;
+            margin: 0;
+            padding: 3rem 1rem;
         }
         
         /* Hero Section */
@@ -284,14 +284,15 @@
             background: rgba(255, 255, 255, 0.03);
             border: 2px dashed rgba(76, 175, 80, 0.3);
             border-radius: 20px;
-            padding: 4rem;
+            padding: 2rem 0;
             text-align: center;
             min-height: 600px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             justify-content: center;
             transition: all 0.3s;
+            width: 100%;
         }
         
         /* Google Sheets Table Styles */
@@ -299,32 +300,37 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: visible;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
         .sheets-table table {
-            width: 100%;
+            width: auto;
+            min-width: 100%;
             border-collapse: collapse;
+            table-layout: auto;
         }
         
         .sheets-table th {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
             text-align: left;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             position: sticky;
             top: 0;
             z-index: 10;
+            white-space: nowrap;
         }
         
         .sheets-table td {
-            padding: 1rem;
+            padding: 0.75rem 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
         
         .sheets-table tr:hover {
@@ -657,8 +663,9 @@
                 
                 // Update container with table
                 container.innerHTML = tableHTML;
-                container.style.padding = '2rem';
+                container.style.padding = '1rem';
                 container.style.minHeight = 'auto';
+                container.style.width = '100%';
                 
             } catch (error) {
                 console.error('Error loading Google Sheet:', error);
