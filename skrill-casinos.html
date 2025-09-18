@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrill Casinos Guide - Complete Payment Platform Guide | Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateX(-5px);
+        }
+        
+        /* Quick Navigation Bar */
+        .quick-nav {
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        
+        .quick-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #812990 rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-nav-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-thumb {
+            background: #812990;
+            border-radius: 3px;
+        }
+        
+        .quick-nav-content {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            min-width: fit-content;
+        }
+        
+        .nav-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            background: rgba(129, 41, 144, 0.1);
+            border-color: rgba(129, 41, 144, 0.3);
+            color: #C2185B;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(129, 41, 144, 0.2), rgba(194, 24, 91, 0.2));
+            border-color: #812990;
+            color: #C2185B;
+        }
+        
+        .nav-link-new {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-left: 0.3rem;
+        }
+        
+        /* Main Content */
+        .main-container {
+            padding-top: 140px;
+            min-height: 100vh;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero Section */
+        .guide-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .guide-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .purple-text {
+            background: linear-gradient(135deg, #812990, #C2185B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .guide-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(129, 41, 144, 0.05), rgba(194, 24, 91, 0.05));
+            border: 1px solid rgba(129, 41, 144, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .highlight-box p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box strong {
+            color: #C2185B;
+        }
+        
+        /* Google Sheets Integration Area */
+        .sheets-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(129, 41, 144, 0.3);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sheets-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #812990, #C2185B, #812990);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .sheets-container:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(129, 41, 144, 0.5);
+        }
+        
+        .sheets-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sheets-container h3 {
+            background: linear-gradient(135deg, #812990, #C2185B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sheets-container p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list {
+            color: #C2185B;
+            font-weight: 600;
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+        
+        .coming-soon-badge {
+            background: linear-gradient(135deg, #812990, #C2185B);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(129, 41, 144, 0.05);
+            border: 1px solid rgba(129, 41, 144, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            background: rgba(129, 41, 144, 0.08);
+            transform: translateY(-3px);
+            border-color: rgba(129, 41, 144, 0.4);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-credit {
+            color: #4CAF50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        /* Discord Float Button */
+        .discord-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            font-weight: 600;
+        }
+        
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quick-nav-content {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .sheets-container {
+                padding: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💵</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <a href="index.html" class="back-button">
+                <span>←</span>
+                Back to Home
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Quick Navigation Bar -->
+    <div class="quick-nav">
+        <div class="quick-nav-container">
+            <div class="quick-nav-content">
+                <a href="sweepstake-casinos.html" class="nav-link">
+                    <span>📖</span>
+                    Sweepstake Casinos Guide
+                </a>
+                <a href="skrill-casinos.html" class="nav-link active">
+                    <span>💳</span>
+                    Skrill-Eligible Sites
+                </a>
+                <a href="daily-free-sc.html" class="nav-link">
+                    <span>🎁</span>
+                    Daily Free SC
+                </a>
+                <a href="package-sales.html" class="nav-link">
+                    <span>📦</span>
+                    Package Sales
+                </a>
+                <a href="vip-guide.html" class="nav-link">
+                    <span>👑</span>
+                    VIP Guide
+                </a>
+                <a href="bonus-collection-software.html" class="nav-link">
+                    <span>🤖</span>
+                    Daily Bonus Collection Software
+                    <span class="nav-link-new">NEW</span>
+                </a>
+                <a href="auto-giveaways-software.html" class="nav-link">
+                    <span>✨</span>
+                    Auto Giveaways Signup Software
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="guide-hero">
+                <div class="guide-badge">
+                    💳 SECURE PAYMENT PLATFORM GUIDE
+                </div>
+                <h1><span class="purple-text">Skrill Casinos</span> Complete Guide</h1>
+                <p class="guide-description">
+                    Master Skrill payments at sweepstake casinos with our comprehensive guide. 
+                    Discover exclusive deposit bonuses, instant withdrawal strategies, and verified platforms 
+                    that accept Skrill for seamless transactions worldwide.
+                </p>
+                
+                <div class="highlight-box">
+                    <p>
+                        <strong>Instant deposits & withdrawals</strong> • 
+                        Low international fees • Available in 200+ countries
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value">Instant</div>
+                    <div class="stat-label">Transaction Speed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-value">200+</div>
+                    <div class="stat-label">Countries Supported</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value">1.45%</div>
+                    <div class="stat-label">Low Transfer Fees</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎰</div>
+                    <div class="stat-value">30+</div>
+                    <div class="stat-label">Verified Casinos</div>
+                </div>
+            </div>
+            
+            <!-- Google Sheets Integration Area -->
+            <div class="sheets-container">
+                <div class="sheets-icon">📊</div>
+                <h3>Interactive Skrill Casinos Database</h3>
+                <p>
+                    Our comprehensive Google Sheets guide will be embedded here, featuring:
+                </p>
+                <p class="feature-list">
+                    • 30+ Skrill-Accepting Sweepstake Casinos<br>
+                    • Deposit & Withdrawal Speed Rankings<br>
+                    • Exclusive Skrill Bonus Codes<br>
+                    • Fee Comparison Charts<br>
+                    • Currency Conversion Calculator<br>
+                    • VIP Benefits for Skrill Users<br>
+                    • Monthly Cashback Tracking<br>
+                    • Community-Verified Payment Times
+                </p>
+                <div class="coming-soon-badge">
+                    GOOGLE SHEETS INTEGRATION COMING SOON
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
+            <p class="footer-credit">Website by Crossroads</p>
+        </div>
+    </footer>
+    
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
+    </a>
+</body>
+</html>
