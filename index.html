@@ -120,16 +120,15 @@
         .mega-menu {
             position: absolute;
             top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            right: -50px;
             margin-top: 0.5rem;
             background: rgba(20, 20, 20, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
-            width: min(600px, 90vw);
-            max-width: 90vw;
+            width: min(600px, calc(100vw - 2rem));
+            max-width: calc(100vw - 2rem);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -139,10 +138,7 @@
         /* Adjust position if menu would go off-screen */
         @media (max-width: 700px) {
             .mega-menu {
-                left: 0;
-                transform: translateX(0);
-                margin-left: -1rem;
-                margin-right: -1rem;
+                right: -1rem;
                 width: calc(100vw - 2rem);
             }
         }
@@ -231,12 +227,9 @@
         }
         
         /* Responsive Adjustments */
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
             .mega-menu {
                 right: 0;
-                left: auto;
-                transform: translateX(0);
-                margin-right: 1rem;
             }
         }
         
@@ -288,8 +281,7 @@
             .mega-menu {
                 position: relative;
                 top: 0;
-                left: 0;
-                transform: none;
+                right: auto;
                 width: 100%;
                 max-width: 100%;
                 margin: 1rem 0;
