@@ -761,7 +761,7 @@
                     <p>
                         <strong>No deposits required to start</strong> • 
                         Real cash prizes • Updated daily with new opportunities • 
-                        <strong>95 Verified Casinos</strong>
+                        <strong>23 New Casinos</strong> verified and loaded from spreadsheet data
                     </p>
                 </div>
             </div>
@@ -775,8 +775,8 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🎰</div>
-                    <div class="stat-value">95</div>
-                    <div class="stat-label">Verified Casinos</div>
+                    <div class="stat-value">23</div>
+                    <div class="stat-label">New Casinos</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">📈</div>
@@ -798,29 +798,17 @@
                     </div>
                     <div class="stats-display">
                         <span>Showing:</span>
-                        <span class="value" id="visibleCount">95</span>
+                        <span class="value" id="visibleCount">23</span>
                     </div>
                 </div>
                 
                 <!-- Tier Tabs -->
                 <div class="tier-tabs">
                     <div class="tier-tab active" data-tier="all">
-                        All Casinos <span class="count">95</span>
+                        All Casinos <span class="count">23</span>
                     </div>
                     <div class="tier-tab" data-tier="New Casinos">
                         New Casinos <span class="count">23</span>
-                    </div>
-                    <div class="tier-tab" data-tier="God Tier">
-                        God Tier <span class="count">24</span>
-                    </div>
-                    <div class="tier-tab" data-tier="High Tier">
-                        High Tier <span class="count">6</span>
-                    </div>
-                    <div class="tier-tab" data-tier="Medium Tier">
-                        Medium Tier <span class="count">28</span>
-                    </div>
-                    <div class="tier-tab" data-tier="Trash Tier">
-                        Trash Tier <span class="count">14</span>
                     </div>
                 </div>
                 
@@ -870,127 +858,341 @@
     </a>
     
     <script>
-        // Load casino data from the file
-        async function loadCasinoData() {
-            try {
-                const fileContent = await window.fs.readFile('NewWebsiteSheet.xlsx');
-                const XLSX = await import('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
-                
-                const workbook = XLSX.read(fileContent, {
-                    cellStyles: true,
-                    cellFormulas: true,
-                    cellDates: true,
-                    cellNF: true,
-                    sheetStubs: true
-                });
-                
-                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-                const dataWithHeaders = XLSX.utils.sheet_to_json(firstSheet);
-                
-                // Process and categorize data
-                const categorizedCasinos = {
-                    "New Casinos": [],
-                    "God Tier": [],
-                    "High Tier": [],
-                    "Medium Tier": [],
-                    "Trash Tier": []
-                };
-                
-                let currentTier = "New Casinos";
-                
-                dataWithHeaders.forEach(row => {
-                    const casinoName = (row[" Casinos"] || "").trim();
-                    
-                    // Check for tier markers
-                    if (casinoName.toLowerCase() === "god tier") {
-                        currentTier = "God Tier";
-                        return;
-                    } else if (casinoName.toLowerCase() === "high tier") {
-                        currentTier = "High Tier";
-                        return;
-                    } else if (casinoName.toLowerCase() === "medium tier") {
-                        currentTier = "Medium Tier";
-                        return;
-                    } else if (casinoName.toLowerCase().includes("trash")) {
-                        currentTier = "Trash Tier";
-                        return;
-                    }
-                    
-                    // Skip headers and empty rows
-                    if (!casinoName || 
-                        casinoName.includes("Casinos") || 
-                        casinoName.includes("Verified") ||
-                        (row[" Signups"] || "").includes("Referrals")) {
-                        return;
-                    }
-                    
-                    // Add to current tier
-                    categorizedCasinos[currentTier].push({
-                        tier: currentTier,
-                        casino: casinoName,
-                        dailyBonus: row[" Daily Bonuses"] || "",
-                        notes: row["\nNotes"] || "",
-                        welcomeOffer: row[" Welcome Package Offers"] || "",
-                        minRedemption: row[" Minimum Redemption"] || "",
-                        gravityBJ: row[" Gravity BJ"] || "",
-                        autoRoulette: row[" Auto Roulette"] || "",
-                        epicJoker: row[" Epic Joker"] || "",
-                        greatPigsby: row[" The Great Pigsby"] || "",
-                        otherGames: row["Other RTP Games"] || "",
-                        dailyLinks: row[" Daily Links"] || "",
-                        rules: row[" Rules"] || "",
-                        parentCompany: row[" Parent Company"] || "",
-                        canadaEligibility: row[" Canada Eligibility"] || "",
-                        restrictedStates: row["Restricted States"] || ""
-                    });
-                });
-                
-                return categorizedCasinos;
-            } catch (error) {
-                console.error('Error loading data:', error);
-                // Return sample data if file cannot be loaded
-                return getSampleData();
+        // Real casino data from the spreadsheet
+        const newCasinosData = [
+            {
+                "casino": "Sheeshcasino",
+                "dailyBonus": "$0.20",
+                "notes": "5 Welcome Bonus SC on Signup. If 5SC isn't rewarded you can email them and they will apply it to your account support@sheeshcasino.com. Really good website so far, could even be a WowVegas Competitor. Daily ALL DAY Happy Hour, usually 10% to 15%. VIP System that seems lucrative, will have to grind this out, they claim that Daily Discounts and Daily login will be upgrades, also there are weekly Bonus Deals that will also be applied to your shop depending on what VIP rank you are. Only caviar I can find is you must connect your bank to purchase any packages, they claim that their Credit / Debit Card payments are Coming Soon, so hopefully they will be activated soon!",
+                "welcomeOffer": "$99.99 for 150SC (50%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Speed Crash, 1.1x, Minimum Requirement",
+                "parentCompany": "P8D Interactive Inc",
+                "restrictedStates": "Connecticut, Delaware, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"
+            },
+            {
+                "casino": "RichSweeps",
+                "dailyBonus": "$0.10 - $20.00 Daily Wheel",
+                "notes": "1 Welcome Bonus SC on Signup. SpeedSweeps Sister Website. For Welcome Offers they limit you on purchasing so you have to gamble your way to the Minimum Redemption instead of just buying another pack to get there. Avoid if trying to churn for Welcome Offers. Interesting Daily Package Boost - Monday 10% SC Boost, Wednesday 15% SC Boost, Friday 20% SC Boost. Coinback Thursdays - Thursday 15% Coinback from Weekly Play. Request a Bonus - Free SC and Discounted Packages. You can request for VIP through Telegram to level up Referral Bonus and Coinback Bonus.",
+                "welcomeOffer": "Choice of $9.99 for 30SC (200%), $24.99 for 50SC (100%), $49.99 for 65SC (30%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Plinko, Low Risk, 16 Rows, Minimum Bet",
+                "parentCompany": "WW Funcrafters JWA LLC",
+                "restrictedStates": "Connecticut, Delaware, Hawaii, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"
+            },
+            {
+                "casino": "PeakPlay",
+                "dailyBonus": "Daily Contests",
+                "notes": "2 Welcome Bonus SC on Signup. New RubySweeps Sister site. No Daily Dollar amount but they do have Daily Contests that can give you SC.",
+                "welcomeOffer": "$20 for 40SC (100%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Rubystone Play LLC",
+                "restrictedStates": "Alabama, Connecticut, Delaware, Idaho, Georgia, Louisiana, Maryland, Michigan, Montana, Nevada, Pennsylvania, Rhode Island, Tennessee, Washington, West Virginia"
+            },
+            {
+                "casino": "Ace .com",
+                "dailyBonus": "$0.20 - $0.40",
+                "notes": "2.50 Welcome Bonus SC on Signup. Not alot of good RTP games on this site.",
+                "welcomeOffer": "$9.99 for 25SC (150%)",
+                "minRedemption": "75",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Starspell, Minimum Spin",
+                "parentCompany": "Full Stop Limited Inc",
+                "restrictedStates": "Alabama, Connecticut, Delaware, Georgia, Idaho, Kentucky, Louisiana, Maryland, Michigan, Montana, Nevada, New Jersey, New York, Pennsylvania, Rhode Island, Tennessee, Washington, West Virginia"
+            },
+            {
+                "casino": "AcornFun",
+                "dailyBonus": "Streak Calendar - 1st Day $0.30, Day 2/6 $0.20, Day 7 10 Free Spins",
+                "notes": "5% Redeem Fee :( If playing Blackjack only play 'First Person Blackjack' others have terrible RTP issues.",
+                "welcomeOffer": "Choice of $19.99 for 30SC (50%), $29.99 for 50SC (67%), $49.99 for 80SC (60%) - If you scroll down you can purchase them all",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Jupiter Studio Limited",
+                "restrictedStates": "Alabama, Connecticut, Florida, Georgia, Idaho, Kentucky, Michigan, Minnesota, Nevada, South Carolina, Washington"
+            },
+            {
+                "casino": "GoldRushCity",
+                "dailyBonus": "$0.20 - $1.00",
+                "notes": "5 Welcome Bonus SC on Signup. Claim your 5SC at this link after signup -> https://www.goldrushcity.com/rewards. Redemption was at $5 but now they changed it to $100. $1 = 100SC on this site",
+                "welcomeOffer": "$7.98 for 16SC (100%), $9.98 for 20SC (100%), $19.98 for 40SC (100%), $49.98 for 100SC (100%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Play City Group LLC",
+                "restrictedStates": "Idaho, Kentucky, Massachusetts, Michigan, Nevada, New Jersey, and Washington"
+            },
+            {
+                "casino": "GoodVibesCasino",
+                "dailyBonus": "$0.20",
+                "notes": "1 Welcome Bonus SC on Phone Verification and Signup. 0.50 SC + another 0.50 SC if you sign-in for 2 consecutive days. Launched very recently (July)",
+                "welcomeOffer": "$9.99 for 25SC (150%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Mummy's Gold, Minimum Bet, Plinko, Low Risk, 16 Rows",
+                "parentCompany": "SKEEVE Products Limited",
+                "restrictedStates": "Alabama, Connecticut, Delaware, Georgia, Hawaii, Idaho, Kentucky, Michigan, Montana, Nevada, South Carolina, Utah, Washington"
+            },
+            {
+                "casino": "Lucky .me",
+                "dailyBonus": "$0.20 (Called Lucky Streak) + Daily SC Challenges",
+                "notes": "2 Welcome Bonus SC on Signup. Launched very recently (July). Multiple small Daily bonuses - Daily Lucky Streak (SC), Spin the Wheel (GC or Small Chance of SC), Login Streak (SC), Spin any game 20 times (SC)",
+                "welcomeOffer": "",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Plinko, Low Risk, 16 Rows, Minimum Bet",
+                "parentCompany": "Lucky Me Ventures LLC",
+                "restrictedStates": "Connecticut, Idaho, Michigan, Nevada, New York, Washington"
+            },
+            {
+                "casino": "SweepNext",
+                "dailyBonus": "$0.20 to $1.00 for Daily + Periodic 'Mega Spin' Up to 2SC",
+                "notes": "(07/29/25) At time of writing, Redemptions are only available via VISA Giftcard.",
+                "welcomeOffer": "Choice of $9.99 for 25SC (150%), $19.99 for 40SC (100%), $39.99 for 51SC (27.5%), $74.99 for 102SC (36%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Boostora LTD",
+                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Mississippi, Montana, Nevada, New Jersey, New York, Washington"
+            },
+            {
+                "casino": "SorceryReels",
+                "dailyBonus": "$0.10",
+                "notes": ".40 Welcome Bonus SC on Signup (Wow AMAZING!!). 10 Free Spins on Signup Bonus too. Daily locked behind packages, one package = 7 day pass. Seems like a decent site all around for packages, Daily not so much. VIP System that could be lucrative and rewards discounted packages every week. 8% Redeem Fee :(",
+                "welcomeOffer": "",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Fish Bear Studio Limited",
+                "restrictedStates": "Idaho, Michigan, Nevada, Washington"
+            },
+            {
+                "casino": "VegasCoins",
+                "dailyBonus": "$0.20",
+                "notes": "1 Welcome Bonus SC on Signup. Very basic but straight up site.",
+                "welcomeOffer": "$12.49 for 25SC (Use Code: COINS50 to get package)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Crash Live, 1.1x, Minimum Requirement",
+                "parentCompany": "Vegas Coins Inc",
+                "restrictedStates": "Alabama, Connecticut, Delaware, Idaho, Kentucky, Louisiana, Michigan, Montana, Nevada, New York, Tennessee, and Washington"
+            },
+            {
+                "casino": "SpinQuest",
+                "dailyBonus": "$1.00",
+                "notes": "2 Welcome Bonus SC on Signup. 3x Playthrough Requirement. Available in Canada!",
+                "welcomeOffer": "$10 for 30SC (200%)",
+                "minRedemption": "50",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Plinko, Low Risk, 16 Rows",
+                "parentCompany": "Social Gaming Room LLC",
+                "restrictedStates": "Connecticut, Idaho, Michigan, Montana, Nevada, New York, Washington"
+            },
+            {
+                "casino": "LuckyBitsVegas",
+                "dailyBonus": "$0.20 (First 30 Days It Will be $1.00)",
+                "notes": "Entirely Crypto Website. Welcome Bonus is 3x Playthrough Requirement. Hi5 Sister Website",
+                "welcomeOffer": "",
+                "minRedemption": "95",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "LBV Social LLC",
+                "restrictedStates": "Arizona, Connecticut, Delaware, Idaho, Kentucky, Louisiana, Maryland, Michigan, Montana, Nevada, New Jersey, New York, Pennsylvania, Rhode Island, Washington, West Virginia"
+            },
+            {
+                "casino": "NioPlay",
+                "dailyBonus": "$0.30 every 6 Hours",
+                "notes": "3 Welcome Bonus SC on Signup. Welcome Bonus is completely useless due to you having to play your balance to 0 for any other packages to apply to your account. This is pretty bad for any package churning and may be a site you just collect your Dailies on.",
+                "welcomeOffer": "50% Bonus Match after Signup",
+                "minRedemption": "75",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Nio Consolidated LLC",
+                "restrictedStates": "Idaho, Louisiana, Michigan, Montana, Nevada, Washington, New York, Connecticut, Maryland"
+            },
+            {
+                "casino": "Cluck",
+                "dailyBonus": "Daily SC unlocked Via Leveling Up VIP",
+                "notes": "2 Welcome Bonus SC on Signup. Redeemable SC only updates when you fully playthrough all SC. Minimum Redemption changed from $50 to $100 for USD. Minimum Redemption for Crypto is $50. Site is a bit jank with signing up.",
+                "welcomeOffer": "$20 for 40SC (100%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "The Roost LTD",
+                "restrictedStates": "Connecticut, Idaho, Michigan, Nevada, New York, Washington"
+            },
+            {
+                "casino": "LuckyStake",
+                "dailyBonus": "$0.20 - $2.00",
+                "notes": "Daily contests (Not quite sure if these are worth or not). Seems like some users can only redeem under 'Payout Card' which is a Visa Giftcard instead of directly to their bank.",
+                "welcomeOffer": "Choice of $9.99 for 25SC (150%), $34.99 for 50SC (43%), $69.99 for 100SC (43%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Crash Live, 1.1x, Minimum Requirement",
+                "parentCompany": "ElevateTech Solutions Inc",
+                "restrictedStates": "Connecticut, Hawaii, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York, Utah, Washington"
+            },
+            {
+                "casino": "ReBet",
+                "dailyBonus": "$1.00 [Caps at 1SC]",
+                "notes": "Primarily a Sportsbetting site now it has a Social Casino side to it. Daily SC Caps at 1SC, this site is probably a better Package Churning Site than Daily SC Site. Very low Minimum Redemption at $20. It seems like you can only purchase packages through the mobile app while the Desktop version is purely informational. Can do gold coin challenges for SC. Welcome Offer is very good!",
+                "welcomeOffer": "$200 for 300SC (200%) Maximum (50% of Package Cost)",
+                "minRedemption": "20",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Rebet Inc",
+                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York"
+            },
+            {
+                "casino": "MegaFrenzy",
+                "dailyBonus": "$0.10 - $0.40",
+                "notes": "Once per day if you Spin 25SC on any game you get 5 Free Spins (5 x 0.2SC Spins). Not sure if it's worth to grind but if you're doing a playthrough already make sure to claim this under your rewards which is the Star Icon in the top right.",
+                "welcomeOffer": "$9.99 for 20SC (100%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Heuston Gaming Inc",
+                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York, Washington"
+            },
+            {
+                "casino": "ToraTora",
+                "dailyBonus": "Daily Spin (Options of 1SC, 5SC, or Gold Coins)",
+                "notes": "(Daily SC seems to only output Gold Coins)",
+                "welcomeOffer": "$9.99 for 20SC (100%)",
+                "minRedemption": "50",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "ToraTora Entertainment Inc",
+                "restrictedStates": "Connecticut, Delaware, Idaho, Kentucky, Louisiana, Maryland, Michigan, Mississippi, Montana, Nebraska, Nevada, New York, Washington, West Virginia"
+            },
+            {
+                "casino": "LunaLandCasino",
+                "dailyBonus": "Periodic $0.20 With $1.00 at the end of 7 Days",
+                "notes": "2 Welcome Bonus SC on Signup",
+                "welcomeOffer": "$9.99 for 30SC (200%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "",
+                "parentCompany": "Parana Plays LLC",
+                "restrictedStates": "Idaho, Michigan, Nevada, Washington"
+            },
+            {
+                "casino": "iCasino",
+                "dailyBonus": "$3.00 available split between 7 Days Collection ($0.42 on average a Day)",
+                "notes": "[Moved from Trash Tier to New Casino due to changing Daily Bonuses] (09/03/2025) [Only Skrill Redemption at time of writing] Sister website to CrownCoins. Was a broken site only good for it's initial package but they finally released their Daily SC amount.",
+                "welcomeOffer": "Choice of $7.99 for 12SC (50%), $11.99 for 18SC (50%), $15.99 for 24SC (50%)",
+                "minRedemption": "50",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Money Roll, Minimum Bet",
+                "parentCompany": "Sunflower Limited",
+                "restrictedStates": "Idaho, Louisiana, Michigan, Montana, Nevada, Washington"
+            },
+            {
+                "casino": "Stackr",
+                "dailyBonus": "Daily Wheel $0.10 to $2.00 or Gold coins + $0.20 Daily",
+                "notes": "[Moved from Trash Tier to New Casino due to changing Daily Bonuses] Daily + Wheel now, used to be bad but they updated their website to be better. Can watch ads for more Daily SC.",
+                "welcomeOffer": "Choice of $4.99 for 12.5SC (150%), $10 for 25SC (150%), $14.99 for 37.5SC (150%), $24.99 for 62.55SC (150%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Plinko (Dare2Win), Low Risk, 8 Lines, Minimum Bet",
+                "parentCompany": "Stackr Social LLC",
+                "restrictedStates": "Arizona, California, Colorado, Connecticut, Delaware, Florida, Hawaii, Illinois, Indiana, Kansas, Maine, Maryland, Minnesota, Montana, New Jersey, North Carolina, Oregon, Rhode Island, South Dakota, Virginia, Wisconsin, Wyoming"
+            },
+            {
+                "casino": "MoonSpin",
+                "dailyBonus": "$1.00 (Limited to $6)",
+                "notes": "[Moved from Trash Tier to New Casino due to changing 30x Playthrough to 1x!] Clone Website to Sidepot. Happy Hours that will pop up in your email so look out for that!",
+                "welcomeOffer": "$19.99 for 40SC (200%)",
+                "minRedemption": "100",
+                "gravityBJ": "",
+                "autoRoulette": "",
+                "epicJoker": "",
+                "greatPigsby": "",
+                "otherGames": "Mummy's Gold, Minimum",
+                "parentCompany": "Star Pulse Limited",
+                "restrictedStates": "Washington, Montana, Michigan, Nevada, Louisiana, Idaho, Nebraska, North Dakota, Georgia"
             }
-        }
-        
-        function getSampleData() {
-            // Complete sample data with all information
-            return {
-                "New Casinos": [
-                    {tier: "New Casinos", casino: "Sheeshcasino", dailyBonus: "$0.20", notes: "5 Welcome Bonus SC on Signup. If 5SC isn't rewarded you can email them and they will apply it to your account support@sheeshcasino.com. Really good website so far, could even be a WowVegas Competitor. Daily ALL DAY Happy Hour, usually 10% to 15%. VIP System that seems lucrative, will have to grind this out, they claim that Daily Discounts and Daily login will be upgrades, also there are weekly Bonus Deals that will also be applied to your shop depending on what VIP rank you are. Only caviar I can find is you must connect your bank to purchase any packages, they claim that their Credit / Debit Card payments are Coming Soon, so hopefully they will be activated soon!", welcomeOffer: "$99.99 for 150SC (50%)", minRedemption: "100", gravityBJ: "", autoRoulette: "", epicJoker: "", greatPigsby: "", otherGames: "Speed Crash, 1.1x, Minimum Requirement", parentCompany: "P8D Interactive Inc", restrictedStates: "Connecticut, Delaware, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"},
-                    {tier: "New Casinos", casino: "RichSweeps", dailyBonus: "$0.10 - $20.00 Daily Wheel", notes: "1 Welcome Bonus SC on Signup. SpeedSweeps Sister Website. For Welcome Offers they limit you on purchasing so you have to gamble your way to the Minimum Redemption instead of just buying another pack to get there. Avoid if trying to churn for Welcome Offers. Interesting Daily Package Boost - Monday 10% SC Boost, Wednesday 15% SC Boost, Friday 20% SC Boost.", welcomeOffer: "Choice of $9.99 for 30SC (200%), $24.99 for 50SC (100%), $49.99 for 65SC (30%)", minRedemption: "100", gravityBJ: "", autoRoulette: "", epicJoker: "", greatPigsby: "", otherGames: "Plinko, Low Risk, 16 Rows, Minimum Bet", parentCompany: "WW Funcrafters JWA LLC", restrictedStates: "Connecticut, Delaware, Hawaii, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"}
-                ],
-                "God Tier": [
-                    {tier: "God Tier", casino: "WOW Vegas", dailyBonus: "$0.01 - $50.00", notes: "Premium sweepstakes casino with extensive game selection, regular promotions, excellent customer support, fast redemptions, and comprehensive VIP program", welcomeOffer: "$9.99 for 35SC (250%), $24.99 for 90SC (260%), $49.99 for 200SC (300%), $99.99 for 450SC (350%)", minRedemption: "100", gravityBJ: "✓", autoRoulette: "✓", epicJoker: "✓", greatPigsby: "✓", otherGames: "Extensive selection including Pragmatic Play, BGaming, and exclusive titles", parentCompany: "WOW Entertainment Limited", restrictedStates: "Idaho, Michigan, Montana, Nevada, Washington"},
-                    {tier: "God Tier", casino: "Stake.us", dailyBonus: "$1.00", notes: "Top-tier platform with cryptocurrency payment options, live dealer games, sports betting, original games, rakeback system, and instant withdrawals", welcomeOffer: "$25 Welcome Package, 5% Rakeback on all wagers, Daily reload bonuses", minRedemption: "100", gravityBJ: "✓", autoRoulette: "✓", epicJoker: "", greatPigsby: "", otherGames: "Stake Originals, Live Casino, Slots, Table Games", parentCompany: "Sweepstakes Limited", restrictedStates: "Idaho, Kentucky, Michigan, Nevada, New York, Vermont, Washington"}
-                ],
-                "High Tier": [],
-                "Medium Tier": [],
-                "Trash Tier": []
-            };
-        }
-        
+        ];
+
         let allCasinos = [];
         let currentFilter = 'all';
         
-        async function init() {
-            const data = await loadCasinoData();
-            
-            // Flatten all casinos for display
-            allCasinos = [];
-            Object.keys(data).forEach(tier => {
-                allCasinos = allCasinos.concat(data[tier]);
-            });
-            
-            // Update tier counts
-            document.querySelectorAll('.tier-tab').forEach(tab => {
-                const tierName = tab.dataset.tier;
-                if (tierName === 'all') {
-                    tab.querySelector('.count').textContent = allCasinos.length;
-                } else if (data[tierName]) {
-                    tab.querySelector('.count').textContent = data[tierName].length;
-                }
-            });
+        function init() {
+            // Use the real data from the spreadsheet
+            allCasinos = newCasinosData.map(casino => ({
+                ...casino,
+                tier: "New Casinos"
+            }));
             
             renderTable(allCasinos);
             setupEventListeners();
@@ -1003,18 +1205,8 @@
             casinos.forEach(casino => {
                 const row = document.createElement('tr');
                 
-                // Determine tier class
-                let tierClass = '';
-                switch(casino.tier) {
-                    case 'New Casinos': tierClass = 'tier-new'; break;
-                    case 'God Tier': tierClass = 'tier-god'; break;
-                    case 'High Tier': tierClass = 'tier-high'; break;
-                    case 'Medium Tier': tierClass = 'tier-medium'; break;
-                    case 'Trash Tier': tierClass = 'tier-trash'; break;
-                }
-                
                 row.innerHTML = `
-                    <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
+                    <td><span class="tier-indicator tier-new">NEW CASINOS</span></td>
                     <td class="casino-name">${casino.casino}</td>
                     <td class="daily-bonus">${formatDailyBonus(casino.dailyBonus)}</td>
                     <td><span class="welcome-offer">${formatWelcomeOffer(casino.welcomeOffer)}</span></td>
@@ -1062,11 +1254,11 @@
                     currentFilter = tier;
                     
                     // Filter and render
-                    if (tier === 'all') {
+                    if (tier === 'all' || tier === 'New Casinos') {
                         renderTable(allCasinos);
                     } else {
-                        const filtered = allCasinos.filter(c => c.tier === tier);
-                        renderTable(filtered);
+                        // No other tiers available yet
+                        renderTable([]);
                     }
                 });
             });
@@ -1077,12 +1269,7 @@
                 
                 let filtered = allCasinos;
                 
-                // Apply tier filter first if not "all"
-                if (currentFilter !== 'all') {
-                    filtered = filtered.filter(c => c.tier === currentFilter);
-                }
-                
-                // Then apply search filter
+                // Apply search filter
                 if (searchTerm) {
                     filtered = filtered.filter(casino => {
                         return casino.casino.toLowerCase().includes(searchTerm) ||
