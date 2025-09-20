@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweepstake Casino Guide - Online Sidehustles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .main-container {
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+        
+        .content-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .guide-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .guide-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .search-section {
+            margin-bottom: 2rem;
+        }
+        
+        .search-box input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .tier-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tier-tab {
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .tier-tab:hover {
+            border-color: #4CAF50;
+            transform: translateY(-2px);
+        }
+        
+        .tier-tab.active {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        tbody tr:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+        
+        .tier-indicator {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .tier-new {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+        
+        .tier-god {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+        }
+        
+        .tier-high {
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            color: white;
+        }
+        
+        .tier-medium {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+        
+        .tier-trash {
+            background: linear-gradient(135deg, #868f96, #596164);
+            color: white;
+        }
+        
+        .casino-name {
+            font-weight: 600;
+            color: #4CAF50;
+        }
+        
+        .daily-bonus {
+            color: #FFEB3B;
+            font-weight: 600;
+        }
+        
+        .min-redemption {
+            background: rgba(139, 195, 74, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #8BC34A;
+        }
+        
+        .notes {
+            max-width: 300px;
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">💵</div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+        </nav>
+    </header>
+    
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="guide-hero">
+                <h1>Sweepstake Casinos Complete Guide</h1>
+                <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$44.52</div>
+                    <div>Daily Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCount">0</div>
+                    <div>Total Casinos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$1,335.60</div>
+                    <div>Monthly Potential</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$7,770</div>
+                    <div>Welcome Offers SC</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-container">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search casinos...">
+                    </div>
+                </div>
+                
+                <div class="tier-tabs">
+                    <div class="tier-tab active" onclick="filterByTier('all')">All Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('New Casinos')">New Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('God Tier')">God Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('High Tier')">High Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Medium Tier')">Medium Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Trash Tier')">Trash Tier</div>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Casino</th>
+                                <th>Daily Bonus</th>
+                                <th>Welcome Offer</th>
+                                <th>Min Redeem</th>
+                                <th>Notes</th>
+                                <th>Parent Company</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casinoTableBody">
+                            <!-- Data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Casino data
+        const casinosData = [
+            // New Casinos
+            {"tier":"New Casinos","casino":"Sheeshcasino","dailyBonus":"$0.20","welcomeOffer":"$99.99 for 150SC (50%)","minRedemption":"100","notes":"5 Welcome Bonus SC on Signup. Really good website, could be WowVegas Competitor.","parentCompany":"P8D Interactive Inc"},
+            {"tier":"New Casinos","casino":"RichSweeps","dailyBonus":"$0.10 - $20.00 Daily Wheel","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"SpeedSweeps Sister Website. Daily Package Boosts available.","parentCompany":"WW Funcrafters JWA LLC"},
+            {"tier":"New Casinos","casino":"PeakPlay","dailyBonus":"Daily Contests","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"100","notes":"New RubySweeps Sister site.","parentCompany":"Rubystone Play LLC"},
+            {"tier":"New Casinos","casino":"Ace .com","dailyBonus":"$0.20 - $0.40","welcomeOffer":"$9.99 for 25SC (150%)","minRedemption":"75","notes":"2.50 Welcome Bonus SC on Signup.","parentCompany":"Full Stop Limited Inc"},
+            {"tier":"New Casinos","casino":"AcornFun","dailyBonus":"Streak Calendar","welcomeOffer":"Choice of $19.99 for 30SC (50%)","minRedemption":"100","notes":"5% Redeem Fee","parentCompany":"Jupiter Studio Limited"},
+            {"tier":"New Casinos","casino":"GoldRushCity","dailyBonus":"$0.20 - $1.00","welcomeOffer":"$7.98 for 16SC (100%)","minRedemption":"100","notes":"5 Welcome Bonus SC on Signup","parentCompany":"Play City Group LLC"},
+            {"tier":"New Casinos","casino":"GoodVibesCasino","dailyBonus":"$0.20","welcomeOffer":"$9.99 for 25SC (150%)","minRedemption":"100","notes":"1 Welcome Bonus SC on Phone Verification","parentCompany":"SKEEVE Products Limited"},
+            {"tier":"New Casinos","casino":"Lucky .me","dailyBonus":"$0.20 + Daily SC Challenges","welcomeOffer":"","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"Lucky Me Ventures LLC"},
+            {"tier":"New Casinos","casino":"SweepNext","dailyBonus":"$0.20 to $1.00","welcomeOffer":"Choice of $9.99 for 25SC (150%)","minRedemption":"100","notes":"Redemptions via VISA Giftcard","parentCompany":"Boostora LTD"},
+            {"tier":"New Casinos","casino":"SorceryReels","dailyBonus":"$0.10","welcomeOffer":"","minRedemption":"100","notes":"10 Free Spins on Signup. 8% Redeem Fee","parentCompany":"Fish Bear Studio Limited"},
+            {"tier":"New Casinos","casino":"VegasCoins","dailyBonus":"$0.20","welcomeOffer":"$12.49 for 25SC","minRedemption":"100","notes":"1 Welcome Bonus SC on Signup","parentCompany":"Vegas Coins Inc"},
+            {"tier":"New Casinos","casino":"SpinQuest","dailyBonus":"$1.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Available in Canada!","parentCompany":"Social Gaming Room LLC"},
+            {"tier":"New Casinos","casino":"LuckyBitsVegas","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"95","notes":"Entirely Crypto Website","parentCompany":"LBV Social LLC"},
+            {"tier":"New Casinos","casino":"NioPlay","dailyBonus":"$0.30 every 6 Hours","welcomeOffer":"50% Bonus Match","minRedemption":"75","notes":"3 Welcome Bonus SC on Signup","parentCompany":"Nio Consolidated LLC"},
+            {"tier":"New Casinos","casino":"Cluck","dailyBonus":"Daily SC via VIP","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"The Roost LTD"},
+            {"tier":"New Casinos","casino":"LuckyStake","dailyBonus":"$0.20 - $2.00","welcomeOffer":"Choice of $9.99 for 25SC (150%)","minRedemption":"100","notes":"Daily contests available","parentCompany":"ElevateTech Solutions Inc"},
+            {"tier":"New Casinos","casino":"ReBet","dailyBonus":"$1.00","welcomeOffer":"$200 for 300SC (200%)","minRedemption":"20","notes":"Sportsbetting site with Social Casino","parentCompany":"Rebet Inc"},
+            {"tier":"New Casinos","casino":"MegaFrenzy","dailyBonus":"$0.10 - $0.40","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"5 Free Spins daily if you spin 25SC","parentCompany":"Heuston Gaming Inc"},
+            {"tier":"New Casinos","casino":"ToraTora","dailyBonus":"Daily Spin","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Daily SC spin available","parentCompany":"ToraTora Entertainment Inc"},
+            {"tier":"New Casinos","casino":"LunaLandCasino","dailyBonus":"Periodic $0.20","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"Parana Plays LLC"},
+            {"tier":"New Casinos","casino":"iCasino","dailyBonus":"$0.42 average daily","welcomeOffer":"Choice of $7.99 for 12SC (50%)","minRedemption":"50","notes":"Skrill Redemption only","parentCompany":"Sunflower Limited"},
+            {"tier":"New Casinos","casino":"Stackr","dailyBonus":"Daily Wheel + $0.20","welcomeOffer":"Choice of $4.99 for 12.5SC (150%)","minRedemption":"100","notes":"Can watch ads for more Daily SC","parentCompany":"Stackr Social LLC"},
+            {"tier":"New Casinos","casino":"MoonSpin","dailyBonus":"$1.00 (Limited to $6)","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"1x Playthrough requirement","parentCompany":"Star Pulse Limited"},
+            
+            // God Tier
+            {"tier":"God Tier","casino":"WOW Vegas","dailyBonus":"$0.01 - $50.00","welcomeOffer":"$10 for 30SC (300%)","minRedemption":"100","notes":"Best Happy Hour deals. Daily locked by Keys system.","parentCompany":"MW Services"},
+            {"tier":"God Tier","casino":"Stake.us","dailyBonus":"$1.00","welcomeOffer":"15 Free SC","minRedemption":"50","notes":"No playthrough requirement. Crypto only.","parentCompany":"Sweepsteaks Limited"},
+            {"tier":"God Tier","casino":"Crown Coins","dailyBonus":"$0.05 - $1.50","welcomeOffer":"Choice of $15.99 for 40SC (150%)","minRedemption":"50","notes":"Dailies increase with VIP level","parentCompany":"Sunflower Limited"},
+            {"tier":"God Tier","casino":"Real Prize","dailyBonus":"$0.30","welcomeOffer":"$9.99 for 15SC (50%)","minRedemption":"50","notes":"Giveaway 1SC Links on Discord","parentCompany":"Legitsoft N.V"},
+            {"tier":"God Tier","casino":"Lonestar","dailyBonus":"$0.30","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Free $1 Links Posted Daily On Discord","parentCompany":"Legitsoft N.V"},
+            {"tier":"God Tier","casino":"Luckybird.io","dailyBonus":"$0.20 - $1.00","welcomeOffer":"Choice of $4.99 for 12.5SC (150%)","minRedemption":"50","notes":"Really easy daily collection","parentCompany":"Legitsoft N.V"},
+            {"tier":"God Tier","casino":"Luckyland","dailyBonus":"$0.30 - $1.00","welcomeOffer":"$9.99 for 50SC (400%)","minRedemption":"50","notes":"Sister site to WowVegas. One of the best.","parentCompany":"Virtual Gaming Worlds Inc"},
+            {"tier":"God Tier","casino":"GoldTreasureCasino","dailyBonus":"1 SC Daily average","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Day 7 Wheel ($0.50 to $50)","parentCompany":"Gold Treasure Group LLC"},
+            {"tier":"God Tier","casino":"McLuck","dailyBonus":"$0.20 - $2.00","welcomeOffer":"Choice of $9.99 for 20SC (100%)","minRedemption":"100","notes":"5 Free SC on Email Verification","parentCompany":"Splash Direct Media"},
+            {"tier":"God Tier","casino":"MyPrize","dailyBonus":"$0.20 to $2.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"4.5 Free SC on Email Verification","parentCompany":"Virtual Gaming Worlds Inc"},
+            {"tier":"God Tier","casino":"Lucky Slots .us","dailyBonus":"$0.00","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"50","notes":"3 Free SC on Signup. Daily/Weekly Giveaways","parentCompany":"KIKI Interactive LLC"},
+            {"tier":"God Tier","casino":"Chumba Casino","dailyBonus":"$1.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"100","notes":"Sister website to Luckyland","parentCompany":"Virtual Gaming Worlds Inc"},
+            {"tier":"God Tier","casino":"Moozi","dailyBonus":"$0.30","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Use Skrill to redeem","parentCompany":"BVG Group"},
+            {"tier":"God Tier","casino":"PulszBingo","dailyBonus":"$0.20 - $1.00","welcomeOffer":"Choice of $6.99 for 15SC (114%)","minRedemption":"100","notes":"5SC on Signup","parentCompany":"Social Gaming LLC"},
+            {"tier":"God Tier","casino":"Pulsz","dailyBonus":"$0.30","welcomeOffer":"Choice of $25 for 50SC (100%)","minRedemption":"100","notes":"5 Free SC on email verification","parentCompany":"Social Gaming LLC"},
+            {"tier":"God Tier","casino":"Sportzino","dailyBonus":"$1.00 - $2.00","welcomeOffer":"Choice of $10 for 15SC (50%)","minRedemption":"100","notes":"Sports betting site. 5SC on email verification","parentCompany":"Social Gaming LLC"},
+            {"tier":"God Tier","casino":"Zula","dailyBonus":"$1.00","welcomeOffer":"Choice of $14.99 for 30SC (100%)","minRedemption":"100","notes":"Sister Website to Pulsz","parentCompany":"Social Gaming LLC"},
+            {"tier":"God Tier","casino":"YayCasino .com","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Daily $1 + mini games. VIP system","parentCompany":"Webilife Ltd"},
+            {"tier":"God Tier","casino":"SpinSaga","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Redeem via gift card to Skrill","parentCompany":"Webilife Ltd"},
+            {"tier":"God Tier","casino":"Rolla","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"20","notes":"Crypto only. First 30 days daily is $1","parentCompany":"TUX Gaming Ltd"},
+            {"tier":"God Tier","casino":"Casino.Click","dailyBonus":"$0.00 to $5.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Daily Wheel can give up to 5SC","parentCompany":"PB Commerce Limited"},
+            {"tier":"God Tier","casino":"Modo","dailyBonus":"$0.30 - $1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"100","notes":"Same site as McLuck","parentCompany":"Splash Direct Media"},
+            {"tier":"God Tier","casino":"SpinPals","dailyBonus":"$0.20 to $1.00","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Sister Website to FortunePanda","parentCompany":"Wagerful LLC"},
+            {"tier":"God Tier","casino":"Global Poker","dailyBonus":"$0.25 - $1.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"Poker exclusive site","parentCompany":"Virtual Gaming Worlds Inc"},
+            
+            // High Tier
+            {"tier":"High Tier","casino":"Legendz","dailyBonus":"$1.50","welcomeOffer":"Choice of $20 for 60SC (200%)","minRedemption":"100","notes":"Really generous Daily SC of $1.50","parentCompany":"Legendz LLC"},
+            {"tier":"High Tier","casino":"RubySweeps","dailyBonus":"$0.10 - $1.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"20","notes":"No playthrough requirement","parentCompany":"Rubystone Play LLC"},
+            {"tier":"High Tier","casino":"Sweeptastic","dailyBonus":"$0.20 - $1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"100","notes":"Daily Wheel Refreshes every 5 hours!","parentCompany":"TMS Studios LLC"},
+            {"tier":"High Tier","casino":"Game Vault 999 .com","dailyBonus":"$1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"50","notes":"Redemption in Gift Cards","parentCompany":"Game Vault 999 LLC"},
+            {"tier":"High Tier","casino":"WinPort","dailyBonus":"$0.01 - $2.00","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"No playthrough requirement","parentCompany":"Winport Inc"},
+            {"tier":"High Tier","casino":"Spin2Play","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"Wagerful LLC"},
+            
+            // Medium Tier (first 10 for brevity)
+            {"tier":"Medium Tier","casino":"Jefebet","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"IBOL Corporation Limited"},
+            {"tier":"Medium Tier","casino":"Rolling Riches","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Sister Site to JefeBet","parentCompany":"IBOL Corporation Limited"},
+            {"tier":"Medium Tier","casino":"Funrize","dailyBonus":"$0.75","welcomeOffer":"$19.99 for 40SC (100%)","minRedemption":"50","notes":"Decent daily but slow redemptions","parentCompany":"Foresight Belize Limited"},
+            {"tier":"Medium Tier","casino":"Hello Millions","dailyBonus":"$0.20 - $0.80","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Can claim up to 0.80SC","parentCompany":"IBOL Corporation Limited"},
+            {"tier":"Medium Tier","casino":"High5Casino","dailyBonus":"$0.75","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"Coins increase by playing GC games","parentCompany":"Social Casino LLC"},
+            {"tier":"Medium Tier","casino":"Sweep Slots","dailyBonus":"$0.30 - $0.70","welcomeOffer":"$29.99 for 70SC (133%)","minRedemption":"100","notes":"30x Playthrough Requirement","parentCompany":"Arisac Limited"},
+            {"tier":"Medium Tier","casino":"SpeedSweeps","dailyBonus":"$0.10 - $20.00","welcomeOffer":"Choice of $14.99 for 35SC (133%)","minRedemption":"100","notes":"Daily Package Boosts available","parentCompany":"WW Funcrafters JWA LLC"},
+            {"tier":"Medium Tier","casino":"Fantaz Casino","dailyBonus":"$0.20 - $0.50","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Basic site with decent daily","parentCompany":"Diamond Star Limited"},
+            {"tier":"Medium Tier","casino":"SidePot","dailyBonus":"$1.00","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"Daily limited to $5 total","parentCompany":"Star Pulse Limited"},
+            {"tier":"Medium Tier","casino":"CashFrenzy","dailyBonus":"$0.40","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"Sister Website to DingDingDing","parentCompany":"Diamond Star Limited"},
+            
+            // Trash Tier (first 5 for brevity)
+            {"tier":"Trash Tier","casino":"JuicyPopSlots","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
+            {"tier":"Trash Tier","casino":"LuckyStars","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
+            {"tier":"Trash Tier","casino":"RockySlots","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
+            {"tier":"Trash Tier","casino":"JuicyStakes","dailyBonus":"$0.00","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
+            {"tier":"Trash Tier","casino":"Sweeps Cash","dailyBonus":"$0.00","welcomeOffer":"$29.99 for 65SC (116%)","minRedemption":"100","notes":"Site is broken","parentCompany":"T and J Bites LLC"}
+        ];
+        
+        let currentCasinos = [...casinosData];
+        let currentFilter = 'all';
+        
+        // Render table
+        function renderTable(casinos) {
+            const tbody = document.getElementById('casinoTableBody');
+            tbody.innerHTML = '';
+            
+            casinos.forEach(casino => {
+                const row = document.createElement('tr');
+                
+                let tierClass = 'tier-new';
+                if (casino.tier === 'God Tier') tierClass = 'tier-god';
+                else if (casino.tier === 'High Tier') tierClass = 'tier-high';
+                else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
+                else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
+                
+                row.innerHTML = `
+                    <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
+                    <td class="casino-name">${casino.casino}</td>
+                    <td class="daily-bonus">${casino.dailyBonus}</td>
+                    <td>${casino.welcomeOffer || '-'}</td>
+                    <td><span class="min-redemption">$${casino.minRedemption}</span></td>
+                    <td class="notes">${casino.notes}</td>
+                    <td>${casino.parentCompany}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Filter by tier
+        function filterByTier(tier) {
+            currentFilter = tier;
+            
+            // Update active tab
+            document.querySelectorAll('.tier-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter casinos
+            if (tier === 'all') {
+                currentCasinos = [...casinosData];
+            } else {
+                currentCasinos = casinosData.filter(c => c.tier === tier);
+            }
+            
+            renderTable(currentCasinos);
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            let filtered = currentFilter === 'all' ? 
+                [...casinosData] : 
+                casinosData.filter(c => c.tier === currentFilter);
+            
+            if (searchTerm) {
+                filtered = filtered.filter(casino => 
+                    casino.casino.toLowerCase().includes(searchTerm) ||
+                    casino.dailyBonus.toLowerCase().includes(searchTerm) ||
+                    casino.notes.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderTable(filtered);
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('totalCount').textContent = casinosData.length;
+            renderTable(casinosData);
+        });
+    </script>
+</body>
+</html>
