@@ -389,7 +389,7 @@
     </div>
     
     <script>
-        // Casino data
+        // Casino data - UPDATED to remove casinos not in master sheet
         const casinosData = [
             // New Casinos
             {"tier":"New Casinos","casino":"Sheeshcasino","dailyBonus":"$0.20","welcomeOffer":"$99.99 for 150SC (50%)","minRedemption":"100","notes":"5 Welcome Bonus SC on Signup. Really good website, could be WowVegas Competitor.","parentCompany":"P8D Interactive Inc"},
@@ -445,10 +445,6 @@
             // High Tier
             {"tier":"High Tier","casino":"Legendz","dailyBonus":"$1.50","welcomeOffer":"Choice of $20 for 60SC (200%)","minRedemption":"100","notes":"Really generous Daily SC of $1.50","parentCompany":"Legendz LLC"},
             {"tier":"High Tier","casino":"RubySweeps","dailyBonus":"$0.10 - $1.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"20","notes":"No playthrough requirement","parentCompany":"Rubystone Play LLC"},
-            {"tier":"High Tier","casino":"Sweeptastic","dailyBonus":"$0.20 - $1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"100","notes":"Daily Wheel Refreshes every 5 hours!","parentCompany":"TMS Studios LLC"},
-            {"tier":"High Tier","casino":"Game Vault 999 .com","dailyBonus":"$1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"50","notes":"Redemption in Gift Cards","parentCompany":"Game Vault 999 LLC"},
-            {"tier":"High Tier","casino":"WinPort","dailyBonus":"$0.01 - $2.00","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"No playthrough requirement","parentCompany":"Winport Inc"},
-            {"tier":"High Tier","casino":"Spin2Play","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"Wagerful LLC"},
             
             // Medium Tier
             {"tier":"Medium Tier","casino":"Jefebet","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"IBOL Corporation Limited"},
@@ -456,18 +452,12 @@
             {"tier":"Medium Tier","casino":"Funrize","dailyBonus":"$0.75","welcomeOffer":"$19.99 for 40SC (100%)","minRedemption":"50","notes":"Decent daily but slow redemptions","parentCompany":"Foresight Belize Limited"},
             {"tier":"Medium Tier","casino":"Hello Millions","dailyBonus":"$0.20 - $0.80","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Can claim up to 0.80SC","parentCompany":"IBOL Corporation Limited"},
             {"tier":"Medium Tier","casino":"High5Casino","dailyBonus":"$0.75","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"Coins increase by playing GC games","parentCompany":"Social Casino LLC"},
-            {"tier":"Medium Tier","casino":"Sweep Slots","dailyBonus":"$0.30 - $0.70","welcomeOffer":"$29.99 for 70SC (133%)","minRedemption":"100","notes":"30x Playthrough Requirement","parentCompany":"Arisac Limited"},
             {"tier":"Medium Tier","casino":"SpeedSweeps","dailyBonus":"$0.10 - $20.00","welcomeOffer":"Choice of $14.99 for 35SC (133%)","minRedemption":"100","notes":"Daily Package Boosts available","parentCompany":"WW Funcrafters JWA LLC"},
-            {"tier":"Medium Tier","casino":"Fantaz Casino","dailyBonus":"$0.20 - $0.50","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Basic site with decent daily","parentCompany":"Diamond Star Limited"},
             {"tier":"Medium Tier","casino":"SidePot","dailyBonus":"$1.00","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"Daily limited to $5 total","parentCompany":"Star Pulse Limited"},
-            {"tier":"Medium Tier","casino":"CashFrenzy","dailyBonus":"$0.40","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"Sister Website to DingDingDing","parentCompany":"Diamond Star Limited"},
             
             // Trash Tier
             {"tier":"Trash Tier","casino":"JuicyPopSlots","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
-            {"tier":"Trash Tier","casino":"LuckyStars","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
-            {"tier":"Trash Tier","casino":"RockySlots","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
-            {"tier":"Trash Tier","casino":"JuicyStakes","dailyBonus":"$0.00","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
-            {"tier":"Trash Tier","casino":"Sweeps Cash","dailyBonus":"$0.00","welcomeOffer":"$29.99 for 65SC (116%)","minRedemption":"100","notes":"Site is broken","parentCompany":"T and J Bites LLC"}
+            {"tier":"Trash Tier","casino":"LuckyStars","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"}
         ];
         
         let currentCasinos = [...casinosData];
