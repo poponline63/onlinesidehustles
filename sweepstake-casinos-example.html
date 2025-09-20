@@ -157,7 +157,8 @@
         
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
         }
         
         th {
@@ -168,6 +169,7 @@
             font-weight: 600;
             position: sticky;
             top: 0;
+            z-index: 100;
         }
         
         td {
@@ -178,6 +180,81 @@
         
         tbody tr:hover {
             background: rgba(76, 175, 80, 0.1);
+        }
+        
+        /* Tier Separator Styles */
+        .tier-separator {
+            background: transparent;
+            height: 50px;
+            position: relative;
+            pointer-events: none;
+        }
+        
+        .tier-separator td {
+            padding: 0;
+            border: none;
+            position: relative;
+        }
+        
+        .tier-divider {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        }
+        
+        .tier-label {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+        
+        .tier-label.new-casinos {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-color: #f093fb;
+            color: white;
+            box-shadow: 0 4px 20px rgba(240, 147, 251, 0.3);
+        }
+        
+        .tier-label.god-tier {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-color: #FFD700;
+            color: black;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .tier-label.high-tier {
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            border-color: #30cfd0;
+            color: white;
+            box-shadow: 0 4px 20px rgba(48, 207, 208, 0.3);
+        }
+        
+        .tier-label.medium-tier {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-color: #a8edea;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(168, 237, 234, 0.3);
+        }
+        
+        .tier-label.trash-tier {
+            background: linear-gradient(135deg, #868f96, #596164);
+            border-color: #868f96;
+            color: white;
+            box-shadow: 0 4px 20px rgba(134, 143, 150, 0.3);
         }
         
         .tier-indicator {
@@ -373,7 +450,7 @@
             {"tier":"High Tier","casino":"WinPort","dailyBonus":"$0.01 - $2.00","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"No playthrough requirement","parentCompany":"Winport Inc"},
             {"tier":"High Tier","casino":"Spin2Play","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"Wagerful LLC"},
             
-            // Medium Tier (first 10 for brevity)
+            // Medium Tier
             {"tier":"Medium Tier","casino":"Jefebet","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"IBOL Corporation Limited"},
             {"tier":"Medium Tier","casino":"Rolling Riches","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Sister Site to JefeBet","parentCompany":"IBOL Corporation Limited"},
             {"tier":"Medium Tier","casino":"Funrize","dailyBonus":"$0.75","welcomeOffer":"$19.99 for 40SC (100%)","minRedemption":"50","notes":"Decent daily but slow redemptions","parentCompany":"Foresight Belize Limited"},
@@ -385,7 +462,7 @@
             {"tier":"Medium Tier","casino":"SidePot","dailyBonus":"$1.00","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"Daily limited to $5 total","parentCompany":"Star Pulse Limited"},
             {"tier":"Medium Tier","casino":"CashFrenzy","dailyBonus":"$0.40","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"Sister Website to DingDingDing","parentCompany":"Diamond Star Limited"},
             
-            // Trash Tier (first 5 for brevity)
+            // Trash Tier
             {"tier":"Trash Tier","casino":"JuicyPopSlots","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
             {"tier":"Trash Tier","casino":"LuckyStars","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
             {"tier":"Trash Tier","casino":"RockySlots","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"},
@@ -396,31 +473,66 @@
         let currentCasinos = [...casinosData];
         let currentFilter = 'all';
         
-        // Render table
+        // Render table with tier separators
         function renderTable(casinos) {
             const tbody = document.getElementById('casinoTableBody');
             tbody.innerHTML = '';
             
-            casinos.forEach(casino => {
-                const row = document.createElement('tr');
+            // Group casinos by tier
+            const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
+            const groupedCasinos = {};
+            
+            tiers.forEach(tier => {
+                groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
+            });
+            
+            // Render each tier with separator
+            tiers.forEach(tier => {
+                const tierCasinos = groupedCasinos[tier];
+                if (tierCasinos.length === 0) return;
                 
-                let tierClass = 'tier-new';
-                if (casino.tier === 'God Tier') tierClass = 'tier-god';
-                else if (casino.tier === 'High Tier') tierClass = 'tier-high';
-                else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
-                else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
+                // Add tier separator row
+                const separatorRow = document.createElement('tr');
+                separatorRow.className = 'tier-separator';
                 
-                row.innerHTML = `
-                    <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
-                    <td class="casino-name">${casino.casino}</td>
-                    <td class="daily-bonus">${casino.dailyBonus}</td>
-                    <td>${casino.welcomeOffer || '-'}</td>
-                    <td><span class="min-redemption">$${casino.minRedemption}</span></td>
-                    <td class="notes">${casino.notes}</td>
-                    <td>${casino.parentCompany}</td>
+                let tierLabelClass = '';
+                if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
+                else if (tier === 'God Tier') tierLabelClass = 'god-tier';
+                else if (tier === 'High Tier') tierLabelClass = 'high-tier';
+                else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
+                else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
+                
+                separatorRow.innerHTML = `
+                    <td colspan="7">
+                        <div class="tier-divider">
+                            <span class="tier-label ${tierLabelClass}">${tier}</span>
+                        </div>
+                    </td>
                 `;
+                tbody.appendChild(separatorRow);
                 
-                tbody.appendChild(row);
+                // Add casinos for this tier
+                tierCasinos.forEach(casino => {
+                    const row = document.createElement('tr');
+                    
+                    let tierClass = 'tier-new';
+                    if (casino.tier === 'God Tier') tierClass = 'tier-god';
+                    else if (casino.tier === 'High Tier') tierClass = 'tier-high';
+                    else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
+                    else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
+                    
+                    row.innerHTML = `
+                        <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
+                        <td class="casino-name">${casino.casino}</td>
+                        <td class="daily-bonus">${casino.dailyBonus}</td>
+                        <td>${casino.welcomeOffer || '-'}</td>
+                        <td><span class="min-redemption">$${casino.minRedemption}</span></td>
+                        <td class="notes">${casino.notes}</td>
+                        <td>${casino.parentCompany}</td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
             });
         }
         
