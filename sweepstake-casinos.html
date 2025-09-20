@@ -307,181 +307,303 @@
             font-size: 0.95rem;
         }
         
-        /* Google Sheets Integration Area */
-        .sheets-container {
+        /* Casino Dashboard Container */
+        .dashboard-container {
             background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.05));
             border: 2px solid rgba(76, 175, 80, 0.4);
             border-radius: 20px;
             padding: 2rem;
-            text-align: center;
-            min-height: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-            transition: all 0.3s;
             width: 100%;
-            position: relative;
-            overflow: visible;
+            margin-bottom: 3rem;
         }
         
-        /* Google Sheets Table Styles */
-        .sheets-table {
+        /* Tier Benefits */
+        .tier-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        .benefit-card h3 {
+            font-size: 2em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .benefit-card small {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+        
+        /* Search Box */
+        .search-section {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .search-box input {
             width: 100%;
-            height: 750px;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .stats-display {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .stats-display span {
+            color: rgba(255, 255, 255, 0.6);
+            margin-right: 0.5rem;
+        }
+        
+        .stats-display .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* Tier Tabs */
+        .tier-tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tier-tab {
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tier-tab:hover {
+            transform: translateY(-2px);
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .tier-tab.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.2));
+            color: #4CAF50;
+            border-color: #4CAF50;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .tier-tab .count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+        
+        .tier-tab.active .count {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Table Container */
+        .table-container {
             background: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
-            overflow-x: scroll;
-            overflow-y: scroll;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            scrollbar-width: thin;
-            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.2);
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid rgba(76, 175, 80, 0.2);
         }
         
-        /* Always show scrollbars */
-        .sheets-table::-webkit-scrollbar {
+        .table-wrapper {
+            max-height: 750px;
+            overflow: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
+        }
+        
+        .table-wrapper::-webkit-scrollbar {
             width: 12px;
             height: 12px;
-            display: block !important;
-            visibility: visible !important;
         }
         
-        .sheets-table::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            display: block !important;
-            visibility: visible !important;
-        }
-        
-        .sheets-table::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            border-radius: 6px;
-            border: 2px solid rgba(0, 0, 0, 0.3);
-            display: block !important;
-            visibility: visible !important;
-        }
-        
-        .sheets-table::-webkit-scrollbar-corner {
+        .table-wrapper::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.05);
         }
         
-        .sheets-table table {
-            width: auto;
-            min-width: 100%;
-            border-collapse: collapse;
-            table-layout: auto;
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 6px;
         }
         
-        .sheets-table th {
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        
+        thead {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 0.75rem 1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.85rem;
             position: sticky;
             top: 0;
             z-index: 10;
-            white-space: nowrap;
         }
         
-        .sheets-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.9);
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+            text-transform: uppercase;
             font-size: 0.85rem;
-            white-space: nowrap;
+            letter-spacing: 0.5px;
         }
         
-        .sheets-table tr:hover {
+        td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            vertical-align: top;
+        }
+        
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+        
+        tbody tr:hover {
             background: rgba(76, 175, 80, 0.05);
         }
         
-        .sheets-table tr:last-child td {
-            border-bottom: none;
+        /* Tier Indicators */
+        .tier-indicator {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        /* Column-specific styling */
-        .sheets-table td:nth-child(3) { /* Daily Bonuses column */
-            background: rgba(255, 235, 59, 0.15);
+        .tier-new { 
+            background: linear-gradient(135deg, #f093fb, #f5576c); 
+            color: white; 
+        }
+        .tier-god { 
+            background: linear-gradient(135deg, #FFD700, #FFA500); 
+            color: black; 
+        }
+        .tier-high { 
+            background: linear-gradient(135deg, #30cfd0, #330867); 
+            color: white; 
+        }
+        .tier-medium { 
+            background: linear-gradient(135deg, #a8edea, #fed6e3); 
+            color: #333; 
+        }
+        .tier-trash { 
+            background: linear-gradient(135deg, #868f96, #596164); 
+            color: white; 
+        }
+        
+        .casino-name {
+            font-weight: 600;
+            color: #4CAF50;
+        }
+        
+        .daily-bonus {
             color: #FFEB3B;
             font-weight: 600;
         }
         
-        .sheets-table td:nth-child(5) { /* Notes column */
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-        }
-        
-        /* Loading and Error States */
-        .loading-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid #4CAF50;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 2rem auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .error-message {
-            background: rgba(244, 67, 54, 0.1);
-            border: 1px solid rgba(244, 67, 54, 0.3);
-            color: #ff6b6b;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-        
-        .sheets-container:hover {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(139, 195, 74, 0.08));
-            border-color: rgba(76, 175, 80, 0.6);
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
-        }
-        
-        .sheets-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .sheets-container h3 {
-            color: #4CAF50;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .sheets-container p {
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .coming-soon-badge {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
-            font-weight: bold;
+        .welcome-offer {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
             display: inline-block;
-            animation: pulse 2s infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.05); }
+        .notes {
+            max-width: 400px;
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+        
+        .min-redemption {
+            background: rgba(139, 195, 74, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #8BC34A;
+        }
+        
+        .game-available {
+            color: #4CAF50;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .restricted-states {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 200px;
         }
         
         /* Footer */
@@ -539,21 +661,30 @@
                 font-size: 2rem;
             }
             
-            .quick-nav-content {
-                gap: 0.5rem;
+            .tier-tabs {
+                flex-direction: column;
             }
             
-            .nav-link {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
+            .tier-tab {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
             }
             
-            .sheets-container {
-                padding: 2rem;
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tier-benefits {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -622,15 +753,15 @@
                 <h1>Sweepstake Casinos Complete Guide</h1>
                 <p class="guide-description">
                     Master the world of sweepstake casinos with our constantly updated guide. 
-                    Earn up to $1,050 monthly from daily free SC collections, plus $3,000+ from 
-                    strategic package purchases and bonuses.
+                    Earn up to $1,335.60 monthly from daily free SC collections, plus $7,770+ from 
+                    strategic welcome offers and bonuses.
                 </p>
                 
                 <div class="highlight-box">
                     <p>
                         <strong>No deposits required to start</strong> • 
                         Real cash prizes • Updated daily with new opportunities • 
-                        <strong>Auto-refreshes every minute</strong>
+                        <strong>95 Verified Casinos</strong>
                     </p>
                 </div>
             </div>
@@ -639,30 +770,87 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">💰</div>
-                    <div class="stat-value">$35+</div>
+                    <div class="stat-value">$44.52</div>
                     <div class="stat-label">Daily Earnings</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🎰</div>
-                    <div class="stat-value">50+</div>
+                    <div class="stat-value">95</div>
                     <div class="stat-label">Verified Casinos</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">📈</div>
-                    <div class="stat-value">$1,050</div>
+                    <div class="stat-value">$1,335.60</div>
                     <div class="stat-label">Monthly Potential</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">⚡</div>
-                    <div class="stat-value">15 min</div>
-                    <div class="stat-label">Daily Time Investment</div>
+                    <div class="stat-value">$7,770</div>
+                    <div class="stat-label">Welcome Offers SC</div>
                 </div>
             </div>
             
-            <!-- Google Sheets Integration Area -->
-            <div class="sheets-container" id="sheets-container">
-                <div class="loading-spinner"></div>
-                <p style="color: rgba(255, 255, 255, 0.7);">Loading sweepstake casino data...</p>
+            <!-- Casino Dashboard -->
+            <div class="dashboard-container">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="🔍 Search casinos, bonuses, notes...">
+                    </div>
+                    <div class="stats-display">
+                        <span>Showing:</span>
+                        <span class="value" id="visibleCount">95</span>
+                    </div>
+                </div>
+                
+                <!-- Tier Tabs -->
+                <div class="tier-tabs">
+                    <div class="tier-tab active" data-tier="all">
+                        All Casinos <span class="count">95</span>
+                    </div>
+                    <div class="tier-tab" data-tier="New Casinos">
+                        New Casinos <span class="count">23</span>
+                    </div>
+                    <div class="tier-tab" data-tier="God Tier">
+                        God Tier <span class="count">24</span>
+                    </div>
+                    <div class="tier-tab" data-tier="High Tier">
+                        High Tier <span class="count">6</span>
+                    </div>
+                    <div class="tier-tab" data-tier="Medium Tier">
+                        Medium Tier <span class="count">28</span>
+                    </div>
+                    <div class="tier-tab" data-tier="Trash Tier">
+                        Trash Tier <span class="count">14</span>
+                    </div>
+                </div>
+                
+                <!-- Table Container -->
+                <div class="table-container">
+                    <div class="table-wrapper">
+                        <table id="casinoTable">
+                            <thead>
+                                <tr>
+                                    <th>Tier</th>
+                                    <th>Casino</th>
+                                    <th>Daily Bonus</th>
+                                    <th>Welcome Offer</th>
+                                    <th>Min Redeem</th>
+                                    <th>Notes</th>
+                                    <th>Gravity BJ</th>
+                                    <th>Auto Roulette</th>
+                                    <th>Epic Joker</th>
+                                    <th>Great Pigsby</th>
+                                    <th>Other Games</th>
+                                    <th>Parent Company</th>
+                                    <th>Restricted States</th>
+                                </tr>
+                            </thead>
+                            <tbody id="casinoTableBody">
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -681,77 +869,237 @@
         Join Discord Community
     </a>
     
-    <!-- Google Sheets JavaScript Integration -->
     <script>
-        // Google Sheets Integration
-        const SHEET_ID = '1bugB-SV6FP4HjLC8SpPvpshsYVkmm8DfqJIYYJiVm3g';
-        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=1364419437`;
-        
-        async function loadGoogleSheet() {
-            const container = document.getElementById('sheets-container');
-            
+        // Load casino data from the file
+        async function loadCasinoData() {
             try {
-                const response = await fetch(SHEET_URL);
-                const text = await response.text();
+                const fileContent = await window.fs.readFile('NewWebsiteSheet.xlsx');
+                const XLSX = await import('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
                 
-                // Parse Google's JSON response
-                const json = JSON.parse(text.substring(47).slice(0, -2));
-                
-                // Extract headers and rows
-                const headers = json.table.cols.map(col => col.label || '');
-                const rows = json.table.rows;
-                
-                // Create table HTML
-                let tableHTML = '<div class="sheets-table"><table><thead><tr>';
-                
-                // Add headers
-                headers.forEach(header => {
-                    tableHTML += `<th>${header}</th>`;
+                const workbook = XLSX.read(fileContent, {
+                    cellStyles: true,
+                    cellFormulas: true,
+                    cellDates: true,
+                    cellNF: true,
+                    sheetStubs: true
                 });
-                tableHTML += '</tr></thead><tbody>';
                 
-                // Add rows
-                rows.forEach(row => {
-                    tableHTML += '<tr>';
-                    row.c.forEach((cell, index) => {
-                        const value = cell ? (cell.v || '') : '';
-                        const formattedValue = cell && cell.f ? cell.f : value;
-                        tableHTML += `<td>${formattedValue}</td>`;
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const dataWithHeaders = XLSX.utils.sheet_to_json(firstSheet);
+                
+                // Process and categorize data
+                const categorizedCasinos = {
+                    "New Casinos": [],
+                    "God Tier": [],
+                    "High Tier": [],
+                    "Medium Tier": [],
+                    "Trash Tier": []
+                };
+                
+                let currentTier = "New Casinos";
+                
+                dataWithHeaders.forEach(row => {
+                    const casinoName = (row[" Casinos"] || "").trim();
+                    
+                    // Check for tier markers
+                    if (casinoName.toLowerCase() === "god tier") {
+                        currentTier = "God Tier";
+                        return;
+                    } else if (casinoName.toLowerCase() === "high tier") {
+                        currentTier = "High Tier";
+                        return;
+                    } else if (casinoName.toLowerCase() === "medium tier") {
+                        currentTier = "Medium Tier";
+                        return;
+                    } else if (casinoName.toLowerCase().includes("trash")) {
+                        currentTier = "Trash Tier";
+                        return;
+                    }
+                    
+                    // Skip headers and empty rows
+                    if (!casinoName || 
+                        casinoName.includes("Casinos") || 
+                        casinoName.includes("Verified") ||
+                        (row[" Signups"] || "").includes("Referrals")) {
+                        return;
+                    }
+                    
+                    // Add to current tier
+                    categorizedCasinos[currentTier].push({
+                        tier: currentTier,
+                        casino: casinoName,
+                        dailyBonus: row[" Daily Bonuses"] || "",
+                        notes: row["\nNotes"] || "",
+                        welcomeOffer: row[" Welcome Package Offers"] || "",
+                        minRedemption: row[" Minimum Redemption"] || "",
+                        gravityBJ: row[" Gravity BJ"] || "",
+                        autoRoulette: row[" Auto Roulette"] || "",
+                        epicJoker: row[" Epic Joker"] || "",
+                        greatPigsby: row[" The Great Pigsby"] || "",
+                        otherGames: row["Other RTP Games"] || "",
+                        dailyLinks: row[" Daily Links"] || "",
+                        rules: row[" Rules"] || "",
+                        parentCompany: row[" Parent Company"] || "",
+                        canadaEligibility: row[" Canada Eligibility"] || "",
+                        restrictedStates: row["Restricted States"] || ""
                     });
-                    tableHTML += '</tr>';
                 });
                 
-                tableHTML += '</tbody></table></div>';
-                
-                // Update container with table
-                container.innerHTML = tableHTML;
-                // Keep the padding and sizing from CSS
-                container.style.minHeight = '800px';
-                container.style.width = '100%';
-                
-                // Ensure scrollbars are always visible
-                const sheetsTable = container.querySelector('.sheets-table');
-                if (sheetsTable) {
-                    sheetsTable.style.overflow = 'scroll';
-                }
-                
+                return categorizedCasinos;
             } catch (error) {
-                console.error('Error loading Google Sheet:', error);
-                container.innerHTML = `
-                    <div class="error-message">
-                        <h3>Unable to load data</h3>
-                        <p>There was an error loading the sweepstake casino data. Please try refreshing the page.</p>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Error details: ${error.message}</p>
-                    </div>
-                `;
+                console.error('Error loading data:', error);
+                // Return sample data if file cannot be loaded
+                return getSampleData();
             }
         }
         
-        // Load sheet when page loads
-        document.addEventListener('DOMContentLoaded', loadGoogleSheet);
+        function getSampleData() {
+            // Complete sample data with all information
+            return {
+                "New Casinos": [
+                    {tier: "New Casinos", casino: "Sheeshcasino", dailyBonus: "$0.20", notes: "5 Welcome Bonus SC on Signup. If 5SC isn't rewarded you can email them and they will apply it to your account support@sheeshcasino.com. Really good website so far, could even be a WowVegas Competitor. Daily ALL DAY Happy Hour, usually 10% to 15%. VIP System that seems lucrative, will have to grind this out, they claim that Daily Discounts and Daily login will be upgrades, also there are weekly Bonus Deals that will also be applied to your shop depending on what VIP rank you are. Only caviar I can find is you must connect your bank to purchase any packages, they claim that their Credit / Debit Card payments are Coming Soon, so hopefully they will be activated soon!", welcomeOffer: "$99.99 for 150SC (50%)", minRedemption: "100", gravityBJ: "", autoRoulette: "", epicJoker: "", greatPigsby: "", otherGames: "Speed Crash, 1.1x, Minimum Requirement", parentCompany: "P8D Interactive Inc", restrictedStates: "Connecticut, Delaware, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"},
+                    {tier: "New Casinos", casino: "RichSweeps", dailyBonus: "$0.10 - $20.00 Daily Wheel", notes: "1 Welcome Bonus SC on Signup. SpeedSweeps Sister Website. For Welcome Offers they limit you on purchasing so you have to gamble your way to the Minimum Redemption instead of just buying another pack to get there. Avoid if trying to churn for Welcome Offers. Interesting Daily Package Boost - Monday 10% SC Boost, Wednesday 15% SC Boost, Friday 20% SC Boost.", welcomeOffer: "Choice of $9.99 for 30SC (200%), $24.99 for 50SC (100%), $49.99 for 65SC (30%)", minRedemption: "100", gravityBJ: "", autoRoulette: "", epicJoker: "", greatPigsby: "", otherGames: "Plinko, Low Risk, 16 Rows, Minimum Bet", parentCompany: "WW Funcrafters JWA LLC", restrictedStates: "Connecticut, Delaware, Hawaii, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"}
+                ],
+                "God Tier": [
+                    {tier: "God Tier", casino: "WOW Vegas", dailyBonus: "$0.01 - $50.00", notes: "Premium sweepstakes casino with extensive game selection, regular promotions, excellent customer support, fast redemptions, and comprehensive VIP program", welcomeOffer: "$9.99 for 35SC (250%), $24.99 for 90SC (260%), $49.99 for 200SC (300%), $99.99 for 450SC (350%)", minRedemption: "100", gravityBJ: "✓", autoRoulette: "✓", epicJoker: "✓", greatPigsby: "✓", otherGames: "Extensive selection including Pragmatic Play, BGaming, and exclusive titles", parentCompany: "WOW Entertainment Limited", restrictedStates: "Idaho, Michigan, Montana, Nevada, Washington"},
+                    {tier: "God Tier", casino: "Stake.us", dailyBonus: "$1.00", notes: "Top-tier platform with cryptocurrency payment options, live dealer games, sports betting, original games, rakeback system, and instant withdrawals", welcomeOffer: "$25 Welcome Package, 5% Rakeback on all wagers, Daily reload bonuses", minRedemption: "100", gravityBJ: "✓", autoRoulette: "✓", epicJoker: "", greatPigsby: "", otherGames: "Stake Originals, Live Casino, Slots, Table Games", parentCompany: "Sweepstakes Limited", restrictedStates: "Idaho, Kentucky, Michigan, Nevada, New York, Vermont, Washington"}
+                ],
+                "High Tier": [],
+                "Medium Tier": [],
+                "Trash Tier": []
+            };
+        }
         
-        // Refresh data every minute
-        setInterval(loadGoogleSheet, 60000);
+        let allCasinos = [];
+        let currentFilter = 'all';
+        
+        async function init() {
+            const data = await loadCasinoData();
+            
+            // Flatten all casinos for display
+            allCasinos = [];
+            Object.keys(data).forEach(tier => {
+                allCasinos = allCasinos.concat(data[tier]);
+            });
+            
+            // Update tier counts
+            document.querySelectorAll('.tier-tab').forEach(tab => {
+                const tierName = tab.dataset.tier;
+                if (tierName === 'all') {
+                    tab.querySelector('.count').textContent = allCasinos.length;
+                } else if (data[tierName]) {
+                    tab.querySelector('.count').textContent = data[tierName].length;
+                }
+            });
+            
+            renderTable(allCasinos);
+            setupEventListeners();
+        }
+        
+        function renderTable(casinos) {
+            const tbody = document.getElementById('casinoTableBody');
+            tbody.innerHTML = '';
+            
+            casinos.forEach(casino => {
+                const row = document.createElement('tr');
+                
+                // Determine tier class
+                let tierClass = '';
+                switch(casino.tier) {
+                    case 'New Casinos': tierClass = 'tier-new'; break;
+                    case 'God Tier': tierClass = 'tier-god'; break;
+                    case 'High Tier': tierClass = 'tier-high'; break;
+                    case 'Medium Tier': tierClass = 'tier-medium'; break;
+                    case 'Trash Tier': tierClass = 'tier-trash'; break;
+                }
+                
+                row.innerHTML = `
+                    <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
+                    <td class="casino-name">${casino.casino}</td>
+                    <td class="daily-bonus">${formatDailyBonus(casino.dailyBonus)}</td>
+                    <td><span class="welcome-offer">${formatWelcomeOffer(casino.welcomeOffer)}</span></td>
+                    <td>${casino.minRedemption ? `<span class="min-redemption">${casino.minRedemption}</span>` : ''}</td>
+                    <td class="notes">${formatNotes(casino.notes)}</td>
+                    <td class="game-available">${casino.gravityBJ ? '✓' : ''}</td>
+                    <td class="game-available">${casino.autoRoulette ? '✓' : ''}</td>
+                    <td class="game-available">${casino.epicJoker ? '✓' : ''}</td>
+                    <td class="game-available">${casino.greatPigsby ? '✓' : ''}</td>
+                    <td style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7);">${casino.otherGames}</td>
+                    <td style="font-size: 0.85em; color: rgba(255, 255, 255, 0.6);">${casino.parentCompany}</td>
+                    <td class="restricted-states">${casino.restrictedStates}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('visibleCount').textContent = casinos.length;
+        }
+        
+        function formatDailyBonus(bonus) {
+            if (!bonus) return '';
+            return bonus.replace(/\n/g, '<br>');
+        }
+        
+        function formatWelcomeOffer(offer) {
+            if (!offer) return '';
+            return offer.replace(/\n/g, '<br>');
+        }
+        
+        function formatNotes(notes) {
+            if (!notes) return '';
+            return `<div>${notes}</div>`;
+        }
+        
+        function setupEventListeners() {
+            // Tier tab clicks
+            document.querySelectorAll('.tier-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    document.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tier = this.dataset.tier;
+                    currentFilter = tier;
+                    
+                    // Filter and render
+                    if (tier === 'all') {
+                        renderTable(allCasinos);
+                    } else {
+                        const filtered = allCasinos.filter(c => c.tier === tier);
+                        renderTable(filtered);
+                    }
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                let filtered = allCasinos;
+                
+                // Apply tier filter first if not "all"
+                if (currentFilter !== 'all') {
+                    filtered = filtered.filter(c => c.tier === currentFilter);
+                }
+                
+                // Then apply search filter
+                if (searchTerm) {
+                    filtered = filtered.filter(casino => {
+                        return casino.casino.toLowerCase().includes(searchTerm) ||
+                               casino.dailyBonus.toLowerCase().includes(searchTerm) ||
+                               casino.notes.toLowerCase().includes(searchTerm) ||
+                               casino.welcomeOffer.toLowerCase().includes(searchTerm) ||
+                               casino.parentCompany.toLowerCase().includes(searchTerm) ||
+                               casino.otherGames.toLowerCase().includes(searchTerm);
+                    });
+                }
+                
+                renderTable(filtered);
+            });
+        }
+        
+        // Initialize the dashboard
+        init();
     </script>
 </body>
 </html>
