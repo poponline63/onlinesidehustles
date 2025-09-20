@@ -182,7 +182,6 @@
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Tier Separator Styles */
         .tier-separator {
             background: transparent;
             height: 50px;
@@ -337,7 +336,7 @@
                     <div>Daily Earnings</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-value" id="totalCount">86</div>
                     <div>Total Casinos</div>
                 </div>
                 <div class="stat-card">
@@ -353,17 +352,17 @@
             <div class="dashboard-container">
                 <div class="search-section">
                     <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search casinos...">
+                        <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
                     </div>
                 </div>
                 
                 <div class="tier-tabs">
-                    <div class="tier-tab active" onclick="filterByTier('all')">All Casinos</div>
-                    <div class="tier-tab" onclick="filterByTier('New Casinos')">New Casinos</div>
-                    <div class="tier-tab" onclick="filterByTier('God Tier')">God Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('High Tier')">High Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Medium Tier')">Medium Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Trash Tier')">Trash Tier</div>
+                    <div class="tier-tab active" onclick="filterByTier('all', this)">All Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('New Casinos', this)">New Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('God Tier', this)">God Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('High Tier', this)">High Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Medium Tier', this)">Medium Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Trash Tier', this)">Trash Tier</div>
                 </div>
                 
                 <div class="table-container">
@@ -380,196 +379,216 @@
                             </tr>
                         </thead>
                         <tbody id="casinoTableBody">
-                            <!-- Data will be inserted here -->
+                            <!-- Data will be inserted here by JavaScript -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+<script>
+// Casino data array
+const casinosData = [
+    // New Casinos
+    {tier:"New Casinos",casino:"Sheeshcasino",dailyBonus:"$0.20",welcomeOffer:"$99.99 for 150SC (50%)",minRedemption:"100",notes:"5 Welcome Bonus SC on Signup. Really good website.",parentCompany:"P8D Interactive Inc"},
+    {tier:"New Casinos",casino:"RichSweeps",dailyBonus:"$0.10 - $20.00 Daily Wheel",welcomeOffer:"Choice of $9.99 for 30SC (200%)",minRedemption:"100",notes:"SpeedSweeps Sister Website. Daily Package Boosts available.",parentCompany:"WW Funcrafters JWA LLC"},
+    {tier:"New Casinos",casino:"PeakPlay",dailyBonus:"Daily Contests",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"100",notes:"New RubySweeps Sister site.",parentCompany:"Rubystone Play LLC"},
+    {tier:"New Casinos",casino:"Ace .com",dailyBonus:"$0.20 - $0.40",welcomeOffer:"$9.99 for 25SC (150%)",minRedemption:"75",notes:"2.50 Welcome Bonus SC on Signup.",parentCompany:"Full Stop Limited Inc"},
+    {tier:"New Casinos",casino:"AcornFun",dailyBonus:"Streak Calendar",welcomeOffer:"Choice of $19.99 for 30SC (50%)",minRedemption:"100",notes:"5% Redeem Fee",parentCompany:"Jupiter Studio Limited"},
+    {tier:"New Casinos",casino:"GoldRushCity",dailyBonus:"$0.20 - $1.00",welcomeOffer:"$7.98 for 16SC (100%)",minRedemption:"100",notes:"5 Welcome Bonus SC on Signup",parentCompany:"Play City Group LLC"},
+    {tier:"New Casinos",casino:"GoodVibesCasino",dailyBonus:"$0.20",welcomeOffer:"$9.99 for 25SC (150%)",minRedemption:"100",notes:"1 Welcome Bonus SC on Phone Verification",parentCompany:"SKEEVE Products Limited"},
+    {tier:"New Casinos",casino:"Lucky .me",dailyBonus:"$0.20 + Daily SC Challenges",welcomeOffer:"",minRedemption:"100",notes:"2 Welcome Bonus SC on Signup",parentCompany:"Lucky Me Ventures LLC"},
+    {tier:"New Casinos",casino:"SweepNext",dailyBonus:"$0.20 to $1.00",welcomeOffer:"Choice of $9.99 for 25SC (150%)",minRedemption:"100",notes:"Redemptions via VISA Giftcard",parentCompany:"Boostora LTD"},
+    {tier:"New Casinos",casino:"SorceryReels",dailyBonus:"$0.10",welcomeOffer:"",minRedemption:"100",notes:"10 Free Spins on Signup. 8% Redeem Fee",parentCompany:"Fish Bear Studio Limited"},
+    {tier:"New Casinos",casino:"VegasCoins",dailyBonus:"$0.20",welcomeOffer:"$12.49 for 25SC",minRedemption:"100",notes:"1 Welcome Bonus SC on Signup",parentCompany:"Vegas Coins Inc"},
+    {tier:"New Casinos",casino:"SpinQuest",dailyBonus:"$1.00",welcomeOffer:"$10 for 30SC (200%)",minRedemption:"50",notes:"Available in Canada!",parentCompany:"Social Gaming Room LLC"},
+    {tier:"New Casinos",casino:"LuckyBitsVegas",dailyBonus:"$0.20",welcomeOffer:"",minRedemption:"95",notes:"Entirely Crypto Website",parentCompany:"LBV Social LLC"},
+    {tier:"New Casinos",casino:"NioPlay",dailyBonus:"$0.30 every 6 Hours",welcomeOffer:"50% Bonus Match",minRedemption:"75",notes:"3 Welcome Bonus SC on Signup",parentCompany:"Nio Consolidated LLC"},
+    {tier:"New Casinos",casino:"Cluck",dailyBonus:"Daily SC via VIP",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"100",notes:"2 Welcome Bonus SC on Signup",parentCompany:"The Roost LTD"},
+    {tier:"New Casinos",casino:"LuckyStake",dailyBonus:"$0.20 - $2.00",welcomeOffer:"Choice of $9.99 for 25SC (150%)",minRedemption:"100",notes:"Daily contests available",parentCompany:"ElevateTech Solutions Inc"},
+    {tier:"New Casinos",casino:"ReBet",dailyBonus:"$1.00",welcomeOffer:"$200 for 300SC (200%)",minRedemption:"20",notes:"Sportsbetting site with Social Casino",parentCompany:"Rebet Inc"},
+    {tier:"New Casinos",casino:"MegaFrenzy",dailyBonus:"$0.10 - $0.40",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"100",notes:"5 Free Spins daily if you spin 25SC",parentCompany:"Heuston Gaming Inc"},
+    {tier:"New Casinos",casino:"ToraTora",dailyBonus:"Daily Spin",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"50",notes:"Daily SC spin available",parentCompany:"ToraTora Entertainment Inc"},
+    {tier:"New Casinos",casino:"LunaLandCasino",dailyBonus:"Periodic $0.20",welcomeOffer:"$9.99 for 30SC (200%)",minRedemption:"100",notes:"2 Welcome Bonus SC on Signup",parentCompany:"Parana Plays LLC"},
+    {tier:"New Casinos",casino:"iCasino",dailyBonus:"$0.42 average daily",welcomeOffer:"Choice of $7.99 for 12SC (50%)",minRedemption:"50",notes:"Skrill Redemption only",parentCompany:"Sunflower Limited"},
+    {tier:"New Casinos",casino:"Stackr",dailyBonus:"Daily Wheel + $0.20",welcomeOffer:"Choice of $4.99 for 12.5SC (150%)",minRedemption:"100",notes:"Can watch ads for more Daily SC",parentCompany:"Stackr Social LLC"},
+    {tier:"New Casinos",casino:"MoonSpin",dailyBonus:"$1.00 (Limited to $6)",welcomeOffer:"$19.99 for 40SC (200%)",minRedemption:"100",notes:"1x Playthrough requirement",parentCompany:"Star Pulse Limited"},
+    // God Tier
+    {tier:"God Tier",casino:"WOW Vegas",dailyBonus:"$0.01 - $50.00",welcomeOffer:"$10 for 30SC (300%)",minRedemption:"100",notes:"Best Happy Hour deals. Daily locked by Keys system.",parentCompany:"MW Services"},
+    {tier:"God Tier",casino:"Stake.us",dailyBonus:"$1.00",welcomeOffer:"15 Free SC",minRedemption:"50",notes:"No playthrough requirement. Crypto only.",parentCompany:"Sweepsteaks Limited"},
+    {tier:"God Tier",casino:"Crown Coins",dailyBonus:"$0.05 - $1.50",welcomeOffer:"Choice of $15.99 for 40SC (150%)",minRedemption:"50",notes:"Dailies increase with VIP level",parentCompany:"Sunflower Limited"},
+    {tier:"God Tier",casino:"Real Prize",dailyBonus:"$0.30",welcomeOffer:"$9.99 for 15SC (50%)",minRedemption:"50",notes:"Giveaway 1SC Links on Discord",parentCompany:"Legitsoft N.V"},
+    {tier:"God Tier",casino:"Lonestar",dailyBonus:"$0.30",welcomeOffer:"$10 for 30SC (200%)",minRedemption:"50",notes:"Free $1 Links Posted Daily On Discord",parentCompany:"Legitsoft N.V"},
+    {tier:"God Tier",casino:"Luckybird.io",dailyBonus:"$0.20 - $1.00",welcomeOffer:"Choice of $4.99 for 12.5SC (150%)",minRedemption:"50",notes:"Really easy daily collection",parentCompany:"Legitsoft N.V"},
+    {tier:"God Tier",casino:"Luckyland",dailyBonus:"$0.30 - $1.00",welcomeOffer:"$9.99 for 50SC (400%)",minRedemption:"50",notes:"Sister site to WowVegas. One of the best.",parentCompany:"Virtual Gaming Worlds Inc"},
+    {tier:"God Tier",casino:"GoldTreasureCasino",dailyBonus:"1 SC Daily average",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"100",notes:"Day 7 Wheel ($0.50 to $50)",parentCompany:"Gold Treasure Group LLC"},
+    {tier:"God Tier",casino:"McLuck",dailyBonus:"$0.20 - $2.00",welcomeOffer:"Choice of $9.99 for 20SC (100%)",minRedemption:"100",notes:"5 Free SC on Email Verification",parentCompany:"Splash Direct Media"},
+    {tier:"God Tier",casino:"MyPrize",dailyBonus:"$0.20 to $2.00",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"50",notes:"4.5 Free SC on Email Verification",parentCompany:"Virtual Gaming Worlds Inc"},
+    {tier:"God Tier",casino:"Lucky Slots .us",dailyBonus:"$0.00",welcomeOffer:"$9.99 for 30SC (200%)",minRedemption:"50",notes:"3 Free SC on Signup. Daily/Weekly Giveaways",parentCompany:"KIKI Interactive LLC"},
+    {tier:"God Tier",casino:"Chumba Casino",dailyBonus:"$1.00",welcomeOffer:"$10 for 30SC (200%)",minRedemption:"100",notes:"Sister website to Luckyland",parentCompany:"Virtual Gaming Worlds Inc"},
+    {tier:"God Tier",casino:"Moozi",dailyBonus:"$0.30",welcomeOffer:"$9.99 for 30SC (200%)",minRedemption:"100",notes:"Use Skrill to redeem",parentCompany:"BVG Group"},
+    {tier:"God Tier",casino:"PulszBingo",dailyBonus:"$0.20 - $1.00",welcomeOffer:"Choice of $6.99 for 15SC (114%)",minRedemption:"100",notes:"5SC on Signup",parentCompany:"Social Gaming LLC"},
+    {tier:"God Tier",casino:"Pulsz",dailyBonus:"$0.30",welcomeOffer:"Choice of $25 for 50SC (100%)",minRedemption:"100",notes:"5 Free SC on email verification",parentCompany:"Social Gaming LLC"},
+    {tier:"God Tier",casino:"Sportzino",dailyBonus:"$1.00 - $2.00",welcomeOffer:"Choice of $10 for 15SC (50%)",minRedemption:"100",notes:"Sports betting site. 5SC on email verification",parentCompany:"Social Gaming LLC"},
+    {tier:"God Tier",casino:"Zula",dailyBonus:"$1.00",welcomeOffer:"Choice of $14.99 for 30SC (100%)",minRedemption:"100",notes:"Sister Website to Pulsz",parentCompany:"Social Gaming LLC"},
+    {tier:"God Tier",casino:"YayCasino .com",dailyBonus:"$1.00",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"50",notes:"Daily $1 + mini games. VIP system",parentCompany:"Webilife Ltd"},
+    {tier:"God Tier",casino:"SpinSaga",dailyBonus:"$1.00",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"50",notes:"Redeem via gift card to Skrill",parentCompany:"Webilife Ltd"},
+    {tier:"God Tier",casino:"Rolla",dailyBonus:"$0.20",welcomeOffer:"",minRedemption:"20",notes:"Crypto only. First 30 days daily is $1",parentCompany:"TUX Gaming Ltd"},
+    {tier:"God Tier",casino:"Casino.Click",dailyBonus:"$0.00 to $5.00",welcomeOffer:"$10 for 30SC (200%)",minRedemption:"50",notes:"Daily Wheel can give up to 5SC",parentCompany:"PB Commerce Limited"},
+    {tier:"God Tier",casino:"Modo",dailyBonus:"$0.30 - $1.00",welcomeOffer:"$14.99 for 30SC (100%)",minRedemption:"100",notes:"Same site as McLuck",parentCompany:"Splash Direct Media"},
+    {tier:"God Tier",casino:"SpinPals",dailyBonus:"$0.20 to $1.00",welcomeOffer:"$9.99 for 30SC (200%)",minRedemption:"100",notes:"Sister Website to FortunePanda",parentCompany:"Wagerful LLC"},
+    {tier:"God Tier",casino:"Global Poker",dailyBonus:"$0.25 - $1.00",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"50",notes:"Poker exclusive site",parentCompany:"Virtual Gaming Worlds Inc"},
+    // High Tier
+    {tier:"High Tier",casino:"Legendz",dailyBonus:"$1.50",welcomeOffer:"Choice of $20 for 60SC (200%)",minRedemption:"100",notes:"Really generous Daily SC of $1.50",parentCompany:"Legendz LLC"},
+    {tier:"High Tier",casino:"RubySweeps",dailyBonus:"$0.10 - $1.00",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"20",notes:"No playthrough requirement",parentCompany:"Rubystone Play LLC"},
+    {tier:"High Tier",casino:"Golden Hearts Games",dailyBonus:"$0.20 - $1.00",welcomeOffer:"",minRedemption:"100",notes:"",parentCompany:"Golden Hearts"},
+    {tier:"High Tier",casino:"Fliff",dailyBonus:"$1.00",welcomeOffer:"",minRedemption:"50",notes:"$1SC daily + $0.10/2hr after. Phone only, Sportsbetting site only",parentCompany:"Fliff"},
+    {tier:"High Tier",casino:"Sidepot",dailyBonus:"$1.00 (Limited to $6)",welcomeOffer:"$19.99 for 40SC (200%)",minRedemption:"100",notes:"Sister website to Fliff",parentCompany:"Fliff"},
+    // Medium Tier
+    {tier:"Medium Tier",casino:"Jefebet",dailyBonus:"$0.80",welcomeOffer:"$20 for 50SC (150%)",minRedemption:"100",notes:"Skrill Redemption only",parentCompany:"IBOL Corporation Limited"},
+    {tier:"Medium Tier",casino:"Rolling Riches",dailyBonus:"$0.80",welcomeOffer:"$20 for 50SC (150%)",minRedemption:"100",notes:"Sister Site to JefeBet",parentCompany:"IBOL Corporation Limited"},
+    {tier:"Medium Tier",casino:"FunRize",dailyBonus:"$0.75",welcomeOffer:"$19.99 for 40SC (100%)",minRedemption:"50",notes:"Decent daily but slow redemptions",parentCompany:"Foresight Belize Limited"},
+    {tier:"Medium Tier",casino:"Hello Millions",dailyBonus:"$0.20 - $0.80",welcomeOffer:"$9.99 for 20SC (100%)",minRedemption:"100",notes:"Can claim up to 0.80SC",parentCompany:"IBOL Corporation Limited"},
+    {tier:"Medium Tier",casino:"High5Casino",dailyBonus:"$0.75",welcomeOffer:"$20 for 40SC (100%)",minRedemption:"50",notes:"Coins increase by playing GC games",parentCompany:"Social Casino LLC"},
+    {tier:"Medium Tier",casino:"SpeedSweeps",dailyBonus:"$0.10 - $20.00",welcomeOffer:"Choice of $14.99 for 35SC (133%)",minRedemption:"100",notes:"Daily Package Boosts available",parentCompany:"WW Funcrafters JWA LLC"},
+    {tier:"Medium Tier",casino:"Fortune Coins",dailyBonus:"$0.75",welcomeOffer:"",minRedemption:"50",notes:"",parentCompany:"Blazesoft"},
+    {tier:"Medium Tier",casino:"Clubs Poker",dailyBonus:"$0.50",welcomeOffer:"$20 for 40SC (200%)",minRedemption:"100",notes:"Poker + Slots",parentCompany:"KHK Games Inc"},
+    {tier:"Medium Tier",casino:"Spree",dailyBonus:"$0.40",welcomeOffer:"Incremental: $10 for 30SC, $20 for 40SC",minRedemption:"75",notes:"",parentCompany:"Play Spree"},
+    {tier:"Medium Tier",casino:"NoLimitCoins",dailyBonus:"$0.20 - $0.30 + 7th Day Free Spins",welcomeOffer:"Incremental: $11.99 for 24SC, $40 for 80SC",minRedemption:"100",notes:"Free Spins after 7 days of collecting",parentCompany:"A1"},
+    {tier:"Medium Tier",casino:"ChipNWin",dailyBonus:"$0.10 - $0.50",welcomeOffer:"$199 for 266SC, $300 for 400SC",minRedemption:"100",notes:"Website officially out of Beta",parentCompany:"Chipnwin LLC"},
+    {tier:"Medium Tier",casino:"FortuneWheelz",dailyBonus:"$0.10 - $0.50",welcomeOffer:"$30 for 70SC (233%)",minRedemption:"100",notes:"Sister site to TaoFortune",parentCompany:"A1"},
+    {tier:"Medium Tier",casino:"FunzCity",dailyBonus:"$0.10 - $0.50",welcomeOffer:"$30 for 60SC (200%)",minRedemption:"100",notes:"Sister site to TaoFortune",parentCompany:"A1"},
+    {tier:"Medium Tier",casino:"TaoFortune",dailyBonus:"$0.10 - $0.30 + Free Spins",welcomeOffer:"$80 for 110SC (137.5%)",minRedemption:"100",notes:"Popups are a bit spammy",parentCompany:"A1"},
+    {tier:"Medium Tier",casino:"Chanced.com",dailyBonus:"$1.00",welcomeOffer:"",minRedemption:"100",notes:"$1.00 after 5 day streak, 10x Playthrough",parentCompany:"Gold Coin Group"},
+    {tier:"Medium Tier",casino:"Luckyhands",dailyBonus:"$0.30",welcomeOffer:"$15 for 20SC (133%)",minRedemption:"50",notes:"Good packages, consistent site",parentCompany:"Lucky Hands"},
+    {tier:"Medium Tier",casino:"Jackpota",dailyBonus:"$0.30",welcomeOffer:"Incremental packages available",minRedemption:"75",notes:"Same owners as McLuck",parentCompany:"B2"},
+    {tier:"Medium Tier",casino:"SpinBlitz",dailyBonus:"$0.30",welcomeOffer:"Incremental packages available",minRedemption:"50",notes:"Same owners as McLuck",parentCompany:"B2"},
+    {tier:"Medium Tier",casino:"Playfame",dailyBonus:"$0.30",welcomeOffer:"Incremental packages available",minRedemption:"75",notes:"Same owners as McLuck",parentCompany:"B2"},
+    {tier:"Medium Tier",casino:"MegaBonanza",dailyBonus:"$0.30",welcomeOffer:"Incremental packages available",minRedemption:"75",notes:"",parentCompany:"B2"},
+    {tier:"Medium Tier",casino:"Baba Casino",dailyBonus:"$0.25",welcomeOffer:"$9.99 for 25SC (250%)",minRedemption:"100",notes:"",parentCompany:"Baba Entertainment LTD"},
+    {tier:"Medium Tier",casino:"Dara Casino",dailyBonus:"$0.25",welcomeOffer:"",minRedemption:"100",notes:"",parentCompany:"Dara Casino"},
+    {tier:"Medium Tier",casino:"The Money Factory",dailyBonus:"$0.20",welcomeOffer:"Incremental packages available",minRedemption:"100",notes:"Redemptions take 1-2 months",parentCompany:"The Money Factory"},
+    {tier:"Medium Tier",casino:"JackpotRabbit",dailyBonus:"$0.20 + Bonus Free Plays",welcomeOffer:"Choice of $29.99 or $24.99 packages",minRedemption:"100",notes:"3 Welcome Bonus SC on Signup",parentCompany:"UTech Solutions LLC"},
+    {tier:"Medium Tier",casino:"Wild World Casino",dailyBonus:"$0.20",welcomeOffer:"",minRedemption:"100",notes:"",parentCompany:"IGW Wild World LLC"},
+    {tier:"Medium Tier",casino:"Sixty6",dailyBonus:"Daily Wheel + $0.10",welcomeOffer:"$19.99 for 40SC (200%)",minRedemption:"100",notes:"Must purchase 1 package to redeem",parentCompany:"Kinetix Ventures LLC"},
+    {tier:"Medium Tier",casino:"Smiles Casino",dailyBonus:"$0.05 - $0.15",welcomeOffer:"$200 for 250SC (125%)",minRedemption:"100",notes:"Downgraded due to Daily Bonus Nerf",parentCompany:"10 Ten Gaming LLC"},
+    {tier:"Medium Tier",casino:"GetZoot",dailyBonus:"$0.25 - $1.00",welcomeOffer:"",minRedemption:"40",notes:"20x Playthrough Rate",parentCompany:"Enigma Lake Inc"},
+    {tier:"Medium Tier",casino:"GoldSlips",dailyBonus:"$0.05 - $15.00",welcomeOffer:"100% match, Code HELLO for 20SC",minRedemption:"50",notes:"Daily Bonus wheel issues reported",parentCompany:"Rubystone Ventures LLC"},
+    // Trash Tier
+    {tier:"Trash Tier",casino:"JuicyPopSlots",dailyBonus:"$0.20",welcomeOffer:"",minRedemption:"100",notes:"Not Worth It",parentCompany:"TechnoSoft Solutions LLC"},
+    {tier:"Trash Tier",casino:"LuckyStars",dailyBonus:"$0.20",welcomeOffer:"Choice of $10 for 30SC (200%)",minRedemption:"100",notes:"5% Redemption fee",parentCompany:"TechnoSoft Solutions LLC"},
+    {tier:"Trash Tier",casino:"Vivaro.us",dailyBonus:"$1.00 - $50.00",welcomeOffer:"$50 for 65SC (130%)",minRedemption:"100",notes:"Closing down",parentCompany:"SWS Operations Inc"},
+    {tier:"Trash Tier",casino:"Spinfinite",dailyBonus:"Daily varies",welcomeOffer:"$20 for 40SC + Wheel",minRedemption:"100",notes:"Payment System problems",parentCompany:"Forever Winning LLC"},
+    {tier:"Trash Tier",casino:"GummyPlay",dailyBonus:"$0.20",welcomeOffer:"Various packages available",minRedemption:"100",notes:"Payment System problems",parentCompany:"SWPMTECH LTD"}
+];
+
+let currentCasinos = [...casinosData];
+let currentFilter = 'all';
+
+// Function to render table
+function renderTable(casinos) {
+    const tbody = document.getElementById('casinoTableBody');
+    tbody.innerHTML = '';
     
-    <script>
-        // Casino data - UPDATED to remove casinos not in master sheet
-        const casinosData = [
-            // New Casinos
-            {"tier":"New Casinos","casino":"Sheeshcasino","dailyBonus":"$0.20","welcomeOffer":"$99.99 for 150SC (50%)","minRedemption":"100","notes":"5 Welcome Bonus SC on Signup. Really good website, could be WowVegas Competitor.","parentCompany":"P8D Interactive Inc"},
-            {"tier":"New Casinos","casino":"RichSweeps","dailyBonus":"$0.10 - $20.00 Daily Wheel","welcomeOffer":"Choice of $9.99 for 30SC (200%)","minRedemption":"100","notes":"SpeedSweeps Sister Website. Daily Package Boosts available.","parentCompany":"WW Funcrafters JWA LLC"},
-            {"tier":"New Casinos","casino":"PeakPlay","dailyBonus":"Daily Contests","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"100","notes":"New RubySweeps Sister site.","parentCompany":"Rubystone Play LLC"},
-            {"tier":"New Casinos","casino":"Ace .com","dailyBonus":"$0.20 - $0.40","welcomeOffer":"$9.99 for 25SC (150%)","minRedemption":"75","notes":"2.50 Welcome Bonus SC on Signup.","parentCompany":"Full Stop Limited Inc"},
-            {"tier":"New Casinos","casino":"AcornFun","dailyBonus":"Streak Calendar","welcomeOffer":"Choice of $19.99 for 30SC (50%)","minRedemption":"100","notes":"5% Redeem Fee","parentCompany":"Jupiter Studio Limited"},
-            {"tier":"New Casinos","casino":"GoldRushCity","dailyBonus":"$0.20 - $1.00","welcomeOffer":"$7.98 for 16SC (100%)","minRedemption":"100","notes":"5 Welcome Bonus SC on Signup","parentCompany":"Play City Group LLC"},
-            {"tier":"New Casinos","casino":"GoodVibesCasino","dailyBonus":"$0.20","welcomeOffer":"$9.99 for 25SC (150%)","minRedemption":"100","notes":"1 Welcome Bonus SC on Phone Verification","parentCompany":"SKEEVE Products Limited"},
-            {"tier":"New Casinos","casino":"Lucky .me","dailyBonus":"$0.20 + Daily SC Challenges","welcomeOffer":"","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"Lucky Me Ventures LLC"},
-            {"tier":"New Casinos","casino":"SweepNext","dailyBonus":"$0.20 to $1.00","welcomeOffer":"Choice of $9.99 for 25SC (150%)","minRedemption":"100","notes":"Redemptions via VISA Giftcard","parentCompany":"Boostora LTD"},
-            {"tier":"New Casinos","casino":"SorceryReels","dailyBonus":"$0.10","welcomeOffer":"","minRedemption":"100","notes":"10 Free Spins on Signup. 8% Redeem Fee","parentCompany":"Fish Bear Studio Limited"},
-            {"tier":"New Casinos","casino":"VegasCoins","dailyBonus":"$0.20","welcomeOffer":"$12.49 for 25SC","minRedemption":"100","notes":"1 Welcome Bonus SC on Signup","parentCompany":"Vegas Coins Inc"},
-            {"tier":"New Casinos","casino":"SpinQuest","dailyBonus":"$1.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Available in Canada!","parentCompany":"Social Gaming Room LLC"},
-            {"tier":"New Casinos","casino":"LuckyBitsVegas","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"95","notes":"Entirely Crypto Website","parentCompany":"LBV Social LLC"},
-            {"tier":"New Casinos","casino":"NioPlay","dailyBonus":"$0.30 every 6 Hours","welcomeOffer":"50% Bonus Match","minRedemption":"75","notes":"3 Welcome Bonus SC on Signup","parentCompany":"Nio Consolidated LLC"},
-            {"tier":"New Casinos","casino":"Cluck","dailyBonus":"Daily SC via VIP","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"The Roost LTD"},
-            {"tier":"New Casinos","casino":"LuckyStake","dailyBonus":"$0.20 - $2.00","welcomeOffer":"Choice of $9.99 for 25SC (150%)","minRedemption":"100","notes":"Daily contests available","parentCompany":"ElevateTech Solutions Inc"},
-            {"tier":"New Casinos","casino":"ReBet","dailyBonus":"$1.00","welcomeOffer":"$200 for 300SC (200%)","minRedemption":"20","notes":"Sportsbetting site with Social Casino","parentCompany":"Rebet Inc"},
-            {"tier":"New Casinos","casino":"MegaFrenzy","dailyBonus":"$0.10 - $0.40","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"5 Free Spins daily if you spin 25SC","parentCompany":"Heuston Gaming Inc"},
-            {"tier":"New Casinos","casino":"ToraTora","dailyBonus":"Daily Spin","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Daily SC spin available","parentCompany":"ToraTora Entertainment Inc"},
-            {"tier":"New Casinos","casino":"LunaLandCasino","dailyBonus":"Periodic $0.20","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"2 Welcome Bonus SC on Signup","parentCompany":"Parana Plays LLC"},
-            {"tier":"New Casinos","casino":"iCasino","dailyBonus":"$0.42 average daily","welcomeOffer":"Choice of $7.99 for 12SC (50%)","minRedemption":"50","notes":"Skrill Redemption only","parentCompany":"Sunflower Limited"},
-            {"tier":"New Casinos","casino":"Stackr","dailyBonus":"Daily Wheel + $0.20","welcomeOffer":"Choice of $4.99 for 12.5SC (150%)","minRedemption":"100","notes":"Can watch ads for more Daily SC","parentCompany":"Stackr Social LLC"},
-            {"tier":"New Casinos","casino":"MoonSpin","dailyBonus":"$1.00 (Limited to $6)","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"1x Playthrough requirement","parentCompany":"Star Pulse Limited"},
-            
-            // God Tier
-            {"tier":"God Tier","casino":"WOW Vegas","dailyBonus":"$0.01 - $50.00","welcomeOffer":"$10 for 30SC (300%)","minRedemption":"100","notes":"Best Happy Hour deals. Daily locked by Keys system.","parentCompany":"MW Services"},
-            {"tier":"God Tier","casino":"Stake.us","dailyBonus":"$1.00","welcomeOffer":"15 Free SC","minRedemption":"50","notes":"No playthrough requirement. Crypto only.","parentCompany":"Sweepsteaks Limited"},
-            {"tier":"God Tier","casino":"Crown Coins","dailyBonus":"$0.05 - $1.50","welcomeOffer":"Choice of $15.99 for 40SC (150%)","minRedemption":"50","notes":"Dailies increase with VIP level","parentCompany":"Sunflower Limited"},
-            {"tier":"God Tier","casino":"Real Prize","dailyBonus":"$0.30","welcomeOffer":"$9.99 for 15SC (50%)","minRedemption":"50","notes":"Giveaway 1SC Links on Discord","parentCompany":"Legitsoft N.V"},
-            {"tier":"God Tier","casino":"Lonestar","dailyBonus":"$0.30","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Free $1 Links Posted Daily On Discord","parentCompany":"Legitsoft N.V"},
-            {"tier":"God Tier","casino":"Luckybird.io","dailyBonus":"$0.20 - $1.00","welcomeOffer":"Choice of $4.99 for 12.5SC (150%)","minRedemption":"50","notes":"Really easy daily collection","parentCompany":"Legitsoft N.V"},
-            {"tier":"God Tier","casino":"Luckyland","dailyBonus":"$0.30 - $1.00","welcomeOffer":"$9.99 for 50SC (400%)","minRedemption":"50","notes":"Sister site to WowVegas. One of the best.","parentCompany":"Virtual Gaming Worlds Inc"},
-            {"tier":"God Tier","casino":"GoldTreasureCasino","dailyBonus":"1 SC Daily average","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Day 7 Wheel ($0.50 to $50)","parentCompany":"Gold Treasure Group LLC"},
-            {"tier":"God Tier","casino":"McLuck","dailyBonus":"$0.20 - $2.00","welcomeOffer":"Choice of $9.99 for 20SC (100%)","minRedemption":"100","notes":"5 Free SC on Email Verification","parentCompany":"Splash Direct Media"},
-            {"tier":"God Tier","casino":"MyPrize","dailyBonus":"$0.20 to $2.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"4.5 Free SC on Email Verification","parentCompany":"Virtual Gaming Worlds Inc"},
-            {"tier":"God Tier","casino":"Lucky Slots .us","dailyBonus":"$0.00","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"50","notes":"3 Free SC on Signup. Daily/Weekly Giveaways","parentCompany":"KIKI Interactive LLC"},
-            {"tier":"God Tier","casino":"Chumba Casino","dailyBonus":"$1.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"100","notes":"Sister website to Luckyland","parentCompany":"Virtual Gaming Worlds Inc"},
-            {"tier":"God Tier","casino":"Moozi","dailyBonus":"$0.30","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Use Skrill to redeem","parentCompany":"BVG Group"},
-            {"tier":"God Tier","casino":"PulszBingo","dailyBonus":"$0.20 - $1.00","welcomeOffer":"Choice of $6.99 for 15SC (114%)","minRedemption":"100","notes":"5SC on Signup","parentCompany":"Social Gaming LLC"},
-            {"tier":"God Tier","casino":"Pulsz","dailyBonus":"$0.30","welcomeOffer":"Choice of $25 for 50SC (100%)","minRedemption":"100","notes":"5 Free SC on email verification","parentCompany":"Social Gaming LLC"},
-            {"tier":"God Tier","casino":"Sportzino","dailyBonus":"$1.00 - $2.00","welcomeOffer":"Choice of $10 for 15SC (50%)","minRedemption":"100","notes":"Sports betting site. 5SC on email verification","parentCompany":"Social Gaming LLC"},
-            {"tier":"God Tier","casino":"Zula","dailyBonus":"$1.00","welcomeOffer":"Choice of $14.99 for 30SC (100%)","minRedemption":"100","notes":"Sister Website to Pulsz","parentCompany":"Social Gaming LLC"},
-            {"tier":"God Tier","casino":"YayCasino .com","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Daily $1 + mini games. VIP system","parentCompany":"Webilife Ltd"},
-            {"tier":"God Tier","casino":"SpinSaga","dailyBonus":"$1.00","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"50","notes":"Redeem via gift card to Skrill","parentCompany":"Webilife Ltd"},
-            {"tier":"God Tier","casino":"Rolla","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"20","notes":"Crypto only. First 30 days daily is $1","parentCompany":"TUX Gaming Ltd"},
-            {"tier":"God Tier","casino":"Casino.Click","dailyBonus":"$0.00 to $5.00","welcomeOffer":"$10 for 30SC (200%)","minRedemption":"50","notes":"Daily Wheel can give up to 5SC","parentCompany":"PB Commerce Limited"},
-            {"tier":"God Tier","casino":"Modo","dailyBonus":"$0.30 - $1.00","welcomeOffer":"$14.99 for 30SC (100%)","minRedemption":"100","notes":"Same site as McLuck","parentCompany":"Splash Direct Media"},
-            {"tier":"God Tier","casino":"SpinPals","dailyBonus":"$0.20 to $1.00","welcomeOffer":"$9.99 for 30SC (200%)","minRedemption":"100","notes":"Sister Website to FortunePanda","parentCompany":"Wagerful LLC"},
-            {"tier":"God Tier","casino":"Global Poker","dailyBonus":"$0.25 - $1.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"Poker exclusive site","parentCompany":"Virtual Gaming Worlds Inc"},
-            
-            // High Tier
-            {"tier":"High Tier","casino":"Legendz","dailyBonus":"$1.50","welcomeOffer":"Choice of $20 for 60SC (200%)","minRedemption":"100","notes":"Really generous Daily SC of $1.50","parentCompany":"Legendz LLC"},
-            {"tier":"High Tier","casino":"RubySweeps","dailyBonus":"$0.10 - $1.00","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"20","notes":"No playthrough requirement","parentCompany":"Rubystone Play LLC"},
-            
-            // Medium Tier
-            {"tier":"Medium Tier","casino":"Jefebet","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Skrill Redemption only","parentCompany":"IBOL Corporation Limited"},
-            {"tier":"Medium Tier","casino":"Rolling Riches","dailyBonus":"$0.80","welcomeOffer":"$20 for 50SC (150%)","minRedemption":"100","notes":"Sister Site to JefeBet","parentCompany":"IBOL Corporation Limited"},
-            {"tier":"Medium Tier","casino":"Funrize","dailyBonus":"$0.75","welcomeOffer":"$19.99 for 40SC (100%)","minRedemption":"50","notes":"Decent daily but slow redemptions","parentCompany":"Foresight Belize Limited"},
-            {"tier":"Medium Tier","casino":"Hello Millions","dailyBonus":"$0.20 - $0.80","welcomeOffer":"$9.99 for 20SC (100%)","minRedemption":"100","notes":"Can claim up to 0.80SC","parentCompany":"IBOL Corporation Limited"},
-            {"tier":"Medium Tier","casino":"High5Casino","dailyBonus":"$0.75","welcomeOffer":"$20 for 40SC (100%)","minRedemption":"50","notes":"Coins increase by playing GC games","parentCompany":"Social Casino LLC"},
-            {"tier":"Medium Tier","casino":"SpeedSweeps","dailyBonus":"$0.10 - $20.00","welcomeOffer":"Choice of $14.99 for 35SC (133%)","minRedemption":"100","notes":"Daily Package Boosts available","parentCompany":"WW Funcrafters JWA LLC"},
-            {"tier":"Medium Tier","casino":"SidePot","dailyBonus":"$1.00","welcomeOffer":"$19.99 for 40SC (200%)","minRedemption":"100","notes":"Daily limited to $5 total","parentCompany":"Star Pulse Limited"},
-            
-            // Trash Tier
-            {"tier":"Trash Tier","casino":"JuicyPopSlots","dailyBonus":"$0.20","welcomeOffer":"","minRedemption":"100","notes":"Not Worth It","parentCompany":"TechnoSoft Solutions LLC"},
-            {"tier":"Trash Tier","casino":"LuckyStars","dailyBonus":"$0.20","welcomeOffer":"Choice of $10 for 30SC (200%)","minRedemption":"100","notes":"5% Redemption fee","parentCompany":"TechnoSoft Solutions LLC"}
-        ];
+    // Group casinos by tier
+    const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
+    const groupedCasinos = {};
+    
+    tiers.forEach(tier => {
+        groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
+    });
+    
+    // Render each tier
+    tiers.forEach(tier => {
+        const tierCasinos = groupedCasinos[tier];
+        if (tierCasinos.length === 0) return;
         
-        let currentCasinos = [...casinosData];
-        let currentFilter = 'all';
+        // Add tier separator
+        const separatorRow = document.createElement('tr');
+        separatorRow.className = 'tier-separator';
         
-        // Render table with tier separators
-        function renderTable(casinos) {
-            const tbody = document.getElementById('casinoTableBody');
-            tbody.innerHTML = '';
-            
-            // Group casinos by tier
-            const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
-            const groupedCasinos = {};
-            
-            tiers.forEach(tier => {
-                groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
-            });
-            
-            // Render each tier with separator
-            tiers.forEach(tier => {
-                const tierCasinos = groupedCasinos[tier];
-                if (tierCasinos.length === 0) return;
-                
-                // Add tier separator row
-                const separatorRow = document.createElement('tr');
-                separatorRow.className = 'tier-separator';
-                
-                let tierLabelClass = '';
-                if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
-                else if (tier === 'God Tier') tierLabelClass = 'god-tier';
-                else if (tier === 'High Tier') tierLabelClass = 'high-tier';
-                else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
-                else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
-                
-                separatorRow.innerHTML = `
-                    <td colspan="7">
-                        <div class="tier-divider">
-                            <span class="tier-label ${tierLabelClass}">${tier}</span>
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(separatorRow);
-                
-                // Add casinos for this tier
-                tierCasinos.forEach(casino => {
-                    const row = document.createElement('tr');
-                    
-                    let tierClass = 'tier-new';
-                    if (casino.tier === 'God Tier') tierClass = 'tier-god';
-                    else if (casino.tier === 'High Tier') tierClass = 'tier-high';
-                    else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
-                    else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
-                    
-                    row.innerHTML = `
-                        <td><span class="tier-indicator ${tierClass}">${casino.tier}</span></td>
-                        <td class="casino-name">${casino.casino}</td>
-                        <td class="daily-bonus">${casino.dailyBonus}</td>
-                        <td>${casino.welcomeOffer || '-'}</td>
-                        <td><span class="min-redemption">$${casino.minRedemption}</span></td>
-                        <td class="notes">${casino.notes}</td>
-                        <td>${casino.parentCompany}</td>
-                    `;
-                    
-                    tbody.appendChild(row);
-                });
-            });
-        }
+        let tierLabelClass = '';
+        if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
+        else if (tier === 'God Tier') tierLabelClass = 'god-tier';
+        else if (tier === 'High Tier') tierLabelClass = 'high-tier';
+        else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
+        else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
         
-        // Filter by tier
-        function filterByTier(tier) {
-            currentFilter = tier;
-            
-            // Update active tab
-            document.querySelectorAll('.tier-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Filter casinos
-            if (tier === 'all') {
-                currentCasinos = [...casinosData];
-            } else {
-                currentCasinos = casinosData.filter(c => c.tier === tier);
-            }
-            
-            renderTable(currentCasinos);
-        }
+        separatorRow.innerHTML = '<td colspan="7"><div class="tier-divider"><span class="tier-label ' + tierLabelClass + '">' + tier + '</span></div></td>';
+        tbody.appendChild(separatorRow);
         
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+        // Add casinos
+        tierCasinos.forEach(casino => {
+            const row = document.createElement('tr');
             
-            let filtered = currentFilter === 'all' ? 
-                [...casinosData] : 
-                casinosData.filter(c => c.tier === currentFilter);
+            let tierClass = 'tier-new';
+            if (casino.tier === 'God Tier') tierClass = 'tier-god';
+            else if (casino.tier === 'High Tier') tierClass = 'tier-high';
+            else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
+            else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
             
-            if (searchTerm) {
-                filtered = filtered.filter(casino => 
-                    casino.casino.toLowerCase().includes(searchTerm) ||
-                    casino.dailyBonus.toLowerCase().includes(searchTerm) ||
-                    casino.notes.toLowerCase().includes(searchTerm)
-                );
-            }
+            row.innerHTML = '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
+                '<td class="casino-name">' + casino.casino + '</td>' +
+                '<td class="daily-bonus">' + casino.dailyBonus + '</td>' +
+                '<td>' + (casino.welcomeOffer || '-') + '</td>' +
+                '<td><span class="min-redemption">$' + casino.minRedemption + '</span></td>' +
+                '<td class="notes">' + casino.notes + '</td>' +
+                '<td>' + casino.parentCompany + '</td>';
             
-            renderTable(filtered);
+            tbody.appendChild(row);
         });
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('totalCount').textContent = casinosData.length;
-            renderTable(casinosData);
-        });
-    </script>
+    });
+    
+    // Update count
+    document.getElementById('totalCount').textContent = casinos.length;
+}
+
+// Filter by tier function
+function filterByTier(tier, element) {
+    currentFilter = tier;
+    
+    // Update active tab
+    document.querySelectorAll('.tier-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    element.classList.add('active');
+    
+    // Filter casinos
+    if (tier === 'all') {
+        currentCasinos = [...casinosData];
+    } else {
+        currentCasinos = casinosData.filter(c => c.tier === tier);
+    }
+    
+    renderTable(currentCasinos);
+}
+
+// Search function
+function searchCasinos() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    let filtered = currentFilter === 'all' ? 
+        [...casinosData] : 
+        casinosData.filter(c => c.tier === currentFilter);
+    
+    if (searchTerm) {
+        filtered = filtered.filter(casino => 
+            casino.casino.toLowerCase().includes(searchTerm) ||
+            casino.dailyBonus.toLowerCase().includes(searchTerm) ||
+            casino.notes.toLowerCase().includes(searchTerm) ||
+            casino.parentCompany.toLowerCase().includes(searchTerm)
+        );
+    }
+    
+    renderTable(filtered);
+}
+
+// Initialize on page load
+window.onload = function() {
+    renderTable(casinosData);
+};
+</script>
+
 </body>
 </html>
