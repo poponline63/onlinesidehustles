@@ -223,8 +223,23 @@
             transform: translateX(5px);
         }
         
+        .menu-item.coming-soon {
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
         .menu-item-new {
             background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        
+        .menu-item-coming {
+            background: linear-gradient(135deg, #607D8B, #90A4AE);
             color: white;
             font-size: 0.7rem;
             padding: 0.2rem 0.5rem;
@@ -334,7 +349,8 @@
                 font-size: 0.85rem;
             }
             
-            .menu-item-new {
+            .menu-item-new,
+            .menu-item-coming {
                 font-size: 0.65rem;
             }
         }
@@ -533,10 +549,40 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
+            padding-bottom: 4.5rem;
             transition: all 0.3s;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .category-card.coming-soon {
+            cursor: default;
+        }
+        
+        .category-card.coming-soon:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #607D8B, #90A4AE);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
         }
         
         .category-card::before {
@@ -558,7 +604,7 @@
             100% { background-position: 200% 0; }
         }
         
-        .category-card:hover::before {
+        .category-card.coming-soon:hover::before {
             opacity: 1;
         }
         
@@ -597,13 +643,14 @@
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
         
         .category-items {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 3.5rem;
         }
         
         .category-tag {
@@ -622,10 +669,19 @@
             align-items: center;
             gap: 0.5rem;
             transition: gap 0.3s;
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
         }
         
         .category-link:hover {
             gap: 1rem;
+        }
+        
+        .category-link.disabled {
+            color: #4CAF50;
+            pointer-events: none;
+            cursor: default;
         }
         
         /* Featured Section */
@@ -718,6 +774,16 @@
         
         .footer-links a:hover {
             color: #4CAF50;
+        }
+        
+        .footer-links a.disabled {
+            color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            cursor: default;
+        }
+        
+        .footer-links a.disabled:hover {
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .footer-bottom {
@@ -900,22 +966,25 @@
                                     Digital Services
                                 </div>
                                 <div class="menu-items">
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>✍️</span>
                                         Freelance Writing
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>🎨</span>
                                         Graphic Design
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>🎥</span>
                                         Video Editing
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>🤖</span>
                                         AI Services
-                                        <span class="menu-item-new">NEW</span>
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
                                 </div>
                             </div>
@@ -926,21 +995,25 @@
                                     Investing & Trading
                                 </div>
                                 <div class="menu-items">
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>₿</span>
                                         Crypto Staking
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>📈</span>
                                         Micro-Investing Apps
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>🏦</span>
                                         High-Yield Savings
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
-                                    <a href="#" class="menu-item">
+                                    <a href="#" class="menu-item coming-soon">
                                         <span>🎯</span>
                                         Cashback Programs
+                                        <span class="menu-item-coming">COMING SOON</span>
                                     </a>
                                 </div>
                             </div>
@@ -1061,7 +1134,8 @@
                 </a>
             </div>
             
-            <div class="category-card">
+            <div class="category-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
                 <div class="category-icon">🔗</div>
                 <h3 class="category-title">Affiliate Marketing</h3>
                 <p class="category-description">
@@ -1072,12 +1146,13 @@
                     <span class="category-tag">High Commissions</span>
                     <span class="category-tag">Recurring Revenue</span>
                 </div>
-                <a href="#" class="category-link">
-                    View Programs →
-                </a>
+                <span class="category-link disabled">
+                    Coming Soon →
+                </span>
             </div>
             
-            <div class="category-card">
+            <div class="category-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
                 <div class="category-icon">💻</div>
                 <h3 class="category-title">Freelancing</h3>
                 <p class="category-description">
@@ -1089,12 +1164,13 @@
                     <span class="category-tag">Content Creation</span>
                     <span class="category-tag">Coding</span>
                 </div>
-                <a href="#" class="category-link">
-                    Find Gigs →
-                </a>
+                <span class="category-link disabled">
+                    Coming Soon →
+                </span>
             </div>
             
-            <div class="category-card">
+            <div class="category-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
                 <div class="category-icon">📊</div>
                 <h3 class="category-title">Passive Investing</h3>
                 <p class="category-description">
@@ -1106,12 +1182,13 @@
                     <span class="category-tag">DeFi Yield</span>
                     <span class="category-tag">REITs</span>
                 </div>
-                <a href="#" class="category-link">
-                    Start Investing →
-                </a>
+                <span class="category-link disabled">
+                    Coming Soon →
+                </span>
             </div>
             
-            <div class="category-card">
+            <div class="category-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
                 <div class="category-icon">📱</div>
                 <h3 class="category-title">Content Creation</h3>
                 <p class="category-description">
@@ -1123,9 +1200,9 @@
                     <span class="category-tag">Online Courses</span>
                     <span class="category-tag">Podcasting</span>
                 </div>
-                <a href="#" class="category-link">
-                    Create Content →
-                </a>
+                <span class="category-link disabled">
+                    Coming Soon →
+                </span>
             </div>
         </div>
     </section>
@@ -1198,8 +1275,8 @@
                     <li><a href="skrill-casinos.html">Skrill Casinos</a></li>
                     <li><a href="sell-on-ebay-automated.html">E-Commerce</a></li>
                     <li><a href="sell-on-tiktok-automated.html">TikTok Shop</a></li>
-                    <li><a href="#">Freelancing</a></li>
-                    <li><a href="#">Investing</a></li>
+                    <li><a href="#" class="disabled">Freelancing (Coming Soon)</a></li>
+                    <li><a href="#" class="disabled">Investing (Coming Soon)</a></li>
                 </ul>
             </div>
         </div>
