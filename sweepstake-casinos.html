@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60">
     <title>Sweepstake Casino Guide - Online Sidehustles</title>
+    <!-- SheetJS Library for reading Excel files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -17,8 +18,6 @@
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
             min-height: 100vh;
-            overflow-x: auto;
-            overflow-y: auto;
         }
         
         /* Force scrollbars to always be visible */
@@ -47,7 +46,6 @@
             border-radius: 6px;
         }
         
-        /* Header Styles */
         header {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
@@ -192,19 +190,17 @@
             margin-left: 0.3rem;
         }
         
-        /* Main Content */
         .main-container {
             padding-top: 140px;
-            min-height: 100vh;
+            padding-bottom: 50px;
         }
         
         .content-wrapper {
-            width: 100%;
-            margin: 0;
-            padding: 3rem 1rem;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
-        /* Hero Section */
         .guide-hero {
             text-align: center;
             margin-bottom: 3rem;
@@ -216,421 +212,314 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .guide-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: black;
-            font-weight: bold;
-        }
-        
         .guide-hero h1 {
             font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #fff, #ccc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .guide-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(255, 215, 0, 0.05));
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        
-        .highlight-box p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .highlight-box strong {
-            color: #4CAF50;
-        }
-        
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 1200px;
         }
         
         .stat-card {
-            background: rgba(76, 175, 80, 0.05);
-            border: 1px solid rgba(76, 175, 80, 0.2);
-            border-radius: 15px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
             padding: 1.5rem;
             text-align: center;
             transition: all 0.3s;
         }
         
         .stat-card:hover {
-            background: rgba(76, 175, 80, 0.08);
             transform: translateY(-3px);
-            border-color: rgba(76, 175, 80, 0.4);
-        }
-        
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
+            background: rgba(76, 175, 80, 0.15);
         }
         
         .stat-value {
             font-size: 2rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            color: #4CAF50;
         }
         
-        .stat-label {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-        }
-        
-        /* Casino Dashboard Container */
         .dashboard-container {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.05));
-            border: 2px solid rgba(76, 175, 80, 0.4);
-            border-radius: 20px;
-            padding: 2rem;
-            width: 100%;
-            margin-bottom: 3rem;
-        }
-        
-        /* Tier Benefits */
-        .tier-benefits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .benefit-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            color: white;
-            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .loading-message {
             text-align: center;
-            transition: all 0.3s;
+            padding: 2rem;
+            color: #FFC107;
+            font-size: 1.2rem;
+            display: none;
         }
         
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background: rgba(76, 175, 80, 0.1);
-            border-color: #4CAF50;
+        .loading-message.show {
+            display: block;
         }
         
-        .benefit-card h3 {
-            font-size: 2em;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .error-message {
+            text-align: center;
+            padding: 2rem;
+            color: #f44336;
+            font-size: 1.1rem;
+            display: none;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 10px;
+            border: 1px solid #f44336;
         }
         
-        .benefit-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+        .error-message.show {
+            display: block;
         }
         
-        .benefit-card small {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85rem;
-        }
-        
-        /* Search Box */
         .search-section {
-            margin: 2rem 0;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .search-box {
-            flex: 1;
-            max-width: 400px;
-            position: relative;
+            margin-bottom: 2rem;
         }
         
         .search-box input {
             width: 100%;
-            padding: 12px 15px;
+            max-width: 400px;
+            padding: 10px;
             background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(76, 175, 80, 0.3);
-            border-radius: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
             color: white;
             font-size: 1rem;
-            transition: all 0.3s;
         }
         
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: #4CAF50;
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        .stats-display {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(76, 175, 80, 0.3);
-        }
-        
-        .stats-display span {
-            color: rgba(255, 255, 255, 0.6);
-            margin-right: 0.5rem;
-        }
-        
-        .stats-display .value {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        
-        /* Tier Tabs */
         .tier-tabs {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            justify-content: center;
         }
         
         .tier-tab {
             padding: 10px 20px;
-            border-radius: 25px;
             background: rgba(0, 0, 0, 0.5);
-            color: rgba(255, 255, 255, 0.7);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
             cursor: pointer;
-            font-weight: 600;
+            color: white;
             transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         .tier-tab:hover {
+            border-color: #4CAF50;
             transform: translateY(-2px);
-            background: rgba(76, 175, 80, 0.1);
-            border-color: rgba(76, 175, 80, 0.3);
         }
         
         .tier-tab.active {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.2));
-            color: #4CAF50;
-            border-color: #4CAF50;
-            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
-        }
-        
-        .tier-tab .count {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.85em;
-        }
-        
-        .tier-tab.active .count {
             background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
         }
         
-        /* Table Container */
         .table-container {
+            overflow-x: auto;
             background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            padding: 0;
-            overflow: hidden;
-            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
         }
         
-        .table-wrapper {
-            max-height: 750px;
-            overflow: auto;
-            scrollbar-width: thin;
-            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
-        }
-        
-        .table-wrapper::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-        }
-        
-        .table-wrapper::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .table-wrapper::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            border-radius: 6px;
-        }
-        
-        /* Table Styles */
         table {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-        
-        thead {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.85rem;
         }
         
         th {
-            padding: 15px 12px;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 8px;
             text-align: left;
             font-weight: 600;
-            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             white-space: nowrap;
-            text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
         }
         
         td {
-            padding: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.9);
-            vertical-align: top;
-        }
-        
-        tbody tr {
-            transition: background 0.2s ease;
+            vertical-align: middle;
+            line-height: 1.4;
         }
         
         tbody tr:hover {
-            background: rgba(76, 175, 80, 0.05);
+            background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Tier Indicators */
+        /* Column specific widths */
+        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
+        th:nth-child(2), td:nth-child(2) { width: 8%; min-width: 100px; }
+        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 80px; }
+        th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 120px; }
+        th:nth-child(5), td:nth-child(5) { width: 5%; min-width: 60px; }
+        th:nth-child(6), td:nth-child(6) { width: 25%; min-width: 250px; }
+        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
+        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
+        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }
+        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
+        th:nth-child(11), td:nth-child(11) { width: 8%; min-width: 80px; }
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 100px; }
+        th:nth-child(13), td:nth-child(13) { width: 10%; min-width: 120px; }
+        
+        .tier-separator {
+            background: transparent;
+            height: 50px;
+            position: relative;
+        }
+        
+        .tier-divider {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        }
+        
+        .tier-label {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 8px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+        
+        .tier-label.new-casinos {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-color: #f093fb;
+            color: white;
+        }
+        
+        .tier-label.god-tier {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-color: #FFD700;
+            color: black;
+        }
+        
+        .tier-label.high-tier {
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            border-color: #30cfd0;
+            color: white;
+        }
+        
+        .tier-label.medium-tier {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-color: #a8edea;
+            color: #333;
+        }
+        
+        .tier-label.trash-tier {
+            background: linear-gradient(135deg, #868f96, #596164);
+            border-color: #868f96;
+            color: white;
+        }
+        
         .tier-indicator {
             display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
             font-weight: bold;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
-        .tier-new { 
-            background: linear-gradient(135deg, #f093fb, #f5576c); 
-            color: white; 
+        .tier-new {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
         }
-        .tier-god { 
-            background: linear-gradient(135deg, #FFD700, #FFA500); 
-            color: black; 
+        
+        .tier-god {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
         }
-        .tier-high { 
-            background: linear-gradient(135deg, #30cfd0, #330867); 
-            color: white; 
+        
+        .tier-high {
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            color: white;
         }
-        .tier-medium { 
-            background: linear-gradient(135deg, #a8edea, #fed6e3); 
-            color: #333; 
+        
+        .tier-medium {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
         }
-        .tier-trash { 
-            background: linear-gradient(135deg, #868f96, #596164); 
-            color: white; 
+        
+        .tier-trash {
+            background: linear-gradient(135deg, #868f96, #596164);
+            color: white;
+        }
+        
+        .notes {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            max-width: 400px;
         }
         
         .casino-name {
             font-weight: 600;
             color: #4CAF50;
+            white-space: nowrap;
         }
         
         .daily-bonus {
             color: #FFEB3B;
             font-weight: 600;
-        }
-        
-        .welcome-offer {
-            background: rgba(76, 175, 80, 0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            display: inline-block;
-        }
-        
-        .notes {
-            max-width: 400px;
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
+            white-space: nowrap;
         }
         
         .min-redemption {
             background: rgba(139, 195, 74, 0.2);
             padding: 4px 8px;
             border-radius: 4px;
-            font-weight: 600;
             color: #8BC34A;
+            white-space: nowrap;
         }
         
-        .game-available {
-            color: #4CAF50;
-            font-weight: bold;
+        .welcome-offer {
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+        
+        .game-column {
             text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .parent-company {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .restricted-states {
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.5);
-            max-width: 200px;
+            font-size: 0.7em;
+            color: rgba(255, 165, 0, 0.8);
         }
-        
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 2rem 2rem;
-            margin-top: 6rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .footer-content p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-credit {
-            color: #4CAF50;
-            font-style: italic;
-            margin-top: 1rem;
-        }
-        
+
         /* Discord Float Button */
         .discord-float {
             position: fixed;
@@ -654,43 +543,9 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .guide-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .tier-tabs {
-                flex-direction: column;
-            }
-            
-            .tier-tab {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
-            
-            table {
-                font-size: 0.8em;
-            }
-            
-            th, td {
-                padding: 8px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .tier-benefits {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <a href="index.html" class="logo">
@@ -742,551 +597,337 @@
         </div>
     </div>
     
-    <!-- Main Content -->
     <div class="main-container">
         <div class="content-wrapper">
-            <!-- Hero Section -->
             <div class="guide-hero">
-                <div class="guide-badge">
-                    🔥 MOST COMPREHENSIVE GUIDE
-                </div>
                 <h1>Sweepstake Casinos Complete Guide</h1>
-                <p class="guide-description">
-                    Master the world of sweepstake casinos with our constantly updated guide. 
-                    Earn up to $1,335.60 monthly from daily free SC collections, plus $7,770+ from 
-                    strategic welcome offers and bonuses.
-                </p>
-                
-                <div class="highlight-box">
-                    <p>
-                        <strong>No deposits required to start</strong> • 
-                        Real cash prizes • Updated daily with new opportunities • 
-                        <strong>23 New Casinos</strong> verified and loaded from spreadsheet data
-                    </p>
-                </div>
+                <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
             </div>
             
-            <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon">💰</div>
                     <div class="stat-value">$44.52</div>
-                    <div class="stat-label">Daily Earnings</div>
+                    <div>Daily Earnings</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">🎰</div>
-                    <div class="stat-value">23</div>
-                    <div class="stat-label">New Casinos</div>
+                    <div class="stat-value" id="totalCount">0</div>
+                    <div>Total Casinos</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">📈</div>
                     <div class="stat-value">$1,335.60</div>
-                    <div class="stat-label">Monthly Potential</div>
+                    <div>Monthly Potential</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">⚡</div>
                     <div class="stat-value">$7,770</div>
-                    <div class="stat-label">Welcome Offers SC</div>
+                    <div>Welcome Offers SC</div>
                 </div>
             </div>
             
-            <!-- Casino Dashboard -->
             <div class="dashboard-container">
+                <div class="loading-message" id="loadingMessage">
+                    Loading casino data from GitHub...
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    Error loading data. Please check the console for details.
+                </div>
+                
                 <div class="search-section">
                     <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="🔍 Search casinos, bonuses, notes...">
-                    </div>
-                    <div class="stats-display">
-                        <span>Showing:</span>
-                        <span class="value" id="visibleCount">23</span>
+                        <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
                     </div>
                 </div>
                 
-                <!-- Tier Tabs -->
                 <div class="tier-tabs">
-                    <div class="tier-tab active" data-tier="all">
-                        All Casinos <span class="count">23</span>
-                    </div>
-                    <div class="tier-tab" data-tier="New Casinos">
-                        New Casinos <span class="count">23</span>
-                    </div>
+                    <div class="tier-tab active" onclick="filterByTier('all', this)">All Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('New Casinos', this)">New Casinos</div>
+                    <div class="tier-tab" onclick="filterByTier('God Tier', this)">God Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('High Tier', this)">High Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Medium Tier', this)">Medium Tier</div>
+                    <div class="tier-tab" onclick="filterByTier('Trash Tier', this)">Trash Tier</div>
                 </div>
                 
-                <!-- Table Container -->
                 <div class="table-container">
-                    <div class="table-wrapper">
-                        <table id="casinoTable">
-                            <thead>
-                                <tr>
-                                    <th>Tier</th>
-                                    <th>Casino</th>
-                                    <th>Daily Bonus</th>
-                                    <th>Welcome Offer</th>
-                                    <th>Min Redeem</th>
-                                    <th>Notes</th>
-                                    <th>Gravity BJ</th>
-                                    <th>Auto Roulette</th>
-                                    <th>Epic Joker</th>
-                                    <th>Great Pigsby</th>
-                                    <th>Other Games</th>
-                                    <th>Parent Company</th>
-                                    <th>Restricted States</th>
-                                </tr>
-                            </thead>
-                            <tbody id="casinoTableBody">
-                                <!-- Data will be inserted here -->
-                            </tbody>
-                        </table>
-                    </div>
+                    <table id="casinoTable">
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Casino</th>
+                                <th>Daily Bonus</th>
+                                <th>Welcome Offer</th>
+                                <th>Min Redeem</th>
+                                <th>Notes</th>
+                                <th>Gravity BJ</th>
+                                <th>Auto Roulette</th>
+                                <th>Epic Joker</th>
+                                <th>Great Pigsby</th>
+                                <th>Other Games</th>
+                                <th>Parent Company</th>
+                                <th>Restricted States</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casinoTableBody">
+                            <tr>
+                                <td colspan="13" style="text-align:center; padding:2rem;">
+                                    Loading casino data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Online Sidehustles. All rights reserved.</p>
-            <p class="footer-credit">Website by Crossroads</p>
-        </div>
-    </footer>
-    
+
     <!-- Discord Floating Button -->
     <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
         <span>💬</span>
         Join Discord Community
     </a>
-    
-    <script>
-        // Real casino data from the spreadsheet
-        const newCasinosData = [
-            {
-                "casino": "Sheeshcasino",
-                "dailyBonus": "$0.20",
-                "notes": "5 Welcome Bonus SC on Signup. If 5SC isn't rewarded you can email them and they will apply it to your account support@sheeshcasino.com. Really good website so far, could even be a WowVegas Competitor. Daily ALL DAY Happy Hour, usually 10% to 15%. VIP System that seems lucrative, will have to grind this out, they claim that Daily Discounts and Daily login will be upgrades, also there are weekly Bonus Deals that will also be applied to your shop depending on what VIP rank you are. Only caviar I can find is you must connect your bank to purchase any packages, they claim that their Credit / Debit Card payments are Coming Soon, so hopefully they will be activated soon!",
-                "welcomeOffer": "$99.99 for 150SC (50%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Speed Crash, 1.1x, Minimum Requirement",
-                "parentCompany": "P8D Interactive Inc",
-                "restrictedStates": "Connecticut, Delaware, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"
-            },
-            {
-                "casino": "RichSweeps",
-                "dailyBonus": "$0.10 - $20.00 Daily Wheel",
-                "notes": "1 Welcome Bonus SC on Signup. SpeedSweeps Sister Website. For Welcome Offers they limit you on purchasing so you have to gamble your way to the Minimum Redemption instead of just buying another pack to get there. Avoid if trying to churn for Welcome Offers. Interesting Daily Package Boost - Monday 10% SC Boost, Wednesday 15% SC Boost, Friday 20% SC Boost. Coinback Thursdays - Thursday 15% Coinback from Weekly Play. Request a Bonus - Free SC and Discounted Packages. You can request for VIP through Telegram to level up Referral Bonus and Coinback Bonus.",
-                "welcomeOffer": "Choice of $9.99 for 30SC (200%), $24.99 for 50SC (100%), $49.99 for 65SC (30%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Plinko, Low Risk, 16 Rows, Minimum Bet",
-                "parentCompany": "WW Funcrafters JWA LLC",
-                "restrictedStates": "Connecticut, Delaware, Hawaii, Idaho, Louisiana, Michigan, Montana, Nevada, New York, Washington"
-            },
-            {
-                "casino": "PeakPlay",
-                "dailyBonus": "Daily Contests",
-                "notes": "2 Welcome Bonus SC on Signup. New RubySweeps Sister site. No Daily Dollar amount but they do have Daily Contests that can give you SC.",
-                "welcomeOffer": "$20 for 40SC (100%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Rubystone Play LLC",
-                "restrictedStates": "Alabama, Connecticut, Delaware, Idaho, Georgia, Louisiana, Maryland, Michigan, Montana, Nevada, Pennsylvania, Rhode Island, Tennessee, Washington, West Virginia"
-            },
-            {
-                "casino": "Ace .com",
-                "dailyBonus": "$0.20 - $0.40",
-                "notes": "2.50 Welcome Bonus SC on Signup. Not alot of good RTP games on this site.",
-                "welcomeOffer": "$9.99 for 25SC (150%)",
-                "minRedemption": "75",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Starspell, Minimum Spin",
-                "parentCompany": "Full Stop Limited Inc",
-                "restrictedStates": "Alabama, Connecticut, Delaware, Georgia, Idaho, Kentucky, Louisiana, Maryland, Michigan, Montana, Nevada, New Jersey, New York, Pennsylvania, Rhode Island, Tennessee, Washington, West Virginia"
-            },
-            {
-                "casino": "AcornFun",
-                "dailyBonus": "Streak Calendar - 1st Day $0.30, Day 2/6 $0.20, Day 7 10 Free Spins",
-                "notes": "5% Redeem Fee :( If playing Blackjack only play 'First Person Blackjack' others have terrible RTP issues.",
-                "welcomeOffer": "Choice of $19.99 for 30SC (50%), $29.99 for 50SC (67%), $49.99 for 80SC (60%) - If you scroll down you can purchase them all",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Jupiter Studio Limited",
-                "restrictedStates": "Alabama, Connecticut, Florida, Georgia, Idaho, Kentucky, Michigan, Minnesota, Nevada, South Carolina, Washington"
-            },
-            {
-                "casino": "GoldRushCity",
-                "dailyBonus": "$0.20 - $1.00",
-                "notes": "5 Welcome Bonus SC on Signup. Claim your 5SC at this link after signup -> https://www.goldrushcity.com/rewards. Redemption was at $5 but now they changed it to $100. $1 = 100SC on this site",
-                "welcomeOffer": "$7.98 for 16SC (100%), $9.98 for 20SC (100%), $19.98 for 40SC (100%), $49.98 for 100SC (100%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Play City Group LLC",
-                "restrictedStates": "Idaho, Kentucky, Massachusetts, Michigan, Nevada, New Jersey, and Washington"
-            },
-            {
-                "casino": "GoodVibesCasino",
-                "dailyBonus": "$0.20",
-                "notes": "1 Welcome Bonus SC on Phone Verification and Signup. 0.50 SC + another 0.50 SC if you sign-in for 2 consecutive days. Launched very recently (July)",
-                "welcomeOffer": "$9.99 for 25SC (150%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Mummy's Gold, Minimum Bet, Plinko, Low Risk, 16 Rows",
-                "parentCompany": "SKEEVE Products Limited",
-                "restrictedStates": "Alabama, Connecticut, Delaware, Georgia, Hawaii, Idaho, Kentucky, Michigan, Montana, Nevada, South Carolina, Utah, Washington"
-            },
-            {
-                "casino": "Lucky .me",
-                "dailyBonus": "$0.20 (Called Lucky Streak) + Daily SC Challenges",
-                "notes": "2 Welcome Bonus SC on Signup. Launched very recently (July). Multiple small Daily bonuses - Daily Lucky Streak (SC), Spin the Wheel (GC or Small Chance of SC), Login Streak (SC), Spin any game 20 times (SC)",
-                "welcomeOffer": "",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Plinko, Low Risk, 16 Rows, Minimum Bet",
-                "parentCompany": "Lucky Me Ventures LLC",
-                "restrictedStates": "Connecticut, Idaho, Michigan, Nevada, New York, Washington"
-            },
-            {
-                "casino": "SweepNext",
-                "dailyBonus": "$0.20 to $1.00 for Daily + Periodic 'Mega Spin' Up to 2SC",
-                "notes": "(07/29/25) At time of writing, Redemptions are only available via VISA Giftcard.",
-                "welcomeOffer": "Choice of $9.99 for 25SC (150%), $19.99 for 40SC (100%), $39.99 for 51SC (27.5%), $74.99 for 102SC (36%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Boostora LTD",
-                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Mississippi, Montana, Nevada, New Jersey, New York, Washington"
-            },
-            {
-                "casino": "SorceryReels",
-                "dailyBonus": "$0.10",
-                "notes": ".40 Welcome Bonus SC on Signup (Wow AMAZING!!). 10 Free Spins on Signup Bonus too. Daily locked behind packages, one package = 7 day pass. Seems like a decent site all around for packages, Daily not so much. VIP System that could be lucrative and rewards discounted packages every week. 8% Redeem Fee :(",
-                "welcomeOffer": "",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Fish Bear Studio Limited",
-                "restrictedStates": "Idaho, Michigan, Nevada, Washington"
-            },
-            {
-                "casino": "VegasCoins",
-                "dailyBonus": "$0.20",
-                "notes": "1 Welcome Bonus SC on Signup. Very basic but straight up site.",
-                "welcomeOffer": "$12.49 for 25SC (Use Code: COINS50 to get package)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Crash Live, 1.1x, Minimum Requirement",
-                "parentCompany": "Vegas Coins Inc",
-                "restrictedStates": "Alabama, Connecticut, Delaware, Idaho, Kentucky, Louisiana, Michigan, Montana, Nevada, New York, Tennessee, and Washington"
-            },
-            {
-                "casino": "SpinQuest",
-                "dailyBonus": "$1.00",
-                "notes": "2 Welcome Bonus SC on Signup. 3x Playthrough Requirement. Available in Canada!",
-                "welcomeOffer": "$10 for 30SC (200%)",
-                "minRedemption": "50",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Plinko, Low Risk, 16 Rows",
-                "parentCompany": "Social Gaming Room LLC",
-                "restrictedStates": "Connecticut, Idaho, Michigan, Montana, Nevada, New York, Washington"
-            },
-            {
-                "casino": "LuckyBitsVegas",
-                "dailyBonus": "$0.20 (First 30 Days It Will be $1.00)",
-                "notes": "Entirely Crypto Website. Welcome Bonus is 3x Playthrough Requirement. Hi5 Sister Website",
-                "welcomeOffer": "",
-                "minRedemption": "95",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "LBV Social LLC",
-                "restrictedStates": "Arizona, Connecticut, Delaware, Idaho, Kentucky, Louisiana, Maryland, Michigan, Montana, Nevada, New Jersey, New York, Pennsylvania, Rhode Island, Washington, West Virginia"
-            },
-            {
-                "casino": "NioPlay",
-                "dailyBonus": "$0.30 every 6 Hours",
-                "notes": "3 Welcome Bonus SC on Signup. Welcome Bonus is completely useless due to you having to play your balance to 0 for any other packages to apply to your account. This is pretty bad for any package churning and may be a site you just collect your Dailies on.",
-                "welcomeOffer": "50% Bonus Match after Signup",
-                "minRedemption": "75",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Nio Consolidated LLC",
-                "restrictedStates": "Idaho, Louisiana, Michigan, Montana, Nevada, Washington, New York, Connecticut, Maryland"
-            },
-            {
-                "casino": "Cluck",
-                "dailyBonus": "Daily SC unlocked Via Leveling Up VIP",
-                "notes": "2 Welcome Bonus SC on Signup. Redeemable SC only updates when you fully playthrough all SC. Minimum Redemption changed from $50 to $100 for USD. Minimum Redemption for Crypto is $50. Site is a bit jank with signing up.",
-                "welcomeOffer": "$20 for 40SC (100%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "The Roost LTD",
-                "restrictedStates": "Connecticut, Idaho, Michigan, Nevada, New York, Washington"
-            },
-            {
-                "casino": "LuckyStake",
-                "dailyBonus": "$0.20 - $2.00",
-                "notes": "Daily contests (Not quite sure if these are worth or not). Seems like some users can only redeem under 'Payout Card' which is a Visa Giftcard instead of directly to their bank.",
-                "welcomeOffer": "Choice of $9.99 for 25SC (150%), $34.99 for 50SC (43%), $69.99 for 100SC (43%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Crash Live, 1.1x, Minimum Requirement",
-                "parentCompany": "ElevateTech Solutions Inc",
-                "restrictedStates": "Connecticut, Hawaii, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York, Utah, Washington"
-            },
-            {
-                "casino": "ReBet",
-                "dailyBonus": "$1.00 [Caps at 1SC]",
-                "notes": "Primarily a Sportsbetting site now it has a Social Casino side to it. Daily SC Caps at 1SC, this site is probably a better Package Churning Site than Daily SC Site. Very low Minimum Redemption at $20. It seems like you can only purchase packages through the mobile app while the Desktop version is purely informational. Can do gold coin challenges for SC. Welcome Offer is very good!",
-                "welcomeOffer": "$200 for 300SC (200%) Maximum (50% of Package Cost)",
-                "minRedemption": "20",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Rebet Inc",
-                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York"
-            },
-            {
-                "casino": "MegaFrenzy",
-                "dailyBonus": "$0.10 - $0.40",
-                "notes": "Once per day if you Spin 25SC on any game you get 5 Free Spins (5 x 0.2SC Spins). Not sure if it's worth to grind but if you're doing a playthrough already make sure to claim this under your rewards which is the Star Icon in the top right.",
-                "welcomeOffer": "$9.99 for 20SC (100%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Heuston Gaming Inc",
-                "restrictedStates": "Connecticut, Idaho, Louisiana, Maryland, Michigan, Montana, Nevada, New York, Washington"
-            },
-            {
-                "casino": "ToraTora",
-                "dailyBonus": "Daily Spin (Options of 1SC, 5SC, or Gold Coins)",
-                "notes": "(Daily SC seems to only output Gold Coins)",
-                "welcomeOffer": "$9.99 for 20SC (100%)",
-                "minRedemption": "50",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "ToraTora Entertainment Inc",
-                "restrictedStates": "Connecticut, Delaware, Idaho, Kentucky, Louisiana, Maryland, Michigan, Mississippi, Montana, Nebraska, Nevada, New York, Washington, West Virginia"
-            },
-            {
-                "casino": "LunaLandCasino",
-                "dailyBonus": "Periodic $0.20 With $1.00 at the end of 7 Days",
-                "notes": "2 Welcome Bonus SC on Signup",
-                "welcomeOffer": "$9.99 for 30SC (200%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "",
-                "parentCompany": "Parana Plays LLC",
-                "restrictedStates": "Idaho, Michigan, Nevada, Washington"
-            },
-            {
-                "casino": "iCasino",
-                "dailyBonus": "$3.00 available split between 7 Days Collection ($0.42 on average a Day)",
-                "notes": "[Moved from Trash Tier to New Casino due to changing Daily Bonuses] (09/03/2025) [Only Skrill Redemption at time of writing] Sister website to CrownCoins. Was a broken site only good for it's initial package but they finally released their Daily SC amount.",
-                "welcomeOffer": "Choice of $7.99 for 12SC (50%), $11.99 for 18SC (50%), $15.99 for 24SC (50%)",
-                "minRedemption": "50",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Money Roll, Minimum Bet",
-                "parentCompany": "Sunflower Limited",
-                "restrictedStates": "Idaho, Louisiana, Michigan, Montana, Nevada, Washington"
-            },
-            {
-                "casino": "Stackr",
-                "dailyBonus": "Daily Wheel $0.10 to $2.00 or Gold coins + $0.20 Daily",
-                "notes": "[Moved from Trash Tier to New Casino due to changing Daily Bonuses] Daily + Wheel now, used to be bad but they updated their website to be better. Can watch ads for more Daily SC.",
-                "welcomeOffer": "Choice of $4.99 for 12.5SC (150%), $10 for 25SC (150%), $14.99 for 37.5SC (150%), $24.99 for 62.55SC (150%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Plinko (Dare2Win), Low Risk, 8 Lines, Minimum Bet",
-                "parentCompany": "Stackr Social LLC",
-                "restrictedStates": "Arizona, California, Colorado, Connecticut, Delaware, Florida, Hawaii, Illinois, Indiana, Kansas, Maine, Maryland, Minnesota, Montana, New Jersey, North Carolina, Oregon, Rhode Island, South Dakota, Virginia, Wisconsin, Wyoming"
-            },
-            {
-                "casino": "MoonSpin",
-                "dailyBonus": "$1.00 (Limited to $6)",
-                "notes": "[Moved from Trash Tier to New Casino due to changing 30x Playthrough to 1x!] Clone Website to Sidepot. Happy Hours that will pop up in your email so look out for that!",
-                "welcomeOffer": "$19.99 for 40SC (200%)",
-                "minRedemption": "100",
-                "gravityBJ": "",
-                "autoRoulette": "",
-                "epicJoker": "",
-                "greatPigsby": "",
-                "otherGames": "Mummy's Gold, Minimum",
-                "parentCompany": "Star Pulse Limited",
-                "restrictedStates": "Washington, Montana, Michigan, Nevada, Louisiana, Idaho, Nebraska, North Dakota, Georgia"
-            }
-        ];
 
-        let allCasinos = [];
-        let currentFilter = 'all';
+<script>
+// Global variables
+let casinosData = [];
+let currentCasinos = [];
+let currentFilter = 'all';
+
+// GitHub Excel file URL
+const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
+
+// Function to load Excel from GitHub automatically
+async function loadExcelFromGitHub() {
+    const loadingDiv = document.getElementById('loadingMessage');
+    const errorDiv = document.getElementById('errorMessage');
+    
+    loadingDiv.classList.add('show');
+    errorDiv.classList.remove('show');
+    
+    try {
+        // Fetch the Excel file from GitHub
+        const response = await fetch(GITHUB_EXCEL_URL);
         
-        function init() {
-            // Use the real data from the spreadsheet
-            allCasinos = newCasinosData.map(casino => ({
-                ...casino,
-                tier: "New Casinos"
-            }));
+        if (!response.ok) {
+            throw new Error(`Failed to fetch Excel file: ${response.status} ${response.statusText}`);
+        }
+        
+        const arrayBuffer = await response.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        const workbook = XLSX.read(data, { type: 'array' });
+        
+        processExcelData(workbook);
+        loadingDiv.classList.remove('show');
+        
+    } catch (error) {
+        console.error('Error loading Excel from GitHub:', error);
+        loadingDiv.classList.remove('show');
+        errorDiv.classList.add('show');
+        errorDiv.innerHTML = `
+            Error loading data: ${error.message}<br>
+            <small>Make sure the GitHub URL is correct and the file exists.</small>
+        `;
+    }
+}
+
+// Process Excel data
+function processExcelData(workbook) {
+    // Get the first sheet (Daily Casinos)
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    
+    // Convert to JSON
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    
+    if (jsonData.length < 3) {
+        console.error('Excel file appears to be empty');
+        return;
+    }
+    
+    // Clear existing data
+    casinosData = [];
+    
+    let currentTier = '';
+    
+    // Process each row (starting from row 3 to skip headers)
+    for (let i = 2; i < jsonData.length; i++) {
+        const row = jsonData[i];
+        
+        // Skip empty rows
+        if (!row || !row[1]) continue;
+        
+        const cellContent = String(row[1]).trim();
+        
+        // Check for tier headers
+        if (cellContent.includes('New Casinos') || cellContent === 'New Casinos Verified!') {
+            currentTier = 'New Casinos';
+            continue;
+        } else if (cellContent.includes('God Tier')) {
+            currentTier = 'God Tier';
+            continue;
+        } else if (cellContent.includes('High Tier')) {
+            currentTier = 'High Tier';
+            continue;
+        } else if (cellContent.includes('Medium Tier')) {
+            currentTier = 'Medium Tier';
+            continue;
+        } else if (cellContent.includes('Trash Tier')) {
+            currentTier = 'Trash Tier';
+            continue;
+        }
+        
+        // Skip if it's "Signup" or other non-casino entries
+        if (cellContent === 'Signup' || cellContent === 'Referrals' || 
+            cellContent.includes('Thank you') || !cellContent) {
+            continue;
+        }
+        
+        // Create casino object
+        const casino = {
+            tier: currentTier || 'Uncategorized',
+            casino: cellContent,
+            dailyBonus: row[2] || '',
+            notes: row[3] || '',
+            welcomeOffer: row[4] || '',
+            minRedemption: row[5] || '',
+            gravityBJ: row[6] || '',
+            autoRoulette: row[7] || '',
+            epicJoker: row[8] || '',
+            greatPigsby: row[9] || '',
+            otherGames: row[10] || '',
+            parentCompany: row[13] || '',
+            restrictedStates: row[15] || ''
+        };
+        
+        // Clean up the data
+        Object.keys(casino).forEach(key => {
+            if (typeof casino[key] === 'string') {
+                casino[key] = casino[key].trim();
+            }
+        });
+        
+        casinosData.push(casino);
+    }
+    
+    // Update display
+    currentCasinos = [...casinosData];
+    renderTable(currentCasinos);
+    
+    console.log(`Loaded ${casinosData.length} casinos from Excel`);
+}
+
+// Render table
+function renderTable(casinos) {
+    const tbody = document.getElementById('casinoTableBody');
+    tbody.innerHTML = '';
+    
+    if (!casinos || casinos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;">No casinos found</td></tr>';
+        return;
+    }
+    
+    const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
+    const groupedCasinos = {};
+    
+    tiers.forEach(tier => {
+        groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
+    });
+    
+    tiers.forEach(tier => {
+        const tierCasinos = groupedCasinos[tier];
+        if (tierCasinos.length === 0) return;
+        
+        // Add tier separator
+        const separatorRow = document.createElement('tr');
+        separatorRow.className = 'tier-separator';
+        
+        let tierLabelClass = '';
+        if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
+        else if (tier === 'God Tier') tierLabelClass = 'god-tier';
+        else if (tier === 'High Tier') tierLabelClass = 'high-tier';
+        else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
+        else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
+        
+        separatorRow.innerHTML = '<td colspan="13"><div class="tier-divider"><span class="tier-label ' + 
+                                 tierLabelClass + '">' + tier + '</span></div></td>';
+        tbody.appendChild(separatorRow);
+        
+        // Add casino rows
+        tierCasinos.forEach(casino => {
+            const row = document.createElement('tr');
             
-            renderTable(allCasinos);
-            setupEventListeners();
-        }
-        
-        function renderTable(casinos) {
-            const tbody = document.getElementById('casinoTableBody');
-            tbody.innerHTML = '';
+            let tierClass = 'tier-new';
+            if (casino.tier === 'God Tier') tierClass = 'tier-god';
+            else if (casino.tier === 'High Tier') tierClass = 'tier-high';
+            else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
+            else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
             
-            casinos.forEach(casino => {
-                const row = document.createElement('tr');
-                
-                row.innerHTML = `
-                    <td><span class="tier-indicator tier-new">NEW CASINOS</span></td>
-                    <td class="casino-name">${casino.casino}</td>
-                    <td class="daily-bonus">${formatDailyBonus(casino.dailyBonus)}</td>
-                    <td><span class="welcome-offer">${formatWelcomeOffer(casino.welcomeOffer)}</span></td>
-                    <td>${casino.minRedemption ? `<span class="min-redemption">${casino.minRedemption}</span>` : ''}</td>
-                    <td class="notes">${formatNotes(casino.notes)}</td>
-                    <td class="game-available">${casino.gravityBJ ? '✓' : ''}</td>
-                    <td class="game-available">${casino.autoRoulette ? '✓' : ''}</td>
-                    <td class="game-available">${casino.epicJoker ? '✓' : ''}</td>
-                    <td class="game-available">${casino.greatPigsby ? '✓' : ''}</td>
-                    <td style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7);">${casino.otherGames}</td>
-                    <td style="font-size: 0.85em; color: rgba(255, 255, 255, 0.6);">${casino.parentCompany}</td>
-                    <td class="restricted-states">${casino.restrictedStates}</td>
-                `;
-                
-                tbody.appendChild(row);
-            });
+            row.innerHTML = 
+                '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
+                '<td class="casino-name">' + casino.casino + '</td>' +
+                '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
+                '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
+                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
+                '<td class="notes">' + (casino.notes || '') + '</td>' +
+                '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
+                '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
+                '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
+                '<td class="game-column">' + (casino.greatPigsby || '-') + '</td>' +
+                '<td class="game-column">' + (casino.otherGames || '-') + '</td>' +
+                '<td class="parent-company">' + (casino.parentCompany || '-') + '</td>' +
+                '<td class="restricted-states">' + (casino.restrictedStates || '-') + '</td>';
             
-            document.getElementById('visibleCount').textContent = casinos.length;
-        }
-        
-        function formatDailyBonus(bonus) {
-            if (!bonus) return '';
-            return bonus.replace(/\n/g, '<br>');
-        }
-        
-        function formatWelcomeOffer(offer) {
-            if (!offer) return '';
-            return offer.replace(/\n/g, '<br>');
-        }
-        
-        function formatNotes(notes) {
-            if (!notes) return '';
-            return `<div>${notes}</div>`;
-        }
-        
-        function setupEventListeners() {
-            // Tier tab clicks
-            document.querySelectorAll('.tier-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Update active tab
-                    document.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const tier = this.dataset.tier;
-                    currentFilter = tier;
-                    
-                    // Filter and render
-                    if (tier === 'all' || tier === 'New Casinos') {
-                        renderTable(allCasinos);
-                    } else {
-                        // No other tiers available yet
-                        renderTable([]);
-                    }
-                });
-            });
-            
-            // Search functionality
-            document.getElementById('searchInput').addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                
-                let filtered = allCasinos;
-                
-                // Apply search filter
-                if (searchTerm) {
-                    filtered = filtered.filter(casino => {
-                        return casino.casino.toLowerCase().includes(searchTerm) ||
-                               casino.dailyBonus.toLowerCase().includes(searchTerm) ||
-                               casino.notes.toLowerCase().includes(searchTerm) ||
-                               casino.welcomeOffer.toLowerCase().includes(searchTerm) ||
-                               casino.parentCompany.toLowerCase().includes(searchTerm) ||
-                               casino.otherGames.toLowerCase().includes(searchTerm);
-                    });
-                }
-                
-                renderTable(filtered);
-            });
-        }
-        
-        // Initialize the dashboard
-        init();
-    </script>
+            tbody.appendChild(row);
+        });
+    });
+    
+    document.getElementById('totalCount').textContent = casinos.length;
+}
+
+// Filter by tier
+function filterByTier(tier, element) {
+    currentFilter = tier;
+    
+    document.querySelectorAll('.tier-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    element.classList.add('active');
+    
+    if (tier === 'all') {
+        currentCasinos = [...casinosData];
+    } else {
+        currentCasinos = casinosData.filter(c => c.tier === tier);
+    }
+    
+    renderTable(currentCasinos);
+}
+
+// Search function
+function searchCasinos() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    let filtered = currentFilter === 'all' ? 
+        [...casinosData] : 
+        casinosData.filter(c => c.tier === currentFilter);
+    
+    if (searchTerm) {
+        filtered = filtered.filter(casino => {
+            return (
+                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
+                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
+                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
+                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
+                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
+            );
+        });
+    }
+    
+    renderTable(filtered);
+}
+
+// Load data automatically when page loads
+window.addEventListener('DOMContentLoaded', function() {
+    loadExcelFromGitHub();
+});
+</script>
+
 </body>
 </html>
