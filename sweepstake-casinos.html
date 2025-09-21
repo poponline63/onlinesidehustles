@@ -584,20 +584,21 @@
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Column specific widths */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
-        th:nth-child(2), td:nth-child(2) { width: 8%; min-width: 100px; }
-        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 80px; }
-        th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 120px; }
-        th:nth-child(5), td:nth-child(5) { width: 5%; min-width: 60px; }
-        th:nth-child(6), td:nth-child(6) { width: 25%; min-width: 250px; }
-        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
-        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
-        th:nth-child(11), td:nth-child(11) { width: 8%; min-width: 80px; }
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 100px; }
-        th:nth-child(13), td:nth-child(13) { width: 10%; min-width: 120px; }
+        /* Updated Column specific widths to accommodate new Signup column */
+        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
+        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
+        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
+        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
+        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
+        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
+        th:nth-child(7), td:nth-child(7) { width: 22%; min-width: 250px; } /* Notes */
+        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
+        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }  /* Auto Roulette */
+        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; } /* Epic Joker */
+        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; } /* Great Pigsby */
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; } /* Other Games */
+        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; } /* Parent Company */
+        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; } /* Restricted States */
         
         .tier-separator {
             background: transparent;
@@ -705,6 +706,25 @@
             font-weight: 600;
             color: #4CAF50;
             white-space: nowrap;
+        }
+        
+        .signup-link {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-block;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .signup-link:hover {
+            background: linear-gradient(135deg, #66BB6A, #9CCC65);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
         
         .daily-bonus {
@@ -949,6 +969,7 @@
                             <tr>
                                 <th>Tier</th>
                                 <th>Casino</th>
+                                <th>Signup</th>
                                 <th>Daily Bonus</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
@@ -964,7 +985,7 @@
                         </thead>
                         <tbody id="casinoTableBody">
                             <tr>
-                                <td colspan="13" style="text-align:center; padding:2rem;">
+                                <td colspan="14" style="text-align:center; padding:2rem;">
                                     Loading casino data...
                                 </td>
                             </tr>
@@ -1186,10 +1207,11 @@ function processExcelData(workbook) {
             continue;
         }
         
-        // Create casino object
+        // Create casino object with signup link from column A (index 0)
         const casino = {
             tier: currentTier || 'Uncategorized',
             casino: cellContent,
+            signupLink: row[0] || '', // Column A
             dailyBonus: row[2] || '',
             notes: row[3] || '',
             welcomeOffer: row[4] || '',
@@ -1220,13 +1242,35 @@ function processExcelData(workbook) {
     console.log(`Loaded ${casinosData.length} casinos from Excel`);
 }
 
+// Helper function to format signup link
+function formatSignupLink(url) {
+    if (!url) return '-';
+    
+    // Check if it's already a full URL
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+        return `<a href="${url}" target="_blank" class="signup-link">Sign Up</a>`;
+    }
+    
+    // If it's just text or partial URL, still create a link
+    if (url.length > 0) {
+        // Assume it needs https:// if it looks like a domain
+        if (url.includes('.')) {
+            return `<a href="https://${url}" target="_blank" class="signup-link">Sign Up</a>`;
+        }
+        // Otherwise just return the text
+        return url;
+    }
+    
+    return '-';
+}
+
 // Render table
 function renderTable(casinos) {
     const tbody = document.getElementById('casinoTableBody');
     tbody.innerHTML = '';
     
     if (!casinos || casinos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;">No casinos found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;">No casinos found</td></tr>';
         return;
     }
     
@@ -1252,7 +1296,7 @@ function renderTable(casinos) {
         else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
         else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
         
-        separatorRow.innerHTML = '<td colspan="13"><div class="tier-divider"><span class="tier-label ' + 
+        separatorRow.innerHTML = '<td colspan="14"><div class="tier-divider"><span class="tier-label ' + 
                                  tierLabelClass + '">' + tier + '</span></div></td>';
         tbody.appendChild(separatorRow);
         
@@ -1269,6 +1313,7 @@ function renderTable(casinos) {
             row.innerHTML = 
                 '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
                 '<td class="casino-name">' + casino.casino + '</td>' +
+                '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
                 '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
