@@ -586,8 +586,8 @@
         
         /* Updated Column specific widths to accommodate new Signup column */
         th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
-        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
-        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
+        th:nth-child(2), td:nth-child(2) { width: 6%; min-width: 80px; }  /* Signup */
+        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 100px; } /* Casino */
         th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
         th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
         th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
@@ -968,8 +968,8 @@
                         <thead>
                             <tr>
                                 <th>Tier</th>
-                                <th>Casino</th>
                                 <th>Signup</th>
+                                <th>Casino</th>
                                 <th>Daily Bonus</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
@@ -1312,8 +1312,8 @@ function renderTable(casinos) {
             
             row.innerHTML = 
                 '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
-                '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
+                '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
                 '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
