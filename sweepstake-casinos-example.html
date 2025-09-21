@@ -916,7 +916,7 @@
                     <span class="version" id="latestVersion">Loading...</span>
                 </div>
                 <div class="patch-notes-content" id="patchNotesContent">
-                    <div class="patch-loading">Loading patch notes...</div>
+                    <div class="patch-loading">Up to date</div>
                 </div>
             </div>
             
@@ -1096,20 +1096,20 @@ async function loadPatchNotes() {
         
         // If no patch notes found
         if (patchContent.children.length === 0) {
-            patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
+            patchContent.innerHTML = '<div class="patch-error">Up to date</div>';
             versionElement.textContent = 'v1.0.0';
         }
         
     } catch (error) {
         console.error('Error loading patch notes:', error);
-        patchContent.innerHTML = '<div class="patch-error">Unable to load patch notes. Check back later!</div>';
+        patchContent.innerHTML = '<div class="patch-error">Up to date</div>';
         versionElement.textContent = 'v1.0.0';
     }
 }
 
 // Format changes text into HTML
 function formatChanges(changes) {
-    if (!changes) return 'No changes listed.';
+    if (!changes) return '';
     
     // Split by line breaks or semicolons
     const items = changes.split(/[\n;]/).filter(item => item.trim());
