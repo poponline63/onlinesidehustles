@@ -585,19 +585,20 @@
         }
         
         /* Column specific widths */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
-        th:nth-child(2), td:nth-child(2) { width: 8%; min-width: 100px; }
-        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 80px; }
-        th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 120px; }
-        th:nth-child(5), td:nth-child(5) { width: 5%; min-width: 60px; }
-        th:nth-child(6), td:nth-child(6) { width: 25%; min-width: 250px; }
-        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
+        th:nth-child(1), td:nth-child(1) { width: 6%; min-width: 80px; }
+        th:nth-child(2), td:nth-child(2) { width: 5%; min-width: 80px; }
+        th:nth-child(3), td:nth-child(3) { width: 8%; min-width: 100px; }
+        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 70px; }
+        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 110px; }
+        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }
+        th:nth-child(7), td:nth-child(7) { width: 23%; min-width: 240px; }
         th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
         th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }
         th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
-        th:nth-child(11), td:nth-child(11) { width: 8%; min-width: 80px; }
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 100px; }
-        th:nth-child(13), td:nth-child(13) { width: 10%; min-width: 120px; }
+        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; }
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 70px; }
+        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 90px; }
+        th:nth-child(14), td:nth-child(14) { width: 10%; min-width: 110px; }
         
         .tier-separator {
             background: transparent;
@@ -739,6 +740,25 @@
         .restricted-states {
             font-size: 0.7em;
             color: rgba(255, 165, 0, 0.8);
+        }
+        
+        .signup-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+            background: linear-gradient(135deg, #66BB6A, #9CCC65);
         }
 
         /* Discord Float Button */
@@ -947,6 +967,7 @@
                     <table id="casinoTable">
                         <thead>
                             <tr>
+                                <th>Signup</th>
                                 <th>Tier</th>
                                 <th>Casino</th>
                                 <th>Daily Bonus</th>
@@ -964,7 +985,7 @@
                         </thead>
                         <tbody id="casinoTableBody">
                             <tr>
-                                <td colspan="13" style="text-align:center; padding:2rem;">
+                                <td colspan="14" style="text-align:center; padding:2rem;">
                                     Loading casino data...
                                 </td>
                             </tr>
@@ -1189,6 +1210,7 @@ function processExcelData(workbook) {
         // Create casino object
         const casino = {
             tier: currentTier || 'Uncategorized',
+            signupUrl: row[0] || '', // Signup URL is in column A (index 0)
             casino: cellContent,
             dailyBonus: row[2] || '',
             notes: row[3] || '',
@@ -1226,7 +1248,7 @@ function renderTable(casinos) {
     tbody.innerHTML = '';
     
     if (!casinos || casinos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;">No casinos found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;">No casinos found</td></tr>';
         return;
     }
     
@@ -1252,7 +1274,7 @@ function renderTable(casinos) {
         else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
         else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
         
-        separatorRow.innerHTML = '<td colspan="13"><div class="tier-divider"><span class="tier-label ' + 
+        separatorRow.innerHTML = '<td colspan="14"><div class="tier-divider"><span class="tier-label ' + 
                                  tierLabelClass + '">' + tier + '</span></div></td>';
         tbody.appendChild(separatorRow);
         
@@ -1266,12 +1288,76 @@ function renderTable(casinos) {
             else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
             else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
             
+            // Create signup link HTML
+            let signupHtml = '-';
+            if (casino.signupUrl) {
+                // Clean up the URL if needed
+                let url = casino.signupUrl;
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'https://' + url;
+                }
+                signupHtml = '<a href="' + url + '" target="_blank" class="signup-link">Sign Up</a>';
+            }
+            
             row.innerHTML = 
                 '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
                 '<td class="casino-name">' + casino.casino + '</td>' +
+                '<td>' + signupHtml + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
+                '<td><span class="min-redemption">' + (casino.minRedemption ? '
+
+// Filter by tier
+function filterByTier(tier, element) {
+    currentFilter = tier;
+    
+    document.querySelectorAll('.tier-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    element.classList.add('active');
+    
+    if (tier === 'all') {
+        currentCasinos = [...casinosData];
+    } else {
+        currentCasinos = casinosData.filter(c => c.tier === tier);
+    }
+    
+    renderTable(currentCasinos);
+}
+
+// Search function
+function searchCasinos() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    let filtered = currentFilter === 'all' ? 
+        [...casinosData] : 
+        casinosData.filter(c => c.tier === currentFilter);
+    
+    if (searchTerm) {
+        filtered = filtered.filter(casino => {
+            return (
+                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
+                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
+                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
+                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
+                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
+            );
+        });
+    }
+    
+    renderTable(filtered);
+}
+
+// Load data automatically when page loads
+window.addEventListener('DOMContentLoaded', function() {
+    checkGuideState();
+    loadExcelFromGitHub();
+    loadPatchNotes();
+});
+</script>
+
+</body>
+</html> + casino.minRedemption : '-') + '</span></td>' +
                 '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
