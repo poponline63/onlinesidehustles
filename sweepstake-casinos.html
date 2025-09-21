@@ -1011,7 +1011,7 @@ let patchNotesData = [];
 
 // GitHub URLs
 const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
-const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/patch-notes.xlsx';
+const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/PatchNotes.xlsx';
 
 // Toggle guide minimize/expand
 function toggleGuide() {
@@ -1109,7 +1109,7 @@ async function loadPatchNotes() {
 
 // Format changes text into HTML
 function formatChanges(changes) {
-    if (!changes) return 'No changes listed.';
+    if (!changes) return '';
     
     // Split by line breaks or semicolons
     const items = changes.split(/[\n;]/).filter(item => item.trim());
