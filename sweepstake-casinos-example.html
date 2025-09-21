@@ -219,6 +219,227 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Guide Overview Section with Minimize Feature */
+        .guide-overview {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.05));
+            border-radius: 20px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            animation: fadeIn 1s ease 0.2s both;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .guide-header:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-header h2 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .minimize-btn {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .minimize-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .minimize-btn .icon {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .guide-overview.minimized .minimize-btn .icon {
+            transform: rotate(180deg);
+        }
+
+        .guide-content {
+            padding: 2rem;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .guide-overview.minimized .guide-content {
+            max-height: 0;
+            padding: 0 2rem;
+        }
+
+        .guide-overview h3 {
+            color: #8BC34A;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(139, 195, 74, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .guide-overview p, .guide-overview li {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .guide-overview ul, .guide-overview ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-overview li {
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 235, 59, 0.1);
+            border-left: 4px solid #FFEB3B;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #FFEB3B;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #4CAF50;
+            color: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Patch Notes Section */
+        .patch-notes-section {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .patch-notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .patch-notes-header h2 {
+            color: #FFA500;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .patch-notes-header .version {
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+            color: black;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .patch-notes-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .patch-note-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #FFA500;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .patch-note-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .patch-note-date {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .patch-note-changes {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .patch-note-changes ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .patch-note-changes li {
+            margin-bottom: 0.3rem;
+        }
+
+        .patch-loading {
+            text-align: center;
+            padding: 2rem;
+            color: #FFA500;
+        }
+
+        .patch-error {
+            text-align: center;
+            padding: 1rem;
+            color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 10px;
+            border: 1px solid #f44336;
+        }
         
         .stats-grid {
             display: grid;
@@ -603,6 +824,81 @@
                 <h1>Sweepstake Casinos Complete Guide</h1>
                 <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
             </div>
+
+            <!-- Guide Overview Section with Minimize Feature -->
+            <div class="guide-overview" id="guideOverview">
+                <div class="guide-header" onclick="toggleGuide()">
+                    <h2>💰 The Daily Dollar Auto Method - Your Path to Consistent Income</h2>
+                    <button class="minimize-btn">
+                        <span class="icon">▼</span>
+                        <span class="btn-text">Minimize</span>
+                    </button>
+                </div>
+                
+                <div class="guide-content">
+                    <p>If you're looking for a straightforward way to make some extra cash online, then this is the guide for you! This is what I call the <strong>"Daily Dollar Auto Method"</strong> and it utilizes Sweepstake Casinos.</p>
+                    
+                    <p>It's a simple routine: you log in, claim your daily bonus, log out, and move on to the next site. It's not just a one-time thing - it's a consistent way to earn over time, taking only about 1-3 minutes per site. For someone aiming to build a consistent stream of extra income, this method can be a reliable side hustle when done correctly.</p>
+
+                    <h3>How It Works</h3>
+                    <p>Sweepstake casinos offer daily bonuses to avoid paying casino taxes by operating under Sweepstake laws instead of traditional gambling laws. Think of it like how a business will donate to a charity to offset their taxes, but instead of a charity it is you, and the business being the Sweepstake Casinos.</p>
+                    
+                    <p>You can log in daily, collect your Daily Login bonus and then once you reach the minimum redemption amount, you playthrough that earned money with a high RTP (Return to Player) rate and then cash out.</p>
+
+                    <div class="highlight-box">
+                        <strong>Game Selection Strategy:</strong><br>
+                        All of the listed games on the spreadsheet correlate to specific websites. If you don't see the listed game, follow this rule of thumb:<br>
+                        • <strong>SS+ Tier</strong> - Blackjack (Basic Strategy)<br>
+                        • <strong>S+ Tier</strong> - Roulette (Auto Roulette)<br>
+                        • <strong>S Tier</strong> - Plinko (Low Risk)
+                    </div>
+
+                    <h3>Step-by-Step Guide</h3>
+                    
+                    <p><span class="step-number">1</span><strong>Create a Separate Email</strong></p>
+                    <p>The VERY first thing you should do is create a separate email for all of your signups. They will send verification links, promotional emails, etc. It's best to not spam your main email with these.</p>
+
+                    <p><span class="step-number">2</span><strong>Start Signing Up!</strong></p>
+                    <p>I'd recommend just going from Top to Bottom on the spreadsheet, I ranked it from the 'most important' to 'least important' websites.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Important!</strong> I'd highly suggest just biting the bullet and spending time to verify yourself. This won't take super long (typically around 5-15 minutes) but it will stop you from getting paid if you are not verified. During sign up some sites will require you to verify your phone number and ID. This may involve a utility bill or bank statement for address confirmation.
+                    </div>
+
+                    <p><span class="step-number">3</span><strong>Begin Collecting!</strong></p>
+                    <p>Once you are verified you can start collecting your Daily Login Reward! This side hustle is exponential - the more websites you sign up to, the more you will be making per day!</p>
+                    
+                    <p>If you collect from the 70+ websites available you will be making <strong>$35 a day</strong>, which is <strong>$1,050 a month</strong> if you collect daily. Manually collecting will take roughly an hour and if you want to automate the process I'd suggest using the Sweeps-App extension or Bonus Pilot extension.</p>
+                    
+                    <p>It collects from around 80% of these websites and the other 20% I just manually collect. It costs $50 a month for this but I feel like the time it saves me a day is worth it and it also pays itself off after two days of collecting. You can find more information on the <a href="bonus-collection-software.html" style="color: #4CAF50; text-decoration: underline; font-weight: bold;">Daily Bonus Collection Software</a> page.</p>
+
+                    <p><span class="step-number">4</span><strong>Maximizing Profits - Using Incentivized Packages</strong></p>
+                    <p>Once you start collecting dailies you can utilize the Incentivized Packages that these websites have. This strategy brings me in an extra <strong>$3,000 a month</strong> in addition to the $1,050 I make from Daily Logins.</p>
+                    
+                    <p>This is to supercharge your earnings - it lets you cash out quicker because you will get to the minimum redemption faster with this strategy. All Sweepstake Casinos typically will offer packages that have these incentivized rewards, they are typically a bigger bonus than the actual purchase of it.</p>
+
+                    <div class="highlight-box">
+                        <strong>Example:</strong><br>
+                        1. You purchase a package for $50 that gives you $75SC<br>
+                        2. You play the recommended game on the spreadsheet and do a 1x playthrough of your $75<br>
+                        3. You end up with $70 after your playthrough<br>
+                        4. That is <strong>$20 dollars you just earned!</strong>
+                    </div>
+
+                    <p>I would recommend if you want to do this to utilize the welcome packages, these are some of the best packages you can get and then you will get consistent daily packages after that!</p>
+                </div>
+            </div>
+
+            <!-- Patch Notes Section -->
+            <div class="patch-notes-section">
+                <div class="patch-notes-header">
+                    <h2>📋 Latest Updates & Patch Notes</h2>
+                    <span class="version" id="latestVersion">Loading...</span>
+                </div>
+                <div class="patch-notes-content" id="patchNotesContent">
+                    <div class="patch-loading">Loading patch notes...</div>
+                </div>
+            </div>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -690,9 +986,119 @@
 let casinosData = [];
 let currentCasinos = [];
 let currentFilter = 'all';
+let patchNotesData = [];
 
-// GitHub Excel file URL
+// GitHub URLs
 const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
+const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/patch-notes.xlsx';
+
+// Toggle guide minimize/expand
+function toggleGuide() {
+    const guideOverview = document.getElementById('guideOverview');
+    const btnText = guideOverview.querySelector('.btn-text');
+    
+    guideOverview.classList.toggle('minimized');
+    
+    if (guideOverview.classList.contains('minimized')) {
+        btnText.textContent = 'Expand';
+        // Save state to localStorage
+        localStorage.setItem('guideMinimized', 'true');
+    } else {
+        btnText.textContent = 'Minimize';
+        localStorage.setItem('guideMinimized', 'false');
+    }
+}
+
+// Check saved state on page load
+function checkGuideState() {
+    const isMinimized = localStorage.getItem('guideMinimized') === 'true';
+    if (isMinimized) {
+        const guideOverview = document.getElementById('guideOverview');
+        const btnText = guideOverview.querySelector('.btn-text');
+        guideOverview.classList.add('minimized');
+        btnText.textContent = 'Expand';
+    }
+}
+
+// Function to load patch notes from GitHub
+async function loadPatchNotes() {
+    const patchContent = document.getElementById('patchNotesContent');
+    const versionElement = document.getElementById('latestVersion');
+    
+    try {
+        const response = await fetch(GITHUB_PATCH_NOTES_URL);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch patch notes');
+        }
+        
+        const arrayBuffer = await response.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        const workbook = XLSX.read(data, { type: 'array' });
+        
+        // Get the first sheet
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        
+        // Convert to JSON
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        
+        // Clear loading message
+        patchContent.innerHTML = '';
+        
+        // Process patch notes (skip header row)
+        for (let i = 1; i < jsonData.length; i++) {
+            const row = jsonData[i];
+            if (!row || !row[0]) continue;
+            
+            const noteItem = document.createElement('div');
+            noteItem.className = 'patch-note-item';
+            
+            const date = row[0] || 'Date Unknown';
+            const version = row[1] || '';
+            const changes = row[2] || '';
+            
+            // Update latest version display
+            if (i === 1 && version) {
+                versionElement.textContent = `v${version}`;
+            }
+            
+            noteItem.innerHTML = `
+                <div class="patch-note-date">${date} ${version ? '- Version ' + version : ''}</div>
+                <div class="patch-note-changes">
+                    ${formatChanges(changes)}
+                </div>
+            `;
+            
+            patchContent.appendChild(noteItem);
+        }
+        
+        // If no patch notes found
+        if (patchContent.children.length === 0) {
+            patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
+            versionElement.textContent = 'v1.0.0';
+        }
+        
+    } catch (error) {
+        console.error('Error loading patch notes:', error);
+        patchContent.innerHTML = '<div class="patch-error">Unable to load patch notes. Check back later!</div>';
+        versionElement.textContent = 'v1.0.0';
+    }
+}
+
+// Format changes text into HTML
+function formatChanges(changes) {
+    if (!changes) return 'No changes listed.';
+    
+    // Split by line breaks or semicolons
+    const items = changes.split(/[\n;]/).filter(item => item.trim());
+    
+    if (items.length > 1) {
+        return '<ul>' + items.map(item => `<li>${item.trim()}</li>`).join('') + '</ul>';
+    }
+    
+    return changes;
+}
 
 // Function to load Excel from GitHub automatically
 async function loadExcelFromGitHub() {
@@ -925,7 +1331,9 @@ function searchCasinos() {
 
 // Load data automatically when page loads
 window.addEventListener('DOMContentLoaded', function() {
+    checkGuideState();
     loadExcelFromGitHub();
+    loadPatchNotes();
 });
 </script>
 
