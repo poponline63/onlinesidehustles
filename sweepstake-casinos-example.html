@@ -603,17 +603,17 @@
         th:nth-child(1), td:nth-child(1) { width: 6%; min-width: 100px; }  /* Tier */
         th:nth-child(2), td:nth-child(2) { width: 10%; min-width: 140px; } /* Casino */
         th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 100px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 8%; min-width: 110px; }  /* Daily Bonus */
-        th:nth-child(5), td:nth-child(5) { width: 10%; min-width: 140px; } /* Welcome Offer */
-        th:nth-child(6), td:nth-child(6) { width: 6%; min-width: 90px; }  /* Min Redeem */
-        th:nth-child(7), td:nth-child(7) { width: 20%; min-width: 280px; } /* Notes */
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 80px; }  /* Gravity BJ */
-        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 80px; }  /* Auto Roulette */
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 80px; } /* Epic Joker */
-        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 80px; } /* Great Pigsby */
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 100px; } /* Other Games */
-        th:nth-child(13), td:nth-child(13) { width: 8%; min-width: 120px; } /* Parent Company */
-        th:nth-child(14), td:nth-child(14) { width: 8%; min-width: 140px; } /* Restricted States */
+        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 88px; }  /* Daily Bonus - reduced by 0.2x */
+        th:nth-child(5), td:nth-child(5) { width: 36%; min-width: 504px; } /* Notes - increased by 0.8x */
+        th:nth-child(6), td:nth-child(6) { width: 10%; min-width: 140px; } /* Welcome Offer */
+        th:nth-child(7), td:nth-child(7) { width: 6%; min-width: 90px; }  /* Min Redeem */
+        th:nth-child(8), td:nth-child(8) { width: 4%; min-width: 80px; }  /* Gravity BJ */
+        th:nth-child(9), td:nth-child(9) { width: 4%; min-width: 80px; }  /* Auto Roulette */
+        th:nth-child(10), td:nth-child(10) { width: 4%; min-width: 80px; } /* Epic Joker */
+        th:nth-child(11), td:nth-child(11) { width: 4%; min-width: 80px; } /* Great Pigsby */
+        th:nth-child(12), td:nth-child(12) { width: 5%; min-width: 100px; } /* Other Games */
+        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 120px; } /* Parent Company */
+        th:nth-child(14), td:nth-child(14) { width: 6%; min-width: 140px; } /* Restricted States */
         
         .tier-separator {
             background: transparent;
@@ -714,7 +714,7 @@
             font-size: 0.9rem; /* Increased from 0.8em */
             color: rgba(255, 255, 255, 0.85); /* Slightly brighter */
             line-height: 1.5; /* Increased from 1.4 */
-            max-width: 450px; /* Increased from 400px */
+            max-width: 800px; /* Increased significantly from 450px for wider notes */
         }
         
         .casino-name {
@@ -990,9 +990,9 @@
                                 <th>Casino</th>
                                 <th>Signup</th>
                                 <th>Daily Bonus</th>
+                                <th>Notes</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
-                                <th>Notes</th>
                                 <th>Gravity BJ</th>
                                 <th>Auto Roulette</th>
                                 <th>Epic Joker</th>
@@ -1334,9 +1334,68 @@ function renderTable(casinos) {
                 '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
-                '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
                 '<td class="notes">' + (casino.notes || '') + '</td>' +
+                '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
+                '<td><span class="min-redemption">' + (casino.minRedemption ? '
+            
+            tbody.appendChild(row);
+        });
+    });
+    
+    document.getElementById('totalCount').textContent = casinos.length;
+}
+
+// Filter by tier
+function filterByTier(tier, element) {
+    currentFilter = tier;
+    
+    document.querySelectorAll('.tier-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    element.classList.add('active');
+    
+    if (tier === 'all') {
+        currentCasinos = [...casinosData];
+    } else {
+        currentCasinos = casinosData.filter(c => c.tier === tier);
+    }
+    
+    renderTable(currentCasinos);
+}
+
+// Search function
+function searchCasinos() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    let filtered = currentFilter === 'all' ? 
+        [...casinosData] : 
+        casinosData.filter(c => c.tier === currentFilter);
+    
+    if (searchTerm) {
+        filtered = filtered.filter(casino => {
+            return (
+                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
+                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
+                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
+                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
+                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
+            );
+        });
+    }
+    
+    renderTable(filtered);
+}
+
+// Load data automatically when page loads
+window.addEventListener('DOMContentLoaded', function() {
+    checkGuideState();
+    loadExcelFromGitHub();
+    loadPatchNotes();
+});
+</script>
+
+</body>
+</html> + casino.minRedemption : '-') + '</span></td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
                 '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
