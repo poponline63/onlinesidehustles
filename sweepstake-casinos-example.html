@@ -555,69 +555,66 @@
             border-color: #4CAF50;
         }
         
-        /* ENHANCED TABLE VISIBILITY STYLES */
         .table-container {
             overflow-x: auto;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            padding: 1.5rem; /* Increased padding */
+            padding: 1rem;
             position: relative;
-            z-index: 1;
-            margin-top: 2rem; /* Added top margin */
+            z-index: 1; /* Ensure table stays below navigation */
         }
         
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            font-size: 1rem; /* Increased from 0.85rem */
+            font-size: 0.85rem;
         }
         
         th {
             background: #4CAF50;
             color: white;
-            padding: 16px 12px; /* Increased from 12px 8px */
+            padding: 12px 8px;
             text-align: left;
             font-weight: 600;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 10; /* Reduced from 100 to keep below navigation */
             white-space: nowrap;
-            font-size: 1rem; /* Increased from 0.85rem */
+            font-size: 0.85rem;
         }
         
         td {
-            padding: 14px 12px; /* Increased from 10px 8px */
+            padding: 10px 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.95); /* Slightly brighter */
+            color: rgba(255, 255, 255, 0.9);
             vertical-align: middle;
-            line-height: 1.5; /* Increased from 1.4 */
-            font-size: 0.95rem; /* Increased base font size */
+            line-height: 1.4;
         }
         
         tbody tr:hover {
-            background: rgba(76, 175, 80, 0.15); /* Slightly more visible hover */
+            background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Updated Column specific widths for better visibility */
-        th:nth-child(1), td:nth-child(1) { width: 6%; min-width: 100px; }  /* Tier */
-        th:nth-child(2), td:nth-child(2) { width: 10%; min-width: 140px; } /* Casino */
-        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 100px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 88px; }  /* Daily Bonus - reduced by 0.2x */
-        th:nth-child(5), td:nth-child(5) { width: 36%; min-width: 504px; } /* Notes - increased by 0.8x */
-        th:nth-child(6), td:nth-child(6) { width: 10%; min-width: 140px; } /* Welcome Offer */
-        th:nth-child(7), td:nth-child(7) { width: 6%; min-width: 90px; }  /* Min Redeem */
-        th:nth-child(8), td:nth-child(8) { width: 4%; min-width: 80px; }  /* Gravity BJ */
-        th:nth-child(9), td:nth-child(9) { width: 4%; min-width: 80px; }  /* Auto Roulette */
-        th:nth-child(10), td:nth-child(10) { width: 4%; min-width: 80px; } /* Epic Joker */
-        th:nth-child(11), td:nth-child(11) { width: 4%; min-width: 80px; } /* Great Pigsby */
-        th:nth-child(12), td:nth-child(12) { width: 5%; min-width: 100px; } /* Other Games */
-        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 120px; } /* Parent Company */
-        th:nth-child(14), td:nth-child(14) { width: 6%; min-width: 140px; } /* Restricted States */
+        /* Updated Column specific widths to accommodate new Signup column */
+        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
+        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
+        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
+        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
+        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
+        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
+        th:nth-child(7), td:nth-child(7) { width: 22%; min-width: 250px; } /* Notes */
+        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
+        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }  /* Auto Roulette */
+        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; } /* Epic Joker */
+        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; } /* Great Pigsby */
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; } /* Other Games */
+        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; } /* Parent Company */
+        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; } /* Restricted States */
         
         .tier-separator {
             background: transparent;
-            height: 60px; /* Increased from 50px */
+            height: 50px;
             position: relative;
         }
         
@@ -630,16 +627,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 24px; /* Increased padding */
+            padding: 8px 20px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
         }
         
         .tier-label {
             background: rgba(0, 0, 0, 0.9);
-            padding: 10px 28px; /* Increased padding */
+            padding: 8px 24px;
             border-radius: 25px;
             font-weight: bold;
-            font-size: 1.2rem; /* Increased from 1.1rem */
+            font-size: 1.1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             border: 2px solid;
@@ -679,9 +676,9 @@
         
         .tier-indicator {
             display: inline-block;
-            padding: 6px 10px; /* Increased padding */
+            padding: 4px 8px;
             border-radius: 12px;
-            font-size: 0.8rem; /* Increased from 0.7rem */
+            font-size: 0.7rem;
             font-weight: bold;
         }
         
@@ -711,27 +708,26 @@
         }
         
         .notes {
-            font-size: 0.9rem; /* Increased from 0.8em */
-            color: rgba(255, 255, 255, 0.85); /* Slightly brighter */
-            line-height: 1.5; /* Increased from 1.4 */
-            max-width: 800px; /* Increased significantly from 450px for wider notes */
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            max-width: 400px;
         }
         
         .casino-name {
             font-weight: 600;
             color: #4CAF50;
             white-space: nowrap;
-            font-size: 1rem; /* Added explicit size */
         }
         
         .signup-link {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white;
-            padding: 7px 14px; /* Increased from 5px 12px */
+            padding: 5px 12px;
             border-radius: 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem; /* Increased from 0.85rem */
+            font-size: 0.85rem;
             display: inline-block;
             transition: all 0.3s;
             white-space: nowrap;
@@ -747,37 +743,34 @@
             color: #FFEB3B;
             font-weight: 600;
             white-space: nowrap;
-            font-size: 0.95rem; /* Added explicit size */
         }
         
         .min-redemption {
             background: rgba(139, 195, 74, 0.2);
-            padding: 5px 10px; /* Increased padding */
+            padding: 4px 8px;
             border-radius: 4px;
             color: #8BC34A;
             white-space: nowrap;
-            font-size: 0.9rem; /* Added explicit size */
         }
         
         .welcome-offer {
-            font-size: 0.9rem; /* Increased from 0.8em */
+            font-size: 0.8em;
             white-space: nowrap;
         }
         
         .game-column {
             text-align: center;
-            color: rgba(255, 255, 255, 0.6); /* Slightly brighter */
-            font-size: 0.9rem; /* Added explicit size */
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .parent-company {
-            font-size: 0.85rem; /* Increased from 0.75em */
-            color: rgba(255, 255, 255, 0.75); /* Slightly brighter */
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .restricted-states {
-            font-size: 0.8rem; /* Increased from 0.7em */
-            color: rgba(255, 165, 0, 0.9); /* Slightly brighter */
+            font-size: 0.7em;
+            color: rgba(255, 165, 0, 0.8);
         }
 
         /* Discord Float Button */
@@ -990,9 +983,9 @@
                                 <th>Casino</th>
                                 <th>Signup</th>
                                 <th>Daily Bonus</th>
-                                <th>Notes</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
+                                <th>Notes</th>
                                 <th>Gravity BJ</th>
                                 <th>Auto Roulette</th>
                                 <th>Epic Joker</th>
@@ -1334,68 +1327,9 @@ function renderTable(casinos) {
                 '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
-                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? '
-            
-            tbody.appendChild(row);
-        });
-    });
-    
-    document.getElementById('totalCount').textContent = casinos.length;
-}
-
-// Filter by tier
-function filterByTier(tier, element) {
-    currentFilter = tier;
-    
-    document.querySelectorAll('.tier-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    element.classList.add('active');
-    
-    if (tier === 'all') {
-        currentCasinos = [...casinosData];
-    } else {
-        currentCasinos = casinosData.filter(c => c.tier === tier);
-    }
-    
-    renderTable(currentCasinos);
-}
-
-// Search function
-function searchCasinos() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
-    let filtered = currentFilter === 'all' ? 
-        [...casinosData] : 
-        casinosData.filter(c => c.tier === currentFilter);
-    
-    if (searchTerm) {
-        filtered = filtered.filter(casino => {
-            return (
-                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
-                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
-                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
-                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
-                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
-            );
-        });
-    }
-    
-    renderTable(filtered);
-}
-
-// Load data automatically when page loads
-window.addEventListener('DOMContentLoaded', function() {
-    checkGuideState();
-    loadExcelFromGitHub();
-    loadPatchNotes();
-});
-</script>
-
-</body>
-</html> + casino.minRedemption : '-') + '</span></td>' +
+                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
+                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
                 '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
