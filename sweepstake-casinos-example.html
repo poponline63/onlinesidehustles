@@ -598,6 +598,11 @@
             text-align: center;
         }
         
+        /* Center align the Welcome Offer column */
+        td:nth-child(6) {
+            text-align: center;
+        }
+        
         tbody tr:hover {
             background: rgba(76, 175, 80, 0.1);
         }
@@ -767,10 +772,9 @@
         
         .welcome-offer {
             font-size: 0.8em;
-            white-space: normal; /* Allow text to wrap if needed */
-            word-wrap: break-word;
-            display: block; /* Make it a block element to fill the cell width */
-            width: 100%; /* Use full width of the cell */
+            white-space: nowrap;
+            text-align: center;
+            display: inline-block;
         }
         
         .game-column {
