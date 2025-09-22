@@ -575,13 +575,14 @@
             background: #4CAF50;
             color: white;
             padding: 12px 8px;
-            text-align: left;
+            text-align: center; /* Center all headers horizontally */
             font-weight: 600;
             position: sticky;
             top: 0;
             z-index: 10; /* Reduced from 100 to keep below navigation */
             white-space: nowrap;
             font-size: 0.85rem;
+            vertical-align: middle; /* Center vertically */
         }
         
         td {
@@ -592,17 +593,32 @@
             line-height: 1.4;
         }
         
+        /* Center align the casino column specifically */
+        td:nth-child(2) {
+            text-align: center;
+        }
+        
+        /* Center align the Welcome Offer column - same as Casino column */
+        td:nth-child(6) {
+            text-align: center;
+        }
+        
+        /* Center align the Parent Company column */
+        td:nth-child(13) {
+            text-align: center;
+        }
+        
         tbody tr:hover {
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Updated Column specific widths - Daily 10%, Notes increased by 70% */
+        /* Updated Column specific widths - Welcome Offer reduced by 50% */
         th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
-        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
+        th:nth-child(2), td:nth-child(2) { width: 4.2%; min-width: 60px; } /* Casino - REDUCED BY 40% (7% * 0.6 = 4.2%) */
         th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
         th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 100px; }  /* Daily - SET TO 10% */
-        th:nth-child(5), td:nth-child(5) { width: 93.5%; min-width: 600px; } /* Notes - INCREASED BY 70% (55% * 1.7 = 93.5%) */
-        th:nth-child(6), td:nth-child(6) { width: 9%; min-width: 120px; } /* Welcome Offer */
+        th:nth-child(5), td:nth-child(5) { width: 98%; min-width: 600px; } /* Notes - INCREASED to use freed space */
+        th:nth-child(6), td:nth-child(6) { width: 4.5%; min-width: 60px; }  /* Welcome Offer - REDUCED BY 50% */
         th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }  /* Min Redeem */
         th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
         th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }  /* Auto Roulette */
@@ -717,7 +733,9 @@
         .casino-name {
             font-weight: 600;
             color: #4CAF50;
-            white-space: nowrap;
+            white-space: normal; /* Allow wrapping for narrower column */
+            word-wrap: break-word;
+            line-height: 1.3;
         }
         
         .signup-link {
@@ -759,7 +777,9 @@
         
         .welcome-offer {
             font-size: 0.8em;
-            white-space: nowrap;
+            white-space: normal; /* Allow text to wrap to multiple lines */
+            word-wrap: break-word; /* Break long words if needed */
+            line-height: 1.3; /* Good spacing between lines */
         }
         
         .game-column {
