@@ -52,7 +52,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 10000; /* Increased from 1000 to 10000 - highest z-index */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -116,7 +116,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 70px;
-            z-index: 100;
+            z-index: 9999; /* Increased from 100 to 9999 - below header but above everything else */
             backdrop-filter: blur(10px);
             padding: 1rem 0;
         }
@@ -193,6 +193,8 @@
         .main-container {
             padding-top: 140px;
             padding-bottom: 50px;
+            position: relative;
+            z-index: 1; /* Lower z-index for main content */
         }
         
         .content-wrapper {
@@ -230,6 +232,8 @@
             border: 1px solid rgba(76, 175, 80, 0.2);
             animation: fadeIn 1s ease 0.2s both;
             overflow: hidden;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
 
         @keyframes fadeIn {
@@ -357,6 +361,8 @@
             background: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
             border: 1px solid rgba(255, 165, 0, 0.3);
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
 
         .patch-notes-header {
@@ -447,6 +453,8 @@
             gap: 1rem;
             margin: 2rem auto;
             max-width: 1200px;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
         
         .stat-card {
@@ -474,6 +482,8 @@
             border-radius: 15px;
             padding: 2rem;
             margin-top: 2rem;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
         
         .loading-message {
@@ -545,64 +555,69 @@
             border-color: #4CAF50;
         }
         
+        /* ENHANCED TABLE VISIBILITY STYLES */
         .table-container {
             overflow-x: auto;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            padding: 1rem;
+            padding: 1.5rem; /* Increased padding */
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem; /* Added top margin */
         }
         
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            font-size: 0.85rem;
+            font-size: 1rem; /* Increased from 0.85rem */
         }
         
         th {
             background: #4CAF50;
             color: white;
-            padding: 12px 8px;
+            padding: 16px 12px; /* Increased from 12px 8px */
             text-align: left;
             font-weight: 600;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
             white-space: nowrap;
-            font-size: 0.85rem;
+            font-size: 1rem; /* Increased from 0.85rem */
         }
         
         td {
-            padding: 10px 8px;
+            padding: 14px 12px; /* Increased from 10px 8px */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95); /* Slightly brighter */
             vertical-align: middle;
-            line-height: 1.4;
+            line-height: 1.5; /* Increased from 1.4 */
+            font-size: 0.95rem; /* Increased base font size */
         }
         
         tbody tr:hover {
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(76, 175, 80, 0.15); /* Slightly more visible hover */
         }
         
-        /* Updated Column specific widths to accommodate new Signup column */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
-        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
-        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
-        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
-        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
-        th:nth-child(7), td:nth-child(7) { width: 22%; min-width: 250px; } /* Notes */
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
-        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }  /* Auto Roulette */
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; } /* Epic Joker */
-        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; } /* Great Pigsby */
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; } /* Other Games */
-        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; } /* Parent Company */
-        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; } /* Restricted States */
+        /* Updated Column specific widths for better visibility */
+        th:nth-child(1), td:nth-child(1) { width: 6%; min-width: 100px; }  /* Tier */
+        th:nth-child(2), td:nth-child(2) { width: 10%; min-width: 140px; } /* Casino */
+        th:nth-child(3), td:nth-child(3) { width: 7%; min-width: 100px; }  /* Signup */
+        th:nth-child(4), td:nth-child(4) { width: 8%; min-width: 110px; }  /* Daily Bonus */
+        th:nth-child(5), td:nth-child(5) { width: 10%; min-width: 140px; } /* Welcome Offer */
+        th:nth-child(6), td:nth-child(6) { width: 6%; min-width: 90px; }  /* Min Redeem */
+        th:nth-child(7), td:nth-child(7) { width: 20%; min-width: 280px; } /* Notes */
+        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 80px; }  /* Gravity BJ */
+        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 80px; }  /* Auto Roulette */
+        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 80px; } /* Epic Joker */
+        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 80px; } /* Great Pigsby */
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 100px; } /* Other Games */
+        th:nth-child(13), td:nth-child(13) { width: 8%; min-width: 120px; } /* Parent Company */
+        th:nth-child(14), td:nth-child(14) { width: 8%; min-width: 140px; } /* Restricted States */
         
         .tier-separator {
             background: transparent;
-            height: 50px;
+            height: 60px; /* Increased from 50px */
             position: relative;
         }
         
@@ -615,16 +630,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px 20px;
+            padding: 10px 24px; /* Increased padding */
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
         }
         
         .tier-label {
             background: rgba(0, 0, 0, 0.9);
-            padding: 8px 24px;
+            padding: 10px 28px; /* Increased padding */
             border-radius: 25px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Increased from 1.1rem */
             letter-spacing: 2px;
             text-transform: uppercase;
             border: 2px solid;
@@ -664,9 +679,9 @@
         
         .tier-indicator {
             display: inline-block;
-            padding: 4px 8px;
+            padding: 6px 10px; /* Increased padding */
             border-radius: 12px;
-            font-size: 0.7rem;
+            font-size: 0.8rem; /* Increased from 0.7rem */
             font-weight: bold;
         }
         
@@ -696,26 +711,27 @@
         }
         
         .notes {
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
-            max-width: 400px;
+            font-size: 0.9rem; /* Increased from 0.8em */
+            color: rgba(255, 255, 255, 0.85); /* Slightly brighter */
+            line-height: 1.5; /* Increased from 1.4 */
+            max-width: 450px; /* Increased from 400px */
         }
         
         .casino-name {
             font-weight: 600;
             color: #4CAF50;
             white-space: nowrap;
+            font-size: 1rem; /* Added explicit size */
         }
         
         .signup-link {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white;
-            padding: 5px 12px;
+            padding: 7px 14px; /* Increased from 5px 12px */
             border-radius: 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem; /* Increased from 0.85rem */
             display: inline-block;
             transition: all 0.3s;
             white-space: nowrap;
@@ -731,34 +747,37 @@
             color: #FFEB3B;
             font-weight: 600;
             white-space: nowrap;
+            font-size: 0.95rem; /* Added explicit size */
         }
         
         .min-redemption {
             background: rgba(139, 195, 74, 0.2);
-            padding: 4px 8px;
+            padding: 5px 10px; /* Increased padding */
             border-radius: 4px;
             color: #8BC34A;
             white-space: nowrap;
+            font-size: 0.9rem; /* Added explicit size */
         }
         
         .welcome-offer {
-            font-size: 0.8em;
+            font-size: 0.9rem; /* Increased from 0.8em */
             white-space: nowrap;
         }
         
         .game-column {
             text-align: center;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6); /* Slightly brighter */
+            font-size: 0.9rem; /* Added explicit size */
         }
         
         .parent-company {
-            font-size: 0.75em;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem; /* Increased from 0.75em */
+            color: rgba(255, 255, 255, 0.75); /* Slightly brighter */
         }
         
         .restricted-states {
-            font-size: 0.7em;
-            color: rgba(255, 165, 0, 0.8);
+            font-size: 0.8rem; /* Increased from 0.7em */
+            color: rgba(255, 165, 0, 0.9); /* Slightly brighter */
         }
 
         /* Discord Float Button */
@@ -776,7 +795,7 @@
             gap: 0.5rem;
             box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
             transition: all 0.3s;
-            z-index: 999;
+            z-index: 9998; /* Below navigation bars but above content */
             font-weight: 600;
         }
         
@@ -1096,13 +1115,13 @@ async function loadPatchNotes() {
         
         // If no patch notes found
         if (patchContent.children.length === 0) {
-            patchContent.innerHTML = '<div class="patch-error">Up to date</div>';
+            patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
             versionElement.textContent = 'v1.0.0';
         }
         
     } catch (error) {
         console.error('Error loading patch notes:', error);
-        patchContent.innerHTML = '<div class="patch-error">Up to date</div>';
+        patchContent.innerHTML = '<div class="patch-error">Unable to load patch notes. Check back later!</div>';
         versionElement.textContent = 'v1.0.0';
     }
 }
