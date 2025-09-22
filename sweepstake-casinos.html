@@ -52,7 +52,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 10000; /* Increased from 1000 to 10000 - highest z-index */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -116,7 +116,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 70px;
-            z-index: 100;
+            z-index: 9999; /* Increased from 100 to 9999 - below header but above everything else */
             backdrop-filter: blur(10px);
             padding: 1rem 0;
         }
@@ -193,6 +193,8 @@
         .main-container {
             padding-top: 140px;
             padding-bottom: 50px;
+            position: relative;
+            z-index: 1; /* Lower z-index for main content */
         }
         
         .content-wrapper {
@@ -230,6 +232,8 @@
             border: 1px solid rgba(76, 175, 80, 0.2);
             animation: fadeIn 1s ease 0.2s both;
             overflow: hidden;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
 
         @keyframes fadeIn {
@@ -357,6 +361,8 @@
             background: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
             border: 1px solid rgba(255, 165, 0, 0.3);
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
 
         .patch-notes-header {
@@ -447,6 +453,8 @@
             gap: 1rem;
             margin: 2rem auto;
             max-width: 1200px;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
         
         .stat-card {
@@ -474,6 +482,8 @@
             border-radius: 15px;
             padding: 2rem;
             margin-top: 2rem;
+            position: relative;
+            z-index: 1; /* Ensure it stays below navigation */
         }
         
         .loading-message {
@@ -550,6 +560,8 @@
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             padding: 1rem;
+            position: relative;
+            z-index: 1; /* Ensure table stays below navigation */
         }
         
         table {
@@ -567,7 +579,7 @@
             font-weight: 600;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10; /* Reduced from 100 to keep below navigation */
             white-space: nowrap;
             font-size: 0.85rem;
         }
@@ -776,7 +788,7 @@
             gap: 0.5rem;
             box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
             transition: all 0.3s;
-            z-index: 999;
+            z-index: 9998; /* Below navigation bars but above content */
             font-weight: 600;
         }
         
