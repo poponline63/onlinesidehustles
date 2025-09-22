@@ -596,14 +596,14 @@
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Updated Column specific widths to accommodate new Signup column */
+        /* Updated Column specific widths - Daily 10%, Notes increased by 70% */
         th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
         th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
         th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
-        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
-        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
-        th:nth-child(7), td:nth-child(7) { width: 22%; min-width: 250px; } /* Notes */
+        th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 100px; }  /* Daily - SET TO 10% */
+        th:nth-child(5), td:nth-child(5) { width: 93.5%; min-width: 600px; } /* Notes - INCREASED BY 70% (55% * 1.7 = 93.5%) */
+        th:nth-child(6), td:nth-child(6) { width: 9%; min-width: 120px; } /* Welcome Offer */
+        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }  /* Min Redeem */
         th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
         th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }  /* Auto Roulette */
         th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; } /* Epic Joker */
@@ -711,7 +711,7 @@
             font-size: 0.8em;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.4;
-            max-width: 400px;
+            max-width: none; /* Removed max-width restriction */
         }
         
         .casino-name {
@@ -742,7 +742,11 @@
         .daily-bonus {
             color: #FFEB3B;
             font-weight: 600;
-            white-space: nowrap;
+            font-size: 0.65rem; /* Small font to fit narrow column */
+            word-wrap: break-word;
+            white-space: normal; /* Allow text to wrap */
+            line-height: 1.2;
+            max-width: 100%;
         }
         
         .min-redemption {
@@ -982,10 +986,10 @@
                                 <th>Tier</th>
                                 <th>Casino</th>
                                 <th>Signup</th>
-                                <th>Daily Bonus</th>
+                                <th>Daily</th>
+                                <th>Notes</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
-                                <th>Notes</th>
                                 <th>Gravity BJ</th>
                                 <th>Auto Roulette</th>
                                 <th>Epic Joker</th>
@@ -1327,9 +1331,9 @@ function renderTable(casinos) {
                 '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
+                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
                 '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
-                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
                 '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
