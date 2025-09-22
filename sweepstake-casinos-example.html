@@ -596,12 +596,12 @@
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Updated Column specific widths with Notes moved after Daily Bonus */
+        /* Updated Column specific widths - Daily Bonus column made narrower */
         th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
         th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
         th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
-        th:nth-child(5), td:nth-child(5) { width: 22%; min-width: 250px; } /* Notes */
+        th:nth-child(4), td:nth-child(4) { width: 4%; min-width: 50px; }  /* Daily Bonus - REDUCED */
+        th:nth-child(5), td:nth-child(5) { width: 24%; min-width: 250px; } /* Notes - INCREASED */
         th:nth-child(6), td:nth-child(6) { width: 9%; min-width: 120px; } /* Welcome Offer */
         th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }  /* Min Redeem */
         th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Gravity BJ */
@@ -743,6 +743,7 @@
             color: #FFEB3B;
             font-weight: 600;
             white-space: nowrap;
+            font-size: 0.85rem; /* Made slightly smaller */
         }
         
         .min-redemption {
@@ -982,7 +983,7 @@
                                 <th>Tier</th>
                                 <th>Casino</th>
                                 <th>Signup</th>
-                                <th>Daily Bonus</th>
+                                <th>Daily</th>
                                 <th>Notes</th>
                                 <th>Welcome Offer</th>
                                 <th>Min Redeem</th>
@@ -1327,11 +1328,11 @@ function renderTable(casinos) {
                 '<td class="casino-name">' + casino.casino + '</td>' +
                 '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
+                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
                 '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
-                '<td class="notes">' + (casino.notes || '') + '</td>' +
                 '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
                 '<td class="game-column">' + (casino.greatPigsby || '-') + '</td>' +
                 '<td class="game-column">' + (casino.otherGames || '-') + '</td>' +
