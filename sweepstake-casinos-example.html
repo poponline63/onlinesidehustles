@@ -772,7 +772,9 @@
         
         .welcome-offer {
             font-size: 0.8em;
-            white-space: nowrap;
+            white-space: normal; /* Allow text to wrap to multiple lines */
+            word-wrap: break-word; /* Break long words if needed */
+            line-height: 1.3; /* Good spacing between lines */
         }
         
         .game-column {
