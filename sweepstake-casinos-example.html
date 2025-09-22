@@ -742,10 +742,11 @@
         .daily-bonus {
             color: #FFEB3B;
             font-weight: 600;
-            white-space: nowrap;
-            font-size: 0.65rem; /* Made very small to fit narrow column */
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 0.65rem; /* Small font to fit narrow column */
+            word-wrap: break-word;
+            white-space: normal; /* Allow text to wrap */
+            line-height: 1.2;
+            max-width: 100%;
         }
         
         .min-redemption {
