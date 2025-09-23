@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$20 to $1000 Guide - Strategic Sweepstake Casino Progression</title>
+    <title>$20 to $1000+ Complete Sweepstakes Casino Guide</title>
     <style>
         * {
             margin: 0;
@@ -114,8 +114,8 @@
             color: #FFD700;
         }
         
-        /* Phase Navigation */
-        .phase-nav {
+        /* Navigation */
+        .nav-section {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
@@ -125,7 +125,7 @@
             border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
         
-        .phase-nav-content {
+        .nav-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -136,20 +136,20 @@
             scrollbar-color: #FFD700 rgba(255, 255, 255, 0.1);
         }
         
-        .phase-nav-content::-webkit-scrollbar {
+        .nav-content::-webkit-scrollbar {
             height: 6px;
         }
         
-        .phase-nav-content::-webkit-scrollbar-track {
+        .nav-content::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
         }
         
-        .phase-nav-content::-webkit-scrollbar-thumb {
+        .nav-content::-webkit-scrollbar-thumb {
             background: #FFD700;
             border-radius: 3px;
         }
         
-        .phase-btn {
+        .nav-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.8);
@@ -164,14 +164,14 @@
             gap: 0.5rem;
         }
         
-        .phase-btn:hover {
+        .nav-btn:hover {
             background: rgba(255, 215, 0, 0.1);
             border-color: rgba(255, 215, 0, 0.3);
             color: #FFD700;
             transform: translateY(-2px);
         }
         
-        .phase-btn.active {
+        .nav-btn.active {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
             border-color: #FFD700;
             color: #FFD700;
@@ -199,25 +199,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 165, 0, 0.2));
-            border: 2px solid #FF6B6B;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            margin-bottom: 2rem;
-            font-weight: bold;
-            color: #FF6B6B;
-            animation: glow 2s ease-in-out infinite;
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.5); }
-        }
-        
         h1 {
             font-size: 4rem;
             font-weight: 900;
@@ -237,81 +218,8 @@
             line-height: 1.7;
         }
         
-        /* Strategy Overview */
-        .strategy-overview {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(76, 175, 80, 0.05));
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .strategy-overview::before {
-            content: '💡';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 100px;
-            opacity: 0.1;
-            transform: rotate(-15deg);
-        }
-        
-        .strategy-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: #FFD700;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .strategy-steps {
-            display: grid;
-            gap: 1rem;
-        }
-        
-        .strategy-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
-        
-        .strategy-step:hover {
-            background: rgba(0, 0, 0, 0.5);
-            transform: translateX(10px);
-        }
-        
-        .step-number {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        
-        .step-text {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-        
-        /* Phase Sections */
-        .phase-section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 180px;
-        }
-        
-        .phase-header {
+        /* Section Headers */
+        .section-header {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1));
             border: 2px solid rgba(255, 215, 0, 0.3);
             border-radius: 20px;
@@ -320,7 +228,7 @@
             text-align: center;
         }
         
-        .phase-title {
+        .section-title {
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
@@ -329,40 +237,16 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .phase-subtitle {
+        .section-subtitle {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1rem;
         }
         
-        .phase-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .phase-stat {
-            text-align: center;
-        }
-        
-        .phase-stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.3rem;
-        }
-        
-        .phase-stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #4CAF50;
-        }
-        
-        /* Casino Cards Grid */
+        /* Casino Cards */
         .casino-grid {
             display: grid;
             gap: 1.5rem;
+            margin-bottom: 3rem;
         }
         
         .casino-card {
@@ -385,6 +269,21 @@
             border-color: rgba(255, 215, 0, 0.3);
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .casino-card.signup-site {
+            border-color: rgba(76, 175, 80, 0.3);
+            background: rgba(76, 175, 80, 0.05);
+        }
+        
+        .casino-card.b2-site {
+            border-color: rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 165, 0, 0.05));
+        }
+        
+        .casino-card.a1-site {
+            border-color: rgba(139, 195, 74, 0.3);
+            background: rgba(139, 195, 74, 0.05);
         }
         
         .casino-number {
@@ -423,7 +322,7 @@
             color: white;
         }
         
-        .casino-return {
+        .casino-profit {
             background: rgba(76, 175, 80, 0.1);
             border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
@@ -433,9 +332,19 @@
             font-weight: bold;
         }
         
+        .casino-notes {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+        
         .casino-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -459,92 +368,73 @@
             color: white;
         }
         
-        .bonus-highlight {
-            color: #FFD700;
-        }
-        
-        /* Bonus Sites Section */
-        .bonus-sites {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .bonus-sites-title {
-            font-size: 1.8rem;
+        .signup-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
             font-weight: bold;
-            margin-bottom: 1rem;
-            color: #FFD700;
-        }
-        
-        .bonus-sites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            transition: all 0.3s;
             margin-top: 1rem;
         }
         
-        .bonus-site-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 10px;
+        .signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(76, 175, 80, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s;
-            border: 1px solid transparent;
         }
         
-        .bonus-site-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.3);
-            transform: translateY(-3px);
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
         }
         
-        /* Daily Collection Section */
-        .daily-collection {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05));
-            border: 2px solid rgba(76, 175, 80, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .daily-collection-title {
-            font-size: 1.8rem;
+        .stat-value {
+            font-size: 2rem;
             font-weight: bold;
-            margin-bottom: 1rem;
-            color: #4CAF50;
+            color: #FFD700;
+        }
+        
+        /* Important Notice */
+        .notice-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 165, 0, 0.1));
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .notice-title {
+            color: #FF6B6B;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .daily-sites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .daily-site {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .daily-site:hover {
-            background: rgba(76, 175, 80, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .daily-amount {
-            color: #4CAF50;
-            font-weight: bold;
+        .notice-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
         
         /* ROI Summary */
@@ -566,79 +456,11 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .roi-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .roi-stat {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-        }
-        
-        .roi-stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.5rem;
-        }
-        
-        .roi-stat-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #FFD700;
-        }
-        
         .roi-percentage {
             font-size: 3rem;
             font-weight: 900;
             color: #4CAF50;
             margin-top: 1rem;
-        }
-        
-        /* Tips Section */
-        .tips-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .tips-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: #FFD700;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .tips-grid {
-            display: grid;
-            gap: 1rem;
-        }
-        
-        .tip-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(76, 175, 80, 0.05);
-            border-radius: 10px;
-            border-left: 3px solid #4CAF50;
-        }
-        
-        .tip-icon {
-            font-size: 1.5rem;
-        }
-        
-        .tip-text {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
         }
         
         /* Responsive Design */
@@ -647,15 +469,17 @@
                 font-size: 2.5rem;
             }
             
-            .phase-nav-content {
-                padding: 0 1rem;
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
             
             .casino-details {
                 grid-template-columns: 1fr;
             }
             
-            .roi-stats {
+            .stats-overview {
                 grid-template-columns: 1fr;
             }
             
@@ -664,21 +488,6 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            
-            .phase-stats {
-                gap: 1.5rem;
-            }
-            
-            .daily-sites-grid,
-            .bonus-sites-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -689,41 +498,37 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">💰</div>
-                <div class="logo-text">$20 → $1000</div>
+                <div class="logo-text">$20 → $1000+</div>
             </div>
             <div class="progress-tracker">
-                <span>Your Journey:</span>
-                <span class="current-balance">$20 → $1000+</span>
+                <span>Proven Strategy:</span>
+                <span class="current-balance">$20 → $1028</span>
             </div>
         </div>
     </div>
     
-    <!-- Phase Navigation -->
-    <div class="phase-nav">
-        <div class="phase-nav-content">
-            <a href="#phase1" class="phase-btn active">
+    <!-- Navigation -->
+    <div class="nav-section">
+        <div class="nav-content">
+            <a href="#day1-signups" class="nav-btn active">
                 <span>🚀</span>
-                Phase 1: $20→$200
+                Day 1 Signups
             </a>
-            <a href="#phase2" class="phase-btn">
-                <span>📈</span>
-                Phase 2: $200→$500
-            </a>
-            <a href="#phase3" class="phase-btn">
-                <span>💎</span>
-                Phase 3: $500→$750
-            </a>
-            <a href="#phase4" class="phase-btn">
-                <span>🏆</span>
-                Phase 4: $750→$1000+
-            </a>
-            <a href="#bonus" class="phase-btn">
-                <span>⭐</span>
-                Bonus Sites
-            </a>
-            <a href="#daily" class="phase-btn">
+            <a href="#welcome-packages" class="nav-btn">
                 <span>🎁</span>
-                Daily Collection
+                Welcome Packages
+            </a>
+            <a href="#b2-sites" class="nav-btn">
+                <span>💎</span>
+                B2 Sites ($489)
+            </a>
+            <a href="#a1-sites" class="nav-btn">
+                <span>⭐</span>
+                A1 Sites ($609)
+            </a>
+            <a href="#final-sites" class="nav-btn">
+                <span>🏆</span>
+                Final Push ($1028)
             </a>
         </div>
     </div>
@@ -732,727 +537,774 @@
     <div class="main-container">
         <!-- Hero Section -->
         <div class="hero-section">
-            <div class="hero-badge">
-                🔥 PROVEN STRATEGY • 35 CASINOS • 5000% ROI
-            </div>
-            <h1>Turn $20 Into $1000+</h1>
+            <h1>Turn $20 Into $1028+</h1>
             <p class="hero-description">
-                Follow this exact blueprint through 35 sweepstake casinos to multiply your initial $20 investment. 
-                Each step builds on the previous one, compounding your profits along the way to reach $1000+ in just 30 days.
+                Follow this exact blueprint through sweepstake casinos using Skrill for 1-3 day redemptions. 
+                Start with Day 1 signups for free money, then progress through welcome packages to build your bankroll to over $1000.
             </p>
         </div>
         
-        <!-- Strategy Overview -->
-        <div class="strategy-overview">
-            <h2 class="strategy-title">
-                <span>🎯</span>
-                The Snowball Strategy
-            </h2>
-            <div class="strategy-steps">
-                <div class="strategy-step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">
-                        <strong>Start Small:</strong> Begin with just $20 at Stake.us to unlock massive bonuses
-                    </div>
-                </div>
-                <div class="strategy-step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">
-                        <strong>Maximize Bonuses:</strong> Each deposit unlocks 300-500% match bonuses plus free SC
-                    </div>
-                </div>
-                <div class="strategy-step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">
-                        <strong>Strategic Redemption:</strong> Cash out profits and reinvest in the next casino
-                    </div>
-                </div>
-                <div class="strategy-step">
-                    <div class="step-number">4</div>
-                    <div class="step-text">
-                        <strong>Compound Growth:</strong> Progress through 4 phases with 35 total casinos
-                    </div>
-                </div>
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-label">Starting Investment</div>
+                <div class="stat-value">$20</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Final Bankroll</div>
+                <div class="stat-value">$1028</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Profit</div>
+                <div class="stat-value">$1008</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">ROI Percentage</div>
+                <div class="stat-value">5040%</div>
             </div>
         </div>
         
-        <!-- Phase 1 -->
-        <div id="phase1" class="phase-section">
-            <div class="phase-header">
-                <h2 class="phase-title">Phase 1: Initial Build</h2>
-                <p class="phase-subtitle">Transform $20 into $200 with your first 3 casinos</p>
-                <div class="phase-stats">
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Investment</div>
-                        <div class="phase-stat-value">$20</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Target</div>
-                        <div class="phase-stat-value">$200</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Timeline</div>
-                        <div class="phase-stat-value">Week 1</div>
-                    </div>
-                </div>
+        <!-- Important Notice -->
+        <div class="notice-box">
+            <div class="notice-title">
+                <span>⚠️</span>
+                Important: Use Skrill for Fast Redemptions
+            </div>
+            <div class="notice-content">
+                This guide is optimized for Skrill users to get 1-3 day redemptions. Sign up for Skrill first to ensure the fastest cashouts and best experience throughout your journey.
+            </div>
+        </div>
+        
+        <!-- Day 1 Signups Section -->
+        <div id="day1-signups" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Day 1: Immediate Signups</h2>
+                <p class="section-subtitle">Sign up to these sites immediately on Day 1 for free money and daily bonuses</p>
             </div>
             
             <div class="casino-grid">
-                <!-- Casino 1: Stake.us -->
-                <div class="casino-card">
+                <!-- Stake.us -->
+                <div class="casino-card signup-site">
                     <div class="casino-number">1</div>
                     <div class="casino-content">
                         <div class="casino-header">
                             <h3 class="casino-name">Stake.us</h3>
-                            <div class="casino-return">$100-120</div>
+                            <div class="casino-profit">$25 FREE + $1/day</div>
                         </div>
+                        <div class="casino-notes">Start off with this site, using my signup link in 1-3 days you should receive $25 free dollars in your bank account!
+This site also gives you $1 a day by just signing in and collecting by clicking your Wallet next to your balance.
+This is a great start and is just an additional set of money to start you on the $24 to $1000 guide.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$20</div>
+                                <div class="detail-label">Playthrough Method</div>
+                                <div class="detail-value">Dice: Roll Over '2', Win Chance 98%</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">500% + 250K GC</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$0</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91253?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 2: Pulsz -->
-                <div class="casino-card">
+                <!-- Luckybird -->
+                <div class="casino-card signup-site">
                     <div class="casino-number">2</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Pulsz Casino</h3>
-                            <div class="casino-return">$150-180</div>
+                            <h3 class="casino-name">Luckybird</h3>
+                            <div class="casino-profit">Daily Rewards</div>
                         </div>
+                        <div class="casino-notes">Luckybird is similar to Stake with it being a crypto website, you'll earn a bunch of free money just from signing in everyday and participating in their Treasure Chests and Daily Reward Collection.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$30</div>
+                                <div class="detail-label">Playthrough Method</div>
+                                <div class="detail-value">Dice: Roll Over '2', Win Chance 98%</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">400% + 2.5M GC</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-3 days</div>
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$0</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91183?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 3: High 5 -->
-                <div class="casino-card">
+                <!-- Real Prize -->
+                <div class="casino-card signup-site">
                     <div class="casino-number">3</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">High 5 Casino</h3>
-                            <div class="casino-return">$160-200</div>
+                            <h3 class="casino-name">Real Prize</h3>
+                            <div class="casino-profit">$7.5 to $100</div>
                         </div>
+                        <div class="casino-notes">Realprize and Lonestar are sites that you can get money from the Welcome Packages but the real value of them is the extra 1-3 dollars you can get everyday just by clicking on the free links on the Discord. 
+Sweepsedge also allows you to win Free Spins from these websites and you can easily make $100 in 2 weeks just from free money these sites give out.
+If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.
+
+$99.99 for 105SC + (2.5SC No Deposit Bonus)
+Profit $7.5 to $100</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$40</div>
+                                <div class="detail-label">Welcome Package</div>
+                                <div class="detail-value">$99.99 for 105SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% + 250 SC</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91231?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- Lonestar -->
+                <div class="casino-card signup-site">
+                    <div class="casino-number">4</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">Lonestar</h3>
+                            <div class="casino-profit">$25 to $100</div>
+                        </div>
+                        <div class="casino-notes">Lonestar and Realprize are sites that you can get money from the Welcome Packages but the real value of them is the extra 1-3 dollars you can get everyday just by clicking on the free links on the Discord. 
+Sweepsedge also allows you to win Free Spins from these websites and you can easily make $100 in 2 weeks just from free money these sites give out.
+If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.
+
+$100 for 125SC + (2SC No Deposit Bonus)
+Profit $25 to $100</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Welcome Package</div>
+                                <div class="detail-value">$100 for 125SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://lonestarcasino.com/refer/516503" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Phase 2 -->
-        <div id="phase2" class="phase-section">
-            <div class="phase-header">
-                <h2 class="phase-title">Phase 2: Momentum Building</h2>
-                <p class="phase-subtitle">Scale from $200 to $500 with strategic deposits</p>
-                <div class="phase-stats">
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Starting</div>
-                        <div class="phase-stat-value">$200</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Target</div>
-                        <div class="phase-stat-value">$500</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Timeline</div>
-                        <div class="phase-stat-value">Week 2</div>
-                    </div>
-                </div>
+        <!-- Welcome Packages Section -->
+        <div id="welcome-packages" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Step 2: Welcome Packages</h2>
+                <p class="section-subtitle">Start building your bankroll with these welcome offers</p>
             </div>
             
             <div class="casino-grid">
-                <!-- Casino 4: Chumba -->
-                <div class="casino-card">
-                    <div class="casino-number">4</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">Chumba Casino</h3>
-                            <div class="casino-return">$250-300</div>
-                        </div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$50</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">400% + VIP</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-4 days</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Casino 5: McLuck -->
+                <!-- Crown Coins -->
                 <div class="casino-card">
                     <div class="casino-number">5</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">McLuck Casino</h3>
-                            <div class="casino-return">$300-350</div>
+                            <h3 class="casino-name">Crown Coins</h3>
+                            <div class="casino-profit">Profit: $40</div>
                         </div>
+                        <div class="casino-notes">Crowncoins will give you an offer of 
+$24.99 for 65SC.
+Profit: $40SC
+Bankroll: $64</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$75</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">$24.99 for 65SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">400% + 5M GC</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Spaceman 1.01x</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">24-48 hrs</div>
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$64</div>
                             </div>
                         </div>
+                        <a href="https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 6: WOW Vegas -->
+                <!-- FunRize -->
                 <div class="casino-card">
                     <div class="casino-number">6</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">WOW Vegas</h3>
-                            <div class="casino-return">$400-450</div>
+                            <h3 class="casino-name">FunRize</h3>
+                            <div class="casino-profit">Profit: $40</div>
                         </div>
+                        <div class="casino-notes">Funrize will give you an offer of
+$50 for 105SC.
+Profit: $40SC
+Bankroll: $119</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">$50 for 105SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">350% No Wager</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-3 days</div>
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$119</div>
                             </div>
                         </div>
+                        <a href="https://funrize.com/?invited_by=GTT1LK" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 7: Fortune Coins -->
+                <!-- MyPrize -->
                 <div class="casino-card">
                     <div class="casino-number">7</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Fortune Coins</h3>
-                            <div class="casino-return">$460-500</div>
+                            <h3 class="casino-name">MyPrize</h3>
+                            <div class="casino-profit">Profit: $50</div>
                         </div>
+                        <div class="casino-notes">MyPrize has specific playthrough requirements, to playthrough your coins you have to go to
+Store -> View Account -> Redeemable Balance -> View Playthrough Requirements
+Then you must click on your Package you want to playthrough.
+MyPrize will give you an offer of
+$56 for 106SC
+Profit $50
+Bankroll: $169</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">$56 for 106SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">The Great Pigsby</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">360% + 1000 FC</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$169</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91204?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Phase 3 -->
-        <div id="phase3" class="phase-section">
-            <div class="phase-header">
-                <h2 class="phase-title">Phase 3: Acceleration</h2>
-                <p class="phase-subtitle">Accelerate growth from $500 to $750</p>
-                <div class="phase-stats">
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Starting</div>
-                        <div class="phase-stat-value">$500</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Target</div>
-                        <div class="phase-stat-value">$750</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Timeline</div>
-                        <div class="phase-stat-value">Week 3</div>
-                    </div>
-                </div>
+        <!-- B2 Sites Section -->
+        <div id="b2-sites" class="section">
+            <div class="section-header">
+                <h2 class="section-title">B2 Sites: Trusted Grandfather Sites</h2>
+                <p class="section-subtitle">These are extremely trustworthy sites with big packages and quick redemptions</p>
             </div>
             
             <div class="casino-grid">
-                <!-- Casino 8: LuckyLand Slots -->
-                <div class="casino-card">
+                <!-- McLuck -->
+                <div class="casino-card b2-site">
                     <div class="casino-number">8</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">LuckyLand Slots</h3>
-                            <div class="casino-return">$500-550</div>
+                            <h3 class="casino-name">McLuck</h3>
+                            <div class="casino-profit">Profit: $60</div>
                         </div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.
+Purchase these packages:
+1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC
+Profit: $60
+Bankroll: $229</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$125</div>
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail-value">$105</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% + 50 SC</div>
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">165SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-7 days</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91184?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 9: Global Poker -->
-                <div class="casino-card">
+                <!-- Playfame -->
+                <div class="casino-card b2-site">
                     <div class="casino-number">9</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Global Poker</h3>
-                            <div class="casino-return">$600-650</div>
+                            <h3 class="casino-name">Playfame</h3>
+                            <div class="casino-profit">Profit: $60</div>
                         </div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.
+Purchase these packages:
+1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC
+Profit: $60
+Bankroll: $289</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$150</div>
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail-value">$105</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% Poker</div>
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">165SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-4 days</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91215?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 10: Sweeptastic -->
-                <div class="casino-card">
+                <!-- Hello Millions -->
+                <div class="casino-card b2-site">
                     <div class="casino-number">10</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Sweeptastic</h3>
-                            <div class="casino-return">$675-725</div>
+                            <h3 class="casino-name">Hello Millions</h3>
+                            <div class="casino-profit">Profit: $60</div>
                         </div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.
+Purchase these packages:
+1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC
+Profit: $60
+Bankroll: $349</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$150</div>
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail-value">$105</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">350% match</div>
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">165SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Auto Roulette</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91164?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Casino 11: SweepSlots -->
-                <div class="casino-card">
+                <!-- MegaBonanza -->
+                <div class="casino-card b2-site">
                     <div class="casino-number">11</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">SweepSlots</h3>
-                            <div class="casino-return">$700-750</div>
+                            <h3 class="casino-name">MegaBonanza</h3>
+                            <div class="casino-profit">Profit: $60</div>
                         </div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.
+Purchase these packages:
+1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC
+Profit: $60
+Bankroll: $409</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$175</div>
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail-value">$105</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% + Daily</div>
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">165SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
                             </div>
                         </div>
+                        <a href="https://affiliates.routy.app/route/91194?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Phase 4 -->
-        <div id="phase4" class="phase-section">
-            <div class="phase-header">
-                <h2 class="phase-title">Phase 4: Final Push</h2>
-                <p class="phase-subtitle">Complete your journey from $750 to $1000+</p>
-                <div class="phase-stats">
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Starting</div>
-                        <div class="phase-stat-value">$750</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Target</div>
-                        <div class="phase-stat-value">$1000+</div>
-                    </div>
-                    <div class="phase-stat">
-                        <div class="phase-stat-label">Timeline</div>
-                        <div class="phase-stat-value">Week 4</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="casino-grid">
-                <!-- Casino 12: Zula Casino -->
-                <div class="casino-card">
+                
+                <!-- Jackpota -->
+                <div class="casino-card b2-site">
                     <div class="casino-number">12</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Zula Casino</h3>
-                            <div class="casino-return">$800-850</div>
+                            <h3 class="casino-name">Jackpota</h3>
+                            <div class="casino-profit">Profit: $80</div>
                         </div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.
+Purchase packages up to $250 for 330SC (Multiple Packages)
+Profit: $80
+Bankroll: $489</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$200</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% + VIP</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-4 days</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Casino 13: TaoFortune -->
-                <div class="casino-card">
-                    <div class="casino-number">13</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">TaoFortune</h3>
-                            <div class="casino-return">$900-950</div>
-                        </div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$200</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">350% match</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Casino 14: Modo Casino -->
-                <div class="casino-card">
-                    <div class="casino-number">14</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">Modo Casino</h3>
-                            <div class="casino-return">$975-1025</div>
-                        </div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
-                                <div class="detail-value">$225</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">300% + VIP</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">2-3 days</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Casino 15: PlayFame -->
-                <div class="casino-card">
-                    <div class="casino-number">15</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">PlayFame</h3>
-                            <div class="casino-return">$1000-1100</div>
-                        </div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Deposit</div>
+                                <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$250</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Bonus</div>
-                                <div class="detail-value bonus-highlight">400% Final</div>
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">330SC</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Cashout</div>
-                                <div class="detail-value">3-5 days</div>
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">The Great Pigsby</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
                             </div>
                         </div>
+                        <a href="https://www.sweepstakescasino.com/go/geo/Jackpota/socialcasino?utm_campaign=forum" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
+                </div>
+            </div>
+            
+            <div class="notice-box">
+                <div class="notice-title">
+                    <span>💰</span>
+                    Checkpoint: $489 Bankroll
+                </div>
+                <div class="notice-content">
+                    At this point, you've built your bankroll to $489. Continue with A1 sites to push towards $609.
                 </div>
             </div>
         </div>
         
-        <!-- Bonus Sites Section -->
-        <div id="bonus" class="bonus-sites">
-            <h2 class="bonus-sites-title">⭐ Bonus Round Sites</h2>
-            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">
-                Optional sites to push beyond $1000 once you've completed the main progression
-            </p>
-            <div class="bonus-sites-grid">
-                <div class="bonus-site-item">
-                    <strong>16.</strong> Spree Casino
-                </div>
-                <div class="bonus-site-item">
-                    <strong>17.</strong> RollRiver Casino
-                </div>
-                <div class="bonus-site-item">
-                    <strong>18.</strong> CrownCoins Casino
-                </div>
-                <div class="bonus-site-item">
-                    <strong>19.</strong> Jackpot World
-                </div>
-                <div class="bonus-site-item">
-                    <strong>20.</strong> Lucky Bingo
-                </div>
-                <div class="bonus-site-item">
-                    <strong>21.</strong> Real Prize Casino
-                </div>
-                <div class="bonus-site-item">
-                    <strong>22.</strong> Sportzino
-                </div>
-                <div class="bonus-site-item">
-                    <strong>23.</strong> Fliff Social
-                </div>
-                <div class="bonus-site-item">
-                    <strong>24.</strong> PropWin
-                </div>
-                <div class="bonus-site-item">
-                    <strong>25.</strong> Chanced Casino
-                </div>
+        <!-- A1 Sites Section -->
+        <div id="a1-sites" class="section">
+            <div class="section-header">
+                <h2 class="section-title">A1 Sites: Quality Operators</h2>
+                <p class="section-subtitle">Overall good sites with no problems</p>
             </div>
-        </div>
-        
-        <!-- Daily Collection Section -->
-        <div id="daily" class="daily-collection">
-            <h2 class="daily-collection-title">
-                <span>🎁</span>
-                Daily Free SC Collection
-            </h2>
-            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">
-                Collect $5+ daily from these sites after registration (no deposit required)
-            </p>
-            <div class="daily-sites-grid">
-                <div class="daily-site">
-                    <span>26. Stake.us</span>
-                    <span class="daily-amount">$1.00 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>27. Chumba Casino</span>
-                    <span class="daily-amount">$0.50 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>28. Pulsz</span>
-                    <span class="daily-amount">$0.75 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>29. High 5 Casino</span>
-                    <span class="daily-amount">$0.50 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>30. McLuck</span>
-                    <span class="daily-amount">$0.50 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>31. WOW Vegas</span>
-                    <span class="daily-amount">$0.50 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>32. Fortune Coins</span>
-                    <span class="daily-amount">$0.40 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>33. LuckyLand Slots</span>
-                    <span class="daily-amount">$0.35 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>34. Global Poker</span>
-                    <span class="daily-amount">$0.30 daily</span>
-                </div>
-                <div class="daily-site">
-                    <span>35. Sweeptastic</span>
-                    <span class="daily-amount">$0.25 daily</span>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 1.5rem; font-size: 1.2rem; color: #4CAF50; font-weight: bold;">
-                Total Daily Collection: $5.05+ per day = $150+ monthly passive income
-            </p>
-        </div>
-        
-        <!-- ROI Summary -->
-        <div class="roi-summary">
-            <h2 class="roi-title">Your Complete ROI Breakdown</h2>
-            <div class="roi-stats">
-                <div class="roi-stat">
-                    <div class="roi-stat-label">Initial Investment</div>
-                    <div class="roi-stat-value">$20</div>
-                </div>
-                <div class="roi-stat">
-                    <div class="roi-stat-label">Final Balance</div>
-                    <div class="roi-stat-value">$1000+</div>
-                </div>
-                <div class="roi-stat">
-                    <div class="roi-stat-label">Net Profit</div>
-                    <div class="roi-stat-value">$980+</div>
-                </div>
-                <div class="roi-stat">
-                    <div class="roi-stat-label">Time Required</div>
-                    <div class="roi-stat-value">30 Days</div>
-                </div>
-            </div>
-            <div class="roi-percentage">5000% Return on Investment</div>
-        </div>
-        
-        <!-- Pro Tips -->
-        <div class="tips-section">
-            <h2 class="tips-title">
-                <span>💡</span>
-                Pro Tips for Maximum Success
-            </h2>
-            <div class="tips-grid">
-                <div class="tip-item">
-                    <div class="tip-icon">⏰</div>
-                    <div class="tip-text">
-                        <strong>Timing is Key:</strong> Start each phase on Monday to maximize weekly bonuses. Complete one phase per week for optimal results.
+            
+            <div class="casino-grid">
+                <!-- NoLimitCoins -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">13</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">NoLimitCoins</h3>
+                            <div class="casino-profit">Profit: $35</div>
+                        </div>
+                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
+You'll earn around $35 from NoLimitCoins Welcome Offer.
+
+Profit: $35</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://nolimitcoins.com/?invited_by=0MB973" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
-                <div class="tip-item">
-                    <div class="tip-icon">📊</div>
-                    <div class="tip-text">
-                        <strong>Track Everything:</strong> Keep a spreadsheet of all 35 sites with deposits, bonuses received, and withdrawals to optimize your strategy.
-                    </div>
-                </div>
-                <div class="tip-item">
-                    <div class="tip-icon">🎮</div>
-                    <div class="tip-text">
-                        <strong>Game Selection:</strong> Stick to games with 96%+ RTP and low volatility for consistent returns during wagering requirements.
-                    </div>
-                </div>
-                <div class="tip-item">
-                    <div class="tip-icon">💳</div>
-                    <div class="tip-text">
-                        <strong>Payment Method:</strong> Use Skrill or crypto for instant deposits and faster withdrawals across all 35 casinos.
-                    </div>
-                </div>
-                <div class="tip-item">
-                    <div class="tip-icon">🎁</div>
-                    <div class="tip-text">
-                        <strong>Stack Everything:</strong> Collect daily bonuses from all registered sites while progressing through new ones - adds $150+ monthly.
-                    </div>
-                </div>
-                <div class="tip-item">
-                    <div class="tip-icon">🔄</div>
-                    <div class="tip-text">
-                        <strong>Never Skip Order:</strong> Follow the exact sequence of 35 sites - each builds on the previous profits for compound growth.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Smooth Scroll Script -->
-    <script>
-        // Smooth scrolling for phase navigation
-        document.querySelectorAll('.phase-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
                 
-                // Update active state
-                document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+                <!-- FortuneWheelz -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">14</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">FortuneWheelz</h3>
+                            <div class="casino-profit">Profit: $35</div>
+                        </div>
+                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
+You'll earn around $35 from FortuneWheelz Welcome Offer.
+
+Profit: $35</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://affiliates.routy.app/route/91148?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- TaoFortune -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">15</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">TaoFortune</h3>
+                            <div class="casino-profit">Profit: $25</div>
+                        </div>
+                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
+You'll earn around $35 from TaoFortune Welcome Offer.
+
+Profit: $25</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://taofortune.com/?invited_by=N9YAYZ" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- FunzCity -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">16</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">FunzCity</h3>
+                            <div class="casino-profit">Profit: $25</div>
+                        </div>
+                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
+You'll earn around $35 from FunzCity Welcome Offer.
+
+Profit: $25</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="http://funzcity.com/?invited_by=Z1Y2ZX" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notice-box">
+                <div class="notice-title">
+                    <span>💰</span>
+                    Checkpoint: $609 Bankroll
+                </div>
+                <div class="notice-content">
+                    You can now start to run multiple sites at a time. The sites below will push you to the final $1028 target.
+                </div>
+            </div>
+        </div>
         
-        // Update active navigation based on scroll position
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.phase-section, .bonus-sites, .daily-collection');
-            const navButtons = document.querySelectorAll('.phase-btn');
+        <!-- Final Sites Section -->
+        <div id="final-sites" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Final Push to $1028</h2>
+                <p class="section-subtitle">Complete your journey with these final sites</p>
+            </div>
             
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('href') === '#' + current) {
-                    btn.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            <div class="casino-grid">
+                <!-- Spree -->
+                <div class="casino-card">
+                    <div class="casino-number">17</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">Spree</h3>
+                            <div class="casino-profit">Profit: $50</div>
+                        </div>
+                        <div class="casino-notes">Spree you typically has daily happy hours that will be sent you in your email as well as the Welcome Packages.
+You'll earn around $50 on this site pretty immediately just from the Welcome Packages and happy hours.
+
+Profit: $50SC</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">The Great Pigsby</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$75</div>
+                            </div>
+                        </div>
+                        <a href="https://affiliates.routy.app/route/95239?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- Pulsz -->
+                <div class="casino-card">
+                    <div class="casino-number">18</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">Pulsz</h3>
+                            <div class="casino-profit">Profit: $50</div>
+                        </div>
+                        <div class="casino-notes">Pulsz and Pulszbingo will randomly have 20% off packages that you can purchase 30 times in a row.
+You can earn a lot of money from doing this so once you grow your bankroll keep your eyes open for this!
+You'll earn around $50 on Pulsz from the Welcome Packages.
+
+Profit: $50SC</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">The Great Pigsby</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://affiliates.routy.app/route/91228?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- PulszBingo -->
+                <div class="casino-card">
+                    <div class="casino-number">19</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">PulszBingo</h3>
+                            <div class="casino-profit">Profit: $50</div>
+                        </div>
+                        <div class="casino-notes">Pulszbingo and Pulsz will randomly have 20% off packages that you can purchase 30 times in a row.
+You can earn a lot of money from doing this so once you grow your bankroll keep your eyes open for this!
+You'll earn around $50 on Pulszbingo from the Welcome Packages.
+
+Profit: $50SC</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">The Great Pigsby</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://www.pulszbingo.com/home?invited_by=u358hj" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- The Money Factory -->
+                <div class="casino-card">
+                    <div class="casino-number">20</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">The Money Factory</h3>
+                            <div class="casino-profit">Profit: $54</div>
+                        </div>
+                        <div class="casino-notes">The Money Factory typically has 1-2 months Payout but the packages are pretty worth it.
+You'll earn around $54 from The Money Factory Welcome Offer
+
+Profit: $54SC</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://affiliates.routy.app/route/91263?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- Sixty6 -->
+                <div class="casino-card">
+                    <div class="casino-number">21</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">Sixty6</h3>
+                            <div class="casino-profit">Profit: $40</div>
+                        </div>
+                        <div class="casino-notes">Now we're entering the territory of having to bridge yourself to the minimum redemption, by purchasing a welcome package and a base pack to get yourself over the minimum you can essentially earn any welcome offer by using your bankroll.
+This also allows you to farm Credit Card points which is extra EV. 
+
+Sixty6 will give you an offer of 
+$20 for 60SC.
+Also purchase a package $49.99 for 50SC
+In total you will spend $69.99 for 110SC
+Profit: $40SC</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail-value">$69.99</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Total SC</div>
+                                <div class="detail-value">110SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://sixty6.com/?ref=CB7B82E700D0A9CB&modal=register" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- Baba Casino -->
+                <div class="casino-card">
+                    <div class="casino-number">22</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">Baba Casino</h3>
+                            <div class="casino-profit">Profit: $20</div>
+                        </div>
+                        <div class="casino-notes">This is another site where you will have to bridge yourself to the minimum redemption.
+
+Baba Casino will give you an offer of
+$9.99 for 30SC.
+I would also purchase the $19.99 for 20SC package
+and the $9.99 for 10SC package.
+This will get you comfortably past the minimum.
+In total you will spend $39.97 for 60SC
+Profit: $20</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Total Investment</div>
+                                <div class="detail
