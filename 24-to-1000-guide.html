@@ -102,20 +102,27 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .progress-tracker {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255, 215, 0, 0.1);
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
+        .return-home-btn {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
             border: 1px solid rgba(255, 215, 0, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
         }
         
-        .current-balance {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #FFD700;
+        .return-home-btn:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #FFD700;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
         }
         
         /* Navigation */
@@ -502,12 +509,12 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">💰</div>
-                <div class="logo-text">$20 → $1000+</div>
+                <div class="logo-text">$24 → $1000+</div>
             </div>
-            <div class="progress-tracker">
-                <span>Proven Strategy:</span>
-                <span class="current-balance">$20 → $1028</span>
-            </div>
+            <a href="index.html" class="return-home-btn">
+                <span>←</span>
+                Return to Home
+            </a>
         </div>
     </div>
     
@@ -532,7 +539,7 @@
             </a>
             <a href="#final-sites" class="nav-btn">
                 <span>🏆</span>
-                Final Push ($1028)
+                Final Push ($1078)
             </a>
         </div>
     </div>
@@ -541,7 +548,7 @@
     <div class="main-container">
         <!-- Hero Section -->
         <div class="hero-section">
-            <h1>Turn $20 Into $1028+</h1>
+            <h1>Turn $24 Into $1078+</h1>
             <p class="hero-description">
                 Follow this exact blueprint through sweepstake casinos using Skrill for 1-3 day redemptions. 
                 Start with Day 1 signups for free money, then progress through welcome packages to build your bankroll to over $1000.
@@ -552,19 +559,19 @@
         <div class="stats-overview">
             <div class="stat-card">
                 <div class="stat-label">Starting Investment</div>
-                <div class="stat-value">$20</div>
+                <div class="stat-value">$24</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Final Bankroll</div>
-                <div class="stat-value">$1028</div>
+                <div class="stat-value">$1078</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Profit</div>
-                <div class="stat-value">$1008</div>
+                <div class="stat-value">$1054</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">ROI Percentage</div>
-                <div class="stat-value">5040%</div>
+                <div class="stat-value">4392%</div>
             </div>
         </div>
         
@@ -597,7 +604,7 @@
                         </div>
                         <div class="casino-notes">Start off with this site, using my signup link in 1-3 days you should receive $25 free dollars in your bank account!
 This site also gives you $1 a day by just signing in and collecting by clicking your Wallet next to your balance.
-This is a great start and is just an additional set of money to start you on the $24 to $1000 guide.</div>
+This is a great start and is just an additional set of money to start you on the $24 to $1000+ guide.</div>
                         <div class="casino-details">
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough Method</div>
@@ -645,21 +652,22 @@ This is a great start and is just an additional set of money to start you on the
                         </div>
                         <div class="casino-notes">Realprize and Lonestar are sites that you can get money from the Welcome Packages but the real value of them is the extra 1-3 dollars you can get everyday just by clicking on the free links on the Discord. 
 Sweepsedge also allows you to win Free Spins from these websites and you can easily make $100 in 2 weeks just from free money these sites give out.
-If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.
-
-$99.99 for 105SC + (2.5SC No Deposit Bonus)
-Profit $7.5 to $100</div>
+If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Welcome Package</div>
-                                <div class="detail-value">$99.99 for 105SC</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">$99.99 for 105SC + (2.5SC No Deposit)</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$7.5 to $100</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
                             </div>
                         </div>
-                        <a href="https://affiliates.routy.app/route/91231?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://affiliates.routy.app/route/91231?affId=3353&ts=5005447" target="_blank" class="signup-link">Start Here</a>
                     </div>
                 </div>
                 
@@ -673,21 +681,22 @@ Profit $7.5 to $100</div>
                         </div>
                         <div class="casino-notes">Lonestar and Realprize are sites that you can get money from the Welcome Packages but the real value of them is the extra 1-3 dollars you can get everyday just by clicking on the free links on the Discord. 
 Sweepsedge also allows you to win Free Spins from these websites and you can easily make $100 in 2 weeks just from free money these sites give out.
-If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.
-
-$100 for 125SC + (2SC No Deposit Bonus)
-Profit $25 to $100</div>
+If you purchase one of the Welcome Packages after collecting the Free coins it will instantly catapult you to the minimum redemption that is needed, without having to wait.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Welcome Package</div>
-                                <div class="detail-value">$100 for 125SC</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">$100 for 125SC + (2SC No Deposit)</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$25 to $100</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
                             </div>
                         </div>
-                        <a href="https://lonestarcasino.com/refer/516503" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://lonestarcasino.com/refer/516503" target="_blank" class="signup-link">Start Here</a>
                     </div>
                 </div>
             </div>
@@ -709,14 +718,19 @@ Profit $25 to $100</div>
                             <h3 class="casino-name">Crown Coins</h3>
                             <div class="casino-profit">Profit: $40</div>
                         </div>
-                        <div class="casino-notes">Crowncoins will give you an offer of 
-$24.99 for 65SC.
-Profit: $40SC
-Bankroll: $64</div>
+                        <div class="casino-notes">Crowncoins will give you an offer for the best value. This is where you start building your bankroll.</div>
                         <div class="casino-details">
                             <div class="detail-item">
                                 <div class="detail-label">Package</div>
-                                <div class="detail-value">$24.99 for 65SC</div>
+                                <div class="detail-value">$24 for 65SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$40</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$64</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -726,12 +740,8 @@ Bankroll: $64</div>
                                 <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$50</div>
                             </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Running Bankroll</div>
-                                <div class="detail-value">$64</div>
-                            </div>
                         </div>
-                        <a href="https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends" target="_blank" class="signup-link">Start Here</a>
                     </div>
                 </div>
                 
@@ -743,14 +753,19 @@ Bankroll: $64</div>
                             <h3 class="casino-name">FunRize</h3>
                             <div class="casino-profit">Profit: $40</div>
                         </div>
-                        <div class="casino-notes">Funrize will give you an offer of
-$50 for 105SC.
-Profit: $40SC
-Bankroll: $119</div>
+                        <div class="casino-notes">Funrize will give you a solid welcome package to continue growing your bankroll.</div>
                         <div class="casino-details">
                             <div class="detail-item">
                                 <div class="detail-label">Package</div>
                                 <div class="detail-value">$50 for 105SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$40</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$119</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -759,10 +774,6 @@ Bankroll: $119</div>
                             <div class="detail-item">
                                 <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Running Bankroll</div>
-                                <div class="detail-value">$119</div>
                             </div>
                         </div>
                         <a href="https://funrize.com/?invited_by=GTT1LK" target="_blank" class="signup-link">Sign Up Now</a>
@@ -777,17 +788,21 @@ Bankroll: $119</div>
                             <h3 class="casino-name">MyPrize</h3>
                             <div class="casino-profit">Profit: $50</div>
                         </div>
-                        <div class="casino-notes">MyPrize has specific playthrough requirements, to playthrough your coins you have to go to
-Store -> View Account -> Redeemable Balance -> View Playthrough Requirements
-Then you must click on your Package you want to playthrough.
-MyPrize will give you an offer of
-$56 for 106SC
-Profit $50
-Bankroll: $169</div>
+                        <div class="casino-notes">MyPrize has specific playthrough requirements, to playthrough your coins you have to go to:
+Store → View Account → Redeemable Balance → View Playthrough Requirements
+Then you must click on your Package you want to playthrough.</div>
                         <div class="casino-details">
                             <div class="detail-item">
                                 <div class="detail-label">Package</div>
                                 <div class="detail-value">$56 for 106SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$169</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -796,10 +811,6 @@ Bankroll: $169</div>
                             <div class="detail-item">
                                 <div class="detail-label">Min Redemption</div>
                                 <div class="detail-value">$100</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Running Bankroll</div>
-                                <div class="detail-value">$169</div>
                             </div>
                         </div>
                         <a href="https://affiliates.routy.app/route/91204?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
@@ -824,15 +835,15 @@ Bankroll: $169</div>
                             <h3 class="casino-name">McLuck</h3>
                             <div class="casino-profit">Profit: $60</div>
                         </div>
-                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
-Meaning big packages, and quick redemptions.
-Purchase these packages:
-1st: $10 for 25SC
-2nd: $20 for 40SC
-3rd: $75 for 100SC
-Profit: $60
-Bankroll: $229</div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trustworthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Packages</div>
+                                <div class="detail-value">1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$105</div>
@@ -840,6 +851,14 @@ Bankroll: $229</div>
                             <div class="detail-item">
                                 <div class="detail-label">Total SC</div>
                                 <div class="detail-value">165SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$60</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$229</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -862,15 +881,15 @@ Bankroll: $229</div>
                             <h3 class="casino-name">Playfame</h3>
                             <div class="casino-profit">Profit: $60</div>
                         </div>
-                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
-Meaning big packages, and quick redemptions.
-Purchase these packages:
-1st: $10 for 25SC
-2nd: $20 for 40SC
-3rd: $75 for 100SC
-Profit: $60
-Bankroll: $289</div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trustworthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Packages</div>
+                                <div class="detail-value">1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$105</div>
@@ -878,6 +897,14 @@ Bankroll: $289</div>
                             <div class="detail-item">
                                 <div class="detail-label">Total SC</div>
                                 <div class="detail-value">165SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$60</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$289</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -900,15 +927,15 @@ Bankroll: $289</div>
                             <h3 class="casino-name">Hello Millions</h3>
                             <div class="casino-profit">Profit: $60</div>
                         </div>
-                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
-Meaning big packages, and quick redemptions.
-Purchase these packages:
-1st: $10 for 25SC
-2nd: $20 for 40SC
-3rd: $75 for 100SC
-Profit: $60
-Bankroll: $349</div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trustworthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Packages</div>
+                                <div class="detail-value">1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$105</div>
@@ -916,6 +943,14 @@ Bankroll: $349</div>
                             <div class="detail-item">
                                 <div class="detail-label">Total SC</div>
                                 <div class="detail-value">165SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$60</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$349</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -938,15 +973,15 @@ Bankroll: $349</div>
                             <h3 class="casino-name">MegaBonanza</h3>
                             <div class="casino-profit">Profit: $60</div>
                         </div>
-                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
-Meaning big packages, and quick redemptions.
-Purchase these packages:
-1st: $10 for 25SC
-2nd: $20 for 40SC
-3rd: $75 for 100SC
-Profit: $60
-Bankroll: $409</div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trustworthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Packages</div>
+                                <div class="detail-value">1st: $10 for 25SC
+2nd: $20 for 40SC
+3rd: $75 for 100SC</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$105</div>
@@ -954,6 +989,14 @@ Bankroll: $409</div>
                             <div class="detail-item">
                                 <div class="detail-label">Total SC</div>
                                 <div class="detail-value">165SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$60</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$409</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -976,12 +1019,13 @@ Bankroll: $409</div>
                             <h3 class="casino-name">Jackpota</h3>
                             <div class="casino-profit">Profit: $80</div>
                         </div>
-                        <div class="casino-notes">This is a B2 site, these are extremely trust worthy sites and are considered "Grandfather sites" for Sweepstakes.
-Meaning big packages, and quick redemptions.
-Purchase packages up to $250 for 330SC (Multiple Packages)
-Profit: $80
-Bankroll: $489</div>
+                        <div class="casino-notes">This is a B2 site, these are extremely trustworthy sites and are considered "Grandfather sites" for Sweepstakes.
+Meaning big packages, and quick redemptions.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Purchase packages up to $250 for 330SC (Multiple Packages)</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Total Investment</div>
                                 <div class="detail-value">$250</div>
@@ -989,6 +1033,14 @@ Bankroll: $489</div>
                             <div class="detail-item">
                                 <div class="detail-label">Total SC</div>
                                 <div class="detail-value">330SC</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$80</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$489</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -1031,63 +1083,21 @@ Bankroll: $489</div>
                             <h3 class="casino-name">NoLimitCoins</h3>
                             <div class="casino-profit">Profit: $35</div>
                         </div>
-                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
-You'll earn around $35 from NoLimitCoins Welcome Offer.
-
-Profit: $35</div>
+                        <div class="casino-notes">This is an A1 site, overall good sites with no problems.
+You'll earn around $35 from NoLimitCoins Welcome Offer.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">Mummy's Gold</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Highest available Welcome Package</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$100</div>
-                            </div>
-                        </div>
-                        <a href="https://nolimitcoins.com/?invited_by=0MB973" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- FortuneWheelz -->
-                <div class="casino-card a1-site">
-                    <div class="casino-number">14</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">FortuneWheelz</h3>
-                            <div class="casino-profit">Profit: $35</div>
-                        </div>
-                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
-You'll earn around $35 from FortuneWheelz Welcome Offer.
-
-Profit: $35</div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">Mummy's Gold</div>
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$25</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$100</div>
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$584</div>
                             </div>
-                        </div>
-                        <a href="https://affiliates.routy.app/route/91148?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- TaoFortune -->
-                <div class="casino-card a1-site">
-                    <div class="casino-number">15</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">TaoFortune</h3>
-                            <div class="casino-profit">Profit: $25</div>
-                        </div>
-                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
-You'll earn around $35 from TaoFortune Welcome Offer.
-
-Profit: $25</div>
-                        <div class="casino-details">
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
                                 <div class="detail-value">Mummy's Gold</div>
@@ -1109,11 +1119,21 @@ Profit: $25</div>
                             <h3 class="casino-name">FunzCity</h3>
                             <div class="casino-profit">Profit: $25</div>
                         </div>
-                        <div class="casino-notes">This is a A1 site, overall good sites with no problems.
-You'll earn around $35 from FunzCity Welcome Offer.
-
-Profit: $25</div>
+                        <div class="casino-notes">This is an A1 site, overall good sites with no problems.
+You'll earn around $25 from FunzCity Welcome Offer.</div>
                         <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Highest available Welcome Package</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$25</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$609</div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
                                 <div class="detail-value">Mummy's Gold</div>
@@ -1134,7 +1154,7 @@ Profit: $25</div>
                     Checkpoint: $609 Bankroll
                 </div>
                 <div class="notice-content">
-                    You can now start to run multiple sites at a time. The sites below will push you to the final $1028 target.
+                    You can now start to run multiple sites at a time. The sites below will push you to the final $1078 target.
                 </div>
             </div>
         </div>
@@ -1142,7 +1162,7 @@ Profit: $25</div>
         <!-- Final Sites Section -->
         <div id="final-sites" class="section">
             <div class="section-header">
-                <h2 class="section-title">Final Push to $1028</h2>
+                <h2 class="section-title">Final Push to $1078</h2>
                 <p class="section-subtitle">Complete your journey with these final sites</p>
             </div>
             
@@ -1155,128 +1175,24 @@ Profit: $25</div>
                             <h3 class="casino-name">Spree</h3>
                             <div class="casino-profit">Profit: $50</div>
                         </div>
-                        <div class="casino-notes">Spree you typically has daily happy hours that will be sent you in your email as well as the Welcome Packages.
-You'll earn around $50 on this site pretty immediately just from the Welcome Packages and happy hours.
-
-Profit: $50SC</div>
+                        <div class="casino-notes">Spree typically has daily happy hours that will be sent to you in your email as well as the Welcome Packages.
+You'll earn around $50 on this site pretty immediately just from the Welcome Packages and happy hours.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">The Great Pigsby</div>
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Highest available Welcome Package</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$75</div>
-                            </div>
-                        </div>
-                        <a href="https://affiliates.routy.app/route/95239?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- Pulsz -->
-                <div class="casino-card">
-                    <div class="casino-number">18</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">Pulsz</h3>
-                            <div class="casino-profit">Profit: $50</div>
-                        </div>
-                        <div class="casino-notes">Pulsz and Pulszbingo will randomly have 20% off packages that you can purchase 30 times in a row.
-You can earn a lot of money from doing this so once you grow your bankroll keep your eyes open for this!
-You'll earn around $50 on Pulsz from the Welcome Packages.
-
-Profit: $50SC</div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">The Great Pigsby</div>
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$50</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$100</div>
-                            </div>
-                        </div>
-                        <a href="https://affiliates.routy.app/route/91228?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- PulszBingo -->
-                <div class="casino-card">
-                    <div class="casino-number">19</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">PulszBingo</h3>
-                            <div class="casino-profit">Profit: $50</div>
-                        </div>
-                        <div class="casino-notes">Pulszbingo and Pulsz will randomly have 20% off packages that you can purchase 30 times in a row.
-You can earn a lot of money from doing this so once you grow your bankroll keep your eyes open for this!
-You'll earn around $50 on Pulszbingo from the Welcome Packages.
-
-Profit: $50SC</div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">The Great Pigsby</div>
+                                <div class="detail-label<div class="detail-label">Profit</div>
+                                <div class="detail-value">$35</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$100</div>
-                            </div>
-                        </div>
-                        <a href="https://www.pulszbingo.com/home?invited_by=u358hj" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- The Money Factory -->
-                <div class="casino-card">
-                    <div class="casino-number">20</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">The Money Factory</h3>
-                            <div class="casino-profit">Profit: $54</div>
-                        </div>
-                        <div class="casino-notes">The Money Factory typically has 1-2 months Payout but the packages are pretty worth it.
-You'll earn around $54 from The Money Factory Welcome Offer
-
-Profit: $54SC</div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Playthrough</div>
-                                <div class="detail-value">Mummy's Gold</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Min Redemption</div>
-                                <div class="detail-value">$100</div>
-                            </div>
-                        </div>
-                        <a href="https://affiliates.routy.app/route/91263?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- Sixty6 -->
-                <div class="casino-card">
-                    <div class="casino-number">21</div>
-                    <div class="casino-content">
-                        <div class="casino-header">
-                            <h3 class="casino-name">Sixty6</h3>
-                            <div class="casino-profit">Profit: $40</div>
-                        </div>
-                        <div class="casino-notes">Now we're entering the territory of having to bridge yourself to the minimum redemption, by purchasing a welcome package and a base pack to get yourself over the minimum you can essentially earn any welcome offer by using your bankroll.
-This also allows you to farm Credit Card points which is extra EV. 
-
-Sixty6 will give you an offer of 
-$20 for 60SC.
-Also purchase a package $49.99 for 50SC
-In total you will spend $69.99 for 110SC
-Profit: $40SC</div>
-                        <div class="casino-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Total Investment</div>
-                                <div class="detail-value">$69.99</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Total SC</div>
-                                <div class="detail-value">110SC</div>
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$524</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Playthrough</div>
@@ -1287,28 +1203,59 @@ Profit: $40SC</div>
                                 <div class="detail-value">$100</div>
                             </div>
                         </div>
-                        <a href="https://sixty6.com/?ref=CB7B82E700D0A9CB&modal=register" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://nolimitcoins.com/?invited_by=0MB973" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
-                <!-- Baba Casino -->
-                <div class="casino-card">
-                    <div class="casino-number">22</div>
+                <!-- FortuneWheelz -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">14</div>
                     <div class="casino-content">
                         <div class="casino-header">
-                            <h3 class="casino-name">Baba Casino</h3>
-                            <div class="casino-profit">Profit: $20</div>
+                            <h3 class="casino-name">FortuneWheelz</h3>
+                            <div class="casino-profit">Profit: $35</div>
                         </div>
-                        <div class="casino-notes">This is another site where you will have to bridge yourself to the minimum redemption.
-
-Baba Casino will give you an offer of
-$9.99 for 30SC.
-I would also purchase the $19.99 for 20SC package
-and the $9.99 for 10SC package.
-This will get you comfortably past the minimum.
-In total you will spend $39.97 for 60SC
-Profit: $20</div>
+                        <div class="casino-notes">This is an A1 site, overall good sites with no problems.
+You'll earn around $35 from FortuneWheelz Welcome Offer.</div>
                         <div class="casino-details">
                             <div class="detail-item">
-                                <div class="detail-label">Total Investment</div>
-                                <div class="detail
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Highest available Welcome Package</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Profit</div>
+                                <div class="detail-value">$35</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Running Bankroll</div>
+                                <div class="detail-value">$559</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Playthrough</div>
+                                <div class="detail-value">Mummy's Gold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Min Redemption</div>
+                                <div class="detail-value">$100</div>
+                            </div>
+                        </div>
+                        <a href="https://affiliates.routy.app/route/91148?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                    </div>
+                </div>
+                
+                <!-- TaoFortune -->
+                <div class="casino-card a1-site">
+                    <div class="casino-number">15</div>
+                    <div class="casino-content">
+                        <div class="casino-header">
+                            <h3 class="casino-name">TaoFortune</h3>
+                            <div class="casino-profit">Profit: $25</div>
+                        </div>
+                        <div class="casino-notes">This is an A1 site, overall good sites with no problems.
+You'll earn around $25 from TaoFortune Welcome Offer.</div>
+                        <div class="casino-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Package</div>
+                                <div class="detail-value">Highest available Welcome Package</div>
+                            </div>
+                            <div class="detail-item">
