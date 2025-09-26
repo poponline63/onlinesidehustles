@@ -8,8 +8,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
     
-    <!-- SheetJS Library for reading Excel files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -407,71 +405,22 @@
             padding-right: 1rem;
         }
 
-        .patch-note-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid #FFA500;
-            padding: 1rem;
+        .update-notice {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #FFA500;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .update-notice .icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .patch-note-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(5px);
-        }
-
-        .patch-note-date {
-            color: #FFA500;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .patch-note-changes {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        .patch-note-changes ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .patch-note-changes li {
-            margin-bottom: 0.3rem;
-        }
-
-        .patch-loading {
-            text-align: center;
-            padding: 2rem;
-            color: #FFA500;
-        }
-
-        .patch-error {
-            text-align: center;
-            padding: 1rem;
-            color: #f44336;
-            background: rgba(244, 67, 54, 0.1);
-            border-radius: 10px;
-            border: 1px solid #f44336;
-        }
-
-        /* Debug Info Box */
-        .debug-info {
-            background: rgba(255, 255, 0, 0.1);
-            border: 1px solid rgba(255, 255, 0, 0.3);
-            padding: 1rem;
-            margin: 1rem auto;
-            max-width: 1200px;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #FFEB3B;
-            display: none;
-        }
-
-        .debug-info.show {
             display: block;
         }
         
@@ -514,313 +463,27 @@
             z-index: 1;
         }
         
-        .loading-message {
+        .coming-soon-message {
             text-align: center;
-            padding: 2rem;
-            color: #FFC107;
-            font-size: 1.2rem;
-            display: none;
-        }
-        
-        .loading-message.show {
-            display: block;
-        }
-        
-        .error-message {
-            text-align: center;
-            padding: 2rem;
-            color: #f44336;
-            font-size: 1.1rem;
-            display: none;
-            background: rgba(244, 67, 54, 0.1);
-            border-radius: 10px;
-            border: 1px solid #f44336;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
-        .search-section {
-            margin-bottom: 2rem;
-        }
-        
-        .search-box input {
-            width: 100%;
-            max-width: 400px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #4CAF50;
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .tier-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .tier-tab {
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            cursor: pointer;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .tier-tab:hover {
-            border-color: #4CAF50;
-            transform: translateY(-2px);
-        }
-        
-        .tier-tab.active {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4CAF50;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            font-size: 0.85rem;
-        }
-        
-        th {
-            background: #4CAF50;
-            color: white;
-            padding: 12px 8px;
-            text-align: center;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            white-space: nowrap;
-            font-size: 0.85rem;
-            vertical-align: middle;
-        }
-        
-        td {
-            padding: 10px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.9);
-            vertical-align: middle;
-            line-height: 1.4;
-        }
-        
-        /* Center align specific columns */
-        td:nth-child(2) {
-            text-align: center;
-        }
-        
-        td:nth-child(6) {
-            text-align: center;
-        }
-        
-        td:nth-child(13) {
-            text-align: center;
-        }
-        
-        tbody tr:hover {
-            background: rgba(76, 175, 80, 0.1);
-        }
-        
-        /* Column specific widths */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
-        th:nth-child(2), td:nth-child(2) { width: 4.2%; min-width: 60px; }
-        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }
-        th:nth-child(4), td:nth-child(4) { width: 10%; min-width: 100px; }
-        th:nth-child(5), td:nth-child(5) { width: 98%; min-width: 600px; }
-        th:nth-child(6), td:nth-child(6) { width: 4.5%; min-width: 60px; }
-        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
-        th:nth-child(9), td:nth-child(9) { width: 5%; min-width: 60px; }
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
-        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; }
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; }
-        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; }
-        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; }
-        
-        .tier-separator {
-            background: transparent;
-            height: 50px;
-            position: relative;
-        }
-        
-        .tier-divider {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 20px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-        }
-        
-        .tier-label {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 8px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 2px solid;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            white-space: nowrap;
-        }
-        
-        .tier-label.new-casinos {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-color: #f093fb;
-            color: white;
-        }
-        
-        .tier-label.god-tier {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-color: #FFD700;
-            color: black;
-        }
-        
-        .tier-label.high-tier {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-            border-color: #30cfd0;
-            color: white;
-        }
-        
-        .tier-label.medium-tier {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            border-color: #a8edea;
-            color: #333;
-        }
-        
-        .tier-label.trash-tier {
-            background: linear-gradient(135deg, #868f96, #596164);
-            border-color: #868f96;
-            color: white;
-        }
-        
-        .tier-indicator {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
-        .tier-new {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-        }
-        
-        .tier-god {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: black;
-        }
-        
-        .tier-high {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-            color: white;
-        }
-        
-        .tier-medium {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            color: #333;
-        }
-        
-        .tier-trash {
-            background: linear-gradient(135deg, #868f96, #596164);
-            color: white;
-        }
-        
-        .notes {
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
-            max-width: none;
-        }
-        
-        .casino-name {
-            font-weight: 600;
+            padding: 4rem 2rem;
             color: #4CAF50;
-            white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.3;
-        }
-        
-        .signup-link {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 5px 12px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05));
             border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-block;
-            transition: all 0.3s;
-            white-space: nowrap;
+            border: 2px dashed rgba(76, 175, 80, 0.3);
+            animation: pulse 2s infinite;
         }
         
-        .signup-link:hover {
-            background: linear-gradient(135deg, #66BB6A, #9CCC65);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        .coming-soon-message .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
         }
         
-        .daily-bonus {
-            color: #FFEB3B;
-            font-weight: 600;
-            font-size: 0.65rem;
-            word-wrap: break-word;
-            white-space: normal;
-            line-height: 1.2;
-            max-width: 100%;
-        }
-        
-        .min-redemption {
-            background: rgba(139, 195, 74, 0.2);
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: #8BC34A;
-            white-space: nowrap;
-        }
-        
-        .welcome-offer {
-            font-size: 0.8em;
-            white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.3;
-        }
-        
-        .game-column {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .parent-company {
-            font-size: 0.75em;
+        .coming-soon-message .subtitle {
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .restricted-states {
-            font-size: 0.7em;
-            color: rgba(255, 165, 0, 0.8);
+            margin-top: 0.5rem;
         }
 
         /* Discord Float Button */
@@ -1002,17 +665,15 @@
             <div class="patch-notes-section">
                 <div class="patch-notes-header">
                     <h2>📋 Latest Updates & Patch Notes</h2>
-                    <span class="version" id="latestVersion">Loading...</span>
+                    <span class="version">Coming Soon</span>
                 </div>
-                <div class="patch-notes-content" id="patchNotesContent">
-                    <div class="patch-loading">Up to date</div>
+                <div class="patch-notes-content">
+                    <div class="update-notice">
+                        <span class="icon">⏳</span>
+                        <strong>Will be updated shortly</strong>
+                        <div class="subtitle">Check back soon for the latest updates and patch notes</div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Debug Info Section -->
-            <div class="debug-info" id="debugInfo">
-                <h3>Debug Information:</h3>
-                <div id="debugContent"></div>
             </div>
             
             <div class="stats-grid">
@@ -1021,7 +682,7 @@
                     <div>Daily Earnings</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-value">70+</div>
                     <div>Total Casinos</div>
                 </div>
                 <div class="stat-card">
@@ -1035,57 +696,10 @@
             </div>
             
             <div class="dashboard-container">
-                <div class="loading-message" id="loadingMessage">
-                    Loading casino data from GitHub...
-                </div>
-                
-                <div class="error-message" id="errorMessage">
-                    Error loading data. Please check the console for details.
-                </div>
-                
-                <div class="search-section">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
-                    </div>
-                </div>
-                
-                <div class="tier-tabs">
-                    <div class="tier-tab active" onclick="filterByTier('all', this)">All Casinos</div>
-                    <div class="tier-tab" onclick="filterByTier('New Casinos', this)">New Casinos</div>
-                    <div class="tier-tab" onclick="filterByTier('God Tier', this)">God Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('High Tier', this)">High Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Medium Tier', this)">Medium Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Trash Tier', this)">Trash Tier</div>
-                </div>
-                
-                <div class="table-container">
-                    <table id="casinoTable">
-                        <thead>
-                            <tr>
-                                <th>Tier</th>
-                                <th>Casino</th>
-                                <th>Signup</th>
-                                <th>Daily</th>
-                                <th>Notes</th>
-                                <th>Welcome Offer</th>
-                                <th>Min Redeem</th>
-                                <th>Gravity BJ</th>
-                                <th>Auto Roulette</th>
-                                <th>Epic Joker</th>
-                                <th>Great Pigsby</th>
-                                <th>Other Games</th>
-                                <th>Parent Company</th>
-                                <th>Restricted States</th>
-                            </tr>
-                        </thead>
-                        <tbody id="casinoTableBody">
-                            <tr>
-                                <td colspan="14" style="text-align:center; padding:2rem;">
-                                    Loading casino data...
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="coming-soon-message">
+                    <span class="icon">🚀</span>
+                    <strong>Will be updated shortly</strong>
+                    <div class="subtitle">Our comprehensive casino database is being refreshed with the latest information</div>
                 </div>
             </div>
         </div>
@@ -1098,17 +712,6 @@
     </a>
 
 <script>
-// Global variables
-let casinosData = [];
-let currentCasinos = [];
-let currentFilter = 'all';
-let patchNotesData = [];
-let DEBUG_MODE = false; // Set to true to see debug information
-
-// GitHub URLs
-const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
-const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/PatchNotes.xlsx';
-
 // Toggle guide minimize/expand
 function toggleGuide() {
     const guideOverview = document.getElementById('guideOverview');
@@ -1136,410 +739,9 @@ function checkGuideState() {
     }
 }
 
-// Debug helper function
-function addDebugInfo(message) {
-    if (DEBUG_MODE) {
-        const debugContent = document.getElementById('debugContent');
-        const debugInfo = document.getElementById('debugInfo');
-        debugContent.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${message}</div>`;
-        debugInfo.classList.add('show');
-        console.log('DEBUG:', message);
-    }
-}
-
-// Function to load patch notes from GitHub
-async function loadPatchNotes() {
-    const patchContent = document.getElementById('patchNotesContent');
-    const versionElement = document.getElementById('latestVersion');
-    
-    try {
-        const response = await fetch(GITHUB_PATCH_NOTES_URL);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch patch notes');
-        }
-        
-        const arrayBuffer = await response.arrayBuffer();
-        const data = new Uint8Array(arrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array' });
-        
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        
-        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-        
-        patchContent.innerHTML = '';
-        
-        for (let i = 1; i < jsonData.length; i++) {
-            const row = jsonData[i];
-            if (!row || !row[0]) continue;
-            
-            const noteItem = document.createElement('div');
-            noteItem.className = 'patch-note-item';
-            
-            const date = row[0] || 'Date Unknown';
-            const version = row[1] || '';
-            const changes = row[2] || '';
-            
-            if (i === 1 && version) {
-                versionElement.textContent = `v${version}`;
-            }
-            
-            noteItem.innerHTML = `
-                <div class="patch-note-date">${date} ${version ? '- Version ' + version : ''}</div>
-                <div class="patch-note-changes">
-                    ${formatChanges(changes)}
-                </div>
-            `;
-            
-            patchContent.appendChild(noteItem);
-        }
-        
-        if (patchContent.children.length === 0) {
-            patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
-            versionElement.textContent = 'v1.0.0';
-        }
-        
-    } catch (error) {
-        console.error('Error loading patch notes:', error);
-        patchContent.innerHTML = '<div class="patch-error">Unable to load patch notes. Check back later!</div>';
-        versionElement.textContent = 'v1.0.0';
-    }
-}
-
-// Format changes text into HTML
-function formatChanges(changes) {
-    if (!changes) return '';
-    
-    const items = changes.split(/[\n;]/).filter(item => item.trim());
-    
-    if (items.length > 1) {
-        return '<ul>' + items.map(item => `<li>${item.trim()}</li>`).join('') + '</ul>';
-    }
-    
-    return changes;
-}
-
-// Function to load Excel from GitHub automatically
-async function loadExcelFromGitHub() {
-    const loadingDiv = document.getElementById('loadingMessage');
-    const errorDiv = document.getElementById('errorMessage');
-    
-    loadingDiv.classList.add('show');
-    errorDiv.classList.remove('show');
-    
-    try {
-        const response = await fetch(GITHUB_EXCEL_URL);
-        
-        if (!response.ok) {
-            throw new Error(`Failed to fetch Excel file: ${response.status} ${response.statusText}`);
-        }
-        
-        const arrayBuffer = await response.arrayBuffer();
-        const data = new Uint8Array(arrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array' });
-        
-        processExcelData(workbook);
-        loadingDiv.classList.remove('show');
-        
-    } catch (error) {
-        console.error('Error loading Excel from GitHub:', error);
-        loadingDiv.classList.remove('show');
-        errorDiv.classList.add('show');
-        errorDiv.innerHTML = `
-            Error loading data: ${error.message}<br>
-            <small>Make sure the GitHub URL is correct and the file exists.</small>
-        `;
-    }
-}
-
-// Enhanced tier detection function
-function detectTier(cellContent) {
-    const content = String(cellContent).trim().toLowerCase();
-    
-    // Check for various tier header patterns
-    if (content.includes('new casino') || 
-        content === 'new casinos verified!' || 
-        content === 'new casinos verified' ||
-        content === 'new casinos' ||
-        content.startsWith('🆕')) {
-        return 'New Casinos';
-    } else if (content.includes('god tier') || content === 'god tier') {
-        return 'God Tier';
-    } else if (content.includes('high tier') || content === 'high tier') {
-        return 'High Tier';
-    } else if (content.includes('medium tier') || content === 'medium tier') {
-        return 'Medium Tier';
-    } else if (content.includes('trash tier') || content === 'trash tier') {
-        return 'Trash Tier';
-    }
-    
-    return null;
-}
-
-// Process Excel data with improved tier detection
-function processExcelData(workbook) {
-    const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
-    
-    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    
-    if (jsonData.length < 3) {
-        console.error('Excel file appears to be empty');
-        return;
-    }
-    
-    addDebugInfo(`Processing ${jsonData.length} rows from Excel`);
-    
-    casinosData = [];
-    
-    let currentTier = '';
-    let tierCounts = {
-        'New Casinos': 0,
-        'God Tier': 0,
-        'High Tier': 0,
-        'Medium Tier': 0,
-        'Trash Tier': 0
-    };
-    
-    // Process each row
-    for (let i = 0; i < jsonData.length; i++) {
-        const row = jsonData[i];
-        
-        // Skip completely empty rows
-        if (!row || row.length === 0) continue;
-        
-        // Check multiple columns for tier headers (columns A, B, C)
-        let tierFound = false;
-        for (let col = 0; col < 3; col++) {
-            if (row[col]) {
-                const detectedTier = detectTier(row[col]);
-                if (detectedTier) {
-                    currentTier = detectedTier;
-                    tierFound = true;
-                    addDebugInfo(`Found tier header "${detectedTier}" at row ${i+1}, column ${col+1}`);
-                    break;
-                }
-            }
-        }
-        
-        // If tier header found, skip to next row
-        if (tierFound) continue;
-        
-        // Check if this is a casino entry (column B should have casino name)
-        const cellContent = row[1] ? String(row[1]).trim() : '';
-        
-        // Skip non-casino entries
-        if (!cellContent || 
-            cellContent === 'Signup' || 
-            cellContent === 'Casino' ||
-            cellContent === 'Referrals' || 
-            cellContent.includes('Thank you') ||
-            cellContent.includes('Total:') ||
-            cellContent.startsWith('$')) {
-            continue;
-        }
-        
-        // If we have a current tier and valid casino name, create casino object
-        if (currentTier && cellContent) {
-            const casino = {
-                tier: currentTier,
-                casino: cellContent,
-                signupLink: row[0] || '',
-                dailyBonus: row[2] || '',
-                notes: row[3] || '',
-                welcomeOffer: row[4] || '',
-                minRedemption: row[5] || '',
-                gravityBJ: row[6] || '',
-                autoRoulette: row[7] || '',
-                epicJoker: row[8] || '',
-                greatPigsby: row[9] || '',
-                otherGames: row[10] || '',
-                parentCompany: row[13] || '',
-                restrictedStates: row[15] || ''
-            };
-            
-            // Clean up the data
-            Object.keys(casino).forEach(key => {
-                if (typeof casino[key] === 'string') {
-                    casino[key] = casino[key].trim();
-                }
-            });
-            
-            casinosData.push(casino);
-            tierCounts[currentTier]++;
-            
-            addDebugInfo(`Added casino: ${cellContent} (${currentTier})`);
-        }
-    }
-    
-    // Log tier counts
-    addDebugInfo(`Total casinos loaded: ${casinosData.length}`);
-    Object.entries(tierCounts).forEach(([tier, count]) => {
-        if (count > 0) {
-            addDebugInfo(`${tier}: ${count} casinos`);
-        }
-    });
-    
-    // Update display
-    currentCasinos = [...casinosData];
-    renderTable(currentCasinos);
-    
-    console.log(`Loaded ${casinosData.length} casinos from Excel`, tierCounts);
-}
-
-// Helper function to format signup link
-function formatSignupLink(url) {
-    if (!url) return '-';
-    
-    if (url.startsWith('http://') || url.startsWith('https://')) {
-        return `<a href="${url}" target="_blank" class="signup-link">Sign Up</a>`;
-    }
-    
-    if (url.length > 0) {
-        if (url.includes('.')) {
-            return `<a href="https://${url}" target="_blank" class="signup-link">Sign Up</a>`;
-        }
-        return url;
-    }
-    
-    return '-';
-}
-
-// Render table with proper tier display
-function renderTable(casinos) {
-    const tbody = document.getElementById('casinoTableBody');
-    tbody.innerHTML = '';
-    
-    if (!casinos || casinos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;">No casinos found</td></tr>';
-        return;
-    }
-    
-    // Define tier order (New Casinos first)
-    const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
-    const groupedCasinos = {};
-    
-    // Group casinos by tier
-    tiers.forEach(tier => {
-        groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
-    });
-    
-    // Render each tier
-    tiers.forEach(tier => {
-        const tierCasinos = groupedCasinos[tier];
-        if (tierCasinos.length === 0) return;
-        
-        // Add tier separator
-        const separatorRow = document.createElement('tr');
-        separatorRow.className = 'tier-separator';
-        
-        let tierLabelClass = '';
-        if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
-        else if (tier === 'God Tier') tierLabelClass = 'god-tier';
-        else if (tier === 'High Tier') tierLabelClass = 'high-tier';
-        else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
-        else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
-        
-        separatorRow.innerHTML = '<td colspan="14"><div class="tier-divider"><span class="tier-label ' + 
-                                 tierLabelClass + '">' + tier + '</span></div></td>';
-        tbody.appendChild(separatorRow);
-        
-        // Add casino rows
-        tierCasinos.forEach(casino => {
-            const row = document.createElement('tr');
-            
-            let tierClass = 'tier-new';
-            if (casino.tier === 'New Casinos') tierClass = 'tier-new';
-            else if (casino.tier === 'God Tier') tierClass = 'tier-god';
-            else if (casino.tier === 'High Tier') tierClass = 'tier-high';
-            else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
-            else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
-            
-            row.innerHTML = 
-                '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
-                '<td class="casino-name">' + casino.casino + '</td>' +
-                '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
-                '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
-                '<td class="notes">' + (casino.notes || '') + '</td>' +
-                '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
-                '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
-                '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
-                '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
-                '<td class="game-column">' + (casino.greatPigsby || '-') + '</td>' +
-                '<td class="game-column">' + (casino.otherGames || '-') + '</td>' +
-                '<td class="parent-company">' + (casino.parentCompany || '-') + '</td>' +
-                '<td class="restricted-states">' + (casino.restrictedStates || '-') + '</td>';
-            
-            tbody.appendChild(row);
-        });
-    });
-    
-    document.getElementById('totalCount').textContent = casinos.length;
-}
-
-// Filter by tier
-function filterByTier(tier, element) {
-    currentFilter = tier;
-    
-    document.querySelectorAll('.tier-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    element.classList.add('active');
-    
-    if (tier === 'all') {
-        currentCasinos = [...casinosData];
-    } else {
-        currentCasinos = casinosData.filter(c => c.tier === tier);
-    }
-    
-    renderTable(currentCasinos);
-}
-
-// Search function
-function searchCasinos() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
-    let filtered = currentFilter === 'all' ? 
-        [...casinosData] : 
-        casinosData.filter(c => c.tier === currentFilter);
-    
-    if (searchTerm) {
-        filtered = filtered.filter(casino => {
-            return (
-                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
-                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
-                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
-                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
-                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
-            );
-        });
-    }
-    
-    renderTable(filtered);
-}
-
-// Enable debug mode with keyboard shortcut (Ctrl+Shift+D)
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-        DEBUG_MODE = !DEBUG_MODE;
-        const debugInfo = document.getElementById('debugInfo');
-        if (DEBUG_MODE) {
-            debugInfo.classList.add('show');
-            console.log('Debug mode enabled');
-        } else {
-            debugInfo.classList.remove('show');
-            console.log('Debug mode disabled');
-        }
-    }
-});
-
-// Load data automatically when page loads
+// Load data when page loads
 window.addEventListener('DOMContentLoaded', function() {
     checkGuideState();
-    loadExcelFromGitHub();
-    loadPatchNotes();
 });
 </script>
 
