@@ -17,10 +17,215 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            background: #0a0a0a;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            z-index: -2;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        /* Animated Grid Pattern */
+        .grid-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 15s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Floating Orbs */
+        .floating-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+            top: -150px;
+            left: -150px;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        
+        .orb2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.8), transparent);
+            top: 50%;
+            right: -100px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .orb3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.8), transparent);
+            bottom: -125px;
+            left: 30%;
+            animation-duration: 35s;
+            animation-delay: 10s;
+        }
+        
+        .orb4 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(139, 195, 74, 0.8), transparent);
+            top: 30%;
+            left: 60%;
+            animation-duration: 28s;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(100px, -100px) scale(1.1);
+            }
+            50% {
+                transform: translate(-100px, 100px) scale(0.9);
+            }
+            75% {
+                transform: translate(50px, 50px) scale(1.05);
+            }
+        }
+        
+        /* Money Rain Effect */
+        .money-rain {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .money-symbol {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.1);
+            font-size: 20px;
+            animation: fall linear infinite;
+            font-weight: bold;
+        }
+        
+        .money-symbol:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
+        .money-symbol:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 15px; }
+        .money-symbol:nth-child(3) { left: 25%; animation-duration: 20s; animation-delay: 4s; }
+        .money-symbol:nth-child(4) { left: 35%; animation-duration: 16s; animation-delay: 1s; font-size: 25px; }
+        .money-symbol:nth-child(5) { left: 45%; animation-duration: 22s; animation-delay: 3s; }
+        .money-symbol:nth-child(6) { left: 55%; animation-duration: 19s; animation-delay: 5s; font-size: 18px; }
+        .money-symbol:nth-child(7) { left: 65%; animation-duration: 17s; animation-delay: 2s; }
+        .money-symbol:nth-child(8) { left: 75%; animation-duration: 21s; animation-delay: 6s; font-size: 22px; }
+        .money-symbol:nth-child(9) { left: 85%; animation-duration: 15s; animation-delay: 4s; }
+        .money-symbol:nth-child(10) { left: 95%; animation-duration: 18s; animation-delay: 7s; }
+        
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                top: 110%;
+                transform: translateX(20px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Lines Animation */
+        .glow-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .glow-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+            animation: glowMove 8s linear infinite;
+        }
+        
+        .glow-line:nth-child(1) { top: 10%; width: 200px; animation-delay: 0s; }
+        .glow-line:nth-child(2) { top: 30%; width: 300px; animation-delay: 2s; }
+        .glow-line:nth-child(3) { top: 50%; width: 250px; animation-delay: 4s; }
+        .glow-line:nth-child(4) { top: 70%; width: 350px; animation-delay: 6s; }
+        .glow-line:nth-child(5) { top: 90%; width: 200px; animation-delay: 8s; }
+        
+        @keyframes glowMove {
+            0% {
+                left: -400px;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
         }
         
         /* Header Styles */
@@ -360,6 +565,8 @@
             padding: 180px 2rem 80px;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         @keyframes glow {
@@ -480,11 +687,11 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 30px 80px rgba(76, 175, 80, 0.3);
-            animation: float 6s ease-in-out infinite;
+            animation: floatHero 6s ease-in-out infinite;
             position: relative;
         }
         
-        @keyframes float {
+        @keyframes floatHero {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
@@ -520,6 +727,8 @@
             padding: 4rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .section-header {
@@ -691,6 +900,8 @@
             border-bottom: 1px solid rgba(76, 175, 80, 0.2);
             padding: 4rem 2rem;
             margin: 4rem 0;
+            position: relative;
+            z-index: 1;
         }
         
         .featured-content {
@@ -729,6 +940,8 @@
             padding: 3rem 2rem 2rem;
             margin-top: 6rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
         
         .footer-content {
@@ -854,6 +1067,34 @@
     </style>
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="grid-animation"></div>
+    <div class="floating-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
+    </div>
+    <div class="money-rain">
+        <div class="money-symbol">$</div>
+        <div class="money-symbol">₿</div>
+        <div class="money-symbol">$</div>
+        <div class="money-symbol">€</div>
+        <div class="money-symbol">$</div>
+        <div class="money-symbol">¥</div>
+        <div class="money-symbol">$</div>
+        <div class="money-symbol">£</div>
+        <div class="money-symbol">$</div>
+        <div class="money-symbol">₹</div>
+    </div>
+    <div class="glow-lines">
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+        <div class="glow-line"></div>
+    </div>
+    
     <!-- Header with Mega Menu -->
     <header>
         <nav>
@@ -913,6 +1154,11 @@
                                         <span>📖</span>
                                         Sweepstake Casinos Ultimate Guide
                                         <span class="menu-item-new">HOT</span>
+                                    </a>
+                                    <a href="24-to-1000-guide.html" class="menu-item">
+                                        <span>💰</span>
+                                        $24 to $1000+ Guide
+                                        <span class="menu-item-new">NEW</span>
                                     </a>
                                     <a href="skrill-casinos.html" class="menu-item">
                                         <span>💳</span>
@@ -1261,7 +1507,7 @@
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">Getting Started</a></li>
+                    <li><a href="24-to-1000-guide.html">$24 to $1000 Guide</a></li>
                     <li><a href="#">Success Stories</a></li>
                     <li><a href="#">Resources</a></li>
                     <li><a href="#">Blog</a></li>
@@ -1297,53 +1543,4 @@
         // Show money guide banner after 5 seconds
         window.addEventListener('load', function() {
             setTimeout(function() {
-                const banner = document.getElementById('moneyGuideBanner');
-                banner.style.display = 'block';
-                // Trigger reflow to ensure the transition works
-                banner.offsetHeight;
-                banner.style.opacity = '1';
-                banner.style.transform = 'translateY(0)';
-            }, 5000);
-        });
-        
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        }
-        
-        function toggleMegaMenu(event) {
-            event.stopPropagation();
-            const megaDropdown = document.getElementById('megaDropdown');
-            
-            // Only toggle on mobile
-            if (window.innerWidth <= 768) {
-                megaDropdown.classList.toggle('active');
-            }
-        }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const megaDropdown = document.getElementById('megaDropdown');
-            const navMenu = document.getElementById('navMenu');
-            
-            if (!event.target.closest('.mega-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
-                megaDropdown.classList.remove('active');
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                }
-            }
-        });
-        
-        // Reset menu state on window resize
-        window.addEventListener('resize', function() {
-            const megaDropdown = document.getElementById('megaDropdown');
-            const navMenu = document.getElementById('navMenu');
-            
-            if (window.innerWidth > 768) {
-                megaDropdown.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
-</body>
-</html>
+                const banner = document.getElementById('moneyG
