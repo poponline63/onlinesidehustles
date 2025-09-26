@@ -1543,4 +1543,53 @@
         // Show money guide banner after 5 seconds
         window.addEventListener('load', function() {
             setTimeout(function() {
-                const banner = document.getElementById('moneyG
+                const banner = document.getElementById('moneyGuideBanner');
+                banner.style.display = 'block';
+                // Trigger reflow to ensure the transition works
+                banner.offsetHeight;
+                banner.style.opacity = '1';
+                banner.style.transform = 'translateY(0)';
+            }, 5000);
+        });
+        
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+        
+        function toggleMegaMenu(event) {
+            event.stopPropagation();
+            const megaDropdown = document.getElementById('megaDropdown');
+            
+            // Only toggle on mobile
+            if (window.innerWidth <= 768) {
+                megaDropdown.classList.toggle('active');
+            }
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const megaDropdown = document.getElementById('megaDropdown');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (!event.target.closest('.mega-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
+                megaDropdown.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+        
+        // Reset menu state on window resize
+        window.addEventListener('resize', function() {
+            const megaDropdown = document.getElementById('megaDropdown');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (window.innerWidth > 768) {
+                megaDropdown.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
