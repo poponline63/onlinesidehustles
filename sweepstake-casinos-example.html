@@ -566,27 +566,90 @@
             to { transform: scale(0); opacity: 0; }
         }
 
-        .coming-soon-message {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #4CAF50;
-            font-size: 1.3rem;
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05));
-            border-radius: 15px;
-            border: 2px dashed rgba(76, 175, 80, 0.3);
-            animation: pulse 2s infinite;
+        /* Spreadsheet Container Styles */
+        .spreadsheet-wrapper {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            position: relative;
         }
-        
-        .coming-soon-message .icon {
-            font-size: 4rem;
+
+        .spreadsheet-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
-            display: block;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        .coming-soon-message .subtitle {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 0.5rem;
+
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .view-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .view-btn.active {
+            background: #4CAF50;
+            color: black;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .spreadsheet-frame {
+            width: 100%;
+            height: 800px;
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            border-radius: 10px;
+            background: white;
+        }
+
+        .spreadsheet-note {
+            background: rgba(255, 235, 59, 0.1);
+            border-left: 4px solid #FFEB3B;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .spreadsheet-note strong {
+            color: #FFEB3B;
         }
 
         /* Discord Float Button */
@@ -633,6 +696,28 @@
 
         .visitor-icon:hover .visitor-tooltip {
             opacity: 1;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: #4CAF50;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(76, 175, 80, 0.2);
+            border-top-color: #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -790,14 +875,10 @@
             <div class="patch-notes-section">
                 <div class="patch-notes-header">
                     <h2>📋 Latest Updates & Patch Notes</h2>
-                    <span class="version">Coming Soon</span>
+                    <span class="version">Live Updates</span>
                 </div>
-                <div class="patch-notes-content">
-                    <div class="update-notice">
-                        <span class="icon">⏳</span>
-                        <strong>Will be updated shortly</strong>
-                        <div class="subtitle">Check back soon for the latest updates and patch notes</div>
-                    </div>
+                <div class="patch-notes-content" id="patchNotesContainer">
+                    <div class="loading-spinner">Loading patch notes...</div>
                 </div>
             </div>
             
@@ -837,10 +918,25 @@
                     </div>
                 </div>
                 
-                <div class="coming-soon-message">
-                    <span class="icon">🚀</span>
-                    <strong>Will be updated shortly</strong>
-                    <div class="subtitle">Our comprehensive casino database is being refreshed with the latest information</div>
+                <div class="spreadsheet-wrapper">
+                    <div class="spreadsheet-controls">
+                        <div class="view-options">
+                            <button class="view-btn active" onclick="setView('embedded')">
+                                <span>📊</span> Embedded View
+                            </button>
+                            <button class="view-btn" onclick="setView('fullscreen')">
+                                <span>🖥️</span> Fullscreen
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="spreadsheetContainer">
+                        <div class="loading-spinner">Loading spreadsheet...</div>
+                    </div>
+                    
+                    <div class="spreadsheet-note">
+                        <strong>💡 Pro Tip:</strong> The spreadsheet is automatically updated constantly with the latest casino information, bonus amounts, and redemption requirements. Bookmark this page to always have access to the most current data. For best viewing experience, use the fullscreen option!
+                    </div>
                 </div>
             </div>
         </div>
@@ -853,6 +949,21 @@
     </a>
 
 <script>
+// Configuration - Update these with your actual GitHub details
+const GITHUB_CONFIG = {
+    username: 'yourusername',  // Replace with your GitHub username
+    repo: 'yourrepo',          // Replace with your repository name
+    filename: 'NewWebsiteSheet - V1.xlsx',  // Your Excel filename
+    patchNotesFile: 'PatchNotes.xlsx',  // Patch notes Excel filename
+    branch: 'main'             // Branch name (usually 'main' or 'master')
+};
+
+// Generate GitHub URLs
+const GITHUB_RAW_URL = `https://github.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/raw/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.filename}`;
+const PATCH_NOTES_RAW_URL = `https://github.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/raw/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.patchNotesFile}`;
+const OFFICE_VIEWER_URL = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(GITHUB_RAW_URL)}`;
+const PATCH_NOTES_VIEWER_URL = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(PATCH_NOTES_RAW_URL)}`;
+
 // Toggle guide minimize/expand
 function toggleGuide() {
     const guideOverview = document.getElementById('guideOverview');
@@ -877,6 +988,61 @@ function checkGuideState() {
         const btnText = guideOverview.querySelector('.btn-text');
         guideOverview.classList.add('minimized');
         btnText.textContent = 'Expand';
+    }
+}
+
+// Spreadsheet view management
+function setView(viewType) {
+    const container = document.getElementById('spreadsheetContainer');
+    const buttons = document.querySelectorAll('.view-btn');
+    
+    // Update active button
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(viewType.toLowerCase()) || 
+            (viewType === 'embedded' && btn.textContent.includes('Embedded')) ||
+            (viewType === 'fullscreen' && btn.textContent.includes('Fullscreen'))) {
+            btn.classList.add('active');
+        }
+    });
+    
+    if (viewType === 'embedded') {
+        container.innerHTML = `
+            <iframe 
+                src="${OFFICE_VIEWER_URL}"
+                class="spreadsheet-frame"
+                frameborder="0"
+                scrolling="yes"
+                allowfullscreen>
+            </iframe>
+        `;
+    } else if (viewType === 'fullscreen') {
+        window.open(OFFICE_VIEWER_URL, '_blank');
+    }
+}
+
+// Initialize spreadsheet on page load
+function initSpreadsheet() {
+    // Load embedded view by default
+    setTimeout(() => {
+        setView('embedded');
+    }, 500);
+}
+
+// Initialize patch notes
+function initPatchNotes() {
+    const container = document.getElementById('patchNotesContainer');
+    if (container) {
+        setTimeout(() => {
+            container.innerHTML = `
+                <iframe 
+                    src="${PATCH_NOTES_VIEWER_URL}"
+                    style="width: 100%; height: 400px; border: none; border-radius: 10px; background: white;"
+                    frameborder="0"
+                    scrolling="yes">
+                </iframe>
+            `;
+        }, 500);
     }
 }
 
@@ -1036,6 +1202,8 @@ class VisitorCounter {
 // Load data when page loads
 window.addEventListener('DOMContentLoaded', function() {
     checkGuideState();
+    initSpreadsheet();
+    initPatchNotes();
     
     // Initialize visitor counter
     const visitorCounter = new VisitorCounter();
