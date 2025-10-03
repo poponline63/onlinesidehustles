@@ -463,6 +463,109 @@
             z-index: 1;
         }
         
+        /* Live Visitors Section */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .dashboard-title {
+            font-size: 1.8rem;
+            color: #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-visitors-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(76, 175, 80, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.5); }
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: livePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .live-text {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .visitor-count {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .visitor-icons {
+            display: flex;
+            align-items: center;
+            gap: -10px;
+            margin-left: 0.5rem;
+        }
+
+        .visitor-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border: 2px solid #1a1a1a;
+            animation: bounceIn 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visitor-icon:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .visitor-icon.leaving {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to { transform: scale(0); opacity: 0; }
+        }
+
         .coming-soon-message {
             text-align: center;
             padding: 4rem 2rem;
@@ -508,6 +611,28 @@
         .discord-float:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Visitor tooltip */
+        .visitor-tooltip {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .visitor-icon:hover .visitor-tooltip {
+            opacity: 1;
         }
     </style>
 </head>
@@ -696,6 +821,22 @@
             </div>
             
             <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h2 class="dashboard-title">
+                        <span>📊</span>
+                        Sweepstake Casinos Spreadsheet
+                    </h2>
+                    <div class="live-visitors-container">
+                        <div class="live-dot"></div>
+                        <span class="live-text">Live</span>
+                        <span class="visitor-count" id="visitorCount">3</span>
+                        <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">viewing now</span>
+                        <div class="visitor-icons" id="visitorIcons">
+                            <!-- Visitor icons will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="coming-soon-message">
                     <span class="icon">🚀</span>
                     <strong>Will be updated shortly</strong>
@@ -739,9 +880,165 @@ function checkGuideState() {
     }
 }
 
+// Live Visitor Counter Functionality
+class VisitorCounter {
+    constructor() {
+        this.currentVisitors = 0;
+        this.visitorEmojis = ['👤', '👥', '👁️', '🙋', '💻', '📱', '🖥️', '👨‍💻', '👩‍💻'];
+        this.sessionId = this.generateSessionId();
+        this.init();
+    }
+
+    init() {
+        this.loadVisitorCount();
+        this.updateDisplay();
+        this.trackRealVisitor();
+        this.syncWithOtherTabs();
+    }
+
+    generateSessionId() {
+        return 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    getRandomEmoji() {
+        return this.visitorEmojis[Math.floor(Math.random() * this.visitorEmojis.length)];
+    }
+
+    createVisitorIcon() {
+        const icon = document.createElement('div');
+        icon.className = 'visitor-icon';
+        icon.innerHTML = this.getRandomEmoji();
+        
+        const tooltip = document.createElement('div');
+        tooltip.className = 'visitor-tooltip';
+        tooltip.textContent = `Active Visitor`;
+        icon.appendChild(tooltip);
+        
+        return icon;
+    }
+
+    loadVisitorCount() {
+        // Get active sessions from localStorage
+        const sessions = this.getActiveSessions();
+        this.currentVisitors = sessions.length;
+    }
+
+    getActiveSessions() {
+        const now = Date.now();
+        const sessions = JSON.parse(localStorage.getItem('activeVisitorSessions') || '[]');
+        
+        // Filter out sessions older than 1 minute (they likely closed without cleanup)
+        const activeSessions = sessions.filter(session => {
+            return (now - session.timestamp) < 60000; // 1 minute timeout
+        });
+        
+        return activeSessions;
+    }
+
+    updateActiveSessions(add = true) {
+        let sessions = this.getActiveSessions();
+        
+        if (add) {
+            // Add current session
+            sessions.push({
+                id: this.sessionId,
+                timestamp: Date.now()
+            });
+        } else {
+            // Remove current session
+            sessions = sessions.filter(s => s.id !== this.sessionId);
+        }
+        
+        localStorage.setItem('activeVisitorSessions', JSON.stringify(sessions));
+        this.currentVisitors = sessions.length;
+    }
+
+    updateDisplay() {
+        const countElement = document.getElementById('visitorCount');
+        const iconsContainer = document.getElementById('visitorIcons');
+        
+        if (countElement) {
+            countElement.textContent = this.currentVisitors;
+        }
+        
+        if (iconsContainer) {
+            // Clear existing icons
+            iconsContainer.innerHTML = '';
+            
+            // Add icons for current visitors (max 5 shown)
+            const iconsToShow = Math.min(this.currentVisitors, 5);
+            for (let i = 0; i < iconsToShow; i++) {
+                const icon = this.createVisitorIcon();
+                icon.style.animationDelay = `${i * 0.1}s`;
+                iconsContainer.appendChild(icon);
+            }
+            
+            // If more than 5 visitors, show a +X indicator
+            if (this.currentVisitors > 5) {
+                const moreIcon = document.createElement('div');
+                moreIcon.className = 'visitor-icon';
+                moreIcon.style.background = 'linear-gradient(135deg, #FFA500, #FFD700)';
+                moreIcon.innerHTML = `+${this.currentVisitors - 5}`;
+                iconsContainer.appendChild(moreIcon);
+            }
+        }
+    }
+
+    trackRealVisitor() {
+        // Add this visitor to the count
+        this.updateActiveSessions(true);
+        this.updateDisplay();
+
+        // Update timestamp periodically to show we're still active
+        this.heartbeatInterval = setInterval(() => {
+            this.updateActiveSessions(true);
+            this.loadVisitorCount();
+            this.updateDisplay();
+        }, 30000); // Update every 30 seconds
+
+        // Remove this visitor when they leave
+        window.addEventListener('beforeunload', () => {
+            this.updateActiveSessions(false);
+            clearInterval(this.heartbeatInterval);
+            clearInterval(this.syncInterval);
+        });
+
+        // Also handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden, might be closing
+                this.updateActiveSessions(false);
+            } else {
+                // Page is visible again
+                this.updateActiveSessions(true);
+                this.updateDisplay();
+            }
+        });
+    }
+
+    syncWithOtherTabs() {
+        // Listen for storage changes from other tabs
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'activeVisitorSessions') {
+                this.loadVisitorCount();
+                this.updateDisplay();
+            }
+        });
+
+        // Periodically sync with other tabs
+        this.syncInterval = setInterval(() => {
+            this.loadVisitorCount();
+            this.updateDisplay();
+        }, 5000); // Check every 5 seconds
+    }
+}
+
 // Load data when page loads
 window.addEventListener('DOMContentLoaded', function() {
     checkGuideState();
+    
+    // Initialize visitor counter
+    const visitorCounter = new VisitorCounter();
 });
 </script>
 
