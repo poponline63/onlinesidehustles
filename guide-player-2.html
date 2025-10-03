@@ -1,1 +1,876 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player 2 Strategy Guide - Maximize Your Earnings | Online Sidehustles</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateX(-5px);
+        }
+        
+        /* Guide Indicator Bar */
+        .guide-indicator-bar {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            z-index: 900;
+            padding: 0.75rem 0;
+        }
+        
+        .guide-indicator {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .guide-icon {
+            font-size: 1.3rem;
+        }
+        
+        .guide-text {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Main Content */
+        .main-container {
+            padding-top: 125px;
+            min-height: 100vh;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero Section */
+        .guide-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+        }
+        
+        .guide-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Intro Section */
+        .intro-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.03), rgba(255, 165, 0, 0.03));
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .intro-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+        
+        .intro-section strong {
+            color: #FFD700;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 215, 0, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        /* Steps Section */
+        .steps-section {
+            margin-bottom: 3rem;
+        }
+        
+        .steps-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #FFD700;
+        }
+        
+        .step-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 215, 0, 0.03);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .step-card:hover {
+            background: rgba(255, 215, 0, 0.06);
+            transform: translateX(10px);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* Requirements Section */
+        .requirements-section {
+            margin-bottom: 3rem;
+        }
+        
+        .requirements-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #FFA500;
+        }
+        
+        .requirement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .requirement-card {
+            background: rgba(255, 165, 0, 0.05);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .requirement-card:hover {
+            background: rgba(255, 165, 0, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.1);
+        }
+        
+        .requirement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .requirement-card h3 {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .requirement-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .requirement-card a {
+            color: #FFA500;
+            text-decoration: none;
+        }
+        
+        .requirement-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .benefits-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .benefits-list strong {
+            color: #FFD700;
+        }
+        
+        /* Platform Section */
+        .platform-section {
+            background: linear-gradient(135deg, rgba(129, 41, 144, 0.05), rgba(194, 24, 91, 0.05));
+            border: 2px solid rgba(129, 41, 144, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .platform-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .platform-section p {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .platform-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #812990, #C2185B);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(129, 41, 144, 0.3);
+        }
+        
+        .platform-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(129, 41, 144, 0.4);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-credit {
+            color: #4CAF50;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        /* Discord Float Button */
+        .discord-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            font-weight: 600;
+        }
+        
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .logo span {
+                display: none;
+            }
+            
+            .guide-indicator-bar {
+                top: 60px;
+                padding: 0.6rem 0;
+            }
+            
+            .guide-indicator {
+                padding: 0 1rem;
+                gap: 0.5rem;
+            }
+            
+            .guide-text {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .guide-icon {
+                font-size: 1rem;
+            }
+            
+            .back-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .main-container {
+                padding-top: 110px;
+            }
+            
+            .guide-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .benefits-section {
+                padding: 1.5rem;
+            }
+            
+            .step-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .requirement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                        <defs>
+                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#004D40"/>
+                                <stop offset="33%" style="stop-color:#00695C"/>
+                                <stop offset="66%" style="stop-color:#4CAF50"/>
+                                <stop offset="100%" style="stop-color:#FFD700"/>
+                            </linearGradient>
+                            <radialGradient id="centerGoldLogo">
+                                <stop offset="0%" style="stop-color:#FFD700"/>
+                                <stop offset="50%" style="stop-color:#FFA500"/>
+                                <stop offset="100%" style="stop-color:#4CAF50"/>
+                            </radialGradient>
+                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B4513"/>
+                                <stop offset="50%" style="stop-color:#6D4C41"/>
+                                <stop offset="100%" style="stop-color:#5D4037"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
+                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
+                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
+                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                    </svg>
+                </div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <a href="https://onlinesidehustles.info/complete-guide-list" class="back-button">
+                <span>←</span>
+                Back to Guides
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Guide Indicator Bar -->
+    <div class="guide-indicator-bar">
+        <div class="guide-indicator">
+            <span class="guide-icon">📖</span>
+            <span class="guide-text">PLAYER 2 STRATEGY GUIDE</span>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="guide-hero">
+                <div class="guide-badge">
+                    🎮 MAXIMIZE EARNINGS STRATEGY
+                </div>
+                <h1>The "Player 2" Strategy</h1>
+                <p class="guide-subtitle">
+                    Double, triple, or 10x your earnings by managing accounts for friends and family
+                </p>
+            </div>
+            
+            <!-- Intro Section -->
+            <div class="intro-section">
+                <p>
+                    Once you've mastered sweepstakes and maximized your own earning potential, you can 
+                    <strong>multiply your income</strong> by utilizing the "Player 2" strategy. Help your 
+                    friends and family earn passive income while you manage their accounts - typically 
+                    splitting profits <strong>50/50</strong>. The more people you help, the more you earn! 
+                    This legitimate strategy allows you to leverage your expertise while providing value 
+                    to others who don't have the time or knowledge to maximize their own earnings.
+                </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value">50/50</div>
+                    <div class="stat-label">Typical Profit Split</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-value">2 Max</div>
+                    <div class="stat-label">Per Household</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-value">10x+</div>
+                    <div class="stat-label">Earning Potential</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Passive for Player 2</div>
+                </div>
+            </div>
+            
+            <!-- Steps Section -->
+            <div class="steps-section">
+                <h2>How to Set Up Your Player 2 Network</h2>
+                
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Main Account</h3>
+                        <p>Set up your primary accounts on Skrill and other platforms using your personal information. This will be your hub for managing multiple income streams and transferring funds.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Have Your Player 2 Create Their Accounts</h3>
+                        <p>Your friend or family member creates their own accounts using their information. Everything must be in their name for legal compliance - this is crucial for avoiding any issues.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fund Their Accounts</h3>
+                        <p>Send money from your main account to your Player 2's account (via Skrill or other payment methods). This creates a clean, traceable transaction history for tax purposes.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Sign Up & Manage Their Sweepstakes</h3>
+                        <p>Use your expertise to sign them up for sweepstake websites and manage their accounts. Collect daily bonuses, enter giveaways, and optimize their earnings. Your Player 2 doesn't have to do anything!</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Split the Profits</h3>
+                        <p>Typically a 50/50 split - they get passive income for providing their identity, you get rewarded for your expertise and time. Everyone wins!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Requirements Section -->
+            <div class="requirements-section">
+                <h2>⚠️ Important Requirements & Best Practices</h2>
+                
+                <div class="requirement-grid">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">🏠</div>
+                        <h3>Household Limits</h3>
+                        <p>Maximum of 2 sweepstake users per household. Each account must use separate devices. Player 2s in different households are ideal for maximizing opportunities!</p>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">💻</div>
+                        <h3>Remote Access Setup</h3>
+                        <p>For Player 2s in different locations, use remote access software like <a href="https://www.helpwire.app/" target="_blank">HelpWire</a> (unlimited access) or purchase an affordable PC solely for remote management.</p>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">📊</div>
+                        <h3>Tax Compliance</h3>
+                        <p>Your Player 2 is responsible for taxes on their earnings. However, the income they generate will far exceed any tax obligations - it's still highly profitable for them!</p>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">🔄</div>
+                        <h3>Scalability</h3>
+                        <p>The more people you know, the more you can earn. Build a network of Player 2s across different households to maximize income potential!</p>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">🖥️</div>
+                        <h3>Remote Hardware Setup</h3>
+                        <p>For managing remote Player 2s, get this <a href="https://www.amazon.com/dp/B08PN48R4Z?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_5" target="_blank">affordable PC bundle</a> (includes keyboard & mouse, monitor needed for initial setup). After setup, use this <a href="https://www.amazon.com/dp/B0CKKLTWMN?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_6&th=1" target="_blank">headless display adapter</a> to emulate a monitor for remote access.</p>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">🔒</div>
+                        <h3>Legal Compliance</h3>
+                        <p>All accounts must be in the actual person's name. Never create fake accounts or use false information - this strategy only works when done legitimately.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefits Section -->
+            <div class="benefits-section">
+                <h2>Why the Player 2 Strategy Works</h2>
+                <ul class="benefits-list">
+                    <li><strong>Leverage Your Expertise:</strong> You've already learned the system - now monetize that knowledge</li>
+                    <li><strong>True Passive Income for Player 2:</strong> They earn money without lifting a finger</li>
+                    <li><strong>Scalable Business Model:</strong> Each additional Player 2 multiplies your income</li>
+                    <li><strong>Win-Win Situation:</strong> You both profit from the arrangement</li>
+                    <li><strong>Low Time Investment:</strong> Managing multiple accounts takes minimal additional time</li>
+                    <li><strong>Clear Transaction History:</strong> Perfect for tracking profits and tax reporting</li>
+                    <li><strong>Compound Earnings:</strong> Reinvest profits to grow the bankroll faster</li>
+                    <li><strong>Network Effects:</strong> The more successful you are, the easier it is to find new Player 2s</li>
+                </ul>
+            </div>
+            
+            <!-- Platform Section -->
+            <div class="platform-section">
+                <h2>Perfect for Skrill Users</h2>
+                <p>
+                    Skrill makes the Player 2 strategy incredibly efficient with instant transfers between accounts, 
+                    clear transaction histories, and cashback on all deposits and withdrawals. Once you reach 
+                    True Skriller VIP status, you'll have zero fees on all transactions across all your Player 2 accounts!
+                </p>
+                <a href="skrill-casinos.html" class="platform-btn">
+                    Learn About Skrill Benefits →
+                </a>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Multiply Your Earnings?</h2>
+                <p>
+                    Start building your Player 2 network today. The sooner you begin, the faster you'll 
+                    scale your income. Remember - this only works when done legitimately with real people 
+                    who trust you to manage their accounts.
+                </p>
+                <a href="https://discord.com/invite/onlinesidehustles" class="cta-btn" target="_blank">
+                    Join Our Community for Tips →
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Online Sidehustles. All rights reserved.</p>
+            <p class="footer-credit">Website by Crossroads - Sidehustle Wiki</p>
+        </div>
+    </footer>
+    
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
+    </a>
+</body>
+</html>
