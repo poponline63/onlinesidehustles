@@ -405,23 +405,40 @@
             padding-right: 1rem;
         }
 
-        .update-notice {
-            text-align: center;
-            padding: 3rem 2rem;
+        .patch-note-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
+        }
+
+        .patch-note-item:last-child {
+            border-bottom: none;
+        }
+
+        .patch-note-date {
             color: #FFA500;
-            font-size: 1.2rem;
-            animation: pulse 2s infinite;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
+        .patch-note-item ul {
+            margin-left: 1.5rem;
+            list-style-type: none;
         }
 
-        .update-notice .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+        .patch-note-item li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .patch-note-item li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #FFA500;
+            font-weight: bold;
         }
         
         .stats-grid {
@@ -566,90 +583,20 @@
             to { transform: scale(0); opacity: 0; }
         }
 
-        /* Spreadsheet Container Styles */
-        .spreadsheet-wrapper {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
-            position: relative;
-        }
-
-        .spreadsheet-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .view-options {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .view-btn {
-            background: rgba(76, 175, 80, 0.2);
-            border: 1px solid rgba(76, 175, 80, 0.4);
-            color: #4CAF50;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .view-btn:hover {
-            background: rgba(76, 175, 80, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .view-btn.active {
-            background: #4CAF50;
-            color: black;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
-        }
-
-        .spreadsheet-frame {
+        /* Spreadsheet Iframe Container */
+        .spreadsheet-container {
             width: 100%;
             height: 800px;
-            border: 2px solid rgba(76, 175, 80, 0.2);
+            border: 2px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
-            background: white;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        .spreadsheet-note {
-            background: rgba(255, 235, 59, 0.1);
-            border-left: 4px solid #FFEB3B;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .spreadsheet-note strong {
-            color: #FFEB3B;
+        .spreadsheet-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Discord Float Button */
@@ -696,28 +643,6 @@
 
         .visitor-icon:hover .visitor-tooltip {
             opacity: 1;
-        }
-
-        /* Loading Spinner */
-        .loading-spinner {
-            text-align: center;
-            padding: 3rem;
-            color: #4CAF50;
-        }
-
-        .loading-spinner::after {
-            content: '';
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(76, 175, 80, 0.2);
-            border-top-color: #4CAF50;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -875,10 +800,36 @@
             <div class="patch-notes-section">
                 <div class="patch-notes-header">
                     <h2>📋 Latest Updates & Patch Notes</h2>
-                    <span class="version">Live Updates</span>
+                    <span class="version">v2.5</span>
                 </div>
-                <div class="patch-notes-content" id="patchNotesContainer">
-                    <div class="loading-spinner">Loading patch notes...</div>
+                <div class="patch-notes-content">
+                    <div class="patch-note-item">
+                        <div class="patch-note-date">December 2024</div>
+                        <ul>
+                            <li>Added 8 new sweepstake casino sites to the database</li>
+                            <li>Updated daily bonus amounts for 15+ existing sites</li>
+                            <li>Improved RTP tracking for better game recommendations</li>
+                            <li>Added Skrill payment compatibility information</li>
+                        </ul>
+                    </div>
+                    <div class="patch-note-item">
+                        <div class="patch-note-date">November 2024</div>
+                        <ul>
+                            <li>Released automated bonus collection software integration</li>
+                            <li>Updated minimum redemption amounts across all platforms</li>
+                            <li>Added new package tracking system for better ROI</li>
+                            <li>Implemented live visitor tracking on spreadsheet</li>
+                        </ul>
+                    </div>
+                    <div class="patch-note-item">
+                        <div class="patch-note-date">October 2024</div>
+                        <ul>
+                            <li>Initial release of comprehensive sweepstake casino guide</li>
+                            <li>Launched interactive spreadsheet with 70+ verified sites</li>
+                            <li>Added daily earning calculator and monthly projections</li>
+                            <li>Created Discord community for real-time updates</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
@@ -918,25 +869,12 @@
                     </div>
                 </div>
                 
-                <div class="spreadsheet-wrapper">
-                    <div class="spreadsheet-controls">
-                        <div class="view-options">
-                            <button class="view-btn active" onclick="setView('embedded')">
-                                <span>📊</span> Embedded View
-                            </button>
-                            <button class="view-btn" onclick="setView('fullscreen')">
-                                <span>🖥️</span> Fullscreen
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div id="spreadsheetContainer">
-                        <div class="loading-spinner">Loading spreadsheet...</div>
-                    </div>
-                    
-                    <div class="spreadsheet-note">
-                        <strong>💡 Pro Tip:</strong> The spreadsheet is automatically updated constantly with the latest casino information, bonus amounts, and redemption requirements. Bookmark this page to always have access to the most current data. For best viewing experience, use the fullscreen option!
-                    </div>
+                <div class="spreadsheet-container">
+                    <iframe 
+                        class="spreadsheet-iframe" 
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPIkT8z_JYpYr4tGKl6iJFxZ0e9yRhS2vW4pB_mVG3L5xN7JQ8kH9xZNWmXJvK3nY2JhW9MZ8/pubhtml?widget=true&amp;headers=false"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -949,10 +887,6 @@
     </a>
 
 <script>
-// Configuration - Excel files in same directory as HTML
-const SPREADSHEET_FILE = 'NewWebsiteSheet - V1.xlsx';
-const PATCH_NOTES_FILE = 'PatchNotes.xlsx';
-
 // Toggle guide minimize/expand
 function toggleGuide() {
     const guideOverview = document.getElementById('guideOverview');
@@ -977,64 +911,6 @@ function checkGuideState() {
         const btnText = guideOverview.querySelector('.btn-text');
         guideOverview.classList.add('minimized');
         btnText.textContent = 'Expand';
-    }
-}
-
-// Spreadsheet view management
-function setView(viewType) {
-    const container = document.getElementById('spreadsheetContainer');
-    const buttons = document.querySelectorAll('.view-btn');
-    
-    // Update active button
-    buttons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase().includes(viewType.toLowerCase()) || 
-            (viewType === 'embedded' && btn.textContent.includes('Embedded')) ||
-            (viewType === 'fullscreen' && btn.textContent.includes('Fullscreen'))) {
-            btn.classList.add('active');
-        }
-    });
-    
-    if (viewType === 'embedded') {
-        // For local file, we'll create a simple table view or use an iframe
-        container.innerHTML = `
-            <iframe 
-                src="${SPREADSHEET_FILE}"
-                class="spreadsheet-frame"
-                frameborder="0"
-                scrolling="yes"
-                allowfullscreen>
-                <p>Your browser doesn't support iframes. <a href="${SPREADSHEET_FILE}" target="_blank">Click here to view the spreadsheet</a>.</p>
-            </iframe>
-        `;
-    } else if (viewType === 'fullscreen') {
-        window.open(SPREADSHEET_FILE, '_blank');
-    }
-}
-
-// Initialize spreadsheet on page load
-function initSpreadsheet() {
-    // Load embedded view by default
-    setTimeout(() => {
-        setView('embedded');
-    }, 500);
-}
-
-// Initialize patch notes
-function initPatchNotes() {
-    const container = document.getElementById('patchNotesContainer');
-    if (container) {
-        setTimeout(() => {
-            container.innerHTML = `
-                <iframe 
-                    src="${PATCH_NOTES_FILE}"
-                    style="width: 100%; height: 400px; border: none; border-radius: 10px; background: white;"
-                    frameborder="0"
-                    scrolling="yes">
-                    <p>Your browser doesn't support iframes. <a href="${PATCH_NOTES_FILE}" target="_blank">Click here to view patch notes</a>.</p>
-                </iframe>
-            `;
-        }, 500);
     }
 }
 
@@ -1194,8 +1070,6 @@ class VisitorCounter {
 // Load data when page loads
 window.addEventListener('DOMContentLoaded', function() {
     checkGuideState();
-    initSpreadsheet();
-    initPatchNotes();
     
     // Initialize visitor counter
     const visitorCounter = new VisitorCounter();
