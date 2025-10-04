@@ -1007,15 +1007,24 @@ function displayExcel(workbook) {
             html += '<thead><tr>';
             let signupColumnIndex = -1;
             
+            // Find signup column - more flexible detection
             jsonData[0].forEach((header, headerIndex) => {
                 let headerClass = '';
-                // Check if this is specifically the Signup column (not Daily Links)
-                if (header && (header.toString().toLowerCase() === 'signup' || 
-                              header.toString().toLowerCase() === 'signups' ||
-                              header.toString().toLowerCase() === 'sign up' ||
-                              header.toString().toLowerCase() === 'sign-up')) {
+                const headerLower = header ? header.toString().toLowerCase().trim() : '';
+                
+                // Check various signup column names
+                if (headerLower === 'signup' || 
+                    headerLower === 'signups' ||
+                    headerLower === 'sign up' ||
+                    headerLower === 'sign-up' ||
+                    headerLower === 'signup link' ||
+                    headerLower === 'signup links' ||
+                    headerLower === 'sign up link' ||
+                    headerLower === 'registration' ||
+                    headerLower === 'register') {
                     headerClass = 'signup-header';
                     signupColumnIndex = headerIndex;
+                    console.log('Found signup column at index:', headerIndex, 'Header:', header);
                 }
                 html += `<th class="${headerClass}">${header || ''}</th>`;
             });
@@ -1072,25 +1081,31 @@ function displayExcel(workbook) {
                         let cellContent = row[j] || '';
                         let cellClass = '';
                         
-                        // Only highlight the actual Signup column, not Daily Links
+                        // Check if this is the signup column
                         if (j === signupColumnIndex && signupColumnIndex !== -1) {
                             cellClass = 'signup-cell';
                             
-                            // Convert links in signup column to buttons
-                            if (cellContent) {
-                                // Check if it's already a URL
-                                if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
-                                    cellContent = `<a href="${cellContent}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
-                                } else if (cellContent) {
-                                    // Try to detect if it looks like a URL even without protocol
-                                    const urlPattern = /(?:www\.|https?:\/\/)?[\w-]+(?:\.[\w-]+)+(?:\/[\w.,@?^=%&:\/~+#-]*)?/gi;
-                                    if (cellContent.toString().match(urlPattern)) {
-                                        let url = cellContent.toString().trim();
-                                        if (!url.startsWith('http')) {
-                                            url = 'https://' + url;
-                                        }
-                                        cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
+                            // Convert any content that looks like a link to a button
+                            if (cellContent && cellContent.toString().trim() !== '') {
+                                const cellStr = cellContent.toString().trim();
+                                
+                                // Check if it's a URL (with or without protocol)
+                                const urlPattern = /^(?:https?:\/\/)?(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/i;
+                                
+                                if (urlPattern.test(cellStr)) {
+                                    let url = cellStr;
+                                    // Add https:// if no protocol specified
+                                    if (!url.match(/^https?:\/\//)) {
+                                        url = 'https://' + url;
                                     }
+                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
+                                } else if (cellStr.length > 0 && !cellStr.toLowerCase().includes('n/a') && !cellStr.toLowerCase().includes('none')) {
+                                    // If it's not empty and not "N/A" or "None", try to make it a link anyway
+                                    let url = cellStr;
+                                    if (!url.match(/^https?:\/\//)) {
+                                        url = 'https://' + url;
+                                    }
+                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
                                 }
                             }
                         } else {
