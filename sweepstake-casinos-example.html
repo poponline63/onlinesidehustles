@@ -1064,7 +1064,7 @@ function displayExcel(workbook) {
             html += '<thead><tr>';
             let signupColumnIndex = -1;
             
-            // Find signup column - check if it's the first column titled "Signups"
+            // Find signup column and daily bonuses column
             jsonData[0].forEach((header, headerIndex) => {
                 let headerClass = '';
                 const headerStr = header ? header.toString().trim() : '';
@@ -1081,6 +1081,16 @@ function displayExcel(workbook) {
                     console.log('Found signup column at index:', headerIndex, 'Header:', header);
                 }
                 html += `<th class="${headerClass}">${header || ''}</th>`;
+            });
+            
+            // Find daily bonuses column index
+            let dailyBonusesIndex = -1;
+            jsonData[0].forEach((header, index) => {
+                const headerStr = header ? header.toString().toLowerCase().trim() : '';
+                if (headerStr.includes('daily') && (headerStr.includes('bonus') || headerStr.includes('bonuses'))) {
+                    dailyBonusesIndex = index;
+                    console.log('Found daily bonuses column at index:', index, 'Header:', header);
+                }
             });
             html += '</tr></thead>';
             
@@ -1202,6 +1212,11 @@ function displayExcel(workbook) {
                                 }
                             }
                         } else {
+                            // Remove apostrophes only from Daily Bonuses column
+                            if (j === dailyBonusesIndex && dailyBonusesIndex !== -1 && typeof cellContent === 'string') {
+                                cellContent = cellContent.replace(/'/g, '');
+                            }
+                            
                             // Regular links for other columns (not styled as buttons)
                             if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
                                 cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
