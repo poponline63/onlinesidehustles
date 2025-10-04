@@ -644,12 +644,25 @@
             text-overflow: ellipsis;
         }
         
+        /* Game column styles - make them 1.3x bigger */
+        .game-column {
+            font-size: 2.34rem !important;
+            font-weight: 700 !important;
+            min-width: 180px !important;
+        }
+        
         .excel-table td {
             padding: 1rem 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.9rem;
             text-align: center;
+        }
+        
+        /* Game column cells - make content bigger */
+        .game-cell {
+            font-size: 2.47rem !important;
+            font-weight: 600 !important;
         }
         
         .excel-table tr:hover td {
@@ -1366,8 +1379,9 @@ function displayExcel(workbook) {
         if (jsonData.length > 0) {
             html += '<thead><tr>';
             let signupColumnIndex = -1;
+            let gameColumnIndices = [];
             
-            // Find signup column and daily bonuses column
+            // Find signup column and game columns
             jsonData[0].forEach((header, headerIndex) => {
                 let headerClass = '';
                 const headerStr = header ? header.toString().trim() : '';
@@ -1383,6 +1397,18 @@ function displayExcel(workbook) {
                     signupColumnIndex = headerIndex;
                     console.log('Found signup column at index:', headerIndex, 'Header:', header);
                 }
+                
+                // Check if this is one of the game columns
+                if (headerStr.toLowerCase().includes('gravity bj') || 
+                    headerStr.toLowerCase().includes('auto roulette') || 
+                    headerStr.toLowerCase().includes('epic joker') || 
+                    headerStr.toLowerCase().includes('the great pigsby') ||
+                    headerStr.toLowerCase().includes('pigsby')) {
+                    headerClass += ' game-column';
+                    gameColumnIndices.push(headerIndex);
+                    console.log('Found game column at index:', headerIndex, 'Header:', header);
+                }
+                
                 html += `<th class="${headerClass}">${header || ''}</th>`;
             });
             
@@ -1487,9 +1513,14 @@ function displayExcel(workbook) {
                         let cellContent = row[j] || '';
                         let cellClass = '';
                         
+                        // Check if this is a game column
+                        if (gameColumnIndices.includes(j)) {
+                            cellClass += ' game-cell';
+                        }
+                        
                         // Check if this is the signup column
                         if (j === signupColumnIndex && signupColumnIndex !== -1) {
-                            cellClass = 'signup-cell';
+                            cellClass += ' signup-cell';
                             
                             // Convert any content that looks like a link to a button
                             if (cellContent && cellContent.toString().trim() !== '') {
