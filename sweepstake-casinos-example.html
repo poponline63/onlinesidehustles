@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweepstake Casino Guide - Online Sidehustles</title>
-    <!-- SheetJS Library for reading Excel files -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <!-- Add SheetJS for Excel file reading -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -18,24 +23,6 @@
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
             min-height: 100vh;
-        }
-        
-        /* Fullscreen mode styles */
-        body.fullscreen-mode {
-            overflow: hidden;
-        }
-        
-        body.fullscreen-mode header,
-        body.fullscreen-mode .quick-nav {
-            display: none;
-        }
-        
-        body.fullscreen-mode .main-container {
-            padding-top: 20px;
-        }
-        
-        body.fullscreen-mode .table-container {
-            height: calc(100vh - 100px);
         }
         
         /* Force scrollbars to always be visible */
@@ -104,6 +91,12 @@
             font-size: 18px;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
         }
         
         .back-button {
@@ -206,220 +199,6 @@
             border-radius: 8px;
             font-weight: bold;
             margin-left: 0.3rem;
-        }
-        
-        /* New Casinos Alert Banner */
-        .new-casinos-alert {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-radius: 20px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
-            animation: pulse 2s infinite;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3); }
-            50% { box-shadow: 0 10px 40px rgba(240, 147, 251, 0.5); }
-        }
-        
-        .new-casinos-alert::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 3s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .new-casinos-content {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .new-icon {
-            font-size: 2rem;
-            animation: bounce 1s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .new-casinos-text h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .new-casinos-text p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-        }
-        
-        .view-new-btn {
-            background: white;
-            color: #f5576c;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .view-new-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Table Controls Bar */
-        .table-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .control-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .control-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .control-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .control-btn.active {
-            background: #4CAF50;
-            border-color: #4CAF50;
-        }
-        
-        .fullscreen-btn {
-            background: linear-gradient(135deg, #2196F3, #03A9F4);
-            border: none;
-        }
-        
-        .fullscreen-btn:hover {
-            background: linear-gradient(135deg, #1976D2, #0288D1);
-        }
-        
-        .embed-btn {
-            background: linear-gradient(135deg, #9C27B0, #BA68C8);
-            border: none;
-        }
-        
-        .embed-btn:hover {
-            background: linear-gradient(135deg, #7B1FA2, #AB47BC);
-        }
-        
-        /* Embed Modal */
-        .embed-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 20000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .embed-modal.show {
-            display: flex;
-        }
-        
-        .embed-content {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-        }
-        
-        .embed-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .embed-code {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #4CAF50;
-            overflow-x: auto;
-        }
-        
-        .copy-embed-btn {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        
-        .copy-embed-btn:hover {
-            background: #66BB6A;
-        }
-        
-        .copy-embed-btn.copied {
-            background: #2196F3;
         }
         
         .main-container {
@@ -584,100 +363,6 @@
             font-weight: bold;
             margin-right: 0.5rem;
         }
-
-        /* Patch Notes Section */
-        .patch-notes-section {
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .patch-notes-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(255, 165, 0, 0.3);
-        }
-
-        .patch-notes-header h2 {
-            color: #FFA500;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .patch-notes-header .version {
-            background: linear-gradient(135deg, #FFA500, #FFD700);
-            color: black;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .patch-notes-content {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 1rem;
-        }
-
-        .patch-note-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid #FFA500;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .patch-note-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(5px);
-        }
-
-        .patch-note-date {
-            color: #FFA500;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .patch-note-changes {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        .patch-note-changes ul {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .patch-note-changes li {
-            margin-bottom: 0.3rem;
-        }
-
-        .patch-loading {
-            text-align: center;
-            padding: 2rem;
-            color: #FFA500;
-        }
-
-        .patch-error {
-            text-align: center;
-            padding: 1rem;
-            color: #f44336;
-            background: rgba(244, 67, 54, 0.1);
-            border-radius: 10px;
-            border: 1px solid #f44336;
-        }
         
         .stats-grid {
             display: grid;
@@ -709,24 +394,6 @@
             color: #4CAF50;
         }
         
-        /* Special styling for new casinos stat */
-        .stat-card.new-casinos-stat {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
-            border: 1px solid rgba(240, 147, 251, 0.5);
-            animation: glow 2s ease-in-out infinite;
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(240, 147, 251, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(240, 147, 251, 0.5); }
-        }
-        
-        .stat-card.new-casinos-stat .stat-value {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
         .dashboard-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -734,366 +401,120 @@
             margin-top: 2rem;
             position: relative;
             z-index: 1;
+            max-width: 1400px;
+            margin: 2rem auto;
         }
         
-        .loading-message {
-            text-align: center;
-            padding: 2rem;
-            color: #FFC107;
-            font-size: 1.2rem;
-            display: none;
-        }
-        
-        .loading-message.show {
-            display: block;
-        }
-        
-        .error-message {
-            text-align: center;
-            padding: 2rem;
-            color: #f44336;
-            font-size: 1.1rem;
-            display: none;
-            background: rgba(244, 67, 54, 0.1);
-            border-radius: 10px;
-            border: 1px solid #f44336;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
-        .search-section {
-            margin-bottom: 2rem;
-        }
-        
-        .search-box input {
-            width: 100%;
-            max-width: 400px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #4CAF50;
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .tier-tabs {
+        /* Excel Display Styles */
+        .excel-tabs {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .tier-tab {
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            cursor: pointer;
-            color: white;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .tier-tab:hover {
-            border-color: #4CAF50;
-            transform: translateY(-2px);
-        }
-        
-        .tier-tab.active {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4CAF50;
-        }
-        
-        /* Special styling for New Casinos tab */
-        .tier-tab.new-casinos-tab {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.3));
-            border-color: #f093fb;
-            animation: pulse-tab 2s infinite;
-        }
-        
-        @keyframes pulse-tab {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .tier-tab.new-casinos-tab.active {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-        }
-        
-        .tier-tab .badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #FF6B6B;
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        
-        .table-container {
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.2);
             overflow-x: auto;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 1rem;
-            position: relative;
-            z-index: 1;
+            padding-bottom: 0;
         }
         
-        table {
+        .excel-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-weight: 600;
+            margin-bottom: -2px;
+        }
+        
+        .excel-tab:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        .excel-tab.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(139, 195, 74, 0.2));
+            border-color: #4CAF50;
+            color: #4CAF50;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        
+        .excel-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .excel-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
         }
         
-        th {
-            background: #4CAF50;
+        .excel-table th {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.3));
             color: white;
-            padding: 12px 8px;
+            padding: 1rem;
             text-align: left;
             font-weight: 600;
             position: sticky;
             top: 0;
             z-index: 10;
-            white-space: nowrap;
-            font-size: 0.85rem;
+            border-bottom: 2px solid #4CAF50;
         }
         
-        td {
-            padding: 10px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .excel-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.9);
-            vertical-align: middle;
-            line-height: 1.4;
         }
         
-        tbody tr:hover {
+        .excel-table tr:hover td {
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Highlight new casino rows */
-        tbody tr.new-casino-row {
-            background: linear-gradient(90deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
-            animation: fadeInRow 0.5s ease;
+        .excel-table tr:last-child td {
+            border-bottom: none;
         }
         
-        tbody tr.new-casino-row:hover {
-            background: linear-gradient(90deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
-        }
-        
-        @keyframes fadeInRow {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        /* Column specific widths */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
-        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; }
-        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }
-        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; }
-        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }
-        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
-        th:nth-child(9), td:nth-child(9) { width: 22%; min-width: 250px; }
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
-        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; }
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; }
-        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; }
-        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; }
-        
-        .tier-separator {
-            background: transparent;
-            height: 50px;
-            position: relative;
-        }
-        
-        .tier-divider {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 20px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-        }
-        
-        .tier-label {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 8px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 2px solid;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            white-space: nowrap;
-        }
-        
-        .tier-label.new-casinos {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-color: #f093fb;
-            color: white;
-            font-size: 1.3rem;
-            padding: 10px 30px;
-            animation: glow-label 2s ease-in-out infinite;
-        }
-        
-        @keyframes glow-label {
-            0%, 100% { box-shadow: 0 4px 20px rgba(240, 147, 251, 0.5); }
-            50% { box-shadow: 0 4px 30px rgba(240, 147, 251, 0.8); }
-        }
-        
-        .tier-label.god-tier {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-color: #FFD700;
-            color: black;
-        }
-        
-        .tier-label.high-tier {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-            border-color: #30cfd0;
-            color: white;
-        }
-        
-        .tier-label.medium-tier {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            border-color: #a8edea;
-            color: #333;
-        }
-        
-        .tier-label.trash-tier {
-            background: linear-gradient(135deg, #868f96, #596164);
-            border-color: #868f96;
-            color: white;
-        }
-        
-        .tier-indicator {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
-        .tier-new {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-            animation: pulse-indicator 1.5s infinite;
-        }
-        
-        @keyframes pulse-indicator {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        
-        .tier-god {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: black;
-        }
-        
-        .tier-high {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-            color: white;
-        }
-        
-        .tier-medium {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            color: #333;
-        }
-        
-        .tier-trash {
-            background: linear-gradient(135deg, #868f96, #596164);
-            color: white;
-        }
-        
-        .notes {
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
-            max-width: 400px;
-        }
-        
-        .casino-name {
-            font-weight: 600;
-            color: #4CAF50;
-            white-space: nowrap;
-        }
-        
-        .casino-name.new-casino {
-            color: #f093fb;
-            font-weight: 700;
-        }
-        
-        .signup-link {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-block;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        
-        .signup-link:hover {
-            background: linear-gradient(135deg, #66BB6A, #9CCC65);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-        }
-        
-        .signup-link.new-casino-link {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-        
-        .signup-link.new-casino-link:hover {
-            background: linear-gradient(135deg, #f424ff, #ff1744);
-            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.5);
-        }
-        
-        .daily-bonus {
-            color: #FFEB3B;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .min-redemption {
-            background: rgba(139, 195, 74, 0.2);
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: #8BC34A;
-            white-space: nowrap;
-        }
-        
-        .welcome-offer {
-            font-size: 0.8em;
-            white-space: nowrap;
-        }
-        
-        .game-column {
+        /* Loading State */
+        .loading-spinner {
             text-align: center;
-            color: rgba(255, 255, 255, 0.5);
+            padding: 3rem;
+            color: #4CAF50;
         }
         
-        .parent-company {
-            font-size: 0.75em;
-            color: rgba(255, 255, 255, 0.7);
+        .spinner {
+            border: 3px solid rgba(76, 175, 80, 0.2);
+            border-top: 3px solid #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
         }
         
-        .restricted-states {
-            font-size: 0.7em;
-            color: rgba(255, 165, 0, 0.8);
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error State */
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #f44336;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
         }
 
         /* Discord Float Button */
@@ -1119,26 +540,27 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
-        
-        /* Exit Fullscreen Button */
-        .exit-fullscreen {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #f44336;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 10px;
+
+        /* Refresh button */
+        .refresh-btn {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: bold;
-            display: none;
-            z-index: 10001;
-            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
         }
         
-        body.fullscreen-mode .exit-fullscreen {
-            display: block;
+        .refresh-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -1146,7 +568,34 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <div class="logo-icon">💵</div>
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                        <defs>
+                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#004D40"/>
+                                <stop offset="33%" style="stop-color:#00695C"/>
+                                <stop offset="66%" style="stop-color:#4CAF50"/>
+                                <stop offset="100%" style="stop-color:#FFD700"/>
+                            </linearGradient>
+                            <radialGradient id="centerGoldLogo">
+                                <stop offset="0%" style="stop-color:#FFD700"/>
+                                <stop offset="50%" style="stop-color:#FFA500"/>
+                                <stop offset="100%" style="stop-color:#4CAF50"/>
+                            </radialGradient>
+                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B4513"/>
+                                <stop offset="50%" style="stop-color:#6D4C41"/>
+                                <stop offset="100%" style="stop-color:#5D4037"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
+                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
+                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
+                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                    </svg>
+                </div>
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
             
@@ -1162,7 +611,7 @@
         <div class="quick-nav-container">
             <div class="quick-nav-content">
                 <a href="sweepstake-casinos.html" class="nav-link active">
-                    <span>📖</span>
+                    <span>💲</span>
                     Sweepstake Casinos Guide
                 </a>
                 <a href="skrill-casinos.html" class="nav-link">
@@ -1177,9 +626,9 @@
                     <span>📦</span>
                     Package Sales
                 </a>
-                <a href="vip-guide.html" class="nav-link">
-                    <span>👑</span>
-                    VIP Guide
+                <a href="complete-guide-list.html" class="nav-link">
+                    <span>📖</span>
+                    Complete Guide List
                 </a>
                 <a href="bonus-collection-software.html" class="nav-link">
                     <span>🤖</span>
@@ -1194,28 +643,11 @@
         </div>
     </div>
     
-    <!-- Exit Fullscreen Button -->
-    <button class="exit-fullscreen" onclick="exitFullscreen()">✕ Exit Fullscreen</button>
-    
     <div class="main-container">
         <div class="content-wrapper">
             <div class="guide-hero">
                 <h1>Sweepstake Casinos Complete Guide</h1>
                 <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
-            </div>
-
-            <!-- New Casinos Alert Banner -->
-            <div class="new-casinos-alert">
-                <div class="new-casinos-content">
-                    <div class="new-icon">🎉</div>
-                    <div class="new-casinos-text">
-                        <h3>New Casinos Added!</h3>
-                        <p>Check out the latest sweepstake casinos with exclusive welcome bonuses</p>
-                    </div>
-                </div>
-                <button class="view-new-btn" onclick="filterByTier('New Casinos', document.querySelector('.new-casinos-tab'))">
-                    View New Casinos
-                </button>
             </div>
 
             <!-- Guide Overview Section with Minimize Feature -->
@@ -1281,29 +713,14 @@
                     <p>I would recommend if you want to do this to utilize the welcome packages, these are some of the best packages you can get and then you will get consistent daily packages after that!</p>
                 </div>
             </div>
-
-            <!-- Patch Notes Section -->
-            <div class="patch-notes-section">
-                <div class="patch-notes-header">
-                    <h2>📋 Latest Updates & Patch Notes</h2>
-                    <span class="version" id="latestVersion">Loading...</span>
-                </div>
-                <div class="patch-notes-content" id="patchNotesContent">
-                    <div class="patch-loading">Up to date</div>
-                </div>
-            </div>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-value">$44.52</div>
                     <div>Daily Earnings</div>
                 </div>
-                <div class="stat-card new-casinos-stat">
-                    <div class="stat-value" id="newCasinosCount">0</div>
-                    <div>🎉 New Casinos</div>
-                </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-value">70+</div>
                     <div>Total Casinos</div>
                 </div>
                 <div class="stat-card">
@@ -1317,93 +734,22 @@
             </div>
             
             <div class="dashboard-container">
-                <div class="loading-message" id="loadingMessage">
-                    Loading casino data from GitHub...
+                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center;">
+                    <span style="margin-right: 0.5rem;">📊</span>
+                    Sweepstake Casinos Database
+                    <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
+                        <span>🔄</span>
+                    </button>
+                </h2>
+                
+                <!-- Loading Status -->
+                <div id="loadingStatus" style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem; font-size: 0.9rem;">
+                    <p>Loading latest data from our database...</p>
                 </div>
                 
-                <div class="error-message" id="errorMessage">
-                    Error loading data. Please check the console for details.
-                </div>
-                
-                <!-- Table Controls -->
-                <div class="table-controls">
-                    <div class="search-section">
-                        <div class="search-box">
-                            <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
-                        </div>
-                    </div>
-                    
-                    <div class="control-buttons">
-                        <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
-                            <span>⛶</span>
-                            Fullscreen
-                        </button>
-                        <button class="control-btn embed-btn" onclick="showEmbedModal()">
-                            <span>⧉</span>
-                            Embed
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="tier-tabs">
-                    <div class="tier-tab active" onclick="filterByTier('all', this)">All Casinos</div>
-                    <div class="tier-tab new-casinos-tab" onclick="filterByTier('New Casinos', this)">
-                        New Casinos
-                        <span class="badge" id="newCasinosBadge">!</span>
-                    </div>
-                    <div class="tier-tab" onclick="filterByTier('God Tier', this)">God Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('High Tier', this)">High Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Medium Tier', this)">Medium Tier</div>
-                    <div class="tier-tab" onclick="filterByTier('Trash Tier', this)">Trash Tier</div>
-                </div>
-                
-                <div class="table-container" id="tableContainer">
-                    <table id="casinoTable">
-                        <thead>
-                            <tr>
-                                <th>Tier</th>
-                                <th>Casino</th>
-                                <th>Signup</th>
-                                <th>Daily Bonus</th>
-                                <th>Welcome Offer</th>
-                                <th>Min Redeem</th>
-                                <th>Gravity BJ</th>
-                                <th>Auto Roulette</th>
-                                <th>Notes</th>
-                                <th>Epic Joker</th>
-                                <th>Great Pigsby</th>
-                                <th>Other Games</th>
-                                <th>Parent Company</th>
-                                <th>Restricted States</th>
-                            </tr>
-                        </thead>
-                        <tbody id="casinoTableBody">
-                            <tr>
-                                <td colspan="14" style="text-align:center; padding:2rem;">
-                                    Loading casino data...
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Excel Display Area -->
+                <div id="excelDisplay"></div>
             </div>
-        </div>
-    </div>
-
-    <!-- Embed Modal -->
-    <div class="embed-modal" id="embedModal">
-        <div class="embed-content">
-            <button class="embed-close" onclick="closeEmbedModal()">×</button>
-            <h2 style="color: #4CAF50; margin-bottom: 1rem;">Embed Casino Table</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
-                Copy this code to embed the casino table on your website:
-            </p>
-            <div class="embed-code" id="embedCode">
-                &lt;iframe src="https://yourdomain.com/sweepstake-casinos.html?embedded=true" width="100%" height="800" frameborder="0" style="border-radius: 10px;"&gt;&lt;/iframe&gt;
-            </div>
-            <button class="copy-embed-btn" id="copyEmbedBtn" onclick="copyEmbedCode()">
-                Copy Embed Code
-            </button>
         </div>
     </div>
 
@@ -1414,78 +760,6 @@
     </a>
 
 <script>
-// Global variables
-let casinosData = [];
-let currentCasinos = [];
-let currentFilter = 'all';
-let patchNotesData = [];
-let newCasinosCount = 0;
-
-// GitHub URLs
-const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
-const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/PatchNotes.xlsx';
-
-// Check if embedded
-function checkEmbedded() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('embedded') === 'true') {
-        document.body.classList.add('embedded-mode');
-        document.querySelector('header').style.display = 'none';
-        document.querySelector('.quick-nav').style.display = 'none';
-        document.querySelector('.guide-overview').style.display = 'none';
-        document.querySelector('.patch-notes-section').style.display = 'none';
-        document.querySelector('.stats-grid').style.display = 'none';
-        document.querySelector('.new-casinos-alert').style.display = 'none';
-        document.querySelector('.discord-float').style.display = 'none';
-        document.querySelector('.main-container').style.paddingTop = '20px';
-    }
-}
-
-// Toggle fullscreen
-function toggleFullscreen() {
-    const body = document.body;
-    if (body.classList.contains('fullscreen-mode')) {
-        exitFullscreen();
-    } else {
-        body.classList.add('fullscreen-mode');
-        if (document.documentElement.requestFullscreen) {
-            document.documentElement.requestFullscreen();
-        }
-    }
-}
-
-// Exit fullscreen
-function exitFullscreen() {
-    document.body.classList.remove('fullscreen-mode');
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    }
-}
-
-// Show embed modal
-function showEmbedModal() {
-    document.getElementById('embedModal').classList.add('show');
-}
-
-// Close embed modal
-function closeEmbedModal() {
-    document.getElementById('embedModal').classList.remove('show');
-}
-
-// Copy embed code
-function copyEmbedCode() {
-    const embedCode = document.getElementById('embedCode').textContent;
-    navigator.clipboard.writeText(embedCode).then(() => {
-        const btn = document.getElementById('copyEmbedBtn');
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-            btn.textContent = 'Copy Embed Code';
-            btn.classList.remove('copied');
-        }, 2000);
-    });
-}
-
 // Toggle guide minimize/expand
 function toggleGuide() {
     const guideOverview = document.getElementById('guideOverview');
@@ -1513,377 +787,174 @@ function checkGuideState() {
     }
 }
 
-// Function to load patch notes from GitHub
-async function loadPatchNotes() {
-    const patchContent = document.getElementById('patchNotesContent');
-    const versionElement = document.getElementById('latestVersion');
+// Display Excel data
+function displayExcel(workbook) {
+    const display = document.getElementById('excelDisplay');
+    const loadingStatus = document.getElementById('loadingStatus');
     
-    try {
-        const response = await fetch(GITHUB_PATCH_NOTES_URL);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch patch notes');
-        }
-        
-        const arrayBuffer = await response.arrayBuffer();
-        const data = new Uint8Array(arrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array' });
-        
-        const sheetName = workbook.SheetNames[0];
+    // Hide loading status
+    if (loadingStatus) {
+        loadingStatus.style.display = 'none';
+    }
+    
+    let html = '';
+    
+    // Create tabs for sheets if multiple
+    if (workbook.SheetNames.length > 1) {
+        html += '<div class="excel-tabs">';
+        workbook.SheetNames.forEach((sheetName, index) => {
+            html += `<div class="excel-tab ${index === 0 ? 'active' : ''}" onclick="showSheet('${sheetName}')">${sheetName}</div>`;
+        });
+        html += '</div>';
+    }
+    
+    // Display sheets
+    workbook.SheetNames.forEach((sheetName, index) => {
         const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, {header: 1});
         
-        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        html += `<div class="excel-sheet" id="sheet-${sheetName}" style="${index > 0 ? 'display:none;' : ''}">`;
+        html += '<div class="excel-container">';
+        html += '<table class="excel-table">';
         
-        patchContent.innerHTML = '';
-        
-        for (let i = 1; i < jsonData.length; i++) {
-            const row = jsonData[i];
-            if (!row || !row[0]) continue;
+        // Headers
+        if (jsonData.length > 0) {
+            html += '<thead><tr>';
+            jsonData[0].forEach(header => {
+                html += `<th>${header || ''}</th>`;
+            });
+            html += '</tr></thead>';
             
-            const noteItem = document.createElement('div');
-            noteItem.className = 'patch-note-item';
-            
-            const date = row[0] || 'Date Unknown';
-            const version = row[1] || '';
-            const changes = row[2] || '';
-            
-            if (i === 1 && version) {
-                versionElement.textContent = `v${version}`;
+            // Data rows
+            html += '<tbody>';
+            for (let i = 1; i < jsonData.length; i++) {
+                html += '<tr>';
+                const row = jsonData[i] || [];
+                for (let j = 0; j < jsonData[0].length; j++) {
+                    let cellContent = row[j] || '';
+                    // Check if cell contains a link
+                    if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
+                        cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
+                    }
+                    html += `<td>${cellContent}</td>`;
+                }
+                html += '</tr>';
             }
-            
-            noteItem.innerHTML = `
-                <div class="patch-note-date">${date} ${version ? '- Version ' + version : ''}</div>
-                <div class="patch-note-changes">
-                    ${formatChanges(changes)}
-                </div>
-            `;
-            
-            patchContent.appendChild(noteItem);
+            html += '</tbody>';
         }
         
-        if (patchContent.children.length === 0) {
-            patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
-            versionElement.textContent = 'v1.0.0';
+        html += '</table>';
+        html += '</div>';
+        html += '</div>';
+    });
+    
+    display.innerHTML = html;
+}
+
+// Show specific sheet
+function showSheet(sheetName) {
+    // Hide all sheets
+    document.querySelectorAll('.excel-sheet').forEach(sheet => {
+        sheet.style.display = 'none';
+    });
+    
+    // Show selected sheet
+    const targetSheet = document.getElementById(`sheet-${sheetName}`);
+    if (targetSheet) {
+        targetSheet.style.display = 'block';
+    }
+    
+    // Update active tab
+    document.querySelectorAll('.excel-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.textContent === sheetName) {
+            tab.classList.add('active');
         }
-        
-    } catch (error) {
-        console.error('Error loading patch notes:', error);
-        patchContent.innerHTML = '<div class="patch-error">Unable to load patch notes. Check back later!</div>';
-        versionElement.textContent = 'v1.0.0';
-    }
+    });
 }
 
-// Format changes text into HTML
-function formatChanges(changes) {
-    if (!changes) return '';
+// Load from GitHub - hardcoded for your repository
+async function loadFromGitHub() {
+    const user = 'poponline63';
+    const repo = 'onlinesidehustles';
+    const path = ''; // Add path here if your Excel files are in a subdirectory
     
-    const items = changes.split(/[\n;]/).filter(item => item.trim());
+    const display = document.getElementById('excelDisplay');
+    const loadingStatus = document.getElementById('loadingStatus');
     
-    if (items.length > 1) {
-        return '<ul>' + items.map(item => `<li>${item.trim()}</li>`).join('') + '</ul>';
+    if (loadingStatus) {
+        loadingStatus.style.display = 'block';
+        loadingStatus.innerHTML = '<p>Loading sweepstake database...</p>';
     }
     
-    return changes;
-}
-
-// Function to load Excel from GitHub automatically
-async function loadExcelFromGitHub() {
-    const loadingDiv = document.getElementById('loadingMessage');
-    const errorDiv = document.getElementById('errorMessage');
-    
-    loadingDiv.classList.add('show');
-    errorDiv.classList.remove('show');
+    display.innerHTML = '<div class="loading-spinner"><div class="spinner"></div>Fetching latest data...</div>';
     
     try {
-        const response = await fetch(GITHUB_EXCEL_URL);
+        // Build API URL
+        let apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
+        
+        const response = await fetch(apiUrl);
         
         if (!response.ok) {
-            throw new Error(`Failed to fetch Excel file: ${response.status} ${response.statusText}`);
+            throw new Error('Unable to connect to database');
         }
         
-        const arrayBuffer = await response.arrayBuffer();
+        const data = await response.json();
+        
+        if (Array.isArray(data)) {
+            // Multiple files, find Excel files
+            const excelFiles = data.filter(file => file.name.match(/\.(xlsx|xls)$/i));
+            
+            if (excelFiles.length === 0) {
+                display.innerHTML = '<div class="error-message">📊 Database is being updated. Please check back shortly.</div>';
+                return;
+            }
+            
+            // Load the first Excel file found (or you can specify a specific filename)
+            await loadGitHubFile(excelFiles[0].download_url);
+        } else if (data.download_url) {
+            // Single file specified
+            await loadGitHubFile(data.download_url);
+        } else {
+            display.innerHTML = '<div class="error-message">⚠️ Database temporarily unavailable. Please try again later.</div>';
+        }
+    } catch(error) {
+        console.error('Error loading from GitHub:', error);
+        display.innerHTML = '<div class="error-message">⚠️ Unable to load database. Please try refreshing the page.</div>';
+    }
+}
+
+// Load specific file from GitHub
+async function loadGitHubFile(url) {
+    const display = document.getElementById('excelDisplay');
+    
+    try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error('Failed to download file');
+        }
+        
+        const blob = await response.blob();
+        const arrayBuffer = await blob.arrayBuffer();
         const data = new Uint8Array(arrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array' });
+        const workbook = XLSX.read(data, {type: 'array'});
         
-        processExcelData(workbook);
-        loadingDiv.classList.remove('show');
-        
-    } catch (error) {
-        console.error('Error loading Excel from GitHub:', error);
-        loadingDiv.classList.remove('show');
-        errorDiv.classList.add('show');
-        errorDiv.innerHTML = `
-            Error loading data: ${error.message}<br>
-            <small>Make sure the GitHub URL is correct and the file exists.</small>
-        `;
+        displayExcel(workbook);
+    } catch(error) {
+        console.error('Error loading Excel file:', error);
+        display.innerHTML = '<div class="error-message">⚠️ Error loading database. Please try refreshing the page.</div>';
     }
 }
 
-// Process Excel data
-function processExcelData(workbook) {
-    const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
-    
-    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    
-    if (jsonData.length < 3) {
-        console.error('Excel file appears to be empty');
-        return;
-    }
-    
-    casinosData = [];
-    newCasinosCount = 0;
-    
-    let currentTier = '';
-    
-    for (let i = 2; i < jsonData.length; i++) {
-        const row = jsonData[i];
-        
-        if (!row || !row[1]) continue;
-        
-        const cellContent = String(row[1]).trim();
-        
-        // Check for tier headers
-        if (cellContent.includes('New Casinos') || cellContent === 'New Casinos Verified!') {
-            currentTier = 'New Casinos';
-            continue;
-        } else if (cellContent.includes('God Tier')) {
-            currentTier = 'God Tier';
-            continue;
-        } else if (cellContent.includes('High Tier')) {
-            currentTier = 'High Tier';
-            continue;
-        } else if (cellContent.includes('Medium Tier')) {
-            currentTier = 'Medium Tier';
-            continue;
-        } else if (cellContent.includes('Trash Tier')) {
-            currentTier = 'Trash Tier';
-            continue;
-        }
-        
-        if (cellContent === 'Signup' || cellContent === 'Referrals' || 
-            cellContent.includes('Thank you') || !cellContent) {
-            continue;
-        }
-        
-        const casino = {
-            tier: currentTier || 'Uncategorized',
-            casino: cellContent,
-            signupLink: row[0] || '',
-            dailyBonus: row[2] || '',
-            notes: row[3] || '',
-            welcomeOffer: row[4] || '',
-            minRedemption: row[5] || '',
-            gravityBJ: row[6] || '',
-            autoRoulette: row[7] || '',
-            epicJoker: row[8] || '',
-            greatPigsby: row[9] || '',
-            otherGames: row[10] || '',
-            parentCompany: row[13] || '',
-            restrictedStates: row[15] || ''
-        };
-        
-        Object.keys(casino).forEach(key => {
-            if (typeof casino[key] === 'string') {
-                casino[key] = casino[key].trim();
-            }
-        });
-        
-        if (casino.tier === 'New Casinos') {
-            newCasinosCount++;
-        }
-        
-        casinosData.push(casino);
-    }
-    
-    // Update stats
-    document.getElementById('newCasinosCount').textContent = newCasinosCount;
-    document.getElementById('totalCount').textContent = casinosData.length;
-    
-    // Update new casinos badge
-    if (newCasinosCount > 0) {
-        document.getElementById('newCasinosBadge').textContent = newCasinosCount;
-    }
-    
-    currentCasinos = [...casinosData];
-    renderTable(currentCasinos);
-    
-    console.log(`Loaded ${casinosData.length} casinos (${newCasinosCount} new)`);
-}
-
-// Helper function to format signup link
-function formatSignupLink(url, isNewCasino) {
-    if (!url) return '-';
-    
-    const linkClass = isNewCasino ? 'signup-link new-casino-link' : 'signup-link';
-    
-    if (url.startsWith('http://') || url.startsWith('https://')) {
-        return `<a href="${url}" target="_blank" class="${linkClass}">Sign Up</a>`;
-    }
-    
-    if (url.length > 0) {
-        if (url.includes('.')) {
-            return `<a href="https://${url}" target="_blank" class="${linkClass}">Sign Up</a>`;
-        }
-        return url;
-    }
-    
-    return '-';
-}
-
-// Render table with enhanced new casino visibility
-function renderTable(casinos) {
-    const tbody = document.getElementById('casinoTableBody');
-    tbody.innerHTML = '';
-    
-    if (!casinos || casinos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;">No casinos found</td></tr>';
-        return;
-    }
-    
-    const tiers = ['New Casinos', 'God Tier', 'High Tier', 'Medium Tier', 'Trash Tier'];
-    const groupedCasinos = {};
-    
-    tiers.forEach(tier => {
-        groupedCasinos[tier] = casinos.filter(c => c.tier === tier);
-    });
-    
-    tiers.forEach(tier => {
-        const tierCasinos = groupedCasinos[tier];
-        if (tierCasinos.length === 0) return;
-        
-        // Add tier separator
-        const separatorRow = document.createElement('tr');
-        separatorRow.className = 'tier-separator';
-        
-        let tierLabelClass = '';
-        if (tier === 'New Casinos') tierLabelClass = 'new-casinos';
-        else if (tier === 'God Tier') tierLabelClass = 'god-tier';
-        else if (tier === 'High Tier') tierLabelClass = 'high-tier';
-        else if (tier === 'Medium Tier') tierLabelClass = 'medium-tier';
-        else if (tier === 'Trash Tier') tierLabelClass = 'trash-tier';
-        
-        separatorRow.innerHTML = '<td colspan="14"><div class="tier-divider"><span class="tier-label ' + 
-                                 tierLabelClass + '">' + tier + '</span></div></td>';
-        tbody.appendChild(separatorRow);
-        
-        // Add casino rows
-        tierCasinos.forEach(casino => {
-            const row = document.createElement('tr');
-            const isNewCasino = casino.tier === 'New Casinos';
-            
-            if (isNewCasino) {
-                row.className = 'new-casino-row';
-            }
-            
-            let tierClass = 'tier-new';
-            if (casino.tier === 'God Tier') tierClass = 'tier-god';
-            else if (casino.tier === 'High Tier') tierClass = 'tier-high';
-            else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
-            else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
-            
-            const casinoNameClass = isNewCasino ? 'casino-name new-casino' : 'casino-name';
-            
-            row.innerHTML = 
-                '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
-                '<td class="' + casinoNameClass + '">' + casino.casino + '</td>' +
-                '<td>' + formatSignupLink(casino.signupLink, isNewCasino) + '</td>' +
-                '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
-                '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? ' + casino.minRedemption : '-') + '</span></td>' +
-                '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
-                '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
-                '<td class="notes">' + (casino.notes || '') + '</td>' +
-                '<td class="game-column">' + (casino.epicJoker || '-') + '</td>' +
-                '<td class="game-column">' + (casino.greatPigsby || '-') + '</td>' +
-                '<td class="game-column">' + (casino.otherGames || '-') + '</td>' +
-                '<td class="parent-company">' + (casino.parentCompany || '-') + '</td>' +
-                '<td class="restricted-states">' + (casino.restrictedStates || '-') + '</td>';
-            
-            tbody.appendChild(row);
-        });
-    });
-    
-    // Update total count
-    document.getElementById('totalCount').textContent = casinos.length;
-}
-
-// Filter by tier with smooth scroll for New Casinos
-function filterByTier(tier, element) {
-    currentFilter = tier;
-    
-    // Update active state
-    document.querySelectorAll('.tier-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    
-    // Find the correct tab if called from other buttons
-    if (!element) {
-        element = Array.from(document.querySelectorAll('.tier-tab')).find(tab => 
-            tab.textContent.includes(tier.replace('_', ' '))
-        );
-    }
-    
-    if (element) {
-        element.classList.add('active');
-    }
-    
-    // Filter casinos
-    if (tier === 'all') {
-        currentCasinos = [...casinosData];
-    } else {
-        currentCasinos = casinosData.filter(c => c.tier === tier);
-    }
-    
-    renderTable(currentCasinos);
-    
-    // Smooth scroll to table for New Casinos
-    if (tier === 'New Casinos') {
-        setTimeout(() => {
-            document.getElementById('tableContainer').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }, 100);
-    }
-}
-
-// Search function
-function searchCasinos() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
-    let filtered = currentFilter === 'all' ? 
-        [...casinosData] : 
-        casinosData.filter(c => c.tier === currentFilter);
-    
-    if (searchTerm) {
-        filtered = filtered.filter(casino => {
-            return (
-                (casino.casino && casino.casino.toLowerCase().includes(searchTerm)) ||
-                (casino.dailyBonus && casino.dailyBonus.toLowerCase().includes(searchTerm)) ||
-                (casino.notes && casino.notes.toLowerCase().includes(searchTerm)) ||
-                (casino.parentCompany && casino.parentCompany.toLowerCase().includes(searchTerm)) ||
-                (casino.restrictedStates && casino.restrictedStates.toLowerCase().includes(searchTerm))
-            );
-        });
-    }
-    
-    renderTable(filtered);
-}
-
-// Listen for fullscreen changes
-document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-        document.body.classList.remove('fullscreen-mode');
-    }
-});
-
-// Load data automatically when page loads
+// Initialize on page load
 window.addEventListener('DOMContentLoaded', function() {
-    checkEmbedded();
     checkGuideState();
-    loadExcelFromGitHub();
-    loadPatchNotes();
+    
+    // Auto-load Excel from GitHub after a short delay
+    setTimeout(() => {
+        loadFromGitHub();
+    }, 500);
 });
 </script>
 
