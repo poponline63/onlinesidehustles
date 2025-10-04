@@ -1032,10 +1032,11 @@
                     <span style="margin-right: 0.5rem;">📊</span>
                     Sweepstake Casinos Database
                     <div class="live-viewers-header">
-                        <div class="live-dot"></div>
+                        <div class="viewer-avatars" id="viewerAvatars">
+                            <!-- Avatar circles will be added here dynamically -->
+                        </div>
                         <div class="viewer-count">
-                            <span class="viewer-number" id="viewerCount">1</span>
-                            <span class="viewer-text">viewing now</span>
+                            <span class="viewer-text" id="viewerText">1 viewer</span>
                         </div>
                     </div>
                     <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
@@ -1051,15 +1052,6 @@
                 <!-- Excel Display Area -->
                 <div id="excelDisplay"></div>
             </div>
-        </div>
-    </div>
-
-    <!-- Live Viewers Indicator -->
-    <div class="live-viewers" id="liveViewers">
-        <div class="live-dot"></div>
-        <div class="viewer-count">
-            <span class="viewer-number" id="viewerCount">1</span>
-            <span class="viewer-text">viewing now</span>
         </div>
     </div>
 
@@ -1418,26 +1410,35 @@ window.addEventListener('DOMContentLoaded', function() {
 
 // Live Viewer Tracking System
 function initializeViewerTracking() {
-    const viewerCountElement = document.getElementById('viewerCount');
-    const viewerTextElement = document.querySelector('.viewer-text');
+    const viewerAvatarsElement = document.getElementById('viewerAvatars');
+    const viewerTextElement = document.getElementById('viewerText');
+    
+    // Array of emoji avatars to randomly assign
+    const avatarEmojis = ['👤', '👨', '👩', '🧑', '👱', '👨‍💼', '👩‍💼', '🧑‍💼', '👨‍💻', '👩‍💻', '🧑‍💻', '👨‍🎓', '👩‍🎓', '🧑‍🎓', '😊', '🙂', '😎', '🤓', '🧐', '👨‍🦰', '👩‍🦰', '👨‍🦱', '👩‍🦱', '👨‍🦳', '👩‍🦳'];
     
     // Generate unique viewer ID for this session
     const viewerId = 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
-    // Function to update viewer count
-    function updateViewerCount() {
+    // Assign a random emoji for this viewer
+    const myEmoji = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)];
+    
+    // Function to update viewer display
+    function updateViewerDisplay() {
         const now = Date.now();
         const activeThreshold = 30000; // Consider viewers active if seen in last 30 seconds
         
         // Get current active viewers from localStorage
         let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
         
-        // Add/update current viewer
-        viewers[viewerId] = now;
+        // Add/update current viewer with their emoji
+        viewers[viewerId] = {
+            timestamp: now,
+            emoji: myEmoji
+        };
         
         // Remove inactive viewers
         for (let id in viewers) {
-            if (now - viewers[id] > activeThreshold) {
+            if (now - viewers[id].timestamp > activeThreshold) {
                 delete viewers[id];
             }
         }
@@ -1447,24 +1448,52 @@ function initializeViewerTracking() {
         
         // Update display
         const viewerCount = Object.keys(viewers).length;
-        if (viewerCountElement) {
-            viewerCountElement.textContent = viewerCount;
+        
+        // Update avatar circles
+        if (viewerAvatarsElement) {
+            viewerAvatarsElement.innerHTML = '';
+            
+            // Show up to 5 avatar circles
+            const viewersToShow = Math.min(viewerCount, 5);
+            const viewerArray = Object.values(viewers);
+            
+            for (let i = 0; i < viewersToShow; i++) {
+                const avatar = document.createElement('div');
+                avatar.className = 'viewer-avatar';
+                avatar.textContent = viewerArray[i].emoji;
+                avatar.style.animationDelay = `${i * 0.05}s`;
+                viewerAvatarsElement.appendChild(avatar);
+            }
+            
+            // If more than 5 viewers, show +X circle
+            if (viewerCount > 5) {
+                const moreAvatar = document.createElement('div');
+                moreAvatar.className = 'viewer-avatar more-viewers';
+                moreAvatar.textContent = `+${viewerCount - 5}`;
+                viewerAvatarsElement.appendChild(moreAvatar);
+            }
         }
+        
+        // Update text
         if (viewerTextElement) {
-            viewerTextElement.textContent = viewerCount === 1 ? 'viewing now' : 'viewing now';
+            if (viewerCount === 1) {
+                viewerTextElement.textContent = '1 viewer';
+            } else {
+                viewerTextElement.textContent = `${viewerCount} viewers`;
+            }
         }
     }
     
     // Update immediately
-    updateViewerCount();
+    updateViewerDisplay();
     
     // Update every 10 seconds to maintain active status
-    const heartbeatInterval = setInterval(updateViewerCount, 10000);
+    const heartbeatInterval = setInterval(updateViewerDisplay, 10000);
     
     // Listen for storage events (other tabs/windows)
     window.addEventListener('storage', function(e) {
         if (e.key === 'activeViewers') {
-            updateViewerCount();
+            updateViewerDisplay();
         }
     });
     
@@ -1486,7 +1515,7 @@ function initializeViewerTracking() {
             localStorage.setItem('activeViewers', JSON.stringify(viewers));
         } else {
             // Page is visible again, add back to active viewers
-            updateViewerCount();
+            updateViewerDisplay();
         }
     });
 }
