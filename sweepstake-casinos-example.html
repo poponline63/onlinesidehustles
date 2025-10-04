@@ -1088,65 +1088,87 @@ function displayExcel(workbook) {
             html += '<tbody>';
             let currentTier = '';
             
+            let emptyRowCount = 0;
+            let lastWasEmpty = false;
+            
             for (let i = 1; i < jsonData.length; i++) {
                 const row = jsonData[i] || [];
                 
-                // Check for tier indicators - check all cells in the row, not just first
-                let isTierSeparator = false;
-                let tierName = '';
-                let tierClass = '';
+                // Check if this is an empty row
+                const isEmptyRow = !row.some(cell => cell && cell.toString().trim() !== '');
                 
-                // Check the entire row for tier indicators
-                const rowText = row.join(' ').toLowerCase();
-                
-                // Check if this row indicates a tier change
-                if (rowText.includes('new casino') || rowText.includes('new tier') || rowText === 'new' || rowText.includes('newest')) {
-                    tierName = '🆕 NEW CASINOS 🆕';
-                    tierClass = 'tier-new';
-                    isTierSeparator = true;
-                } else if (rowText.includes('god tier') || rowText.includes('ss+') || rowText.includes('ss tier') || rowText === 'ss' || rowText === 'ss+') {
-                    tierName = '👑 GOD TIER CASINOS 👑';
-                    tierClass = 'tier-god';
-                    isTierSeparator = true;
-                } else if (rowText.includes('high tier') || rowText.includes('s+') || rowText.includes('s tier') || rowText === 's' || rowText === 's+') {
-                    tierName = '⭐ HIGH TIER CASINOS ⭐';
-                    tierClass = '';
-                    isTierSeparator = true;
-                } else if (rowText.includes('medium tier') || rowText.includes('mid tier') || rowText.includes('a tier') || rowText.includes('b tier') || rowText === 'a' || rowText === 'b') {
-                    tierName = '✨ MEDIUM TIER CASINOS ✨';
-                    tierClass = '';
-                    isTierSeparator = true;
-                } else if (rowText.includes('trash tier') || rowText.includes('low tier') || rowText.includes('worst') || rowText.includes('c tier') || rowText.includes('d tier') || rowText.includes('f tier') || rowText === 'c' || rowText === 'd' || rowText === 'f') {
-                    tierName = '⚠️ TRASH TIER CASINOS ⚠️';
-                    tierClass = 'tier-trash';
-                    isTierSeparator = true;
+                // If we encounter an empty row, increment counter and add tier separator
+                if (isEmptyRow && !lastWasEmpty) {
+                    emptyRowCount++;
+                    lastWasEmpty = true;
+                    
+                    // Add tier separators based on which empty row this is
+                    let tierLabel = '';
+                    let tierClass = '';
+                    
+                    if (emptyRowCount === 1) {
+                        // After first section (New Casinos), before God Tier
+                        tierLabel = '👑 GOD TIER CASINOS 👑';
+                        tierClass = 'tier-god';
+                    } else if (emptyRowCount === 2) {
+                        // After God Tier, before High Tier
+                        tierLabel = '⭐ HIGH TIER CASINOS ⭐';
+                        tierClass = '';
+                    } else if (emptyRowCount === 3) {
+                        // After High Tier, before Medium Tier
+                        tierLabel = '✨ MEDIUM TIER CASINOS ✨';
+                        tierClass = '';
+                    } else if (emptyRowCount === 4) {
+                        // After Medium Tier, before Trash Tier
+                        tierLabel = '⚠️ TRASH TIER CASINOS ⚠️';
+                        tierClass = 'tier-trash';
+                    }
+                    
+                    if (tierLabel) {
+                        // Add spacer row before tier separator
+                        html += `<tr class="tier-spacer">`;
+                        html += `<td colspan="${jsonData[0].length}"></td>`;
+                        html += `</tr>`;
+                        
+                        // Add the tier separator
+                        html += `<tr class="tier-separator ${tierClass}">`;
+                        html += `<td colspan="${jsonData[0].length}" class="tier-label">${tierLabel}</td>`;
+                        html += `</tr>`;
+                        
+                        // Add spacer row after tier separator
+                        html += `<tr class="tier-spacer">`;
+                        html += `<td colspan="${jsonData[0].length}"></td>`;
+                        html += `</tr>`;
+                    }
+                    
+                    continue; // Skip the empty row itself
                 }
                 
-                // Add tier separator if detected
-                if (isTierSeparator && tierName && tierName !== currentTier) {
-                    currentTier = tierName;
-                    
-                    // Add spacer row before tier separator for extra separation
+                // Reset the empty flag if this row has content
+                if (!isEmptyRow) {
+                    lastWasEmpty = false;
+                }
+                
+                // Add the NEW CASINOS header before the very first data row
+                if (i === 1 && !isEmptyRow) {
+                    // Add spacer row before tier separator
                     html += `<tr class="tier-spacer">`;
                     html += `<td colspan="${jsonData[0].length}"></td>`;
                     html += `</tr>`;
                     
-                    // Add the tier separator
-                    html += `<tr class="tier-separator ${tierClass}">`;
-                    html += `<td colspan="${jsonData[0].length}" class="tier-label">${tierName}</td>`;
+                    // Add the tier separator for NEW CASINOS
+                    html += `<tr class="tier-separator tier-new">`;
+                    html += `<td colspan="${jsonData[0].length}" class="tier-label">🆕 NEW CASINOS 🆕</td>`;
                     html += `</tr>`;
                     
                     // Add spacer row after tier separator
                     html += `<tr class="tier-spacer">`;
                     html += `<td colspan="${jsonData[0].length}"></td>`;
                     html += `</tr>`;
-                    
-                    // Don't add the tier row itself as data
-                    continue;
                 }
                 
-                // Add regular data row only if it's not a tier separator
-                if (!isTierSeparator) {
+                // Always add the row if it's not empty - preserve exact order
+                if (!isEmptyRow) {
                     html += '<tr>';
                     for (let j = 0; j < jsonData[0].length; j++) {
                         let cellContent = row[j] || '';
