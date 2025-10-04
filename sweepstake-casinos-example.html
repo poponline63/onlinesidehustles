@@ -759,59 +759,121 @@
             text-align: center;
         }
 
-        /* Live Viewers Indicator - Updated for header placement */
-        .live-viewers-header {
+        /* Improved Viewing Now Styles - Inline Version for Database Header */
+        .viewing-now-inline {
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 25px;
-            padding: 0.6rem 1.2rem;
-            margin-left: 1.5rem;
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.5s ease;
         }
-        
+
+        .viewing-header-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .viewing-title {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .viewer-list-inline {
+            display: flex;
+            align-items: center;
+            gap: -8px;
+        }
+
+        .viewer-avatar-inline {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            border: 2px solid #1a1a1a;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: default;
+            z-index: 1;
+        }
+
+        .viewer-avatar-inline:hover {
+            transform: translateY(-3px);
+            z-index: 10;
+        }
+
+        .viewer-avatar-inline .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            margin-bottom: 5px;
+        }
+
+        .viewer-avatar-inline:hover .tooltip {
+            opacity: 1;
+        }
+
+        .viewer-count-summary-inline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
         .live-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: #4CAF50;
             border-radius: 50%;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 10px #4CAF50;
+            box-shadow: 0 0 15px #4CAF50, 0 0 30px #4CAF50;
         }
-        
+
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
                 opacity: 1;
             }
             50% {
-                transform: scale(1.2);
-                opacity: 0.8;
+                transform: scale(1.3);
+                opacity: 0.7;
             }
         }
-        
-        .viewer-count {
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        
-        .viewer-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+
+        /* Remove the floating widget styles since we're integrating inline */
+        .viewing-now {
+            display: none !important;
         }
-        
-        .viewer-number {
-            color: #4CAF50;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 0 0.2rem;
-        }
+
         .discord-float {
             position: fixed;
             bottom: 20px;
@@ -1028,17 +1090,19 @@
             </div>
             
             <div class="dashboard-container">
-                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
+                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem;">
                     <span style="margin-right: 0.5rem;">📊</span>
                     Sweepstake Casinos Database
-                    <div class="live-viewers-header">
-                        <div class="viewer-avatars" id="viewerAvatars">
-                            <!-- Avatar circles will be added here dynamically -->
-                        </div>
-                        <div class="viewer-count">
-                            <span class="viewer-text" id="viewerText">1 viewer</span>
+                    
+                    <!-- Viewing Now Section -->
+                    <div class="viewing-now-inline" id="viewingNowInline">
+                        <div class="viewing-header-inline">
+                            <div class="live-dot"></div>
+                            <span class="viewing-title" id="viewingTitle">Live 1 Viewing Now</span>
+                            <div class="viewer-list-inline" id="viewerListInline"></div>
                         </div>
                     </div>
+                    
                     <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
                         <span>🔄</span>
                     </button>
@@ -1395,48 +1459,37 @@ async function loadGitHubFile(url) {
     }
 }
 
-// Initialize on page load
-window.addEventListener('DOMContentLoaded', function() {
-    checkGuideState();
-    
-    // Auto-load Excel from GitHub after a short delay
-    setTimeout(() => {
-        loadFromGitHub();
-    }, 500);
-    
-    // Initialize live viewer tracking
-    initializeViewerTracking();
-});
-
-// Live Viewer Tracking System
+// Improved Viewer Tracking System - Inline Version
 function initializeViewerTracking() {
-    const viewerAvatarsElement = document.getElementById('viewerAvatars');
-    const viewerTextElement = document.getElementById('viewerText');
+    const viewerListInline = document.getElementById('viewerListInline');
+    const viewingTitle = document.getElementById('viewingTitle');
+    const viewingInline = document.getElementById('viewingNowInline');
     
-    // Casino-themed emoji avatars and color combinations for Google Sheets style
-    const avatarOptions = [
-        { emoji: '🎰', bg: 'linear-gradient(135deg, #FF6B6B, #FF8E53)' },
-        { emoji: '🎲', bg: 'linear-gradient(135deg, #5865F2, #7289DA)' },
-        { emoji: '♠️', bg: 'linear-gradient(135deg, #333, #666)' },
-        { emoji: '♥️', bg: 'linear-gradient(135deg, #E91E63, #F06292)' },
-        { emoji: '♦️', bg: 'linear-gradient(135deg, #FF5722, #FF7043)' },
-        { emoji: '♣️', bg: 'linear-gradient(135deg, #4CAF50, #66BB6A)' },
-        { emoji: '💰', bg: 'linear-gradient(135deg, #FFC107, #FFD54F)' },
-        { emoji: '💎', bg: 'linear-gradient(135deg, #00BCD4, #26C6DA)' },
-        { emoji: '🃏', bg: 'linear-gradient(135deg, #9C27B0, #BA68C8)' },
-        { emoji: '🎯', bg: 'linear-gradient(135deg, #F44336, #EF5350)' },
-        { emoji: '🏆', bg: 'linear-gradient(135deg, #FFD700, #FFA500)' },
-        { emoji: '💵', bg: 'linear-gradient(135deg, #4CAF50, #8BC34A)' },
-        { emoji: '🎱', bg: 'linear-gradient(135deg, #212121, #616161)' },
-        { emoji: '🍀', bg: 'linear-gradient(135deg, #388E3C, #66BB6A)' },
-        { emoji: '⭐', bg: 'linear-gradient(135deg, #FFA726, #FFCA28)' }
+    // Casino-themed names and emojis
+    const casinoNames = [
+        'Lucky Player', 'High Roller', 'Bonus Hunter', 'Slot Master', 'Card Shark',
+        'Dice King', 'Jackpot Seeker', 'VIP Player', 'Pro Gambler', 'Chip Leader',
+        'Royal Flush', 'Golden Ace', 'Diamond Hand', 'Spin Doctor', 'Cash King'
     ];
+    
+    const casinoEmojis = ['🎰', '🎲', '♠️', '♥️', '♦️', '♣️', '💰', '💎', '🃏', '🎯', '🏆', '💵', '🎱', '🍀', '⭐'];
     
     // Generate unique viewer ID for this session
     const viewerId = 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
-    // Assign a random avatar option for this viewer
-    const myAvatar = avatarOptions[Math.floor(Math.random() * avatarOptions.length)];
+    // Assign random casino persona
+    const myName = casinoNames[Math.floor(Math.random() * casinoNames.length)];
+    const myEmoji = casinoEmojis[Math.floor(Math.random() * casinoEmojis.length)];
+    const myColor = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    
+    // Function to format time ago
+    function formatTimeAgo(timestamp) {
+        const seconds = Math.floor((Date.now() - timestamp) / 1000);
+        if (seconds < 60) return 'Just now';
+        if (seconds < 120) return '1 min ago';
+        if (seconds < 3600) return Math.floor(seconds / 60) + ' mins ago';
+        return 'A while ago';
+    }
     
     // Function to update viewer display
     function updateViewerDisplay() {
@@ -1444,13 +1497,15 @@ function initializeViewerTracking() {
         const activeThreshold = 30000; // Consider viewers active if seen in last 30 seconds
         
         // Get current active viewers from localStorage
-        let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+        let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
         
-        // Add/update current viewer with their avatar
+        // Add/update current viewer
         viewers[viewerId] = {
             timestamp: now,
-            emoji: myAvatar.emoji,
-            bg: myAvatar.bg
+            name: myName,
+            emoji: myEmoji,
+            color: myColor,
+            joinTime: viewers[viewerId]?.joinTime || now
         };
         
         // Remove inactive viewers
@@ -1461,59 +1516,54 @@ function initializeViewerTracking() {
         }
         
         // Save back to localStorage
-        localStorage.setItem('activeViewers', JSON.stringify(viewers));
+        localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
         
         // Update display
         const viewerCount = Object.keys(viewers).length;
         
-        // Update avatar circles
-        if (viewerAvatarsElement) {
-            viewerAvatarsElement.innerHTML = '';
-            
-            // Show up to 5 avatar circles
-            const viewersToShow = Math.min(viewerCount, 5);
-            const viewerArray = Object.values(viewers);
-            
-            for (let i = 0; i < viewersToShow; i++) {
-                const avatar = document.createElement('div');
-                avatar.className = 'viewer-avatar';
-                avatar.innerHTML = `<span style="display: block; line-height: 1;">${viewerArray[i].emoji}</span>`;
-                avatar.style.background = viewerArray[i].bg || 'linear-gradient(135deg, #4CAF50, #8BC34A)';
-                avatar.style.animationDelay = `${i * 0.05}s`;
-                avatar.style.borderRadius = '18px';
-                avatar.style.overflow = 'hidden';
-                viewerAvatarsElement.appendChild(avatar);
-            }
-            
-            // If more than 5 viewers, show +X circle
-            if (viewerCount > 5) {
-                const moreAvatar = document.createElement('div');
-                moreAvatar.className = 'viewer-avatar more-viewers';
-                moreAvatar.textContent = `+${viewerCount - 5}`;
-                moreAvatar.style.background = 'linear-gradient(135deg, #666, #999)';
-                viewerAvatarsElement.appendChild(moreAvatar);
-            }
+        // Show/hide widget based on viewer count
+        if (viewingInline) {
+            viewingInline.style.display = viewerCount > 0 ? 'inline-flex' : 'none';
         }
         
-        // Update text
-        if (viewerTextElement) {
-            if (viewerCount === 1) {
-                viewerTextElement.textContent = '1 viewer';
-            } else {
-                viewerTextElement.textContent = `${viewerCount} viewers`;
-            }
+        // Update the title with viewer count
+        if (viewingTitle) {
+            viewingTitle.innerHTML = `Live <strong>${viewerCount}</strong> Viewing Now`;
+        }
+        
+        // Update inline viewer avatars
+        if (viewerListInline) {
+            viewerListInline.innerHTML = '';
+            
+            // Sort viewers by join time (newest first)
+            const sortedViewers = Object.entries(viewers)
+                .sort((a, b) => b[1].joinTime - a[1].joinTime)
+                .slice(0, 5); // Show max 5 avatars
+            
+            sortedViewers.forEach(([id, viewer], index) => {
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = 'viewer-avatar-inline';
+                avatarDiv.style.background = viewer.color;
+                avatarDiv.style.zIndex = 5 - index;
+                avatarDiv.innerHTML = `
+                    ${viewer.emoji}
+                    <div class="tooltip">${viewer.name} • ${formatTimeAgo(viewer.joinTime)}</div>
+                `;
+                
+                viewerListInline.appendChild(avatarDiv);
+            });
         }
     }
     
     // Update immediately
     updateViewerDisplay();
     
-    // Update every 10 seconds to maintain active status
-    const heartbeatInterval = setInterval(updateViewerDisplay, 10000);
+    // Update every 5 seconds to maintain active status
+    const heartbeatInterval = setInterval(updateViewerDisplay, 5000);
     
     // Listen for storage events (other tabs/windows)
     window.addEventListener('storage', function(e) {
-        if (e.key === 'activeViewers') {
+        if (e.key === 'sweepstakeViewers') {
             updateViewerDisplay();
         }
     });
@@ -1521,25 +1571,38 @@ function initializeViewerTracking() {
     // Clean up when leaving
     window.addEventListener('beforeunload', function() {
         // Remove this viewer from the list
-        let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+        let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
         delete viewers[viewerId];
-        localStorage.setItem('activeViewers', JSON.stringify(viewers));
+        localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
         clearInterval(heartbeatInterval);
     });
     
-    // Also handle visibility changes
+    // Handle visibility changes
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
             // Page is hidden, remove from active viewers
-            let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+            let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
             delete viewers[viewerId];
-            localStorage.setItem('activeViewers', JSON.stringify(viewers));
+            localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
         } else {
             // Page is visible again, add back to active viewers
             updateViewerDisplay();
         }
     });
 }
+
+// Initialize on page load
+window.addEventListener('DOMContentLoaded', function() {
+    checkGuideState();
+    
+    // Auto-load Excel from GitHub after a short delay
+    setTimeout(() => {
+        loadFromGitHub();
+    }, 500);
+    
+    // Initialize improved viewer tracking
+    initializeViewerTracking();
+});
 </script>
 
 </body>
