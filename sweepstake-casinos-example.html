@@ -211,7 +211,7 @@
         .content-wrapper {
             width: 100%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
         
         .guide-hero {
@@ -397,7 +397,7 @@
         .dashboard-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-top: 2rem;
             position: relative;
             z-index: 1;
@@ -443,7 +443,7 @@
         .excel-container {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
-            padding: 1.5rem;
+            padding: 1rem;
             overflow-x: auto;
             max-height: 700px;
             overflow-y: auto;
@@ -482,6 +482,64 @@
         
         .excel-table tr:last-child td {
             border-bottom: none;
+        }
+        
+        /* Tier Separator Styles */
+        .tier-separator {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.2)) !important;
+            border-top: 3px solid #4CAF50;
+            border-bottom: 3px solid #4CAF50;
+        }
+        
+        .tier-label {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 1.2rem !important;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        /* Signup Column Styles */
+        .signup-header {
+            background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+            color: #000 !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            animation: goldPulse 2s infinite;
+        }
+        
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .signup-cell {
+            background: rgba(255, 215, 0, 0.1) !important;
+            border-left: 2px solid #FFD700 !important;
+            border-right: 2px solid #FFD700 !important;
+            font-weight: 600;
+        }
+        
+        .signup-link {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none !important;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.5);
+            background: linear-gradient(135deg, #8BC34A, #4CAF50);
         }
         
         /* Loading State */
@@ -716,7 +774,7 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">$44.52</div>
+                    <div class="stat-value">$46.91</div>
                     <div>Daily Earnings</div>
                 </div>
                 <div class="stat-card">
@@ -724,7 +782,7 @@
                     <div>Total Casinos</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$1,335.60</div>
+                    <div class="stat-value">$1,407.30</div>
                     <div>Monthly Potential</div>
                 </div>
                 <div class="stat-card">
@@ -820,25 +878,86 @@ function displayExcel(workbook) {
         // Headers
         if (jsonData.length > 0) {
             html += '<thead><tr>';
-            jsonData[0].forEach(header => {
-                html += `<th>${header || ''}</th>`;
+            jsonData[0].forEach((header, headerIndex) => {
+                // Make signup column stand out
+                let headerClass = '';
+                if (header && (header.toString().toLowerCase().includes('signup') || header.toString().toLowerCase().includes('sign up'))) {
+                    headerClass = 'signup-header';
+                }
+                html += `<th class="${headerClass}">${header || ''}</th>`;
             });
             html += '</tr></thead>';
             
-            // Data rows
+            // Data rows with tier separation
             html += '<tbody>';
-            for (let i = 1; i < jsonData.length; i++) {
-                html += '<tr>';
-                const row = jsonData[i] || [];
-                for (let j = 0; j < jsonData[0].length; j++) {
-                    let cellContent = row[j] || '';
-                    // Check if cell contains a link
-                    if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
-                        cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
-                    }
-                    html += `<td>${cellContent}</td>`;
+            let currentTier = '';
+            let signupColumnIndex = -1;
+            
+            // Find signup column index
+            jsonData[0].forEach((header, index) => {
+                if (header && (header.toString().toLowerCase().includes('signup') || header.toString().toLowerCase().includes('sign up'))) {
+                    signupColumnIndex = index;
                 }
-                html += '</tr>';
+            });
+            
+            for (let i = 1; i < jsonData.length; i++) {
+                const row = jsonData[i] || [];
+                
+                // Check for tier indicators in the first column
+                const firstCell = row[0] ? row[0].toString() : '';
+                let isTierSeparator = false;
+                let tierName = '';
+                
+                // Check if this row indicates a tier change
+                if (firstCell.toLowerCase().includes('new casino') || firstCell.toLowerCase().includes('new tier')) {
+                    tierName = '🆕 NEW CASINOS';
+                    isTierSeparator = true;
+                } else if (firstCell.toLowerCase().includes('god tier') || firstCell.toLowerCase().includes('ss+') || firstCell.toLowerCase().includes('ss tier')) {
+                    tierName = '👑 GOD TIER CASINOS';
+                    isTierSeparator = true;
+                } else if (firstCell.toLowerCase().includes('high tier') || firstCell.toLowerCase().includes('s+') || firstCell.toLowerCase().includes('s tier')) {
+                    tierName = '⭐ HIGH TIER CASINOS';
+                    isTierSeparator = true;
+                } else if (firstCell.toLowerCase().includes('medium tier') || firstCell.toLowerCase().includes('a tier') || firstCell.toLowerCase().includes('b tier')) {
+                    tierName = '✨ MEDIUM TIER CASINOS';
+                    isTierSeparator = true;
+                } else if (firstCell.toLowerCase().includes('trash tier') || firstCell.toLowerCase().includes('low tier') || firstCell.toLowerCase().includes('c tier') || firstCell.toLowerCase().includes('d tier')) {
+                    tierName = '⚠️ TRASH TIER CASINOS';
+                    isTierSeparator = true;
+                }
+                
+                // Add tier separator if detected
+                if (isTierSeparator && tierName && tierName !== currentTier) {
+                    currentTier = tierName;
+                    html += `<tr class="tier-separator">`;
+                    html += `<td colspan="${jsonData[0].length}" class="tier-label">${tierName}</td>`;
+                    html += `</tr>`;
+                }
+                
+                // Add regular data row
+                if (!isTierSeparator || (row.length > 1 && row[1])) {
+                    html += '<tr>';
+                    for (let j = 0; j < jsonData[0].length; j++) {
+                        let cellContent = row[j] || '';
+                        let cellClass = '';
+                        
+                        // Highlight signup column
+                        if (j === signupColumnIndex) {
+                            cellClass = 'signup-cell';
+                        }
+                        
+                        // Check if cell contains a link
+                        if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
+                            if (j === signupColumnIndex) {
+                                cellContent = `<a href="${cellContent}" target="_blank" class="signup-link">🔗 SIGN UP NOW</a>`;
+                            } else {
+                                cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
+                            }
+                        }
+                        html += `<td class="${cellClass}">${cellContent}</td>`;
+                    }
+                    html += '</tr>';
+                }
             }
             html += '</tbody>';
         }
