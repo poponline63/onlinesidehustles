@@ -1413,14 +1413,30 @@ function initializeViewerTracking() {
     const viewerAvatarsElement = document.getElementById('viewerAvatars');
     const viewerTextElement = document.getElementById('viewerText');
     
-    // Array of emoji avatars to randomly assign
-    const avatarEmojis = ['👤', '👨', '👩', '🧑', '👱', '👨‍💼', '👩‍💼', '🧑‍💼', '👨‍💻', '👩‍💻', '🧑‍💻', '👨‍🎓', '👩‍🎓', '🧑‍🎓', '😊', '🙂', '😎', '🤓', '🧐', '👨‍🦰', '👩‍🦰', '👨‍🦱', '👩‍🦱', '👨‍🦳', '👩‍🦳'];
+    // Casino-themed emoji avatars and color combinations for Google Sheets style
+    const avatarOptions = [
+        { emoji: '🎰', bg: 'linear-gradient(135deg, #FF6B6B, #FF8E53)' },
+        { emoji: '🎲', bg: 'linear-gradient(135deg, #5865F2, #7289DA)' },
+        { emoji: '♠️', bg: 'linear-gradient(135deg, #333, #666)' },
+        { emoji: '♥️', bg: 'linear-gradient(135deg, #E91E63, #F06292)' },
+        { emoji: '♦️', bg: 'linear-gradient(135deg, #FF5722, #FF7043)' },
+        { emoji: '♣️', bg: 'linear-gradient(135deg, #4CAF50, #66BB6A)' },
+        { emoji: '💰', bg: 'linear-gradient(135deg, #FFC107, #FFD54F)' },
+        { emoji: '💎', bg: 'linear-gradient(135deg, #00BCD4, #26C6DA)' },
+        { emoji: '🃏', bg: 'linear-gradient(135deg, #9C27B0, #BA68C8)' },
+        { emoji: '🎯', bg: 'linear-gradient(135deg, #F44336, #EF5350)' },
+        { emoji: '🏆', bg: 'linear-gradient(135deg, #FFD700, #FFA500)' },
+        { emoji: '💵', bg: 'linear-gradient(135deg, #4CAF50, #8BC34A)' },
+        { emoji: '🎱', bg: 'linear-gradient(135deg, #212121, #616161)' },
+        { emoji: '🍀', bg: 'linear-gradient(135deg, #388E3C, #66BB6A)' },
+        { emoji: '⭐', bg: 'linear-gradient(135deg, #FFA726, #FFCA28)' }
+    ];
     
     // Generate unique viewer ID for this session
     const viewerId = 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
-    // Assign a random emoji for this viewer
-    const myEmoji = avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)];
+    // Assign a random avatar option for this viewer
+    const myAvatar = avatarOptions[Math.floor(Math.random() * avatarOptions.length)];
     
     // Function to update viewer display
     function updateViewerDisplay() {
@@ -1430,10 +1446,11 @@ function initializeViewerTracking() {
         // Get current active viewers from localStorage
         let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
         
-        // Add/update current viewer with their emoji
+        // Add/update current viewer with their avatar
         viewers[viewerId] = {
             timestamp: now,
-            emoji: myEmoji
+            emoji: myAvatar.emoji,
+            bg: myAvatar.bg
         };
         
         // Remove inactive viewers
@@ -1460,8 +1477,11 @@ function initializeViewerTracking() {
             for (let i = 0; i < viewersToShow; i++) {
                 const avatar = document.createElement('div');
                 avatar.className = 'viewer-avatar';
-                avatar.textContent = viewerArray[i].emoji;
+                avatar.innerHTML = `<span style="display: block; line-height: 1;">${viewerArray[i].emoji}</span>`;
+                avatar.style.background = viewerArray[i].bg || 'linear-gradient(135deg, #4CAF50, #8BC34A)';
                 avatar.style.animationDelay = `${i * 0.05}s`;
+                avatar.style.borderRadius = '18px';
+                avatar.style.overflow = 'hidden';
                 viewerAvatarsElement.appendChild(avatar);
             }
             
@@ -1470,6 +1490,7 @@ function initializeViewerTracking() {
                 const moreAvatar = document.createElement('div');
                 moreAvatar.className = 'viewer-avatar more-viewers';
                 moreAvatar.textContent = `+${viewerCount - 5}`;
+                moreAvatar.style.background = 'linear-gradient(135deg, #666, #999)';
                 viewerAvatarsElement.appendChild(moreAvatar);
             }
         }
