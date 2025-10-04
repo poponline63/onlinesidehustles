@@ -759,7 +759,59 @@
             text-align: center;
         }
 
-        /* Discord Float Button */
+        /* Live Viewers Indicator - Updated for header placement */
+        .live-viewers-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            margin-left: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #4CAF50;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+        
+        .viewer-count {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .viewer-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .viewer-number {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 0.2rem;
+        }
         .discord-float {
             position: fixed;
             bottom: 20px;
@@ -976,9 +1028,16 @@
             </div>
             
             <div class="dashboard-container">
-                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center;">
+                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
                     <span style="margin-right: 0.5rem;">📊</span>
                     Sweepstake Casinos Database
+                    <div class="live-viewers-header">
+                        <div class="live-dot"></div>
+                        <div class="viewer-count">
+                            <span class="viewer-number" id="viewerCount">1</span>
+                            <span class="viewer-text">viewing now</span>
+                        </div>
+                    </div>
                     <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
                         <span>🔄</span>
                     </button>
@@ -992,6 +1051,15 @@
                 <!-- Excel Display Area -->
                 <div id="excelDisplay"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- Live Viewers Indicator -->
+    <div class="live-viewers" id="liveViewers">
+        <div class="live-dot"></div>
+        <div class="viewer-count">
+            <span class="viewer-number" id="viewerCount">1</span>
+            <span class="viewer-text">viewing now</span>
         </div>
     </div>
 
@@ -1343,7 +1411,85 @@ window.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         loadFromGitHub();
     }, 500);
+    
+    // Initialize live viewer tracking
+    initializeViewerTracking();
 });
+
+// Live Viewer Tracking System
+function initializeViewerTracking() {
+    const viewerCountElement = document.getElementById('viewerCount');
+    const viewerTextElement = document.querySelector('.viewer-text');
+    
+    // Generate unique viewer ID for this session
+    const viewerId = 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    // Function to update viewer count
+    function updateViewerCount() {
+        const now = Date.now();
+        const activeThreshold = 30000; // Consider viewers active if seen in last 30 seconds
+        
+        // Get current active viewers from localStorage
+        let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+        
+        // Add/update current viewer
+        viewers[viewerId] = now;
+        
+        // Remove inactive viewers
+        for (let id in viewers) {
+            if (now - viewers[id] > activeThreshold) {
+                delete viewers[id];
+            }
+        }
+        
+        // Save back to localStorage
+        localStorage.setItem('activeViewers', JSON.stringify(viewers));
+        
+        // Update display
+        const viewerCount = Object.keys(viewers).length;
+        if (viewerCountElement) {
+            viewerCountElement.textContent = viewerCount;
+        }
+        if (viewerTextElement) {
+            viewerTextElement.textContent = viewerCount === 1 ? 'viewing now' : 'viewing now';
+        }
+    }
+    
+    // Update immediately
+    updateViewerCount();
+    
+    // Update every 10 seconds to maintain active status
+    const heartbeatInterval = setInterval(updateViewerCount, 10000);
+    
+    // Listen for storage events (other tabs/windows)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'activeViewers') {
+            updateViewerCount();
+        }
+    });
+    
+    // Clean up when leaving
+    window.addEventListener('beforeunload', function() {
+        // Remove this viewer from the list
+        let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+        delete viewers[viewerId];
+        localStorage.setItem('activeViewers', JSON.stringify(viewers));
+        clearInterval(heartbeatInterval);
+    });
+    
+    // Also handle visibility changes
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            // Page is hidden, remove from active viewers
+            let viewers = JSON.parse(localStorage.getItem('activeViewers') || '{}');
+            delete viewers[viewerId];
+            localStorage.setItem('activeViewers', JSON.stringify(viewers));
+        } else {
+            // Page is visible again, add back to active viewers
+            updateViewerCount();
+        }
+    });
+}
 </script>
 
 </body>
