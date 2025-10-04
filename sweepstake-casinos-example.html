@@ -20,6 +20,24 @@
             min-height: 100vh;
         }
         
+        /* Fullscreen mode styles */
+        body.fullscreen-mode {
+            overflow: hidden;
+        }
+        
+        body.fullscreen-mode header,
+        body.fullscreen-mode .quick-nav {
+            display: none;
+        }
+        
+        body.fullscreen-mode .main-container {
+            padding-top: 20px;
+        }
+        
+        body.fullscreen-mode .table-container {
+            height: calc(100vh - 100px);
+        }
+        
         /* Force scrollbars to always be visible */
         html {
             overflow-y: scroll;
@@ -52,7 +70,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 10000; /* Increased from 1000 to 10000 - highest z-index */
+            z-index: 10000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -116,7 +134,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 70px;
-            z-index: 9999; /* Increased from 100 to 9999 - below header but above everything else */
+            z-index: 9999;
             backdrop-filter: blur(10px);
             padding: 1rem 0;
         }
@@ -190,11 +208,225 @@
             margin-left: 0.3rem;
         }
         
+        /* New Casinos Alert Banner */
+        .new-casinos-alert {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3); }
+            50% { box-shadow: 0 10px 40px rgba(240, 147, 251, 0.5); }
+        }
+        
+        .new-casinos-alert::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .new-casinos-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .new-icon {
+            font-size: 2rem;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .new-casinos-text h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .new-casinos-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+        
+        .view-new-btn {
+            background: white;
+            color: #f5576c;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .view-new-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Table Controls Bar */
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .control-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .control-btn.active {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+        
+        .fullscreen-btn {
+            background: linear-gradient(135deg, #2196F3, #03A9F4);
+            border: none;
+        }
+        
+        .fullscreen-btn:hover {
+            background: linear-gradient(135deg, #1976D2, #0288D1);
+        }
+        
+        .embed-btn {
+            background: linear-gradient(135deg, #9C27B0, #BA68C8);
+            border: none;
+        }
+        
+        .embed-btn:hover {
+            background: linear-gradient(135deg, #7B1FA2, #AB47BC);
+        }
+        
+        /* Embed Modal */
+        .embed-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 20000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .embed-modal.show {
+            display: flex;
+        }
+        
+        .embed-content {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .embed-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .embed-code {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #4CAF50;
+            overflow-x: auto;
+        }
+        
+        .copy-embed-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .copy-embed-btn:hover {
+            background: #66BB6A;
+        }
+        
+        .copy-embed-btn.copied {
+            background: #2196F3;
+        }
+        
         .main-container {
             padding-top: 140px;
             padding-bottom: 50px;
             position: relative;
-            z-index: 1; /* Lower z-index for main content */
+            z-index: 1;
         }
         
         .content-wrapper {
@@ -233,7 +465,7 @@
             animation: fadeIn 1s ease 0.2s both;
             overflow: hidden;
             position: relative;
-            z-index: 1; /* Ensure it stays below navigation */
+            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -362,7 +594,7 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 165, 0, 0.3);
             position: relative;
-            z-index: 1; /* Ensure it stays below navigation */
+            z-index: 1;
         }
 
         .patch-notes-header {
@@ -454,7 +686,7 @@
             margin: 2rem auto;
             max-width: 1200px;
             position: relative;
-            z-index: 1; /* Ensure it stays below navigation */
+            z-index: 1;
         }
         
         .stat-card {
@@ -477,13 +709,31 @@
             color: #4CAF50;
         }
         
+        /* Special styling for new casinos stat */
+        .stat-card.new-casinos-stat {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
+            border: 1px solid rgba(240, 147, 251, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(240, 147, 251, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(240, 147, 251, 0.5); }
+        }
+        
+        .stat-card.new-casinos-stat .stat-value {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
         .dashboard-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 2rem;
             margin-top: 2rem;
             position: relative;
-            z-index: 1; /* Ensure it stays below navigation */
+            z-index: 1;
         }
         
         .loading-message {
@@ -543,6 +793,7 @@
             cursor: pointer;
             color: white;
             transition: all 0.3s;
+            position: relative;
         }
         
         .tier-tab:hover {
@@ -555,13 +806,42 @@
             border-color: #4CAF50;
         }
         
+        /* Special styling for New Casinos tab */
+        .tier-tab.new-casinos-tab {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.3));
+            border-color: #f093fb;
+            animation: pulse-tab 2s infinite;
+        }
+        
+        @keyframes pulse-tab {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .tier-tab.new-casinos-tab.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+        
+        .tier-tab .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FF6B6B;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
         .table-container {
             overflow-x: auto;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             padding: 1rem;
             position: relative;
-            z-index: 1; /* Ensure table stays below navigation */
+            z-index: 1;
         }
         
         table {
@@ -579,7 +859,7 @@
             font-weight: 600;
             position: sticky;
             top: 0;
-            z-index: 10; /* Reduced from 100 to keep below navigation */
+            z-index: 10;
             white-space: nowrap;
             font-size: 0.85rem;
         }
@@ -596,21 +876,36 @@
             background: rgba(76, 175, 80, 0.1);
         }
         
-        /* Updated Column specific widths with Notes moved two positions right */
-        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }  /* Tier */
-        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; } /* Casino */
-        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }  /* Signup */
-        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }  /* Daily Bonus */
-        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; } /* Welcome Offer */
-        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }  /* Min Redeem */
-        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }  /* Gravity BJ */
-        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }  /* Auto Roulette */
-        th:nth-child(9), td:nth-child(9) { width: 22%; min-width: 250px; } /* Notes */
-        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; } /* Epic Joker */
-        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; } /* Great Pigsby */
-        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; } /* Other Games */
-        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; } /* Parent Company */
-        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; } /* Restricted States */
+        /* Highlight new casino rows */
+        tbody tr.new-casino-row {
+            background: linear-gradient(90deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
+            animation: fadeInRow 0.5s ease;
+        }
+        
+        tbody tr.new-casino-row:hover {
+            background: linear-gradient(90deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
+        }
+        
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Column specific widths */
+        th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 80px; }
+        th:nth-child(2), td:nth-child(2) { width: 7%; min-width: 100px; }
+        th:nth-child(3), td:nth-child(3) { width: 6%; min-width: 80px; }
+        th:nth-child(4), td:nth-child(4) { width: 6%; min-width: 80px; }
+        th:nth-child(5), td:nth-child(5) { width: 9%; min-width: 120px; }
+        th:nth-child(6), td:nth-child(6) { width: 5%; min-width: 60px; }
+        th:nth-child(7), td:nth-child(7) { width: 5%; min-width: 60px; }
+        th:nth-child(8), td:nth-child(8) { width: 5%; min-width: 60px; }
+        th:nth-child(9), td:nth-child(9) { width: 22%; min-width: 250px; }
+        th:nth-child(10), td:nth-child(10) { width: 5%; min-width: 60px; }
+        th:nth-child(11), td:nth-child(11) { width: 5%; min-width: 60px; }
+        th:nth-child(12), td:nth-child(12) { width: 7%; min-width: 80px; }
+        th:nth-child(13), td:nth-child(13) { width: 6%; min-width: 100px; }
+        th:nth-child(14), td:nth-child(14) { width: 7%; min-width: 120px; }
         
         .tier-separator {
             background: transparent;
@@ -648,6 +943,14 @@
             background: linear-gradient(135deg, #f093fb, #f5576c);
             border-color: #f093fb;
             color: white;
+            font-size: 1.3rem;
+            padding: 10px 30px;
+            animation: glow-label 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-label {
+            0%, 100% { box-shadow: 0 4px 20px rgba(240, 147, 251, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(240, 147, 251, 0.8); }
         }
         
         .tier-label.god-tier {
@@ -685,6 +988,12 @@
         .tier-new {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
+            animation: pulse-indicator 1.5s infinite;
+        }
+        
+        @keyframes pulse-indicator {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
         
         .tier-god {
@@ -720,6 +1029,11 @@
             white-space: nowrap;
         }
         
+        .casino-name.new-casino {
+            color: #f093fb;
+            font-weight: 700;
+        }
+        
         .signup-link {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white;
@@ -737,6 +1051,15 @@
             background: linear-gradient(135deg, #66BB6A, #9CCC65);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .signup-link.new-casino-link {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+        
+        .signup-link.new-casino-link:hover {
+            background: linear-gradient(135deg, #f424ff, #ff1744);
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.5);
         }
         
         .daily-bonus {
@@ -788,13 +1111,34 @@
             gap: 0.5rem;
             box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
             transition: all 0.3s;
-            z-index: 9998; /* Below navigation bars but above content */
+            z-index: 9998;
             font-weight: 600;
         }
         
         .discord-float:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Exit Fullscreen Button */
+        .exit-fullscreen {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f44336;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+            z-index: 10001;
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+        }
+        
+        body.fullscreen-mode .exit-fullscreen {
+            display: block;
         }
     </style>
 </head>
@@ -850,11 +1194,28 @@
         </div>
     </div>
     
+    <!-- Exit Fullscreen Button -->
+    <button class="exit-fullscreen" onclick="exitFullscreen()">✕ Exit Fullscreen</button>
+    
     <div class="main-container">
         <div class="content-wrapper">
             <div class="guide-hero">
                 <h1>Sweepstake Casinos Complete Guide</h1>
                 <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
+            </div>
+
+            <!-- New Casinos Alert Banner -->
+            <div class="new-casinos-alert">
+                <div class="new-casinos-content">
+                    <div class="new-icon">🎉</div>
+                    <div class="new-casinos-text">
+                        <h3>New Casinos Added!</h3>
+                        <p>Check out the latest sweepstake casinos with exclusive welcome bonuses</p>
+                    </div>
+                </div>
+                <button class="view-new-btn" onclick="filterByTier('New Casinos', document.querySelector('.new-casinos-tab'))">
+                    View New Casinos
+                </button>
             </div>
 
             <!-- Guide Overview Section with Minimize Feature -->
@@ -937,6 +1298,10 @@
                     <div class="stat-value">$44.52</div>
                     <div>Daily Earnings</div>
                 </div>
+                <div class="stat-card new-casinos-stat">
+                    <div class="stat-value" id="newCasinosCount">0</div>
+                    <div>🎉 New Casinos</div>
+                </div>
                 <div class="stat-card">
                     <div class="stat-value" id="totalCount">0</div>
                     <div>Total Casinos</div>
@@ -960,22 +1325,39 @@
                     Error loading data. Please check the console for details.
                 </div>
                 
-                <div class="search-section">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
+                <!-- Table Controls -->
+                <div class="table-controls">
+                    <div class="search-section">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search casinos..." onkeyup="searchCasinos()">
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
+                            <span>⛶</span>
+                            Fullscreen
+                        </button>
+                        <button class="control-btn embed-btn" onclick="showEmbedModal()">
+                            <span>⧉</span>
+                            Embed
+                        </button>
                     </div>
                 </div>
                 
                 <div class="tier-tabs">
                     <div class="tier-tab active" onclick="filterByTier('all', this)">All Casinos</div>
-                    <div class="tier-tab" onclick="filterByTier('New Casinos', this)">New Casinos</div>
+                    <div class="tier-tab new-casinos-tab" onclick="filterByTier('New Casinos', this)">
+                        New Casinos
+                        <span class="badge" id="newCasinosBadge">!</span>
+                    </div>
                     <div class="tier-tab" onclick="filterByTier('God Tier', this)">God Tier</div>
                     <div class="tier-tab" onclick="filterByTier('High Tier', this)">High Tier</div>
                     <div class="tier-tab" onclick="filterByTier('Medium Tier', this)">Medium Tier</div>
                     <div class="tier-tab" onclick="filterByTier('Trash Tier', this)">Trash Tier</div>
                 </div>
                 
-                <div class="table-container">
+                <div class="table-container" id="tableContainer">
                     <table id="casinoTable">
                         <thead>
                             <tr>
@@ -1008,6 +1390,23 @@
         </div>
     </div>
 
+    <!-- Embed Modal -->
+    <div class="embed-modal" id="embedModal">
+        <div class="embed-content">
+            <button class="embed-close" onclick="closeEmbedModal()">×</button>
+            <h2 style="color: #4CAF50; margin-bottom: 1rem;">Embed Casino Table</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                Copy this code to embed the casino table on your website:
+            </p>
+            <div class="embed-code" id="embedCode">
+                &lt;iframe src="https://yourdomain.com/sweepstake-casinos.html?embedded=true" width="100%" height="800" frameborder="0" style="border-radius: 10px;"&gt;&lt;/iframe&gt;
+            </div>
+            <button class="copy-embed-btn" id="copyEmbedBtn" onclick="copyEmbedCode()">
+                Copy Embed Code
+            </button>
+        </div>
+    </div>
+
     <!-- Discord Floating Button -->
     <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
         <span>💬</span>
@@ -1020,10 +1419,72 @@ let casinosData = [];
 let currentCasinos = [];
 let currentFilter = 'all';
 let patchNotesData = [];
+let newCasinosCount = 0;
 
 // GitHub URLs
 const GITHUB_EXCEL_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/NewWebsiteSheet - V1.xlsx';
 const GITHUB_PATCH_NOTES_URL = 'https://raw.githubusercontent.com/poponline63/onlinesidehustles/main/PatchNotes.xlsx';
+
+// Check if embedded
+function checkEmbedded() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('embedded') === 'true') {
+        document.body.classList.add('embedded-mode');
+        document.querySelector('header').style.display = 'none';
+        document.querySelector('.quick-nav').style.display = 'none';
+        document.querySelector('.guide-overview').style.display = 'none';
+        document.querySelector('.patch-notes-section').style.display = 'none';
+        document.querySelector('.stats-grid').style.display = 'none';
+        document.querySelector('.new-casinos-alert').style.display = 'none';
+        document.querySelector('.discord-float').style.display = 'none';
+        document.querySelector('.main-container').style.paddingTop = '20px';
+    }
+}
+
+// Toggle fullscreen
+function toggleFullscreen() {
+    const body = document.body;
+    if (body.classList.contains('fullscreen-mode')) {
+        exitFullscreen();
+    } else {
+        body.classList.add('fullscreen-mode');
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        }
+    }
+}
+
+// Exit fullscreen
+function exitFullscreen() {
+    document.body.classList.remove('fullscreen-mode');
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+}
+
+// Show embed modal
+function showEmbedModal() {
+    document.getElementById('embedModal').classList.add('show');
+}
+
+// Close embed modal
+function closeEmbedModal() {
+    document.getElementById('embedModal').classList.remove('show');
+}
+
+// Copy embed code
+function copyEmbedCode() {
+    const embedCode = document.getElementById('embedCode').textContent;
+    navigator.clipboard.writeText(embedCode).then(() => {
+        const btn = document.getElementById('copyEmbedBtn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = 'Copy Embed Code';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
 
 // Toggle guide minimize/expand
 function toggleGuide() {
@@ -1034,7 +1495,6 @@ function toggleGuide() {
     
     if (guideOverview.classList.contains('minimized')) {
         btnText.textContent = 'Expand';
-        // Save state to localStorage
         localStorage.setItem('guideMinimized', 'true');
     } else {
         btnText.textContent = 'Minimize';
@@ -1069,17 +1529,13 @@ async function loadPatchNotes() {
         const data = new Uint8Array(arrayBuffer);
         const workbook = XLSX.read(data, { type: 'array' });
         
-        // Get the first sheet
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         
-        // Convert to JSON
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         
-        // Clear loading message
         patchContent.innerHTML = '';
         
-        // Process patch notes (skip header row)
         for (let i = 1; i < jsonData.length; i++) {
             const row = jsonData[i];
             if (!row || !row[0]) continue;
@@ -1091,7 +1547,6 @@ async function loadPatchNotes() {
             const version = row[1] || '';
             const changes = row[2] || '';
             
-            // Update latest version display
             if (i === 1 && version) {
                 versionElement.textContent = `v${version}`;
             }
@@ -1106,7 +1561,6 @@ async function loadPatchNotes() {
             patchContent.appendChild(noteItem);
         }
         
-        // If no patch notes found
         if (patchContent.children.length === 0) {
             patchContent.innerHTML = '<div class="patch-error">No patch notes available yet.</div>';
             versionElement.textContent = 'v1.0.0';
@@ -1123,7 +1577,6 @@ async function loadPatchNotes() {
 function formatChanges(changes) {
     if (!changes) return '';
     
-    // Split by line breaks or semicolons
     const items = changes.split(/[\n;]/).filter(item => item.trim());
     
     if (items.length > 1) {
@@ -1142,7 +1595,6 @@ async function loadExcelFromGitHub() {
     errorDiv.classList.remove('show');
     
     try {
-        // Fetch the Excel file from GitHub
         const response = await fetch(GITHUB_EXCEL_URL);
         
         if (!response.ok) {
@@ -1169,11 +1621,9 @@ async function loadExcelFromGitHub() {
 
 // Process Excel data
 function processExcelData(workbook) {
-    // Get the first sheet (Daily Casinos)
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     
-    // Convert to JSON
     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
     
     if (jsonData.length < 3) {
@@ -1181,16 +1631,14 @@ function processExcelData(workbook) {
         return;
     }
     
-    // Clear existing data
     casinosData = [];
+    newCasinosCount = 0;
     
     let currentTier = '';
     
-    // Process each row (starting from row 3 to skip headers)
     for (let i = 2; i < jsonData.length; i++) {
         const row = jsonData[i];
         
-        // Skip empty rows
         if (!row || !row[1]) continue;
         
         const cellContent = String(row[1]).trim();
@@ -1213,17 +1661,15 @@ function processExcelData(workbook) {
             continue;
         }
         
-        // Skip if it's "Signup" or other non-casino entries
         if (cellContent === 'Signup' || cellContent === 'Referrals' || 
             cellContent.includes('Thank you') || !cellContent) {
             continue;
         }
         
-        // Create casino object with signup link from column A (index 0)
         const casino = {
             tier: currentTier || 'Uncategorized',
             casino: cellContent,
-            signupLink: row[0] || '', // Column A
+            signupLink: row[0] || '',
             dailyBonus: row[2] || '',
             notes: row[3] || '',
             welcomeOffer: row[4] || '',
@@ -1237,46 +1683,55 @@ function processExcelData(workbook) {
             restrictedStates: row[15] || ''
         };
         
-        // Clean up the data
         Object.keys(casino).forEach(key => {
             if (typeof casino[key] === 'string') {
                 casino[key] = casino[key].trim();
             }
         });
         
+        if (casino.tier === 'New Casinos') {
+            newCasinosCount++;
+        }
+        
         casinosData.push(casino);
     }
     
-    // Update display
+    // Update stats
+    document.getElementById('newCasinosCount').textContent = newCasinosCount;
+    document.getElementById('totalCount').textContent = casinosData.length;
+    
+    // Update new casinos badge
+    if (newCasinosCount > 0) {
+        document.getElementById('newCasinosBadge').textContent = newCasinosCount;
+    }
+    
     currentCasinos = [...casinosData];
     renderTable(currentCasinos);
     
-    console.log(`Loaded ${casinosData.length} casinos from Excel`);
+    console.log(`Loaded ${casinosData.length} casinos (${newCasinosCount} new)`);
 }
 
 // Helper function to format signup link
-function formatSignupLink(url) {
+function formatSignupLink(url, isNewCasino) {
     if (!url) return '-';
     
-    // Check if it's already a full URL
+    const linkClass = isNewCasino ? 'signup-link new-casino-link' : 'signup-link';
+    
     if (url.startsWith('http://') || url.startsWith('https://')) {
-        return `<a href="${url}" target="_blank" class="signup-link">Sign Up</a>`;
+        return `<a href="${url}" target="_blank" class="${linkClass}">Sign Up</a>`;
     }
     
-    // If it's just text or partial URL, still create a link
     if (url.length > 0) {
-        // Assume it needs https:// if it looks like a domain
         if (url.includes('.')) {
-            return `<a href="https://${url}" target="_blank" class="signup-link">Sign Up</a>`;
+            return `<a href="https://${url}" target="_blank" class="${linkClass}">Sign Up</a>`;
         }
-        // Otherwise just return the text
         return url;
     }
     
     return '-';
 }
 
-// Render table
+// Render table with enhanced new casino visibility
 function renderTable(casinos) {
     const tbody = document.getElementById('casinoTableBody');
     tbody.innerHTML = '';
@@ -1315,6 +1770,11 @@ function renderTable(casinos) {
         // Add casino rows
         tierCasinos.forEach(casino => {
             const row = document.createElement('tr');
+            const isNewCasino = casino.tier === 'New Casinos';
+            
+            if (isNewCasino) {
+                row.className = 'new-casino-row';
+            }
             
             let tierClass = 'tier-new';
             if (casino.tier === 'God Tier') tierClass = 'tier-god';
@@ -1322,13 +1782,15 @@ function renderTable(casinos) {
             else if (casino.tier === 'Medium Tier') tierClass = 'tier-medium';
             else if (casino.tier === 'Trash Tier') tierClass = 'tier-trash';
             
+            const casinoNameClass = isNewCasino ? 'casino-name new-casino' : 'casino-name';
+            
             row.innerHTML = 
                 '<td><span class="tier-indicator ' + tierClass + '">' + casino.tier + '</span></td>' +
-                '<td class="casino-name">' + casino.casino + '</td>' +
-                '<td>' + formatSignupLink(casino.signupLink) + '</td>' +
+                '<td class="' + casinoNameClass + '">' + casino.casino + '</td>' +
+                '<td>' + formatSignupLink(casino.signupLink, isNewCasino) + '</td>' +
                 '<td class="daily-bonus">' + (casino.dailyBonus || '-') + '</td>' +
                 '<td class="welcome-offer">' + (casino.welcomeOffer || '-') + '</td>' +
-                '<td><span class="min-redemption">' + (casino.minRedemption ? '$' + casino.minRedemption : '-') + '</span></td>' +
+                '<td><span class="min-redemption">' + (casino.minRedemption ? ' + casino.minRedemption : '-') + '</span></td>' +
                 '<td class="game-column">' + (casino.gravityBJ || '-') + '</td>' +
                 '<td class="game-column">' + (casino.autoRoulette || '-') + '</td>' +
                 '<td class="notes">' + (casino.notes || '') + '</td>' +
@@ -1342,18 +1804,31 @@ function renderTable(casinos) {
         });
     });
     
+    // Update total count
     document.getElementById('totalCount').textContent = casinos.length;
 }
 
-// Filter by tier
+// Filter by tier with smooth scroll for New Casinos
 function filterByTier(tier, element) {
     currentFilter = tier;
     
+    // Update active state
     document.querySelectorAll('.tier-tab').forEach(tab => {
         tab.classList.remove('active');
     });
-    element.classList.add('active');
     
+    // Find the correct tab if called from other buttons
+    if (!element) {
+        element = Array.from(document.querySelectorAll('.tier-tab')).find(tab => 
+            tab.textContent.includes(tier.replace('_', ' '))
+        );
+    }
+    
+    if (element) {
+        element.classList.add('active');
+    }
+    
+    // Filter casinos
     if (tier === 'all') {
         currentCasinos = [...casinosData];
     } else {
@@ -1361,6 +1836,16 @@ function filterByTier(tier, element) {
     }
     
     renderTable(currentCasinos);
+    
+    // Smooth scroll to table for New Casinos
+    if (tier === 'New Casinos') {
+        setTimeout(() => {
+            document.getElementById('tableContainer').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 100);
+    }
 }
 
 // Search function
@@ -1386,8 +1871,16 @@ function searchCasinos() {
     renderTable(filtered);
 }
 
+// Listen for fullscreen changes
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        document.body.classList.remove('fullscreen-mode');
+    }
+});
+
 // Load data automatically when page loads
 window.addEventListener('DOMContentLoaded', function() {
+    checkEmbedded();
     checkGuideState();
     loadExcelFromGitHub();
     loadPatchNotes();
