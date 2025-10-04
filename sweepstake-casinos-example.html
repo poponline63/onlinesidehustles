@@ -462,21 +462,25 @@
         .excel-table th {
             background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.3));
             color: white;
-            padding: 1.2rem;
-            text-align: left;
+            padding: 1.2rem 0.5rem;
+            text-align: center;
             font-weight: 600;
-            font-size: 2rem;
+            font-size: 1.8rem;
             position: sticky;
             top: 0;
             z-index: 10;
             border-bottom: 2px solid #4CAF50;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .excel-table td {
-            padding: 1rem;
+            padding: 1rem 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.9rem;
+            text-align: center;
         }
         
         .excel-table tr:hover td {
