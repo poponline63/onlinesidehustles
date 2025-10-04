@@ -1007,21 +1007,18 @@ function displayExcel(workbook) {
             html += '<thead><tr>';
             let signupColumnIndex = -1;
             
-            // Find signup column - more flexible detection
+            // Find signup column - check if it's the first column titled "Signups"
             jsonData[0].forEach((header, headerIndex) => {
                 let headerClass = '';
-                const headerLower = header ? header.toString().toLowerCase().trim() : '';
+                const headerStr = header ? header.toString().trim() : '';
                 
-                // Check various signup column names
-                if (headerLower === 'signup' || 
-                    headerLower === 'signups' ||
-                    headerLower === 'sign up' ||
-                    headerLower === 'sign-up' ||
-                    headerLower === 'signup link' ||
-                    headerLower === 'signup links' ||
-                    headerLower === 'sign up link' ||
-                    headerLower === 'registration' ||
-                    headerLower === 'register') {
+                // Check if this is the Signups column (case-insensitive)
+                if (headerStr.toLowerCase() === 'signups' || 
+                    headerStr.toLowerCase() === 'signup' ||
+                    headerStr.toLowerCase() === 'sign up' ||
+                    headerStr.toLowerCase() === 'sign-up' ||
+                    headerStr.toLowerCase() === 'signup link' ||
+                    headerStr.toLowerCase() === 'signup links') {
                     headerClass = 'signup-header';
                     signupColumnIndex = headerIndex;
                     console.log('Found signup column at index:', headerIndex, 'Header:', header);
