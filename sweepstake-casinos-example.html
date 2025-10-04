@@ -405,40 +405,23 @@
             padding-right: 1rem;
         }
 
-        .patch-note-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
-        }
-
-        .patch-note-item:last-child {
-            border-bottom: none;
-        }
-
-        .patch-note-date {
+        .update-notice {
+            text-align: center;
+            padding: 3rem 2rem;
             color: #FFA500;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
         }
 
-        .patch-note-item ul {
-            margin-left: 1.5rem;
-            list-style-type: none;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
-        .patch-note-item li {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .patch-note-item li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #FFA500;
-            font-weight: bold;
+        .update-notice .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
         }
         
         .stats-grid {
@@ -583,20 +566,27 @@
             to { transform: scale(0); opacity: 0; }
         }
 
-        /* Spreadsheet Iframe Container */
-        .spreadsheet-container {
-            width: 100%;
-            height: 800px;
-            border: 2px solid rgba(76, 175, 80, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
+        .coming-soon-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #4CAF50;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(139, 195, 74, 0.05));
+            border-radius: 15px;
+            border: 2px dashed rgba(76, 175, 80, 0.3);
+            animation: pulse 2s infinite;
         }
-
-        .spreadsheet-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        
+        .coming-soon-message .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .coming-soon-message .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
         }
 
         /* Discord Float Button */
@@ -800,36 +790,7 @@
             <div class="patch-notes-section">
                 <div class="patch-notes-header">
                     <h2>📋 Latest Updates & Patch Notes</h2>
-                    <span class="version">v2.5</span>
-                </div>
-                <div class="patch-notes-content">
-                    <div class="patch-note-item">
-                        <div class="patch-note-date">December 2024</div>
-                        <ul>
-                            <li>Added 8 new sweepstake casino sites to the database</li>
-                            <li>Updated daily bonus amounts for 15+ existing sites</li>
-                            <li>Improved RTP tracking for better game recommendations</li>
-                            <li>Added Skrill payment compatibility information</li>
-                        </ul>
-                    </div>
-                    <div class="patch-note-item">
-                        <div class="patch-note-date">November 2024</div>
-                        <ul>
-                            <li>Released automated bonus collection software integration</li>
-                            <li>Updated minimum redemption amounts across all platforms</li>
-                            <li>Added new package tracking system for better ROI</li>
-                            <li>Implemented live visitor tracking on spreadsheet</li>
-                        </ul>
-                    </div>
-                    <div class="patch-note-item">
-                        <div class="patch-note-date">October 2024</div>
-                        <ul>
-                            <li>Initial release of comprehensive sweepstake casino guide</li>
-                            <li>Launched interactive spreadsheet with 70+ verified sites</li>
-                            <li>Added daily earning calculator and monthly projections</li>
-                            <li>Created Discord community for real-time updates</li>
-                        </ul>
-                    </div>
+                    <span class="version">Coming Soon</span>
                 </div>
             </div>
             
@@ -869,12 +830,6 @@
                     </div>
                 </div>
                 
-                <div class="spreadsheet-container">
-                    <iframe 
-                        class="spreadsheet-iframe" 
-                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQPIkT8z_JYpYr4tGKl6iJFxZ0e9yRhS2vW4pB_mVG3L5xN7JQ8kH9xZNWmXJvK3nY2JhW9MZ8/pubhtml?widget=true&amp;headers=false"
-                        allowfullscreen>
-                    </iframe>
                 </div>
             </div>
         </div>
