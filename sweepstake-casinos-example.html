@@ -1091,30 +1091,32 @@ function displayExcel(workbook) {
             for (let i = 1; i < jsonData.length; i++) {
                 const row = jsonData[i] || [];
                 
-                // Check for tier indicators in the first column
-                const firstCell = row[0] ? row[0].toString() : '';
+                // Check for tier indicators - check all cells in the row, not just first
                 let isTierSeparator = false;
                 let tierName = '';
                 let tierClass = '';
                 
+                // Check the entire row for tier indicators
+                const rowText = row.join(' ').toLowerCase();
+                
                 // Check if this row indicates a tier change
-                if (firstCell.toLowerCase().includes('new casino') || firstCell.toLowerCase().includes('new tier')) {
+                if (rowText.includes('new casino') || rowText.includes('new tier') || rowText === 'new' || rowText.includes('newest')) {
                     tierName = '🆕 NEW CASINOS 🆕';
                     tierClass = 'tier-new';
                     isTierSeparator = true;
-                } else if (firstCell.toLowerCase().includes('god tier') || firstCell.toLowerCase().includes('ss+') || firstCell.toLowerCase().includes('ss tier')) {
+                } else if (rowText.includes('god tier') || rowText.includes('ss+') || rowText.includes('ss tier') || rowText === 'ss' || rowText === 'ss+') {
                     tierName = '👑 GOD TIER CASINOS 👑';
                     tierClass = 'tier-god';
                     isTierSeparator = true;
-                } else if (firstCell.toLowerCase().includes('high tier') || firstCell.toLowerCase().includes('s+') || firstCell.toLowerCase().includes('s tier')) {
+                } else if (rowText.includes('high tier') || rowText.includes('s+') || rowText.includes('s tier') || rowText === 's' || rowText === 's+') {
                     tierName = '⭐ HIGH TIER CASINOS ⭐';
                     tierClass = '';
                     isTierSeparator = true;
-                } else if (firstCell.toLowerCase().includes('medium tier') || firstCell.toLowerCase().includes('a tier') || firstCell.toLowerCase().includes('b tier')) {
+                } else if (rowText.includes('medium tier') || rowText.includes('mid tier') || rowText.includes('a tier') || rowText.includes('b tier') || rowText === 'a' || rowText === 'b') {
                     tierName = '✨ MEDIUM TIER CASINOS ✨';
                     tierClass = '';
                     isTierSeparator = true;
-                } else if (firstCell.toLowerCase().includes('trash tier') || firstCell.toLowerCase().includes('low tier') || firstCell.toLowerCase().includes('c tier') || firstCell.toLowerCase().includes('d tier')) {
+                } else if (rowText.includes('trash tier') || rowText.includes('low tier') || rowText.includes('worst') || rowText.includes('c tier') || rowText.includes('d tier') || rowText.includes('f tier') || rowText === 'c' || rowText === 'd' || rowText === 'f') {
                     tierName = '⚠️ TRASH TIER CASINOS ⚠️';
                     tierClass = 'tier-trash';
                     isTierSeparator = true;
@@ -1138,10 +1140,13 @@ function displayExcel(workbook) {
                     html += `<tr class="tier-spacer">`;
                     html += `<td colspan="${jsonData[0].length}"></td>`;
                     html += `</tr>`;
+                    
+                    // Don't add the tier row itself as data
+                    continue;
                 }
                 
-                // Add regular data row
-                if (!isTierSeparator || (row.length > 1 && row[1])) {
+                // Add regular data row only if it's not a tier separator
+                if (!isTierSeparator) {
                     html += '<tr>';
                     for (let j = 0; j < jsonData[0].length; j++) {
                         let cellContent = row[j] || '';
