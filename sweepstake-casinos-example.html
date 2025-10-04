@@ -649,19 +649,24 @@
         .signup-link {
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white !important;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
             text-decoration: none !important;
-            font-weight: bold;
+            font-weight: 700;
             display: inline-block;
             transition: all 0.3s;
             box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
         }
         
         .signup-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.5);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
             background: linear-gradient(135deg, #8BC34A, #4CAF50);
+            border: 2px solid #4CAF50;
         }
         
         /* Loading State */
@@ -1000,13 +1005,17 @@ function displayExcel(workbook) {
         // Headers
         if (jsonData.length > 0) {
             html += '<thead><tr>';
+            let signupColumnIndex = -1;
+            
             jsonData[0].forEach((header, headerIndex) => {
-                // Make signup column stand out
                 let headerClass = '';
-                if (header && (header.toString().toLowerCase().includes('signup') || 
-                           header.toString().toLowerCase().includes('sign up') ||
-                           header.toString().toLowerCase().includes('link'))) {
+                // Check if this is specifically the Signup column (not Daily Links)
+                if (header && (header.toString().toLowerCase() === 'signup' || 
+                              header.toString().toLowerCase() === 'signups' ||
+                              header.toString().toLowerCase() === 'sign up' ||
+                              header.toString().toLowerCase() === 'sign-up')) {
                     headerClass = 'signup-header';
+                    signupColumnIndex = headerIndex;
                 }
                 html += `<th class="${headerClass}">${header || ''}</th>`;
             });
@@ -1015,16 +1024,6 @@ function displayExcel(workbook) {
             // Data rows with tier separation
             html += '<tbody>';
             let currentTier = '';
-            let signupColumnIndex = -1;
-            
-            // Find signup column index
-            jsonData[0].forEach((header, index) => {
-                if (header && (header.toString().toLowerCase().includes('signup') || 
-                              header.toString().toLowerCase().includes('sign up') ||
-                              header.toString().toLowerCase().includes('link'))) {
-                    signupColumnIndex = index;
-                }
-            });
             
             for (let i = 1; i < jsonData.length; i++) {
                 const row = jsonData[i] || [];
@@ -1073,26 +1072,29 @@ function displayExcel(workbook) {
                         let cellContent = row[j] || '';
                         let cellClass = '';
                         
-                        // Highlight signup column
-                        if (j === signupColumnIndex) {
+                        // Only highlight the actual Signup column, not Daily Links
+                        if (j === signupColumnIndex && signupColumnIndex !== -1) {
                             cellClass = 'signup-cell';
                             
-                            // Check if cell contains a link and make it clickable
-                            if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
-                                cellContent = `<a href="${cellContent}" target="_blank" class="signup-link">🔗 SIGN UP NOW</a>`;
-                            } else if (cellContent) {
-                                // If there's text but no link format, still try to make it clickable if it looks like a URL
-                                const urlPattern = /(?:www\.|https?:\/\/)?[\w-]+(?:\.[\w-]+)+(?:\/[\w.,@?^=%&:\/~+#-]*)?/gi;
-                                if (cellContent.toString().match(urlPattern)) {
-                                    let url = cellContent.toString();
-                                    if (!url.startsWith('http')) {
-                                        url = 'https://' + url;
+                            // Convert links in signup column to buttons
+                            if (cellContent) {
+                                // Check if it's already a URL
+                                if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
+                                    cellContent = `<a href="${cellContent}" target="_blank" class="signup-link">SIGN UP</a>`;
+                                } else if (cellContent) {
+                                    // Try to detect if it looks like a URL even without protocol
+                                    const urlPattern = /(?:www\.|https?:\/\/)?[\w-]+(?:\.[\w-]+)+(?:\/[\w.,@?^=%&:\/~+#-]*)?/gi;
+                                    if (cellContent.toString().match(urlPattern)) {
+                                        let url = cellContent.toString().trim();
+                                        if (!url.startsWith('http')) {
+                                            url = 'https://' + url;
+                                        }
+                                        cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP</a>`;
                                     }
-                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">🔗 SIGN UP NOW</a>`;
                                 }
                             }
                         } else {
-                            // Regular links for other columns
+                            // Regular links for other columns (not styled as buttons)
                             if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
                                 cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
                             }
