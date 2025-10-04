@@ -486,19 +486,141 @@
         
         /* Tier Separator Styles */
         .tier-separator {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.2)) !important;
-            border-top: 3px solid #4CAF50;
-            border-bottom: 3px solid #4CAF50;
+            background: none !important;
+            border: none !important;
+        }
+        
+        .tier-separator td {
+            padding: 0 !important;
+            border: none !important;
+            background: none !important;
         }
         
         .tier-label {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(76, 175, 80, 0.2) 10%, 
+                rgba(76, 175, 80, 0.4) 20%,
+                rgba(76, 175, 80, 0.6) 50%,
+                rgba(76, 175, 80, 0.4) 80%,
+                rgba(76, 175, 80, 0.2) 90%,
+                transparent 100%);
             text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            padding: 1.2rem !important;
+            font-size: 1.4rem;
+            font-weight: 900;
+            padding: 1.5rem !important;
             color: #4CAF50;
-            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-            letter-spacing: 2px;
+            text-shadow: 
+                0 0 20px rgba(76, 175, 80, 0.8),
+                0 0 40px rgba(76, 175, 80, 0.5);
+            letter-spacing: 3px;
+            margin: 1rem 0;
+            border-top: 4px solid #4CAF50;
+            border-bottom: 4px solid #4CAF50;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tier-label::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #4CAF50 20%, 
+                #4CAF50 80%, 
+                transparent 100%);
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .tier-label::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(76, 175, 80, 0.3), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Different colors for different tiers */
+        .tier-new .tier-label {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 107, 107, 0.2) 10%, 
+                rgba(255, 142, 83, 0.4) 50%,
+                rgba(255, 107, 107, 0.2) 90%,
+                transparent 100%);
+            color: #FF6B6B;
+            border-color: #FF6B6B;
+            text-shadow: 
+                0 0 20px rgba(255, 107, 107, 0.8),
+                0 0 40px rgba(255, 142, 83, 0.5);
+        }
+        
+        .tier-new .tier-label::before {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #FF6B6B 20%, 
+                #FF8E53 80%, 
+                transparent 100%);
+        }
+        
+        .tier-god .tier-label {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 215, 0, 0.2) 10%, 
+                rgba(255, 215, 0, 0.4) 50%,
+                rgba(255, 215, 0, 0.2) 90%,
+                transparent 100%);
+            color: #FFD700;
+            border-color: #FFD700;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.8),
+                0 0 40px rgba(255, 165, 0, 0.5);
+        }
+        
+        .tier-god .tier-label::before {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #FFD700 20%, 
+                #FFA500 80%, 
+                transparent 100%);
+        }
+        
+        .tier-trash .tier-label {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(244, 67, 54, 0.2) 10%, 
+                rgba(244, 67, 54, 0.4) 50%,
+                rgba(244, 67, 54, 0.2) 90%,
+                transparent 100%);
+            color: #f44336;
+            border-color: #f44336;
+            text-shadow: 
+                0 0 20px rgba(244, 67, 54, 0.8),
+                0 0 40px rgba(244, 67, 54, 0.5);
+        }
+        
+        .tier-trash .tier-label::before {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #f44336 20%, 
+                #f44336 80%, 
+                transparent 100%);
         }
         
         /* Signup Column Styles */
@@ -881,7 +1003,9 @@ function displayExcel(workbook) {
             jsonData[0].forEach((header, headerIndex) => {
                 // Make signup column stand out
                 let headerClass = '';
-                if (header && (header.toString().toLowerCase().includes('signup') || header.toString().toLowerCase().includes('sign up'))) {
+                if (header && (header.toString().toLowerCase().includes('signup') || 
+                           header.toString().toLowerCase().includes('sign up') ||
+                           header.toString().toLowerCase().includes('link'))) {
                     headerClass = 'signup-header';
                 }
                 html += `<th class="${headerClass}">${header || ''}</th>`;
@@ -895,7 +1019,9 @@ function displayExcel(workbook) {
             
             // Find signup column index
             jsonData[0].forEach((header, index) => {
-                if (header && (header.toString().toLowerCase().includes('signup') || header.toString().toLowerCase().includes('sign up'))) {
+                if (header && (header.toString().toLowerCase().includes('signup') || 
+                              header.toString().toLowerCase().includes('sign up') ||
+                              header.toString().toLowerCase().includes('link'))) {
                     signupColumnIndex = index;
                 }
             });
@@ -907,29 +1033,35 @@ function displayExcel(workbook) {
                 const firstCell = row[0] ? row[0].toString() : '';
                 let isTierSeparator = false;
                 let tierName = '';
+                let tierClass = '';
                 
                 // Check if this row indicates a tier change
                 if (firstCell.toLowerCase().includes('new casino') || firstCell.toLowerCase().includes('new tier')) {
-                    tierName = '🆕 NEW CASINOS';
+                    tierName = '🆕 NEW CASINOS 🆕';
+                    tierClass = 'tier-new';
                     isTierSeparator = true;
                 } else if (firstCell.toLowerCase().includes('god tier') || firstCell.toLowerCase().includes('ss+') || firstCell.toLowerCase().includes('ss tier')) {
-                    tierName = '👑 GOD TIER CASINOS';
+                    tierName = '👑 GOD TIER CASINOS 👑';
+                    tierClass = 'tier-god';
                     isTierSeparator = true;
                 } else if (firstCell.toLowerCase().includes('high tier') || firstCell.toLowerCase().includes('s+') || firstCell.toLowerCase().includes('s tier')) {
-                    tierName = '⭐ HIGH TIER CASINOS';
+                    tierName = '⭐ HIGH TIER CASINOS ⭐';
+                    tierClass = '';
                     isTierSeparator = true;
                 } else if (firstCell.toLowerCase().includes('medium tier') || firstCell.toLowerCase().includes('a tier') || firstCell.toLowerCase().includes('b tier')) {
-                    tierName = '✨ MEDIUM TIER CASINOS';
+                    tierName = '✨ MEDIUM TIER CASINOS ✨';
+                    tierClass = '';
                     isTierSeparator = true;
                 } else if (firstCell.toLowerCase().includes('trash tier') || firstCell.toLowerCase().includes('low tier') || firstCell.toLowerCase().includes('c tier') || firstCell.toLowerCase().includes('d tier')) {
-                    tierName = '⚠️ TRASH TIER CASINOS';
+                    tierName = '⚠️ TRASH TIER CASINOS ⚠️';
+                    tierClass = 'tier-trash';
                     isTierSeparator = true;
                 }
                 
                 // Add tier separator if detected
                 if (isTierSeparator && tierName && tierName !== currentTier) {
                     currentTier = tierName;
-                    html += `<tr class="tier-separator">`;
+                    html += `<tr class="tier-separator ${tierClass}">`;
                     html += `<td colspan="${jsonData[0].length}" class="tier-label">${tierName}</td>`;
                     html += `</tr>`;
                 }
@@ -944,16 +1076,28 @@ function displayExcel(workbook) {
                         // Highlight signup column
                         if (j === signupColumnIndex) {
                             cellClass = 'signup-cell';
-                        }
-                        
-                        // Check if cell contains a link
-                        if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
-                            if (j === signupColumnIndex) {
+                            
+                            // Check if cell contains a link and make it clickable
+                            if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
                                 cellContent = `<a href="${cellContent}" target="_blank" class="signup-link">🔗 SIGN UP NOW</a>`;
-                            } else {
+                            } else if (cellContent) {
+                                // If there's text but no link format, still try to make it clickable if it looks like a URL
+                                const urlPattern = /(?:www\.|https?:\/\/)?[\w-]+(?:\.[\w-]+)+(?:\/[\w.,@?^=%&:\/~+#-]*)?/gi;
+                                if (cellContent.toString().match(urlPattern)) {
+                                    let url = cellContent.toString();
+                                    if (!url.startsWith('http')) {
+                                        url = 'https://' + url;
+                                    }
+                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">🔗 SIGN UP NOW</a>`;
+                                }
+                            }
+                        } else {
+                            // Regular links for other columns
+                            if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
                                 cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
                             }
                         }
+                        
                         html += `<td class="${cellClass}">${cellContent}</td>`;
                     }
                     html += '</tr>';
