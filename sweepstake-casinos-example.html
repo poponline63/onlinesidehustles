@@ -951,6 +951,65 @@
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
 
+        /* Fullscreen button */
+        .fullscreen-btn {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.3));
+            border: 1px solid rgba(33, 150, 243, 0.4);
+            color: #2196F3;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .fullscreen-btn:hover {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.3), rgba(33, 150, 243, 0.4));
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        #fullscreenIcon {
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        /* Fullscreen mode styles */
+        body.fullscreen-mode {
+            zoom: 0.67;
+            transform-origin: top center;
+        }
+        
+        /* Adjust zoom levels for different screen sizes */
+        @media (max-width: 1920px) {
+            body.fullscreen-mode {
+                zoom: 0.75;
+            }
+        }
+        
+        @media (max-width: 1600px) {
+            body.fullscreen-mode {
+                zoom: 0.67;
+            }
+        }
+        
+        @media (max-width: 1366px) {
+            body.fullscreen-mode {
+                zoom: 0.6;
+            }
+        }
+        
+        @media (max-width: 1280px) {
+            body.fullscreen-mode {
+                zoom: 0.55;
+            }
+        }
+
         /* Refresh button */
         .refresh-btn {
             background: rgba(76, 175, 80, 0.2);
@@ -1171,6 +1230,11 @@
                         </div>
                     </div>
                     
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
+                        <span id="fullscreenIcon">⛶</span>
+                        <span id="fullscreenText">Fullscreen</span>
+                    </button>
+                    
                     <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
                         <span>🔄</span>
                     </button>
@@ -1194,6 +1258,47 @@
     </a>
 
 <script>
+// Toggle fullscreen mode
+function toggleFullscreen() {
+    const body = document.body;
+    const fullscreenText = document.getElementById('fullscreenText');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    
+    if (body.classList.contains('fullscreen-mode')) {
+        // Exit fullscreen
+        body.classList.remove('fullscreen-mode');
+        fullscreenText.textContent = 'Fullscreen';
+        fullscreenIcon.textContent = '⛶';
+        localStorage.setItem('fullscreenMode', 'false');
+        
+        // Scroll to database section
+        setTimeout(() => {
+            document.querySelector('.dashboard-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    } else {
+        // Enter fullscreen
+        body.classList.add('fullscreen-mode');
+        fullscreenText.textContent = 'Exit';
+        fullscreenIcon.textContent = '⛶';
+        localStorage.setItem('fullscreenMode', 'true');
+        
+        // Scroll to top to see everything
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Check saved fullscreen state on page load
+function checkFullscreenState() {
+    const isFullscreen = localStorage.getItem('fullscreenMode') === 'true';
+    if (isFullscreen) {
+        document.body.classList.add('fullscreen-mode');
+        const fullscreenText = document.getElementById('fullscreenText');
+        const fullscreenIcon = document.getElementById('fullscreenIcon');
+        if (fullscreenText) fullscreenText.textContent = 'Exit';
+        if (fullscreenIcon) fullscreenIcon.textContent = '⛶';
+    }
+}
+
 // Toggle guide minimize/expand
 function toggleGuide() {
     const guideOverview = document.getElementById('guideOverview');
@@ -1792,6 +1897,7 @@ function initializeViewerTracking() {
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', function() {
     checkGuideState();
+    checkFullscreenState();
     
     // Auto-load Excel from GitHub after a short delay
     setTimeout(() => {
