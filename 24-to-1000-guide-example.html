@@ -992,6 +992,23 @@
             }
         }
     </style>
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('infoDropdown');
+            dropdown.classList.toggle('open');
+        }
+        
+        // Prevent clicks inside content from bubbling up
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownContent = document.querySelector('.info-dropdown-content');
+            if (dropdownContent) {
+                dropdownContent.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Background Effects -->
@@ -1131,12 +1148,12 @@
         </div>
         
         <!-- Information Before You Start -->
-        <div class="info-dropdown" onclick="this.classList.toggle('open')">
-            <div class="info-dropdown-header">
+        <div class="info-dropdown" id="infoDropdown">
+            <div class="info-dropdown-header" onclick="toggleDropdown(event)">
                 <h2 class="info-dropdown-title">📚 Information Before You Start</h2>
                 <span class="dropdown-arrow">▼</span>
             </div>
-            <div class="info-dropdown-content">
+            <div class="info-dropdown-content" onclick="event.stopPropagation()">
                 <div class="content-placeholder" style="padding: 2rem; max-width: 1000px; margin: 0 auto;">
                     <div style="display: grid; gap: 2rem;">
                         <!-- Understanding Sweepstakes -->
@@ -1222,9 +1239,9 @@
                                         <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🏺 Mummy's Gold</div>
                                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Popular slot with balanced volatility and good RTP</p>
                                     </div>
-                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
-                                        Video Coming Soon
-                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=ffi9iTU3D1o" target="_blank" style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                                        ▶️ Watch Video
+                                    </a>
                                 </div>
                                 
                                 <!-- The Great Pigsby -->
@@ -1233,9 +1250,9 @@
                                         <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🐷 The Great Pigsby</div>
                                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Low volatility slot perfect for steady playthrough</p>
                                     </div>
-                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
-                                        Video Coming Soon
-                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=H91U_1n_hwA" target="_blank" style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                                        ▶️ Watch Video
+                                    </a>
                                 </div>
                                 
                                 <!-- Diamond Explosion -->
@@ -1244,9 +1261,9 @@
                                         <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">💎 Diamond Explosion</div>
                                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Classic slot with predictable patterns for safe playthrough</p>
                                     </div>
-                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
-                                        Video Coming Soon
-                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=GAAnsBhrpa0" target="_blank" style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                                        ▶️ Watch Video
+                                    </a>
                                 </div>
                                 
                                 <!-- Golden Joker -->
@@ -1255,21 +1272,12 @@
                                         <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🃏 Golden Joker</div>
                                         <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Simple mechanics with consistent return rates</p>
                                     </div>
-                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
-                                        Video Coming Soon
-                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=ofhv_brKs-Q&t=2s" target="_blank" style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                                        ▶️ Watch Video
+                                    </a>
                                 </div>
                                 
-                                <!-- Dice -->
-                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
-                                    <div style="flex: 1;">
-                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🎲 Dice</div>
-                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Roll over '2' for 98% win rate - perfect for safe playthrough</p>
-                                    </div>
-                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
-                                        Video Coming Soon
-                                    </div>
-                                </div>
+
                             </div>
                             <p style="color: rgba(255, 165, 0, 0.9); font-size: 0.9rem; margin-top: 1rem; padding: 0.75rem; background: rgba(255, 165, 0, 0.1); border-radius: 8px;">
                                 ⚠️ Always bet minimum amounts and use auto-play where available to complete requirements faster
@@ -2075,59 +2083,3 @@
                         <div class="casino-quick-info" style="margin-top: 0.75rem;">
                             <a href="https://www.rolla.com/play/mummys-gold" target="_blank" class="info-badge playthrough-link">🎮 Playthrough: Mummy's Gold</a>
                             <span class="info-badge">💰 Min Redeem: $100</span>
-                        </div>
-                    </div>
-                    <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/114425?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-                
-                <!-- WowVegas -->
-                <div class="casino-card">
-                    <div class="casino-step-number">26</div>
-                    <div class="casino-info">
-                        <h3 class="casino-name">WowVegas</h3>
-                        <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 12px; padding: 0.75rem; margin-bottom: 0.75rem;">
-                            <div style="font-size: 1.1rem; font-weight: bold; color: #FFD700; margin-bottom: 0.25rem;">📦 Welcome Package: $9.99 for 30SC + Happy Hours</div>
-                            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);">Daily Happy Hours 3-9 PT with 10-50% off</div>
-                        </div>
-                        <div class="casino-quick-info">
-                            <span class="info-badge profit">Profit: $45</span>
-                            <span class="info-badge bankroll">Total Money After: $1078</span>
-                        </div>
-                        <div class="casino-details">
-                            Essential for maximizing profits with daily happy hour deals!
-                        </div>
-                        <div class="casino-quick-info" style="margin-top: 0.75rem;">
-                            <a href="https://www.wowvegas.com/play/mummys-gold" target="_blank" class="info-badge playthrough-link">🎮 Playthrough: Mummy's Gold</a>
-                            <span class="info-badge">💰 Min Redeem: $100</span>
-                        </div>
-                    </div>
-                    <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/91273?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Final Summary -->
-        <div class="final-summary">
-            <h2 class="summary-title">🎉 Congratulations! Journey Complete</h2>
-            <div class="summary-stats">
-                <div class="summary-stat">
-                    <span class="summary-value">$24</span>
-                    <span class="summary-label">Started With</span>
-                </div>
-                <div class="summary-stat">
-                    <span class="summary-value">$1078</span>
-                    <span class="summary-label">Ended With</span>
-                </div>
-                <div class="summary-stat">
-                    <span class="summary-value">4392%</span>
-                    <span class="summary-label">Return on Investment</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
