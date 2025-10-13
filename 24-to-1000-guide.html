@@ -992,6 +992,23 @@
             }
         }
     </style>
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('infoDropdown');
+            dropdown.classList.toggle('open');
+        }
+        
+        // Prevent clicks inside content from bubbling up
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownContent = document.querySelector('.info-dropdown-content');
+            if (dropdownContent) {
+                dropdownContent.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Background Effects -->
@@ -1131,12 +1148,12 @@
         </div>
         
         <!-- Information Before You Start -->
-        <div class="info-dropdown" onclick="this.classList.toggle('open')">
-            <div class="info-dropdown-header">
+        <div class="info-dropdown" id="infoDropdown">
+            <div class="info-dropdown-header" onclick="toggleDropdown(event)">
                 <h2 class="info-dropdown-title">📚 Information Before You Start</h2>
                 <span class="dropdown-arrow">▼</span>
             </div>
-            <div class="info-dropdown-content">
+            <div class="info-dropdown-content" onclick="event.stopPropagation()">
                 <div class="content-placeholder" style="padding: 2rem; max-width: 1000px; margin: 0 auto;">
                     <div style="display: grid; gap: 2rem;">
                         <!-- Understanding Sweepstakes -->
