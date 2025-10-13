@@ -578,12 +578,13 @@
         .info-dropdown-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
+            transition: max-height 0.8s ease-out;
         }
         
         .info-dropdown.open .info-dropdown-content {
-            max-height: 500px;
-            transition: max-height 0.4s ease-in;
+            max-height: 5000px;
+            transition: max-height 0.8s ease-in;
+            overflow: visible;
         }
         
         .content-placeholder {
@@ -923,9 +924,31 @@
             }
             
             .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                flex-direction: row;
+                gap: 0.5rem;
+                text-align: left;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                flex-direction: row;
+                gap: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .return-home-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
             }
             
             .key-stats {
@@ -944,6 +967,28 @@
             .summary-stats {
                 flex-direction: column;
                 gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 1rem 0;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .logo-text {
+                display: none;
+            }
+            
+            .return-home-btn span {
+                display: none;
+            }
+            
+            .return-home-btn {
+                padding: 0.5rem 0.75rem;
             }
         }
     </style>
@@ -1070,17 +1115,17 @@
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <div class="step-title">Purchase Package</div>
-                    <div class="step-desc">Buy the Welcome package at each casino using your Total Money Bankroll to exponentially increase your Total Profit.</div>
+                    <div class="step-desc">Invest in welcome packages at each casino, strategically using your growing bankroll to multiply your profits exponentially with every stage</div>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-title">Complete Playthrough</div>
-                    <div class="step-desc">Click the specified game/method per website to safely complete wagering requirements</div>
+                    <div class="step-desc">Navigate to each casino's recommended game and follow our proven methods to safely fulfill wagering requirements while preserving your bankroll</div>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <div class="step-title">Redeem Profit</div>
-                    <div class="step-desc">Cash out to your bank account, or <a href="https://onlinesidehustles.info/skrill-casinos" target="_blank" style="color: #FFD700; text-decoration: underline;">Skrill Online Digital Wallet</a> (earns small bonus per redeeming) and move to the next casino with your growing Total Money Bankroll</div>
+                    <div class="step-desc">Withdraw your earnings directly to your bank account or <a href="https://onlinesidehustles.info/skrill-casinos" target="_blank" style="color: #FFD700; text-decoration: underline;">Skrill Digital Wallet</a> (which offers bonus points on redemptions), then advance to the next casino with your increased bankroll. Expect payouts to process within 1-3 business days</div>
                 </div>
             </div>
         </div>
@@ -1092,11 +1137,167 @@
                 <span class="dropdown-arrow">▼</span>
             </div>
             <div class="info-dropdown-content">
-                <div class="content-placeholder">
-                    <div class="coming-soon-box">
-                        <div class="coming-soon-icon">🚀</div>
-                        <div class="coming-soon-text">Content Coming Soon</div>
-                        <div class="coming-soon-subtext">We're preparing valuable information and tips for your journey</div>
+                <div class="content-placeholder" style="padding: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <div style="display: grid; gap: 2rem;">
+                        <!-- Understanding Sweepstakes -->
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 15px; border-left: 3px solid #FFD700;">
+                            <h3 style="font-size: 1.3rem; font-weight: bold; color: #FFD700; margin-bottom: 1rem;">💡 How Sweepstakes Casinos Work</h3>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 0.75rem;">
+                                Sweepstake casinos cleverly operate under promotional sweepstakes laws instead of traditional gambling regulations, which exempts them from paying casino taxes. By distributing free SC (Social Coins, where 1SC = $1) and offering bonus packages, they qualify as sweepstakes rather than gambling establishments. The tax savings from this structure far exceed the cost of giving away free coins and bonuses.
+                            </p>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 0.75rem;">
+                                Think of it like retail stores asking customers to donate to charity at checkout - the business gets the tax write-off. Similarly, when you claim free SC, you're helping these casinos maintain their tax-advantaged sweepstakes status, saving them millions in casino taxes annually.
+                            </p>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 1rem;">
+                                These platforms offer free SC through daily logins, promotional links, and bonus packages, betting that most users will lose it back through gameplay. Their business model relies on multiple profit streams: tax exemptions, house edge on games, and users squandering their free coins. However, by understanding this system, you can flip the script and become a profitable player who consistently extracts value from their promotions.
+                            </p>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7;">
+                                For a deeper dive into sweepstakes casino strategies and advanced profit techniques, check out our comprehensive guide below.
+                            </p>
+                            <a href="#" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #FFD700, #FFA500); color: black; font-weight: bold; border-radius: 10px; text-decoration: none; transition: all 0.3s;">
+                                📖 Complete Sweepstakes Guide (Coming Soon)
+                            </a>
+                        </div>
+
+                        <!-- Before You Begin -->
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 15px; border-left: 3px solid #4CAF50;">
+                            <h3 style="font-size: 1.3rem; font-weight: bold; color: #4CAF50; margin-bottom: 1rem;">🎯 Essential First Steps</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px;">
+                                    <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.5rem;">1. Create a Dedicated Email</div>
+                                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">
+                                        Set up a separate email exclusively for casino signups. You'll receive verification links, promotional offers, and daily bonus reminders - keep your main inbox clean.
+                                    </p>
+                                </div>
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px;">
+                                    <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.5rem;">2. Complete KYC Verification Early</div>
+                                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; margin-bottom: 0.5rem;">
+                                        Verify your identity immediately after signup (5-15 minutes). Unverified accounts can't withdraw - don't risk completing packages only to find you can't cash out!
+                                    </p>
+                                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6;">
+                                        KYC stands for "Know Your Customer" and is required by these sites to operate as legal sweepstakes. Trusted third-party verification services handle this process, meaning the sweepstake websites never directly see your personal information. This verification also prevents users from creating multiple accounts - it's strictly one account per person.
+                                    </p>
+                                </div>
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px;">
+                                    <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.5rem;">3. Follow the Order</div>
+                                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">
+                                        Work through casinos in the exact order listed. Each stage builds your bankroll for the next - skipping around breaks the compounding strategy.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Playthrough Strategy -->
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 15px; border-left: 3px solid #FF6B6B;">
+                            <h3 style="font-size: 1.3rem; font-weight: bold; color: #FF6B6B; margin-bottom: 1rem;">🎮 Playthrough Methods</h3>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 0.75rem;">
+                                The games below are specifically chosen for their high RTP (Return to Player) rates, which minimize your losses during playthrough requirements. With a 98% RTP game, for instance, wagering 100SC will statistically leave you with approximately $98 - preserving most of your bankroll while completing the necessary requirements.
+                            </p>
+                            <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                                <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">
+                                    <strong style="color: #FFD700;">📊 Calculating Your Spin Requirements:</strong>
+                                </p>
+                                <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; line-height: 1.6;">
+                                    Simply divide your playthrough amount by your bet size to determine the exact number of spins needed. For example: 100SC playthrough ÷ $0.10 bet = 1,000 spins. This formula works for any game and bet amount. Pro Tip: Write down or keep your computer's calculator app up alongside your game to keep track of your required spins in real-time.
+                                </p>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 1rem;">
+                                The games linked for each casino have been thoroughly tested for optimal results and ease of access - we highly suggest using these specific games for your playthrough:
+                            </p>
+                            <div style="display: grid; gap: 1rem;">
+                                <!-- Auto Roulette / Live Roulette -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🎰 Auto Roulette / Live Roulette</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">High RTP with consistent returns on even-money bets</p>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=Fzp6oiS23tY" target="_blank" style="background: linear-gradient(135deg, #FF0000, #CC0000); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                                        ▶️ Watch Video
+                                    </a>
+                                </div>
+                                
+                                <!-- Mummy's Gold -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🏺 Mummy's Gold</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Popular slot with balanced volatility and good RTP</p>
+                                    </div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+                                        Video Coming Soon
+                                    </div>
+                                </div>
+                                
+                                <!-- The Great Pigsby -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🐷 The Great Pigsby</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Low volatility slot perfect for steady playthrough</p>
+                                    </div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+                                        Video Coming Soon
+                                    </div>
+                                </div>
+                                
+                                <!-- Diamond Explosion -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">💎 Diamond Explosion</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Classic slot with predictable patterns for safe playthrough</p>
+                                    </div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+                                        Video Coming Soon
+                                    </div>
+                                </div>
+                                
+                                <!-- Golden Joker -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🃏 Golden Joker</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Simple mechanics with consistent return rates</p>
+                                    </div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+                                        Video Coming Soon
+                                    </div>
+                                </div>
+                                
+                                <!-- Dice -->
+                                <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; color: #FFD700; margin-bottom: 0.3rem;">🎲 Dice</div>
+                                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Roll over '2' for 98% win rate - perfect for safe playthrough</p>
+                                    </div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+                                        Video Coming Soon
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="color: rgba(255, 165, 0, 0.9); font-size: 0.9rem; margin-top: 1rem; padding: 0.75rem; background: rgba(255, 165, 0, 0.1); border-radius: 8px;">
+                                ⚠️ Always bet minimum amounts and use auto-play where available to complete requirements faster
+                            </p>
+                        </div>
+
+                        <!-- Pro Tips -->
+                        <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(76, 175, 80, 0.05)); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2);">
+                            <h3 style="font-size: 1.3rem; font-weight: bold; color: #FFD700; margin-bottom: 1rem;">💎 Pro Tips for Maximum Profit</h3>
+                            <ul style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+                                <li style="color: rgba(255, 255, 255, 0.85); padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">✓</span>
+                                    Sign up for Stage 1 free sites immediately - they accumulate daily bonuses while you work through paid packages
+                                </li>
+                                <li style="color: rgba(255, 255, 255, 0.85); padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">✓</span>
+                                    Use <a href="https://onlinesidehustles.info/skrill-casinos" target="_blank" style="color: #FFD700; text-decoration: underline;">Skrill</a> for faster withdrawals and extra points you can redeem for cash on each redemption
+                                </li>
+                                <li style="color: rgba(255, 255, 255, 0.85); padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">✓</span>
+                                    Complete one full stage before moving to the next - patience ensures you have the bankroll needed
+                                </li>
+                                <li style="color: rgba(255, 255, 255, 0.85); padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0;">✓</span>
+                                    Track your progress in a spreadsheet to monitor profits and pending redemptions
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1106,20 +1307,26 @@
         <div id="stage-1" class="stage-section">
             <div class="stage-header">
                 <div class="stage-number">STAGE 1</div>
+                <div style="position: absolute; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 1rem 1.5rem; text-align: center; min-width: 150px;">
+                    <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 0.3rem;">⏱️ Expected Time</div>
+                    <div style="font-size: 1.6rem; font-weight: bold; color: #FFD700;">15 mins</div>
+                </div>
                 <h2 class="stage-title">Day 1: Free Money Signups</h2>
                 <p class="stage-subtitle">Sign up immediately for daily bonuses and free money</p>
                 <div class="stage-info">
                     <div class="stage-stat">
                         <div class="stage-stat-label">Sites</div>
-                        <div class="stage-stat-value" style="text-align: center;">4</div>
-                    </div>
-                    <div class="stage-stat">
-                        <div class="stage-stat-label">Time Required</div>
-                        <div class="stage-stat-value" style="text-align: center;">15 min</div>
+                        <div class="stage-stat-value" style="text-align: center; margin-top: 0.5rem;">4</div>
                     </div>
                     <div class="stage-stat">
                         <div class="stage-stat-label">Extra Income</div>
-                        <div class="stage-stat-value" style="text-align: center;">$3-5/day</div>
+                        <div class="stage-stat-value" style="text-align: center; margin-top: 0.5rem;">$3-10/day</div>
+                    </div>
+                    <div class="stage-stat" style="padding: 0.75rem 1.5rem;">
+                        <div class="stage-stat-label">Free SC Links on Discord</div>
+                        <div class="stage-stat-value" style="text-align: center; margin-top: 0.5rem;">
+                            <a href="https://discord.com/invite/onlinesidehustles" target="_blank" style="display: inline-block; background: rgba(255, 215, 0, 0.2); color: #FFD700; text-decoration: none; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255, 215, 0, 0.3); transition: all 0.3s; font-size: 0.95rem;">💬 Join Discord</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1224,6 +1431,10 @@
         <div id="stage-2" class="stage-section">
             <div class="stage-header">
                 <div class="stage-number">STAGE 2</div>
+                <div style="position: absolute; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 1rem 1.5rem; text-align: center; min-width: 150px;">
+                    <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 0.3rem;">⏱️ Expected Time</div>
+                    <div style="font-size: 1.6rem; font-weight: bold; color: #FFD700;">12-15 Days</div>
+                </div>
                 <h2 class="stage-title">Building Your Bankroll: $24 → $169</h2>
                 <p class="stage-subtitle">Start with profitable welcome packages</p>
                 <div class="stage-info">
@@ -1328,6 +1539,10 @@
         <div id="stage-3" class="stage-section">
             <div class="stage-header">
                 <div class="stage-number">STAGE 3</div>
+                <div style="position: absolute; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 1rem 1.5rem; text-align: center; min-width: 150px;">
+                    <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 0.3rem;">⏱️ Expected Time</div>
+                    <div style="font-size: 1.6rem; font-weight: bold; color: #FFD700;">9-12 Days</div>
+                </div>
                 <h2 class="stage-title">A1 Quality Sites: $169 → $289</h2>
                 <p class="stage-subtitle">Reliable operators with consistent payouts</p>
                 <div class="stage-info">
@@ -1368,7 +1583,7 @@
                         </div>
                     </div>
                     <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/91205?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://nolimitcoins.com/?invited_by=0MB973" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
@@ -1393,7 +1608,7 @@
                         </div>
                     </div>
                     <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/91148?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="http://fortunewheelz.com/?invited_by=97XS6G" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
@@ -1418,7 +1633,7 @@
                         </div>
                     </div>
                     <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/91254?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="https://taofortune.com/?invited_by=N9YAYZ" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
                 
@@ -1443,7 +1658,7 @@
                         </div>
                     </div>
                     <div class="casino-action">
-                        <a href="https://affiliates.routy.app/route/91163?affId=3353&ts=5005447" target="_blank" class="signup-link">Sign Up Now</a>
+                        <a href="http://funzcity.com/?invited_by=Z1Y2ZX" target="_blank" class="signup-link">Sign Up Now</a>
                     </div>
                 </div>
             </div>
@@ -1453,6 +1668,10 @@
         <div id="stage-4" class="stage-section">
             <div class="stage-header">
                 <div class="stage-number">STAGE 4</div>
+                <div style="position: absolute; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 1rem 1.5rem; text-align: center; min-width: 150px;">
+                    <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 0.3rem;">⏱️ Expected Time</div>
+                    <div style="font-size: 1.6rem; font-weight: bold; color: #FFD700;">5-7 Days</div>
+                </div>
                 <h2 class="stage-title">B2 Grandfather Sites: $289 → $609</h2>
                 <p class="stage-subtitle">Trusted sites with big packages and quick redemptions</p>
                 <div class="stage-info">
@@ -1608,6 +1827,10 @@
         <div id="stage-5" class="stage-section">
             <div class="stage-header">
                 <div class="stage-number">STAGE 5</div>
+                <div style="position: absolute; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 15px; padding: 1rem 1.5rem; text-align: center; min-width: 150px;">
+                    <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 0.3rem;">⏱️ Expected Time</div>
+                    <div style="font-size: 1.6rem; font-weight: bold; color: #FFD700;">25-30 Days</div>
+                </div>
                 <h2 class="stage-title">Final Push: $609 → $1078</h2>
                 <p class="stage-subtitle">Complete the journey with these final profitable sites</p>
                 <div class="stage-info">
