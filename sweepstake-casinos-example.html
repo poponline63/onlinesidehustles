@@ -825,8 +825,17 @@
                 function isYes(cellValue) {
                     if (!cellValue) return false;
                     var str = cellValue.toString();
-                    return str.indexOf('PNbQx4N.png') !== -1 || str.toLowerCase().trim() === 'yes';
+                    console.log('Checking cell value:', str);
+                    return str.indexOf('PNbQx4N.png') !== -1 || 
+                           str.toLowerCase().trim() === 'yes' ||
+                           str.toLowerCase().trim() === 'y';
                 }
+                
+                console.log('Casino:', casinoName);
+                console.log('Gravity BJ raw:', gravityBJ);
+                console.log('Auto Roulette raw:', autoRoulette);
+                console.log('Epic Joker raw:', epicJoker);
+                console.log('Pigsby raw:', pigsby);
                 
                 if (isYes(gravityBJ)) games.push('Gravity BJ');
                 if (isYes(autoRoulette)) games.push('Auto Roulette');
