@@ -822,14 +822,23 @@
                 }
                 
                 var games = [];
-                if (gravityBJ && gravityBJ.toString().indexOf('check') !== -1) games.push('Gravity BJ');
-                if (autoRoulette && autoRoulette.toString().indexOf('check') !== -1) games.push('Auto Roulette');
-                if (epicJoker && epicJoker.toString().indexOf('check') !== -1) games.push('Epic Joker');
-                if (pigsby && pigsby.toString().indexOf('check') !== -1) games.push('The Great Pigsby');
-                if (otherGames) {
-                    otherGames.split(',').forEach(function(g) {
+                var gravityBJValue = gravityBJ ? gravityBJ.toString().toLowerCase().trim() : '';
+                var autoRouletteValue = autoRoulette ? autoRoulette.toString().toLowerCase().trim() : '';
+                var epicJokerValue = epicJoker ? epicJoker.toString().toLowerCase().trim() : '';
+                var pigsbyValue = pigsby ? pigsby.toString().toLowerCase().trim() : '';
+                
+                if (gravityBJValue === 'yes') games.push('Gravity BJ');
+                if (autoRouletteValue === 'yes') games.push('Auto Roulette');
+                if (epicJokerValue === 'yes') games.push('Epic Joker');
+                if (pigsbyValue === 'yes') games.push('The Great Pigsby');
+                
+                if (otherGames && otherGames.toString().trim()) {
+                    var otherGamesList = otherGames.toString().split(',');
+                    otherGamesList.forEach(function(g) {
                         var gameName = g.trim();
-                        if (gameName) games.push(gameName);
+                        if (gameName && gameName.toLowerCase() !== 'n/a') {
+                            games.push(gameName);
+                        }
                     });
                 }
                 
