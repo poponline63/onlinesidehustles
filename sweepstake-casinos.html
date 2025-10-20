@@ -1232,7 +1232,67 @@
                 if (minRedemption && minRedemption.toString().trim()) {
                     html += '<div class="info-item">';
                     html += '<div class="info-label">Min Redemption</div>';
-                    html += '<div class="info-value">' + minRedemption + '</div>';
+                    var redemptionValue = minRedemption.toString().trim();
+                    if (!redemptionValue.startsWith('
+                if (parentCompany && parentCompany.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Parent Company</div>';
+                    html += '<div class="info-value">' + parentCompany + '</div>';
+                    html += '</div>';
+                }
+                html += '</div>';
+                
+                if (signupUrl && signupUrl !== '#') {
+                    html += '<a href="' + signupUrl + '" target="_blank" class="signup-button">SIGN UP HERE</a>';
+                }
+                
+                html += '</div>';
+            }
+            
+            html += '</div></div>';
+            container.innerHTML = html;
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            checkGuideState();
+            setTimeout(function() {
+                loadFromGitHub();
+            }, 500);
+        });
+    </script>
+</body>
+</html>)) {
+                        redemptionValue = '
+                if (parentCompany && parentCompany.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Parent Company</div>';
+                    html += '<div class="info-value">' + parentCompany + '</div>';
+                    html += '</div>';
+                }
+                html += '</div>';
+                
+                if (signupUrl && signupUrl !== '#') {
+                    html += '<a href="' + signupUrl + '" target="_blank" class="signup-button">SIGN UP HERE</a>';
+                }
+                
+                html += '</div>';
+            }
+            
+            html += '</div></div>';
+            container.innerHTML = html;
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            checkGuideState();
+            setTimeout(function() {
+                loadFromGitHub();
+            }, 500);
+        });
+    </script>
+</body>
+</html> + redemptionValue;
+                    }
+                    html += '<div class="info-value">' + redemptionValue + '</div>';
                     html += '</div>';
                 }
                 if (parentCompany && parentCompany.toString().trim()) {
