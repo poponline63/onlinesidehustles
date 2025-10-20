@@ -1,1 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweepstake Casino Guide - Online Sidehustles</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <!-- Add SheetJS for Excel file reading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* Force scrollbars to always be visible */
+        html {
+            overflow-y: scroll;
+            overflow-x: auto;
+        }
+        
+        /* Ensure scrollbars remain visible on zoom */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.2);
+        }
+        
+        *::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        
+        *::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        *::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 6px;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            border-color: #4CAF50;
+            transform: translateX(-5px);
+        }
+        
+        /* Quick Navigation Bar */
+        .quick-nav {
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 70px;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        
+        .quick-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-nav-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .quick-nav-container::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 3px;
+        }
+        
+        .quick-nav-content {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            min-width: fit-content;
+        }
+        
+        .nav-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(139, 195, 74, 0.2));
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .nav-link-new {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-left: 0.3rem;
+        }
+        
+        .main-container {
+            padding-top: 140px;
+            padding-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .guide-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .guide-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Guide Overview Section with Minimize Feature */
+        .guide-overview {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.05));
+            border-radius: 20px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            animation: fadeIn 1s ease 0.2s both;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .guide-header:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-header h2 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .minimize-btn {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .minimize-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .minimize-btn .icon {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .guide-overview.minimized .minimize-btn .icon {
+            transform: rotate(180deg);
+        }
+
+        .guide-content {
+            padding: 2rem;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .guide-overview.minimized .guide-content {
+            max-height: 0;
+            padding: 0 2rem;
+        }
+
+        .guide-overview h3 {
+            color: #8BC34A;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(139, 195, 74, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .guide-overview p, .guide-overview li {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .guide-overview ul, .guide-overview ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-overview li {
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 235, 59, 0.1);
+            border-left: 4px solid #FFEB3B;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #FFEB3B;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #4CAF50;
+            color: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* Patch Notes Section Styles - Simple Yellow Theme */
+        .patch-notes-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .patch-notes-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid rgba(255, 193, 7, 0.5);
+        }
+
+        .patch-notes-header h2 {
+            color: #FFC107;
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .patch-icon {
+            font-size: 1.4rem;
+        }
+
+        .patch-notes-content {
+            padding: 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .patch-note-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .patch-note-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .patch-note-date {
+            color: #FFC107;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        
+        /* Stats Grid Styles */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-card {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            background: rgba(76, 175, 80, 0.15);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: none;
+        }
+        
+        /* Improved Viewing Now Styles - Inline Version for Database Header */
+        .viewing-now-inline {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .viewing-header-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .viewing-title {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .viewer-list-inline {
+            display: flex;
+            align-items: center;
+            gap: -8px;
+        }
+
+        .viewer-avatar-inline {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            border: 2px solid #1a1a1a;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: default;
+            z-index: 1;
+        }
+
+        .viewer-avatar-inline:hover {
+            transform: translateY(-3px);
+            z-index: 10;
+        }
+
+        .viewer-avatar-inline .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            margin-bottom: 5px;
+            z-index: 100;
+        }
+
+        .viewer-avatar-inline:hover .tooltip {
+            opacity: 1;
+        }
+
+        .viewer-count-summary-inline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px #4CAF50, 0 0 30px #4CAF50;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Excel Display Styles */
+        .excel-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.2);
+            overflow-x: auto;
+            padding-bottom: 0;
+        }
+        
+        .excel-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-weight: 600;
+            margin-bottom: -2px;
+        }
+        
+        .excel-tab:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        .excel-tab.active {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(139, 195, 74, 0.2));
+            border-color: #4CAF50;
+            color: #4CAF50;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        
+        .excel-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            overflow-x: auto;
+            height: calc(100vh - 300px);
+            min-height: 1400px;
+            overflow-y: auto;
+        }
+        
+        .excel-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .excel-table th {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(139, 195, 74, 0.3));
+            color: white;
+            padding: 1.2rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 2px solid #4CAF50;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Game column styles - make them wider */
+        .game-column {
+            font-size: 2.34rem !important;
+            font-weight: 700 !important;
+            min-width: 360px !important;
+            width: 360px !important;
+        }
+        
+        .excel-table td {
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.9rem;
+            text-align: center;
+        }
+        
+        /* Game column cells - make content normal sized but wider */
+        .game-cell {
+            font-size: 2rem !important;
+            font-weight: 600 !important;
+            min-width: 360px !important;
+            width: 360px !important;
+        }
+        
+        .excel-table tr:hover td {
+            background: rgba(76, 175, 80, 0.1);
+        }
+        
+        .excel-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Tier Separator Styles */
+        .tier-separator {
+            background: none !important;
+            border: none !important;
+            height: 80px !important;
+        }
+        
+        .tier-separator td {
+            padding: 20px 0 !important;
+            border: none !important;
+            background: none !important;
+            position: relative;
+        }
+        
+        .tier-label {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.8) 0%, 
+                rgba(76, 175, 80, 0.3) 10%, 
+                rgba(76, 175, 80, 0.5) 50%,
+                rgba(76, 175, 80, 0.3) 90%,
+                rgba(0, 0, 0, 0.8) 100%);
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            padding: 2rem !important;
+            color: #4CAF50;
+            text-shadow: 
+                0 0 30px rgba(76, 175, 80, 1),
+                0 0 60px rgba(76, 175, 80, 0.8),
+                0 0 90px rgba(76, 175, 80, 0.6);
+            letter-spacing: 4px;
+            margin: 2rem 0;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 -10px 30px rgba(76, 175, 80, 0.5),
+                0 10px 30px rgba(76, 175, 80, 0.5);
+        }
+        
+        .tier-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #4CAF50 15%, 
+                #4CAF50 85%, 
+                transparent 100%);
+            box-shadow: 0 0 20px #4CAF50;
+        }
+        
+        .tier-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #4CAF50 15%, 
+                #4CAF50 85%, 
+                transparent 100%);
+            box-shadow: 0 0 20px #4CAF50;
+        }
+        
+        /* Animated divider lines */
+        @keyframes glow {
+            0%, 100% { 
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% { 
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+        
+        .tier-label {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        /* Different colors for different tiers */
+        .tier-new .tier-label {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.8) 0%, 
+                rgba(255, 107, 107, 0.3) 10%, 
+                rgba(255, 142, 83, 0.5) 50%,
+                rgba(255, 107, 107, 0.3) 90%,
+                rgba(0, 0, 0, 0.8) 100%);
+            color: #FF6B6B;
+            text-shadow: 
+                0 0 30px rgba(255, 107, 107, 1),
+                0 0 60px rgba(255, 142, 83, 0.8),
+                0 0 90px rgba(255, 107, 107, 0.6);
+            box-shadow: 
+                0 -10px 30px rgba(255, 107, 107, 0.5),
+                0 10px 30px rgba(255, 107, 107, 0.5);
+        }
+        
+        .tier-new .tier-label::before,
+        .tier-new .tier-label::after {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #FF6B6B 15%, 
+                #FF8E53 50%,
+                #FF6B6B 85%, 
+                transparent 100%);
+            box-shadow: 0 0 20px #FF6B6B;
+        }
+        
+        .tier-god .tier-label {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.8) 0%, 
+                rgba(255, 215, 0, 0.3) 10%, 
+                rgba(255, 215, 0, 0.6) 50%,
+                rgba(255, 215, 0, 0.3) 90%,
+                rgba(0, 0, 0, 0.8) 100%);
+            color: #FFD700;
+            text-shadow: 
+                0 0 30px rgba(255, 215, 0, 1),
+                0 0 60px rgba(255, 165, 0, 0.8),
+                0 0 90px rgba(255, 215, 0, 0.6);
+            box-shadow: 
+                0 -10px 30px rgba(255, 215, 0, 0.5),
+                0 10px 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .tier-god .tier-label::before,
+        .tier-god .tier-label::after {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #FFD700 15%, 
+                #FFA500 50%,
+                #FFD700 85%, 
+                transparent 100%);
+            box-shadow: 0 0 20px #FFD700;
+        }
+        
+        .tier-trash .tier-label {
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.8) 0%, 
+                rgba(244, 67, 54, 0.3) 10%, 
+                rgba(244, 67, 54, 0.5) 50%,
+                rgba(244, 67, 54, 0.3) 90%,
+                rgba(0, 0, 0, 0.8) 100%);
+            color: #f44336;
+            text-shadow: 
+                0 0 30px rgba(244, 67, 54, 1),
+                0 0 60px rgba(244, 67, 54, 0.8),
+                0 0 90px rgba(244, 67, 54, 0.6);
+            box-shadow: 
+                0 -10px 30px rgba(244, 67, 54, 0.5),
+                0 10px 30px rgba(244, 67, 54, 0.5);
+        }
+        
+        .tier-trash .tier-label::before,
+        .tier-trash .tier-label::after {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #f44336 15%, 
+                #f44336 85%, 
+                transparent 100%);
+            box-shadow: 0 0 20px #f44336;
+        }
+        
+        /* Spacer row for extra separation */
+        .tier-spacer {
+            height: 40px !important;
+            background: transparent !important;
+        }
+        
+        .tier-spacer td {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+        
+        /* Signup Column Styles */
+        .signup-header {
+            background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+            color: #000 !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            animation: goldPulse 2s infinite;
+            min-width: 250px !important;
+            width: 250px !important;
+        }
+        
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .signup-cell {
+            background: rgba(255, 215, 0, 0.1) !important;
+            border-left: 2px solid #FFD700 !important;
+            border-right: 2px solid #FFD700 !important;
+            font-weight: 600;
+            min-width: 250px !important;
+            width: 250px !important;
+            text-align: center !important;
+        }
+        
+        .signup-link {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 35px;
+            text-decoration: none !important;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            letter-spacing: 0.8px;
+            border: 2px solid transparent;
+            white-space: nowrap;
+            min-width: 220px;
+        }
+        
+        .signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+            background: linear-gradient(135deg, #8BC34A, #4CAF50);
+            border: 2px solid #4CAF50;
+        }
+        
+        /* Loading State */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: #4CAF50;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(76, 175, 80, 0.2);
+            border-top: 3px solid #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error State */
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #f44336;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .discord-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #5865F2, #7289DA);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s;
+            z-index: 9998;
+            font-weight: 600;
+        }
+        
+        .discord-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Fullscreen button */
+        .fullscreen-btn {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.3));
+            border: 1px solid rgba(33, 150, 243, 0.4);
+            color: #2196F3;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .fullscreen-btn:hover {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.3), rgba(33, 150, 243, 0.4));
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        #fullscreenIcon {
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        /* Fullscreen mode styles */
+        body.fullscreen-mode {
+            zoom: 0.33;
+            transform-origin: top center;
+        }
+        
+        /* Adjust zoom levels for different screen sizes */
+        @media (max-width: 1920px) {
+            body.fullscreen-mode {
+                zoom: 0.38;
+            }
+        }
+        
+        @media (max-width: 1600px) {
+            body.fullscreen-mode {
+                zoom: 0.33;
+            }
+        }
+        
+        @media (max-width: 1366px) {
+            body.fullscreen-mode {
+                zoom: 0.30;
+            }
+        }
+        
+        @media (max-width: 1280px) {
+            body.fullscreen-mode {
+                zoom: 0.28;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            body.fullscreen-mode {
+                zoom: 0.25;
+            }
+        }
+
+        /* Refresh button */
+        .refresh-btn {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                        <defs>
+                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#004D40"/>
+                                <stop offset="33%" style="stop-color:#00695C"/>
+                                <stop offset="66%" style="stop-color:#4CAF50"/>
+                                <stop offset="100%" style="stop-color:#FFD700"/>
+                            </linearGradient>
+                            <radialGradient id="centerGoldLogo">
+                                <stop offset="0%" style="stop-color:#FFD700"/>
+                                <stop offset="50%" style="stop-color:#FFA500"/>
+                                <stop offset="100%" style="stop-color:#4CAF50"/>
+                            </radialGradient>
+                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B4513"/>
+                                <stop offset="50%" style="stop-color:#6D4C41"/>
+                                <stop offset="100%" style="stop-color:#5D4037"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
+                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
+                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
+                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
+                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                    </svg>
+                </div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            
+            <a href="index.html" class="back-button">
+                <span>←</span>
+                Back to Home
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Quick Navigation Bar -->
+    <div class="quick-nav">
+        <div class="quick-nav-container">
+            <div class="quick-nav-content">
+                <a href="sweepstake-casinos.html" class="nav-link active">
+                    <span>💲</span>
+                    Sweepstake Casinos Guide
+                </a>
+                <a href="skrill-casinos.html" class="nav-link">
+                    <span>💳</span>
+                    Skrill-Eligible Sites
+                </a>
+                <a href="daily-free-sc.html" class="nav-link">
+                    <span>🎁</span>
+                    Daily Free SC
+                </a>
+                <a href="package-sales.html" class="nav-link">
+                    <span>📦</span>
+                    Package Sales
+                </a>
+                <a href="complete-guide-list.html" class="nav-link">
+                    <span>📖</span>
+                    Complete Guide List
+                </a>
+                <a href="bonus-collection-software.html" class="nav-link">
+                    <span>🤖</span>
+                    Daily Bonus Collection Software
+                    <span class="nav-link-new">NEW</span>
+                </a>
+                <a href="auto-giveaways-software.html" class="nav-link">
+                    <span>✨</span>
+                    Auto Giveaways Signup Software
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="guide-hero">
+                <h1>Sweepstake Casinos Complete Guide</h1>
+                <p>Master the world of sweepstake casinos with our constantly updated guide.</p>
+            </div>
+
+            <!-- Guide Overview Section with Minimize Feature -->
+            <div class="guide-overview" id="guideOverview">
+                <div class="guide-header" onclick="toggleGuide()">
+                    <h2>💰 The Daily Dollar Auto Method - Your Path to Consistent Income</h2>
+                    <button class="minimize-btn">
+                        <span class="icon">▼</span>
+                        <span class="btn-text">Minimize</span>
+                    </button>
+                </div>
+                
+                <div class="guide-content">
+                    <p>If you're looking for a straightforward way to make some extra cash online, then this is the guide for you! This is what I call the <strong>"Daily Dollar Auto Method"</strong> and it utilizes Sweepstake Casinos.</p>
+                    
+                    <p>It's a simple routine: you log in, claim your daily bonus, log out, and move on to the next site. It's not just a one-time thing - it's a consistent way to earn over time, taking only about 1-3 minutes per site. For someone aiming to build a consistent stream of extra income, this method can be a reliable side hustle when done correctly.</p>
+
+                    <h3>How It Works</h3>
+                    <p>Sweepstake casinos offer daily bonuses to avoid paying casino taxes by operating under Sweepstake laws instead of traditional gambling laws. Think of it like how a business will donate to a charity to offset their taxes, but instead of a charity it is you, and the business being the Sweepstake Casinos.</p>
+                    
+                    <p>You can log in daily, collect your Daily Login bonus and then once you reach the minimum redemption amount, you playthrough that earned money with a high RTP (Return to Player) rate and then cash out.</p>
+
+                    <div class="highlight-box">
+                        <strong>Game Selection Strategy:</strong><br>
+                        All of the listed games on the spreadsheet correlate to specific websites. If you don't see the listed game, follow this rule of thumb:<br>
+                        • <strong>SS+ Tier</strong> - Blackjack (Basic Strategy)<br>
+                        • <strong>S+ Tier</strong> - Roulette (Auto Roulette)<br>
+                        • <strong>S Tier</strong> - Plinko (Low Risk)
+                    </div>
+
+                    <h3>Step-by-Step Guide</h3>
+                    
+                    <p><span class="step-number">1</span><strong>Create a Separate Email</strong></p>
+                    <p>The VERY first thing you should do is create a separate email for all of your signups. They will send verification links, promotional emails, etc. It's best to not spam your main email with these.</p>
+
+                    <p><span class="step-number">2</span><strong>Start Signing Up!</strong></p>
+                    <p>I'd recommend just going from Top to Bottom on the spreadsheet, I ranked it from the 'most important' to 'least important' websites.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Important!</strong> I'd highly suggest just biting the bullet and spending time to verify yourself. This won't take super long (typically around 5-15 minutes) but it will stop you from getting paid if you are not verified. During sign up some sites will require you to verify your phone number and ID. This may involve a utility bill or bank statement for address confirmation.
+                    </div>
+
+                    <p><span class="step-number">3</span><strong>Begin Collecting!</strong></p>
+                    <p>Once you are verified you can start collecting your Daily Login Reward! This side hustle is exponential - the more websites you sign up to, the more you will be making per day!</p>
+                    
+                    <p>If you collect from the 70+ websites available you will be making <strong>$35 a day</strong>, which is <strong>$1,050 a month</strong> if you collect daily. Manually collecting will take roughly an hour and if you want to automate the process I'd suggest using the Sweeps-App extension or Bonus Pilot extension.</p>
+                    
+                    <p>It collects from around 80% of these websites and the other 20% I just manually collect. It costs $50 a month for this but I feel like the time it saves me a day is worth it and it also pays itself off after two days of collecting. You can find more information on the <a href="bonus-collection-software.html" style="color: #4CAF50; text-decoration: underline; font-weight: bold;">Daily Bonus Collection Software</a> page.</p>
+
+                    <p><span class="step-number">4</span><strong>Maximizing Profits - Using Incentivized Packages</strong></p>
+                    <p>Once you start collecting dailies you can utilize the Incentivized Packages that these websites have. This strategy brings me in an extra <strong>$3,000 a month</strong> in addition to the $1,050 I make from Daily Logins.</p>
+                    
+                    <p>This is to supercharge your earnings - it lets you cash out quicker because you will get to the minimum redemption faster with this strategy. All Sweepstake Casinos typically will offer packages that have these incentivized rewards, they are typically a bigger bonus than the actual purchase of it.</p>
+
+                    <div class="highlight-box">
+                        <strong>Example:</strong><br>
+                        1. You purchase a package for $50 that gives you $75SC<br>
+                        2. You play the recommended game on the spreadsheet and do a 1x playthrough of your $75<br>
+                        3. You end up with $70 after your playthrough<br>
+                        4. That is <strong>$20 dollars you just earned!</strong>
+                    </div>
+
+                    <p>I would recommend if you want to do this to utilize the welcome packages, these are some of the best packages you can get and then you will get consistent daily packages after that!</p>
+                </div>
+            </div>
+            
+            <!-- Patch Notes Section -->
+            <div class="patch-notes-section" id="patchNotesSection">
+                <div class="patch-notes-header">
+                    <span class="patch-icon">📝</span>
+                    <h2>Latest Updates & Patch Notes</h2>
+                </div>
+                
+                <div class="patch-notes-content" id="patchNotesContent">
+                    <div style="text-align: center; color: rgba(255, 255, 255, 0.7);">
+                        Loading patch notes...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$46.91</div>
+                    <div>Daily Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">70+</div>
+                    <div>Total Casinos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$1,407.30</div>
+                    <div>Monthly Potential</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$7,770</div>
+                    <div>Welcome Offers SC</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-container">
+                <h2 style="color: #4CAF50; font-size: 1.8rem; margin-bottom: 2rem; text-align: center; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem;">
+                    <span style="margin-right: 0.5rem;">📊</span>
+                    Sweepstake Casinos Database
+                    
+                    <!-- Viewing Now Section -->
+                    <div class="viewing-now-inline" id="viewingNowInline">
+                        <div class="viewing-header-inline">
+                            <div class="live-dot"></div>
+                            <span class="viewing-title" id="viewingTitle">Live 1 Viewing Now</span>
+                            <div class="viewer-list-inline" id="viewerListInline"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
+                        <span id="fullscreenIcon">⛶</span>
+                        <span id="fullscreenText">Fullscreen</span>
+                    </button>
+                    
+                    <button class="refresh-btn" onclick="loadFromGitHub()" title="Refresh Data">
+                        <span>🔄</span>
+                    </button>
+                </h2>
+                
+                <!-- Loading Status -->
+                <div id="loadingStatus" style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem; font-size: 0.9rem;">
+                    <p>Loading latest data from our database...</p>
+                </div>
+                
+                <!-- Excel Display Area -->
+                <div id="excelDisplay"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discord Floating Button -->
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>💬</span>
+        Join Discord Community
+    </a>
+
+<script>
+// Toggle fullscreen mode
+function toggleFullscreen() {
+    const body = document.body;
+    const fullscreenText = document.getElementById('fullscreenText');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    
+    if (body.classList.contains('fullscreen-mode')) {
+        // Exit fullscreen
+        body.classList.remove('fullscreen-mode');
+        fullscreenText.textContent = 'Fullscreen';
+        fullscreenIcon.textContent = '⛶';
+        localStorage.setItem('fullscreenMode', 'false');
+        
+        // Scroll to database section
+        setTimeout(() => {
+            document.querySelector('.dashboard-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    } else {
+        // Enter fullscreen
+        body.classList.add('fullscreen-mode');
+        fullscreenText.textContent = 'Exit';
+        fullscreenIcon.textContent = '⛶';
+        localStorage.setItem('fullscreenMode', 'true');
+        
+        // Scroll to top to see everything
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Check saved fullscreen state on page load
+function checkFullscreenState() {
+    const isFullscreen = localStorage.getItem('fullscreenMode') === 'true';
+    if (isFullscreen) {
+        document.body.classList.add('fullscreen-mode');
+        const fullscreenText = document.getElementById('fullscreenText');
+        const fullscreenIcon = document.getElementById('fullscreenIcon');
+        if (fullscreenText) fullscreenText.textContent = 'Exit';
+        if (fullscreenIcon) fullscreenIcon.textContent = '⛶';
+    }
+}
+
+// Toggle guide minimize/expand
+function toggleGuide() {
+    const guideOverview = document.getElementById('guideOverview');
+    const btnText = guideOverview.querySelector('.btn-text');
+    
+    guideOverview.classList.toggle('minimized');
+    
+    if (guideOverview.classList.contains('minimized')) {
+        btnText.textContent = 'Expand';
+        localStorage.setItem('guideMinimized', 'true');
+    } else {
+        btnText.textContent = 'Minimize';
+        localStorage.setItem('guideMinimized', 'false');
+    }
+}
+
+// Check saved state on page load
+function checkGuideState() {
+    const isMinimized = localStorage.getItem('guideMinimized') === 'true';
+    if (isMinimized) {
+        const guideOverview = document.getElementById('guideOverview');
+        const btnText = guideOverview.querySelector('.btn-text');
+        guideOverview.classList.add('minimized');
+        btnText.textContent = 'Expand';
+    }
+}
+
+// Display Excel data
+function displayExcel(workbook) {
+    const display = document.getElementById('excelDisplay');
+    const loadingStatus = document.getElementById('loadingStatus');
+    
+    // Hide loading status
+    if (loadingStatus) {
+        loadingStatus.style.display = 'none';
+    }
+    
+    let html = '';
+    
+    // Create tabs for sheets if multiple
+    if (workbook.SheetNames.length > 1) {
+        html += '<div class="excel-tabs">';
+        workbook.SheetNames.forEach((sheetName, index) => {
+            html += `<div class="excel-tab ${index === 0 ? 'active' : ''}" onclick="showSheet('${sheetName}')">${sheetName}</div>`;
+        });
+        html += '</div>';
+    }
+    
+    // Display sheets
+    workbook.SheetNames.forEach((sheetName, index) => {
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+        
+        html += `<div class="excel-sheet" id="sheet-${sheetName}" style="${index > 0 ? 'display:none;' : ''}">`;
+        html += '<div class="excel-container">';
+        html += '<table class="excel-table">';
+        
+        // Headers
+        if (jsonData.length > 0) {
+            html += '<thead><tr>';
+            let signupColumnIndex = -1;
+            let gameColumnIndices = [];
+            
+            // Find signup column and game columns
+            jsonData[0].forEach((header, headerIndex) => {
+                let headerClass = '';
+                const headerStr = header ? header.toString().trim() : '';
+                
+                // Check if this is the Signups column (case-insensitive)
+                if (headerStr.toLowerCase() === 'signups' || 
+                    headerStr.toLowerCase() === 'signup' ||
+                    headerStr.toLowerCase() === 'sign up' ||
+                    headerStr.toLowerCase() === 'sign-up' ||
+                    headerStr.toLowerCase() === 'signup link' ||
+                    headerStr.toLowerCase() === 'signup links') {
+                    headerClass = 'signup-header';
+                    signupColumnIndex = headerIndex;
+                    console.log('Found signup column at index:', headerIndex, 'Header:', header);
+                }
+                
+                // Check if this is one of the game columns
+                if (headerStr.toLowerCase().includes('gravity bj') || 
+                    headerStr.toLowerCase().includes('auto roulette') || 
+                    headerStr.toLowerCase().includes('epic joker') || 
+                    headerStr.toLowerCase().includes('the great pigsby') ||
+                    headerStr.toLowerCase().includes('pigsby')) {
+                    headerClass += ' game-column';
+                    gameColumnIndices.push(headerIndex);
+                    console.log('Found game column at index:', headerIndex, 'Header:', header);
+                }
+                
+                html += `<th class="${headerClass}">${header || ''}</th>`;
+            });
+            
+            // Find daily bonuses column index
+            let dailyBonusesIndex = -1;
+            jsonData[0].forEach((header, index) => {
+                const headerStr = header ? header.toString().toLowerCase().trim() : '';
+                if (headerStr.includes('daily') && (headerStr.includes('bonus') || headerStr.includes('bonuses'))) {
+                    dailyBonusesIndex = index;
+                    console.log('Found daily bonuses column at index:', index, 'Header:', header);
+                }
+            });
+            html += '</tr></thead>';
+            
+            // Data rows with tier separation
+            html += '<tbody>';
+            let currentTier = '';
+            
+            let emptyRowCount = 0;
+            let lastWasEmpty = false;
+            
+            for (let i = 1; i < jsonData.length; i++) {
+                const row = jsonData[i] || [];
+                
+                // Check if this is an empty row
+                const isEmptyRow = !row.some(cell => cell && cell.toString().trim() !== '');
+                
+                // If we encounter an empty row, increment counter and add tier separator
+                if (isEmptyRow && !lastWasEmpty) {
+                    emptyRowCount++;
+                    lastWasEmpty = true;
+                    
+                    // Add tier separators based on which empty row this is
+                    let tierLabel = '';
+                    let tierClass = '';
+                    
+                    if (emptyRowCount === 1) {
+                        // After first section (New Casinos), before God Tier
+                        tierLabel = '👑 GOD TIER CASINOS 👑';
+                        tierClass = 'tier-god';
+                    } else if (emptyRowCount === 2) {
+                        // After God Tier, before High Tier
+                        tierLabel = '⭐ HIGH TIER CASINOS ⭐';
+                        tierClass = '';
+                    } else if (emptyRowCount === 3) {
+                        // After High Tier, before Medium Tier
+                        tierLabel = '✨ MEDIUM TIER CASINOS ✨';
+                        tierClass = '';
+                    } else if (emptyRowCount === 4) {
+                        // After Medium Tier, before Trash Tier
+                        tierLabel = '⚠️ TRASH TIER CASINOS ⚠️';
+                        tierClass = 'tier-trash';
+                    }
+                    
+                    if (tierLabel) {
+                        // Add spacer row before tier separator
+                        html += `<tr class="tier-spacer">`;
+                        html += `<td colspan="${jsonData[0].length}"></td>`;
+                        html += `</tr>`;
+                        
+                        // Add the tier separator
+                        html += `<tr class="tier-separator ${tierClass}">`;
+                        html += `<td colspan="${jsonData[0].length}" class="tier-label">${tierLabel}</td>`;
+                        html += `</tr>`;
+                        
+                        // Add spacer row after tier separator
+                        html += `<tr class="tier-spacer">`;
+                        html += `<td colspan="${jsonData[0].length}"></td>`;
+                        html += `</tr>`;
+                    }
+                    
+                    continue; // Skip the empty row itself
+                }
+                
+                // Reset the empty flag if this row has content
+                if (!isEmptyRow) {
+                    lastWasEmpty = false;
+                }
+                
+                // Add the NEW CASINOS header before the very first data row
+                if (i === 1 && !isEmptyRow) {
+                    // Add spacer row before tier separator
+                    html += `<tr class="tier-spacer">`;
+                    html += `<td colspan="${jsonData[0].length}"></td>`;
+                    html += `</tr>`;
+                    
+                    // Add the tier separator for NEW CASINOS
+                    html += `<tr class="tier-separator tier-new">`;
+                    html += `<td colspan="${jsonData[0].length}" class="tier-label">🆕 NEW CASINOS 🆕</td>`;
+                    html += `</tr>`;
+                    
+                    // Add spacer row after tier separator
+                    html += `<tr class="tier-spacer">`;
+                    html += `<td colspan="${jsonData[0].length}"></td>`;
+                    html += `</tr>`;
+                }
+                
+                // Always add the row if it's not empty - preserve exact order
+                if (!isEmptyRow) {
+                    html += '<tr>';
+                    for (let j = 0; j < jsonData[0].length; j++) {
+                        let cellContent = row[j] || '';
+                        let cellClass = '';
+                        
+                        // Check if this is a game column
+                        if (gameColumnIndices.includes(j)) {
+                            cellClass += ' game-cell';
+                        }
+                        
+                        // Check if this is the signup column
+                        if (j === signupColumnIndex && signupColumnIndex !== -1) {
+                            cellClass += ' signup-cell';
+                            
+                            // Convert any content that looks like a link to a button
+                            if (cellContent && cellContent.toString().trim() !== '') {
+                                const cellStr = cellContent.toString().trim();
+                                
+                                // Check if it's a URL (with or without protocol)
+                                const urlPattern = /^(?:https?:\/\/)?(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/i;
+                                
+                                if (urlPattern.test(cellStr)) {
+                                    let url = cellStr;
+                                    // Add https:// if no protocol specified
+                                    if (!url.match(/^https?:\/\//)) {
+                                        url = 'https://' + url;
+                                    }
+                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
+                                } else if (cellStr.length > 0 && !cellStr.toLowerCase().includes('n/a') && !cellStr.toLowerCase().includes('none')) {
+                                    // If it's not empty and not "N/A" or "None", try to make it a link anyway
+                                    let url = cellStr;
+                                    if (!url.match(/^https?:\/\//)) {
+                                        url = 'https://' + url;
+                                    }
+                                    cellContent = `<a href="${url}" target="_blank" class="signup-link">SIGN UP HERE</a>`;
+                                }
+                            }
+                        } else {
+                            // Remove apostrophes only from Daily Bonuses column
+                            if (j === dailyBonusesIndex && dailyBonusesIndex !== -1 && typeof cellContent === 'string') {
+                                cellContent = cellContent.replace(/'/g, '');
+                            }
+                            
+                            // Regular links for other columns (not styled as buttons)
+                            if (typeof cellContent === 'string' && cellContent.match(/^https?:\/\//)) {
+                                cellContent = `<a href="${cellContent}" target="_blank" style="color: #4CAF50; text-decoration: underline;">${cellContent}</a>`;
+                            }
+                        }
+                        
+                        html += `<td class="${cellClass}">${cellContent}</td>`;
+                    }
+                    html += '</tr>';
+                }
+            }
+            html += '</tbody>';
+        }
+        
+        html += '</table>';
+        html += '</div>';
+        html += '</div>';
+    });
+    
+    display.innerHTML = html;
+}
+
+// Show specific sheet
+function showSheet(sheetName) {
+    // Hide all sheets
+    document.querySelectorAll('.excel-sheet').forEach(sheet => {
+        sheet.style.display = 'none';
+    });
+    
+    // Show selected sheet
+    const targetSheet = document.getElementById(`sheet-${sheetName}`);
+    if (targetSheet) {
+        targetSheet.style.display = 'block';
+    }
+    
+    // Update active tab
+    document.querySelectorAll('.excel-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.textContent === sheetName) {
+            tab.classList.add('active');
+        }
+    });
+}
+
+// Load from GitHub - hardcoded for your repository
+async function loadFromGitHub() {
+    const user = 'poponline63';
+    const repo = 'onlinesidehustles';
+    const path = ''; // Add path here if your Excel files are in a subdirectory
+    
+    const display = document.getElementById('excelDisplay');
+    const loadingStatus = document.getElementById('loadingStatus');
+    
+    if (loadingStatus) {
+        loadingStatus.style.display = 'block';
+        loadingStatus.innerHTML = '<p>Loading sweepstake database...</p>';
+    }
+    
+    display.innerHTML = '<div class="loading-spinner"><div class="spinner"></div>Fetching latest data...</div>';
+    
+    try {
+        // Build API URL
+        let apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
+        
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+            throw new Error('Unable to connect to database');
+        }
+        
+        const data = await response.json();
+        
+        if (Array.isArray(data)) {
+            // Multiple files, find Excel files
+            const excelFiles = data.filter(file => file.name.match(/\.(xlsx|xls)$/i) && !file.name.includes('PatchNotes'));
+            
+            if (excelFiles.length === 0) {
+                display.innerHTML = '<div class="error-message">📊 Database is being updated. Please check back shortly.</div>';
+                return;
+            }
+            
+            // Load the first Excel file found (or you can specify a specific filename)
+            await loadGitHubFile(excelFiles[0].download_url);
+        } else if (data.download_url) {
+            // Single file specified
+            await loadGitHubFile(data.download_url);
+        } else {
+            display.innerHTML = '<div class="error-message">⚠️ Database temporarily unavailable. Please try again later.</div>';
+        }
+    } catch(error) {
+        console.error('Error loading from GitHub:', error);
+        display.innerHTML = '<div class="error-message">⚠️ Unable to load database. Please try refreshing the page.</div>';
+    }
+}
+
+// Load specific file from GitHub
+async function loadGitHubFile(url) {
+    const display = document.getElementById('excelDisplay');
+    
+    try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error('Failed to download file');
+        }
+        
+        const blob = await response.blob();
+        const arrayBuffer = await blob.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        const workbook = XLSX.read(data, {type: 'array'});
+        
+        displayExcel(workbook);
+    } catch(error) {
+        console.error('Error loading Excel file:', error);
+        display.innerHTML = '<div class="error-message">⚠️ Error loading database. Please try refreshing the page.</div>';
+    }
+}
+
+// Load Patch Notes from GitHub
+async function loadPatchNotes() {
+    const user = 'poponline63';
+    const repo = 'onlinesidehustles';
+    const fileName = 'PatchNotes.xlsx';
+    
+    const patchContent = document.getElementById('patchNotesContent');
+    
+    patchContent.innerHTML = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">Loading patch notes...</div>';
+    
+    try {
+        // Get file list from repository
+        const response = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/`);
+        
+        if (!response.ok) {
+            throw new Error('Unable to connect to patch notes');
+        }
+        
+        const files = await response.json();
+        
+        // Find PatchNotes.xlsx
+        const patchFile = files.find(file => file.name === fileName);
+        
+        if (!patchFile) {
+            patchContent.innerHTML = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">No patch notes available at this time.</div>';
+            return;
+        }
+        
+        // Load the patch notes file
+        await loadPatchNotesFile(patchFile.download_url);
+    } catch(error) {
+        console.error('Error loading patch notes:', error);
+        patchContent.innerHTML = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">Unable to load patch notes. Please try again later.</div>';
+    }
+}
+
+// Load and display patch notes file
+async function loadPatchNotesFile(url) {
+    const patchContent = document.getElementById('patchNotesContent');
+    
+    try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error('Failed to download patch notes');
+        }
+        
+        const blob = await response.blob();
+        const arrayBuffer = await blob.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        const workbook = XLSX.read(data, {type: 'array'});
+        
+        displayPatchNotes(workbook);
+    } catch(error) {
+        console.error('Error loading patch notes file:', error);
+        patchContent.innerHTML = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">Error loading patch notes. Please try refreshing.</div>';
+    }
+}
+
+// Display patch notes in a simple text format
+function displayPatchNotes(workbook) {
+    const patchContent = document.getElementById('patchNotesContent');
+    
+    let html = '';
+    
+    // Get the first sheet
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+    
+    if (jsonData.length > 1) {
+        // Skip header row, process data rows
+        for (let i = 1; i < jsonData.length; i++) {
+            const row = jsonData[i] || [];
+            
+            // Skip empty rows
+            if (!row.some(cell => cell && cell.toString().trim() !== '')) continue;
+            
+            // Create a simple text display of each row
+            html += '<div class="patch-note-item">';
+            
+            // Look for date in first few columns
+            let dateFound = false;
+            for (let j = 0; j < Math.min(3, row.length); j++) {
+                const cell = row[j];
+                if (cell) {
+                    const cellStr = cell.toString();
+                    // Check if it looks like a date
+                    if (cellStr.match(/\d{1,2}[\/\-]\d{1,2}/) || typeof cell === 'number') {
+                        html += '<span class="patch-note-date">';
+                        if (typeof cell === 'number') {
+                            // Excel date format
+                            const date = new Date((cell - 25569) * 86400 * 1000);
+                            html += date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                        } else {
+                            html += cellStr;
+                        }
+                        html += '</span>';
+                        dateFound = true;
+                        break;
+                    }
+                }
+            }
+            
+            // Add the rest of the content as text
+            let content = '';
+            for (let j = dateFound ? 1 : 0; j < row.length; j++) {
+                if (row[j] && row[j].toString().trim()) {
+                    if (content) content += ' - ';
+                    content += row[j].toString();
+                }
+            }
+            
+            if (content) {
+                html += content;
+            }
+            
+            html += '</div>';
+        }
+        
+        if (!html) {
+            html = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">No patch notes available.</div>';
+        }
+    } else {
+        html = '<div style="text-align: center; color: rgba(255, 255, 255, 0.7);">No patch notes available.</div>';
+    }
+    
+    patchContent.innerHTML = html;
+}
+
+// Improved Viewer Tracking System - Inline Version
+function initializeViewerTracking() {
+    const viewerListInline = document.getElementById('viewerListInline');
+    const viewingTitle = document.getElementById('viewingTitle');
+    const viewingInline = document.getElementById('viewingNowInline');
+    
+    // Casino-themed names and emojis
+    const casinoNames = [
+        'Lucky Player', 'High Roller', 'Bonus Hunter', 'Slot Master', 'Card Shark',
+        'Dice King', 'Jackpot Seeker', 'VIP Player', 'Pro Gambler', 'Chip Leader',
+        'Royal Flush', 'Golden Ace', 'Diamond Hand', 'Spin Doctor', 'Cash King'
+    ];
+    
+    const casinoEmojis = ['🎰', '🎲', '♠️', '♥️', '♦️', '♣️', '💰', '💎', '🃏', '🎯', '🏆', '💵', '🎱', '🍀', '⭐'];
+    
+    // Generate unique viewer ID for this session
+    const viewerId = 'viewer_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    // Assign random casino persona
+    const myName = casinoNames[Math.floor(Math.random() * casinoNames.length)];
+    const myEmoji = casinoEmojis[Math.floor(Math.random() * casinoEmojis.length)];
+    const myColor = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    
+    // Function to format time ago
+    function formatTimeAgo(timestamp) {
+        const seconds = Math.floor((Date.now() - timestamp) / 1000);
+        if (seconds < 60) return 'Just now';
+        if (seconds < 120) return '1 min ago';
+        if (seconds < 3600) return Math.floor(seconds / 60) + ' mins ago';
+        return 'A while ago';
+    }
+    
+    // Function to update viewer display
+    function updateViewerDisplay() {
+        const now = Date.now();
+        const activeThreshold = 30000; // Consider viewers active if seen in last 30 seconds
+        
+        // Get current active viewers from localStorage
+        let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
+        
+        // Add/update current viewer
+        viewers[viewerId] = {
+            timestamp: now,
+            name: myName,
+            emoji: myEmoji,
+            color: myColor,
+            joinTime: viewers[viewerId]?.joinTime || now
+        };
+        
+        // Remove inactive viewers
+        for (let id in viewers) {
+            if (now - viewers[id].timestamp > activeThreshold) {
+                delete viewers[id];
+            }
+        }
+        
+        // Save back to localStorage
+        localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
+        
+        // Update display
+        const viewerCount = Object.keys(viewers).length;
+        
+        // Show/hide widget based on viewer count
+        if (viewingInline) {
+            viewingInline.style.display = viewerCount > 0 ? 'inline-flex' : 'none';
+        }
+        
+        // Update the title with viewer count
+        if (viewingTitle) {
+            viewingTitle.innerHTML = `Live <strong>${viewerCount}</strong> Viewing Now`;
+        }
+        
+        // Update inline viewer avatars
+        if (viewerListInline) {
+            viewerListInline.innerHTML = '';
+            
+            // Sort viewers by join time (newest first)
+            const sortedViewers = Object.entries(viewers)
+                .sort((a, b) => b[1].joinTime - a[1].joinTime)
+                .slice(0, 5); // Show max 5 avatars
+            
+            sortedViewers.forEach(([id, viewer], index) => {
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = 'viewer-avatar-inline';
+                avatarDiv.style.background = viewer.color;
+                avatarDiv.style.zIndex = 5 - index;
+                avatarDiv.innerHTML = `
+                    ${viewer.emoji}
+                    <div class="tooltip">${viewer.name} • ${formatTimeAgo(viewer.joinTime)}</div>
+                `;
+                
+                viewerListInline.appendChild(avatarDiv);
+            });
+        }
+    }
+    
+    // Update immediately
+    updateViewerDisplay();
+    
+    // Update every 5 seconds to maintain active status
+    const heartbeatInterval = setInterval(updateViewerDisplay, 5000);
+    
+    // Listen for storage events (other tabs/windows)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'sweepstakeViewers') {
+            updateViewerDisplay();
+        }
+    });
+    
+    // Clean up when leaving
+    window.addEventListener('beforeunload', function() {
+        // Remove this viewer from the list
+        let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
+        delete viewers[viewerId];
+        localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
+        clearInterval(heartbeatInterval);
+    });
+    
+    // Handle visibility changes
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            // Page is hidden, remove from active viewers
+            let viewers = JSON.parse(localStorage.getItem('sweepstakeViewers') || '{}');
+            delete viewers[viewerId];
+            localStorage.setItem('sweepstakeViewers', JSON.stringify(viewers));
+        } else {
+            // Page is visible again, add back to active viewers
+            updateViewerDisplay();
+        }
+    });
+}
+
+// Initialize on page load
+window.addEventListener('DOMContentLoaded', function() {
+    checkGuideState();
+    checkFullscreenState();
+    
+    // Auto-load Excel from GitHub after a short delay
+    setTimeout(() => {
+        loadFromGitHub();
+        loadPatchNotes(); // Load patch notes
+    }, 500);
+    
+    // Initialize improved viewer tracking
+    initializeViewerTracking();
+});
+</script>
+
+</body>
+</html>
 
