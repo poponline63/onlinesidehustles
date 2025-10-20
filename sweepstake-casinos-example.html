@@ -347,16 +347,16 @@
         
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
         
         .casino-card {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(26, 26, 26, 0.8));
             border: 1px solid rgba(76, 175, 80, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1.2rem;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -368,16 +368,16 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #4CAF50, #8BC34A);
             opacity: 0;
             transition: opacity 0.3s;
         }
         
         .casino-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: #4CAF50;
-            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);
         }
         
         .casino-card:hover::before {
@@ -385,25 +385,26 @@
         }
         
         .casino-name {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #4CAF50;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         
         .daily-bonus {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
             font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
         }
         
         .card-section {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -415,32 +416,32 @@
         
         .section-title {
             color: #8BC34A;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
         .section-content {
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.85rem;
         }
         
         .games-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
         }
         
         .game-badge {
             background: rgba(76, 175, 80, 0.2);
             border: 1px solid rgba(76, 175, 80, 0.4);
-            padding: 0.4rem 0.9rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             color: #4CAF50;
         }
         
@@ -453,44 +454,44 @@
             background: linear-gradient(135deg, #4CAF50, #8BC34A);
             color: white;
             text-decoration: none;
-            padding: 1rem;
-            border-radius: 10px;
+            padding: 0.8rem;
+            border-radius: 8px;
             display: block;
             text-align: center;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 1rem;
+            font-size: 1rem;
+            margin-top: 0.8rem;
             transition: all 0.3s;
         }
         
         .signup-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
         }
         
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin-top: 0.5rem;
+            gap: 0.6rem;
+            margin-top: 0.4rem;
         }
         
         .info-item {
             background: rgba(0, 0, 0, 0.3);
-            padding: 0.6rem;
-            border-radius: 8px;
+            padding: 0.5rem;
+            border-radius: 6px;
         }
         
         .info-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         
         .info-value {
             color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         
         .loading {
@@ -699,7 +700,208 @@
             }
         }
         
-        function updateStats(workbook) {
+        function summarizeDailyBonus(bonusText) {
+            if (!bonusText) return '';
+            
+            // Remove apostrophes
+            let cleaned = bonusText.toString().replace(/'/g, '');
+            
+            // Extract all dollar amounts
+            const amounts = cleaned.match(/\$[0-9.]+/g);
+            
+            if (!amounts || amounts.length === 0) return cleaned;
+            
+            // If there's only one amount, return it simply
+            if (amounts.length === 1) {
+                return amounts[0] + ' Daily';
+            }
+            
+            // If there are multiple amounts, show range
+            const values = amounts.map(a => parseFloat(a.replace('
+            const sheet = workbook.Sheets[SHEET_NAME];
+            const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
+            
+            let dailyTotal = 0;
+            let casinoCount = 0;
+            
+            for (let i = 2; i < data.length; i++) {
+                const row = data[i];
+                if (row && row[1]) {
+                    casinoCount++;
+                    const dailyBonus = row[2];
+                    if (dailyBonus && typeof dailyBonus === 'string') {
+                        const matches = dailyBonus.match(/\$([0-9.]+)/g);
+                        if (matches) {
+                            matches.forEach(match => {
+                                const value = parseFloat(match.replace('$', ''));
+                                dailyTotal += value;
+                            });
+                        }
+                    }
+                }
+            }
+            
+            document.getElementById('dailyEarnings').textContent = '$' + dailyTotal.toFixed(2);
+            document.getElementById('totalCasinos').textContent = casinoCount + '+';
+            document.getElementById('monthlyPotential').textContent = '$' + (dailyTotal * 30).toFixed(2);
+        }
+        
+        function displayCards(workbook) {
+            const sheet = workbook.Sheets[SHEET_NAME];
+            const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
+            
+            const container = document.getElementById('cardsContainer');
+            let html = '';
+            
+            let emptyRowCount = 0;
+            let lastWasEmpty = false;
+            
+            const tierNames = {
+                0: {name: '🆕 NEW CASINOS 🆕', class: 'tier-new'},
+                1: {name: '👑 GOD TIER CASINOS 👑', class: 'tier-god'},
+                2: {name: '⭐ HIGH TIER CASINOS ⭐', class: ''},
+                3: {name: '✨ MEDIUM TIER CASINOS ✨', class: ''},
+                4: {name: '⚠️ TRASH TIER CASINOS ⚠️', class: 'tier-trash'}
+            };
+            
+            let currentTierIndex = 0;
+            html += `<div class="tier-section ${tierNames[currentTierIndex].class}">`;
+            html += `<div class="tier-header">${tierNames[currentTierIndex].name}</div>`;
+            html += '<div class="cards-grid">';
+            
+            for (let i = 2; i < data.length; i++) {
+                const row = data[i];
+                const isEmptyRow = !row || !row.some(cell => cell && cell.toString().trim() !== '');
+                
+                if (isEmptyRow && !lastWasEmpty) {
+                    lastWasEmpty = true;
+                    emptyRowCount++;
+                    
+                    html += '</div></div>';
+                    currentTierIndex = emptyRowCount;
+                    
+                    if (currentTierIndex < 5) {
+                        html += `<div class="tier-section ${tierNames[currentTierIndex].class}">`;
+                        html += `<div class="tier-header">${tierNames[currentTierIndex].name}</div>`;
+                        html += '<div class="cards-grid">';
+                    }
+                    continue;
+                }
+                
+                if (!isEmptyRow) {
+                    lastWasEmpty = false;
+                }
+                
+                if (!row || !row[1]) continue;
+                
+                const signupUrl = row[0] || '#';
+                const casinoName = row[1] || 'Unknown Casino';
+                const dailyBonus = row[2] || '';
+                const notes = row[3] || '';
+                const welcomePackage = row[4] || '';
+                const minRedemption = row[5] || '';
+                const gravityBJ = row[6];
+                const autoRoulette = row[7];
+                const epicJoker = row[8];
+                const pigsby = row[9];
+                const otherGames = row[10] || '';
+                const parentCompany = row[13] || '';
+                
+                html += '<div class="casino-card">';
+                html += `<div class="casino-name">${casinoName}</div>`;
+                
+                if (dailyBonus) {
+                    const summarizedBonus = summarizeDailyBonus(dailyBonus);
+                    html += `<div class="daily-bonus">💰 ${summarizedBonus}</div>`;
+                }
+                
+                if (notes) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">📝 Notes</div>';
+                    const noteLines = notes.split('\n').filter(line => line.trim());
+                    html += '<div class="section-content">';
+                    noteLines.forEach(line => {
+                        if (line.startsWith('•')) {
+                            html += `<div style="margin-left: 1rem;">${line}</div>`;
+                        } else {
+                            html += `<div>${line}</div>`;
+                        }
+                    });
+                    html += '</div></div>';
+                }
+                
+                if (welcomePackage && welcomePackage.toString().trim()) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">🎁 Welcome Package</div>';
+                    html += `<div class="section-content">${welcomePackage}</div>`;
+                    html += '</div>';
+                }
+                
+                const games = [];
+                if (gravityBJ && gravityBJ.toString() === '✅') games.push({name: 'Gravity BJ', available: true});
+                if (autoRoulette && autoRoulette.toString() === '✅') games.push({name: 'Auto Roulette', available: true});
+                if (epicJoker && epicJoker.toString() === '✅') games.push({name: 'Epic Joker', available: true});
+                if (pigsby && pigsby.toString() === '✅') games.push({name: 'The Great Pigsby', available: true});
+                if (otherGames) {
+                    otherGames.split(',').forEach(g => {
+                        const gameName = g.trim();
+                        if (gameName) games.push({name: gameName, available: true});
+                    });
+                }
+                
+                if (games.length > 0) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">🎮 Available Games</div>';
+                    html += '<div class="games-list">';
+                    games.forEach(game => {
+                        html += `<div class="game-badge ${game.available ? 'available' : ''}">${game.name}</div>`;
+                    });
+                    html += '</div></div>';
+                }
+                
+                html += '<div class="info-grid">';
+                if (minRedemption && minRedemption.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Min Redemption</div>';
+                    html += `<div class="info-value">${minRedemption}</div>`;
+                    html += '</div>';
+                }
+                if (parentCompany && parentCompany.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Parent Company</div>';
+                    html += `<div class="info-value">${parentCompany}</div>`;
+                    html += '</div>';
+                }
+                html += '</div>';
+                
+                if (signupUrl && signupUrl !== '#') {
+                    html += `<a href="${signupUrl}" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>`;
+                }
+                
+                html += '</div>';
+            }
+            
+            html += '</div></div>';
+            container.innerHTML = html;
+        }
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                loadFromGitHub();
+            }, 500);
+        });
+    </script>
+</body>
+</html>, '')));
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            
+            if (min === max) {
+                return `${min} Daily`;
+            } else {
+                return `${min} - ${max} Daily`;
+            }
+        }
             const sheet = workbook.Sheets[SHEET_NAME];
             const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
             
