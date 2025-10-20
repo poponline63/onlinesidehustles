@@ -788,6 +788,13 @@
                 
                 var signupUrl = row[0] || '#';
                 var casinoName = row[1] || 'Unknown Casino';
+                
+                // Skip tier header rows
+                var tierHeaderNames = ['new casinos', 'god tier', 'high tier', 'medium tier', 'trash tier'];
+                if (tierHeaderNames.indexOf(casinoName.toString().toLowerCase().trim()) !== -1) {
+                    continue;
+                }
+                
                 var dailyBonus = row[2] || '';
                 var notes = row[3] || '';
                 var welcomePackage = row[4] || '';
