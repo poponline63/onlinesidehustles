@@ -796,7 +796,6 @@
                 var autoRoulette = row[7];
                 var epicJoker = row[8];
                 var pigsby = row[9];
-                var otherGames = row[10] || '';
                 var parentCompany = row[13] || '';
                 
                 html += '<div class="casino-card">';
@@ -822,25 +821,17 @@
                 }
                 
                 var games = [];
-                var gravityBJValue = gravityBJ ? gravityBJ.toString().toLowerCase().trim() : '';
-                var autoRouletteValue = autoRoulette ? autoRoulette.toString().toLowerCase().trim() : '';
-                var epicJokerValue = epicJoker ? epicJoker.toString().toLowerCase().trim() : '';
-                var pigsbyValue = pigsby ? pigsby.toString().toLowerCase().trim() : '';
                 
-                if (gravityBJValue === 'yes') games.push('Gravity BJ');
-                if (autoRouletteValue === 'yes') games.push('Auto Roulette');
-                if (epicJokerValue === 'yes') games.push('Epic Joker');
-                if (pigsbyValue === 'yes') games.push('The Great Pigsby');
-                
-                if (otherGames && otherGames.toString().trim()) {
-                    var otherGamesList = otherGames.toString().split(',');
-                    otherGamesList.forEach(function(g) {
-                        var gameName = g.trim();
-                        if (gameName && gameName.toLowerCase() !== 'n/a') {
-                            games.push(gameName);
-                        }
-                    });
+                function isYes(cellValue) {
+                    if (!cellValue) return false;
+                    var str = cellValue.toString();
+                    return str.indexOf('PNbQx4N.png') !== -1 || str.toLowerCase().trim() === 'yes';
                 }
+                
+                if (isYes(gravityBJ)) games.push('Gravity BJ');
+                if (isYes(autoRoulette)) games.push('Auto Roulette');
+                if (isYes(epicJoker)) games.push('Epic Joker');
+                if (isYes(pigsby)) games.push('The Great Pigsby');
                 
                 if (games.length > 0) {
                     html += '<div class="card-section">';
