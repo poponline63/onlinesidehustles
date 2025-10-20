@@ -622,20 +622,20 @@
         
         <div class="stats-row" id="statsRow">
             <div class="stat-card">
-                <div class="stat-value" id="dailyEarnings">$0</div>
+                <div class="stat-value">$46.91</div>
                 <div class="stat-label">Daily Earnings</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="totalCasinos">0</div>
+                <div class="stat-value">70+</div>
                 <div class="stat-label">Total Casinos</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="monthlyPotential">$0</div>
+                <div class="stat-value">$1,407.30</div>
                 <div class="stat-label">Monthly Potential</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="welcomeOffers">$7,770</div>
-                <div class="stat-label">Welcome SC Total</div>
+                <div class="stat-value">$7,770</div>
+                <div class="stat-label">Welcome Offers SC</div>
             </div>
         </div>
         
@@ -710,32 +710,7 @@
         }
         
         function updateStats(workbook) {
-            var sheet = workbook.Sheets[SHEET_NAME];
-            var data = XLSX.utils.sheet_to_json(sheet, {header: 1});
-            
-            var dailyTotal = 0;
-            var casinoCount = 0;
-            
-            for (var i = 2; i < data.length; i++) {
-                var row = data[i];
-                if (row && row[1]) {
-                    casinoCount++;
-                    var dailyBonus = row[2];
-                    if (dailyBonus && typeof dailyBonus === 'string') {
-                        var matches = dailyBonus.match(/\$([0-9.]+)/g);
-                        if (matches) {
-                            matches.forEach(function(match) {
-                                var value = parseFloat(match.replace('$', ''));
-                                dailyTotal += value;
-                            });
-                        }
-                    }
-                }
-            }
-            
-            document.getElementById('dailyEarnings').textContent = '$' + dailyTotal.toFixed(2);
-            document.getElementById('totalCasinos').textContent = casinoCount + '+';
-            document.getElementById('monthlyPotential').textContent = '$' + (dailyTotal * 30).toFixed(2);
+            // Stats are now hardcoded in HTML, no need to update
         }
         
         function displayCards(workbook) {
