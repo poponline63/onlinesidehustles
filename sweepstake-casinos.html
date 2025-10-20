@@ -663,6 +663,186 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .back-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .quick-nav {
+                top: 110px;
+            }
+            
+            .quick-nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            
+            .main-container {
+                padding-top: 190px;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .guide-overview {
+                margin: 0 0 2rem;
+            }
+            
+            .guide-header {
+                padding: 1.25rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .guide-header h2 {
+                font-size: 1.3rem;
+            }
+            
+            .minimize-btn {
+                align-self: stretch;
+                justify-content: center;
+            }
+            
+            .guide-content {
+                padding: 1.25rem;
+            }
+            
+            .guide-overview h3 {
+                font-size: 1.1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .guide-overview p, .guide-overview li {
+                font-size: 0.95rem;
+            }
+            
+            .highlight-box {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .step-number {
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                font-size: 0.85rem;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+            }
+            
+            .stat-value {
+                font-size: 1.8rem;
+            }
+            
+            .stat-label {
+                font-size: 0.85rem;
+            }
+            
+            .tier-header {
+                font-size: 1.4rem;
+                padding: 1rem;
+                letter-spacing: 2px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .casino-card {
+                padding: 1rem;
+            }
+            
+            .casino-name {
+                font-size: 1.2rem;
+            }
+            
+            .daily-bonus {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.7rem;
+            }
+            
+            .section-title {
+                font-size: 0.75rem;
+            }
+            
+            .section-content {
+                font-size: 0.8rem;
+            }
+            
+            .game-badge {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+            
+            .signup-button {
+                font-size: 0.9rem;
+                padding: 0.7rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .discord-float {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .guide-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .tier-header {
+                font-size: 1.2rem;
+                padding: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
