@@ -476,6 +476,7 @@
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
+            align-items: stretch;
         }
         
         .casino-card {
@@ -486,6 +487,9 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .casino-card::before {
@@ -586,7 +590,7 @@
             text-align: center;
             font-weight: bold;
             font-size: 1rem;
-            margin-top: 0.8rem;
+            margin-top: auto;
             transition: all 0.3s;
         }
         
@@ -600,6 +604,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
             margin-top: 0.4rem;
+            margin-bottom: 0.8rem;
         }
         
         .info-item {
