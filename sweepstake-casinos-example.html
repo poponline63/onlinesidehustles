@@ -492,6 +492,27 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
+        
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: #4CAF50;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(76, 175, 80, 0.2);
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
         .discord-float {
             position: fixed;
@@ -600,236 +621,31 @@
             <p>Your complete guide to earning daily bonuses from top sweepstake casinos</p>
         </div>
         
-        <div class="stats-row">
+        <div class="stats-row" id="statsRow">
             <div class="stat-card">
-                <div class="stat-value">$46.91</div>
+                <div class="stat-value" id="dailyEarnings">$0</div>
                 <div class="stat-label">Daily Earnings</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">70+</div>
+                <div class="stat-value" id="totalCasinos">0</div>
                 <div class="stat-label">Total Casinos</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$1,407</div>
+                <div class="stat-value" id="monthlyPotential">$0</div>
                 <div class="stat-label">Monthly Potential</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$7,770</div>
+                <div class="stat-value" id="welcomeOffers">$7,770</div>
                 <div class="stat-label">Welcome SC Total</div>
             </div>
         </div>
         
-        <!-- NEW CASINOS TIER -->
-        <div class="tier-section tier-new">
-            <div class="tier-header">🆕 NEW CASINOS 🆕</div>
-            <div class="cards-grid">
-                
-                <div class="casino-card">
-                    <div class="casino-name">ScarletSands</div>
-                    <div class="daily-bonus">💰 $0.25 - $0.50 + Day 7 Free Spins + Scarlet Wheel $1.00 - $10.00</div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">📝 Notes</div>
-                        <div class="section-content">
-                            Really good triple daily!<br>
-                            • Dailies include 1-7 Day Streak Calendar, Day 7 gives you Free Spins (Daily)<br>
-                            • Scarlet Wheel $1.00 to $10.00 or Gold Coins (Available every 12 Hours)<br>
-                            • Desert Dice (Available every 3 Hours)
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎁 Welcome Package</div>
-                        <div class="section-content">$9.99 for 20SC (200%)</div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎮 Available Games</div>
-                        <div class="games-list">
-                            <div class="game-badge available">Mummy's Gold</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Min Redemption</div>
-                            <div class="info-value">100</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Parent Company</div>
-                            <div class="info-value">UTech Solutions</div>
-                        </div>
-                    </div>
-                    
-                    <a href="https://affiliates.routy.app/route/114302?affId=3353&ts=5005447" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>
-                </div>
-
-                <div class="casino-card">
-                    <div class="casino-name">Shuffle.us</div>
-                    <div class="daily-bonus">💰 $1.00 (Starts at $0.30, Day 5 streak turns into $1 SC Daily)</div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">📝 Notes</div>
-                        <div class="section-content">
-                            Daily Crypto Casino. Very similar to Stake which is huge! Redemptions are finalized in a few hours.
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎮 Available Games</div>
-                        <div class="games-list">
-                            <div class="game-badge available">Gravity BJ</div>
-                            <div class="game-badge available">Auto Roulette</div>
-                            <div class="game-badge available">Plinko</div>
-                            <div class="game-badge available">Crash Live</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Min Redemption</div>
-                            <div class="info-value">100</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Parent Company</div>
-                            <div class="info-value">Munyon Canyon</div>
-                        </div>
-                    </div>
-                    
-                    <a href="https://shuffle.us/?r=5b9js7cl9r" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>
-                </div>
-                
+        <div id="cardsContainer">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading casino database from Excel sheet...</p>
             </div>
         </div>
-
-        <!-- GOD TIER CASINOS -->
-        <div class="tier-section tier-god">
-            <div class="tier-header">👑 GOD TIER CASINOS 👑</div>
-            <div class="cards-grid">
-                
-                <div class="casino-card">
-                    <div class="casino-name">Fortune Coins</div>
-                    <div class="daily-bonus">💰 $0.50 Daily</div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">📝 Notes</div>
-                        <div class="section-content">
-                            One of the best for consistent daily bonuses. Fast redemptions and excellent RTP games available.
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎁 Welcome Package</div>
-                        <div class="section-content">$14.99 for 100SC + 30,000 GC</div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎮 Available Games</div>
-                        <div class="games-list">
-                            <div class="game-badge available">Gravity BJ</div>
-                            <div class="game-badge available">Epic Joker</div>
-                            <div class="game-badge available">The Great Pigsby</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Min Redemption</div>
-                            <div class="info-value">50</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Parent Company</div>
-                            <div class="info-value">Funstage</div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>
-                </div>
-
-                <div class="casino-card">
-                    <div class="casino-name">Stake.us</div>
-                    <div class="daily-bonus">💰 $1.00 Daily + Weekly Reload</div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">📝 Notes</div>
-                        <div class="section-content">
-                            Top tier crypto casino. Amazing game selection and lightning fast payouts. Weekly reload bonuses add even more value.
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎮 Available Games</div>
-                        <div class="games-list">
-                            <div class="game-badge available">Gravity BJ</div>
-                            <div class="game-badge available">Auto Roulette</div>
-                            <div class="game-badge available">Plinko</div>
-                            <div class="game-badge available">Mines</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Min Redemption</div>
-                            <div class="info-value">100</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Parent Company</div>
-                            <div class="info-value">Medium Rare N.V.</div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>
-                </div>
-                
-            </div>
-        </div>
-
-        <!-- HIGH TIER CASINOS -->
-        <div class="tier-section">
-            <div class="tier-header">⭐ HIGH TIER CASINOS ⭐</div>
-            <div class="cards-grid">
-                
-                <div class="casino-card">
-                    <div class="casino-name">Pulsz</div>
-                    <div class="daily-bonus">💰 $0.30 Daily Login</div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">📝 Notes</div>
-                        <div class="section-content">
-                            Solid daily bonus with good game variety. Part of the Funstage family.
-                        </div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎁 Welcome Package</div>
-                        <div class="section-content">5,000 GC + 2.3 SC for FREE</div>
-                    </div>
-                    
-                    <div class="card-section">
-                        <div class="section-title">🎮 Available Games</div>
-                        <div class="games-list">
-                            <div class="game-badge available">Epic Joker</div>
-                            <div class="game-badge available">The Great Pigsby</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Min Redemption</div>
-                            <div class="info-value">100</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Parent Company</div>
-                            <div class="info-value">Funstage</div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>
-                </div>
-                
-            </div>
-        </div>
-
     </div>
 
     <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
@@ -837,5 +653,210 @@
         Join Discord Community
     </a>
 
+    <script>
+        const EXCEL_FILE_NAME = 'NewWebsiteSheet  V1.xlsx';
+        const SHEET_NAME = 'NewWebsiteSheet - V1'; // Specify your sheet name here
+        
+        async function loadFromGitHub() {
+            const user = 'poponline63';
+            const repo = 'onlinesidehustles';
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/`);
+                const files = await response.json();
+                const excelFile = files.find(f => f.name === EXCEL_FILE_NAME);
+                
+                if (!excelFile) {
+                    throw new Error('Excel file not found');
+                }
+                
+                const fileResponse = await fetch(excelFile.download_url);
+                const blob = await fileResponse.blob();
+                const arrayBuffer = await blob.arrayBuffer();
+                const data = new Uint8Array(arrayBuffer);
+                const workbook = XLSX.read(data, {type: 'array'});
+                
+                displayCards(workbook);
+                updateStats(workbook);
+            } catch(error) {
+                console.error('Error loading Excel:', error);
+                document.getElementById('cardsContainer').innerHTML = '<div class="loading"><p style="color: #f44336;">Error loading database. Please refresh the page.</p></div>';
+            }
+        }
+        
+        function updateStats(workbook) {
+            const sheet = workbook.Sheets[SHEET_NAME];
+            const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
+            
+            let dailyTotal = 0;
+            let casinoCount = 0;
+            
+            for (let i = 2; i < data.length; i++) {
+                const row = data[i];
+                if (row && row[1]) {
+                    casinoCount++;
+                    const dailyBonus = row[2];
+                    if (dailyBonus && typeof dailyBonus === 'string') {
+                        const matches = dailyBonus.match(/\$([0-9.]+)/g);
+                        if (matches) {
+                            matches.forEach(match => {
+                                const value = parseFloat(match.replace('$', ''));
+                                dailyTotal += value;
+                            });
+                        }
+                    }
+                }
+            }
+            
+            document.getElementById('dailyEarnings').textContent = '$' + dailyTotal.toFixed(2);
+            document.getElementById('totalCasinos').textContent = casinoCount + '+';
+            document.getElementById('monthlyPotential').textContent = '$' + (dailyTotal * 30).toFixed(2);
+        }
+        
+        function displayCards(workbook) {
+            const sheet = workbook.Sheets[SHEET_NAME];
+            const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
+            
+            const container = document.getElementById('cardsContainer');
+            let html = '';
+            
+            let emptyRowCount = 0;
+            let lastWasEmpty = false;
+            
+            const tierNames = {
+                0: {name: '🆕 NEW CASINOS 🆕', class: 'tier-new'},
+                1: {name: '👑 GOD TIER CASINOS 👑', class: 'tier-god'},
+                2: {name: '⭐ HIGH TIER CASINOS ⭐', class: ''},
+                3: {name: '✨ MEDIUM TIER CASINOS ✨', class: ''},
+                4: {name: '⚠️ TRASH TIER CASINOS ⚠️', class: 'tier-trash'}
+            };
+            
+            let currentTierIndex = 0;
+            html += `<div class="tier-section ${tierNames[currentTierIndex].class}">`;
+            html += `<div class="tier-header">${tierNames[currentTierIndex].name}</div>`;
+            html += '<div class="cards-grid">';
+            
+            for (let i = 2; i < data.length; i++) {
+                const row = data[i];
+                const isEmptyRow = !row || !row.some(cell => cell && cell.toString().trim() !== '');
+                
+                if (isEmptyRow && !lastWasEmpty) {
+                    lastWasEmpty = true;
+                    emptyRowCount++;
+                    
+                    html += '</div></div>';
+                    currentTierIndex = emptyRowCount;
+                    
+                    if (currentTierIndex < 5) {
+                        html += `<div class="tier-section ${tierNames[currentTierIndex].class}">`;
+                        html += `<div class="tier-header">${tierNames[currentTierIndex].name}</div>`;
+                        html += '<div class="cards-grid">';
+                    }
+                    continue;
+                }
+                
+                if (!isEmptyRow) {
+                    lastWasEmpty = false;
+                }
+                
+                if (!row || !row[1]) continue;
+                
+                const signupUrl = row[0] || '#';
+                const casinoName = row[1] || 'Unknown Casino';
+                const dailyBonus = row[2] || '';
+                const notes = row[3] || '';
+                const welcomePackage = row[4] || '';
+                const minRedemption = row[5] || '';
+                const gravityBJ = row[6];
+                const autoRoulette = row[7];
+                const epicJoker = row[8];
+                const pigsby = row[9];
+                const otherGames = row[10] || '';
+                const parentCompany = row[13] || '';
+                
+                html += '<div class="casino-card">';
+                html += `<div class="casino-name">${casinoName}</div>`;
+                
+                if (dailyBonus) {
+                    const bonusText = dailyBonus.toString().replace(/\n/g, ' + ');
+                    html += `<div class="daily-bonus">💰 ${bonusText}</div>`;
+                }
+                
+                if (notes) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">📝 Notes</div>';
+                    const noteLines = notes.split('\n').filter(line => line.trim());
+                    html += '<div class="section-content">';
+                    noteLines.forEach(line => {
+                        if (line.startsWith('•')) {
+                            html += `<div style="margin-left: 1rem;">${line}</div>`;
+                        } else {
+                            html += `<div>${line}</div>`;
+                        }
+                    });
+                    html += '</div></div>';
+                }
+                
+                if (welcomePackage && welcomePackage.toString().trim()) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">🎁 Welcome Package</div>';
+                    html += `<div class="section-content">${welcomePackage}</div>`;
+                    html += '</div>';
+                }
+                
+                const games = [];
+                if (gravityBJ && gravityBJ.toString() === '✅') games.push({name: 'Gravity BJ', available: true});
+                if (autoRoulette && autoRoulette.toString() === '✅') games.push({name: 'Auto Roulette', available: true});
+                if (epicJoker && epicJoker.toString() === '✅') games.push({name: 'Epic Joker', available: true});
+                if (pigsby && pigsby.toString() === '✅') games.push({name: 'The Great Pigsby', available: true});
+                if (otherGames) {
+                    otherGames.split(',').forEach(g => {
+                        const gameName = g.trim();
+                        if (gameName) games.push({name: gameName, available: true});
+                    });
+                }
+                
+                if (games.length > 0) {
+                    html += '<div class="card-section">';
+                    html += '<div class="section-title">🎮 Available Games</div>';
+                    html += '<div class="games-list">';
+                    games.forEach(game => {
+                        html += `<div class="game-badge ${game.available ? 'available' : ''}">${game.name}</div>`;
+                    });
+                    html += '</div></div>';
+                }
+                
+                html += '<div class="info-grid">';
+                if (minRedemption && minRedemption.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Min Redemption</div>';
+                    html += `<div class="info-value">${minRedemption}</div>`;
+                    html += '</div>';
+                }
+                if (parentCompany && parentCompany.toString().trim()) {
+                    html += '<div class="info-item">';
+                    html += '<div class="info-label">Parent Company</div>';
+                    html += `<div class="info-value">${parentCompany}</div>`;
+                    html += '</div>';
+                }
+                html += '</div>';
+                
+                if (signupUrl && signupUrl !== '#') {
+                    html += `<a href="${signupUrl}" target="_blank" class="signup-button">🚀 SIGN UP HERE</a>`;
+                }
+                
+                html += '</div>';
+            }
+            
+            html += '</div></div>';
+            container.innerHTML = html;
+        }
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                loadFromGitHub();
+            }, 500);
+        });
+    </script>
 </body>
 </html>
