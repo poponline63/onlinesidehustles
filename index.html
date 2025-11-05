@@ -75,6 +75,25 @@
             position: relative;
         }
         
+        /* Container Wrapper */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 3rem;
+            }
+        }
+        
         /* Animated Background Effects */
         body::before {
             content: '';
@@ -634,11 +653,15 @@
         
         /* Hero Section */
         .hero {
-            padding: 180px 2rem 80px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 140px 1rem 60px;
             position: relative;
             z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .hero {
+                padding: 180px 2rem 80px;
+            }
         }
         
         @keyframes glow {
@@ -648,9 +671,16 @@
         
         .hero-content {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
             align-items: center;
+        }
+        
+        @media (min-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 4rem;
+            }
         }
         
         .hero-text {
@@ -689,13 +719,32 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 2rem;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #fff, #ccc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        
+        @media (min-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+                line-height: 1.1;
+            }
         }
         
         .highlight {
@@ -705,16 +754,37 @@
         }
         
         .hero-description {
-            font-size: 1.2rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.6;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 2rem;
         }
         
+        @media (min-width: 768px) {
+            .hero-description {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-description {
+                font-size: 1.2rem;
+            }
+        }
+        
         .hero-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-stats {
+                display: flex;
+                gap: 3rem;
+            }
         }
         
         .stat {
@@ -722,15 +792,27 @@
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #4CAF50;
         }
         
+        @media (min-width: 768px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.6);
             margin-top: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .stat-label {
+                font-size: 0.9rem;
+            }
         }
         
         .hero-graphic {
@@ -744,10 +826,33 @@
         }
         
         .money-graphic {
-            width: 400px;
-            height: 400px;
+            width: 250px;
+            height: 250px;
             position: relative;
-            margin: 50px auto 0;
+            margin: 20px auto 0;
+        }
+        
+        @media (min-width: 480px) {
+            .money-graphic {
+                width: 300px;
+                height: 300px;
+                margin-top: 30px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .money-graphic {
+                width: 350px;
+                height: 350px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .money-graphic {
+                width: 400px;
+                height: 400px;
+                margin: 50px auto 0;
+            }
         }
         
         .money-circle {
@@ -775,10 +880,28 @@
         
         .floating-icon {
             position: absolute;
-            font-size: 4rem;
+            font-size: 2.5rem;
             top: 50%;
             left: 50%;
             animation: orbit 10s linear infinite;
+        }
+        
+        @media (min-width: 480px) {
+            .floating-icon {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .floating-icon {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .floating-icon {
+                font-size: 4rem;
+            }
         }
         
         .floating-icon:nth-child(2) { animation-delay: -2.5s; }
@@ -796,11 +919,15 @@
         
         /* Categories Section */
         .categories-section {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 3rem 1rem;
             position: relative;
             z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .categories-section {
+                padding: 4rem 2rem;
+            }
         }
         
         .section-header {
@@ -809,35 +936,68 @@
         }
         
         .section-title {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 1rem;
         }
         
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
         .section-subtitle {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
         }
         
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
         }
         
         .category-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 2rem;
-            padding-bottom: 4.5rem;
+            padding: 1.5rem;
+            padding-bottom: 4rem;
             transition: all 0.3s;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            min-height: 320px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .category-card {
+                padding: 2rem;
+                padding-bottom: 4.5rem;
+                min-height: 320px;
+            }
         }
         
         .category-card.coming-soon {
@@ -970,19 +1130,39 @@
             background: rgba(76, 175, 80, 0.05);
             border-top: 1px solid rgba(76, 175, 80, 0.2);
             border-bottom: 1px solid rgba(76, 175, 80, 0.2);
-            padding: 4rem 2rem;
-            margin: 4rem 0;
+            padding: 3rem 1rem;
+            margin: 3rem 0;
             position: relative;
             z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .featured-section {
+                padding: 4rem 2rem;
+                margin: 4rem 0;
+            }
         }
         
         .featured-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             text-align: center;
+        }
+        
+        @media (min-width: 640px) {
+            .featured-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .featured-content {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+            }
         }
         
         .featured-item {
@@ -1009,20 +1189,34 @@
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 2rem 2rem;
-            margin-top: 6rem;
+            padding: 2rem 1rem 1.5rem;
+            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            footer {
+                padding: 3rem 2rem 2rem;
+                margin-top: 6rem;
+            }
         }
         
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 3rem;
+            }
         }
         
         .footer-brand h3 {
@@ -1080,12 +1274,12 @@
         
         .discord-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px;
+            right: 15px;
             background: linear-gradient(135deg, #5865F2, #7289DA);
             color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 30px;
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -1094,6 +1288,16 @@
             transition: all 0.3s;
             z-index: 999;
             font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        @media (min-width: 768px) {
+            .discord-float {
+                bottom: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
         }
         
         .discord-float:hover {
@@ -1104,36 +1308,30 @@
         /* Additional Mobile Responsive */
         @media (max-width: 768px) {
             .hero-content {
-                grid-template-columns: 1fr;
                 text-align: center;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .money-graphic {
-                width: 300px;
-                height: 300px;
-                margin-top: 30px;
-            }
-            
-            .floating-icon {
-                font-size: 3.5rem;
             }
             
             .footer-content {
-                grid-template-columns: 1fr;
                 text-align: center;
             }
-            
-            .categories-grid {
-                grid-template-columns: 1fr;
+        }
+        
+        @media (max-width: 480px) {
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
             }
             
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 1.5rem;
+            .category-title {
+                font-size: 1.3rem;
+            }
+            
+            .featured-icon {
+                font-size: 2.5rem;
+            }
+            
+            .featured-title {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1257,10 +1455,6 @@
                                         <span>✨</span>
                                         Auto Giveaways Signup Software
                                     </a>
-                                    <a href="letterwriting.html" class="menu-item">
-                                        <span>✉️</span>
-                                        Letterwriting
-                                    </a>
                                 </div>
                             </div>
                             
@@ -1361,27 +1555,56 @@
     </header>
     
     <!-- $24 to $1000 Guide Banner (Sticky) -->
-    <div id="moneyGuideBanner" style="position: fixed; top: 70px; left: 0; right: 0; z-index: 999; background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(76, 175, 80, 0.2)); backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 215, 0, 0.4); padding: 1.5rem; text-align: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); opacity: 0; transform: translateY(-20px); transition: all 0.5s ease; display: none;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <span style="font-size: 2rem; animation: pulse 2s infinite;">💰</span>
+    <div id="moneyGuideBanner" style="position: fixed; top: 100px; left: 0; right: 0; z-index: 999; background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(76, 175, 80, 0.2)); backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255, 215, 0, 0.4); padding: 1rem; text-align: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); opacity: 0; transform: translateY(-20px); transition: all 0.5s ease; display: none;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; padding: 0 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+                <span style="font-size: 1.5rem; animation: pulse 2s infinite;">💰</span>
                 <div style="text-align: left;">
-                    <h3 style="font-size: 1.4rem; font-weight: bold; margin: 0; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    <h3 style="font-size: 1.1rem; font-weight: bold; margin: 0; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                         Best Way to Start Making Money?
                     </h3>
-                    <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
+                    <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 0.85rem;">
                         Transform <strong style="color: #FFD700;">$24 into $1000+</strong> with our proven guide
                     </p>
                 </div>
             </div>
-            <a href="24-to-1000-guide.html" style="display: inline-block; background: linear-gradient(135deg, #FFD700, #FFA500); color: black; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: all 0.3s; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); animation: glow 3s ease-in-out infinite;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 8px 30px rgba(255, 215, 0, 0.6)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 5px 20px rgba(255, 215, 0, 0.4)';">
+            <a href="24-to-1000-guide.html" style="display: inline-block; background: linear-gradient(135deg, #FFD700, #FFA500); color: black; padding: 0.7rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: all 0.3s; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); animation: glow 3s ease-in-out infinite; white-space: nowrap;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 8px 30px rgba(255, 215, 0, 0.6)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 5px 20px rgba(255, 215, 0, 0.4)';">
                 Start Your Journey →
             </a>
         </div>
     </div>
     
+    <style>
+        @media (min-width: 768px) {
+            #moneyGuideBanner {
+                top: 70px !important;
+                padding: 1.5rem !important;
+            }
+            #moneyGuideBanner h3 {
+                font-size: 1.4rem !important;
+            }
+            #moneyGuideBanner p {
+                font-size: 0.95rem !important;
+            }
+            #moneyGuideBanner a {
+                padding: 0.8rem 2rem !important;
+                font-size: 1rem !important;
+            }
+            #moneyGuideBanner > div {
+                gap: 2rem !important;
+            }
+            #moneyGuideBanner > div > div {
+                gap: 1rem !important;
+            }
+            #moneyGuideBanner span {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
+    
     <!-- Hero Section -->
     <section class="hero">
+        <div class="container">
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -1426,10 +1649,12 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
     
     <!-- Main Categories -->
     <section class="categories-section">
+        <div class="container">
         <div class="section-header">
             <h2 class="section-title">Choose Your Path to Success</h2>
             <p class="section-subtitle">Explore our top-performing sidehustle categories</p>
@@ -1522,6 +1747,7 @@
                     Coming Soon →
                 </span>
             </div>
+        </div>
         </div>
     </section>
     
