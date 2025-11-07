@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>TrackTaco - Valid Tracking Number Generator for Dropshippers | Maintain Store Metrics</title>
+    <meta name="description" content="Generate valid tracking numbers instantly with TrackTaco. Matches FedEx patterns by destination and delivery date. Help maintain your store metrics during shipping delays while satisfying 2-day shipment policies. Essential tool for dropshippers.">
+    <meta name="keywords" content="tracking number generator, dropshipping tracking numbers, FedEx tracking generator, valid tracking numbers, maintain store metrics, dropship tracking solution, TrackTaco, shipping delay solution">
+    <link rel="canonical" href="https://onlinesidehustles.info/tracktaco.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/tracktaco.html">
+    <meta property="og:title" content="TrackTaco - Valid Tracking Number Generator for Dropshippers">
+    <meta property="og:description" content="Generate valid tracking numbers instantly. Matches FedEx patterns by destination and delivery date. Maintain store metrics during shipping delays.">
+    <meta property="og:image" content="https://onlinesidehustles.info/tracktaco-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://onlinesidehustles.info/tracktaco.html">
+    <meta property="twitter:title" content="TrackTaco - Valid Tracking Number Generator for Dropshippers">
+    <meta property="twitter:description" content="Generate valid tracking numbers instantly. Matches FedEx patterns by destination and delivery date. Maintain store metrics during shipping delays.">
+    <meta property="twitter:image" content="https://onlinesidehustles.info/tracktaco-preview.png">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Online Sidehustles">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.12) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 193, 7, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Floating Background Animation - Shipping Themed */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.15;
+            animation: float linear infinite;
+        }
+        
+        .truck-icon {
+            width: 50px;
+            height: 30px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 5px;
+            position: relative;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+        }
+        
+        .truck-icon::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            bottom: 2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.4);
+            box-shadow: -20px 0 0 rgba(255, 215, 0, 0.4);
+        }
+        
+        .box-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 193, 7, 0.15);
+            border: 2px solid rgba(255, 193, 7, 0.4);
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .box-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: rgba(255, 193, 7, 0.4);
+        }
+        
+        .box-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 193, 7, 0.4);
+        }
+        
+        .location-pin {
+            width: 30px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .location-pin::before {
+            content: '📍';
+            font-size: 35px;
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .barcode {
+            width: 45px;
+            height: 25px;
+            background: linear-gradient(90deg, 
+                rgba(255, 193, 7, 0.4) 0%, rgba(255, 193, 7, 0.4) 15%, 
+                transparent 15%, transparent 20%,
+                rgba(255, 193, 7, 0.4) 20%, rgba(255, 193, 7, 0.4) 30%,
+                transparent 30%, transparent 35%,
+                rgba(255, 193, 7, 0.4) 35%, rgba(255, 193, 7, 0.4) 50%,
+                transparent 50%, transparent 55%,
+                rgba(255, 193, 7, 0.4) 55%, rgba(255, 193, 7, 0.4) 65%,
+                transparent 65%, transparent 70%,
+                rgba(255, 193, 7, 0.4) 70%, rgba(255, 193, 7, 0.4) 85%,
+                transparent 85%, transparent 90%,
+                rgba(255, 193, 7, 0.4) 90%);
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            border-radius: 3px;
+        }
+        
+        .checkmark-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            position: relative;
+        }
+        
+        .checkmark-circle::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 215, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .plane-icon {
+            width: 45px;
+            height: 35px;
+            position: relative;
+        }
+        
+        .plane-icon::before {
+            content: '✈';
+            font-size: 40px;
+            position: absolute;
+            color: rgba(255, 193, 7, 0.5);
+            transform: rotate(-45deg);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--drift)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .floating-element:nth-child(1) { left: 5%; animation-duration: 27s; animation-delay: 0s; --drift: 38px; }
+        .floating-element:nth-child(2) { left: 15%; animation-duration: 31s; animation-delay: 5s; --drift: -42px; }
+        .floating-element:nth-child(3) { left: 25%; animation-duration: 29s; animation-delay: 9s; --drift: 32px; }
+        .floating-element:nth-child(4) { left: 35%; animation-duration: 33s; animation-delay: 4s; --drift: -38px; }
+        .floating-element:nth-child(5) { left: 45%; animation-duration: 28s; animation-delay: 12s; --drift: 45px; }
+        .floating-element:nth-child(6) { left: 55%; animation-duration: 30s; animation-delay: 7s; --drift: -35px; }
+        .floating-element:nth-child(7) { left: 65%; animation-duration: 32s; animation-delay: 10s; --drift: 40px; }
+        .floating-element:nth-child(8) { left: 75%; animation-duration: 27s; animation-delay: 3s; --drift: -43px; }
+        .floating-element:nth-child(9) { left: 85%; animation-duration: 34s; animation-delay: 8s; --drift: 34px; }
+        .floating-element:nth-child(10) { left: 95%; animation-duration: 29s; animation-delay: 6s; --drift: -37px; }
+        .floating-element:nth-child(11) { left: 10%; animation-duration: 31s; animation-delay: 11s; --drift: 41px; }
+        .floating-element:nth-child(12) { left: 30%; animation-duration: 28s; animation-delay: 13s; --drift: -30px; }
+        .floating-element:nth-child(13) { left: 50%; animation-duration: 30s; animation-delay: 15s; --drift: 36px; }
+        .floating-element:nth-child(14) { left: 70%; animation-duration: 32s; animation-delay: 17s; --drift: -40px; }
+        .floating-element:nth-child(15) { left: 90%; animation-duration: 29s; animation-delay: 14s; --drift: 39px; }
+        
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #FFD700;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #000;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 8px 30px rgba(255, 215, 0, 0.45);
+            }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.08));
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            box-shadow: 0 10px 40px rgba(76, 175, 80, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 2rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.4);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .feature-highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(33, 150, 243, 0.05));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(76, 175, 80, 0.2);
+        }
+        
+        .how-it-works h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #4CAF50;
+            text-align: center;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .step-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .benefits-box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .benefits-box::after {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 40px;
+            background: #1a1a1a;
+            padding: 0 15px;
+        }
+        
+        .benefits-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .benefits-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .cta-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .cta-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #5865F2;
+            color: #7289DA;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(88, 101, 242, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #8BC34A;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-wrapper {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .page-wrapper {
+                padding: 0 1rem;
+            }
+            
+            nav {
+                padding: 0.75rem 0;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                gap: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero-section {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.85rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .features-section {
+                padding: 2rem 1.5rem 3rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .feature-title {
+                font-size: 1.2rem;
+            }
+            
+            .how-it-works {
+                padding: 2rem 1.5rem;
+                margin: 3rem auto;
+            }
+            
+            .how-it-works h2 {
+                font-size: 1.5rem;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .benefits-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .benefits-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .benefits-title {
+                font-size: 1.5rem;
+            }
+            
+            .benefits-list li {
+                font-size: 1rem;
+            }
+            
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-box h3 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-box p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            footer {
+                padding: 2rem 1rem 1.5rem;
+                margin-top: 3rem;
+            }
+            
+            .footer-content {
+                font-size: 0.85rem;
+            }
+            
+            .floating-element:nth-child(n+11) {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-description {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+            }
+            
+            .how-it-works h2 {
+                font-size: 1.3rem;
+            }
+            
+            .benefits-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-box h3 {
+                font-size: 1.3rem;
+            }
+            
+            .cta-button {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Animation - Shipping Themed -->
+    <div class="floating-bg">
+        <div class="floating-element"><div class="truck-icon"></div></div>
+        <div class="floating-element"><div class="box-icon"></div></div>
+        <div class="floating-element"><div class="location-pin"></div></div>
+        <div class="floating-element"><div class="barcode"></div></div>
+        <div class="floating-element"><div class="checkmark-circle"></div></div>
+        <div class="floating-element"><div class="plane-icon"></div></div>
+        <div class="floating-element"><div class="truck-icon"></div></div>
+        <div class="floating-element"><div class="box-icon"></div></div>
+        <div class="floating-element"><div class="location-pin"></div></div>
+        <div class="floating-element"><div class="barcode"></div></div>
+        <div class="floating-element"><div class="checkmark-circle"></div></div>
+        <div class="floating-element"><div class="plane-icon"></div></div>
+        <div class="floating-element"><div class="truck-icon"></div></div>
+        <div class="floating-element"><div class="box-icon"></div></div>
+        <div class="floating-element"><div class="barcode"></div></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="page-wrapper">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                            <defs><linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="centerGoldLogo"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient><linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8B4513"/><stop offset="50%" style="stop-color:#6D4C41"/><stop offset="100%" style="stop-color:#5D4037"/></linearGradient></defs><rect width="64" height="64" fill="url(#emeraldLogo)"/><rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/><circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                        </svg>
+                    </div>
+                    <span>ONLINE SIDEHUSTLES</span>
+                </a>
+                
+                <div class="nav-buttons">
+                    <a href="index.html" class="nav-btn">← Back to Home</a>
+                    <a href="#get-started" class="nav-btn" style="background: linear-gradient(135deg, #4CAF50, #2196F3); border: none;">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            📦 DROPSHIPPER'S ESSENTIAL TOOL
+        </div>
+        
+        <h1 class="hero-title">TrackTaco</h1>
+        
+        <div class="hero-subtitle">Valid Tracking Number Generator</div>
+        
+        <p class="hero-description">
+            Generate <strong>valid tracking numbers instantly</strong> for your customer's city. 
+            Matches FedEx patterns by destination and delivery date. Keep your store metrics perfect 
+            during shipping delays while satisfying 2-day shipment policies.
+        </p>
+        
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">INSTANT</div>
+                <div class="stat-label">Tracking Generation</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Valid FedEx Patterns</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">PROTECTED</div>
+                <div class="stat-label">Your Store Metrics</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">Why Dropshippers Love TrackTaco</h2>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">City-Specific Generation</h3>
+                <p class="feature-description">
+                    <span class="feature-highlight">Generates tracking numbers based on your customer's exact city</span>. 
+                    Each number is customized to match the destination, ensuring accuracy and authenticity.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3 class="feature-title">Delivery Date Matching</h3>
+                <p class="feature-description">
+                    <span class="feature-highlight">Perfectly aligned with expected delivery dates</span>. 
+                    Your tracking numbers match FedEx patterns for the specific delivery timeline you need.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Maintain Store Metrics</h3>
+                <p class="feature-description">
+                    <span class="feature-highlight">Keep your store performance ratings high</span> during shipping delays. 
+                    Satisfy platform requirements for 2-day shipment policies without penalty.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How TrackTaco Works</h2>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-title">Enter Destination</div>
+                <p class="step-description">
+                    Input your customer's city and state information
+                </p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-title">Set Delivery Date</div>
+                <p class="step-description">
+                    Choose the expected delivery date for the package
+                </p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-title">Generate Instantly</div>
+                <p class="step-description">
+                    Get a valid FedEx-pattern tracking number in seconds
+                </p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-title">Upload to Platform</div>
+                <p class="step-description">
+                    Use the tracking number to meet shipment deadlines
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-box">
+            <h2 class="benefits-title">The TrackTaco Advantage</h2>
+            
+            <ul class="benefits-list">
+                <li>Satisfy 2-day shipment policies on platforms like eBay and Amazon</li>
+                <li>Protect your seller rating during supplier shipping delays</li>
+                <li>Generate location-specific tracking numbers for authenticity</li>
+                <li>Match FedEx patterns perfectly - no red flags or issues</li>
+                <li>Keep customers satisfied with timely tracking information</li>
+                <li>Avoid late shipment penalties and store suspensions</li>
+                <li>Simple, fast interface - generate numbers in seconds</li>
+                <li>Essential tool for serious dropshippers managing multiple orders</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <div class="cta-box">
+            <span class="cta-badge">SHIPPING SOLUTION</span>
+            <h3>Never Worry About Shipping Delays Again</h3>
+            <p>
+                TrackTaco is the professional solution for dropshippers who need to maintain perfect store metrics 
+                while dealing with real-world shipping delays. Generate valid tracking numbers that match FedEx 
+                patterns for any destination and delivery date. Keep your customers happy, your store ratings high, 
+                and your business running smoothly.
+            </p>
+        </div>
+        
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Ready to Protect Your Store Metrics?</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;">
+            Join thousands of dropshippers using TrackTaco to maintain perfect shipping performance.
+        </p>
+        <p style="color: #4CAF50; font-size: 1.2rem; font-weight: bold;">
+            Generate your first tracking number in under 60 seconds!
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="https://tracktaco.com" class="cta-button cta-primary" target="_blank">
+                🚀 Visit TrackTaco.com
+            </a>
+            <a href="https://discord.com/invite/onlinesidehustles" class="cta-button cta-secondary" target="_blank">
+                💬 Join Discord Community
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Online Sidehustles. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="back-link">← Back to Homepage</a>
+            </p>
+            <p style="color: #4CAF50; font-style: italic; margin-top: 1rem;">
+                Website by Crossroads - Sidehustle Wiki
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
