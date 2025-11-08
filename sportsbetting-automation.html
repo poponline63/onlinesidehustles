@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Bookie Bandit - Sports Betting Automation Bot | AI-Powered Betting on Autopilot</title>
+    <meta name="description" content="Bookie Bandit - Automated sports betting bot for PrizePicks, Underdog, ParlayPlay & OwnersBox. No sports knowledge needed. AI analyzes all bets automatically. Earn $2,000+ profit with fully automated betting.">
+    <meta name="keywords" content="Bookie Bandit, sports betting automation, automated betting bot, PrizePicks bot, AI sports betting, automated sports picks, betting bot software, Underdog automation, ParlayPlay bot, no sports knowledge betting, automated parlay betting">
+    <link rel="canonical" href="https://onlinesidehustles.info/sports-betting-automation.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/sports-betting-automation.html">
+    <meta property="og:title" content="Bookie Bandit - Sports Betting Automation Bot | AI-Powered Betting">
+    <meta property="og:description" content="Bookie Bandit automated sports betting with AI. Zero sports knowledge needed. PrizePicks, Underdog, ParlayPlay & OwnersBox support. $2,000+ profit potential.">
+    <meta property="og:image" content="https://onlinesidehustles.info/sports-betting-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://onlinesidehustles.info/sports-betting-automation.html">
+    <meta property="twitter:title" content="Bookie Bandit - Sports Betting Automation Bot | AI-Powered Betting">
+    <meta property="twitter:description" content="Bookie Bandit automated sports betting with AI. Zero sports knowledge needed. $2,000+ profit potential with fully automated picks.">
+    <meta property="twitter:image" content="https://onlinesidehustles.info/sports-betting-preview.png">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Online Sidehustles">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a1a2e 0%, #16213e 50%, #0a1a2e 100%);
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 69, 0, 0.12) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.12) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Floating Background Animation */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.15;
+            animation: float linear infinite;
+        }
+        
+        .basketball {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 140, 0, 0.4), rgba(255, 69, 0, 0.3));
+            border-radius: 50%;
+            border: 2px solid rgba(255, 140, 0, 0.5);
+            position: relative;
+        }
+        
+        .basketball::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 69, 0, 0.4);
+        }
+        
+        .basketball::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 69, 0, 0.4);
+        }
+        
+        .football {
+            width: 55px;
+            height: 38px;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.4), rgba(101, 67, 33, 0.3));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 2px solid rgba(139, 69, 19, 0.5);
+            position: relative;
+        }
+        
+        .football::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 3px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .football::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            width: 60%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .baseball {
+            width: 48px;
+            height: 48px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), rgba(220, 220, 220, 0.2));
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .baseball::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 60%;
+            height: 3px;
+            background: rgba(255, 69, 0, 0.4);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+        
+        .baseball::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: 20%;
+            width: 60%;
+            height: 3px;
+            background: rgba(255, 69, 0, 0.4);
+            border-radius: 50%;
+            transform: rotate(30deg);
+        }
+        
+        .trophy {
+            width: 45px;
+            height: 50px;
+            position: relative;
+        }
+        
+        .trophy::before {
+            content: '🏆';
+            font-size: 40px;
+            opacity: 0.5;
+        }
+        
+        .ticket {
+            width: 55px;
+            height: 35px;
+            background: rgba(30, 144, 255, 0.15);
+            border: 2px dashed rgba(30, 144, 255, 0.4);
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .ticket::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 12px;
+            height: 8px;
+            border: 2px solid rgba(30, 144, 255, 0.5);
+            border-radius: 3px;
+        }
+        
+        .ticket::after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 10px;
+            width: 25px;
+            height: 2px;
+            background: rgba(30, 144, 255, 0.4);
+            box-shadow: 0 6px 0 rgba(30, 144, 255, 0.4);
+        }
+        
+        .dollar-sports {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: rgba(255, 215, 0, 0.6);
+            font-weight: bold;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--drift)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .floating-element:nth-child(1) { left: 5%; animation-duration: 28s; animation-delay: 0s; --drift: 40px; }
+        .floating-element:nth-child(2) { left: 15%; animation-duration: 33s; animation-delay: 5s; --drift: -45px; }
+        .floating-element:nth-child(3) { left: 25%; animation-duration: 30s; animation-delay: 10s; --drift: 35px; }
+        .floating-element:nth-child(4) { left: 35%; animation-duration: 35s; animation-delay: 4s; --drift: -40px; }
+        .floating-element:nth-child(5) { left: 45%; animation-duration: 31s; animation-delay: 13s; --drift: 50px; }
+        .floating-element:nth-child(6) { left: 55%; animation-duration: 34s; animation-delay: 8s; --drift: -35px; }
+        .floating-element:nth-child(7) { left: 65%; animation-duration: 32s; animation-delay: 11s; --drift: 45px; }
+        .floating-element:nth-child(8) { left: 75%; animation-duration: 29s; animation-delay: 3s; --drift: -50px; }
+        .floating-element:nth-child(9) { left: 85%; animation-duration: 36s; animation-delay: 9s; --drift: 38px; }
+        .floating-element:nth-child(10) { left: 95%; animation-duration: 32s; animation-delay: 6s; --drift: -43px; }
+        .floating-element:nth-child(11) { left: 10%; animation-duration: 34s; animation-delay: 12s; --drift: 47px; }
+        .floating-element:nth-child(12) { left: 30%; animation-duration: 31s; animation-delay: 15s; --drift: -38px; }
+        .floating-element:nth-child(13) { left: 50%; animation-duration: 33s; animation-delay: 17s; --drift: 42px; }
+        .floating-element:nth-child(14) { left: 70%; animation-duration: 35s; animation-delay: 19s; --drift: -48px; }
+        .floating-element:nth-child(15) { left: 90%; animation-duration: 32s; animation-delay: 14s; --drift: 41px; }
+        
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(255, 69, 0, 0.3);
+        }
+        
+        nav {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            color: #FF4500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 69, 0, 0.1);
+            border-color: #FF4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #FF4500, #FF8C00);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #000;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 69, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 69, 0, 0.7); }
+        }
+        
+        @keyframes pulse-signup {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 10px 30px rgba(255, 69, 0, 0.4);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 15px 50px rgba(255, 69, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.5);
+            }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FF4500, #FFD700, #1E90FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(255, 69, 0, 0.1);
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 4rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FF4500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Section Styling */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FF4500;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 69, 0, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF4500, #1E90FF);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .content-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 69, 0, 0.4);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF4500, #FF8C00);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FF8C00;
+        }
+        
+        .card-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .card-list {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .card-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FF4500;
+            font-weight: bold;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(30, 144, 255, 0.1));
+            border: 2px solid rgba(255, 69, 0, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            position: relative;
+        }
+        
+        .highlight-box h3 {
+            font-size: 2rem;
+            color: #FF4500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Buttons */
+        .cta-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #FF4500, #FF8C00);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.4);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.6);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #1E90FF;
+            color: #1E90FF;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(30, 144, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 69, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            color: #FF4500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #FF8C00;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .page-wrapper {
+                padding: 0 1rem;
+            }
+            
+            nav {
+                padding: 0.75rem 0;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                gap: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero-section {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlight-box {
+                padding: 2rem;
+            }
+            
+            .highlight-box h3 {
+                font-size: 1.5rem;
+            }
+            
+            .highlight-box p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .floating-element:nth-child(n+11) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Animation -->
+    <div class="floating-bg">
+        <div class="floating-element"><div class="basketball"></div></div>
+        <div class="floating-element"><div class="football"></div></div>
+        <div class="floating-element"><div class="baseball"></div></div>
+        <div class="floating-element"><div class="trophy"></div></div>
+        <div class="floating-element"><div class="ticket"></div></div>
+        <div class="floating-element"><div class="dollar-sports">$</div></div>
+        <div class="floating-element"><div class="basketball"></div></div>
+        <div class="floating-element"><div class="football"></div></div>
+        <div class="floating-element"><div class="baseball"></div></div>
+        <div class="floating-element"><div class="trophy"></div></div>
+        <div class="floating-element"><div class="ticket"></div></div>
+        <div class="floating-element"><div class="dollar-sports">$</div></div>
+        <div class="floating-element"><div class="basketball"></div></div>
+        <div class="floating-element"><div class="football"></div></div>
+        <div class="floating-element"><div class="baseball"></div></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="page-wrapper">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                            <defs><linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="centerGoldLogo"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient><linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8B4513"/><stop offset="50%" style="stop-color:#6D4C41"/><stop offset="100%" style="stop-color:#5D4037"/></linearGradient></defs><rect width="64" height="64" fill="url(#emeraldLogo)"/><rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/><circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                        </svg>
+                    </div>
+                    <span>ONLINE SIDEHUSTLES</span>
+                </a>
+                
+                <div class="nav-buttons">
+                    <a href="index.html" class="nav-btn">← Back to Home</a>
+                    <a href="#get-started" class="nav-btn" style="background: linear-gradient(135deg, #FF4500, #FF8C00); border: none; color: white;">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            🏆 AI-POWERED BETTING
+        </div>
+        
+        <h1 class="hero-title">Bookie Bandit: Sports Betting on Autopilot</h1>
+        
+        <p class="hero-subtitle">
+            Zero sports knowledge needed. Fully automated betting powered by AI. 
+            $2,000+ profit lifetime—and I don't even know anything about sports!
+        </p>
+    </section>
+    
+    <!-- Video Section -->
+    <section style="padding: 2rem; max-width: 900px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">How Bookie Bandit Works</h2>
+            <p class="section-subtitle">
+                Watch this detailed explanation of the automated betting system
+            </p>
+        </div>
+        
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 2px solid rgba(255, 69, 0, 0.3); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+            <iframe 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                src="https://www.youtube.com/embed/DHcRGzcaVAA" 
+                title="Bookie Bandit Explanation Video" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    
+    <!-- Bankroll Warning Section -->
+    <section style="padding: 0 2rem 2rem; max-width: 900px; margin: 0 auto;">
+        <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1)); border: 3px solid #FFD700; border-radius: 20px; padding: 2.5rem; text-align: center; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);">
+            <h3 style="color: #FFD700; font-size: 1.8rem; margin-bottom: 1rem; font-weight: bold;">⚠️ Before You Start</h3>
+            <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.3rem; line-height: 1.8; margin-bottom: 0.5rem;">
+                For optimal results, start with a <strong style="color: #FFD700;">minimum bankroll of $1,000</strong> to maximize your earning potential.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; line-height: 1.6;">
+                <strong style="color: #FF8C00;">Higher bankroll = Higher profits.</strong> The more capital you invest, the greater your returns.
+            </p>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">
+                Fully automated betting with AI-powered analysis
+            </p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="card-icon">🎯</div>
+                <h3 class="card-title">Primary Platform</h3>
+                <p class="card-text">
+                    Fully automated betting on <strong style="color: #FF4500;">PrizePicks</strong>
+                </p>
+                <p class="card-text">
+                    The bot handles everything automatically—from analyzing picks to placing bets.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">🤖</div>
+                <h3 class="card-title">AI-Powered Analysis</h3>
+                <p class="card-text">
+                    Advanced AI parses all available bets and handles complete analysis.
+                </p>
+                <p class="card-text">
+                    No need to research teams, stats, or matchups—the AI does it all.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">🏅</div>
+                <h3 class="card-title">Supported Platforms</h3>
+                <ul class="card-list" style="columns: 2; column-gap: 1rem;">
+                    <li>PrizePicks</li>
+                    <li>Underdog</li>
+                    <li>ParlayPlay</li>
+                    <li>OwnersBox</li>
+                    <li>Pick6</li>
+                    <li>Bovada</li>
+                    <li>Bodog</li>
+                    <li>Rebet</li>
+                    <li>ProphetX</li>
+                    <li>Fliff</li>
+                    <li>OnyxOdds</li>
+                    <li>FanDuel</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why This Works Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">Why This Works for Beginners</h2>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>✅ Perfect for Complete Beginners</h3>
+            <p>
+                <strong>No sports knowledge required</strong> — You don't need to understand football, 
+                basketball, baseball, or any sport. The AI handles all the analysis.
+            </p>
+            <p>
+                <strong>AI Will Parse all Bets</strong> — Advanced algorithms analyze thousands of betting 
+                opportunities and automatically place optimal bets.
+            </p>
+            <p>
+                <strong>Currently one of the best Sportsbetting Automation on the Market</strong> — 
+                Industry-leading AI technology with proven results.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Getting Started Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">What I Recommend to Start</h2>
+        </div>
+        
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+            <div class="card-icon">💵</div>
+            <h3 class="card-title">Bankroll Requirements</h3>
+            <p class="card-text">
+                <strong style="color: #FF4500;">Your bankroll directly impacts your earning potential.</strong> 
+                The more capital you start with, the higher your profits will be.
+            </p>
+            <p class="card-text">
+                While you'll eventually be "Promo'd" (soft banned from promotional offers), a larger initial 
+                investment ensures you maximize profits before this happens. Even after accounting for subscription 
+                costs and initial investment, higher bankrolls yield significantly better returns.
+            </p>
+            <p class="card-text" style="background: rgba(255, 69, 0, 0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #FF4500; margin-top: 1.5rem;">
+                <strong style="color: #FFD700; font-size: 1.2rem;">Recommended Starting Capital: $1,000+</strong><br><br>
+                Scale your investment based on your comfort level—the more you invest, the more you earn. 
+                For detailed guidance on optimizing your bankroll strategy, check out the comprehensive guides 
+                available in their Discord community.
+            </p>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #FF4500;">Ready to Start with Bookie Bandit?</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+            Join the Bookie Bandit community and let AI handle your sports betting automatically.
+            <br>
+            No sports knowledge required—just set it and profit!
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="https://shorturl.at/2CwIc" class="cta-button cta-primary" style="padding: 2.5rem 6rem; font-size: 1.8rem; font-weight: 900; animation: pulse-signup 2s infinite;">
+                🚀 SIGN UP NOW
+            </a>
+            <a href="https://discord.gg/kFSctbB7JY" class="cta-button cta-secondary" style="padding: 2.5rem 6rem; font-size: 1.8rem; font-weight: 900;">
+                💬 Join Discord Preview
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Online Sidehustles. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="back-link">← Back to Homepage</a>
+            </p>
+            <p style="color: #FF4500; font-style: italic; margin-top: 1rem;">
+                Website by Crossroads - Sidehustle Wiki
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
