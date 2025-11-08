@@ -1,1 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>RSA Bot Automation - Reverse Stock Arbitrage Trading Bot | Earn $400+ Per Day</title>
+    <meta name="description" content="Automate your Reverse Stock Arbitrage (RSA) trading with Greenseed bot. Buy and sell stocks automatically, multiply profits with multiple accounts. Mirror trading, automated execution, earn $400+ daily. Use code CROSSROADS for exclusive $75/month pricing.">
+    <meta name="keywords" content="RSA bot, reverse stock arbitrage automation, automated stock trading bot, RSA trading software, reverse split arbitrage tool, stock rounding profits, automated brokerage trading, Greenseed RSA bot, stock arbitrage automation">
+    <link rel="canonical" href="https://onlinesidehustles.info/reverse-stock-arbitrage-bot.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/reverse-stock-arbitrage-bot.html">
+    <meta property="og:title" content="RSA Bot Automation - Automate Reverse Stock Arbitrage Trading">
+    <meta property="og:description" content="Automated RSA trading bot. Buy and sell stocks automatically, mirror trading, earn $400+ daily with multiple accounts. Exclusive $75/month with code CROSSROADS.">
+    <meta property="og:image" content="https://onlinesidehustles.info/rsa-bot-preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://onlinesidehustles.info/reverse-stock-arbitrage-bot.html">
+    <meta property="twitter:title" content="RSA Bot Automation - Automate Reverse Stock Arbitrage Trading">
+    <meta property="twitter:description" content="Automated RSA trading bot. Buy and sell stocks automatically, mirror trading, earn $400+ daily. Exclusive $75/month with code CROSSROADS.">
+    <meta property="twitter:image" content="https://onlinesidehustles.info/rsa-bot-preview.png">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Online Sidehustles">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cdefs%3E%3ClinearGradient id='emerald1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23004D40'/%3E%3Cstop offset='33%25' style='stop-color:%2300695C'/%3E%3Cstop offset='66%25' style='stop-color:%234CAF50'/%3E%3Cstop offset='100%25' style='stop-color:%23FFD700'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGold1'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFA500'/%3E%3Cstop offset='100%25' style='stop-color:%234CAF50'/%3E%3C/radialGradient%3E%3ClinearGradient id='stumpGrad1' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B4513'/%3E%3Cstop offset='50%25' style='stop-color:%236D4C41'/%3E%3Cstop offset='100%25' style='stop-color:%235D4037'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23emerald1)'/%3E%3Crect x='26' y='36' width='12' height='18' fill='url(%23stumpGrad1)' rx='1'/%3E%3Ccircle cx='32' cy='24' r='15' fill='url(%23centerGold1)' opacity='0.9'/%3E%3Ccircle cx='20' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ccircle cx='44' cy='32' r='11' fill='%234CAF50' opacity='0.7'/%3E%3Ctext x='32' y='30' text-anchor='middle' fill='%23FFF' font-size='18' font-weight='bold'%3E$%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a1f0a 0%, #0d2b0d 50%, #0a1f0a 100%);
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(34, 139, 34, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(50, 205, 50, 0.12) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Floating Background Animation */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.12;
+            animation: float linear infinite;
+        }
+        
+        .stock-chart {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(34, 139, 34, 0.5);
+            border-radius: 8px;
+            background: rgba(34, 139, 34, 0.1);
+            position: relative;
+        }
+        
+        .stock-chart::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+            height: 2px;
+            background: rgba(34, 139, 34, 0.5);
+        }
+        
+        .stock-chart::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            bottom: 5px;
+            width: 30px;
+            height: 25px;
+            background: 
+                linear-gradient(90deg, transparent 3px, rgba(50, 205, 50, 0.6) 3px, rgba(50, 205, 50, 0.6) 5px, transparent 5px, transparent 8px, rgba(50, 205, 50, 0.6) 8px, rgba(50, 205, 50, 0.6) 10px, transparent 10px, transparent 13px, rgba(50, 205, 50, 0.6) 13px, rgba(50, 205, 50, 0.6) 15px, transparent 15px, transparent 18px, rgba(50, 205, 50, 0.6) 18px, rgba(50, 205, 50, 0.6) 20px, transparent 20px),
+                linear-gradient(0deg, transparent 0%, transparent 40%, rgba(50, 205, 50, 0.6) 40%, rgba(50, 205, 50, 0.6) 45%, transparent 45%, transparent 55%, rgba(50, 205, 50, 0.6) 55%, rgba(50, 205, 50, 0.6) 70%, transparent 70%, transparent 80%, rgba(50, 205, 50, 0.6) 80%);
+        }
+        
+        .candlestick {
+            width: 50px;
+            height: 50px;
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid rgba(34, 139, 34, 0.5);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 8px 5px;
+        }
+        
+        .candlestick::before {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            width: 4px;
+            height: 20px;
+            background: rgba(50, 205, 50, 0.7);
+            border: 1px solid rgba(50, 205, 50, 0.8);
+        }
+        
+        .candlestick::after {
+            content: '';
+            position: absolute;
+            bottom: 18px;
+            right: 12px;
+            width: 4px;
+            height: 14px;
+            background: rgba(255, 69, 58, 0.6);
+            border: 1px solid rgba(255, 69, 58, 0.7);
+        }
+        
+        .stock-ticker {
+            width: 55px;
+            height: 45px;
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid rgba(34, 139, 34, 0.5);
+            border-radius: 6px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 10px;
+            color: rgba(50, 205, 50, 0.7);
+            font-weight: bold;
+            padding: 4px;
+        }
+        
+        .stock-ticker::before {
+            content: '$';
+            font-size: 14px;
+            color: rgba(50, 205, 50, 0.8);
+        }
+        
+        .stock-ticker::after {
+            content: '▲';
+            position: absolute;
+            bottom: 4px;
+            font-size: 8px;
+            color: rgba(50, 205, 50, 0.9);
+        }
+        
+        .trend-arrow {
+            width: 48px;
+            height: 48px;
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid rgba(50, 205, 50, 0.5);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .trend-arrow::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: rgba(50, 205, 50, 0.7);
+            transform: rotate(-45deg);
+            transform-origin: left center;
+        }
+        
+        .trend-arrow::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 6px solid rgba(50, 205, 50, 0.7);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            right: 10px;
+            top: 12px;
+            transform: rotate(-45deg);
+        }
+        
+        .dollar-up {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid rgba(50, 205, 50, 0.5);
+            background: rgba(50, 205, 50, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: rgba(50, 205, 50, 0.6);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .dollar-up::after {
+            content: '↑';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 20px;
+            color: rgba(50, 205, 50, 0.8);
+        }
+        
+        .percentage-gain {
+            width: 52px;
+            height: 42px;
+            background: rgba(34, 139, 34, 0.15);
+            border: 2px solid rgba(50, 205, 50, 0.5);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(50, 205, 50, 0.8);
+        }
+        
+        .percentage-gain::before {
+            content: '+%';
+        }
+        
+        .split-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid rgba(34, 139, 34, 0.5);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .split-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 2px;
+            background: rgba(50, 205, 50, 0.6);
+            box-shadow: 0 -8px 0 rgba(50, 205, 50, 0.5), 0 8px 0 rgba(50, 205, 50, 0.5);
+        }
+        
+        .split-icon::after {
+            content: '⇄';
+            font-size: 18px;
+            color: rgba(50, 205, 50, 0.6);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.12;
+            }
+            90% {
+                opacity: 0.12;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--drift)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .floating-element:nth-child(1) { left: 5%; animation-duration: 30s; animation-delay: 0s; --drift: 40px; }
+        .floating-element:nth-child(2) { left: 15%; animation-duration: 35s; animation-delay: 5s; --drift: -45px; }
+        .floating-element:nth-child(3) { left: 25%; animation-duration: 32s; animation-delay: 10s; --drift: 30px; }
+        .floating-element:nth-child(4) { left: 35%; animation-duration: 38s; animation-delay: 4s; --drift: -40px; }
+        .floating-element:nth-child(5) { left: 45%; animation-duration: 33s; animation-delay: 13s; --drift: 55px; }
+        .floating-element:nth-child(6) { left: 55%; animation-duration: 36s; animation-delay: 8s; --drift: -30px; }
+        .floating-element:nth-child(7) { left: 65%; animation-duration: 34s; animation-delay: 11s; --drift: 45px; }
+        .floating-element:nth-child(8) { left: 75%; animation-duration: 31s; animation-delay: 3s; --drift: -50px; }
+        .floating-element:nth-child(9) { left: 85%; animation-duration: 37s; animation-delay: 9s; --drift: 35px; }
+        .floating-element:nth-child(10) { left: 95%; animation-duration: 33s; animation-delay: 6s; --drift: -42px; }
+        .floating-element:nth-child(11) { left: 10%; animation-duration: 35s; animation-delay: 12s; --drift: 48px; }
+        .floating-element:nth-child(12) { left: 30%; animation-duration: 32s; animation-delay: 15s; --drift: -33px; }
+        .floating-element:nth-child(13) { left: 50%; animation-duration: 34s; animation-delay: 17s; --drift: 38px; }
+        .floating-element:nth-child(14) { left: 70%; animation-duration: 36s; animation-delay: 19s; --drift: -47px; }
+        .floating-element:nth-child(15) { left: 90%; animation-duration: 33s; animation-delay: 14s; --drift: 42px; }
+        
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(34, 139, 34, 0.3);
+        }
+        
+        nav {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+        
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(50, 205, 50, 0.3);
+            color: #32CD32;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(50, 205, 50, 0.1);
+            border-color: #32CD32;
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #32CD32, #228B22);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #000;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 0 30px rgba(50, 205, 50, 0.4);
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(50, 205, 50, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(50, 205, 50, 0.6); }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #32CD32, #90EE90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(144, 238, 144, 0.9);
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .promo-code {
+            display: inline-block;
+            background: rgba(50, 205, 50, 0.15);
+            border: 2px solid #32CD32;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            animation: glow-pulse 3s infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(50, 205, 50, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(50, 205, 50, 0.5); }
+        }
+        
+        .promo-code-label {
+            color: rgba(144, 238, 144, 0.8);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .promo-code-text {
+            color: #32CD32;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(34, 139, 34, 0.15);
+            border: 1px solid rgba(50, 205, 50, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #32CD32, #90EE90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: rgba(144, 238, 144, 0.7);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Section Styling */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #32CD32;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(144, 238, 144, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(50, 205, 50, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #228B22, #32CD32);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .content-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(50, 205, 50, 0.4);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #32CD32;
+        }
+        
+        .card-text {
+            color: rgba(144, 238, 144, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .card-list {
+            list-style: none;
+            color: rgba(144, 238, 144, 0.8);
+            line-height: 1.8;
+        }
+        
+        .card-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #32CD32;
+            font-weight: bold;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.2), rgba(50, 205, 50, 0.15));
+            border: 2px solid rgba(50, 205, 50, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            position: relative;
+        }
+        
+        .highlight-box h3 {
+            font-size: 2rem;
+            color: #32CD32;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box p {
+            font-size: 1.2rem;
+            color: rgba(144, 238, 144, 0.9);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* Profit Example */
+        .profit-example {
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid rgba(50, 205, 50, 0.3);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        
+        .profit-example h4 {
+            color: #32CD32;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .profit-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #32CD32;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .stock-name {
+            color: #90EE90;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profit-details {
+            color: rgba(144, 238, 144, 0.7);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profit-amount {
+            color: #32CD32;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .total-profit {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.3), rgba(50, 205, 50, 0.2));
+            border: 3px solid #32CD32;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .total-profit-label {
+            color: #90EE90;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .total-profit-amount {
+            color: #32CD32;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        
+        /* Risk Section */
+        .risk-section {
+            background: rgba(255, 193, 7, 0.08);
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
+        }
+        
+        .risk-section h4 {
+            color: #FFC107;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        
+        .risk-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing */
+        .pricing-container {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.1), rgba(50, 205, 50, 0.08));
+            border: 2px solid rgba(50, 205, 50, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-title {
+            font-size: 2.2rem;
+            color: #32CD32;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-subtitle {
+            color: rgba(144, 238, 144, 0.8);
+            font-size: 1.1rem;
+        }
+        
+        .price-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #32CD32;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #32CD32;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-period {
+            color: rgba(144, 238, 144, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price-comparison {
+            color: #90EE90;
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .pricing-features li {
+            color: rgba(144, 238, 144, 0.9);
+            padding-left: 1.8rem;
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #32CD32;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        /* CTA Buttons */
+        .cta-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+            box-shadow: 0 10px 30px rgba(50, 205, 50, 0.4);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(50, 205, 50, 0.6);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #32CD32;
+            color: #32CD32;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(50, 205, 50, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(50, 205, 50, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(144, 238, 144, 0.5);
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            color: #32CD32;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #90EE90;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .page-wrapper {
+                padding: 0 1rem;
+            }
+            
+            nav {
+                padding: 0.75rem 0;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                gap: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero-section {
+                padding: 100px 1.5rem 40px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .promo-code {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .promo-code-text {
+                font-size: 1.4rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlight-box {
+                padding: 2rem;
+            }
+            
+            .highlight-box h3 {
+                font-size: 1.5rem;
+            }
+            
+            .highlight-box p {
+                font-size: 1rem;
+            }
+            
+            .profit-example {
+                padding: 1.5rem;
+            }
+            
+            .pricing-container {
+                padding: 2rem;
+            }
+            
+            .price-amount {
+                font-size: 3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .floating-element:nth-child(n+11) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Animation -->
+    <div class="floating-bg">
+        <div class="floating-element"><div class="stock-chart"></div></div>
+        <div class="floating-element"><div class="candlestick"></div></div>
+        <div class="floating-element"><div class="stock-ticker"></div></div>
+        <div class="floating-element"><div class="trend-arrow"></div></div>
+        <div class="floating-element"><div class="dollar-up">$</div></div>
+        <div class="floating-element"><div class="percentage-gain"></div></div>
+        <div class="floating-element"><div class="split-icon"></div></div>
+        <div class="floating-element"><div class="stock-chart"></div></div>
+        <div class="floating-element"><div class="candlestick"></div></div>
+        <div class="floating-element"><div class="stock-ticker"></div></div>
+        <div class="floating-element"><div class="trend-arrow"></div></div>
+        <div class="floating-element"><div class="dollar-up">$</div></div>
+        <div class="floating-element"><div class="percentage-gain"></div></div>
+        <div class="floating-element"><div class="split-icon"></div></div>
+        <div class="floating-element"><div class="candlestick"></div></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="page-wrapper">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+                            <defs><linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="centerGoldLogo"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient><linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8B4513"/><stop offset="50%" style="stop-color:#6D4C41"/><stop offset="100%" style="stop-color:#5D4037"/></linearGradient></defs><rect width="64" height="64" fill="url(#emeraldLogo)"/><rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/><circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
+                        </svg>
+                    </div>
+                    <span>ONLINE SIDEHUSTLES</span>
+                </a>
+                
+                <div class="nav-buttons">
+                    <a href="index.html" class="nav-btn">← Back to Home</a>
+                    <a href="#get-started" class="nav-btn" style="background: linear-gradient(135deg, #228B22, #32CD32); border: none; color: white;">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            📈 AUTOMATED TRADING BOT
+        </div>
+        
+        <h1 class="hero-title">Reverse Stock Arbitrage Bot</h1>
+        
+        <p class="hero-subtitle">
+            Automate your RSA trading with Greenseed. Let the bot buy and sell stocks for you while you multiply your profits with multiple brokerage accounts.
+        </p>
+        
+        <div class="promo-code">
+            <span class="promo-code-label">Use Exclusive Code:</span>
+            <span class="promo-code-text">CROSSROADS</span>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">$75/mo</div>
+                <div class="stat-label">Exclusive Pricing</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$422</div>
+                <div class="stat-label">Real Daily Profit Example</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1-2x</div>
+                <div class="stat-label">Weekly RSA Opportunities</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Section -->
+    <section style="padding: 2rem; max-width: 900px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">Watch How RSA Works</h2>
+            <p class="section-subtitle">
+                Learn the complete RSA strategy in this detailed explanation
+            </p>
+        </div>
+        
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 2px solid rgba(50, 205, 50, 0.3); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+            <iframe 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                src="https://www.youtube.com/embed/SXa9YG6kRAw?si=PVnr6mUqxZXIe6_O&start=24" 
+                title="RSA Explanation Video" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    
+    <!-- What is RSA Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">What is RSA (Reverse Split Arbitrage)?</h2>
+            <p class="section-subtitle">
+                RSA is a powerful profit strategy—the more accounts you use, the more you can earn per opportunity.
+            </p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="card-icon">📊</div>
+                <h3 class="card-title">Why This Works</h3>
+                <p class="card-text">
+                    Stocks must maintain a minimum price of $1.00 per share to stay listed on major exchanges. 
+                    When a company's stock price drops too low, they often perform a reverse split to boost 
+                    the share price and maintain compliance.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">🔄</div>
+                <h3 class="card-title">What's a Reverse Split?</h3>
+                <p class="card-text">
+                    A reverse split consolidates multiple shares into one higher-value share.
+                </p>
+                <p class="card-text" style="background: rgba(50, 205, 50, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong style="color: #32CD32;">Example:</strong> A 1:10 reverse split converts 10 shares at $0.10 each into 1 share worth $1.00.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">💰</div>
+                <h3 class="card-title">How You Profit</h3>
+                <p class="card-text">When you own just 1 share before a reverse split:</p>
+                <ul class="card-list">
+                    <li><strong style="color: #32CD32;">Best Case:</strong> The brokerage rounds your fractional share UP to 1 full new share, giving you instant profit</li>
+                    <li><strong style="color: #90EE90;">Example:</strong> Your $0.67 share becomes worth $6.70 after a 1:10 split!</li>
+                    <li><strong>Worst Case:</strong> You receive a fractional share and break even</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>🔑 The Key to Success</h3>
+            <p>
+                <strong>One share per account = Guaranteed rounding profits</strong>
+            </p>
+            <p>
+                You're limited to 1 transaction per RSA opportunity per account, which is why multiple accounts = multiply your gains!
+            </p>
+        </div>
+        
+        <div class="section-header" style="margin-top: 5rem;">
+            <h2 class="section-title">How to Maximize Your Profits</h2>
+            <p class="section-subtitle">
+                Multiple accounts = Multiply your gains!
+            </p>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>📈 Scaling Your Income</h3>
+            <p>
+                By opening multiple brokerage accounts, you can purchase 1 share per account, 
+                allowing you to enter each RSA opportunity multiple times.
+            </p>
+            <p>
+                The more accounts you have, the more profit you can make per reverse split event. 
+                It's a simple numbers game that scales with your effort.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Real Profit Example -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">Real Profit Example</h2>
+        </div>
+        
+        <div class="profit-example">
+            <h4>📊 Three RSA Opportunities Examples</h4>
+            <p style="color: rgba(144, 238, 144, 0.7); text-align: center; margin-bottom: 2rem; font-style: italic;">
+                Note: RSA opportunities typically occur 1-2 times per week with multiple stocks available.
+            </p>
+            
+            <div class="profit-item">
+                <div class="stock-name">Fly-E Group Inc (NASDAQ: FLYE)</div>
+                <div class="profit-details">1:5 Reverse Split on 07/03</div>
+                <div class="profit-details">Current Price: $0.89</div>
+                <div class="profit-details">Expected Profit: $3.56 per account</div>
+                <div class="profit-amount">Total: $3.56 × 25 = $89.00</div>
+            </div>
+            
+            <div class="profit-item">
+                <div class="stock-name">BioVie Inc (NASDAQ: BIVI)</div>
+                <div class="profit-details">1:10 Reverse Split on 07/03, Rounding Fractional Shares</div>
+                <div class="profit-details">Current Price: $0.97</div>
+                <div class="profit-details">Expected Profit: $8.73 per account</div>
+                <div class="profit-amount">Total: $8.73 × 25 = $218.25</div>
+            </div>
+            
+            <div class="profit-item">
+                <div class="stock-name">Lulu's Fashion Lounge Holdings Inc (NASDAQ: LVLU)</div>
+                <div class="profit-details">1:15 Reverse Split on 07/03, Rounding Fractional Shares</div>
+                <div class="profit-details">Current Price: $0.33</div>
+                <div class="profit-details">Expected Profit: $4.62 per account</div>
+                <div class="profit-amount">Total: $4.62 × 25 = $115.50</div>
+            </div>
+            
+            <div class="total-profit">
+                <div class="total-profit-label">Total Profit in One Day:</div>
+                <div class="total-profit-amount">$422.75!</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Risk Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">Is There Any Risk?</h2>
+        </div>
+        
+        <div class="risk-section">
+            <h4>⚠️ Understanding the Risks</h4>
+            <p>
+                <strong style="color: #32CD32;">Profit Risk: Minimal</strong><br>
+                You'll typically profit on every trade or break even at worst. In the past, some brokerages 
+                used "clawbacks" to reclaim RSA profits, causing minor losses. However, this practice has 
+                been prohibited for brokerages in the last six months.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                <strong style="color: #FFC107;">Risk of Account Bans:</strong><br>
+                There is a small risk if you abuse the system with excessive accounts:
+            </p>
+            <ul class="card-list" style="margin-top: 1rem;">
+                <li>Users with 100+ accounts have been banned from Apex-backed brokerages</li>
+                <li>If you have important accounts (like a 401K with Fidelity), avoid creating 100+ accounts there</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>✅ Bottom Line</h3>
+            <p>
+                Most people doing this as a side hustle won't face issues and can profit reliably. 
+                As with any side hustle—whether sweepstakes, stocks, or crypto—there's always some risk. 
+                Assess what you're comfortable with.
+            </p>
+            <p style="font-style: italic; color: #90EE90;">
+                Personally, I've used this method and have been happy with the results.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Greenseed Section -->
+    <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div class="section-header">
+            <h2 class="section-title">Exclusive Greenseed Partnership</h2>
+        </div>
+        
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <h3 class="pricing-title">Automated RSA Trading</h3>
+                <p class="pricing-subtitle">
+                    I've partnered with Greenseed to offer an exclusive rate for everyone
+                </p>
+            </div>
+            
+            <div class="price-box">
+                <div class="price-amount">$75</div>
+                <div class="price-period">per month</div>
+                <div class="price-comparison">Other RSA services charge $175+ for bot access</div>
+            </div>
+            
+            <ul class="pricing-features">
+                <li>Minimizes manual work by automating buying and selling</li>
+                <li>Mirror Trading feature for hands-free execution</li>
+                <li>Currently supports Fidelity, Fennel, Robinhood, WellsTrade, Sofi, and Public</li>
+                <li>More brokerages coming soon</li>
+            </ul>
+        </div>
+        
+        <div class="content-grid" style="margin-top: 3rem;">
+            <div class="content-card">
+                <div class="card-icon">🤖</div>
+                <h3 class="card-title">Full Automation</h3>
+                <p class="card-text">
+                    The bot handles all the buying and selling for you. No more manually monitoring 
+                    reverse splits or rushing to execute trades.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">🪞</div>
+                <h3 class="card-title">Mirror Trading</h3>
+                <p class="card-text">
+                    Set it and forget it. The mirror trading feature executes trades across all 
+                    your connected accounts simultaneously.
+                </p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-icon">🏦</div>
+                <h3 class="card-title">Supported Brokerages</h3>
+                <ul class="card-list">
+                    <li>Fidelity</li>
+                    <li>Fennel</li>
+                    <li>Robinhood</li>
+                    <li>WellsTrade</li>
+                    <li>Sofi</li>
+                    <li>Public</li>
+                    <li>More coming soon!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #32CD32;">Ready to Start?</h2>
+        <p style="color: rgba(144, 238, 144, 0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+            Join the Greenseed community and start automating your RSA profits today.
+            <br>
+            Don't forget to use code <strong style="color: #32CD32;">CROSSROADS</strong> for the exclusive $75/month rate!
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="https://discord.gg/cdRvNkWxqR" class="cta-button cta-primary">
+                🚀 Join Greenseed Discord
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Online Sidehustles. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="back-link">← Back to Homepage</a>
+            </p>
+            <p style="color: #32CD32; font-style: italic; margin-top: 1rem;">
+                Website by Crossroads - Sidehustle Wiki
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
