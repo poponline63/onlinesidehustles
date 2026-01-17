@@ -918,7 +918,7 @@
                 <span class="meta-item">⏱️ 12 min read</span>
             </div>
             
-            <h1>Stake.us VIP Grinding Guide 2025: Make $20-$30/Day with Dice Strategy</h1>
+            <h1>Stake.us VIP Grinding Guide <span class="autoYear">2025</span>: Make $20-$30/Day with Dice Strategy</h1>
             
             <div class="article-intro">
                 <strong>Bottom Line:</strong> Stake.us is a crypto sweepstakes platform where most people simply gamble and hope to win. But with the right strategy combining <strong style="color: #FFD700;">credit card churning, VIP rewards, rakeback, and playthrough codes</strong>, you can turn a losing proposition into consistent <strong style="color: #FFD700;">$20-$30 daily profit ($600-$900/month)</strong>. This guide shows you exactly how.
@@ -1016,7 +1016,7 @@
             
             <div class="profit-item">
                 <div class="income-name">🎟️ Playthrough Codes</div>
-                <p>Stake.us drops free SC codes on their Twitter and social media. Claiming these requires recent playthrough activity, but they represent pure profit.</p>
+                <p>Stake.us drops free SC codes on their Twitter and social media platforms. Claiming these requires recent playthrough activity, but they represent pure profit.</p>
                 <div class="income-amount">Free SC (Major Profit Source)</div>
             </div>
         </div>
@@ -1296,7 +1296,7 @@
     
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Online Sidehustles. All rights reserved.</p>
+            <p>&copy; <span class="autoYear">2025</span> Online Sidehustles. All rights reserved.</p>
             <p style="color: #32CD32; font-style: italic; margin-top: 1rem;">Website by Crossroads - Sidehustle Wiki</p>
             <div class="footer-links">
                 <a href="index.html">Home</a>
@@ -1306,5 +1306,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Auto-update all year references
+        const currentYear = new Date().getFullYear();
+        // Update specific year elements by ID
+        const yearElements = ['currentYear', 'heroYear', 'sectionYear', 'heroDescYear'];
+        yearElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = currentYear;
+        });
+        // Update all elements with class 'autoYear'
+        document.querySelectorAll('.autoYear').forEach(element => {
+            element.textContent = currentYear;
+        });
+    </script>
 </body>
 </html>
