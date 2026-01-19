@@ -1,4 +1,34 @@
+# robots.txt for onlinesidehustles.info
+# Last updated: 2026-01-19
+
+# Allow all search engines to crawl everything
 User-agent: *
 Allow: /
 
+# Sitemap Index (contains all sitemaps)
 Sitemap: https://onlinesidehustles.info/sitemap.xml
+
+# Individual Sitemaps (for reference)
+Sitemap: https://onlinesidehustles.info/sitemap-pages.xml
+Sitemap: https://onlinesidehustles.info/sitemap-reviews.xml
+Sitemap: https://onlinesidehustles.info/sitemap-blog.xml
+
+# Crawl-delay (optional - gives server breathing room)
+Crawl-delay: 1
+
+# Block common unnecessary paths
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /api/
+
+# Allow important resources for rendering
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
