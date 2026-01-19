@@ -1,0 +1,54 @@
+name: Update Copyright Year
+
+on:
+  schedule:
+    # Runs at midnight on January 1st every year
+    - cron: '0 0 1 1 *'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  update-year:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Update year in all files
+        run: |
+          CURRENT_YEAR=$(date +%Y)
+          LAST_YEAR=$((CURRENT_YEAR - 1))
+          
+          echo "Updating year from ${LAST_YEAR} to ${CURRENT_YEAR}..."
+          
+          # Update copyright years in HTML files
+          find . -name "*.html" -type f | while read file; do
+            # Update "© 2025" to "© 2026" (or whatever the years are)
+            sed -i "s/© ${LAST_YEAR}/© ${CURRENT_YEAR}/g" "$file"
+            sed -i "s/&copy; ${LAST_YEAR}/\&copy; ${CURRENT_YEAR}/g" "$file"
+            
+            # Update meta tag years (like "2025" in descriptions)
+            sed -i "s/in ${LAST_YEAR}/in ${CURRENT_YEAR}/g" "$file"
+            sed -i "s/for ${LAST_YEAR}/for ${CURRENT_YEAR}/g" "$file"
+            
+            # Update title tags with years
+            sed -i "s/${LAST_YEAR} -/${CURRENT_YEAR} -/g" "$file"
+            sed -i "s/- ${LAST_YEAR}/- ${CURRENT_YEAR}/g" "$file"
+          done
+          
+          # Update sitemap lastmod dates
+          find . -name "sitemap*.xml" -type f | while read file; do
+            sed -i "s/<lastmod>${LAST_YEAR}/<lastmod>${CURRENT_YEAR}/g" "$file"
+          done
+          
+          echo "Year update complete!"
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto-update copyright year to $(date +%Y) [skip ci]"
+          git push
