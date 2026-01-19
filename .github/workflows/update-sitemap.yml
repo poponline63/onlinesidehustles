@@ -1,0 +1,145 @@
+name: Update Sitemaps
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+      - 'blog/**'
+      - 'reviews/**'
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Generate Sitemaps
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          SITE_URL="https://onlinesidehustles.info"
+          
+          # Start sitemap-pages.xml
+          cat > sitemap-pages.xml << 'HEADER'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          HEADER
+          
+          # Add homepage
+          echo "  <url>
+            <loc>${SITE_URL}/</loc>
+            <lastmod>${TODAY}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+          </url>" >> sitemap-pages.xml
+          
+          # Find all HTML files in root (excluding reviews/ and blog/)
+          for file in *.html; do
+            if [ -f "$file" ] && [ "$file" != "index.html" ]; then
+              filename="${file%.html}"
+              echo "  <url>
+            <loc>${SITE_URL}/${file}</loc>
+            <lastmod>${TODAY}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.8</priority>
+          </url>" >> sitemap-pages.xml
+            fi
+          done
+          
+          # Close sitemap-pages.xml
+          echo "</urlset>" >> sitemap-pages.xml
+          
+          # Start sitemap-reviews.xml
+          cat > sitemap-reviews.xml << 'HEADER'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          HEADER
+          
+          # Find all HTML files in reviews/
+          if [ -d "reviews" ]; then
+            for file in reviews/*.html; do
+              if [ -f "$file" ]; then
+                filename=$(basename "$file" .html)
+                echo "  <url>
+            <loc>${SITE_URL}/reviews/${filename}</loc>
+            <lastmod>${TODAY}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.85</priority>
+          </url>" >> sitemap-reviews.xml
+              fi
+            done
+          fi
+          
+          # Close sitemap-reviews.xml
+          echo "</urlset>" >> sitemap-reviews.xml
+          
+          # Start sitemap-blog.xml
+          cat > sitemap-blog.xml << 'HEADER'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://onlinesidehustles.info/blog</loc>
+              <lastmod>TODAY_PLACEHOLDER</lastmod>
+              <changefreq>daily</changefreq>
+              <priority>0.8</priority>
+            </url>
+          HEADER
+          
+          sed -i "s/TODAY_PLACEHOLDER/${TODAY}/g" sitemap-blog.xml
+          
+          # Find all HTML files in blog/
+          if [ -d "blog" ]; then
+            for file in blog/*.html; do
+              if [ -f "$file" ]; then
+                filename=$(basename "$file" .html)
+                echo "  <url>
+            <loc>${SITE_URL}/blog/${filename}</loc>
+            <lastmod>${TODAY}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.75</priority>
+          </url>" >> sitemap-blog.xml
+              fi
+            done
+          fi
+          
+          # Close sitemap-blog.xml
+          echo "</urlset>" >> sitemap-blog.xml
+          
+          # Create sitemap index
+          cat > sitemap.xml << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <sitemap>
+              <loc>${SITE_URL}/sitemap-pages.xml</loc>
+              <lastmod>${TODAY}</lastmod>
+            </sitemap>
+            <sitemap>
+              <loc>${SITE_URL}/sitemap-reviews.xml</loc>
+              <lastmod>${TODAY}</lastmod>
+            </sitemap>
+            <sitemap>
+              <loc>${SITE_URL}/sitemap-blog.xml</loc>
+              <lastmod>${TODAY}</lastmod>
+            </sitemap>
+          </sitemapindex>
+          EOF
+          
+          echo "Sitemaps generated successfully!"
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sitemap*.xml
+          git diff --staged --quiet || git commit -m "Auto-update sitemaps [skip ci]"
+          git push
