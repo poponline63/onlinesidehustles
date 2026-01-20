@@ -1,0 +1,32 @@
+name: Fix Year to 2026 (One-Time)
+
+on:
+  workflow_dispatch: # Manual trigger only
+
+jobs:
+  fix-year:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Update all 2025 to 2026
+        run: |
+          echo "Updating all 2025 references to 2026..."
+          
+          # Update all HTML files
+          find . -name "*.html" -type f -exec sed -i 's/2025/2026/g' {} \;
+          
+          # Update all XML files (sitemaps)
+          find . -name "*.xml" -type f -exec sed -i 's/2025/2026/g' {} \;
+          
+          echo "Done!"
+      
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "Update all years to 2026"
+          git push
