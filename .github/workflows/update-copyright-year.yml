@@ -1,11 +1,11 @@
 name: Update Copyright Year
-
 on:
   schedule:
     # Runs at midnight on January 1st every year
     - cron: '0 0 1 1 *'
+    # One-time fix: Runs January 20th at 12:01 AM Arizona time (7:01 AM UTC)
+    - cron: '1 7 20 1 *'
   workflow_dispatch: # Allows manual trigger
-
 jobs:
   update-year:
     runs-on: ubuntu-latest
@@ -36,6 +36,9 @@ jobs:
             # Update title tags with years
             sed -i "s/${LAST_YEAR} -/${CURRENT_YEAR} -/g" "$file"
             sed -i "s/- ${LAST_YEAR}/- ${CURRENT_YEAR}/g" "$file"
+            
+            # Update standalone year references (catches all remaining)
+            sed -i "s/2025/2026/g" "$file"
           done
           
           # Update sitemap lastmod dates
