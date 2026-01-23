@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Main Pages Sitemap -->
   <sitemap>
     <loc>https://onlinesidehustles.info/sitemap-pages.xml</loc>
-    <lastmod>2026-01-19</lastmod>
+    <lastmod>2026-01-23</lastmod>
   </sitemap>
-  
-  <!-- Casino Reviews Sitemap -->
   <sitemap>
     <loc>https://onlinesidehustles.info/sitemap-reviews.xml</loc>
-    <lastmod>2026-01-19</lastmod>
+    <lastmod>2026-01-23</lastmod>
   </sitemap>
-  
-  <!-- Blog Posts Sitemap -->
   <sitemap>
     <loc>https://onlinesidehustles.info/sitemap-blog.xml</loc>
-    <lastmod>2026-01-19</lastmod>
+    <lastmod>2026-01-23</lastmod>
   </sitemap>
-  
 </sitemapindex>
