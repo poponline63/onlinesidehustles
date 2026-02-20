@@ -187,7 +187,7 @@
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* Link Cards */
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; grid-auto-flow: row dense; align-items: start; }
         .link-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
             padding: 1.5rem; transition: all 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 1rem; }
         .link-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.07); border-color: rgba(76, 175, 80, 0.4);
@@ -598,7 +598,7 @@
             countBadge.textContent = `${links.length} active`;
             countBadge.style.display = 'inline-block';
 
-            const cardsHTML = links.map(link => {
+            const cardsHTML = [...links].reverse().map(link => {
                 const { title, description, freeBonusUrl, signupUrl, siteName, timestamp } = link;
                 const ago = timeAgo(timestamp);
 
