@@ -490,50 +490,6 @@
             document.getElementById('updateTime').textContent = timeString;
         }
 
-        function renderLinks(links) {
-            const container = document.getElementById('linksContainer');
-            const countBadge = document.getElementById('linkCount');
-
-            if (!links || links.length === 0) {
-                countBadge.style.display = 'none';
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">🎉</div>
-                        <h3 class="empty-title">No Links Yet Today</h3>
-                        <p class="empty-description">Check back soon! New links are added throughout the day.<br>Join our Discord to get notified instantly when new links drop.</p>
-                        <a href="https://discord.com/invite/onlinesidehustles" class="discord-cta" target="_blank">Join Discord for Instant Alerts →</a>
-                        <p style="color: #FFD700; font-weight: 600; margin-top: 1rem;">📍 Find links in the #free-sc-giveaways channel</p>
-                    </div>`;
-                return;
-            }
-
-            countBadge.textContent = `${links.length} active`;
-            countBadge.style.display = 'inline-block';
-
-            const cardsHTML = links.map(link => {
-                const title = link.title || 'Free SC Giveaway';
-                const description = link.description || '';
-                const url = link.url || '#';
-                const timestamp = link.timestamp || '';
-                const ago = timeAgo(timestamp);
-
-                return `
-                    <div class="link-card">
-                        <div class="link-card-header">
-                            <div class="link-card-title">${escapeHtml(title)}</div>
-                            <div class="link-card-badge">🎁 FREE</div>
-                        </div>
-                        ${description ? `<div class="link-card-description">${escapeHtml(description)}</div>` : ''}
-                        <div class="link-card-footer">
-                            <div class="link-card-time">${ago ? '🕐 ' + ago : ''}</div>
-                            <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="claim-link">Claim Now →</a>
-                        </div>
-                    </div>`;
-            }).join('');
-
-            container.innerHTML = `<div class="links-grid">${cardsHTML}</div>`;
-        }
-
         function escapeHtml(text) {
             if (!text) return '';
             return String(text)
@@ -544,38 +500,57 @@
                 .replace(/'/g, '&#039;');
         }
 
-        function extractFirstUrl(text) {
-            if (!text) return '';
-            const match = text.match(/https?:\/\/[^\s\)\]>,"']+/);
-            return match ? match[0] : '';
+        function extractAllUrls(text) {
+            if (!text) return [];
+            const urls = [];
+            // First grab markdown link URLs [text](url)
+            const mdMatches = [...text.matchAll(/\[([^\]]*)\]\((https?:\/\/[^\)]+)\)/g)];
+            mdMatches.forEach(m => urls.push(m[2]));
+            // Then grab bare URLs (not already inside markdown)
+            const bare = text.replace(/\[([^\]]*)\]\((https?:\/\/[^\)]+)\)/g, '');
+            const bareMatches = [...bare.matchAll(/https?:\/\/[^\s\)\]>,"']+/g)];
+            bareMatches.forEach(m => urls.push(m[0]));
+            return [...new Set(urls)];
+        }
+
+        function extractSiteName(url) {
+            if (!url) return '';
+            try {
+                const hostname = new URL(url).hostname.replace('www.', '');
+                const name = hostname.split('.')[0];
+                return name.charAt(0).toUpperCase() + name.slice(1);
+            } catch { return ''; }
         }
 
         function cleanDescription(text) {
             if (!text) return '';
-            // Remove markdown links [text](url) — keep just the text
-            let cleaned = text.replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '$1');
+            let cleaned = text;
+            // Remove markdown links entirely [text](url)
+            cleaned = cleaned.replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '');
             // Remove bare URLs
             cleaned = cleaned.replace(/https?:\/\/[^\s\)\]>,"']+/g, '');
-            // Clean up extra spaces, pipes, dashes left behind
-            cleaned = cleaned.replace(/\s{2,}/g, ' ').replace(/^\s*[-|:]\s*/gm, '').trim();
+            // Remove emoji+label combos like 🌳 Get Free Bonus: / 🌱 Signup Here:
+            cleaned = cleaned.replace(/[\u{1F300}-\u{1FAFF}]\s*(Get Free Bonus|Signup Here|Free Bonus|Signup)\s*:?\s*/giu, '');
+            cleaned = cleaned.replace(/(Get Free Bonus|Signup Here|Free Bonus|Signup)\s*:?\s*/gi, '');
+            // Clean leftover whitespace/punctuation
+            cleaned = cleaned.replace(/\s*[\|:]\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
             return cleaned;
         }
 
         function extractTitle(rawTitle, rawDescription) {
             if (rawTitle && rawTitle.trim()) return rawTitle.trim();
             if (!rawDescription) return 'Free SC Giveaway';
-            // Use first sentence or text before a dash/colon/newline as title
             const firstLine = rawDescription
-                .replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '$1') // strip markdown links
+                .replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '')
+                .replace(/https?:\/\/[^\s]+/g, '')
                 .split(/[\n\r]/)[0]
                 .split(' - ')[0]
-                .replace(/https?:\/\/[^\s]+/g, '')
+                .replace(/[\u{1F300}-\u{1FAFF}]/gu, '')
                 .trim();
             return firstLine.length > 5 ? firstLine.substring(0, 80) : 'Free SC Giveaway';
         }
 
         function parseGoogleSheetData(raw) {
-            // Google Sheets wraps response in a callback — strip it
             const jsonStr = raw.replace(/^.*?({.*}).*?$/s, '$1');
             const json = JSON.parse(jsonStr);
             const rows = json.table?.rows || [];
@@ -587,16 +562,73 @@
                 const rawUrl         = String(cells[2]?.v || '');
                 const rawTimestamp   = String(cells[3]?.v || '');
 
-                // Use Column C URL if available, otherwise extract from description
-                const url = (rawUrl.startsWith('http'))
-                    ? rawUrl
-                    : extractFirstUrl(rawDescription);
+                const allUrls = extractAllUrls(rawDescription);
 
-                const title = extractTitle(rawTitle, rawDescription);
+                // Free Bonus = first URL found, Signup = second (if different), fallback to first
+                const freeBonusUrl = rawUrl.startsWith('http') ? rawUrl : (allUrls[0] || '');
+                const signupUrl    = allUrls[1] && allUrls[1] !== freeBonusUrl ? allUrls[1] : freeBonusUrl;
+
+                const title       = extractTitle(rawTitle, rawDescription);
                 const description = cleanDescription(rawDescription);
+                const siteName    = extractSiteName(freeBonusUrl || signupUrl);
 
-                return { title, description, url, timestamp: rawTimestamp };
-            }).filter(item => item.url && item.url.startsWith('http'));
+                return { title, description, freeBonusUrl, signupUrl, siteName, timestamp: rawTimestamp };
+            }).filter(item => item.freeBonusUrl || item.signupUrl);
+        }
+
+        function renderLinks(links) {
+            const container = document.getElementById('linksContainer');
+            const countBadge = document.getElementById('linkCount');
+
+            if (!links || links.length === 0) {
+                countBadge.style.display = 'none';
+                container.innerHTML = `
+                    <div class="empty-state" style="background:linear-gradient(135deg,rgba(88,101,242,0.1),rgba(114,137,218,0.05));border-color:rgba(88,101,242,0.3);">
+                        <div class="empty-icon">🎉</div>
+                        <h3 class="empty-title">Live Links Coming Soon!</h3>
+                        <p class="empty-description" style="margin-bottom:1.5rem;">We're launching automated live giveaway links very soon!<br>In the meantime, join our Discord for daily free SC links.</p>
+                        <a href="https://discord.com/invite/onlinesidehustles" class="discord-cta" target="_blank" style="background:linear-gradient(135deg,#5865F2,#7289DA);">Join Discord for Daily Links →</a>
+                        <p style="color:#FFD700;font-weight:600;margin-top:1rem;">📍 Find links in the #free-sc-giveaways channel</p>
+                    </div>`;
+                return;
+            }
+
+            countBadge.textContent = `${links.length} active`;
+            countBadge.style.display = 'inline-block';
+
+            const cardsHTML = links.map(link => {
+                const { title, description, freeBonusUrl, signupUrl, siteName, timestamp } = link;
+                const ago = timeAgo(timestamp);
+
+                // Show site name once in title, not repeated in description
+                const displayTitle = (siteName && !title.toLowerCase().includes(siteName.toLowerCase()))
+                    ? `${siteName} — ${title}`
+                    : title;
+
+                // Remove site name from description to avoid repetition
+                const cleanDesc = siteName
+                    ? description.replace(new RegExp(siteName + '\\s*[-—]?\\s*', 'gi'), '').trim()
+                    : description;
+
+                const bonusBtn  = `<a href="${escapeHtml(freeBonusUrl || signupUrl)}" target="_blank" rel="noopener noreferrer" class="claim-link" style="flex:1;text-align:center;padding:0.8rem 0.5rem;background:linear-gradient(135deg,#4CAF50,#8BC34A);">🌱 Free Bonus</a>`;
+                const signupBtn = `<a href="${escapeHtml(signupUrl || freeBonusUrl)}" target="_blank" rel="noopener noreferrer" class="claim-link" style="flex:1;text-align:center;padding:0.8rem 0.5rem;background:linear-gradient(135deg,#2196F3,#1976D2);">🌱 Signup Here</a>`;
+
+                return `
+                    <div class="link-card">
+                        <div class="link-card-header">
+                            <div class="link-card-title">${escapeHtml(displayTitle)}</div>
+                            <div class="link-card-badge">🎁 FREE</div>
+                        </div>
+                        ${cleanDesc ? `<div class="link-card-description">${escapeHtml(cleanDesc)}</div>` : ''}
+                        ${ago ? `<div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.25rem;">🕐 ${ago}</div>` : ''}
+                        <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+                            ${bonusBtn}
+                            ${signupBtn}
+                        </div>
+                    </div>`;
+            }).join('');
+
+            container.innerHTML = `<div class="links-grid">${cardsHTML}</div>`;
         }
 
         async function fetchLatestLinks(manualRefresh = false) {
