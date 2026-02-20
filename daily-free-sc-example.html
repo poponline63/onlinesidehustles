@@ -513,18 +513,25 @@
             return [...new Set(urls)];
         }
 
-        function extractSiteName(url) {
-            if (!url) return '';
-            try {
-                const hostname = new URL(url).hostname.replace('www.', '');
-                const name = hostname.split('.')[0];
-                return name.charAt(0).toUpperCase() + name.slice(1);
-            } catch { return ''; }
+        function extractSiteNameFromDesc(text) {
+            // Extract site name = everything before the first ' - ' in the description
+            if (!text) return '';
+            const stripped = text
+                .replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '')
+                .replace(/https?:\/\/[^\s]+/g, '')
+                .replace(/[\u{1F300}-\u{1FAFF}]/gu, '')
+                .trim();
+            const dashIdx = stripped.indexOf(' - ');
+            if (dashIdx > 0) return stripped.substring(0, dashIdx).trim();
+            return '';
         }
 
         function cleanDescription(text) {
             if (!text) return '';
             let cleaned = text;
+            // Remove the site name prefix (everything before and including the first ' - ')
+            const dashIdx = cleaned.indexOf(' - ');
+            if (dashIdx > 0) cleaned = cleaned.substring(dashIdx + 3);
             // Remove markdown links entirely [text](url)
             cleaned = cleaned.replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '');
             // Remove bare URLs
@@ -538,16 +545,11 @@
         }
 
         function extractTitle(rawTitle, rawDescription) {
+            // If Column A has a title, use it directly
             if (rawTitle && rawTitle.trim()) return rawTitle.trim();
             if (!rawDescription) return 'Free SC Giveaway';
-            const firstLine = rawDescription
-                .replace(/\[([^\]]+)\]\(https?:\/\/[^\)]+\)/g, '')
-                .replace(/https?:\/\/[^\s]+/g, '')
-                .split(/[\n\r]/)[0]
-                .split(' - ')[0]
-                .replace(/[\u{1F300}-\u{1FAFF}]/gu, '')
-                .trim();
-            return firstLine.length > 5 ? firstLine.substring(0, 80) : 'Free SC Giveaway';
+            // Otherwise use text before first ' - ' as the site/title name
+            return extractSiteNameFromDesc(rawDescription) || 'Free SC Giveaway';
         }
 
         function parseGoogleSheetData(raw) {
@@ -570,7 +572,7 @@
 
                 const title       = extractTitle(rawTitle, rawDescription);
                 const description = cleanDescription(rawDescription);
-                const siteName    = extractSiteName(freeBonusUrl || signupUrl);
+                const siteName    = extractSiteNameFromDesc(rawDescription);
 
                 return { title, description, freeBonusUrl, signupUrl, siteName, timestamp: rawTimestamp };
             }).filter(item => item.freeBonusUrl || item.signupUrl);
@@ -600,12 +602,10 @@
                 const { title, description, freeBonusUrl, signupUrl, siteName, timestamp } = link;
                 const ago = timeAgo(timestamp);
 
-                // Show site name once in title, not repeated in description
-                const displayTitle = (siteName && !title.toLowerCase().includes(siteName.toLowerCase()))
-                    ? `${siteName} — ${title}`
-                    : title;
+                // Title is already the site name extracted from description
+                const displayTitle = title;
 
-                // Remove site name from description to avoid repetition
+                // Remove site name from description so it doesn't repeat
                 const cleanDesc = siteName
                     ? description.replace(new RegExp(siteName + '\\s*[-—]?\\s*', 'gi'), '').trim()
                     : description;
