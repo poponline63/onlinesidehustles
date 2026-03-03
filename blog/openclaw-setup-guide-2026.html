@@ -135,34 +135,30 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 
 <div class="vps-card">
   <h4>✅ Recommended VPS: Virtarix</h4>
-  <p>I personally use <a href="https://virtarix.com/" target="_blank" rel="noopener">Virtarix</a> for my OpenClaw deployment. Clean Ubuntu images, fast setup, reliable uptime. Exactly what you need for a 24/7 AI assistant — no unnecessary bloat.</p>
-  <p><strong>Minimum specs needed:</strong> 1 vCPU · 1–2 GB RAM · 20 GB storage — a basic plan is more than enough to start.</p>
+  <p>I personally use <a href="https://virtarix.com/" target="_blank" rel="noopener">Virtarix</a> for my OpenClaw deployment. Windows VPS options, fast setup, reliable uptime. Exactly what you need for a 24/7 AI assistant — no unnecessary bloat.</p>
+  <p><strong>Plan I use: WIN VPS M</strong> — 6 CPU cores · 16 GB RAM · 100 GB NVMe · Unlimited bandwidth · From $27.40/month. More than enough headroom for OpenClaw and anything else you run alongside it.</p>
 </div>
 
-<div class="warn-box">
-  <h4>⚠️ Use a Clean Base Image</h4>
-  <p>When spinning up your VPS, choose a plain <strong>Ubuntu 22.04 LTS</strong> or <strong>24.04 LTS</strong> image — not a "1-click app" marketplace image. Marketplace images often have conflicting software pre-installed. A clean base OS ensures the OpenClaw installer works without issues. The OpenClaw docs specifically call this out.</p>
+<div class="highlight-box">
+  <h4>💡 Windows vs Linux VPS</h4>
+  <p>OpenClaw runs on both. A Windows VPS is a great choice if you're already comfortable with the Windows environment — you connect via Remote Desktop (RDP) instead of SSH, and run commands in PowerShell. The OpenClaw installer has a dedicated Windows version so the setup process is just as smooth.</p>
 </div>
 
 <h2 id="install">3. Step 2 — Install OpenClaw</h2>
 <p>Once your VPS is running, connect via SSH and update the system first:</p>
 
 <div class="step-block">
-  <div class="step-num">STEP 1 — CONNECT & UPDATE</div>
-  <h3>SSH In and Update</h3>
-  <div class="code-block">
-    <span class="comment"># Replace with your VPS IP address</span><br>
-    ssh root@YOUR_VPS_IP<br><br>
-    <span class="comment"># Update before installing anything</span><br>
-    apt update &amp;&amp; apt upgrade -y
-  </div>
+  <div class="step-num">STEP 1 — CONNECT VIA RDP</div>
+  <h3>Remote Desktop Into Your VPS</h3>
+  <p>Your VPS provider will email you the IP address, username, and password. On your local Windows machine, open <strong>Remote Desktop Connection</strong> (press Win+R, type <code>mstsc</code>, hit Enter), enter the VPS IP, and log in.</p>
+  <p>Once inside, right-click the Start menu and open <strong>Windows PowerShell (Admin)</strong>.</p>
 </div>
 
 <div class="step-block">
   <div class="step-num">STEP 2 — INSTALL</div>
   <h3>Run the OpenClaw Installer</h3>
-  <p>One command handles everything — Node.js detection, installation, and the onboarding wizard:</p>
-  <div class="code-block">curl -fsSL https://openclaw.ai/install.sh | bash</div>
+  <p>One PowerShell command handles everything — Node.js detection, installation, and the onboarding wizard:</p>
+  <div class="code-block">iwr -useb https://openclaw.ai/install.ps1 | iex</div>
   <p>The installer will detect if Node.js 22+ is missing and install it automatically. Follow the onboarding prompts when they appear.</p>
 </div>
 
@@ -204,7 +200,7 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 </div>
 
 <h2 id="connect">6. Step 5 — Connect to Discord</h2>
-<p>Back in your VPS terminal, add Discord as a channel. OpenClaw will walk you through the configuration:</p>
+<p>Back in your VPS PowerShell window, add Discord as a channel. OpenClaw will walk you through the configuration:</p>
 <div class="code-block">openclaw channels add discord</div>
 <p>You'll be prompted for your bot token, server (guild) ID, and which channels it should have access to. Once entered, it connects immediately.</p>
 
