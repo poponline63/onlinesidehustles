@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>OpenClaw AI Setup Guide 2026 | AI Assistant for Side Hustles</title>
+    <meta name="description" content="Step-by-step OpenClaw AI setup guide. Install your own AI assistant on a VPS, connect it to Discord, and automate your sweepstakes and side hustle workflows in 2026.">
+    <meta name="keywords" content="OpenClaw setup 2026, OpenClaw install, AI assistant Discord bot, sweepstakes automation AI, side hustle AI assistant, VPS AI setup">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Online Sidehustles">
+    <link rel="canonical" href="https://onlinesidehustles.info/openclaw-setup.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/openclaw-setup.html">
+    <meta property="og:title" content="OpenClaw AI Setup Guide 2026">
+    <meta property="og:description" content="Install your own AI assistant on a VPS and connect it to Discord. Step-by-step OpenClaw setup guide.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenClaw AI Setup Guide 2026">
+    <meta name="twitter:description" content="Install your own AI assistant on a VPS and connect it to Discord. Step-by-step guide.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23004D40'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='28'%3E🤖%3C/text%3E%3C/svg%3E">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%);
+            color: white; min-height: 100vh; overflow-x: hidden;
+        }
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(76,175,80,0.10) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 40%);
+            pointer-events: none; z-index: 0;
+        }
+        .floating-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0; }
+        .floating-element { position: absolute; opacity: 0.05; animation: float linear infinite; font-size: 3rem; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.05; } 90% { opacity: 0.05; }
+            100% { transform: translateY(-100px) translateX(var(--drift)) rotate(360deg); opacity: 0; }
+        }
+        .floating-element:nth-child(1) { left: 8%;  animation-duration: 26s; --drift: 40px; }
+        .floating-element:nth-child(2) { left: 25%; animation-duration: 31s; animation-delay: 4s; --drift: -45px; }
+        .floating-element:nth-child(3) { left: 50%; animation-duration: 29s; animation-delay: 7s; --drift: 30px; }
+        .floating-element:nth-child(4) { left: 70%; animation-duration: 33s; animation-delay: 2s; --drift: -40px; }
+        .floating-element:nth-child(5) { left: 88%; animation-duration: 28s; animation-delay: 9s; --drift: 55px; }
+        .content-wrapper { position: relative; z-index: 1; }
+        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
+        .logo-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg,#004D40,#4CAF50); display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: #4CAF50; }
+        .nav-btn { background: linear-gradient(135deg,#4CAF50,#8BC34A); color: white !important; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 600 !important; }
+
+        /* Hero */
+        .hero { padding: 140px 2rem 80px; text-align: center; background: linear-gradient(135deg, rgba(76,175,80,0.08), rgba(33,150,243,0.08)); border-bottom: 1px solid rgba(76,175,80,0.2); }
+        .hero-badge { background: rgba(76,175,80,0.15); border: 1px solid rgba(76,175,80,0.4); color: #4CAF50; padding: 0.5rem 1.5rem; border-radius: 25px; font-size: 0.9rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; letter-spacing: 1px; }
+        .hero h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 span { background: linear-gradient(135deg, #4CAF50, #8BC34A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: rgba(255,255,255,0.75); max-width: 650px; margin: 0 auto 2.5rem; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg,#4CAF50,#8BC34A); color: white; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(76,175,80,0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+        /* Stats */
+        .stats { max-width: 1200px; margin: -2rem auto 0; padding: 0 2rem; position: relative; z-index: 2; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+        .stat-card { background: rgba(20,20,20,0.9); border: 1px solid rgba(76,175,80,0.25); border-radius: 16px; padding: 1.8rem; text-align: center; backdrop-filter: blur(10px); }
+        .stat-number { font-size: 2.2rem; font-weight: 900; color: #4CAF50; }
+        .stat-label { color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-size: 0.9rem; }
+
+        /* Sections */
+        .section { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+        .section-title span { color: #4CAF50; }
+        .section-sub { color: rgba(255,255,255,0.65); font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.6; }
+
+        /* VPS card */
+        .vps-card { background: linear-gradient(135deg, rgba(33,150,243,0.12), rgba(76,175,80,0.10)); border: 2px solid rgba(33,150,243,0.4); border-radius: 20px; padding: 3rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin-bottom: 3rem; }
+        .vps-card h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; color: #64B5F6; }
+        .vps-card p { color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1rem; }
+        .vps-badge { background: rgba(33,150,243,0.2); color: #64B5F6; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.5rem; }
+        .vps-rec { background: rgba(76,175,80,0.2); color: #4CAF50; padding: 0.3rem 0.8rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-left: 0.5rem; }
+        .vps-btn { background: linear-gradient(135deg, #2196F3, #1976D2); color: white; padding: 1rem 2rem; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 1rem; white-space: nowrap; text-align: center; display: block; transition: all 0.3s; }
+        .vps-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(33,150,243,0.4); }
+
+        /* Steps */
+        .steps-list { display: grid; gap: 2rem; }
+        .step-item { background: rgba(25,25,25,0.8); border: 1px solid rgba(76,175,80,0.2); border-radius: 16px; padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; transition: border-color 0.3s; }
+        .step-item:hover { border-color: rgba(76,175,80,0.5); }
+        .step-num { width: 52px; height: 52px; background: linear-gradient(135deg,#4CAF50,#8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.4rem; flex-shrink: 0; }
+        .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .step-content p { color: rgba(255,255,255,0.65); line-height: 1.6; font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .step-content p:last-child { margin-bottom: 0; }
+        code { background: rgba(76,175,80,0.15); border: 1px solid rgba(76,175,80,0.3); color: #4CAF50; padding: 0.15rem 0.5rem; border-radius: 5px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.9rem; }
+        .code-block { background: rgba(0,0,0,0.5); border: 1px solid rgba(76,175,80,0.25); border-radius: 10px; padding: 1rem 1.5rem; margin-top: 0.75rem; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.9rem; color: #4CAF50; overflow-x: auto; line-height: 1.7; }
+        .code-block .comment { color: rgba(255,255,255,0.35); }
+        .code-block .cmd { color: #A5D6A7; }
+
+        /* Tip / note */
+        .tip-box { background: rgba(76,175,80,0.1); border-left: 4px solid #4CAF50; border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+        .tip-box h4 { color: #4CAF50; margin-bottom: 0.5rem; font-size: 1rem; }
+        .tip-box p, .tip-box ul { color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6; }
+        .tip-box ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+        .warn-box { background: rgba(255,193,7,0.1); border-left: 4px solid #FFC107; border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+        .warn-box h4 { color: #FFC107; margin-bottom: 0.5rem; }
+        .warn-box p { color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Features grid */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: rgba(25,25,25,0.8); border: 1px solid rgba(76,175,80,0.2); border-radius: 16px; padding: 2rem; }
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: #4CAF50; }
+        .feature-card p { color: rgba(255,255,255,0.65); font-size: 0.92rem; line-height: 1.6; }
+
+        /* CTA */
+        .cta-section { background: linear-gradient(135deg, rgba(76,175,80,0.15), rgba(33,150,243,0.10)); border: 1px solid rgba(76,175,80,0.3); border-radius: 24px; padding: 4rem 2rem; text-align: center; max-width: 1200px; margin: 4rem auto; }
+        .cta-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+        .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2rem; }
+
+        footer { background: rgba(0,0,0,0.8); padding: 3rem 2rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        footer p { color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #4CAF50; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .vps-card { grid-template-columns: 1fr; }
+            .step-item { grid-template-columns: 1fr; }
+            .step-num { width: 40px; height: 40px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="floating-bg">
+    <div class="floating-element">🤖</div>
+    <div class="floating-element">⚡</div>
+    <div class="floating-element">🖥️</div>
+    <div class="floating-element">🔧</div>
+    <div class="floating-element">💡</div>
+</div>
+<div class="content-wrapper">
+
+<header>
+<nav>
+    <a href="/index.html" class="logo">
+        <div class="logo-icon">🤖</div>
+        ONLINE SIDEHUSTLES
+    </a>
+    <div class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="/daily-login-guide.html">Sweepstakes</a>
+        <a href="/blog.html">Blog</a>
+        <a href="https://discord.com/invite/onlinesidehustles" target="_blank" class="nav-btn">Join Discord</a>
+    </div>
+</nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-badge">🤖 AI AUTOMATION SETUP GUIDE</div>
+    <h1>Set Up <span>OpenClaw AI</span><br>on Your Own VPS</h1>
+    <p>Run your own personal AI assistant that lives in your Discord server, automates tasks, tracks your sweepstakes sites, and works 24/7 — even when you're offline. This is the exact setup I use.</p>
+    <div class="hero-btns">
+        <a href="#step-1" class="btn-primary">Start Setup →</a>
+        <a href="https://discord.com/invite/onlinesidehustles" target="_blank" class="btn-secondary">Join the Community</a>
+    </div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Always online on VPS</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">~15 min</div>
+            <div class="stat-label">Full setup time</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Free</div>
+            <div class="stat-label">OpenClaw is open source</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Discord</div>
+            <div class="stat-label">Connects directly to your server</div>
+        </div>
+    </div>
+</div>
+
+<!-- What is OpenClaw -->
+<section class="section">
+    <h2 class="section-title">What Is <span>OpenClaw?</span></h2>
+    <p class="section-sub">OpenClaw is an open-source AI assistant framework that gives you a personal Claude/GPT-powered AI that runs on your own machine or VPS, connects to your Discord server, has access to your files and tools, and can automate tasks on your behalf — 24 hours a day.</p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Lives in Your Discord</h3>
+            <p>OpenClaw connects directly to your Discord server as a bot. Talk to it just like you'd message a person — it reads and responds in any channel you give it access to.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Powered by Claude / GPT</h3>
+            <p>Uses the latest Claude or GPT-4 models under the hood. You supply your own API key, so you're in full control of which model and how much you spend.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3>Full Tool Access</h3>
+            <p>Can browse the web, read and write files, run shell commands, take screenshots, send messages, execute code — whatever you give it permission to do.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⏰</div>
+            <h3>Runs 24/7 on VPS</h3>
+            <p>On a VPS it stays online permanently. No need to keep your PC on. It can monitor things, post updates, and complete tasks even while you sleep.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Skills System</h3>
+            <p>Extend it with skills — pre-built packages that give the AI new capabilities like weather, TTS voice, web search, and more. Install them with one command.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Your Data Stays Private</h3>
+            <p>Because it runs on your own machine, your files and conversations don't go through any third-party servers. Full privacy by default.</p>
+        </div>
+    </div>
+</section>
+
+<!-- VPS Recommendation -->
+<section class="section" id="step-1">
+    <h2 class="section-title">Step 1 — <span>Get a VPS</span></h2>
+    <p class="section-sub">A VPS (Virtual Private Server) is a cloud computer that runs 24/7. You connect to it remotely and install OpenClaw there so your AI assistant is always online — even when your PC is off. I strongly recommend starting with a fresh VPS rather than installing on your personal machine.</p>
+
+    <div class="vps-card">
+        <div>
+            <span class="vps-badge">✅ RECOMMENDED VPS</span>
+            <span class="vps-rec">MY CHOICE</span>
+            <h3>Virtarix</h3>
+            <p>This is the VPS provider I personally use for my OpenClaw setup. Clean Ubuntu images, fast provisioning, reliable uptime, and straightforward pricing. Exactly what you need for a 24/7 AI assistant deployment.</p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem;">For OpenClaw you only need a basic plan — 1 vCPU, 1-2GB RAM, and 20GB storage is plenty to get started.</p>
+        </div>
+        <a href="https://virtarix.com/" target="_blank" rel="noopener" class="vps-btn">
+            Get a VPS at<br>Virtarix.com →
+        </a>
+    </div>
+
+    <div class="warn-box">
+        <h4>⚠️ Use a Clean Base Image</h4>
+        <p>When spinning up your VPS, choose a plain Ubuntu 22.04 LTS or 24.04 LTS image — not a "1-click app" marketplace image. A clean base OS ensures nothing conflicts with the OpenClaw installer.</p>
+    </div>
+
+    <div class="tip-box">
+        <h4>💡 Recommended VPS Specs</h4>
+        <ul>
+            <li>OS: Ubuntu 22.04 LTS or 24.04 LTS</li>
+            <li>RAM: 1–2 GB minimum (2 GB recommended)</li>
+            <li>Storage: 20 GB+</li>
+            <li>vCPU: 1+ (1 is fine for most use cases)</li>
+            <li>Location: Closest to you for lowest latency</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Setup Steps -->
+<section class="section">
+    <h2 class="section-title">Step-by-Step <span>Setup</span></h2>
+    <p class="section-sub">Once your VPS is running, the full setup takes about 15 minutes. Everything below runs in your VPS terminal via SSH.</p>
+
+    <div class="steps-list">
+
+        <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h3>Connect to Your VPS via SSH</h3>
+                <p>From your local machine, connect to your new VPS. Your VPS provider will give you the IP address and root credentials.</p>
+                <div class="code-block">
+                    <span class="comment"># Replace YOUR_VPS_IP with your actual IP address</span><br>
+                    <span class="cmd">ssh root@YOUR_VPS_IP</span>
+                </div>
+                <p>Once connected, update the system before installing anything:</p>
+                <div class="code-block">
+                    <span class="cmd">apt update && apt upgrade -y</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h3>Run the OpenClaw Installer</h3>
+                <p>OpenClaw provides a one-line installer that handles Node.js detection, installation, and the initial setup wizard automatically.</p>
+                <div class="code-block">
+                    <span class="cmd">curl -fsSL https://openclaw.ai/install.sh | bash</span>
+                </div>
+                <p>The installer will detect if Node.js 22+ is missing and install it for you. Follow the onboarding prompts when they appear.</p>
+                <div class="tip-box">
+                    <h4>💡 Prefer npm directly?</h4>
+                    <p>If you already have Node 22+ installed, you can also run:<br>
+                    <code>npm install -g openclaw@latest</code><br>
+                    <code>openclaw onboard --install-daemon</code></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h3>Add Your AI Model API Key</h3>
+                <p>OpenClaw needs an API key to power its AI responses. The easiest option is Anthropic's Claude API. Get a key at <strong>console.anthropic.com</strong> — Claude Sonnet 4 is the recommended model for a good balance of intelligence and cost.</p>
+                <p>During onboarding OpenClaw will prompt you for this, or you can configure it manually:</p>
+                <div class="code-block">
+                    <span class="cmd">openclaw configure</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h3>Create a Discord Bot</h3>
+                <p>Go to <strong>discord.com/developers/applications</strong>, create a New Application, then:</p>
+                <ul style="color:rgba(255,255,255,0.7); margin: 0.75rem 0 0.75rem 1.2rem; line-height: 1.8; font-size:0.95rem;">
+                    <li>Click <strong>Bot</strong> → Reset Token → copy your bot token</li>
+                    <li>Enable <strong>Message Content Intent</strong> and <strong>Server Members Intent</strong></li>
+                    <li>Under <strong>OAuth2</strong>, generate an invite URL with <code>bot</code> + <code>applications.commands</code> scopes and <code>Send Messages</code>, <code>Read Message History</code>, <code>Embed Links</code>, <code>Attach Files</code> permissions</li>
+                    <li>Paste the invite URL in your browser to add the bot to your server</li>
+                </ul>
+                <p>Keep your bot token — you'll need it in the next step.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <h3>Connect OpenClaw to Discord</h3>
+                <p>Back in your VPS terminal, add Discord as a channel. OpenClaw will prompt you for your bot token and guild (server) ID.</p>
+                <div class="code-block">
+                    <span class="cmd">openclaw channels add discord</span>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 Finding Your Guild ID</h4>
+                    <p>In Discord: User Settings → Advanced → enable Developer Mode. Then right-click your server name and click "Copy Server ID".</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-content">
+                <h3>Start the Gateway and Verify</h3>
+                <p>Start OpenClaw's background service (the "gateway") and verify everything is working:</p>
+                <div class="code-block">
+                    <span class="cmd">openclaw gateway start</span><br>
+                    <span class="cmd">openclaw status</span><br>
+                    <span class="cmd">openclaw doctor</span>
+                </div>
+                <p>If everything is green, head to your Discord server and send your bot a direct message. It should respond within a few seconds.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-num">8</div>
+            <div class="step-content">
+                <h3>Keep It Running After Reboot</h3>
+                <p>The gateway daemon is installed as a system service by default, so it restarts automatically if your VPS reboots. Verify it's set to auto-start:</p>
+                <div class="code-block">
+                    <span class="cmd">openclaw gateway status</span>
+                </div>
+                <p>Your AI assistant is now live 24/7. Message it in Discord from anywhere and it will respond.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- What you can do -->
+<section class="section">
+    <h2 class="section-title">What You Can Do <span>With It</span></h2>
+    <p class="section-sub">Once OpenClaw is running on your VPS and connected to Discord, the possibilities expand quickly. Here's what our community uses it for:</p>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🎰</div>
+            <h3>Sweepstakes Tracking</h3>
+            <p>Ask it to check for new sites, compare bonus offers, update your spreadsheet, or draft announcements for your community — all from a Discord message.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📢</div>
+            <h3>Discord Announcements</h3>
+            <p>Tell it what you want to announce and it writes it in your style, formats it, and can even post it directly to your Discord channels.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎬</div>
+            <h3>Video Content</h3>
+            <p>Generate YouTube Shorts and TikTok videos from screen recordings with auto-generated text overlays and captions — ready to upload.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Blog & SEO Articles</h3>
+            <p>Brief it on a topic and it writes full SEO-optimized blog articles matching your site's style, then commits and pushes them to your GitHub repo.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔔</div>
+            <h3>Heartbeat Monitoring</h3>
+            <p>Set it to check emails, calendar events, and community activity periodically — and proactively ping you in Discord when something needs attention.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Community Help</h3>
+            <p>In your Discord server it can answer member questions about your guides, link to resources, and handle FAQs while you're busy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>🤖 Need Help Setting It Up?</h2>
+    <p>Join our Discord community where I share my exact OpenClaw configuration, the skills I use, and can answer any setup questions you run into along the way.</p>
+    <a href="https://discord.com/invite/onlinesidehustles" target="_blank" class="btn-primary">Join the Community →</a>
+</section>
+
+<footer>
+    <p>© 2026 Online Sidehustles · All rights reserved</p>
+    <p style="color:#4CAF50; font-style:italic; margin-bottom:1rem;">Website by Crossroads - Sidehustle Wiki</p>
+    <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/daily-login-guide.html">Sweepstakes</a>
+        <a href="/credit-card-churning.html">CC Churning</a>
+        <a href="/matched-betting.html">Matched Betting</a>
+        <a href="/blog.html">Blog</a>
+        <a href="https://discord.com/invite/onlinesidehustles">Discord</a>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>
