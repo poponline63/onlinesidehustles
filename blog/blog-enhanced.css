@@ -743,23 +743,6 @@ body::after {
     50%       { opacity: 1.0; }
 }
 
-/* ---- Scanning light effect on left bar ---- */
-.oc-scan-line {
-    position: fixed;
-    left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        rgba(50,205,50,0.8) 0%,
-        rgba(255,215,0,0.4) 50%,
-        rgba(50,205,50,0.0) 100%);
-    z-index: 501;
-    pointer-events: none;
-    animation: scanDown 8s linear infinite;
-    box-shadow: 0 0 12px rgba(50,205,50,0.6);
-    width: 40%;
-}
-@keyframes scanDown {
-    0%   { top: -2px; opacity: 0; }
     5%   { opacity: 1; }
     95%  { opacity: 0.6; }
     100% { top: 100vh; opacity: 0; }
@@ -932,7 +915,7 @@ article h2:hover {
     .oc-side-left-inner, .oc-side-right-inner,
     .oc-glow-left, .oc-glow-right,
     .oc-glow-left2, .oc-glow-right2,
-    .oc-scan-line { display: none !important; }
+
 }
 
 /* =============================================
@@ -1018,23 +1001,6 @@ body::after {
     50%       { opacity: 1.0; }
 }
 
-/* ---- Scanning light effect on left bar ---- */
-.oc-scan-line {
-    position: fixed;
-    left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        rgba(50,205,50,0.8) 0%,
-        rgba(255,215,0,0.4) 50%,
-        rgba(50,205,50,0.0) 100%);
-    z-index: 501;
-    pointer-events: none;
-    animation: scanDown 8s linear infinite;
-    box-shadow: 0 0 12px rgba(50,205,50,0.6);
-    width: 40%;
-}
-@keyframes scanDown {
-    0%   { top: -2px; opacity: 0; }
     5%   { opacity: 1; }
     95%  { opacity: 0.6; }
     100% { top: 100vh; opacity: 0; }
@@ -1207,5 +1173,5 @@ article h2:hover {
     .oc-side-left-inner, .oc-side-right-inner,
     .oc-glow-left, .oc-glow-right,
     .oc-glow-left2, .oc-glow-right2,
-    .oc-scan-line { display: none !important; }
+
 }
