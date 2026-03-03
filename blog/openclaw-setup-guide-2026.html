@@ -94,7 +94,7 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
   <span class="meta-item">👤 Online Sidehustles Team</span>
 </div>
 
-<p>This is the exact setup I use. OpenClaw is an open-source AI assistant that runs on your own server, connects to your Discord, and works 24/7 — even when you're offline. It handles everything from drafting announcements and writing blog posts to tracking sweepstakes sites and running shell commands, all from a simple Discord message.</p>
+<p>OpenClaw is an open-source AI assistant that runs on your own server, connects to your Discord, and works 24/7 — even when you're offline. It handles everything from answering questions and writing content to running shell commands and managing files, all from a simple Discord message.</p>
 <p>Full setup takes under 15 minutes. Here's the complete walkthrough.</p>
 
 <div class="stat-grid">
@@ -177,13 +177,13 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 <p>OpenClaw needs an API key to power its AI responses. The easiest option in 2026 is <strong>Anthropic's Claude API</strong>. Get a key at <strong>console.anthropic.com</strong> — Claude Sonnet 4 is the sweet spot for intelligence vs. cost.</p>
 <p>The installer will prompt you for this during onboarding, or configure it after the fact:</p>
 <div class="code-block">openclaw configure</div>
-<p>You can also use OpenAI (GPT-4o) or other supported models — OpenClaw supports multiple providers. But Claude is what I run and what gives you the most capable responses for the price.</p>
+<p>You can also use OpenAI (GPT-4o) or other supported models — OpenClaw supports multiple providers. Claude tends to give the most capable responses for the price, but either works well.</p>
 
 <h2 id="bot">5. Step 4 — Create a Discord Bot</h2>
 <p>You need to create a Discord application and bot to give OpenClaw access to your server. This is the most involved step but only takes 5 minutes:</p>
 <ol>
   <li>Go to <strong>discord.com/developers/applications</strong></li>
-  <li>Click <strong>New Application</strong> → give it a name (e.g. "Molty" or whatever you want to call your AI)</li>
+  <li>Click <strong>New Application</strong> → give it a name (whatever you want to call your AI assistant)</li>
   <li>Go to the <strong>Bot</strong> tab → click <strong>Reset Token</strong> → copy the token (save it securely)</li>
   <li>Scroll down and enable:
     <ul>
@@ -226,17 +226,19 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 <div class="code-block">openclaw gateway status</div>
 <p>That's it — your AI assistant is now live 24/7. Message it from anywhere in the world and it responds.</p>
 
-<h2 id="usecases">8. What I Use It For</h2>
-<p>Here's a real-world breakdown of how I use OpenClaw for the side hustle operation:</p>
+<h2 id="usecases">8. What People Use It For</h2>
+<p>Once OpenClaw is running, the community has found a ton of ways to put it to work. Here are some of the most popular use cases:</p>
 <ul>
-  <li><strong>Sweepstakes tracking:</strong> "Check for new sweepstakes casino sites this week and add them to the spreadsheet" — it browses, finds them, and updates the file</li>
-  <li><strong>Discord announcements:</strong> "Write an announcement for [new site] in my style" — it reads my past announcements and matches the tone exactly</li>
-  <li><strong>Blog articles:</strong> "Write an SEO article about [topic] for my site" — generates full HTML in my site's style, commits to GitHub, and pushes</li>
-  <li><strong>Video creation:</strong> Creates YouTube Shorts and TikTok videos with ffmpeg, generating text overlays, transitions, and captions</li>
-  <li><strong>Heartbeat monitoring:</strong> Checks emails, calendar, and community activity every few hours and pings me in Discord if something needs attention</li>
-  <li><strong>Community help:</strong> Members in the Discord server can ask it questions about my guides and it answers accurately from the actual content</li>
+  <li><strong>Personal assistant in Discord:</strong> Ask it to draft emails, summarize long articles, translate content, or answer questions — all without leaving Discord</li>
+  <li><strong>Coding helper:</strong> Paste in a bug, describe what you're building, and it writes or fixes code directly. Can read and edit files on your server with no copy-pasting</li>
+  <li><strong>Content creation:</strong> "Write a YouTube description for this video", "generate 10 tweet ideas about X", "rewrite this paragraph to sound more casual" — works instantly</li>
+  <li><strong>Server moderation support:</strong> Set it up in a Discord server to answer FAQ questions, welcome new members, and provide info on demand without needing a human online</li>
+  <li><strong>Research assistant:</strong> "Find the top 10 affiliate programs for [niche] and compare their commission rates" — it searches the web and compiles a clean summary</li>
+  <li><strong>Automated reminders and monitoring:</strong> Set heartbeat checks to scan your inbox, flag important emails, remind you of upcoming deadlines, or alert you when a website goes down</li>
+  <li><strong>File and data management:</strong> Rename batches of files, parse CSVs, reformat data, generate reports — all from a plain English instruction in chat</li>
+  <li><strong>Learning and study tool:</strong> Quiz yourself on any topic, get explanations at any depth, have it create flashcards or study guides from notes you paste in</li>
 </ul>
-<p>The key insight: the AI isn't just answering questions — it's actually doing things. Running commands, writing files, pushing code, sending messages. That's what makes it genuinely useful for running a side hustle operation.</p>
+<p>The key difference from using ChatGPT in a browser: OpenClaw can actually <em>do</em> things on your server — read and write files, run scripts, call APIs, send messages. It's not just answering questions. It's executing tasks.</p>
 
 <div class="cta-box">
   <h3>🤖 Questions About the Setup?</h3>
