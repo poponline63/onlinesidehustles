@@ -55,8 +55,11 @@ footer { background: rgba(0,0,0,0.8); border-top: 1px solid rgba(50,205,50,0.2);
 footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 @media (max-width: 768px) { h1 { font-size: 1.8rem; } article { padding: 1.5rem; margin: 90px 1rem 40px; } }
 </style>
+<link rel="stylesheet" href="/blog/blog-enhanced.css">
 </head>
 <body>
+<div id="oc-progress-bar"></div>
+
 <header>
 <nav>
   <a href="/index.html" class="logo">Online Sidehustles</a>
@@ -70,6 +73,7 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 </header>
 
 <article>
+<div class="oc-hero">
 <div class="breadcrumb"><a href="/index.html">Home</a> &rsaquo; <a href="/blog.html">Blog</a> &rsaquo; Best Reward Apps 2026</div>
 
 <span class="category-badge">🎁 Reward Apps</span>
@@ -79,6 +83,8 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
   <span class="meta-item">⏱ 8 min read</span>
   <span class="meta-item">👤 Online Sidehustles Team</span>
 </div>
+</div>
+
 <p>You're already buying groceries, shopping online, watching videos, and walking around every day. Reward apps pay you for all of it. No single app makes you rich — but stacking 5–8 of them turns your existing habits into an extra $50–$300/month with almost zero additional effort.</p>
 
 <div class="stat-grid">
@@ -212,5 +218,16 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 <footer>
   <p>© 2026 Online Sidehustles · <a href="/index.html">Home</a> · <a href="/blog.html">Blog</a> · <a href="https://discord.com/invite/onlinesidehustles">Discord</a></p>
 </footer>
+<script>
+(function(){
+  var bar = document.getElementById('oc-progress-bar');
+  if(!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }, {passive: true});
+})();
+</script>
 </body>
 </html>
