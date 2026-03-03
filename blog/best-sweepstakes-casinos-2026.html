@@ -1547,32 +1547,47 @@
 </script>
 <script id="oc-side-elements">
 (function(){
-  // ---- Side bars & glow orbs ----
-  ['oc-side-left','oc-side-right','oc-glow-left','oc-glow-right'].forEach(function(cls){
+  // ---- Side structural elements ----
+  var sideEls = [
+    'oc-side-left','oc-side-right',
+    'oc-side-left-inner','oc-side-right-inner',
+    'oc-glow-left','oc-glow-right',
+    'oc-glow-left2','oc-glow-right2',
+    'oc-scan-line'
+  ];
+  sideEls.forEach(function(cls){
     var el = document.createElement('div');
     el.className = cls;
     document.body.appendChild(el);
   });
 
-  // ---- Floating particles (left + right columns) ----
-  var emojis = ['✦','⬡','◈','✧','⬟','◇','✦','⬡'];
-  var sides  = [
-    {left:'12px'}, {left:'28px'}, {left:'8px'},
-    {right:'12px'},{right:'28px'},{right:'8px'}
-  ];
-  sides.forEach(function(pos, i){
+  // ---- Floating particles ----
+  var leftSymbols  = ['✦','◈','⬡','✧','◇','⬟','✦','◈'];
+  var rightSymbols = ['⋆','◉','✦','◈','⬡','✧','◇','⬟'];
+  var colors = ['#50e050','#90EE90','#FFD700','#6ee86e','#b0ffb0'];
+
+  function makeParticle(sym, side, idx) {
     var p = document.createElement('div');
     p.className = 'oc-particle';
-    p.textContent = emojis[i % emojis.length];
-    Object.assign(p.style, pos);
-    var dur  = (18 + Math.random()*14).toFixed(1) + 's';
-    var del  = -(Math.random()*20).toFixed(1) + 's';
-    p.style.animationDuration = dur;
-    p.style.animationDelay   = del;
+    p.textContent = sym;
+    var size = (1.2 + Math.random() * 1.4).toFixed(2) + 'rem';
+    p.style.fontSize = size;
+    var offsets = [6,18,32,44,58,72,12,26,40,54];
+    var offset  = offsets[idx % offsets.length] + 'px';
+    if(side === 'left')  { p.style.left  = offset; }
+    else                 { p.style.right = offset; }
+    p.style.color           = colors[idx % colors.length];
+    p.style.opacity         = '0';
+    p.style.animationDuration = (16 + Math.random() * 18).toFixed(1) + 's';
+    p.style.animationDelay    = -(Math.random() * 25).toFixed(1) + 's';
+    p.style.filter = 'drop-shadow(0 0 8px ' + colors[idx % colors.length] + ')';
     document.body.appendChild(p);
-  });
+  }
 
-  // ---- Sticky mini-TOC (desktop only) ----
+  for(var i = 0; i < 10; i++) makeParticle(leftSymbols[i % leftSymbols.length],   'left',  i);
+  for(var j = 0; j < 10; j++) makeParticle(rightSymbols[j % rightSymbols.length], 'right', j + 10);
+
+  // ---- Sticky mini-TOC ----
   if(window.innerWidth <= 1380) return;
   var toc = document.querySelector('.toc');
   if(!toc) return;
@@ -1581,36 +1596,31 @@
 
   var sidebar = document.createElement('div');
   sidebar.id = 'oc-toc-sidebar';
-
   var title = document.createElement('div');
   title.className = 'oc-toc-title';
   title.textContent = 'On This Page';
   sidebar.appendChild(title);
-
   var ul = document.createElement('ul');
   links.forEach(function(a){
     var li = document.createElement('li');
     var link = document.createElement('a');
     link.href = a.href;
-    link.textContent = a.textContent.replace(/^\d+\.\s*/,'');
-    ul.appendChild(li);
+    link.textContent = a.textContent.replace(/^\d+\.\s*/, '');
     li.appendChild(link);
+    ul.appendChild(li);
   });
   sidebar.appendChild(ul);
   document.body.appendChild(sidebar);
 
   // Scroll spy
-  var headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+  var headings  = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
   var sideLinks = Array.from(sidebar.querySelectorAll('a'));
   function onScroll(){
-    var scrollY = window.scrollY + 120;
+    var scrollY = window.scrollY + 130;
     var current = '';
-    headings.forEach(function(h){
-      if(h.offsetTop <= scrollY) current = h.id;
-    });
+    headings.forEach(function(h){ if(h.offsetTop <= scrollY) current = h.id; });
     sideLinks.forEach(function(a){
-      var href = a.getAttribute('href').replace('#','');
-      a.classList.toggle('oc-toc-active', href === current);
+      a.classList.toggle('oc-toc-active', a.getAttribute('href').replace('#','') === current);
     });
   }
   window.addEventListener('scroll', onScroll, {passive:true});

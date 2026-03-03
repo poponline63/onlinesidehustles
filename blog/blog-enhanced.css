@@ -659,3 +659,553 @@ footer {
     .oc-side-left, .oc-side-right,
     .oc-glow-left, .oc-glow-right { display: none; }
 }
+
+/* =============================================
+   SIDE VISUAL ELEMENTS - appended to blog-enhanced.css
+   ============================================= */
+
+/* ---- Background grid pattern ---- */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(50,205,50,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(50,205,50,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ---- Fixed side accent bars (THICK & BRIGHT) ---- */
+.oc-side-left, .oc-side-right {
+    position: fixed;
+    top: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 500;
+}
+/* Outer bar */
+.oc-side-left {
+    left: 0;
+    width: 5px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(50,205,50,0.0)  5%,
+        rgba(50,205,50,0.9) 25%,
+        rgba(255,215,0,0.8) 50%,
+        rgba(50,205,50,0.9) 75%,
+        rgba(50,205,50,0.0) 95%,
+        transparent 100%);
+    animation: sideBarPulse 4s ease-in-out infinite;
+    box-shadow: 2px 0 18px rgba(50,205,50,0.5);
+}
+.oc-side-right {
+    right: 0;
+    width: 5px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(50,205,50,0.0)  5%,
+        rgba(50,205,50,0.7) 35%,
+        rgba(255,215,0,0.6) 55%,
+        rgba(50,205,50,0.7) 78%,
+        rgba(50,205,50,0.0) 95%,
+        transparent 100%);
+    animation: sideBarPulse 4s ease-in-out infinite reverse;
+    box-shadow: -2px 0 18px rgba(50,205,50,0.4);
+}
+/* Inner accent bars */
+.oc-side-left-inner {
+    position: fixed;
+    left: 7px; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent, rgba(50,205,50,0.35) 30%,
+        rgba(255,215,0,0.25) 60%,
+        rgba(50,205,50,0.35) 80%, transparent);
+    z-index: 499;
+    pointer-events: none;
+    animation: sideBarPulse 4s ease-in-out infinite 1s;
+}
+.oc-side-right-inner {
+    position: fixed;
+    right: 7px; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent, rgba(50,205,50,0.35) 30%,
+        rgba(255,215,0,0.25) 60%,
+        rgba(50,205,50,0.35) 80%, transparent);
+    z-index: 499;
+    pointer-events: none;
+    animation: sideBarPulse 4s ease-in-out infinite reverse 1s;
+}
+@keyframes sideBarPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1.0; }
+}
+
+/* ---- Scanning light effect on left bar ---- */
+.oc-scan-line {
+    position: fixed;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(50,205,50,0.8) 0%,
+        rgba(255,215,0,0.4) 50%,
+        rgba(50,205,50,0.0) 100%);
+    z-index: 501;
+    pointer-events: none;
+    animation: scanDown 8s linear infinite;
+    box-shadow: 0 0 12px rgba(50,205,50,0.6);
+    width: 40%;
+}
+@keyframes scanDown {
+    0%   { top: -2px; opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 0.6; }
+    100% { top: 100vh; opacity: 0; }
+}
+
+/* ---- Side glow orbs (BIGGER & BRIGHTER) ---- */
+.oc-glow-left, .oc-glow-right,
+.oc-glow-left2, .oc-glow-right2 {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+.oc-glow-left {
+    left: -100px; top: 25%;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(50,205,50,0.22) 0%, transparent 65%);
+    animation: orbFloat1 9s ease-in-out infinite;
+}
+.oc-glow-right {
+    right: -100px; top: 55%;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(255,215,0,0.18) 0%, transparent 65%);
+    animation: orbFloat1 9s ease-in-out infinite reverse;
+    animation-delay: -4s;
+}
+.oc-glow-left2 {
+    left: -80px; top: 65%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(80,220,80,0.15) 0%, transparent 65%);
+    animation: orbFloat1 12s ease-in-out infinite;
+    animation-delay: -6s;
+}
+.oc-glow-right2 {
+    right: -80px; top: 15%;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(50,205,50,0.13) 0%, transparent 65%);
+    animation: orbFloat1 11s ease-in-out infinite reverse;
+    animation-delay: -2s;
+}
+@keyframes orbFloat1 {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-55px) scale(1.08); }
+}
+
+/* ---- Floating particles (styled via CSS, positioned by JS) ---- */
+.oc-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 3;
+    animation: particleRise2 linear infinite;
+}
+@keyframes particleRise2 {
+    0%   { transform: translateY(105vh) rotate(0deg);   opacity: 0; }
+    6%   { opacity: 1; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateY(-140px) rotate(400deg); opacity: 0; }
+}
+
+/* ---- Article animated glow border ---- */
+article {
+    animation: articleGlow 5s ease-in-out infinite !important;
+}
+@keyframes articleGlow {
+    0%, 100% { box-shadow:
+        0 0 0 1px rgba(50,205,50,0.08),
+        0 8px 48px rgba(0,0,0,0.55),
+        0 0 40px rgba(50,205,50,0.08) !important; }
+    50%       { box-shadow:
+        0 0 0 1px rgba(50,205,50,0.22),
+        0 8px 48px rgba(0,0,0,0.55),
+        0 0 60px rgba(50,205,50,0.18) !important; }
+}
+
+/* ---- Article corner decorations ---- */
+article::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 50px; height: 50px;
+    border-top: 2px solid rgba(50,205,50,0.7);
+    border-left: 2px solid rgba(50,205,50,0.7);
+    border-radius: 22px 0 0 0;
+    pointer-events: none;
+    z-index: 2;
+}
+article::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 50px; height: 50px;
+    border-bottom: 2px solid rgba(255,215,0,0.5);
+    border-right: 2px solid rgba(255,215,0,0.5);
+    border-radius: 0 0 22px 0;
+    pointer-events: none;
+    z-index: 2;
+}
+/* need position:relative on article */
+article { position: relative !important; overflow: visible !important; }
+
+/* ---- Glowing section headers ---- */
+article h2 {
+    text-shadow: 0 0 20px rgba(50,205,50,0.35) !important;
+    transition: text-shadow 0.3s;
+}
+article h2:hover {
+    text-shadow: 0 0 30px rgba(50,205,50,0.65) !important;
+}
+
+/* ---- Pulsing category badge ---- */
+.category-badge {
+    animation: badgePulse 3s ease-in-out infinite !important;
+}
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(50,205,50,0.0); }
+    50%       { box-shadow: 0 0 12px 3px rgba(50,205,50,0.35); }
+}
+
+/* ---- Sticky mini-TOC sidebar ---- */
+#oc-toc-sidebar {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    background: rgba(10,28,12,0.95);
+    border: 1px solid rgba(50,205,50,0.4);
+    border-radius: 16px;
+    padding: 1.2rem 1.1rem;
+    z-index: 800;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 20px rgba(50,205,50,0.1), inset 0 1px 0 rgba(80,220,80,0.15);
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(50,205,50,0.3) transparent;
+}
+#oc-toc-sidebar::-webkit-scrollbar { width: 3px; }
+#oc-toc-sidebar::-webkit-scrollbar-thumb { background: rgba(50,205,50,0.3); border-radius: 3px; }
+#oc-toc-sidebar .oc-toc-title {
+    font-size: 0.68rem; letter-spacing: 2px; color: rgba(80,220,80,0.7);
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 0.9rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(50,205,50,0.2);
+}
+#oc-toc-sidebar ul { list-style: none; margin: 0; padding: 0; }
+#oc-toc-sidebar li { margin: 0.3rem 0; }
+#oc-toc-sidebar a {
+    font-size: 0.82rem; color: rgba(144,238,144,0.65);
+    text-decoration: none; display: block;
+    padding: 0.3rem 0.5rem 0.3rem 1.2rem;
+    border-radius: 6px; position: relative;
+    transition: color 0.2s, background 0.2s, padding-left 0.2s;
+    line-height: 1.4;
+}
+#oc-toc-sidebar a::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 3px; height: 0; background: #32CD32;
+    border-radius: 3px; transition: height 0.25s;
+}
+#oc-toc-sidebar a.oc-toc-active {
+    color: #90EE90; background: rgba(50,205,50,0.12); padding-left: 1.5rem;
+}
+#oc-toc-sidebar a.oc-toc-active::before { height: 70%; }
+
+@media (max-width: 1380px) { #oc-toc-sidebar { display: none !important; } }
+@media (max-width: 900px) {
+    .oc-side-left, .oc-side-right,
+    .oc-side-left-inner, .oc-side-right-inner,
+    .oc-glow-left, .oc-glow-right,
+    .oc-glow-left2, .oc-glow-right2,
+    .oc-scan-line { display: none !important; }
+}
+
+/* =============================================
+   SIDE VISUAL ELEMENTS - appended to blog-enhanced.css
+   ============================================= */
+
+/* ---- Background grid pattern ---- */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(50,205,50,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(50,205,50,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ---- Fixed side accent bars (THICK & BRIGHT) ---- */
+.oc-side-left, .oc-side-right {
+    position: fixed;
+    top: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 500;
+}
+/* Outer bar */
+.oc-side-left {
+    left: 0;
+    width: 5px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(50,205,50,0.0)  5%,
+        rgba(50,205,50,0.9) 25%,
+        rgba(255,215,0,0.8) 50%,
+        rgba(50,205,50,0.9) 75%,
+        rgba(50,205,50,0.0) 95%,
+        transparent 100%);
+    animation: sideBarPulse 4s ease-in-out infinite;
+    box-shadow: 2px 0 18px rgba(50,205,50,0.5);
+}
+.oc-side-right {
+    right: 0;
+    width: 5px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(50,205,50,0.0)  5%,
+        rgba(50,205,50,0.7) 35%,
+        rgba(255,215,0,0.6) 55%,
+        rgba(50,205,50,0.7) 78%,
+        rgba(50,205,50,0.0) 95%,
+        transparent 100%);
+    animation: sideBarPulse 4s ease-in-out infinite reverse;
+    box-shadow: -2px 0 18px rgba(50,205,50,0.4);
+}
+/* Inner accent bars */
+.oc-side-left-inner {
+    position: fixed;
+    left: 7px; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent, rgba(50,205,50,0.35) 30%,
+        rgba(255,215,0,0.25) 60%,
+        rgba(50,205,50,0.35) 80%, transparent);
+    z-index: 499;
+    pointer-events: none;
+    animation: sideBarPulse 4s ease-in-out infinite 1s;
+}
+.oc-side-right-inner {
+    position: fixed;
+    right: 7px; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent, rgba(50,205,50,0.35) 30%,
+        rgba(255,215,0,0.25) 60%,
+        rgba(50,205,50,0.35) 80%, transparent);
+    z-index: 499;
+    pointer-events: none;
+    animation: sideBarPulse 4s ease-in-out infinite reverse 1s;
+}
+@keyframes sideBarPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1.0; }
+}
+
+/* ---- Scanning light effect on left bar ---- */
+.oc-scan-line {
+    position: fixed;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(50,205,50,0.8) 0%,
+        rgba(255,215,0,0.4) 50%,
+        rgba(50,205,50,0.0) 100%);
+    z-index: 501;
+    pointer-events: none;
+    animation: scanDown 8s linear infinite;
+    box-shadow: 0 0 12px rgba(50,205,50,0.6);
+    width: 40%;
+}
+@keyframes scanDown {
+    0%   { top: -2px; opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 0.6; }
+    100% { top: 100vh; opacity: 0; }
+}
+
+/* ---- Side glow orbs (BIGGER & BRIGHTER) ---- */
+.oc-glow-left, .oc-glow-right,
+.oc-glow-left2, .oc-glow-right2 {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+.oc-glow-left {
+    left: -100px; top: 25%;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(50,205,50,0.22) 0%, transparent 65%);
+    animation: orbFloat1 9s ease-in-out infinite;
+}
+.oc-glow-right {
+    right: -100px; top: 55%;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(255,215,0,0.18) 0%, transparent 65%);
+    animation: orbFloat1 9s ease-in-out infinite reverse;
+    animation-delay: -4s;
+}
+.oc-glow-left2 {
+    left: -80px; top: 65%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(80,220,80,0.15) 0%, transparent 65%);
+    animation: orbFloat1 12s ease-in-out infinite;
+    animation-delay: -6s;
+}
+.oc-glow-right2 {
+    right: -80px; top: 15%;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(50,205,50,0.13) 0%, transparent 65%);
+    animation: orbFloat1 11s ease-in-out infinite reverse;
+    animation-delay: -2s;
+}
+@keyframes orbFloat1 {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-55px) scale(1.08); }
+}
+
+/* ---- Floating particles (styled via CSS, positioned by JS) ---- */
+.oc-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 3;
+    animation: particleRise2 linear infinite;
+}
+@keyframes particleRise2 {
+    0%   { transform: translateY(105vh) rotate(0deg);   opacity: 0; }
+    6%   { opacity: 1; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateY(-140px) rotate(400deg); opacity: 0; }
+}
+
+/* ---- Article animated glow border ---- */
+article {
+    animation: articleGlow 5s ease-in-out infinite !important;
+}
+@keyframes articleGlow {
+    0%, 100% { box-shadow:
+        0 0 0 1px rgba(50,205,50,0.08),
+        0 8px 48px rgba(0,0,0,0.55),
+        0 0 40px rgba(50,205,50,0.08) !important; }
+    50%       { box-shadow:
+        0 0 0 1px rgba(50,205,50,0.22),
+        0 8px 48px rgba(0,0,0,0.55),
+        0 0 60px rgba(50,205,50,0.18) !important; }
+}
+
+/* ---- Article corner decorations ---- */
+article::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 50px; height: 50px;
+    border-top: 2px solid rgba(50,205,50,0.7);
+    border-left: 2px solid rgba(50,205,50,0.7);
+    border-radius: 22px 0 0 0;
+    pointer-events: none;
+    z-index: 2;
+}
+article::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 50px; height: 50px;
+    border-bottom: 2px solid rgba(255,215,0,0.5);
+    border-right: 2px solid rgba(255,215,0,0.5);
+    border-radius: 0 0 22px 0;
+    pointer-events: none;
+    z-index: 2;
+}
+/* need position:relative on article */
+article { position: relative !important; overflow: visible !important; }
+
+/* ---- Glowing section headers ---- */
+article h2 {
+    text-shadow: 0 0 20px rgba(50,205,50,0.35) !important;
+    transition: text-shadow 0.3s;
+}
+article h2:hover {
+    text-shadow: 0 0 30px rgba(50,205,50,0.65) !important;
+}
+
+/* ---- Pulsing category badge ---- */
+.category-badge {
+    animation: badgePulse 3s ease-in-out infinite !important;
+}
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(50,205,50,0.0); }
+    50%       { box-shadow: 0 0 12px 3px rgba(50,205,50,0.35); }
+}
+
+/* ---- Sticky mini-TOC sidebar ---- */
+#oc-toc-sidebar {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    background: rgba(10,28,12,0.95);
+    border: 1px solid rgba(50,205,50,0.4);
+    border-radius: 16px;
+    padding: 1.2rem 1.1rem;
+    z-index: 800;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 20px rgba(50,205,50,0.1), inset 0 1px 0 rgba(80,220,80,0.15);
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(50,205,50,0.3) transparent;
+}
+#oc-toc-sidebar::-webkit-scrollbar { width: 3px; }
+#oc-toc-sidebar::-webkit-scrollbar-thumb { background: rgba(50,205,50,0.3); border-radius: 3px; }
+#oc-toc-sidebar .oc-toc-title {
+    font-size: 0.68rem; letter-spacing: 2px; color: rgba(80,220,80,0.7);
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 0.9rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(50,205,50,0.2);
+}
+#oc-toc-sidebar ul { list-style: none; margin: 0; padding: 0; }
+#oc-toc-sidebar li { margin: 0.3rem 0; }
+#oc-toc-sidebar a {
+    font-size: 0.82rem; color: rgba(144,238,144,0.65);
+    text-decoration: none; display: block;
+    padding: 0.3rem 0.5rem 0.3rem 1.2rem;
+    border-radius: 6px; position: relative;
+    transition: color 0.2s, background 0.2s, padding-left 0.2s;
+    line-height: 1.4;
+}
+#oc-toc-sidebar a::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 3px; height: 0; background: #32CD32;
+    border-radius: 3px; transition: height 0.25s;
+}
+#oc-toc-sidebar a.oc-toc-active {
+    color: #90EE90; background: rgba(50,205,50,0.12); padding-left: 1.5rem;
+}
+#oc-toc-sidebar a.oc-toc-active::before { height: 70%; }
+
+@media (max-width: 1380px) { #oc-toc-sidebar { display: none !important; } }
+@media (max-width: 900px) {
+    .oc-side-left, .oc-side-right,
+    .oc-side-left-inner, .oc-side-right-inner,
+    .oc-glow-left, .oc-glow-right,
+    .oc-glow-left2, .oc-glow-right2,
+    .oc-scan-line { display: none !important; }
+}
