@@ -705,8 +705,11 @@
             }
         }
     </style>
+<link rel="stylesheet" href="/blog/blog-enhanced.css">
 </head>
 <body>
+<div id="oc-progress-bar"></div>
+
     <!-- Floating Background Elements -->
     <div class="floating-bg">
         <div class="floating-element">🎰</div>
@@ -780,8 +783,11 @@
                 <span class="meta-item">📅 Published: January 2, 2026</span>
                 <span class="meta-item">⏱️ 15 min read</span>
             </div>
+<div class="oc-hero">
             
             <h1>Best Sweepstakes Casinos 2026: Top 10 Sites Compared</h1>
+</div>
+
         </div>
 
         <div class="toc">
@@ -1528,5 +1534,16 @@
             <p style="color: #32CD32; font-style: italic; margin-top: 1rem;">Website by Crossroads - Sidehustle Wiki</p>
         </div>
     </footer>
+<script>
+(function(){
+  var bar = document.getElementById('oc-progress-bar');
+  if(!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }, {passive: true});
+})();
+</script>
 </body>
 </html>

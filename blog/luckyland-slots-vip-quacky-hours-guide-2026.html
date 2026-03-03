@@ -69,8 +69,11 @@ footer { background: rgba(0,0,0,0.8); border-top: 1px solid rgba(50,205,50,0.2);
 footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 @media (max-width: 768px) { h1 { font-size: 1.8rem; } article { padding: 1.5rem; margin: 90px 1rem 40px; } }
 </style>
+<link rel="stylesheet" href="/blog/blog-enhanced.css">
 </head>
 <body>
+<div id="oc-progress-bar"></div>
+
 <header>
 <nav>
   <a href="/index.html" class="logo">
@@ -90,6 +93,7 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 
 <div class="breadcrumb"><a href="/index.html">Home</a> › <a href="/blog.html">Blog</a> › LuckyLand VIP Guide</div>
 <div class="article-header">
+<div class="oc-hero">
   <span class="category-badge">⭐ VIP Guide</span>
   <h1>LuckyLand Slots VIP Guide 2026: Unlock Quacky Hours & Blue Diamond</h1>
   <div class="article-meta">
@@ -97,6 +101,8 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
     <span class="meta-item">⏱ 7 min read</span>
     <span class="meta-item">👤 Online Sidehustles Team</span>
   </div>
+</div>
+
   <p>LuckyLand Slots has one of the most rewarding VIP programs in the sweepstakes casino space — but most players never reach the tiers where the real bonuses kick in. This guide shows you exactly how to fast-track to Blue Duck, Yellow Duck, and eventually Quacky Hours status for <strong>$80–$200+ per month in additional SC</strong>.</p>
 </div>
 
@@ -217,5 +223,16 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 <p>© 2026 Online Sidehustles · <a href="/index.html">Home</a> · <a href="/blog.html">Blog</a> · <a href="https://discord.com/invite/onlinesidehustles">Discord Community</a></p>
 <p style="margin-top:0.5rem;font-size:0.8rem;">Sweepstakes casinos are available to US residents 18+ (21+ on some sites). Always play responsibly.</p>
 </footer>
+<script>
+(function(){
+  var bar = document.getElementById('oc-progress-bar');
+  if(!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }, {passive: true});
+})();
+</script>
 </body>
 </html>

@@ -69,8 +69,11 @@ footer { background: rgba(0,0,0,0.8); border-top: 1px solid rgba(50,205,50,0.2);
 footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 @media (max-width: 768px) { h1 { font-size: 1.8rem; } article { padding: 1.5rem; margin: 90px 1rem 40px; } }
 </style>
+<link rel="stylesheet" href="/blog/blog-enhanced.css">
 </head>
 <body>
+<div id="oc-progress-bar"></div>
+
 <header>
 <nav>
   <a href="/index.html" class="logo">Online Sidehustles</a>
@@ -84,6 +87,7 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 </header>
 
 <article>
+<div class="oc-hero">
 <div class="breadcrumb"><a href="/index.html">Home</a> &rsaquo; <a href="/blog.html">Blog</a> &rsaquo; OpenClaw Setup Guide 2026</div>
 
 <span class="category-badge">🤖 AI Automation</span>
@@ -93,6 +97,8 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
   <span class="meta-item">⏱ 10 min read</span>
   <span class="meta-item">👤 Online Sidehustles Team</span>
 </div>
+</div>
+
 
 <p>OpenClaw is an open-source AI assistant that runs on your own server, connects to your Discord, and works 24/7 — even when you're offline. It handles everything from answering questions and writing content to running shell commands and managing files, all from a simple Discord message.</p>
 <p>Full setup takes under 15 minutes. Here's the complete walkthrough.</p>
@@ -246,5 +252,16 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
 <footer>
   <p>© 2026 Online Sidehustles · <a href="/index.html">Home</a> · <a href="/blog.html">Blog</a> · <a href="/openclaw-setup.html">OpenClaw Setup</a> · <a href="https://discord.com/invite/onlinesidehustles">Discord</a></p>
 </footer>
+<script>
+(function(){
+  var bar = document.getElementById('oc-progress-bar');
+  if(!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+  }, {passive: true});
+})();
+</script>
 </body>
 </html>
