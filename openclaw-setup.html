@@ -245,27 +245,23 @@
             <span class="vps-badge">✅ RECOMMENDED VPS</span>
             <span class="vps-rec">MY CHOICE</span>
             <h3>Virtarix</h3>
-            <p>This is the VPS provider I personally use for my OpenClaw setup. Clean Ubuntu images, fast provisioning, reliable uptime, and straightforward pricing. Exactly what you need for a 24/7 AI assistant deployment.</p>
-            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem;">For OpenClaw you only need a basic plan — 1 vCPU, 1-2GB RAM, and 20GB storage is plenty to get started.</p>
+            <p>This is the VPS provider I personally use for my OpenClaw setup. Windows VPS options, fast provisioning, reliable uptime, and straightforward pricing. Exactly what you need for a 24/7 AI assistant deployment.</p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem;">The plan I use: <strong>WIN VPS M</strong> — 6 CPU cores, 16 GB RAM, 100 GB NVMe, unlimited bandwidth. From $27.40/month.</p>
         </div>
         <a href="https://virtarix.com/" target="_blank" rel="noopener" class="vps-btn">
             Get a VPS at<br>Virtarix.com →
         </a>
     </div>
 
-    <div class="warn-box">
-        <h4>⚠️ Use a Clean Base Image</h4>
-        <p>When spinning up your VPS, choose a plain Ubuntu 22.04 LTS or 24.04 LTS image — not a "1-click app" marketplace image. A clean base OS ensures nothing conflicts with the OpenClaw installer.</p>
-    </div>
-
     <div class="tip-box">
-        <h4>💡 Recommended VPS Specs</h4>
+        <h4>💡 Recommended VPS Specs (What I Use)</h4>
         <ul>
-            <li>OS: Ubuntu 22.04 LTS or 24.04 LTS</li>
-            <li>RAM: 1–2 GB minimum (2 GB recommended)</li>
-            <li>Storage: 20 GB+</li>
-            <li>vCPU: 1+ (1 is fine for most use cases)</li>
-            <li>Location: Closest to you for lowest latency</li>
+            <li>Plan: WIN VPS M (Windows Server)</li>
+            <li>CPU: 6 cores</li>
+            <li>RAM: 16 GB</li>
+            <li>Storage: 100 GB NVMe</li>
+            <li>Bandwidth: Unlimited</li>
+            <li>Price: From $27.40/month</li>
         </ul>
     </div>
 </section>
@@ -273,23 +269,16 @@
 <!-- Setup Steps -->
 <section class="section">
     <h2 class="section-title">Step-by-Step <span>Setup</span></h2>
-    <p class="section-sub">Once your VPS is running, the full setup takes about 15 minutes. Everything below runs in your VPS terminal via SSH.</p>
+    <p class="section-sub">Once your Windows VPS is running, the full setup takes about 15 minutes. Everything below runs in PowerShell on your VPS — connect via Remote Desktop (RDP) first.</p>
 
     <div class="steps-list">
 
         <div class="step-item">
             <div class="step-num">2</div>
             <div class="step-content">
-                <h3>Connect to Your VPS via SSH</h3>
-                <p>From your local machine, connect to your new VPS. Your VPS provider will give you the IP address and root credentials.</p>
-                <div class="code-block">
-                    <span class="comment"># Replace YOUR_VPS_IP with your actual IP address</span><br>
-                    <span class="cmd">ssh root@YOUR_VPS_IP</span>
-                </div>
-                <p>Once connected, update the system before installing anything:</p>
-                <div class="code-block">
-                    <span class="cmd">apt update && apt upgrade -y</span>
-                </div>
+                <h3>Connect to Your VPS via Remote Desktop (RDP)</h3>
+                <p>Your VPS provider will send you the IP address, username, and password. On Windows, open <strong>Remote Desktop Connection</strong> (search "mstsc" in Start), enter the IP, and log in with your credentials.</p>
+                <p>Once connected, open <strong>PowerShell as Administrator</strong> — right-click the Start menu → Windows PowerShell (Admin).</p>
             </div>
         </div>
 
@@ -297,9 +286,9 @@
             <div class="step-num">3</div>
             <div class="step-content">
                 <h3>Run the OpenClaw Installer</h3>
-                <p>OpenClaw provides a one-line installer that handles Node.js detection, installation, and the initial setup wizard automatically.</p>
+                <p>OpenClaw provides a one-line PowerShell installer that handles Node.js detection, installation, and the initial setup wizard automatically.</p>
                 <div class="code-block">
-                    <span class="cmd">curl -fsSL https://openclaw.ai/install.sh | bash</span>
+                    <span class="cmd">iwr -useb https://openclaw.ai/install.ps1 | iex</span>
                 </div>
                 <p>The installer will detect if Node.js 22+ is missing and install it for you. Follow the onboarding prompts when they appear.</p>
                 <div class="tip-box">
