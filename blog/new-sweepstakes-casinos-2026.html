@@ -275,5 +275,78 @@ footer a { color: rgba(144,238,144,0.8); text-decoration: none; }
   }, {passive: true});
 })();
 </script>
+<script id="oc-side-elements">
+(function(){
+  // ---- Side bars & glow orbs ----
+  ['oc-side-left','oc-side-right','oc-glow-left','oc-glow-right'].forEach(function(cls){
+    var el = document.createElement('div');
+    el.className = cls;
+    document.body.appendChild(el);
+  });
+
+  // ---- Floating particles (left + right columns) ----
+  var emojis = ['✦','⬡','◈','✧','⬟','◇','✦','⬡'];
+  var sides  = [
+    {left:'12px'}, {left:'28px'}, {left:'8px'},
+    {right:'12px'},{right:'28px'},{right:'8px'}
+  ];
+  sides.forEach(function(pos, i){
+    var p = document.createElement('div');
+    p.className = 'oc-particle';
+    p.textContent = emojis[i % emojis.length];
+    Object.assign(p.style, pos);
+    var dur  = (18 + Math.random()*14).toFixed(1) + 's';
+    var del  = -(Math.random()*20).toFixed(1) + 's';
+    p.style.animationDuration = dur;
+    p.style.animationDelay   = del;
+    document.body.appendChild(p);
+  });
+
+  // ---- Sticky mini-TOC (desktop only) ----
+  if(window.innerWidth <= 1380) return;
+  var toc = document.querySelector('.toc');
+  if(!toc) return;
+  var links = toc.querySelectorAll('a[href^="#"]');
+  if(!links.length) return;
+
+  var sidebar = document.createElement('div');
+  sidebar.id = 'oc-toc-sidebar';
+
+  var title = document.createElement('div');
+  title.className = 'oc-toc-title';
+  title.textContent = 'On This Page';
+  sidebar.appendChild(title);
+
+  var ul = document.createElement('ul');
+  links.forEach(function(a){
+    var li = document.createElement('li');
+    var link = document.createElement('a');
+    link.href = a.href;
+    link.textContent = a.textContent.replace(/^\d+\.\s*/,'');
+    ul.appendChild(li);
+    li.appendChild(link);
+  });
+  sidebar.appendChild(ul);
+  document.body.appendChild(sidebar);
+
+  // Scroll spy
+  var headings = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
+  var sideLinks = Array.from(sidebar.querySelectorAll('a'));
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var current = '';
+    headings.forEach(function(h){
+      if(h.offsetTop <= scrollY) current = h.id;
+    });
+    sideLinks.forEach(function(a){
+      var href = a.getAttribute('href').replace('#','');
+      a.classList.toggle('oc-toc-active', href === current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
