@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D9MKJR8494');
+    </script>
+    <script src="/js/analytics.js" defer></script>
+    <!-- End Google Analytics 4 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patreon - Premium Automation Guides & Scripts | Online Side Hustles</title>
+    <meta name="description" content="Take your side hustle to the next level. Premium automation guides, Python scripts, VPS setups, and the full counter gambling system. Members earn $900-1,500/month.">
+    <meta name="keywords" content="online side hustles patreon, sweepstakes automation, counter gambling system, daily login automation scripts, passive income automation 2026">
+    <meta name="author" content="Online Sidehustles">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://onlinesidehustles.info/patreon">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/patreon">
+    <meta property="og:title" content="Premium Automation Guides & Scripts — Online Side Hustles Patreon">
+    <meta property="og:description" content="Free guides get you started. Patreon gets you automated. Premium scripts, video walkthroughs, VPS setup, and the full counter gambling toolkit.">
+    <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="theme-color" content="#4CAF50">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(76,175,80,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+        .content-wrapper { position: relative; z-index: 1; }
+
+        /* Header */
+        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
+        .logo-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(76,175,80,0.3); }
+        .logo-icon svg { width: 100%; height: 100%; border-radius: 12px; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: #4CAF50; }
+        .nav-links a.active { color: #FFD700; }
+
+        /* Hero */
+        .page-hero { padding: 140px 2rem 60px; text-align: center; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(76,175,80,0.12)); border-bottom: 1px solid rgba(255,215,0,0.2); position: relative; overflow: hidden; }
+        .page-hero::after { content: ''; position: absolute; top: 50%; left: 50%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,215,0,0.08), transparent 70%); transform: translate(-50%, -50%); pointer-events: none; }
+        .page-hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: relative; z-index: 1; }
+        .page-hero p { font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 650px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; position: relative; z-index: 1; }
+        .hero-stat { text-align: center; }
+        .hero-stat-number { font-size: 2rem; font-weight: 900; color: #4CAF50; }
+        .hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; }
+
+        /* Problem/Solution */
+        .problem-solution { max-width: 900px; margin: 4rem auto; padding: 0 2rem; text-align: center; }
+        .ps-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; margin-top: 2rem; }
+        .ps-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; }
+        .ps-box.problem { border-color: rgba(255,100,100,0.2); }
+        .ps-box.solution { border-color: rgba(76,175,80,0.3); }
+        .ps-box h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .ps-box.problem h3 { color: #FF6B6B; }
+        .ps-box.solution h3 { color: #4CAF50; }
+        .ps-box p { color: rgba(255,255,255,0.7); line-height: 1.6; }
+        .ps-arrow { font-size: 2rem; color: #FFD700; }
+
+        /* Earnings Counter */
+        .earnings-banner { background: linear-gradient(135deg, rgba(76,175,80,0.15), rgba(255,215,0,0.1)); border-top: 1px solid rgba(76,175,80,0.2); border-bottom: 1px solid rgba(76,175,80,0.2); padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; }
+        .earnings-banner h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .earnings-banner .amount { background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5rem; font-weight: 900; }
+        .earnings-banner p { color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+
+        /* Tier Cards */
+        .tiers-section { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+        .tiers-header { text-align: center; margin-bottom: 3rem; }
+        .tiers-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tiers-header p { color: rgba(255,255,255,0.6); font-size: 1.05rem; }
+        .tiers-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 768px) { .tiers-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .tier-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem 2rem; transition: all 0.3s; position: relative; display: flex; flex-direction: column; }
+        .tier-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .tier-card.featured { border-color: rgba(255,215,0,0.4); box-shadow: 0 0 30px rgba(255,215,0,0.1); }
+        .tier-card.featured::before { content: '⭐ MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px; }
+
+        .tier-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .tier-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .tier-card:nth-child(1) .tier-name { color: #4CAF50; }
+        .tier-card:nth-child(2) .tier-name { color: #FFD700; }
+        .tier-card:nth-child(3) .tier-name { color: #E040FB; }
+        .tier-price { font-size: 2.2rem; font-weight: 900; margin-bottom: 0.25rem; }
+        .tier-price span { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.5); }
+        .tier-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5; }
+
+        .tier-features { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+        .tier-features li { padding: 0.5rem 0; color: rgba(255,255,255,0.8); font-size: 0.95rem; display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
+        .tier-features li::before { content: '✓'; color: #4CAF50; font-weight: bold; flex-shrink: 0; margin-top: 1px; }
+
+        .tier-btn { display: block; text-align: center; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.3s; }
+        .tier-btn:hover { transform: translateY(-2px); }
+        .tier-card:nth-child(1) .tier-btn { background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; box-shadow: 0 5px 20px rgba(76,175,80,0.3); }
+        .tier-card:nth-child(1) .tier-btn:hover { box-shadow: 0 8px 30px rgba(76,175,80,0.5); }
+        .tier-card:nth-child(2) .tier-btn { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; box-shadow: 0 5px 20px rgba(255,215,0,0.3); }
+        .tier-card:nth-child(2) .tier-btn:hover { box-shadow: 0 8px 30px rgba(255,215,0,0.5); }
+        .tier-card:nth-child(3) .tier-btn { background: linear-gradient(135deg, #9C27B0, #E040FB); color: white; box-shadow: 0 5px 20px rgba(156,39,176,0.3); }
+        .tier-card:nth-child(3) .tier-btn:hover { box-shadow: 0 8px 30px rgba(156,39,176,0.5); }
+
+        /* What's Inside */
+        .whats-inside { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+        .whats-inside h2 { text-align: center; font-size: 2rem; font-weight: 900; margin-bottom: 2.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .inside-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 640px) { .inside-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .inside-grid { grid-template-columns: repeat(3, 1fr); } }
+        .inside-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; }
+        .inside-card:hover { border-color: rgba(76,175,80,0.3); background: rgba(76,175,80,0.04); transform: translateY(-3px); }
+        .inside-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .inside-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .inside-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5; }
+
+        /* Testimonials */
+        .testimonials-section { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+        .testimonials-section h2 { text-align: center; font-size: 2rem; font-weight: 900; margin-bottom: 2.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+        .testimonial-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; }
+        .testimonial-stars { color: #FFD700; font-size: 1rem; margin-bottom: 0.75rem; }
+        .testimonial-text { color: rgba(255,255,255,0.8); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1rem; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+        .author-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #4CAF50, #8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; }
+        .author-name { font-weight: bold; color: white; font-size: 0.9rem; }
+        .author-detail { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+        /* FAQ */
+        .faq-section { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+        .faq-section h2 { text-align: center; font-size: 2rem; font-weight: 900; margin-bottom: 2.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+        .faq-question { padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.05rem; transition: background 0.3s; }
+        .faq-question:hover { background: rgba(255,255,255,0.03); }
+        .faq-arrow { transition: transform 0.3s; color: #4CAF50; font-size: 1.2rem; }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { max-height: 500px; padding: 0 1.5rem 1.25rem; }
+        .faq-answer p { color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.95rem; }
+
+        /* Final CTA */
+        .final-cta { background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(76,175,80,0.12)); border-top: 1px solid rgba(255,215,0,0.2); border-bottom: 1px solid rgba(255,215,0,0.2); padding: 4rem 2rem; text-align: center; margin: 4rem 0 0; }
+        .final-cta h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 1rem; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .final-cta p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6; }
+        .cta-btn { display: inline-block; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 1.2rem 3rem; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 1.2rem; transition: all 0.3s; box-shadow: 0 5px 25px rgba(255,215,0,0.4); }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(255,215,0,0.5); }
+        .cta-secondary { display: inline-block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; margin-top: 1rem; transition: color 0.3s; }
+        .cta-secondary:hover { color: #4CAF50; }
+
+        /* Footer */
+        footer { background: rgba(0,0,0,0.8); padding: 3rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { max-width: 1400px; margin: 0 auto; text-align: center; }
+        .footer-content p { color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #4CAF50; }
+
+        /* Discord Float */
+        .discord-float { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #5865F2, #7289DA); color: white; padding: 1rem 1.5rem; border-radius: 25px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 10px 30px rgba(88,101,242,0.3); transition: all 0.3s; z-index: 999; font-weight: 600; }
+        .discord-float:hover { transform: translateY(-5px); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .logo { font-size: 1.1rem; }
+            .nav-links { gap: 1rem; font-size: 0.85rem; }
+            .page-hero { padding: 120px 1rem 40px; }
+            .page-hero h1 { font-size: 2rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-number { font-size: 1.5rem; }
+            .ps-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .ps-arrow { transform: rotate(90deg); }
+            .earnings-banner .amount { font-size: 2rem; }
+            .tiers-header h2 { font-size: 1.8rem; }
+            .tier-price { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="content-wrapper">
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><defs><linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="centerGoldLogo"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient></defs><rect width="64" height="64" fill="url(#emeraldLogo)"/><circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text></svg>
+                </div>
+                <span>ONLINE SIDEHUSTLES</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="daily-login-guide.html">Daily Login Sites</a>
+                <a href="blog.html">Blog</a>
+                <a href="getting-started.html">Getting Started</a>
+                <a href="tools.html">Tools</a>
+                <a href="patreon.html" class="active">Patreon</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <h1>&#128640; Take Your Side Hustle to the Next Level</h1>
+        <p>Free guides get you started. Patreon gets you automated. Premium scripts, video walkthroughs, and the full counter gambling system — built by someone who actually runs it.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">2,300+</div>
+                <div class="hero-stat-label">Community Members</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">87+</div>
+                <div class="hero-stat-label">Site Reviews</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">5</div>
+                <div class="hero-stat-label">Premium Guides</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="problem-solution">
+        <div class="ps-grid">
+            <div class="ps-box problem">
+                <h3>&#128553; Without Automation</h3>
+                <p>Spending 2+ hours daily clicking through 80+ sites. Missing bonus changes. Doing math by hand. No scripts, no VPS, no system. Just grinding.</p>
+            </div>
+            <div class="ps-arrow">&#10132;</div>
+            <div class="ps-box solution">
+                <h3>&#128640; With Patreon</h3>
+                <p>15-minute daily routine. Scripts collect bonuses automatically. Bonus bot catches every change. VPS runs 24/7. You focus on cashing out.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earnings Counter -->
+    <section class="earnings-banner">
+        <h2>Members Earn an Average of</h2>
+        <div class="amount">$900 — $1,500/month</div>
+        <p>From daily collection, package churning, and matched betting — automated.</p>
+    </section>
+
+    <!-- Tier Cards -->
+    <section class="tiers-section">
+        <div class="tiers-header">
+            <h2>Choose Your Tier</h2>
+            <p>Every tier includes a 100% satisfaction guarantee. Cancel anytime.</p>
+        </div>
+        <div class="tiers-grid">
+            <!-- Tier 1 -->
+            <div class="tier-card">
+                <div class="tier-icon">&#128170;</div>
+                <div class="tier-name">Hustler</div>
+                <div class="tier-price">$5<span>/month</span></div>
+                <div class="tier-desc">For people who want to stop guessing and start following proven playbooks.</div>
+                <ul class="tier-features">
+                    <li>Detailed automation guides (step-by-step)</li>
+                    <li>Monthly new site reviews (before they go public)</li>
+                    <li>Private "Hustlers" Discord channel</li>
+                    <li>Weekly automation tips email</li>
+                    <li>Full guide archive access</li>
+                </ul>
+                <a href="https://patreon.com/onlinesidehustles" class="tier-btn" target="_blank">Join Hustler &#8594;</a>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="tier-card featured">
+                <div class="tier-icon">&#9889;</div>
+                <div class="tier-name">Automator</div>
+                <div class="tier-price">$15<span>/month</span></div>
+                <div class="tier-desc">For people who want scripts handling the work while they sleep.</div>
+                <ul class="tier-features">
+                    <li>Everything in Hustler</li>
+                    <li>Ready-to-use Python scripts (copy/paste)</li>
+                    <li>Video walkthroughs (screen recordings)</li>
+                    <li>VPS setup guide (run 24/7 for $5/mo)</li>
+                    <li>Premium churning calculator spreadsheet</li>
+                    <li>Priority Discord support</li>
+                </ul>
+                <a href="https://patreon.com/onlinesidehustles" class="tier-btn" target="_blank">Join Automator &#8594;</a>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="tier-card">
+                <div class="tier-icon">&#128142;</div>
+                <div class="tier-name">Counter Gambler</div>
+                <div class="tier-price">$30<span>/month</span></div>
+                <div class="tier-desc">The full toolkit, personal help, and everything I build — updated monthly.</div>
+                <ul class="tier-features">
+                    <li>Everything in Hustler + Automator</li>
+                    <li>Full automation toolkit (all scripts)</li>
+                    <li>1-on-1 setup help via Discord (20 spots)</li>
+                    <li>Early access to new automations (2 weeks)</li>
+                    <li>1 custom script request per month</li>
+                    <li>Private mastermind channel</li>
+                </ul>
+                <a href="https://patreon.com/onlinesidehustles" class="tier-btn" target="_blank">Join Counter Gambler &#8594;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Inside -->
+    <section class="whats-inside">
+        <h2>What You Get Access To</h2>
+        <div class="inside-grid">
+            <div class="inside-card">
+                <div class="inside-icon">&#128187;</div>
+                <h3>Python Scripts</h3>
+                <p>Copy-paste scripts for daily collection, bonus tracking, and churning. Documented with comments explaining every line.</p>
+            </div>
+            <div class="inside-card">
+                <div class="inside-icon">&#127909;</div>
+                <h3>Video Walkthroughs</h3>
+                <p>Screen recordings of every setup process. Watch me build it, then follow along at your own pace.</p>
+            </div>
+            <div class="inside-card">
+                <div class="inside-icon">&#9729;&#65039;</div>
+                <h3>VPS Setup Guide</h3>
+                <p>A $5/month server running your scripts 24/7. Complete walkthrough from zero to automated income.</p>
+            </div>
+            <div class="inside-card">
+                <div class="inside-icon">&#128202;</div>
+                <h3>Churning Calculator</h3>
+                <p>40+ sites pre-calculated. Plug in any package and instantly see expected profit, ROI, and whether it's worth your time.</p>
+            </div>
+            <div class="inside-card">
+                <div class="inside-icon">&#128172;</div>
+                <h3>Private Discord</h3>
+                <p>Patron-only channels for strategy talk, script help, and sharing results. This is where the real conversations happen.</p>
+            </div>
+            <div class="inside-card">
+                <div class="inside-icon">&#128640;</div>
+                <h3>Monthly Updates</h3>
+                <p>Sites change constantly. Scripts get updated, spreadsheets get refreshed, and new opportunities get documented.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <h2>What Members Are Saying</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                <p class="testimonial-text">"The VPS guide alone saved me 10+ hours of research. Had my collection scripts running 24/7 within a day. Making $35/day on autopilot now."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">D</div>
+                    <div>
+                        <div class="author-name">Derek M.</div>
+                        <div class="author-detail">Automator tier &middot; 3 months</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                <p class="testimonial-text">"Went from spending 2 hours daily on manual collection to 15 minutes. The scripts just work. And when something breaks, the Discord support is crazy fast."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">T</div>
+                    <div>
+                        <div class="author-name">Tanya K.</div>
+                        <div class="author-detail">Counter Gambler tier &middot; 5 months</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                <p class="testimonial-text">"The churning calculator paid for itself on my first churn. Made $54 profit on a $20 package — would have missed it without the spreadsheet showing the math."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">R</div>
+                    <div>
+                        <div class="author-name">Ryan L.</div>
+                        <div class="author-detail">Automator tier &middot; 2 months</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                <p class="testimonial-text">"I was doing everything manually and barely making $400/month. After 2 months on Patreon, I'm automated and hitting $1,200. The custom script request alone is worth $30."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">J</div>
+                    <div>
+                        <div class="author-name">James W.</div>
+                        <div class="author-detail">Counter Gambler tier &middot; 4 months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Is this actually worth it?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>The Automator tier costs $15/month. The churning calculator alone will save you from one bad package purchase (easily $20-50 saved). The VPS guide saves 10+ hours of research. The scripts save 1.5 hours daily. If your time is worth more than $0.33/hour, yes, it's worth it.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Can I cancel anytime?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. Cancel anytime from your Patreon settings. No questions asked, no hoops to jump through. You keep access until the end of your billing period. You also keep any guides or scripts you've already downloaded.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                What if I'm a complete beginner?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Start with the free <a href="getting-started.html" style="color:#4CAF50;">Getting Started guide</a> and the free Discord. Get comfortable with daily collection first. Once you're collecting manually and want to automate, the Hustler tier ($5) is perfect. The guides are written for beginners — if you can follow step-by-step instructions, you'll be fine.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Do I need to know how to code?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Not for the Hustler tier. For Automator and Counter Gambler, basic comfort with a terminal is helpful but not required — the video walkthroughs show you every click. The scripts are copy-paste with clear instructions for configuring your credentials.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                How much can I realistically earn?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Daily collection alone (free bonuses from 70+ sites): $900-1,200/month. Add churning: +$300-600/month. Add matched betting: +$100-300/month ongoing. Total realistic range after 2-3 months of setup: $1,200-1,500/month. Some members earn more, some earn less. It depends on consistency and how many sites you work.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Is this gambling?
+                <span class="faq-arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>No. Counter gambling specifically exploits promotional bonuses using math. You're not betting and hoping to win — you're calculating expected value and only engaging when the math is positive. It's closer to credit card churning than gambling. The guides explain the distinction in detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Automate Your Income?</h2>
+        <p>Join other members who turned daily collection from a 2-hour grind into a 15-minute check-in. Your first month's earning potential covers years of Patreon.</p>
+        <a href="https://patreon.com/onlinesidehustles" class="cta-btn" target="_blank">Join the Patreon &#128640;</a>
+        <br>
+        <a href="https://discord.com/invite/onlinesidehustles" class="cta-secondary" target="_blank">Or join the free Discord first &#8594;</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Online Sidehustles. All rights reserved.</p>
+            <p style="color:#4CAF50;font-style:italic;">Website by Crossroads - Sidehustle Wiki</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="daily-login-guide.html">Daily Login Sites</a>
+                <a href="blog.html">Blog</a>
+                <a href="getting-started.html">Getting Started</a>
+                <a href="tools.html">Tools</a>
+                <a href="glossary.html">Glossary</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
+        <span>&#128172;</span> Join Discord
+    </a>
+</div>
+
+<script>
+function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Open clicked (if it wasn't already open)
+    if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
