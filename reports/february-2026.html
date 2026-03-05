@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Side Hustles — Monthly Income Report | February 2026</title>
+    <style>
+        @page { size: Letter; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 40px 50px;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 30px;
+        }
+        .header-brand {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #4CAF50;
+            margin-bottom: 8px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+        .header .subtitle {
+            font-size: 16px;
+            color: rgba(255,255,255,0.5);
+        }
+        .header .date {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 8px;
+        }
+
+        /* Summary Box */
+        .summary {
+            background: linear-gradient(135deg, rgba(76,175,80,0.15), rgba(255,215,0,0.1));
+            border: 1px solid rgba(76,175,80,0.3);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .summary-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #4CAF50;
+            margin-bottom: 6px;
+        }
+        .summary-total {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .summary-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 8px;
+        }
+        .summary-streams {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .stream-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 28px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .section-icon {
+            font-size: 22px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .section-subtitle {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            margin-left: auto;
+        }
+
+        /* Line Items */
+        .line-items {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .line-item:last-child {
+            border-bottom: none;
+        }
+        .line-item-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        .line-item-detail {
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+        }
+        .line-item-amount {
+            font-size: 15px;
+            font-weight: 700;
+            color: #4CAF50;
+            white-space: nowrap;
+        }
+        .line-item-amount.gold {
+            color: #FFD700;
+        }
+        .line-item.total-row {
+            background: rgba(76,175,80,0.08);
+        }
+        .line-item.total-row .line-item-label {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Stock Tickers */
+        .stock-tickers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            padding: 0 20px 12px;
+        }
+        .ticker {
+            background: rgba(33,150,243,0.1);
+            border: 1px solid rgba(33,150,243,0.2);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #64B5F6;
+            font-family: monospace;
+        }
+
+        /* Pending */
+        .pending-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 0 4px;
+        }
+        .pending-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pending-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #FF9800;
+            flex-shrink: 0;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .report-footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+        }
+        .report-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: #0a0a0a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            .summary {
+                background: linear-gradient(135deg, rgba(76,175,80,0.15), rgba(255,215,0,0.1)) !important;
+            }
+            .line-item.total-row {
+                background: rgba(76,175,80,0.08) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-brand">Online Side Hustles</div>
+        <h1>Monthly Income Report</h1>
+        <div class="subtitle">February 2026</div>
+        <div class="date">Report generated March 5, 2026 · onlinesidehustles.info</div>
+    </div>
+
+    <div class="summary">
+        <div class="summary-label">💰 Grand Total (My Take)</div>
+        <div class="summary-total">$11,124.00</div>
+        <div class="summary-note">Across 5 active income streams · 2 player accounts · 30 RSA accounts</div>
+        <div class="summary-streams">
+            <span class="stream-pill">🎰 Daily Logins</span>
+            <span class="stream-pill">🔄 Package Churning</span>
+            <span class="stream-pill">💳 CC Cashback</span>
+            <span class="stream-pill">📈 RSA</span>
+            <span class="stream-pill">⚽ Sportsbetting</span>
+        </div>
+    </div>
+
+    <!-- Player 1 -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">🎮</span>
+            <span class="section-title">Player 1 — Main Account</span>
+            <span class="section-subtitle">Subtotal: $5,265.00</span>
+        </div>
+        <div class="line-items">
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🎁 Daily Login Bonuses</div>
+                    <div class="line-item-detail">$35/day × 28 days</div>
+                </div>
+                <div class="line-item-amount">$980.00</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🔄 Package Churning</div>
+                    <div class="line-item-detail">$18,000 spent → $22,015 returned</div>
+                </div>
+                <div class="line-item-amount">$4,015.00</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">💳 Credit Card Cashback</div>
+                    <div class="line-item-detail">1.5% of $18,000 spent</div>
+                </div>
+                <div class="line-item-amount">$270.00</div>
+            </div>
+            <div class="line-item total-row">
+                <div class="line-item-label">Player 1 Total</div>
+                <div class="line-item-amount gold">$5,265.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player 2 -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">👥</span>
+            <span class="section-title">Player 2 — Second Account (50/50 Split)</span>
+            <span class="section-subtitle">My 50%: $2,300.00</span>
+        </div>
+        <div class="line-items">
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🎁 Daily Login Bonuses</div>
+                    <div class="line-item-detail">$35/day × 28 days = $980.00 total · my 50%</div>
+                </div>
+                <div class="line-item-amount">$490.00</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🔄 Package Churning</div>
+                    <div class="line-item-detail">$2,000.00 total profit · my 50%</div>
+                </div>
+                <div class="line-item-amount">$1,000.00</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🎉 Welcome Packages</div>
+                    <div class="line-item-detail">$1,620.00 total profit · my 50%</div>
+                </div>
+                <div class="line-item-amount">$810.00</div>
+            </div>
+            <div class="line-item total-row">
+                <div class="line-item-label">Player 2 Total (My 50%)</div>
+                <div class="line-item-amount gold">$2,300.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RSA -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">📈</span>
+            <span class="section-title">RSA — Reverse Stock Arbitrage</span>
+            <span class="section-subtitle">Expected: $2,139.00</span>
+        </div>
+        <div class="line-items">
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">📊 Buy Calls Executed</div>
+                    <div class="line-item-detail">15 buy calls across 30 accounts</div>
+                </div>
+                <div class="line-item-amount">15 calls</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">💵 Expected Profit per Account</div>
+                </div>
+                <div class="line-item-amount">$71.30</div>
+            </div>
+            <div class="line-item total-row">
+                <div class="line-item-label">Expected Total (30 accounts)</div>
+                <div class="line-item-amount gold">$2,139.00</div>
+            </div>
+        </div>
+        <div class="stock-tickers">
+            <span class="ticker">EDHL</span>
+            <span class="ticker">HCTI</span>
+            <span class="ticker">MWG</span>
+            <span class="ticker">AURE</span>
+            <span class="ticker">JFBR</span>
+            <span class="ticker">BYAH</span>
+            <span class="ticker">NBY</span>
+            <span class="ticker">ZDAI</span>
+            <span class="ticker">ADVB</span>
+            <span class="ticker">RPGL</span>
+            <span class="ticker">PTLE</span>
+            <span class="ticker">IXHL</span>
+            <span class="ticker">VCIG</span>
+            <span class="ticker">ZCMD</span>
+            <span class="ticker">XTKG</span>
+        </div>
+    </div>
+
+    <!-- Sportsbetting -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">⚽</span>
+            <span class="section-title">Sportsbetting — Managed by Nitsuj</span>
+            <span class="section-subtitle">Payout: $1,420.00</span>
+        </div>
+        <div class="line-items">
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">💰 Profit Share Payout</div>
+                </div>
+                <div class="line-item-amount">$1,420.00</div>
+            </div>
+            <div class="line-item">
+                <div>
+                    <div class="line-item-label">🎲 Dabble Deposit</div>
+                    <div class="line-item-detail">$3,000 deposited — results pending</div>
+                </div>
+                <div class="line-item-amount" style="color: #FF9800;">Pending</div>
+            </div>
+            <div class="line-item total-row">
+                <div class="line-item-label">Sportsbetting Total</div>
+                <div class="line-item-amount gold">$1,420.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Side Hustles -->
+    <div class="section">
+        <div class="section-header">
+            <span class="section-icon">🚧</span>
+            <span class="section-title">Pending Side Hustles</span>
+            <span class="section-subtitle">In Development</span>
+        </div>
+        <div class="pending-grid">
+            <div class="pending-item"><span class="pending-dot"></span> eBay Dropshipping Automation</div>
+            <div class="pending-item"><span class="pending-dot"></span> TikTok Shop Automation</div>
+            <div class="pending-item"><span class="pending-dot"></span> TikTok Video Posting</div>
+            <div class="pending-item"><span class="pending-dot"></span> Website Selling Automation</div>
+            <div class="pending-item"><span class="pending-dot"></span> ReviewYourLocalBusiness</div>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        ⚠️ <strong>Disclaimer:</strong> Daily logins and churning are realized profits. RSA profits are expected based on call projections. Sportsbetting Dabble results still pending.
+    </div>
+
+    <div class="report-footer">
+        <a href="https://onlinesidehustles.info">onlinesidehustles.info</a> · Join our Discord community for live updates
+    </div>
+
+</body>
+</html>
