@@ -10,7 +10,6 @@ Sitemap: https://onlinesidehustles.info/sitemap.xml
 
 # Individual Sitemaps (for reference)
 Sitemap: https://onlinesidehustles.info/sitemap-pages.xml
-Sitemap: https://onlinesidehustles.info/sitemap-reviews.xml
 Sitemap: https://onlinesidehustles.info/sitemap-blog.xml
 
 # Crawl-delay (optional - gives server breathing room)
@@ -20,18 +19,16 @@ Crawl-delay: 1
 Sitemap: https://onlinesidehustles.info/feed.xml
 
 # Block common unnecessary paths
-Disallow: /wp-admin/
-Disallow: /wp-includes/
 Disallow: /cgi-bin/
 Disallow: /private/
-Disallow: /*.json$
+Disallow: /*.json
 Disallow: /api/
 
 # Allow important resources for rendering
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.webp$
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
