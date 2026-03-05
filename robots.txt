@@ -1,5 +1,5 @@
 # robots.txt for onlinesidehustles.info
-# Last updated: 2026-01-19
+# Last updated: 2026-03-05
 
 # Allow all search engines to crawl everything
 User-agent: *
@@ -15,6 +15,9 @@ Sitemap: https://onlinesidehustles.info/sitemap-blog.xml
 
 # Crawl-delay (optional - gives server breathing room)
 Crawl-delay: 1
+
+# RSS Feed
+Sitemap: https://onlinesidehustles.info/feed.xml
 
 # Block common unnecessary paths
 Disallow: /wp-admin/

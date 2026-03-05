@@ -1,0 +1,22 @@
+# Netlify redirects
+
+# Clean URLs (no .html extension)
+/faq            /faq.html           200
+/glossary       /glossary.html      200
+/getting-started /getting-started.html 200
+/tools          /tools.html         200
+/newsletter     /newsletter.html    200
+/earnings-potential /earnings-potential.html 200
+/new-sites      /new-sites.html     200
+
+# Comparison pages
+/comparisons/chumba-vs-stake      /comparisons/chumba-vs-stake.html      200
+/comparisons/fastest-payout-sites /comparisons/fastest-payout-sites.html 200
+/comparisons/best-welcome-packages /comparisons/best-welcome-packages.html 200
+
+# RSS feed
+/rss            /feed.xml           200
+/feed           /feed.xml           200
+
+# Custom 404
+/*              /404.html           404
