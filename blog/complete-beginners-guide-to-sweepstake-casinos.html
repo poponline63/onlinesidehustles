@@ -161,7 +161,7 @@
             scroll-behavior: smooth;
         }
         
-        body {
+        body { padding-top: 60px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: linear-gradient(135deg, #0a1f0a 0%, #0d2b0d 50%, #0a1f0a 100%);
             color: #e8e8e8;
@@ -231,48 +231,7 @@
         .floating-element:nth-child(8) { left: 75%; animation-duration: 26s; animation-delay: 1s; --drift: -50px; }
         .floating-element:nth-child(9) { left: 85%; animation-duration: 33s; animation-delay: 5s; --drift: 35px; }
         .floating-element:nth-child(10) { left: 95%; animation-duration: 28s; animation-delay: 9s; --drift: -42px; }
-        
-        header {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(50, 205, 50, 0.3);
-        }
-        
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-        }
-        
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-        }
-        
+
         article {
             max-width: 900px;
             margin: 120px auto 60px;
@@ -286,9 +245,7 @@
             border: 1px solid rgba(50, 205, 50, 0.1);
         }
         
-        .article-header {
-            margin-bottom: 3rem;
-        }
+        .article-
         
         .article-meta {
             display: flex;
@@ -610,11 +567,7 @@
                 padding: 2rem 1.5rem;
                 margin-top: 100px;
             }
-            
-            nav {
-                padding: 1rem;
-            }
-            
+
             .cta-button {
                 padding: 0.8rem 1.5rem;
                 font-size: 1rem;
@@ -662,60 +615,34 @@
                 font-size: 2rem;
             }
         }
-    
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
-        .logo-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(76,175,80,0.3); }
-        .logo-icon svg { width: 100%; height: 100%; border-radius: 12px; }
-        .mobile-menu-toggle { display: none; background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.25rem; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
-        .mobile-menu-toggle:hover { background: linear-gradient(135deg, #3a3a3a, #4a4a4a); border-color: #4CAF50; }
-        .nav-menu { display: flex; gap: 0.5rem; align-items: center; }
-        .nav-link { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.25s; }
-        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-link-primary { color: #FFD700; font-weight: 600; }
-        .nav-link-primary:hover { color: #FFD700; background: rgba(255,215,0,0.12); }
-        .nav-link-gold { color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.45rem 1.1rem; border-radius: 20px; }
-        .nav-link-gold:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
-        .mega-dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; }
-        .browse-btn { background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
-        .browse-btn:hover { background: linear-gradient(135deg, #3a3a3a, #4a4a4a); border-color: #4CAF50; transform: translateY(-2px); }
-        .mega-menu { position: absolute; top: 100%; right: -50px; margin-top: 0.5rem; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; width: min(600px, calc(100vw - 2rem)); max-width: calc(100vw - 2rem); max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .mega-menu::-webkit-scrollbar { width: 8px; }
-        .mega-menu::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
-        .mega-menu::-webkit-scrollbar-thumb { background: rgba(76,175,80,0.5); border-radius: 10px; }
-        .mega-menu::-webkit-scrollbar-thumb:hover { background: rgba(76,175,80,0.7); }
-        @media (max-width: 700px) { .mega-menu { right: -1rem; width: calc(100vw - 2rem); } }
-        .mega-dropdown:hover .mega-menu, .mega-menu:hover { opacity: 1; visibility: visible; }
-        .mega-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 20px; display: none; }
-        .mega-dropdown:hover::after { display: block; }
-        .mega-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        .menu-category { padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
-        .menu-category-title { color: #4CAF50; font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .menu-items { display: flex; flex-direction: column; gap: 0.5rem; }
-        .menu-item { color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.5rem 0.75rem; border-radius: 8px; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
-        .menu-item:hover { background: rgba(76,175,80,0.1); color: white; transform: translateX(5px); }
-        .menu-item.coming-soon { cursor: not-allowed; pointer-events: none; }
-        .menu-item-new { background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 10px; font-weight: bold; margin-left: auto; }
-        .menu-item-coming { background: linear-gradient(135deg, #607D8B, #90A4AE); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 10px; font-weight: bold; margin-left: auto; }
-        @media (max-width: 1400px) { .mega-menu { right: 0; } }
+
+        @media (max-width: 700px) {  }
+
+        @media (max-width: 1400px) {  }
         @media (max-width: 768px) {
-            nav { padding: 1rem; }
-            .logo { font-size: 1.1rem; }
-            .logo-icon { width: 35px; height: 35px; font-size: 16px; }
-            .mobile-menu-toggle { display: block; }
-            .nav-menu { display: none; width: 100%; flex-direction: column; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0.75rem; }
-            .nav-menu.active { display: flex; }
-            .nav-link { padding: 0.6rem 1rem; font-size: 1rem; }
-            .nav-link-gold { text-align: center; }
-            .mega-dropdown { width: 100%; padding-bottom: 0; margin-bottom: 0; }
-            .browse-btn { width: 100%; justify-content: center; }
-            .mega-menu { position: relative; top: 0; right: auto; width: 100%; max-width: 100%; margin: 1rem 0; padding: 1.5rem; display: none; }
-            .mega-dropdown.active .mega-menu { display: block; opacity: 1; visibility: visible; }
-            .mega-menu-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .menu-category { padding: 0.75rem; }
-            .menu-category-title { font-size: 1rem; }
-            .menu-item { font-size: 0.9rem; padding: 0.4rem 0.6rem; }
+
         }
-        @media (max-width: 600px) { .mega-menu { padding: 1rem; } .menu-items { gap: 0.25rem; } .menu-item { font-size: 0.85rem; } .menu-item-new, .menu-item-coming { font-size: 0.65rem; } }
+        @media (max-width: 600px) {     }
+    
+        /* ── Sub-page header ── */
+        .sub-
+        .back-btn { color: #4CAF50; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 6px; transition: color 0.3s; min-width: 70px; }
+        .back-btn:hover { color: #66BB6A; }
+        .sub-logo { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 800; font-size: 16px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .sub-logo 
+        .sub-logo 
+        .hamburger-btn { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: background 0.3s; min-width: 40px; text-align: right; }
+        .hamburger-btn:hover { background: rgba(255,255,255,0.1); }
+        .slide-menu { position: fixed; top: 0; right: -300px; width: 300px; height: 100vh; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px); z-index: 2000; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1); padding: 20px; border-left: 1px solid rgba(76, 175, 80, 0.15); overflow-y: auto; }
+        .slide-menu.open { right: 0; }
+        .slide-menu-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
+        .slide-menu-overlay.open { display: block; }
+        .slide-menu-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; float: right; margin-bottom: 20px; }
+        .slide-menu-title { color: #4CAF50; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(76, 175, 80, 0.2); clear: both; }
+        .slide-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 12px 0; font-size: 15px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.3s, padding-left 0.3s; }
+        .slide-menu a:hover { color: #4CAF50; padding-left: 8px; }
+        .slide-menu a:last-child { border-bottom: none; }
+
     </style>
 <link rel="stylesheet" href="/blog/blog-enhanced.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How to Make Money with Sweepstakes Casinos: Complete Guide 2026","description":"Learn how sweepstakes casinos work and how beginners can earn $1,050/month from daily bonuses plus $7,000+ in welcome packages.","author":{"@type":"Organization","name":"Online Sidehustles","url":"https://onlinesidehustles.info"},"datePublished":"2026-03-05","dateModified":"2026-03-05","url":"https://onlinesidehustles.info/blog/complete-beginners-guide-to-sweepstake-casinos.html","publisher":{"@type":"Organization","name":"Online Sidehustles","logo":{"@type":"ImageObject","url":"https://onlinesidehustles.info/og-image.jpg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://onlinesidehustles.info/blog/complete-beginners-guide-to-sweepstake-casinos.html"}}</script>
@@ -737,128 +664,24 @@
         <div class="floating-element">🎲</div>
     </div>
 
-        <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="../index.html" class="logo" aria-label="Online Sidehustles - Home">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-                        <defs>
-                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#004D40"/>
-                                <stop offset="33%" style="stop-color:#00695C"/>
-                                <stop offset="66%" style="stop-color:#4CAF50"/>
-                                <stop offset="100%" style="stop-color:#FFD700"/>
-                            </linearGradient>
-                            <radialGradient id="centerGoldLogo">
-                                <stop offset="0%" style="stop-color:#FFD700"/>
-                                <stop offset="50%" style="stop-color:#FFA500"/>
-                                <stop offset="100%" style="stop-color:#4CAF50"/>
-                            </radialGradient>
-                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#8B4513"/>
-                                <stop offset="50%" style="stop-color:#6D4C41"/>
-                                <stop offset="100%" style="stop-color:#5D4037"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
-                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
-                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
-                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
-                    </svg>
-                </div>
-                <span>ONLINE SIDEHUSTLES</span>
-            </a>
-
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Menu &#9776;</button>
-
-            <div class="nav-menu" id="navMenu">
-                <a href="https://onlinesidehustles.info/daily-login-guide" class="nav-link nav-link-primary">Daily Login Sites</a>
-                <a href="https://onlinesidehustles.info/blog" class="nav-link">Blog</a>
-                <a href="../getting-started.html" class="nav-link">Get Started</a>
-                <a href="../income-reports.html" class="nav-link">Income Reports</a>
-                <a href="../patreon.html" class="nav-link nav-link-gold">Patreon</a>
-                <div class="mega-dropdown" id="megaDropdown">
-                    <button class="browse-btn" onclick="toggleMegaMenu(event)">Browse All Hustles <span>&#9660;</span></button>
-                    <div class="mega-menu">
-                        <div class="mega-menu-grid">
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#127920;</span> Daily Login Sidehustle</div>
-                                <div class="menu-items">
-                                    <a href="https://onlinesidehustles.info/daily-login-guide" class="menu-item"><span>&#128178;</span> Daily Login Websites Ultimate Guide <span class="menu-item-new">HOT</span></a>
-                                    <a href="../jupiter-post.html" class="menu-item"><span>&#129680;</span> Jupiter Post</a>
-                                    <a href="../complete-guide-list.html" class="menu-item"><span>&#9998;</span> Written Guides for Daily Login Websites</a>
-                                    <a href="../daily-free-sc.html" class="menu-item"><span>&#127873;</span> Daily Free Rewards</a>
-                                    <a href="../package-sales.html" class="menu-item"><span>&#128230;</span> Package Sales</a>
-                                    <a href="../skrill-casinos.html" class="menu-item"><span>&#128179;</span> Skrill Eligible Sites</a>
-                                    <a href="../bonus-collection-software.html" class="menu-item"><span>&#129302;</span> Daily Bonus Collection Software</a>
-                                    <a href="../auto-giveaways-software.html" class="menu-item"><span>&#10024;</span> Auto Giveaways Signup Software</a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128218;</span> Resources & Tools</div>
-                                <div class="menu-items">
-                                    <a href="../getting-started.html" class="menu-item"><span>&#128506;</span> Getting Started Roadmap</a>
-                                    <a href="../tools.html" class="menu-item"><span>&#128295;</span> Calculators & Tools</a>
-                                    <a href="../faq.html" class="menu-item"><span>&#10067;</span> FAQ / Help Center</a>
-                                    <a href="../glossary.html" class="menu-item"><span>&#128214;</span> Glossary of Terms</a>
-                                    <a href="../earnings-potential.html" class="menu-item"><span>&#128176;</span> Earnings Potential</a>
-                                    <a href="../new-sites.html" class="menu-item"><span>&#127381;</span> New Sites This Month</a>
-                                    <a href="../comparisons/best-welcome-packages.html" class="menu-item"><span>&#127873;</span> Best Welcome Packages</a>
-                                    <a href="comparisons/fastest-payout-sites.html" class="menu-item"><span>&#9889;</span> Fastest Payout Sites</a>
-                                    <a href="comparisons/chumba-vs-stake.html" class="menu-item"><span>&#128293;</span> Chumba vs Stake.us</a>
-                                    <a href="../newsletter.html" class="menu-item"><span>&#128233;</span> Newsletter Signup</a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128188;</span> Online Selling</div>
-                                <div class="menu-items">
-                                    <a href="../sell-on-ebay-automated.html" class="menu-item"><span>&#129302;</span> Sell on Ebay Automated</a>
-                                    <a href="../sell-on-tiktok-automated.html" class="menu-item"><span>&#128241;</span> Sell on Tiktok Automated</a>
-                                    <a href="https://onlinesidehustles.info/tracking-number-generator" class="menu-item"><span>&#128230;</span> Tracking Number Generator</a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128184;</span> Online Sidehustles</div>
-                                <div class="menu-items">
-                                    <a href="../reverse-stock-arbitrage.html" class="menu-item"><span>&#128202;</span> Reverse Stock Arbitrage</a>
-                                    <a href="../sportsbetting-automation.html" class="menu-item"><span>&#127922;</span> Sportsbetting Automated</a>
-                                    <a href="../credit-card-churning.html" class="menu-item"><span>&#128179;</span> Credit Card Churning</a>
-                                    <a href="../credit-cards.html" class="menu-item"><span>&#128176;</span> Best Credit Cards <span class="menu-item-new">NEW</span></a>
-                                    <a href="../best-sweepstakes-card.html" class="menu-item"><span>&#127183;</span> Best Sweepstakes Card <span class="menu-item-new">NEW</span></a>
-                                    <a href="../matched-betting.html" class="menu-item"><span>&#9917;</span> Matched Betting</a>
-                                    <a href="../openclaw-setup.html" class="menu-item"><span>&#129302;</span> OpenClaw AI Setup</a>
-                                    <a href="../reward-apps.html" class="menu-item"><span>&#127873;</span> Reward Apps</a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128187;</span> Digital Services</div>
-                                <div class="menu-items">
-                                    <a href="#" class="menu-item coming-soon"><span>&#9999;&#65039;</span> Freelance Writing <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127912;</span> Graphic Design <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127909;</span> Video Editing <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127760;</span> Easy Website Creation for Clients <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127978;</span> Running Stores for Others <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127970;</span> Creating Businesses <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#129302;</span> AI Services <span class="menu-item-coming">COMING SOON</span></a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128202;</span> Investing &amp; Trading</div>
-                                <div class="menu-items">
-                                    <a href="#" class="menu-item coming-soon"><span>&#8383;</span> Crypto Staking <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#128200;</span> Micro-Investing Apps <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127974;</span> High-Yield Savings <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127919;</span> Cashback Programs <span class="menu-item-coming">COMING SOON</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+            <header class="sub-header" role="banner">
+        <a href="../index.html" class="back-btn" aria-label="Back to Home">&#8592; Home</a>
+        <a href="../index.html" class="sub-logo" aria-label="Online Sidehustles">
+            <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><defs><linearGradient id="el" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="cg"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient><linearGradient id="sg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8B4513"/><stop offset="50%" style="stop-color:#6D4C41"/><stop offset="100%" style="stop-color:#5D4037"/></linearGradient></defs><rect width="64" height="64" fill="url(#el)"/><rect x="26" y="36" width="12" height="18" fill="url(#sg)" rx="1"/><circle cx="32" cy="24" r="15" fill="url(#cg)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text></svg></div>
+            <span style="display:none;">OSH</span>
+        </a>
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
     </header>
+
+    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="slide-menu" id="slideMenu">
+        <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
+        <div class="slide-menu-title">📚 Blog</div>
+        <a href="../blog.html">All Blog Posts</a>
+        <a href="../getting-started.html">Getting Started Guide</a>
+        <a href="../daily-login-guide.html">Daily Login Guide</a>
+        <a href="../faq.html">FAQ</a>
+    </div>
     
     <!-- Breadcrumbs for SEO -->
     <div style="max-width: 1400px; margin: 80px auto 0; padding: 1rem 2rem; position: relative; z-index: 1;">
@@ -1534,25 +1357,12 @@
   onScroll();
 })();
 
-        function toggleMobileMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+        
+
+        
         }
 
-        function toggleMegaMenu(event) {
-            event.stopPropagation();
-            if (window.innerWidth <= 768) {
-                document.getElementById('megaDropdown').classList.toggle('active');
-            }
-        }
-
-        document.addEventListener('click', function(event) {
-            const megaDropdown = document.getElementById('megaDropdown');
-            const navMenu = document.getElementById('navMenu');
-            if (!event.target.closest('.mega-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
-                megaDropdown.classList.remove('active');
-                if (window.innerWidth <= 768) navMenu.classList.remove('active');
-            }
-        });
+        
 
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
@@ -1562,5 +1372,12 @@
         });
     </script>
 
+
+    <script>
+    function toggleMenu() {
+        document.getElementById('slideMenu').classList.toggle('open');
+        document.getElementById('menuOverlay').classList.toggle('open');
+    }
+    </script>
 </body>
 </html>
