@@ -1130,9 +1130,9 @@
     </div>
     
     <!-- Header with Mega Menu -->
-    <header>
-        <nav>
-            <a href="index.html" class="logo">
+        <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="logo" aria-label="Online Sidehustles - Home">
                 <div class="logo-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
                         <defs>
@@ -1163,138 +1163,87 @@
                 </div>
                 <span>ONLINE SIDEHUSTLES</span>
             </a>
-            
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                Menu ☰
-            </button>
-            
+
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Menu &#9776;</button>
+
             <div class="nav-menu" id="navMenu">
+                <a href="https://onlinesidehustles.info/daily-login-guide" class="nav-link nav-link-primary">Daily Login Sites</a>
+                <a href="https://onlinesidehustles.info/blog" class="nav-link">Blog</a>
+                <a href="getting-started.html" class="nav-link">Get Started</a>
+                <a href="income-reports.html" class="nav-link">Income Reports</a>
+                <a href="patreon.html" class="nav-link nav-link-gold">Patreon</a>
                 <div class="mega-dropdown" id="megaDropdown">
-                    <button class="browse-btn" onclick="toggleMegaMenu(event)">
-                        Browse All Hustles
-                        <span>▼</span>
-                    </button>
-                    
+                    <button class="browse-btn" onclick="toggleMegaMenu(event)">Browse All Hustles <span>&#9660;</span></button>
                     <div class="mega-menu">
                         <div class="mega-menu-grid">
                             <div class="menu-category">
-                                <div class="menu-category-title">
-                                    <span>🎰</span>
-                                    Sweepstakes & Gaming
-                                </div>
+                                <div class="menu-category-title"><span>&#127920;</span> Daily Login Sidehustle</div>
                                 <div class="menu-items">
-                                    <a href="sweepstake-casinos.html" class="menu-item">
-                                        <span>💲</span>
-                                        Sweepstake Casinos Ultimate Guide
-                                        <span class="menu-item-new">HOT</span>
-                                    </a>
-                                    <a href="24-to-1000-guide.html" class="menu-item">
-                                        <span>💰</span>
-                                        $24 to $1000+ Guide
-                                        <span class="menu-item-new">NEW</span>
-                                    </a>
-                                    <a href="skrill-casinos.html" class="menu-item">
-                                        <span>💳</span>
-                                        Skrill Eligible Sites
-                                    </a>
-                                    <a href="daily-free-sc.html" class="menu-item">
-                                        <span>🎁</span>
-                                        Daily Free SC
-                                    </a>
-                                    <a href="package-sales.html" class="menu-item">
-                                        <span>📦</span>
-                                        Package Sales
-                                    </a>
-                                    <a href="complete-guide-list.html" class="menu-item">
-                                        <span>📖</span>
-                                        Complete Guide List
-                                        <span class="menu-item-new">NEW</span>
-                                    </a>
-                                    <a href="bonus-collection-software.html" class="menu-item">
-                                        <span>🤖</span>
-                                        Daily Bonus Collection Software
-                                    </a>
-                                    <a href="auto-giveaways-software.html" class="menu-item">
-                                        <span>✨</span>
-                                        Auto Giveaways Signup Software
-                                        <span class="menu-item-new">NEW</span>
-                                    </a>
+                                    <a href="https://onlinesidehustles.info/daily-login-guide" class="menu-item"><span>&#128178;</span> Daily Login Websites Ultimate Guide <span class="menu-item-new">HOT</span></a>
+                                    <a href="jupiter-post.html" class="menu-item"><span>&#129680;</span> Jupiter Post</a>
+                                    <a href="complete-guide-list.html" class="menu-item"><span>&#9998;</span> Written Guides for Daily Login Websites</a>
+                                    <a href="daily-free-sc.html" class="menu-item"><span>&#127873;</span> Daily Free Rewards</a>
+                                    <a href="package-sales.html" class="menu-item"><span>&#128230;</span> Package Sales</a>
+                                    <a href="skrill-casinos.html" class="menu-item"><span>&#128179;</span> Skrill Eligible Sites</a>
+                                    <a href="bonus-collection-software.html" class="menu-item"><span>&#129302;</span> Daily Bonus Collection Software</a>
+                                    <a href="auto-giveaways-software.html" class="menu-item"><span>&#10024;</span> Auto Giveaways Signup Software</a>
                                 </div>
                             </div>
-                            
                             <div class="menu-category">
-                                <div class="menu-category-title">
-                                    <span>💼</span>
-                                    E-Commerce
-                                </div>
+                                <div class="menu-category-title"><span>&#128218;</span> Resources & Tools</div>
                                 <div class="menu-items">
-                                    <a href="sell-on-ebay-automated.html" class="menu-item">
-                                        <span>🤖</span>
-                                        Sell on Ebay Automated
-                                    </a>
-                                    <a href="sell-on-tiktok-automated.html" class="menu-item">
-                                        <span>📱</span>
-                                        Sell on Tiktok Automated
-                                    </a>
+                                    <a href="getting-started.html" class="menu-item"><span>&#128506;</span> Getting Started Roadmap</a>
+                                    <a href="tools.html" class="menu-item"><span>&#128295;</span> Calculators & Tools</a>
+                                    <a href="faq.html" class="menu-item"><span>&#10067;</span> FAQ / Help Center</a>
+                                    <a href="glossary.html" class="menu-item"><span>&#128214;</span> Glossary of Terms</a>
+                                    <a href="earnings-potential.html" class="menu-item"><span>&#128176;</span> Earnings Potential</a>
+                                    <a href="new-sites.html" class="menu-item"><span>&#127381;</span> New Sites This Month</a>
+                                    <a href="comparisons/best-welcome-packages.html" class="menu-item"><span>&#127873;</span> Best Welcome Packages</a>
+                                    <a href="comparisons/fastest-payout-sites.html" class="menu-item"><span>&#9889;</span> Fastest Payout Sites</a>
+                                    <a href="comparisons/chumba-vs-stake.html" class="menu-item"><span>&#128293;</span> Chumba vs Stake.us</a>
+                                    <a href="newsletter.html" class="menu-item"><span>&#128233;</span> Newsletter Signup</a>
                                 </div>
                             </div>
-                            
                             <div class="menu-category">
-                                <div class="menu-category-title">
-                                    <span>💻</span>
-                                    Digital Services
-                                </div>
+                                <div class="menu-category-title"><span>&#128188;</span> Online Selling</div>
                                 <div class="menu-items">
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>✍️</span>
-                                        Freelance Writing
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>🎨</span>
-                                        Graphic Design
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>🎥</span>
-                                        Video Editing
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>🤖</span>
-                                        AI Services
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
+                                    <a href="sell-on-ebay-automated.html" class="menu-item"><span>&#129302;</span> Sell on Ebay Automated</a>
+                                    <a href="sell-on-tiktok-automated.html" class="menu-item"><span>&#128241;</span> Sell on Tiktok Automated</a>
+                                    <a href="https://onlinesidehustles.info/tracking-number-generator" class="menu-item"><span>&#128230;</span> Tracking Number Generator</a>
                                 </div>
                             </div>
-                            
                             <div class="menu-category">
-                                <div class="menu-category-title">
-                                    <span>📊</span>
-                                    Investing & Trading
-                                </div>
+                                <div class="menu-category-title"><span>&#128184;</span> Online Sidehustles</div>
                                 <div class="menu-items">
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>₿</span>
-                                        Crypto Staking
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>📈</span>
-                                        Micro-Investing Apps
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>🏦</span>
-                                        High-Yield Savings
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
-                                    <a href="#" class="menu-item coming-soon">
-                                        <span>🎯</span>
-                                        Cashback Programs
-                                        <span class="menu-item-coming">COMING SOON</span>
-                                    </a>
+                                    <a href="reverse-stock-arbitrage.html" class="menu-item"><span>&#128202;</span> Reverse Stock Arbitrage</a>
+                                    <a href="sportsbetting-automation.html" class="menu-item"><span>&#127922;</span> Sportsbetting Automated</a>
+                                    <a href="credit-card-churning.html" class="menu-item"><span>&#128179;</span> Credit Card Churning</a>
+                                    <a href="credit-cards.html" class="menu-item"><span>&#128176;</span> Best Credit Cards <span class="menu-item-new">NEW</span></a>
+                                    <a href="best-sweepstakes-card.html" class="menu-item"><span>&#127183;</span> Best Sweepstakes Card <span class="menu-item-new">NEW</span></a>
+                                    <a href="matched-betting.html" class="menu-item"><span>&#9917;</span> Matched Betting</a>
+                                    <a href="openclaw-setup.html" class="menu-item"><span>&#129302;</span> OpenClaw AI Setup</a>
+                                    <a href="reward-apps.html" class="menu-item"><span>&#127873;</span> Reward Apps</a>
+                                </div>
+                            </div>
+                            <div class="menu-category">
+                                <div class="menu-category-title"><span>&#128187;</span> Digital Services</div>
+                                <div class="menu-items">
+                                    <a href="#" class="menu-item coming-soon"><span>&#9999;&#65039;</span> Freelance Writing <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127912;</span> Graphic Design <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127909;</span> Video Editing <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127760;</span> Easy Website Creation for Clients <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127978;</span> Running Stores for Others <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127970;</span> Creating Businesses <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#129302;</span> AI Services <span class="menu-item-coming">COMING SOON</span></a>
+                                </div>
+                            </div>
+                            <div class="menu-category">
+                                <div class="menu-category-title"><span>&#128202;</span> Investing &amp; Trading</div>
+                                <div class="menu-items">
+                                    <a href="#" class="menu-item coming-soon"><span>&#8383;</span> Crypto Staking <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#128200;</span> Micro-Investing Apps <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127974;</span> High-Yield Savings <span class="menu-item-coming">COMING SOON</span></a>
+                                    <a href="#" class="menu-item coming-soon"><span>&#127919;</span> Cashback Programs <span class="menu-item-coming">COMING SOON</span></a>
                                 </div>
                             </div>
                         </div>
