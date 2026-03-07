@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D9MKJR8494');
+    </script>
+    <script src="/js/analytics.js" defer></script>
+    <!-- End Google Analytics 4 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweepStats - Track Your Sweepstakes Casino Profits | Community Spotlight</title>
+    <meta name="description" content="SweepStats is a free tool built by the community to track sweepstakes casino deposits, redemptions, and profit. Dashboard, charts, per-casino breakdowns, CSV import.">
+    <meta name="keywords" content="sweepstakes casino tracker, sweepstakes profit tracker, casino deposit tracker, sweepstats, sweepstakes casino tool">
+    <meta name="author" content="Online Sidehustles">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://onlinesidehustles.info/sweepstats">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://onlinesidehustles.info/sweepstats.html">
+    <meta property="og:site_name" content="Online Sidehustles">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="SweepStats - Track Your Sweepstakes Casino Profits | Community Spotlight">
+    <meta property="og:description" content="Free tool to track sweepstakes casino deposits, redemptions, and profit. Dashboard with charts, per-casino breakdowns, CSV import.">
+    <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@onlinesidehustles">
+    <meta name="twitter:title" content="SweepStats - Track Your Sweepstakes Casino Profits">
+    <meta name="twitter:description" content="Free community-built tool to track sweepstakes casino deposits, redemptions, and profit with charts and breakdowns.">
+    <meta name="twitter:image" content="https://onlinesidehustles.info/og-image.jpg">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="theme-color" content="#4CAF50">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://onlinesidehustles.info/"},{"@type":"ListItem","position":2,"name":"SweepStats - Community Spotlight","item":"https://onlinesidehustles.info/sweepstats.html"}]}
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { padding-top: 60px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(76,175,80,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+        .content-wrapper { position: relative; z-index: 1; }
+
+        .page-hero { padding: 100px 2rem 60px; text-align: center; background: linear-gradient(135deg, rgba(76,175,80,0.12), rgba(255,215,0,0.08)); border-bottom: 1px solid rgba(76,175,80,0.2); }
+        .page-hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, #4CAF50); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-hero p { font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 650px; margin: 0 auto; line-height: 1.6; }
+        .page-hero .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #FFD700, #FFA000); padding: 0.4rem 1.2rem; border-radius: 25px; font-weight: 700; color: #000; font-size: 0.85rem; margin-bottom: 1.2rem; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; }
+        .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(76,175,80,0.2); border-radius: 16px; padding: 1.8rem; transition: all 0.3s; }
+        .feature-card:hover { border-color: rgba(76,175,80,0.5); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(76,175,80,0.15); }
+        .feature-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+        .feature-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff; }
+        .feature-card p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+        .cta-section { text-align: center; margin: 3rem 0; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #4CAF50, #388E3C); color: #fff; font-size: 1.1rem; font-weight: 800; border-radius: 50px; text-decoration: none; transition: all 0.3s; border: none; box-shadow: 0 6px 25px rgba(76,175,80,0.4); }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(76,175,80,0.5); }
+        .cta-btn-secondary { background: linear-gradient(135deg, #FFD700, #FFA000); color: #000; margin-left: 1rem; box-shadow: 0 6px 25px rgba(255,215,0,0.3); }
+        .cta-btn-secondary:hover { box-shadow: 0 10px 35px rgba(255,215,0,0.4); }
+
+        .spotlight-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); padding: 0.6rem 1.2rem; border-radius: 12px; color: #FFD700; font-weight: 700; font-size: 0.9rem; margin-bottom: 2rem; }
+
+        .about-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+        .about-section h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: #4CAF50; }
+        .about-section p { color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 1rem; margin-bottom: 1rem; }
+        .about-section p:last-child { margin-bottom: 0; }
+
+        .support-section { background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.05)); border: 1px solid rgba(255,215,0,0.25); border-radius: 16px; padding: 2rem; margin: 2rem 0; text-align: center; }
+        .support-section h3 { font-size: 1.2rem; font-weight: 800; color: #FFD700; margin-bottom: 0.8rem; }
+        .support-section p { color: rgba(255,255,255,0.7); margin-bottom: 1.2rem; font-size: 0.95rem; }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .page-hero { padding: 80px 1rem 40px; }
+            .container { padding: 2rem 1rem; }
+            .cta-btn { display: flex; justify-content: center; margin-bottom: 1rem; }
+            .cta-btn-secondary { margin-left: 0; }
+            .cta-section { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+        }
+
+/* Sub-page header */
+.sub-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(76,175,80,0.15); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+.back-btn { color: #4CAF50; text-decoration: none; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; transition: all 0.3s; background: rgba(76,175,80,0.1); border: 1px solid rgba(76,175,80,0.2); }
+.back-btn:hover { color: #66BB6A; background: rgba(76,175,80,0.2); }
+.sub-logo { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 800; font-size: 14px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.sub-logo svg { width: 28px; height: 28px; }
+.sub-logo span { display: none; }
+@media(min-width:600px) { .sub-logo span { display: inline; } }
+.hamburger-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; font-size: 20px; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: all 0.3s; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+.hamburger-btn:hover { background: rgba(255,255,255,0.15); }
+.slide-menu { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: rgba(10,10,10,0.98); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 2000; transition: right 0.3s cubic-bezier(0.16,1,0.3,1); padding: 20px; border-left: 1px solid rgba(76,175,80,0.15); overflow-y: auto; }
+.slide-menu.open { right: 0; }
+.slide-menu-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
+.slide-menu-overlay.open { display: block; }
+.slide-menu-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; float: right; margin-bottom: 16px; padding: 4px 8px; }
+.slide-menu-title { color: #4CAF50; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(76,175,80,0.2); clear: both; }
+.slide-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 12px 0; font-size: 15px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.3s, padding-left 0.3s; }
+.slide-menu a:hover { color: #4CAF50; padding-left: 8px; }
+.slide-menu a:last-child { border-bottom: none; }
+
+        footer { text-align: center; padding: 3rem 1rem; border-top: 1px solid rgba(76,175,80,0.15); color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+        footer a { color: rgba(76,175,80,0.7); text-decoration: none; }
+        footer a:hover { color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <header class="sub-header" role="banner">
+        <a href="index.html" class="back-btn" aria-label="Back to Home">← Home</a>
+        <a href="index.html" class="sub-logo" aria-label="Online Sidehustles Home">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#4CAF50" stroke-width="4" fill="rgba(76,175,80,0.1)"/>
+                <text x="50" y="62" text-anchor="middle" fill="#4CAF50" font-size="36" font-weight="bold">$</text>
+            </svg>
+            <span>Online Sidehustles</span>
+        </a>
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
+    </header>
+
+    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="slide-menu" id="slideMenu">
+            <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
+            
+            <div class="slide-menu-title">🎰 Daily Collection Sidehustle</div>
+            <a href="daily-login-guide.html">💲 Daily Collection Sites Guide</a>
+            <a href="jupiter-post.html">🚀 Jupiter Post Letterwriting</a>
+            <a href="complete-guide-list.html">✏️ Written Guides</a>
+            <a href="daily-free-sc.html">🎁 Daily Free Rewards</a>
+            <a href="package-sales.html">📦 Package Sales</a>
+            <a href="skrill-casinos.html">💳 Skrill Eligible Sites</a>
+            <a href="bonus-collection-software.html">🤖 Daily Bonus Collection Software</a>
+            <a href="auto-giveaways-software.html">✨ Auto Giveaways Signup Software</a>
+            <a href="daily-login-reviews.html">⭐ Site Reviews</a>
+            <a href="new-sites.html">🆕 New Sites This Month</a>
+
+            <div class="slide-menu-title" style="margin-top: 16px;">📚 Resources & Tools</div>
+            <a href="getting-started.html">🗺️ Getting Started Roadmap</a>
+            <a href="tools.html">🔧 Calculators & Tools</a>
+            <a href="sweepstats.html" style="color: #4CAF50;">📊 SweepStats Tracker</a>
+            <a href="faq.html">❓ FAQ / Help Center</a>
+            <a href="glossary.html">📖 Glossary of Terms</a>
+            <a href="earnings-potential.html">💰 Earnings Potential</a>
+            <a href="comparisons/best-welcome-packages.html">🎁 Best Welcome Packages</a>
+            <a href="comparisons/fastest-payout-sites.html">⚡ Fastest Payout Sites</a>
+            <a href="comparisons/chumba-vs-stake.html">🔥 Chumba vs Stake.us</a>
+            <a href="newsletter.html">📩 Newsletter Signup</a>
+            <a href="best-sweepstakes-card.html">🃏 Best Sweepstakes Card</a>
+
+            <div class="slide-menu-title" style="margin-top: 16px;">🧳 Online Selling</div>
+            <a href="sell-on-ebay-automated.html">🤖 Sell on eBay Automated</a>
+            <a href="sell-on-tiktok-automated.html">📱 Sell on TikTok Automated</a>
+            <a href="tracking-number-generator.html">📦 Tracking Number Generator</a>
+
+            <div class="slide-menu-title" style="margin-top: 16px;">💸 Online Sidehustles</div>
+            <a href="reverse-stock-arbitrage.html">📊 Reverse Stock Arbitrage</a>
+            <a href="sportsbetting-automation.html">🎲 Sportsbetting Automated</a>
+            <a href="credit-card-churning.html">💳 Credit Card Churning</a>
+            <a href="credit-cards.html">💰 Best Credit Cards</a>
+            <a href="matched-betting.html">⚽ Matched Betting</a>
+            <a href="openclaw-setup.html">🤖 OpenClaw AI Setup</a>
+            <a href="reward-apps.html">🎁 Reward Apps</a>
+
+            <div class="slide-menu-title" style="margin-top: 16px;">📊 More</div>
+            <a href="blog.html">📝 Blog</a>
+            <a href="comparisons/chumba-vs-stake.html">🔥 Chumba vs Stake.us</a>
+            <a href="income-reports.html">📈 Income Reports</a>
+            <a href="about.html">ℹ️ About Us</a>
+            <a href="contact.html">📧 Contact</a>
+    </div>
+
+    <div class="content-wrapper">
+        <section class="page-hero">
+            <div class="badge">🚀 COMMUNITY SPOTLIGHT</div>
+            <h1>SweepStats</h1>
+            <p>A free, community-built tracker for all your sweepstakes casino transactions. Ditch the spreadsheet — this is way better.</p>
+        </section>
+
+        <div class="container">
+            <div class="spotlight-badge">👤 Built by community member @labago — Web Developer</div>
+
+            <div class="about-section">
+                <h2>What is SweepStats?</h2>
+                <p>If you're running daily collections across 50+ sites, you know the spreadsheet struggle. Tracking deposits, redemptions, pending payouts, profit per casino — it gets messy fast.</p>
+                <p>Our community member <strong>@labago</strong> is a web developer and built SweepStats specifically for what we do here. It's a clean, purpose-built web app that replaces your Google Sheets tracking with something actually designed for sweepstakes casino management.</p>
+                <p>It's free to use and built by someone who actually grinds daily collections — so it covers exactly what you need.</p>
+            </div>
+
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff;">Features</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Full Dashboard</h3>
+                    <p>See your deposits, redemptions, and profit at a glance. Charts and per-casino breakdowns all in one place — no more digging through spreadsheet tabs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏦</div>
+                    <h3>Casino Tracking</h3>
+                    <p>Track every casino you're on. See ROI, pending redemptions, sort however you want. Know exactly where your money is at all times.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Transaction Log</h3>
+                    <p>Full transaction history with filters for casino, date range, status — all of it. Find any transaction instantly instead of scrolling through rows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3>CSV Import</h3>
+                    <p>Already have a spreadsheet going? Bulk import your existing data with CSV upload. No need to start from scratch — bring everything over.</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="https://www.sweepstats.com/" target="_blank" rel="noopener" class="cta-btn">📊 Try SweepStats Free →</a>
+            </div>
+
+            <div class="support-section">
+                <h3>☕ Support the Developer</h3>
+                <p>SweepStats is free and built on @labago's own time. If you find it useful and want to support continued development, he's got a Buy Me a Coffee page.</p>
+                <a href="https://buymeacoffee.com/sweepstats" target="_blank" rel="noopener" class="cta-btn cta-btn-secondary">☕ Buy @labago a Coffee</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear">2026</span> Online Sidehustles. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="about.html">About</a> · <a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('slideMenu').classList.toggle('open');
+            document.getElementById('menuOverlay').classList.toggle('open');
+        }
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
