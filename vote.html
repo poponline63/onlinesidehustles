@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D9MKJR8494');
+    </script>
+    <script src="/js/analytics.js" defer></script>
+    <!-- End Google Analytics 4 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Rate & Vote on Sweepstakes Casinos — Swipe to Vote | OnlineSideHustles</title>
+    <meta name="description" content="Rate sweepstakes casinos Tinder-style! Swipe right on casinos you love, left on ones you don't. Your votes shape community rankings for 100+ casinos.">
+    <meta name="keywords" content="rate sweepstakes casinos, vote casinos, casino tier list, swipe vote casinos, sweepstakes casino rankings, community casino ratings">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Online Sidehustles">
+    <link rel="canonical" href="https://onlinesidehustles.info/vote.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onlinesidehustles.info/vote.html">
+    <meta property="og:title" content="Rate & Vote on Sweepstakes Casinos — Swipe to Vote">
+    <meta property="og:description" content="Rate sweepstakes casinos Tinder-style! Swipe right on casinos you love, left on ones you don't. Your votes shape community rankings.">
+    <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rate & Vote on Sweepstakes Casinos — Swipe to Vote">
+    <meta name="twitter:description" content="Rate sweepstakes casinos Tinder-style! Swipe to vote and shape community rankings.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23004D40'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='28'%3E🏆%3C/text%3E%3C/svg%3E">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://onlinesidehustles.info/"},{"@type":"ListItem","position":2,"name":"Casino Ratings","item":"https://onlinesidehustles.info/casino-ratings.html"},{"@type":"ListItem","position":3,"name":"Vote","item":"https://onlinesidehustles.info/vote.html"}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Sweepstakes Casino Voting Tool","url":"https://onlinesidehustles.info/vote.html","description":"Rate and vote on sweepstakes casinos with a Tinder-style swipe interface. Community-driven rankings updated in real time.","applicationCategory":"Entertainment","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { padding-top: 60px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%); color: white; min-height: 100vh; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(76,175,80,0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,215,0,0.10) 0%, transparent 40%); pointer-events: none; z-index: 0; }
+        .floating-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 0; }
+        .floating-element { position: absolute; opacity: 0.06; animation: float linear infinite; font-size: 3rem; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.06; } 90% { opacity: 0.06; } 100% { transform: translateY(-100px) translateX(var(--drift)) rotate(360deg); opacity: 0; } }
+        .floating-element:nth-child(1) { left: 5%; animation-duration: 25s; --drift: 40px; }
+        .floating-element:nth-child(2) { left: 22%; animation-duration: 30s; animation-delay: 3s; --drift: -45px; }
+        .floating-element:nth-child(3) { left: 45%; animation-duration: 28s; animation-delay: 6s; --drift: 30px; }
+        .floating-element:nth-child(4) { left: 68%; animation-duration: 32s; animation-delay: 2s; --drift: -40px; }
+        .floating-element:nth-child(5) { left: 85%; animation-duration: 27s; animation-delay: 8s; --drift: 55px; }
+        .content-wrapper { position: relative; z-index: 1; }
+
+        /* Sub-page header */
+        .sub-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(76,175,80,0.15); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .back-btn { color: #4CAF50; text-decoration: none; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; transition: all 0.3s; background: rgba(76,175,80,0.1); border: 1px solid rgba(76,175,80,0.2); }
+        .back-btn:hover { color: #66BB6A; background: rgba(76,175,80,0.2); }
+        .sub-logo { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 800; font-size: 14px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .sub-logo svg { width: 28px; height: 28px; }
+        .sub-logo span { display: none; }
+        @media(min-width:600px) { .sub-logo span { display: inline; } }
+        .hamburger-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; font-size: 20px; cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: all 0.3s; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+        .hamburger-btn:hover { background: rgba(255,255,255,0.15); }
+        .slide-menu { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: rgba(10,10,10,0.98); backdrop-filter: blur(15px); z-index: 2000; transition: right 0.3s cubic-bezier(0.16,1,0.3,1); padding: 20px; border-left: 1px solid rgba(76,175,80,0.15); overflow-y: auto; }
+        .slide-menu.open { right: 0; }
+        .slide-menu-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
+        .slide-menu-overlay.open { display: block; }
+        .slide-menu-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; float: right; margin-bottom: 16px; padding: 4px 8px; }
+        .slide-menu-title { color: #4CAF50; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(76,175,80,0.2); clear: both; }
+        .slide-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 12px 0; font-size: 15px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.3s, padding-left 0.3s; }
+        .slide-menu a:hover { color: #4CAF50; padding-left: 8px; }
+
+        /* Footer */
+        footer { background: rgba(0,0,0,0.8); padding: 3rem 2rem 2rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        footer p { color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        .footer-links a:hover { color: #4CAF50; }
+
+        /* View Toggle */
+        .view-toggle { display: flex; gap: 0; max-width: 400px; margin: 0 auto 1.5rem; border-radius: 30px; overflow: hidden; border: 2px solid rgba(255,215,0,0.3); }
+        .view-btn { flex: 1; padding: 0.75rem 1.5rem; border: none; background: transparent; color: rgba(255,255,255,0.6); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; }
+        .view-btn.active { background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1a1a; }
+        .view-btn:hover:not(.active) { background: rgba(255,255,255,0.08); }
+
+        /* Progress bar */
+        .progress-wrap { max-width: 420px; margin: 0 auto 1.5rem; }
+        .progress-text { text-align: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #4CAF50, #FFD700); border-radius: 3px; transition: width 0.4s ease; width: 0%; }
+
+        /* Sound toggle */
+        .sound-toggle { position: fixed; bottom: 20px; right: 20px; z-index: 500; background: rgba(25,25,25,0.9); border: 1px solid rgba(255,215,0,0.3); color: #FFD700; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .sound-toggle:hover { transform: scale(1.1); border-color: #FFD700; }
+
+        /* ===== SWIPE MODE ===== */
+        .swipe-container { max-width: 420px; margin: 0 auto; padding: 0 1rem; position: relative; min-height: 500px; }
+
+        .card-stack { position: relative; width: 100%; height: 480px; perspective: 1000px; }
+
+        .swipe-card { position: absolute; width: 100%; background: rgba(25,25,25,0.95); border: 1px solid rgba(255,215,0,0.2); border-radius: 20px; overflow: hidden; cursor: grab; user-select: none; touch-action: none; transition: box-shadow 0.3s; will-change: transform; }
+        .swipe-card:active { cursor: grabbing; }
+        .swipe-card.behind { pointer-events: none; }
+
+        .card-gradient { height: 6px; background: linear-gradient(90deg, #4CAF50, #FFD700); }
+
+        .card-body { padding: 1.5rem; }
+        .card-name { font-size: 1.6rem; font-weight: 900; margin-bottom: 0.25rem; }
+        .card-score-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .card-avg { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+        .card-avg strong { color: #FFD700; font-size: 1.1rem; }
+        .card-votes { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+        .card-summary { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .card-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .card-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+        .badge-daily { background: rgba(76,175,80,0.15); color: #66bb6a; border: 1px solid rgba(76,175,80,0.3); }
+        .badge-welcome { background: rgba(255,215,0,0.12); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); }
+        .badge-redeem { background: rgba(33,150,243,0.12); color: #42a5f5; border: 1px solid rgba(33,150,243,0.3); }
+
+        /* Stamp overlays */
+        .stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg) scale(0); font-size: 4rem; font-weight: 900; letter-spacing: 4px; border: 6px solid; border-radius: 16px; padding: 0.3rem 1.5rem; pointer-events: none; opacity: 0; z-index: 10; text-transform: uppercase; }
+        .stamp-nope { color: #ff1744; border-color: #ff1744; }
+        .stamp-meh { color: #ff9800; border-color: #ff9800; }
+        .stamp-good { color: #66bb6a; border-color: #66bb6a; }
+        .stamp-fire { color: #00c853; border-color: #00c853; }
+
+        /* Vote buttons */
+        .vote-buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 420px; margin: 1.5rem auto 0; padding: 0 1rem; }
+        .vote-btn { border: none; border-radius: 14px; padding: 0.85rem 0.5rem; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; color: white; }
+        .vote-btn:hover { transform: translateY(-3px); }
+        .vote-btn:active { transform: scale(0.95); }
+        .vote-btn .vote-emoji { font-size: 1.5rem; }
+        .vote-1 { background: linear-gradient(135deg, #ff1744, #d50000); }
+        .vote-2 { background: linear-gradient(135deg, #ff9800, #e65100); }
+        .vote-3 { background: linear-gradient(135deg, #66bb6a, #388e3c); }
+        .vote-4 { background: linear-gradient(135deg, #00c853, #00e676); color: #1a1a1a; }
+
+        .skip-btn { display: block; margin: 1rem auto 0; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); padding: 0.6rem 2rem; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; }
+        .skip-btn:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.8); }
+
+        /* Done screen */
+        .done-screen { text-align: center; padding: 4rem 2rem; }
+        .done-screen h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .done-screen p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+        .done-screen .btn-primary { display: inline-block; background: linear-gradient(135deg,#FFD700,#FFA500); color: #1a1a1a; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 1.1rem; border: none; cursor: pointer; }
+
+        /* ===== GRID MODE ===== */
+        .grid-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: none; }
+
+        .grid-controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .grid-search { flex: 1; min-width: 200px; padding: 0.75rem 1.25rem; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(25,25,25,0.8); color: white; font-size: 0.95rem; }
+        .grid-search::placeholder { color: rgba(255,255,255,0.35); }
+        .grid-search:focus { outline: none; border-color: #FFD700; }
+        .grid-sort { padding: 0.75rem 1.25rem; border-radius: 12px; border: 1px solid rgba(255,215,0,0.2); background: rgba(25,25,25,0.8); color: white; font-size: 0.95rem; cursor: pointer; }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+
+        .grid-card { background: rgba(25,25,25,0.85); border: 1px solid rgba(255,215,0,0.15); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; position: relative; }
+        .grid-card:hover { border-color: rgba(255,215,0,0.4); transform: translateY(-3px); }
+        .grid-card.voted { border-color: rgba(76,175,80,0.4); }
+        .grid-card.voted::after { content: '✓ Voted'; position: absolute; top: 12px; right: 12px; background: rgba(76,175,80,0.2); color: #66bb6a; padding: 0.25rem 0.6rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
+        .grid-card-name { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .grid-card-score { color: #FFD700; font-weight: 700; margin-bottom: 0.5rem; }
+        .grid-card-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+        .grid-card-summary { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .grid-vote-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem; }
+        .grid-vote-btn { border: none; border-radius: 8px; padding: 0.5rem; font-weight: 700; font-size: 0.8rem; cursor: pointer; color: white; transition: all 0.2s; }
+        .grid-vote-btn:hover { transform: scale(1.05); }
+        .gv-1 { background: #ff1744; }
+        .gv-2 { background: #ff9800; }
+        .gv-3 { background: #66bb6a; }
+        .gv-4 { background: #00c853; color: #1a1a1a; }
+
+        /* Confetti */
+        .confetti-piece { position: fixed; width: 10px; height: 10px; z-index: 9999; pointer-events: none; animation: confettiFall 1.5s ease-out forwards; }
+        @keyframes confettiFall {
+            0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+            100% { opacity: 0; transform: translateY(80vh) rotate(720deg) scale(0.3); }
+        }
+
+        /* Voting section padding */
+        .vote-section { padding: 100px 2rem 2rem; text-align: center; }
+        .vote-section h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 0.75rem; }
+        .vote-section h1 span { background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .vote-section .subtitle { color: rgba(255,255,255,0.6); font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        .loading-spinner { text-align: center; padding: 4rem 2rem; color: rgba(255,255,255,0.5); font-size: 1.1rem; }
+        .loading-spinner::before { content: '🎰'; display: block; font-size: 3rem; margin-bottom: 1rem; animation: spin 2s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .vote-section h1 { font-size: 1.8rem; }
+            .card-stack { height: 440px; }
+            .vote-buttons { gap: 0.4rem; }
+            .vote-btn { padding: 0.7rem 0.3rem; font-size: 0.75rem; }
+            .stamp { font-size: 3rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 380px) {
+            .vote-btn .vote-emoji { font-size: 1.2rem; }
+            .card-body { padding: 1.25rem; }
+            .card-name { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="floating-bg">
+    <div class="floating-element">🗳️</div>
+    <div class="floating-element">🔥</div>
+    <div class="floating-element">⭐</div>
+    <div class="floating-element">💰</div>
+    <div class="floating-element">🏆</div>
+</div>
+<div class="content-wrapper">
+
+    <header class="sub-header" role="banner">
+        <a href="index.html" class="back-btn" aria-label="Back to Home">&#8592; Home</a>
+        <a href="index.html" class="sub-logo" aria-label="Online Sidehustles">
+            <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><defs><linearGradient id="el" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#004D40"/><stop offset="33%" style="stop-color:#00695C"/><stop offset="66%" style="stop-color:#4CAF50"/><stop offset="100%" style="stop-color:#FFD700"/></linearGradient><radialGradient id="cg"><stop offset="0%" style="stop-color:#FFD700"/><stop offset="50%" style="stop-color:#FFA500"/><stop offset="100%" style="stop-color:#4CAF50"/></radialGradient><linearGradient id="sg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#8B4513"/><stop offset="50%" style="stop-color:#6D4C41"/><stop offset="100%" style="stop-color:#5D4037"/></linearGradient></defs><rect width="64" height="64" fill="url(#el)"/><rect x="26" y="36" width="12" height="18" fill="url(#sg)" rx="1"/><circle cx="32" cy="24" r="15" fill="url(#cg)" opacity="0.9"/><circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/><text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text></svg></div>
+            <span style="display:none;">OSH</span>
+        </a>
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open menu">&#9776;</button>
+    </header>
+
+    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="slide-menu" id="slideMenu">
+        <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
+        <div class="slide-menu-title">🎰 Daily Collection</div>
+        <a href="daily-login-guide.html">💲 Daily Collection Sites Guide</a>
+        <a href="daily-free-sc.html">🎁 Daily Free Rewards</a>
+        <a href="bonus-collection-software.html">🤖 Bonus Collection Software</a>
+        <a href="casino-ratings.html">🏆 Casino Ratings</a>
+        <a href="vote.html">🗳️ Vote on Casinos</a>
+        <a href="sweepstakes-casino-list.html">📋 Complete Casino List</a>
+        <div class="slide-menu-title" style="margin-top:16px;">🧳 Online Selling</div>
+        <a href="sell-on-ebay-automated.html">🤖 Sell on eBay Automated</a>
+        <a href="sell-on-tiktok-automated.html">📱 Sell on TikTok Automated</a>
+        <a href="dropshipping.html">📦 Dropshipping & Print-on-Demand</a>
+        <div class="slide-menu-title" style="margin-top:16px;">💼 Side Hustles</div>
+        <a href="freelancing.html">💻 Freelancing</a>
+        <a href="affiliate-marketing.html">🔗 Affiliate Marketing</a>
+        <a href="passive-investing.html">📈 Passive Investing</a>
+        <a href="matched-betting.html">⚽ Matched Betting</a>
+        <a href="credit-card-churning.html">💳 Credit Card Churning</a>
+        <a href="reward-apps.html">🎁 Reward Apps</a>
+        <a href="reverse-stock-arbitrage.html">📊 Reverse Stock Arbitrage</a>
+        <div class="slide-menu-title" style="margin-top:16px;">📊 More</div>
+        <a href="blog.html">📝 Blog</a>
+        <a href="tools.html">🔧 Tools</a>
+        <a href="getting-started.html">🗺️ Getting Started</a>
+        <a href="about.html">ℹ️ About</a>
+    </div>
+
+<!-- Voting Section -->
+<section class="vote-section">
+    <h1>🗳️ Rate Casinos — <span>Swipe to Vote</span></h1>
+    <p class="subtitle">Swipe right on casinos you love, left on ones you don't. Your votes shape the community rankings in real time.</p>
+
+    <div class="view-toggle">
+        <button class="view-btn active" id="swipeViewBtn" onclick="setView('swipe')">🔥 Swipe Mode</button>
+        <button class="view-btn" id="gridViewBtn" onclick="setView('grid')">📊 All Casinos</button>
+    </div>
+
+    <!-- Swipe View -->
+    <div id="swipeView">
+        <div class="progress-wrap">
+            <div class="progress-text" id="progressText">Loading casinos...</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="swipe-container">
+            <div class="card-stack" id="cardStack">
+                <div class="loading-spinner">Loading casinos...</div>
+            </div>
+        </div>
+        <div class="vote-buttons" id="voteButtons" style="display:none;">
+            <button class="vote-btn vote-1" onclick="castVote(1)"><span class="vote-emoji">💀</span>Terrible</button>
+            <button class="vote-btn vote-2" onclick="castVote(2)"><span class="vote-emoji">😐</span>Meh</button>
+            <button class="vote-btn vote-3" onclick="castVote(3)"><span class="vote-emoji">👍</span>Good</button>
+            <button class="vote-btn vote-4" onclick="castVote(4)"><span class="vote-emoji">🔥</span>Amazing</button>
+        </div>
+        <button class="skip-btn" id="skipBtn" style="display:none;" onclick="skipCard()">Skip ⏭️</button>
+    </div>
+
+    <!-- Grid View -->
+    <div class="grid-container" id="gridView">
+        <div class="grid-controls">
+            <input type="text" class="grid-search" id="gridSearch" placeholder="Search casinos..." oninput="filterGrid()">
+            <select class="grid-sort" id="gridSort" onchange="sortGrid()">
+                <option value="score-desc">Highest Rated</option>
+                <option value="score-asc">Lowest Rated</option>
+                <option value="votes-desc">Most Votes</option>
+                <option value="name-asc">A → Z</option>
+            </select>
+        </div>
+        <div class="grid-cards" id="gridCards"></div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Online Sidehustles &middot; All rights reserved</p>
+    <p style="color:#4CAF50; font-style:italic; margin-bottom:1rem;">Website by Crossroads - Sidehustle Wiki</p>
+    <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/daily-login-guide.html">Daily Collection</a>
+        <a href="/casino-ratings.html">Casino Ratings</a>
+        <a href="/vote.html">Vote</a>
+        <a href="/affiliate-marketing.html">Affiliate Marketing</a>
+        <a href="/passive-investing.html">Investing</a>
+        <a href="/dropshipping.html">Dropshipping</a>
+        <a href="/blog.html">Blog</a>
+        <a href="https://discord.com/invite/onlinesidehustles">Discord</a>
+    </div>
+</footer>
+
+</div>
+
+<!-- Sound Toggle -->
+<button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle sound effects">🔊</button>
+
+<script>
+// ===== STATE =====
+const API = 'https://vote.betbotpicks.com';
+let casinos = [];
+let currentIndex = 0;
+let votedIds = JSON.parse(localStorage.getItem('osh_voted_casinos') || '{}');
+let soundEnabled = localStorage.getItem('osh_sound') !== 'off';
+let audioCtx = null;
+
+// ===== AUDIO =====
+function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+}
+function playTone(freq, dur, type, vol) {
+    if (!soundEnabled) return;
+    try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type || 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(vol || 0.4, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (dur || 0.3));
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + (dur || 0.3));
+    } catch(e) {}
+}
+function playSwipeLeft()  { playTone(200, 0.25, 'sawtooth', 0.35); }
+function playSwipeRight() { playTone(523, 0.15, 'sine', 0.4); setTimeout(() => playTone(659, 0.15, 'sine', 0.4), 100); }
+function playFireSound()  { playTone(523, 0.1, 'sine', 0.4); setTimeout(() => playTone(659, 0.1, 'sine', 0.4), 80); setTimeout(() => playTone(784, 0.1, 'sine', 0.4), 160); setTimeout(() => playTone(1047, 0.3, 'sine', 0.45), 240); }
+function playSkipSound()  { playTone(440, 0.08, 'triangle', 0.2); }
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    localStorage.setItem('osh_sound', soundEnabled ? 'on' : 'off');
+    document.getElementById('soundToggle').textContent = soundEnabled ? '🔊' : '🔇';
+    if (soundEnabled) { getAudioCtx(); playTone(880, 0.1, 'sine', 0.3); }
+}
+
+// Resume audio context on first interaction
+document.addEventListener('click', () => { if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); }, { once: true });
+
+// ===== CONFETTI =====
+function spawnConfetti() {
+    const colors = ['#FFD700', '#00c853', '#ff1744', '#2196f3', '#ff9800', '#e040fb'];
+    for (let i = 0; i < 40; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.top = '-10px';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        el.style.width = (6 + Math.random() * 8) + 'px';
+        el.style.height = (6 + Math.random() * 8) + 'px';
+        el.style.animationDuration = (1 + Math.random() * 1) + 's';
+        el.style.animationDelay = (Math.random() * 0.4) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 2500);
+    }
+}
+
+// ===== VIEWS =====
+function setView(view) {
+    if (view === 'swipe') {
+        document.getElementById('swipeView').style.display = 'block';
+        document.getElementById('gridView').style.display = 'none';
+        document.getElementById('swipeViewBtn').classList.add('active');
+        document.getElementById('gridViewBtn').classList.remove('active');
+    } else {
+        document.getElementById('swipeView').style.display = 'none';
+        document.getElementById('gridView').style.display = 'block';
+        document.getElementById('swipeViewBtn').classList.remove('active');
+        document.getElementById('gridViewBtn').classList.add('active');
+        renderGrid();
+    }
+}
+
+// ===== DATA =====
+async function loadCasinos() {
+    try {
+        const res = await fetch(API + '/api/casinos');
+        casinos = await res.json();
+        // Shuffle unvoted ones to the front
+        casinos.sort((a, b) => {
+            const aVoted = votedIds[a.id] ? 1 : 0;
+            const bVoted = votedIds[b.id] ? 1 : 0;
+            return aVoted - bVoted;
+        });
+        currentIndex = 0;
+        // Find first unvoted
+        while (currentIndex < casinos.length && votedIds[casinos[currentIndex].id]) currentIndex++;
+        if (currentIndex >= casinos.length) currentIndex = 0;
+        renderCards();
+        updateProgress();
+        document.getElementById('voteButtons').style.display = 'grid';
+        document.getElementById('skipBtn').style.display = 'block';
+    } catch(e) {
+        document.getElementById('cardStack').innerHTML = '<div class="loading-spinner" style="animation:none;">Failed to load casinos. Please try again.</div>';
+    }
+}
+
+// ===== SWIPE CARDS =====
+let isDragging = false, startX = 0, startY = 0, currentX = 0, activeCard = null;
+
+function renderCards() {
+    const stack = document.getElementById('cardStack');
+    stack.innerHTML = '';
+    if (currentIndex >= casinos.length) {
+        showDone();
+        return;
+    }
+    // Render up to 3 stacked cards
+    const count = Math.min(3, casinos.length - currentIndex);
+    for (let i = count - 1; i >= 0; i--) {
+        const c = casinos[currentIndex + i];
+        const card = createCardEl(c, i);
+        stack.appendChild(card);
+    }
+    // Enable drag on top card
+    const topCard = stack.lastElementChild;
+    if (topCard) enableDrag(topCard);
+}
+
+function createCardEl(c, stackIdx) {
+    const div = document.createElement('div');
+    div.className = 'swipe-card' + (stackIdx > 0 ? ' behind' : '');
+    div.style.zIndex = 10 - stackIdx;
+    div.style.transform = `scale(${1 - stackIdx * 0.04}) translateY(${stackIdx * 12}px)`;
+    div.dataset.casinoId = c.id;
+
+    const avgText = c.avg_score ? parseFloat(c.avg_score).toFixed(1) : 'N/A';
+    const votesText = c.vote_count || 0;
+
+    div.innerHTML = `
+        <div class="card-gradient"></div>
+        <div class="card-body">
+            <div class="card-name">${esc(c.name)}</div>
+            <div class="card-score-row">
+                <span class="card-avg">⭐ <strong>${avgText}</strong>/4</span>
+                <span class="card-votes">${votesText} votes</span>
+            </div>
+            ${c.summary ? `<div class="card-summary">${esc(c.summary)}</div>` : ''}
+            <div class="card-badges">
+                ${c.daily_bonus ? `<span class="card-badge badge-daily">🎁 ${esc(c.daily_bonus)}</span>` : ''}
+                ${c.welcome_offer ? `<span class="card-badge badge-welcome">🎉 ${esc(c.welcome_offer)}</span>` : ''}
+                ${c.min_redemption ? `<span class="card-badge badge-redeem">💵 Min: ${esc(c.min_redemption)}</span>` : ''}
+            </div>
+        </div>
+        <div class="stamp stamp-nope">NOPE</div>
+        <div class="stamp stamp-meh">MEH</div>
+        <div class="stamp stamp-good">GOOD</div>
+        <div class="stamp stamp-fire">FIRE 🔥</div>
+    `;
+    return div;
+}
+
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+function enableDrag(card) {
+    card.addEventListener('pointerdown', dragStart);
+    card.addEventListener('pointermove', dragMove);
+    card.addEventListener('pointerup', dragEnd);
+    card.addEventListener('pointercancel', dragEnd);
+}
+
+function dragStart(e) {
+    activeCard = e.currentTarget;
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    currentX = 0;
+    activeCard.style.transition = 'none';
+    activeCard.setPointerCapture(e.pointerId);
+}
+
+function dragMove(e) {
+    if (!isDragging || !activeCard) return;
+    currentX = e.clientX - startX;
+    const rotate = currentX * 0.08;
+    activeCard.style.transform = `translateX(${currentX}px) rotate(${rotate}deg)`;
+
+    // Show stamp based on position
+    const stamps = activeCard.querySelectorAll('.stamp');
+    stamps.forEach(s => { s.style.opacity = '0'; s.style.transform = 'translate(-50%,-50%) rotate(-15deg) scale(0)'; });
+
+    const threshold = 60;
+    if (currentX < -threshold) {
+        const intensity = Math.min(1, (Math.abs(currentX) - threshold) / 100);
+        const stamp = activeCard.querySelector('.stamp-nope');
+        stamp.style.opacity = intensity;
+        stamp.style.transform = `translate(-50%,-50%) rotate(-15deg) scale(${0.5 + intensity * 0.5})`;
+    } else if (currentX > threshold) {
+        const intensity = Math.min(1, (currentX - threshold) / 100);
+        const stamp = activeCard.querySelector('.stamp-good');
+        stamp.style.opacity = intensity;
+        stamp.style.transform = `translate(-50%,-50%) rotate(-15deg) scale(${0.5 + intensity * 0.5})`;
+    }
+}
+
+function dragEnd(e) {
+    if (!isDragging || !activeCard) return;
+    isDragging = false;
+    const threshold = 100;
+    if (currentX < -threshold) {
+        // Swiped left — vote 1 (terrible) or 2 (meh) based on intensity
+        const score = Math.abs(currentX) > 180 ? 1 : 2;
+        animateOff('left', score);
+    } else if (currentX > threshold) {
+        // Swiped right — vote 3 (good) or 4 (amazing) based on intensity
+        const score = currentX > 180 ? 4 : 3;
+        animateOff('right', score);
+    } else {
+        // Snap back
+        activeCard.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        activeCard.style.transform = 'translateX(0) rotate(0)';
+        activeCard.querySelectorAll('.stamp').forEach(s => { s.style.opacity = '0'; s.style.transform = 'translate(-50%,-50%) rotate(-15deg) scale(0)'; });
+    }
+}
+
+function animateOff(dir, score) {
+    const card = activeCard;
+    const casinoId = parseInt(card.dataset.casinoId);
+    const xEnd = dir === 'left' ? -window.innerWidth * 1.5 : window.innerWidth * 1.5;
+    const rotEnd = dir === 'left' ? -30 : 30;
+
+    // Show appropriate stamp
+    card.querySelectorAll('.stamp').forEach(s => { s.style.opacity = '0'; });
+    let stampClass;
+    if (score === 1) stampClass = '.stamp-nope';
+    else if (score === 2) stampClass = '.stamp-meh';
+    else if (score === 3) stampClass = '.stamp-good';
+    else stampClass = '.stamp-fire';
+    const stamp = card.querySelector(stampClass);
+    stamp.style.transition = 'all 0.15s ease-out';
+    stamp.style.opacity = '1';
+    stamp.style.transform = 'translate(-50%,-50%) rotate(-15deg) scale(1)';
+
+    // Sound
+    if (score <= 2) playSwipeLeft();
+    else if (score === 3) playSwipeRight();
+    else { playFireSound(); spawnConfetti(); }
+
+    card.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+    card.style.transform = `translateX(${xEnd}px) rotate(${rotEnd}deg)`;
+    card.style.opacity = '0';
+
+    submitVote(casinoId, score);
+
+    setTimeout(() => {
+        currentIndex++;
+        // Skip already-voted if we want (but allow re-vote)
+        renderCards();
+        updateProgress();
+    }, 400);
+}
+
+function castVote(score) {
+    if (currentIndex >= casinos.length) return;
+    const dir = score <= 2 ? 'left' : 'right';
+    const card = document.querySelector('.card-stack .swipe-card:last-child');
+    if (!card) return;
+    activeCard = card;
+
+    // Show stamp
+    card.querySelectorAll('.stamp').forEach(s => { s.style.opacity = '0'; });
+    let stampClass;
+    if (score === 1) stampClass = '.stamp-nope';
+    else if (score === 2) stampClass = '.stamp-meh';
+    else if (score === 3) stampClass = '.stamp-good';
+    else stampClass = '.stamp-fire';
+    const stamp = card.querySelector(stampClass);
+    stamp.style.transition = 'all 0.15s ease-out';
+    stamp.style.opacity = '1';
+    stamp.style.transform = 'translate(-50%,-50%) rotate(-15deg) scale(1)';
+
+    // Sound + confetti
+    if (score <= 2) playSwipeLeft();
+    else if (score === 3) playSwipeRight();
+    else { playFireSound(); spawnConfetti(); }
+
+    const casinoId = parseInt(card.dataset.casinoId);
+    const xEnd = dir === 'left' ? -window.innerWidth : window.innerWidth;
+
+    setTimeout(() => {
+        card.style.transition = 'transform 0.45s ease-out, opacity 0.45s ease-out';
+        card.style.transform = `translateX(${xEnd}px) rotate(${dir === 'left' ? -25 : 25}deg)`;
+        card.style.opacity = '0';
+        submitVote(casinoId, score);
+        setTimeout(() => { currentIndex++; renderCards(); updateProgress(); }, 350);
+    }, 200);
+}
+
+function skipCard() {
+    if (currentIndex >= casinos.length) return;
+    playSkipSound();
+    const card = document.querySelector('.card-stack .swipe-card:last-child');
+    if (card) {
+        card.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out';
+        card.style.transform = 'translateY(-200px) scale(0.8)';
+        card.style.opacity = '0';
+    }
+    setTimeout(() => { currentIndex++; renderCards(); updateProgress(); }, 350);
+}
+
+function updateProgress() {
+    const voted = Object.keys(votedIds).length;
+    const total = casinos.length;
+    document.getElementById('progressText').textContent = `${voted} of ${total} rated`;
+    document.getElementById('progressFill').style.width = total ? (voted / total * 100) + '%' : '0%';
+}
+
+function showDone() {
+    const stack = document.getElementById('cardStack');
+    stack.innerHTML = `
+        <div class="done-screen">
+            <h2>🎉 You've seen them all!</h2>
+            <p>You rated ${Object.keys(votedIds).length} casinos. Your votes help shape the community rankings.</p>
+            <button class="btn-primary" onclick="resetAndRestart()">🔄 Go Again</button>
+        </div>
+    `;
+    document.getElementById('voteButtons').style.display = 'none';
+    document.getElementById('skipBtn').style.display = 'none';
+}
+
+function resetAndRestart() {
+    currentIndex = 0;
+    renderCards();
+    updateProgress();
+    document.getElementById('voteButtons').style.display = 'grid';
+    document.getElementById('skipBtn').style.display = 'block';
+}
+
+// ===== VOTE SUBMISSION =====
+async function submitVote(casinoId, score) {
+    votedIds[casinoId] = score;
+    localStorage.setItem('osh_voted_casinos', JSON.stringify(votedIds));
+    try {
+        await fetch(API + '/api/vote', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ casino_id: casinoId, score: score })
+        });
+        // Track in GA4
+        if (typeof gtag === 'function') {
+            gtag('event', 'casino_vote', { casino_id: casinoId, score: score });
+        }
+    } catch(e) {
+        console.warn('Vote submission failed:', e);
+    }
+}
+
+// ===== GRID VIEW =====
+function renderGrid() {
+    const container = document.getElementById('gridCards');
+    const filtered = getFilteredCasinos();
+    container.innerHTML = filtered.map(c => {
+        const avgText = c.avg_score ? parseFloat(c.avg_score).toFixed(1) : 'N/A';
+        const isVoted = votedIds[c.id];
+        return `
+            <div class="grid-card ${isVoted ? 'voted' : ''}">
+                <div class="grid-card-name">${esc(c.name)}</div>
+                <div class="grid-card-score">⭐ ${avgText}/4 · ${c.vote_count || 0} votes</div>
+                <div class="grid-card-badges">
+                    ${c.daily_bonus ? `<span class="card-badge badge-daily">🎁 ${esc(c.daily_bonus)}</span>` : ''}
+                    ${c.welcome_offer ? `<span class="card-badge badge-welcome">🎉 ${esc(c.welcome_offer)}</span>` : ''}
+                    ${c.min_redemption ? `<span class="card-badge badge-redeem">💵 ${esc(c.min_redemption)}</span>` : ''}
+                </div>
+                ${c.summary ? `<div class="grid-card-summary">${esc(c.summary)}</div>` : ''}
+                <div class="grid-vote-btns">
+                    <button class="grid-vote-btn gv-1" onclick="gridVote(${c.id},1)">💀 1</button>
+                    <button class="grid-vote-btn gv-2" onclick="gridVote(${c.id},2)">😐 2</button>
+                    <button class="grid-vote-btn gv-3" onclick="gridVote(${c.id},3)">👍 3</button>
+                    <button class="grid-vote-btn gv-4" onclick="gridVote(${c.id},4)">🔥 4</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function gridVote(id, score) {
+    submitVote(id, score);
+    if (score === 4) { playFireSound(); spawnConfetti(); }
+    else if (score >= 3) playSwipeRight();
+    else playSwipeLeft();
+    renderGrid();
+    updateProgress();
+}
+
+function getFilteredCasinos() {
+    let list = [...casinos];
+    const q = document.getElementById('gridSearch').value.toLowerCase();
+    if (q) list = list.filter(c => c.name.toLowerCase().includes(q));
+    const sort = document.getElementById('gridSort').value;
+    switch(sort) {
+        case 'score-desc': list.sort((a,b) => (b.avg_score||0) - (a.avg_score||0)); break;
+        case 'score-asc': list.sort((a,b) => (a.avg_score||0) - (b.avg_score||0)); break;
+        case 'votes-desc': list.sort((a,b) => (b.vote_count||0) - (a.vote_count||0)); break;
+        case 'name-asc': list.sort((a,b) => a.name.localeCompare(b.name)); break;
+    }
+    return list;
+}
+
+function filterGrid() { renderGrid(); }
+function sortGrid() { renderGrid(); }
+
+// ===== INIT =====
+document.getElementById('soundToggle').textContent = soundEnabled ? '🔊' : '🔇';
+loadCasinos();
+
+function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+}
+</script>
+</body>
+</html>
