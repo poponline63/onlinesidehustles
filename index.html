@@ -117,7 +117,7 @@
         .glow-line:nth-child(4) { top: 70%; width: 350px; animation-delay: 6s; }
         .glow-line:nth-child(5) { top: 90%; width: 200px; animation-delay: 8s; }
         @keyframes glowMove { 0% { left: -400px; opacity: 0; } 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
-        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); max-height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); overflow: visible; }
         nav { max-width: 1400px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
         .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
         .logo-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(76,175,80,0.3); }
@@ -131,10 +131,10 @@
         .nav-link-primary:hover { color: #FFD700; background: rgba(255,215,0,0.12); }
         .nav-link-gold { color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.45rem 1.1rem; border-radius: 20px; }
         .nav-link-gold:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
-        .mega-dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; }
+        .mega-dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; z-index: 9999; }
         .browse-btn { background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
         .browse-btn:hover { background: linear-gradient(135deg, #3a3a3a, #4a4a4a); border-color: #4CAF50; transform: translateY(-2px); }
-        .mega-menu { position: absolute; top: 100%; right: -50px; margin-top: 0.5rem; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; width: min(600px, calc(100vw - 2rem)); max-width: calc(100vw - 2rem); max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .mega-menu { position: absolute; top: 100%; right: -50px; margin-top: 0.5rem; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; width: min(750px, calc(100vw - 2rem)); max-width: calc(100vw - 2rem); max-height: calc(100vh - 100px); overflow-y: auto; overflow-x: hidden; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9999; }
         .mega-menu::-webkit-scrollbar { width: 8px; }
         .mega-menu::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
         .mega-menu::-webkit-scrollbar-thumb { background: rgba(76,175,80,0.5); border-radius: 10px; }
@@ -143,7 +143,8 @@
         .mega-dropdown:hover .mega-menu, .mega-menu:hover, .mega-dropdown.active .mega-menu { opacity: 1; visibility: visible; }
         .mega-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 20px; display: none; }
         .mega-dropdown:hover::after { display: block; }
-        .mega-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .mega-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 900px) { .mega-menu-grid { grid-template-columns: repeat(2, 1fr); } }
         .menu-category { padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .menu-category-title { color: #4CAF50; font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .menu-items { display: flex; flex-direction: column; gap: 0.5rem; }
