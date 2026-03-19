@@ -18,5 +18,8 @@
 /rss            /feed.xml           200
 /feed           /feed.xml           200
 
+# Page redirects
+/sweepstake-casinos /daily-login-guide  302
+
 # Custom 404
 /*              /404.html           404
