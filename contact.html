@@ -44,8 +44,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#10B981">
-    <meta name="msapplication-TileColor" content="#10B981">
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="msapplication-TileColor" content="#D4AF37">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -63,13 +63,58 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            background: #F2F0EB;
+            color: #111;
             font-size: 16px;
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Gold stars scattered across entire page */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(2px 2px at 5% 8%, rgba(212,175,55,0.5) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 12% 25%, rgba(212,175,55,0.35) 50%, transparent 50%),
+                radial-gradient(2.5px 2.5px at 22% 12%, rgba(212,175,55,0.6) 50%, transparent 50%),
+                radial-gradient(1px 1px at 30% 45%, rgba(212,175,55,0.3) 50%, transparent 50%),
+                radial-gradient(2px 2px at 38% 5%, rgba(212,175,55,0.45) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 45% 32%, rgba(212,175,55,0.4) 50%, transparent 50%),
+                radial-gradient(1px 1px at 52% 18%, rgba(212,175,55,0.3) 50%, transparent 50%),
+                radial-gradient(2px 2px at 60% 40%, rgba(212,175,55,0.5) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 68% 10%, rgba(212,175,55,0.35) 50%, transparent 50%),
+                radial-gradient(2.5px 2.5px at 75% 28%, rgba(212,175,55,0.55) 50%, transparent 50%),
+                radial-gradient(1px 1px at 82% 48%, rgba(212,175,55,0.3) 50%, transparent 50%),
+                radial-gradient(2px 2px at 88% 15%, rgba(212,175,55,0.45) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 95% 35%, rgba(212,175,55,0.4) 50%, transparent 50%),
+                radial-gradient(1px 1px at 15% 55%, rgba(212,175,55,0.25) 50%, transparent 50%),
+                radial-gradient(2px 2px at 25% 70%, rgba(212,175,55,0.4) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 35% 62%, rgba(212,175,55,0.35) 50%, transparent 50%),
+                radial-gradient(2px 2px at 48% 75%, rgba(212,175,55,0.45) 50%, transparent 50%),
+                radial-gradient(1px 1px at 55% 58%, rgba(212,175,55,0.3) 50%, transparent 50%),
+                radial-gradient(2.5px 2.5px at 65% 68%, rgba(212,175,55,0.5) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 72% 82%, rgba(212,175,55,0.35) 50%, transparent 50%),
+                radial-gradient(2px 2px at 80% 60%, rgba(212,175,55,0.4) 50%, transparent 50%),
+                radial-gradient(1px 1px at 90% 72%, rgba(212,175,55,0.3) 50%, transparent 50%),
+                radial-gradient(2px 2px at 8% 85%, rgba(212,175,55,0.45) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 42% 90%, rgba(212,175,55,0.35) 50%, transparent 50%),
+                radial-gradient(2px 2px at 58% 95%, rgba(212,175,55,0.4) 50%, transparent 50%),
+                radial-gradient(1px 1px at 78% 92%, rgba(212,175,55,0.3) 50%, transparent 50%);
+        }
+
+        /* Ensure all content sits above stars */
+        .nav, .hero, .section, .page-hero, .stats-section, .footer, hr.divider, .content-section, .legal-content, .main-content, .page-content {
+            position: relative;
+            z-index: 1;
         }
 
         a {
@@ -95,10 +140,10 @@
         }
 
         .nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(242, 240, 235, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .nav-inner {
@@ -110,13 +155,14 @@
             height: 72px;
         }
 
+        .nav-logo { height: 32px; width: auto; }
         .nav-brand {
             font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #fff;
-        }
+            color: #111;
+         display: flex; align-items: center; gap: 10px; }
 
         .nav-links {
             display: flex;
@@ -127,19 +173,19 @@
         .nav-link {
             font-size: 0.9rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(0, 0, 0, 0.55);
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #111;
         }
 
         .nav-cta {
             display: inline-flex;
             align-items: center;
             padding: 10px 24px;
-            background: #10B981;
+            background: #D4AF37;
             color: #fff;
             font-size: 0.85rem;
             font-weight: 600;
@@ -148,7 +194,7 @@
         }
 
         .nav-cta:hover {
-            background: #059669;
+            background: #B8962E;
             transform: translateY(-1px);
         }
 
@@ -166,7 +212,7 @@
             display: block;
             width: 24px;
             height: 1.5px;
-            background: #fff;
+            background: #111;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -186,7 +232,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.98);
+            background: rgba(242, 240, 235, 0.98);
             z-index: 999;
             flex-direction: column;
             align-items: center;
@@ -204,12 +250,12 @@
         .mobile-menu a {
             font-size: 1.5rem;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.7);
             transition: color 0.3s;
         }
 
         .mobile-menu a:hover {
-            color: #fff;
+            color: #111;
         }
 
         .mobile-menu .nav-cta {
@@ -242,7 +288,7 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -259,12 +305,12 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 24px;
-            color: #fff;
+            color: #111;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #888;
+            color: #666;
             max-width: 600px;
             margin: 0 auto 40px;
             line-height: 1.7;
@@ -291,7 +337,7 @@
 
         .divider {
             border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             margin: 0 auto;
             max-width: 1200px;
         }
@@ -306,8 +352,8 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 16px;
             padding: 32px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -317,20 +363,20 @@
 
         .card:hover {
             transform: scale(1.02);
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.03);
         }
 
         .card-title {
             font-size: 1.15rem;
             font-weight: 600;
-            color: #fff;
+            color: #111;
             margin-bottom: 8px;
         }
 
         .card-desc {
             font-size: 0.9rem;
-            color: #888;
+            color: #666;
             margin-bottom: 16px;
             line-height: 1.5;
         }
@@ -340,12 +386,12 @@
             top: 32px;
             right: 32px;
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(0, 0, 0, 0.15);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card:hover .card-arrow {
-            color: #10B981;
+            color: #D4AF37;
             transform: translateX(4px);
         }
 
@@ -369,7 +415,7 @@
 
         /* ===== FOOTER ===== */
         .footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             padding: 64px 24px 40px;
         }
 
@@ -383,14 +429,14 @@
 
         .footer-brand {
             font-size: 0.8rem;
-            color: #666;
+            color: #999;
             line-height: 1.7;
         }
 
         .footer-col-title {
             font-size: 0.8rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.45);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 16px;
@@ -399,34 +445,34 @@
         .footer-col a {
             display: block;
             font-size: 0.9rem;
-            color: #888;
+            color: #666;
             padding: 4px 0;
             transition: color 0.3s;
         }
 
         .footer-col a:hover {
-            color: #fff;
+            color: #111;
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.8rem;
-            color: #555;
+            color: #aaa;
         }
 
         .footer-bottom a {
-            color: #888;
+            color: #666;
             transition: color 0.3s;
         }
 
         .footer-bottom a:hover {
-            color: #fff;
+            color: #111;
         }
 
         @media (max-width: 768px) {
@@ -477,7 +523,7 @@
         }
 
         .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             transform: translateY(-1px);
         }
 
@@ -486,23 +532,23 @@
             align-items: center;
             padding: 14px 32px;
             background: transparent;
-            color: #fff;
+            color: #111;
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.15);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-secondary:hover {
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(0, 0, 0, 0.45);
             transform: translateY(-1px);
         }
 
         .tool-link {
             font-size: 0.9rem;
             font-weight: 500;
-            color: #10B981;
+            color: #D4AF37;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -532,7 +578,7 @@
             display: block;
             font-size: 0.85rem;
             font-weight: 500;
-            color: #888;
+            color: #666;
             margin-bottom: 6px;
         }
 
@@ -540,10 +586,10 @@
         .contact-form textarea {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 10px;
-            color: #fff;
+            color: #111;
             font-size: 0.95rem;
             font-family: inherit;
             outline: none;
@@ -553,12 +599,12 @@
 
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: rgba(16, 185, 129, 0.4);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
         .contact-form input::placeholder,
         .contact-form textarea::placeholder {
-            color: #555;
+            color: #aaa;
         }
 
         .contact-form textarea {
@@ -569,7 +615,7 @@
         .contact-form button {
             display: inline-flex;
             padding: 12px 32px;
-            background: #10B981;
+            background: #D4AF37;
             color: #fff;
             border: none;
             border-radius: 100px;
@@ -581,26 +627,26 @@
         }
 
         .contact-form button:hover {
-            background: #059669;
+            background: #B8962E;
             transform: translateY(-1px);
         }
 
         .contact-info h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #fff;
+            color: #111;
             margin-bottom: 16px;
         }
 
         .contact-info p {
-            color: #888;
+            color: #666;
             font-size: 0.9rem;
             line-height: 1.7;
             margin-bottom: 24px;
         }
 
         .contact-info a {
-            color: #10B981;
+            color: #D4AF37;
             text-decoration: underline;
             text-underline-offset: 2px;
         }
@@ -611,7 +657,7 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-brand">ONLINE SIDEHUSTLES</a>
+            <a href="/" class="nav-brand"><img src="/logo.png" alt="Online Sidehustles" class="nav-logo">ONLINE SIDEHUSTLES</a>
             <div class="nav-links">
                 <a href="/getting-started" class="nav-link">Get Started</a>
                 <a href="/sweepstakes" class="nav-link">Sweepstakes</a>
@@ -667,8 +713,8 @@
             </div>
             <div class="contact-info fade-in fade-in-delay-1">
                 <h3>Other Ways to Reach Us</h3>
-                <p><strong style="color: #fff;">Discord</strong><br>The fastest way to get a response. Join our community and ask in any channel.<br><a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Join Discord Server</a></p>
-                <p><strong style="color: #fff;">Email</strong><br>For partnerships, press, and business inquiries.<br><a href="mailto:crossroads@onlinesidehustles.info">crossroads@onlinesidehustles.info</a></p>
+                <p><strong style="color: #111;">Discord</strong><br>The fastest way to get a response. Join our community and ask in any channel.<br><a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Join Discord Server</a></p>
+                <p><strong style="color: #111;">Email</strong><br>For partnerships, press, and business inquiries.<br><a href="mailto:crossroads@onlinesidehustles.info">crossroads@onlinesidehustles.info</a></p>
                 <h3>Common Questions</h3>
                 <p>Before reaching out, check our <a href="faq.html">FAQ page</a> -- most common questions are answered there.</p>
             </div>
@@ -746,7 +792,7 @@
         if (window.location.search.includes('sent=true')) {
             const form = document.querySelector('.contact-form form');
             if (form) {
-                form.innerHTML = '<div style="text-align:center;padding:40px 0;"><p style="font-size:1.2rem;color:#10B981;font-weight:600;margin-bottom:8px;">Message sent!</p><p style="color:#888;">We\'ll get back to you as soon as possible.</p></div>';
+                form.innerHTML = '<div style="text-align:center;padding:40px 0;"><p style="font-size:1.2rem;color:#D4AF37;font-weight:600;margin-bottom:8px;">Message sent!</p><p style="color: #666;">We\'ll get back to you as soon as possible.</p></div>';
             }
         }
     </script>
