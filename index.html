@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <!-- Google Analytics 4 -->
@@ -60,9 +60,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#4CAF50">
-    <meta name="msapplication-TileColor" content="#4CAF50">
+    <meta name="theme-color" content="#10B981">
+    <meta name="msapplication-TileColor" content="#10B981">
     <link rel="alternate" type="application/rss+xml" title="Online Side Hustles Blog" href="https://onlinesidehustles.info/feed.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://discord.com">
     <link rel="dns-prefetch" href="https://discord.com">
 
@@ -80,757 +83,942 @@
     </script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-        @media (min-width: 768px) { .container { padding: 0 2rem; } }
-        @media (min-width: 1200px) { .container { padding: 0 3rem; } }
-        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(76,175,80,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,215,0,0.1) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(139,195,74,0.1) 0%, transparent 50%); animation: backgroundShift 20s ease-in-out infinite; z-index: -2; }
-        @keyframes backgroundShift { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } }
-        .grid-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px); background-size: 50px 50px; animation: gridMove 15s linear infinite; z-index: -1; pointer-events: none; }
-        @keyframes gridMove { 0% { transform: translate(0,0); } 100% { transform: translate(50px,50px); } }
-        .floating-orbs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.4; animation: float 20s infinite ease-in-out; }
-        .orb1 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,215,0,0.8), transparent); top: -150px; left: -150px; animation-duration: 25s; }
-        .orb2 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(76,175,80,0.8), transparent); top: 50%; right: -100px; animation-duration: 30s; animation-delay: 5s; }
-        .orb3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,165,0,0.8), transparent); bottom: -125px; left: 30%; animation-duration: 35s; animation-delay: 10s; }
-        .orb4 { width: 150px; height: 150px; background: radial-gradient(circle, rgba(139,195,74,0.8), transparent); top: 30%; left: 60%; animation-duration: 28s; animation-delay: 15s; }
-        @keyframes float { 0%, 100% { transform: translate(0,0) scale(1); } 25% { transform: translate(100px,-100px) scale(1.1); } 50% { transform: translate(-100px,100px) scale(0.9); } 75% { transform: translate(50px,50px) scale(1.05); } }
-        .money-rain { position: fixed; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .money-symbol { position: absolute; color: rgba(255,215,0,0.1); font-size: 20px; animation: fall linear infinite; font-weight: bold; }
-        .money-symbol:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
-        .money-symbol:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 15px; }
-        .money-symbol:nth-child(3) { left: 25%; animation-duration: 20s; animation-delay: 4s; }
-        .money-symbol:nth-child(4) { left: 35%; animation-duration: 16s; animation-delay: 1s; font-size: 25px; }
-        .money-symbol:nth-child(5) { left: 45%; animation-duration: 22s; animation-delay: 3s; }
-        .money-symbol:nth-child(6) { left: 55%; animation-duration: 19s; animation-delay: 5s; font-size: 18px; }
-        .money-symbol:nth-child(7) { left: 65%; animation-duration: 17s; animation-delay: 2s; }
-        .money-symbol:nth-child(8) { left: 75%; animation-duration: 21s; animation-delay: 6s; font-size: 22px; }
-        .money-symbol:nth-child(9) { left: 85%; animation-duration: 15s; animation-delay: 4s; }
-        .money-symbol:nth-child(10) { left: 95%; animation-duration: 18s; animation-delay: 7s; }
-        @keyframes fall { 0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.1; } 90% { opacity: 0.1; } 100% { top: 110%; transform: translateX(20px) rotate(360deg); opacity: 0; } }
-        .glow-lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .glow-line { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6), transparent); animation: glowMove 8s linear infinite; }
-        .glow-line:nth-child(1) { top: 10%; width: 200px; animation-delay: 0s; }
-        .glow-line:nth-child(2) { top: 30%; width: 300px; animation-delay: 2s; }
-        .glow-line:nth-child(3) { top: 50%; width: 250px; animation-delay: 4s; }
-        .glow-line:nth-child(4) { top: 70%; width: 350px; animation-delay: 6s; }
-        .glow-line:nth-child(5) { top: 90%; width: 200px; animation-delay: 8s; }
-        @keyframes glowMove { 0% { left: -400px; opacity: 0; } 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
-        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); overflow: visible; max-height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-        nav { max-width: 1400px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
-        .logo-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(76,175,80,0.3); }
-        .logo-icon svg { width: 100%; height: 100%; border-radius: 12px; }
-        .mobile-menu-toggle { display: none; background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.25rem; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
-        .mobile-menu-toggle:hover { background: linear-gradient(135deg, #3a3a3a, #4a4a4a); border-color: #4CAF50; }
-        .nav-menu { display: flex; gap: 0.5rem; align-items: center; }
-        .nav-link { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.25s; }
-        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-link-primary { color: #FFD700; font-weight: 600; }
-        .nav-link-primary:hover { color: #FFD700; background: rgba(255,215,0,0.12); }
-        .nav-link-gold { color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.45rem 1.1rem; border-radius: 20px; }
-        .nav-link-gold:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
-        .nav-dropdown { position: relative; }
-        .nav-dropdown-toggle { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.25s; cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.35rem; font-family: inherit; }
-        .nav-dropdown-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-dropdown-toggle .dd-arrow { font-size: 0.7rem; transition: transform 0.2s; }
-        .nav-dropdown-menu { position: absolute; top: calc(100% + 6px); left: 0; min-width: 220px; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; box-shadow: 0 15px 40px rgba(0,0,0,0.5); z-index: 9999; }
-        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
-        .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 10px; }
-        .nav-dropdown-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
-        .nav-dropdown-menu a:hover { background: rgba(76,175,80,0.15); color: #fff; transform: translateX(4px); }
-        .nav-cta { color: #0a0a0a !important; background: linear-gradient(135deg, #FFD700, #FFA500) !important; font-weight: 700 !important; padding: 0.5rem 1.2rem !important; border-radius: 20px !important; font-size: 0.9rem !important; transition: all 0.3s !important; box-shadow: 0 4px 15px rgba(255,215,0,0.3); }
-        .nav-cta:hover { transform: translateY(-2px) !important; box-shadow: 0 6px 20px rgba(255,215,0,0.5) !important; background: linear-gradient(135deg, #FFD700, #FFA500) !important; }
-        @media (max-width: 1400px) { .nav-dropdown-menu { left: 0; } }
-        @media (max-width: 768px) {
-            nav { padding: 1rem; }
-            .logo { font-size: 1.1rem; }
-            .logo-icon { width: 35px; height: 35px; font-size: 16px; }
-            .mobile-menu-toggle { display: block; }
-            .nav-menu { display: none; width: 100%; flex-direction: column; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0.75rem; }
-            .nav-menu.active { display: flex; }
-            .nav-link { padding: 0.6rem 1rem; font-size: 1rem; }
-            .nav-link-gold { text-align: center; }
-            .nav-dropdown { width: 100%; }
-            .nav-dropdown-toggle { width: 100%; justify-content: center; padding: 0.6rem 1rem; font-size: 1rem; }
-            .nav-dropdown-menu { position: relative; top: 0; left: 0; width: 100%; margin: 0.25rem 0; display: none; opacity: 1; visibility: visible; box-shadow: none; border: 1px solid rgba(255,255,255,0.05); }
-            .nav-dropdown.active .nav-dropdown-menu { display: block; }
-            .nav-dropdown:hover .nav-dropdown-menu { opacity: 0; visibility: hidden; }
-            .nav-dropdown.active .nav-dropdown-menu { opacity: 1 !important; visibility: visible !important; display: block !important; }
-            .nav-cta { display: block; text-align: center; }
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        @media (max-width: 600px) { .nav-dropdown-menu a { font-size: 0.85rem; padding: 0.5rem 0.75rem; } }
-        .hero { padding: 140px 1rem 60px; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .hero { padding: 180px 2rem 80px; } }
-        @keyframes glow { 0%, 100% { box-shadow: 0 5px 20px rgba(255,215,0,0.4); } 50% { box-shadow: 0 5px 30px rgba(255,215,0,0.6); } }
-        .hero-content { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
-        @media (min-width: 992px) { .hero-content { grid-template-columns: 1.2fr 0.8fr; gap: 4rem; } }
-        .hero-text { animation: slideInLeft 0.8s ease; }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(76,175,80,0.1); border: 1px solid #4CAF50; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #4CAF50; }
-        .hero-badge-dot { width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        h1 { font-size: 2rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @media (min-width: 480px) { h1 { font-size: 2.5rem; } }
-        @media (min-width: 768px) { h1 { font-size: 3rem; } }
-        @media (min-width: 992px) { h1 { font-size: 3.5rem; line-height: 1.1; } }
-        .highlight { background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-description { font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
-        @media (min-width: 768px) { .hero-description { font-size: 1.1rem; line-height: 1.7; } }
-        @media (min-width: 992px) { .hero-description { font-size: 1.2rem; } }
-        .hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        @media (min-width: 768px) { .hero-stats { display: flex; gap: 3rem; } }
-        .stat { text-align: center; }
-        .stat-number { font-size: 1.8rem; font-weight: bold; color: #4CAF50; }
-        @media (min-width: 768px) { .stat-number { font-size: 2.5rem; } }
-        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
-        @media (min-width: 768px) { .stat-label { font-size: 0.9rem; } }
-        .hero-graphic { position: relative; animation: slideInRight 0.8s ease; }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-        .money-graphic { width: 250px; height: 250px; position: relative; margin: 20px auto 0; }
-        @media (min-width: 480px) { .money-graphic { width: 300px; height: 300px; margin-top: 30px; } }
-        @media (min-width: 768px) { .money-graphic { width: 350px; height: 350px; } }
-        @media (min-width: 992px) { .money-graphic { width: 400px; height: 400px; margin: 50px auto 0; } }
-        .money-circle { width: 100%; height: 100%; background: radial-gradient(circle at 30% 30%, #4CAF50, #2E7D32); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 80px rgba(76,175,80,0.3); animation: floatHero 6s ease-in-out infinite; position: relative; }
-        @keyframes floatHero { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-        .money-circle::before { content: "💰"; font-size: 120px; }
-        .floating-icon { position: absolute; font-size: 2.5rem; top: 50%; left: 50%; animation: orbit 10s linear infinite; }
-        @media (min-width: 480px) { .floating-icon { font-size: 3rem; } }
-        @media (min-width: 768px) { .floating-icon { font-size: 3.5rem; } }
-        @media (min-width: 992px) { .floating-icon { font-size: 4rem; } }
-        .floating-icon:nth-child(2) { animation-delay: -2.5s; }
-        .floating-icon:nth-child(3) { animation-delay: -5s; }
-        .floating-icon:nth-child(4) { animation-delay: -7.5s; }
-        @keyframes orbit { from { transform: translate(-50%,-50%) rotate(0deg) translateX(200px) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg) translateX(200px) rotate(-360deg); } }
-        .categories-section { padding: 3rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .categories-section { padding: 4rem 2rem; } }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-title { font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem; }
-        @media (min-width: 768px) { .section-title { font-size: 2.5rem; } }
-        .section-subtitle { color: rgba(255,255,255,0.7); font-size: 1rem; }
-        @media (min-width: 768px) { .section-subtitle { font-size: 1.1rem; } }
-        .categories-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 640px) { .categories-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width: 1024px) { .categories-grid { grid-template-columns: repeat(3,1fr); gap: 2rem; } }
-        .category-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; padding-bottom: 4rem; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; }
-        @media (min-width: 768px) { .category-card { padding: 2rem; padding-bottom: 4.5rem; min-height: 320px; } }
-        .category-card.coming-soon { cursor: default; }
-        .coming-soon-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #607D8B, #90A4AE); color: white; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; animation: pulse 2s infinite; }
-        .category-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50); background-size: 200% 100%; animation: shimmer 3s linear infinite; opacity: 0; transition: opacity 0.3s; }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        .category-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.05); border-color: rgba(76,175,80,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .category-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #4CAF50, #8BC34A); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 1.5rem; }
-        .category-card:nth-child(2) .category-icon { background: linear-gradient(135deg, #FFD700, #FFA500); }
-        .category-card:nth-child(3) .category-icon { background: linear-gradient(135deg, #2196F3, #03A9F4); }
-        .category-card:nth-child(4) .category-icon { background: linear-gradient(135deg, #9C27B0, #E91E63); }
-        .category-card:nth-child(5) .category-icon { background: linear-gradient(135deg, #FF5722, #FF9800); }
-        .category-card:nth-child(6) .category-icon { background: linear-gradient(135deg, #607D8B, #90A4AE); }
-        .category-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem; }
-        .category-description { color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-        .category-items { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3.5rem; }
-        .category-tag { background: rgba(255,255,255,0.1); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
-        .category-link { color: #4CAF50; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s; position: absolute; bottom: 2rem; left: 2rem; }
-        .category-link:hover { gap: 1rem; }
-        .category-link.disabled { color: #4CAF50; pointer-events: none; cursor: default; }
-        .featured-section { background: rgba(76,175,80,0.05); border-top: 1px solid rgba(76,175,80,0.2); border-bottom: 1px solid rgba(76,175,80,0.2); padding: 3rem 1rem; margin: 3rem 0; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .featured-section { padding: 4rem 2rem; margin: 4rem 0; } }
-        .featured-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-        @media (min-width: 640px) { .featured-content { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width: 1024px) { .featured-content { grid-template-columns: repeat(4,1fr); gap: 3rem; } }
-        .featured-item { padding: 2rem; }
-        .featured-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .featured-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; color: #FFD700; }
-        .featured-text { color: rgba(255,255,255,0.7); line-height: 1.6; }
-        footer { background: rgba(0,0,0,0.8); padding: 2rem 1rem 1.5rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
-        @media (min-width: 768px) { footer { padding: 3rem 2rem 2rem; margin-top: 6rem; } }
-        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-        @media (min-width: 768px) { .footer-content { grid-template-columns: 2fr 1fr 1fr; gap: 3rem; } }
-        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #4CAF50; }
-        .footer-brand p { color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.5rem; }
-        .footer-links h4 { font-size: 1.1rem; margin-bottom: 1rem; color: white; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.5rem; }
-        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
-        .footer-links a:hover { color: #4CAF50; }
-        .footer-links a.disabled { color: rgba(255,255,255,0.6); pointer-events: none; cursor: default; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
-        .discord-float { position: fixed; bottom: 15px; right: 15px; background: linear-gradient(135deg, #5865F2, #7289DA); color: white; padding: 0.75rem 1.25rem; border-radius: 25px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 10px 30px rgba(88,101,242,0.3); transition: all 0.3s; z-index: 999; font-weight: 600; font-size: 0.9rem; }
-        @media (min-width: 768px) { .discord-float { bottom: 20px; right: 20px; padding: 1rem 1.5rem; font-size: 1rem; } }
-        .discord-float:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(88,101,242,0.4); }
-        @media (max-width: 768px) { .hero-content { text-align: center; } .footer-content { text-align: center; } }
-        @media (max-width: 480px) { .hero-badge { font-size: 0.8rem; padding: 0.4rem 0.8rem; } .category-title { font-size: 1.3rem; } .featured-icon { font-size: 2.5rem; } .featured-title { font-size: 1.1rem; } }
-        .testimonials-section { padding: 3rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .testimonials-section { padding: 4rem 2rem; } }
-        .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 640px) { .testimonials-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(4,1fr); gap: 2rem; } }
-        .testimonial-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; transition: all 0.3s; }
-        .testimonial-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.05); border-color: rgba(76,175,80,0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-        .testimonial-stars { font-size: 1rem; margin-bottom: 1rem; }
-        .testimonial-text { color: rgba(255,255,255,0.8); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-        .author-avatar { width: 45px; height: 45px; background: linear-gradient(135deg, #4CAF50, #8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
-        .author-name { font-weight: bold; color: white; }
-        .author-detail { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
-        .reviews-section { background: rgba(76,175,80,0.05); border-top: 1px solid rgba(76,175,80,0.2); border-bottom: 1px solid rgba(76,175,80,0.2); padding: 3rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .reviews-section { padding: 4rem 2rem; } }
-        .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width: 1024px) { .reviews-grid { grid-template-columns: repeat(3,1fr); gap: 2rem; } }
-        .review-card { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; transition: all 0.3s; text-decoration: none; color: white; position: relative; display: block; }
-        .review-card:hover { transform: translateY(-5px); background: rgba(0,0,0,0.6); border-color: rgba(255,215,0,0.4); box-shadow: 0 15px 40px rgba(255,215,0,0.15); }
-        .review-card:hover .review-link { gap: 1rem; color: #FFD700; }
-        .review-badge { position: absolute; top: 15px; right: 15px; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .review-badge.popular { background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; }
-        .review-badge.hot { background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; }
-        .review-badge.new { background: linear-gradient(135deg, #2196F3, #03A9F4); color: white; }
-        .review-logo { font-size: 3rem; margin-bottom: 1rem; }
-        .review-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 0.5rem; }
-        .review-rating { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-        .review-rating .stars { font-size: 0.9rem; }
-        .rating-text { color: #FFD700; font-weight: bold; font-size: 0.9rem; }
-        .review-excerpt { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem; }
-        .review-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .review-tag { background: rgba(76,175,80,0.2); color: #4CAF50; padding: 0.25rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-weight: 500; }
-        .review-link { color: #4CAF50; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; font-size: 0.9rem; }
-        .reviews-cta { text-align: center; margin-top: 2.5rem; }
-        .view-all-btn { display: inline-block; background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 5px 20px rgba(76,175,80,0.3); }
-        .view-all-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(76,175,80,0.4); }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-brand {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            background: #10B981;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4.5px, 4.5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.5px, -4.5px);
+        }
+
+        /* Mobile overlay menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #fff;
+        }
+
+        .mobile-menu .nav-cta {
+            font-size: 1.1rem;
+            padding: 14px 36px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            padding: 180px 24px 120px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            background: #fff;
+            color: #000;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            background: transparent;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .trust-indicators {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .trust-indicators span {
+            white-space: nowrap;
+        }
+
+        .trust-dot {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: 120px 24px;
+            position: relative;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 48px;
+        }
+
+        .section-label.center {
+            text-align: center;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.08);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .section {
+                padding: 80px 24px;
+            }
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .card-earning {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #10B981;
+        }
+
+        .card-arrow {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover .card-arrow {
+            color: #10B981;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        /* ===== TOOLS ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #10B981;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover .tool-link {
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .testimonial-quote {
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-attr {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 40px;
+            background: #10B981;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 24px;
+        }
+
+        .btn-cta:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .cta-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            transition: color 0.3s;
+        }
+
+        .cta-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 64px 24px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+
+        .footer-brand {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .footer-col-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.9rem;
+            color: #888;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+        .fade-in-delay-5 { transition-delay: 0.5s; }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#4CAF50;color:white;padding:8px 16px;z-index:10000;transition:top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
 
-    <div class="grid-animation"></div>
-    <div class="floating-orbs">
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="orb orb3"></div>
-        <div class="orb orb4"></div>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">ONLINE SIDEHUSTLES</a>
+            <div class="nav-links">
+                <a href="/getting-started" class="nav-link">Get Started</a>
+                <a href="/sweepstakes" class="nav-link">Sweepstakes</a>
+                <a href="/side-hustles" class="nav-link">Side Hustles</a>
+                <a href="/tools" class="nav-link">Tools</a>
+                <a href="/blog" class="nav-link">Blog</a>
+                <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/getting-started">Get Started</a>
+        <a href="/sweepstakes">Sweepstakes</a>
+        <a href="/side-hustles">Side Hustles</a>
+        <a href="/tools">Tools</a>
+        <a href="/blog">Blog</a>
+        <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
     </div>
-    <div class="money-rain">
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">&#8383;</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">&euro;</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">&yen;</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">&pound;</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">&#8377;</div>
-    </div>
-    <div class="glow-lines">
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-    </div>
 
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="logo" aria-label="Online Sidehustles - Home">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-                        <defs>
-                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#004D40"/>
-                                <stop offset="33%" style="stop-color:#00695C"/>
-                                <stop offset="66%" style="stop-color:#4CAF50"/>
-                                <stop offset="100%" style="stop-color:#FFD700"/>
-                            </linearGradient>
-                            <radialGradient id="centerGoldLogo">
-                                <stop offset="0%" style="stop-color:#FFD700"/>
-                                <stop offset="50%" style="stop-color:#FFA500"/>
-                                <stop offset="100%" style="stop-color:#4CAF50"/>
-                            </radialGradient>
-                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#8B4513"/>
-                                <stop offset="50%" style="stop-color:#6D4C41"/>
-                                <stop offset="100%" style="stop-color:#5D4037"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
-                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
-                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
-                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
-                    </svg>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Turn Your Free Time<br>Into Real Income</h1>
+            <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,400+ members earning $30+ daily from sweepstakes casinos, automated selling, and smart side hustles.</p>
+            <div class="hero-buttons fade-in fade-in-delay-2">
+                <a href="/getting-started" class="btn-primary">Get Started</a>
+                <a href="/casino-directory" class="btn-secondary">Browse Directory</a>
+            </div>
+            <div class="trust-indicators fade-in fade-in-delay-3">
+                <span>No Investment Needed</span>
+                <span class="trust-dot">&middot;</span>
+                <span>100+ Sites Reviewed</span>
+                <span class="trust-dot">&middot;</span>
+                <span>2,400+ Active Members</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <hr class="divider">
+    <section class="section">
+        <div class="container">
+            <p class="section-label fade-in">How it works</p>
+            <div class="steps-grid">
+                <div class="fade-in fade-in-delay-1">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">Create Accounts</h3>
+                    <p class="step-desc">Sign up at top-rated sweepstakes casinos and daily collection sites. Takes about 15 minutes to get started.</p>
                 </div>
-                <span>ONLINE SIDEHUSTLES</span>
-            </a>
-
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Menu &#9776;</button>
-
-            <div class="nav-menu" id="navMenu">
-                <a href="getting-started.html" class="nav-link">Get Started</a>
-                <div class="nav-dropdown" id="sweepsDropdown">
-                    <button class="nav-dropdown-toggle" onclick="toggleDropdown('sweepsDropdown', event)">Sweepstakes <span class="dd-arrow">▼</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="casino-directory.html">🎰 Casino Directory</a>
-                        <a href="reviews-hub.html">⭐ Casino Reviews</a>
-                        <a href="states-hub.html">📍 State Guide</a>
-                        <a href="daily-login-guide.html">📅 Daily Login Guide</a>
-                        <a href="sweepstakes-casino-list.html">📋 Casino List</a>
-                    </div>
+                <div class="fade-in fade-in-delay-2">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">Collect Daily</h3>
+                    <p class="step-desc">Log in each day to claim free coins, bonuses, and rewards. Most sites take under a minute each.</p>
                 </div>
-                <div class="nav-dropdown" id="hustlesDropdown">
-                    <button class="nav-dropdown-toggle" onclick="toggleDropdown('hustlesDropdown', event)">Side Hustles <span class="dd-arrow">▼</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="sell-on-ebay-automated.html">🛒 Selling Online</a>
-                        <a href="credit-card-churning.html">💳 Credit Card Churning</a>
-                        <a href="matched-betting.html">⚽ Matched Betting</a>
-                        <a href="freelancing.html">💻 Freelancing</a>
-                        <a href="passive-investing.html">📈 Passive Investing</a>
-                        <a href="sportsbetting-automation.html">🏈 Sports Betting</a>
-                        <a href="complete-guide-list.html">📚 All Guides</a>
-                    </div>
-                </div>
-                <a href="tools-hub.html" class="nav-link">Tools</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="https://discord.gg/xdCeN8jMdK" class="nav-link nav-cta" target="_blank" rel="noopener">💬 Join Discord</a>
-                            </div>
-        </nav>
-    </header>
-
-
-    <!-- Homepage Redesign Styles -->
-    <style>
-        /* Hero Section */
-        .new-hero { padding: 140px 1rem 80px; position: relative; z-index: 1; overflow: hidden; }
-        @media (min-width: 768px) { .new-hero { padding: 160px 2rem 100px; } }
-        .new-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(76,175,80,0.08) 0%, transparent 40%, rgba(255,215,0,0.06) 70%, transparent 100%); animation: heroGradient 8s ease-in-out infinite alternate; z-index: -1; }
-        @keyframes heroGradient { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 1; transform: scale(1.05); } }
-        .hero-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-        .hero-headline { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; background: linear-gradient(135deg, #fff 0%, #e0e0e0 50%, #FFD700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        @media (min-width: 768px) { .hero-headline { font-size: 3.5rem; } }
-        @media (min-width: 992px) { .hero-headline { font-size: 4rem; } }
-        .hero-sub { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto 2.5rem; }
-        @media (min-width: 768px) { .hero-sub { font-size: 1.2rem; } }
-        .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
-        .cta-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #4CAF50, #45a049); color: #fff; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 6px 25px rgba(76,175,80,0.4); }
-        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(76,175,80,0.5); }
-        .cta-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #fff; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 2px solid rgba(255,255,255,0.25); transition: all 0.3s; }
-        .cta-outline:hover { border-color: #FFD700; color: #FFD700; transform: translateY(-3px); }
-        .trust-badges { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .trust-badge { font-size: 0.95rem; color: rgba(255,255,255,0.65); font-weight: 500; }
-
-        /* How It Works */
-        .how-section { padding: 5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .how-section { padding: 6rem 2rem; } }
-        .how-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        @media (min-width: 768px) { .how-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
-        .how-step { text-align: center; padding: 2.5rem 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; position: relative; }
-        .how-step-num { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; background: linear-gradient(135deg, #4CAF50, #8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; color: #fff; border: 3px solid #0a0a0a; }
-        .how-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .how-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
-        .how-desc { color: rgba(255,255,255,0.65); line-height: 1.6; font-size: 0.95rem; }
-
-        /* Section Headers */
-        .sec-header { text-align: center; margin-bottom: 3rem; }
-        .sec-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
-        @media (min-width: 768px) { .sec-title { font-size: 2.5rem; } }
-        .sec-subtitle { color: rgba(255,255,255,0.6); font-size: 1.05rem; }
-
-        /* Income Paths */
-        .paths-section { padding: 5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .paths-section { padding: 6rem 2rem; } }
-        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 640px) { .paths-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .paths-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
-        .path-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; transition: all 0.35s; text-decoration: none; color: #fff; display: flex; flex-direction: column; }
-        .path-card:hover { transform: translateY(-5px); border-color: rgba(76,175,80,0.4); box-shadow: 0 20px 50px rgba(76,175,80,0.15); background: rgba(255,255,255,0.05); }
-        .path-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .path-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .path-earn { display: inline-block; background: rgba(76,175,80,0.15); color: #4CAF50; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; width: fit-content; }
-        .path-desc { color: rgba(255,255,255,0.65); line-height: 1.6; font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.25rem; }
-        .path-link { color: #4CAF50; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.3s; }
-        .path-card:hover .path-link { gap: 0.8rem; color: #8BC34A; }
-
-        /* Stats Bar */
-        .stats-bar { background: rgba(76,175,80,0.06); border-top: 1px solid rgba(76,175,80,0.15); border-bottom: 1px solid rgba(76,175,80,0.15); padding: 3.5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .stats-bar { padding: 4rem 2rem; } }
-        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center; }
-        @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-        .stat-item .stat-num { font-size: 2.2rem; font-weight: 800; color: #FFD700; margin-bottom: 0.25rem; }
-        @media (min-width: 768px) { .stat-item .stat-num { font-size: 2.8rem; } }
-        .stat-item .stat-lbl { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
-
-        /* Tools Section */
-        .tools-section { padding: 5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .tools-section { padding: 6rem 2rem; } }
-        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
-        @media (min-width: 768px) { .tools-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
-        .tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.35s; text-decoration: none; color: #fff; display: block; }
-        .tool-card:hover { transform: translateY(-5px); border-color: rgba(255,215,0,0.4); box-shadow: 0 15px 40px rgba(255,215,0,0.1); }
-        .tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .tool-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFD700; }
-        .tool-desc { color: rgba(255,255,255,0.6); line-height: 1.6; font-size: 0.9rem; }
-
-        /* Testimonials */
-        .testi-section { padding: 5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .testi-section { padding: 6rem 2rem; } }
-        .testi-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-        @media (min-width: 768px) { .testi-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
-        .testi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; position: relative; }
-        .testi-card::before { content: '\201C'; position: absolute; top: 12px; left: 20px; font-size: 4rem; color: rgba(76,175,80,0.2); font-family: Georgia, serif; line-height: 1; }
-        .testi-text { color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 0.95rem; font-style: italic; margin-bottom: 1.25rem; padding-top: 1rem; }
-        .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-        .testi-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #5865F2, #7289DA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .testi-name { font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.9); }
-        .testi-role { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
-
-        /* Blog Section */
-        .blog-section { padding: 5rem 1rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .blog-section { padding: 6rem 2rem; } }
-        .blog-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-        @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; overflow: hidden; transition: all 0.35s; text-decoration: none; color: #fff; display: block; }
-        .blog-card:hover { transform: translateY(-5px); border-color: rgba(76,175,80,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
-        .blog-thumb { height: 160px; background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(255,215,0,0.1)); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-        .blog-body { padding: 1.5rem; }
-        .blog-tag { display: inline-block; background: rgba(76,175,80,0.15); color: #4CAF50; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.75rem; }
-        .blog-title-card { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4; }
-        .blog-excerpt { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; }
-
-        /* Final CTA */
-        .final-cta { padding: 5rem 1rem; text-align: center; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .final-cta { padding: 6rem 2rem; } }
-        .final-cta-box { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 3rem 2rem; }
-        .final-headline { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
-        @media (min-width: 768px) { .final-headline { font-size: 2.5rem; } }
-        .final-sub { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 2rem; }
-        .discord-cta-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #4CAF50, #FFD700); color: #0a0a0a; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 1.15rem; transition: all 0.3s; box-shadow: 0 8px 30px rgba(76,175,80,0.4); margin-bottom: 1.5rem; }
-        .discord-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(76,175,80,0.5); }
-        .final-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
-        .final-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        .final-link:hover { color: #4CAF50; }
-
-        /* Scroll animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-    </style>
-
-    <main id="main-content" role="main">
-
-        <!-- 1. Hero Section -->
-        <section class="new-hero" aria-label="Hero">
-            <div class="hero-inner">
-                <h1 class="hero-headline">Turn Your Free Time Into Real Income</h1>
-                <p class="hero-sub">Join 2,400+ members earning $30+ daily from sweepstakes casinos, selling online, and automated side hustles</p>
-                <div class="hero-ctas">
-                    <a href="getting-started.html" class="cta-primary">Get Started Free &#8594;</a>
-                    <a href="casino-directory.html" class="cta-outline">Browse Casinos</a>
-                </div>
-                <div class="trust-badges">
-                    <span class="trust-badge">&#9989; No investment needed</span>
-                    <span class="trust-badge">&#9989; 100+ sites reviewed</span>
-                    <span class="trust-badge">&#9989; 2,400+ active members</span>
+                <div class="fade-in fade-in-delay-3">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">Cash Out</h3>
+                    <p class="step-desc">Redeem your accumulated coins for real cash via bank transfer, PayPal, or crypto.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 2. How It Works -->
-        <section class="how-section fade-in" aria-label="How it works">
-            <div class="sec-header">
-                <h2 class="sec-title">How It Works</h2>
-                <p class="sec-subtitle">Three simple steps to start earning</p>
+    <!-- INCOME PATHS -->
+    <hr class="divider">
+    <section class="section">
+        <div class="container">
+            <p class="section-label fade-in">Ways to earn</p>
+            <div class="cards-grid">
+                <a href="/daily-login-guide" class="card fade-in fade-in-delay-1">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Daily Collection Sites</h3>
+                    <p class="card-desc">Log into 70+ sites daily and collect free rewards that convert to real cash.</p>
+                    <span class="card-earning">$15 - $50 / day</span>
+                </a>
+                <a href="/selling-online" class="card fade-in fade-in-delay-2">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Sell on eBay &amp; TikTok</h3>
+                    <p class="card-desc">Flip items online with automation tools for sourcing, listing, and shipping.</p>
+                    <span class="card-earning">$500 - $2,000 / month</span>
+                </a>
+                <a href="/credit-card-churning" class="card fade-in fade-in-delay-3">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Credit Card Churning</h3>
+                    <p class="card-desc">Strategically earn sign-up bonuses and cashback from credit card offers.</p>
+                    <span class="card-earning">$500 - $2,000 / quarter</span>
+                </a>
+                <a href="/matched-betting" class="card fade-in fade-in-delay-1">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Matched Betting</h3>
+                    <p class="card-desc">Use mathematical strategies to extract guaranteed profit from promotions.</p>
+                    <span class="card-earning">$300 - $1,000 / month</span>
+                </a>
+                <a href="/passive-investing" class="card fade-in fade-in-delay-2">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Passive Investing</h3>
+                    <p class="card-desc">Set-and-forget strategies for building long-term wealth with minimal effort.</p>
+                    <span class="card-earning">$200 - $1,000 / month</span>
+                </a>
+                <a href="/sports-betting-automation" class="card fade-in fade-in-delay-3">
+                    <span class="card-arrow">&rarr;</span>
+                    <h3 class="card-title">Sports Betting Automation</h3>
+                    <p class="card-desc">Automated tools that find and place value bets across multiple platforms.</p>
+                    <span class="card-earning">$500 - $3,000 / month</span>
+                </a>
             </div>
-            <div class="how-grid">
-                <div class="how-step">
-                    <div class="how-step-num">1</div>
-                    <div class="how-icon">&#128241;</div>
-                    <h3 class="how-title">Sign Up</h3>
-                    <p class="how-desc">Create free accounts at sweepstakes casinos and side hustle platforms</p>
-                </div>
-                <div class="how-step">
-                    <div class="how-step-num">2</div>
-                    <div class="how-icon">&#128176;</div>
-                    <h3 class="how-title">Collect Daily</h3>
-                    <p class="how-desc">Log in daily to collect free bonuses worth $0.10&#8211;$2.00 per site</p>
-                </div>
-                <div class="how-step">
-                    <div class="how-step-num">3</div>
-                    <div class="how-icon">&#127974;</div>
-                    <h3 class="how-title">Cash Out</h3>
-                    <p class="how-desc">Redeem your earnings for real cash via PayPal, bank transfer, or crypto</p>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 3. Income Paths -->
-        <section class="paths-section fade-in" aria-label="Income paths">
-            <div class="sec-header">
-                <h2 class="sec-title">Choose Your Income Path</h2>
-                <p class="sec-subtitle">Multiple proven ways to earn &#8212; pick what fits your style</p>
-            </div>
-            <div class="paths-grid">
-                <a href="daily-login-guide.html" class="path-card">
-                    <div class="path-icon">&#127920;</div>
-                    <h3 class="path-title">Daily Collection Sites</h3>
-                    <span class="path-earn">$15&#8211;$50/day</span>
-                    <p class="path-desc">Earn from free daily login bonuses across 100+ sweepstakes casino sites. No deposit required.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-                <a href="sell-on-ebay-automated.html" class="path-card">
-                    <div class="path-icon">&#128230;</div>
-                    <h3 class="path-title">Sell on eBay &amp; TikTok</h3>
-                    <span class="path-earn">$500&#8211;$3,000/mo</span>
-                    <p class="path-desc">Automated dropshipping and reselling with minimal effort. Zero inventory needed.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-                <a href="credit-card-churning.html" class="path-card">
-                    <div class="path-icon">&#128179;</div>
-                    <h3 class="path-title">Credit Card Churning</h3>
-                    <span class="path-earn">$500&#8211;$2,000+/quarter</span>
-                    <p class="path-desc">Turn signup bonuses into real cash. Banks literally pay you to open accounts.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-                <a href="matched-betting.html" class="path-card">
-                    <div class="path-icon">&#127919;</div>
-                    <h3 class="path-title">Matched Betting</h3>
-                    <span class="path-earn">$500&#8211;$1,500+ signup</span>
-                    <p class="path-desc">Risk-free profit from sportsbook promotions. Not gambling &#8212; it's math.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-                <a href="passive-investing.html" class="path-card">
-                    <div class="path-icon">&#128200;</div>
-                    <h3 class="path-title">Passive Investing</h3>
-                    <span class="path-earn">Long-term wealth</span>
-                    <p class="path-desc">Build long-term wealth with automated strategies. Dividends, REITs, and crypto staking.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-                <a href="sportsbetting-automation.html" class="path-card">
-                    <div class="path-icon">&#9917;</div>
-                    <h3 class="path-title">Sports Betting Automation</h3>
-                    <span class="path-earn">Varies</span>
-                    <p class="path-desc">AI-powered picks and automated arbitrage across sportsbooks.</p>
-                    <span class="path-link">Learn More &#8594;</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- 4. Stats Bar -->
-        <section class="stats-bar fade-in" aria-label="Community statistics">
+    <!-- STATS -->
+    <section class="section stats-section">
+        <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-num" data-target="2400" data-suffix="+">0</div>
-                    <div class="stat-lbl">Members</div>
+                <div class="fade-in fade-in-delay-1">
+                    <div class="stat-number" data-target="2400" data-suffix="+">0</div>
+                    <div class="stat-label">Members</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-num" data-target="100" data-suffix="+">0</div>
-                    <div class="stat-lbl">Sites Reviewed</div>
+                <div class="fade-in fade-in-delay-2">
+                    <div class="stat-number" data-target="100" data-suffix="+">0</div>
+                    <div class="stat-label">Sites Reviewed</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-num" data-target="30" data-prefix="$" data-suffix="+">0</div>
-                    <div class="stat-lbl">Avg Daily Earnings</div>
+                <div class="fade-in fade-in-delay-3">
+                    <div class="stat-number" data-target="30" data-prefix="$" data-suffix="+">0</div>
+                    <div class="stat-label">Avg Daily</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-num" data-target="49" data-suffix="&#9733;" data-decimal="true">0</div>
-                    <div class="stat-lbl">Community Rating</div>
+                <div class="fade-in fade-in-delay-4">
+                    <div class="stat-number" data-target="4.9" data-suffix="&#9733;" data-decimal="true">0</div>
+                    <div class="stat-label">Rating</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 5. Featured Tools -->
-        <section class="tools-section fade-in" aria-label="Featured tools">
-            <div class="sec-header">
-                <h2 class="sec-title">Featured Tools</h2>
-                <p class="sec-subtitle">Everything you need to get started and scale</p>
-            </div>
+    <!-- TOOLS -->
+    <section class="section">
+        <div class="container">
+            <p class="section-label fade-in">Tools</p>
             <div class="tools-grid">
-                <a href="income-calculator.html" class="tool-card">
-                    <div class="tool-icon">&#128176;</div>
-                    <h3 class="tool-title">Income Calculator</h3>
-                    <p class="tool-desc">See how much you could earn based on the number of sites and time invested</p>
+                <a href="/income-calculator" class="card fade-in fade-in-delay-1">
+                    <h3 class="card-title">Income Calculator</h3>
+                    <p class="card-desc">See how much you could earn based on the sites you use and time you invest.</p>
+                    <span class="tool-link">Open <span>&rarr;</span></span>
                 </a>
-                <a href="casino-directory.html" class="tool-card">
-                    <div class="tool-icon">&#127920;</div>
-                    <h3 class="tool-title">Casino Directory</h3>
-                    <p class="tool-desc">Search and filter 110+ sweepstakes casinos with ratings, bonuses, and payout info</p>
+                <a href="/casino-directory" class="card fade-in fade-in-delay-2">
+                    <h3 class="card-title">Casino Directory</h3>
+                    <p class="card-desc">Search and filter 110+ sweepstakes casinos by payout, rating, and bonuses.</p>
+                    <span class="tool-link">Open <span>&rarr;</span></span>
                 </a>
-                <a href="bonus-collection-software.html" class="tool-card">
-                    <div class="tool-icon">&#129302;</div>
-                    <h3 class="tool-title">Automation Software</h3>
-                    <p class="tool-desc">Automate your daily logins and bonus collection across multiple sites</p>
+                <a href="/automation" class="card fade-in fade-in-delay-3">
+                    <h3 class="card-title">Automation Software</h3>
+                    <p class="card-desc">Automate your daily logins and collection across dozens of sites at once.</p>
+                    <span class="tool-link">Open <span>&rarr;</span></span>
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 6. Testimonials -->
-        <section class="testi-section fade-in" aria-label="Testimonials">
-            <div class="sec-header">
-                <h2 class="sec-title">What Members Are Saying</h2>
-                <p class="sec-subtitle">Real talk from the community</p>
-            </div>
-            <div class="testi-grid">
-                <div class="testi-card">
-                    <p class="testi-text">I started with 5 casinos and now I'm doing 30+ daily. Making about $40/day just from logins.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">&#128172;</div>
-                        <div>
-                            <div class="testi-name">Discord Member</div>
-                            <div class="testi-role">Daily collection user</div>
-                        </div>
-                    </div>
+    <!-- TESTIMONIALS -->
+    <hr class="divider">
+    <section class="section">
+        <div class="container">
+            <p class="section-label fade-in">What members say</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in fade-in-delay-1">
+                    <p class="testimonial-quote">"I started with 5 casinos and now I'm doing 30+ daily. Making about $40/day just from logins."</p>
+                    <p class="testimonial-attr">&mdash; Discord Member</p>
                 </div>
-                <div class="testi-card">
-                    <p class="testi-text">The churning guide alone paid for itself 10x over. Made $1,200 in my first month.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">&#128172;</div>
-                        <div>
-                            <div class="testi-name">Discord Member</div>
-                            <div class="testi-role">Credit card churner</div>
-                        </div>
-                    </div>
+                <div class="testimonial-card fade-in fade-in-delay-2">
+                    <p class="testimonial-quote">"The churning guide alone paid for itself 10x over. Made $1,200 in my first month."</p>
+                    <p class="testimonial-attr">&mdash; Discord Member</p>
                 </div>
-                <div class="testi-card">
-                    <p class="testi-text">Best community I've found. The guides are actually useful, not just hype.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">&#128172;</div>
-                        <div>
-                            <div class="testi-name">Discord Member</div>
-                            <div class="testi-role">Community member since 2024</div>
-                        </div>
-                    </div>
+                <div class="testimonial-card fade-in fade-in-delay-3">
+                    <p class="testimonial-quote">"Best community I've found. The guides are actually useful, not just hype."</p>
+                    <p class="testimonial-attr">&mdash; Discord Member</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 7. Latest from the Blog -->
-        <section class="blog-section fade-in" aria-label="Latest blog posts">
-            <div class="sec-header">
-                <h2 class="sec-title">Latest from the Blog</h2>
-                <p class="sec-subtitle">Guides, news, and strategies updated weekly</p>
+    <!-- CTA -->
+    <section class="section cta-section">
+        <div class="container">
+            <h2 class="cta-title fade-in">Ready to start earning?</h2>
+            <p class="cta-subtitle fade-in fade-in-delay-1">Join our free Discord community with 2,400+ members</p>
+            <div class="fade-in fade-in-delay-2">
+                <a href="https://discord.com/invite/onlinesidehustles" class="btn-cta" target="_blank" rel="noopener">Join Discord</a>
             </div>
-            <div class="blog-grid">
-                <a href="blog.html" class="blog-card">
-                    <div class="blog-thumb">&#128218;</div>
-                    <div class="blog-body">
-                        <span class="blog-tag">Guide</span>
-                        <h3 class="blog-title-card">How to Start Earning $30/Day With Daily Login Sites</h3>
-                        <p class="blog-excerpt">A step-by-step walkthrough for complete beginners. No deposit required.</p>
-                    </div>
-                </a>
-                <a href="blog.html" class="blog-card">
-                    <div class="blog-thumb">&#128179;</div>
-                    <div class="blog-body">
-                        <span class="blog-tag">Strategy</span>
-                        <h3 class="blog-title-card">Credit Card Churning: The Complete Playbook for 2026</h3>
-                        <p class="blog-excerpt">Stack signup bonuses the smart way. Which cards to hit first and when.</p>
-                    </div>
-                </a>
-                <a href="blog.html" class="blog-card">
-                    <div class="blog-thumb">&#129302;</div>
-                    <div class="blog-body">
-                        <span class="blog-tag">Tools</span>
-                        <h3 class="blog-title-card">Automating Your Daily Bonus Collection &#8212; What Actually Works</h3>
-                        <p class="blog-excerpt">Software and scripts that save hours every week. Honest review.</p>
-                    </div>
-                </a>
+            <div class="cta-links fade-in fade-in-delay-3">
+                <a href="/getting-started">Or start with our Getting Started Guide</a>
+                <a href="/casino-directory">Browse the Casino Directory</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 8. Final CTA -->
-        <section class="final-cta fade-in" aria-label="Join the community">
-            <div class="final-cta-box">
-                <h2 class="final-headline">Ready to Start Earning?</h2>
-                <p class="final-sub">Join 2,400+ members in our free Discord community</p>
-                <a href="https://discord.com/invite/onlinesidehustles" class="discord-cta-btn" target="_blank">&#128172; Join Discord Free</a>
-                <div class="final-links">
-                    <a href="getting-started.html" class="final-link">Or start with our Getting Started Guide</a>
-                    <a href="casino-directory.html" class="final-link">Browse the Casino Directory</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer role="contentinfo">
-        <div class="footer-content">
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
             <div class="footer-brand">
-                <h3>ONLINE SIDEHUSTLES</h3>
-                <p>Your trusted source for legitimate online side hustles in <span class="autoYear">2026</span>. Join 2,400+ members who've built successful passive income streams through daily collection sites, online store automation, AI services, and proven digital strategies. Start earning today with expert guidance and 24/7 community support.</p>
-                <p style="color:#4CAF50;font-style:italic;">Website by Crossroads - Sidehustle Wiki</p>
+                &copy; 2026 Online Sidehustles<br>
+                Your trusted partner in building multiple income streams through proven online side hustles.
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="24-to-1000-guide.html">$24 to $1000 Guide</a></li>
-                    <li><a href="https://onlinesidehustles.info/success-stories">Success Stories</a></li>
-                    <li><a href="getting-started.html">Getting Started</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="tools.html">Tools</a></li>
-                    <li><a href="glossary.html">Glossary</a></li>
-                    <li><a href="https://onlinesidehustles.info/blog">Blog</a></li>
-                </ul>
+            <div class="footer-col">
+                <p class="footer-col-title">Guides</p>
+                <a href="/getting-started">Getting Started</a>
+                <a href="/daily-login-guide">Daily Login Guide</a>
+                <a href="/guides">Complete Guide List</a>
             </div>
-            <div class="footer-links">
-                <h4>Categories</h4>
-                <ul>
-                    <li><a href="https://onlinesidehustles.info/daily-login-guide">Daily Collection Sites</a></li>
-                    <li><a href="skrill-casinos.html">Skrill Sites</a></li>
-                    <li><a href="sell-on-ebay-automated.html">Ebay Selling</a></li>
-                    <li><a href="sell-on-tiktok-automated.html">TikTok Shop</a></li>
-                    <li><a href="credit-cards.html">Best Credit Cards</a></li>
-                    <li><a href="freelancing.html">Freelancing</a></li>
-                    <li><a href="affiliate-marketing.html">Affiliate Marketing</a></li>
-                    <li><a href="passive-investing.html">Passive Investing</a></li>
-                    <li><a href="dropshipping.html">Dropshipping</a></li>
-                    <li><a href="casino-ratings.html">Casino Ratings</a></li>
-                </ul>
+            <div class="footer-col">
+                <p class="footer-col-title">Resources</p>
+                <a href="/casino-directory">Casino Directory</a>
+                <a href="/income-calculator">Income Calculator</a>
+                <a href="/tools">Tools</a>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Legal</p>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms</a>
+                <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+                <a href="/contact">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="currentYear">2026</span> Online Sidehustles. All rights reserved.</p>
+            <span>&copy; 2026 Online Sidehustles. All rights reserved.</span>
+            <a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Discord</a>
         </div>
     </footer>
 
-    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
-        <span>&#128172;</span>
-        Join Discord Community
-    </a>
-
     <script>
-        const currentYear = new Date().getFullYear();
-        ['currentYear','heroYear','sectionYear','heroDescYear'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = currentYear;
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
-        document.querySelectorAll('.autoYear').forEach(el => { el.textContent = currentYear; });
-
-        // Banner hidden - window.addEventListener('load', ...) disabled
-
-        function toggleMobileMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
-
-        function toggleDropdown(id, event) {
-            if (window.innerWidth <= 768) {
-                event.stopPropagation();
-                event.preventDefault();
-                document.getElementById(id).classList.toggle('active');
-            }
-        }
-
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('navMenu');
-            if (!event.target.closest('.nav-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
-                document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('active'));
-                if (window.innerWidth <= 768) navMenu.classList.remove('active');
-            }
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
 
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('active'));
-                document.getElementById('navMenu').classList.remove('active');
-            }
-        });
-        // Scroll fade-in animations
+        // Fade-in on scroll
         const fadeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -838,40 +1026,40 @@
                     fadeObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
         document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
         // Count-up animation for stats
-        const statsObserver = new IntersectionObserver((entries) => {
+        const countObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const nums = entry.target.querySelectorAll('.stat-num[data-target]');
-                    nums.forEach(num => {
-                        const target = parseInt(num.dataset.target);
-                        const prefix = num.dataset.prefix || '';
-                        const suffix = num.dataset.suffix || '';
-                        const isDecimal = num.dataset.decimal === 'true';
-                        const duration = 1500;
-                        const start = performance.now();
-                        function update(now) {
-                            const elapsed = now - start;
-                            const progress = Math.min(elapsed / duration, 1);
-                            const eased = 1 - Math.pow(1 - progress, 3);
-                            let val = Math.round(eased * target);
-                            if (isDecimal) {
-                                val = (eased * target / 10).toFixed(1);
-                            }
-                            num.textContent = prefix + val + suffix;
-                            if (progress < 1) requestAnimationFrame(update);
-                        }
-                        requestAnimationFrame(update);
-                    });
-                    statsObserver.unobserve(entry.target);
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    const prefix = el.dataset.prefix || '';
+                    const suffix = el.dataset.suffix || '';
+                    const isDecimal = el.dataset.decimal === 'true';
+                    const duration = 2000;
+                    const start = performance.now();
+
+                    function update(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = isDecimal
+                            ? (target * eased).toFixed(1)
+                            : Math.floor(target * eased).toLocaleString();
+                        el.textContent = prefix + current + suffix;
+                        if (progress < 1) requestAnimationFrame(update);
+                    }
+
+                    requestAnimationFrame(update);
+                    countObserver.unobserve(el);
                 }
             });
         }, { threshold: 0.3 });
-        const statsBar = document.querySelector('.stats-bar');
-        if (statsBar) statsObserver.observe(statsBar);
+
+        document.querySelectorAll('.stat-number').forEach(el => countObserver.observe(el));
     </script>
 </body>
 </html>
