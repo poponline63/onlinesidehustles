@@ -1,1121 +1,894 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D9MKJR8494');
-    </script>
-    <script src="/js/analytics.js" defer></script>
-    <!-- End Google Analytics 4 -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="3 days">
-    <meta name="rating" content="General">
-    <meta name="distribution" content="global">
-    <meta name="geo.region" content="US">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <title>Sweepstakes Casino Income Calculator 2026 | Online Side Hustles</title>
-    <meta name="description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator.">
-    <meta name="author" content="Online Sidehustles">
-    <link rel="canonical" href="https://onlinesidehustles.info/income-calculator.html">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onlinesidehustles.info/income-calculator.html">
-    <meta property="og:site_name" content="Online Sidehustles">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="Sweepstakes Casino Income Calculator 2026 | Online Side Hustles">
-    <meta property="og:description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator.">
-    <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sweepstakes Casino Income Calculator 2026 | Online Side Hustles">
-    <meta name="twitter:description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator.">
-    <meta name="twitter:image" content="https://onlinesidehustles.info/og-image.jpg">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#10B981">
-    <meta name="msapplication-TileColor" content="#10B981">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== NAV ===== */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 0 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 72px;
-        }
-
-        .nav-brand {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #fff;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.6);
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-link:hover {
-            color: #fff;
-        }
-
-        .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 24px;
-            background: #10B981;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-cta:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 24px;
-            height: 1.5px;
-            background: #fff;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(4.5px, 4.5px);
-        }
-
-        .nav-hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(4.5px, -4.5px);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.98);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            opacity: 0;
-            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .mobile-menu.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .mobile-menu a {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.3s;
-        }
-
-        .mobile-menu a:hover {
-            color: #fff;
-        }
-
-        .mobile-menu .nav-cta {
-            font-size: 1.1rem;
-            padding: 14px 36px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .nav-hamburger {
-                display: flex;
-            }
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            padding: 180px 24px 120px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: #fff;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #888;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-        }
-
-        /* ===== SECTION STYLES ===== */
-        .section {
-            padding: 120px 24px;
-            position: relative;
-        }
-
-        .section-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 48px;
-        }
-
-        .section-label.center {
-            text-align: center;
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-
-        /* ===== CARDS ===== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .card-arrow {
-            position: absolute;
-            top: 32px;
-            right: 32px;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover .card-arrow {
-            color: #10B981;
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 992px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 80px 24px;
-            }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 64px 24px 40px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 48px;
-            max-width: 1200px;
-            margin: 0 auto 48px;
-        }
-
-        .footer-brand {
-            font-size: 0.8rem;
-            color: #666;
-            line-height: 1.7;
-        }
-
-        .footer-col-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 16px;
-        }
-
-        .footer-col a {
-            display: block;
-            font-size: 0.9rem;
-            color: #888;
-            padding: 4px 0;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: #fff;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        .footer-bottom a {
-            color: #888;
-            transition: color 0.3s;
-        }
-
-        .footer-bottom a:hover {
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-delay-1 { transition-delay: 0.1s; }
-        .fade-in-delay-2 { transition-delay: 0.2s; }
-        .fade-in-delay-3 { transition-delay: 0.3s; }
-
-        /* ===== BUTTONS ===== */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 32px;
-            background: #fff;
-            color: #000;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 32px;
-            background: transparent;
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-secondary:hover {
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .tool-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #10B981;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover .tool-link {
-            gap: 10px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-        @media (min-width: 768px) { .container { padding: 0 2rem; } }
-        @media (min-width: 1200px) { .container { padding: 0 3rem; } }
-
-        /* Background effects */
-        
-         50% { transform: scale(1.1) rotate(5deg); } }
-        
-         100% { transform: translate(50px,50px); } }
-        
-        
-        
-        
-        
-        
-         25% { transform: translate(100px,-100px) scale(1.1); } 50% { transform: translate(-100px,100px) scale(0.9); } 75% { transform: translate(50px,50px) scale(1.05); } }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         10% { opacity: 0.1; } 90% { opacity: 0.1; } 100% { top: 110%; transform: translateX(20px) rotate(360deg); opacity: 0; } }
-        
-        
-        
-        
-        
-        
-        
-         50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
-
-        /* Header / Nav */
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        @media (max-width: 768px) {
-            
-            
-            
-            
-            
-            
-            
-            
-        }
-
-        /* Page content */
-        .page-hero { padding: 120px 1rem 40px; position: relative; z-index: 1; text-align: center; }
-        @media (min-width: 768px) { .page-hero { padding: 140px 2rem 50px; } }
-        .page-hero h1 { font-size: 2rem; font-weight: 900; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @media (min-width: 768px) { .page-hero h1 { font-size: 2.8rem; } }
-        .highlight { background: linear-gradient(135deg, #EAB308, #D97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-
-        /* Calculator */
-        .calculator-section { padding: 2rem 1rem 4rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .calculator-section { padding: 2rem 2rem 5rem; } }
-        .calc-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        @media (min-width: 900px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
-
-        .calc-panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; }
-        .calc-panel h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: #10B981; display: flex; align-items: center; gap: 0.5rem; }
-
-        /* Input groups */
-        .input-group { margin-bottom: 2rem; }
-        .input-group label { display: block; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.95rem; color: rgba(255,255,255,0.9); }
-        .input-group .value-display { float: right; color: #EAB308; font-weight: 700; font-size: 1.05rem; }
-
-        /* Sliders */
-        input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.1); outline: none; cursor: pointer; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #10B981; cursor: pointer; box-shadow: 0 0 10px rgba(16,185,129,0.5); transition: box-shadow 0.2s; }
-        input[type="range"]::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(16,185,129,0.8); }
-        input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #10B981; cursor: pointer; border: none; box-shadow: 0 0 10px rgba(16,185,129,0.5); }
-        input[type="range"]::-moz-range-track { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.1); }
-
-        /* Number inputs */
-        .number-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 0.6rem 1rem; border-radius: 10px; font-size: 1rem; width: 120px; outline: none; transition: border-color 0.3s; }
-        .number-input:focus { border-color: #10B981; }
-        .number-input::-webkit-inner-spin-button { opacity: 1; }
-
-        /* Toggle */
-        .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-        .toggle-switch { position: relative; width: 52px; height: 28px; flex-shrink: 0; }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.15); border-radius: 28px; transition: 0.3s; }
-        .toggle-slider::before { content: ''; position: absolute; height: 22px; width: 22px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
-        .toggle-switch input:checked + .toggle-slider { background: #10B981; }
-        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
-        .toggle-label { font-weight: 600; font-size: 0.95rem; }
-
-        .sub-inputs { display: none; padding: 1rem; margin-top: 0.75rem; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: 12px; }
-        .sub-inputs.visible { display: block; }
-        .sub-input-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-        .sub-input-row:last-child { margin-bottom: 0; }
-        .sub-input-row label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
-
-        /* Results panel */
-        .results-panel { position: sticky; top: 100px; }
-        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .result-item:last-child { border-bottom: none; }
-        .result-label { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
-        .result-value { font-size: 1.15rem; font-weight: 700; color: #10B981; font-variant-numeric: tabular-nums; }
-        .result-item.highlight-row { padding: 1rem 0; margin-top: 0.5rem; border-top: 2px solid rgba(234,179,8,0.3); border-bottom: none; }
-        .result-item.highlight-row .result-label { font-size: 1.1rem; font-weight: 700; color: #EAB308; }
-        .result-item.highlight-row .result-value { font-size: 1.5rem; color: #EAB308; }
-        .result-item.sub-result .result-label { font-size: 0.85rem; padding-left: 1rem; color: rgba(255,255,255,0.5); }
-        .result-item.sub-result .result-value { font-size: 1rem; color: rgba(16,185,129,0.7); }
-
-        /* Visual breakdown bar */
-        .breakdown-section { margin-top: 2rem; }
-        .breakdown-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: rgba(255,255,255,0.8); }
-        .breakdown-bar { display: flex; height: 32px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.05); margin-bottom: 1rem; }
-        .bar-segment { height: 100%; transition: width 0.6s ease; min-width: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: rgba(0,0,0,0.8); overflow: hidden; white-space: nowrap; }
-        .bar-login { background: linear-gradient(135deg, #10B981, #66BB6A); }
-        .bar-churning { background: linear-gradient(135deg, #EAB308, #D97706); }
-        .bar-referral { background: linear-gradient(135deg, #2196F3, #42A5F5); }
-        .breakdown-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; }
-        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-        .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-        .legend-dot.login { background: #10B981; }
-        .legend-dot.churning { background: #EAB308; }
-        .legend-dot.referral { background: #2196F3; }
-
-        /* Share section */
-        .share-section { max-width: 1100px; margin: 0 auto 3rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(88,101,242,0.1), rgba(16,185,129,0.1)); border: 1px solid rgba(88,101,242,0.3); border-radius: 20px; text-align: center; position: relative; z-index: 1; }
-        .share-section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; }
-        .share-section p { color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-size: 1rem; }
-        .share-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #5865F2, #7289DA); color: white; padding: 0.9rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.3s; box-shadow: 0 5px 25px rgba(88,101,242,0.3); }
-        .share-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(88,101,242,0.5); }
-
-        /* Footer */
-        footer { background: rgba(0,0,0,0.8); padding: 2rem 1rem 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
-        @media (min-width: 768px) { footer { padding: 3rem 2rem 2rem; } }
-        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-        @media (min-width: 768px) { .footer-content { grid-template-columns: 2fr 1fr 1fr; gap: 3rem; } }
-        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #10B981; }
-        .footer-brand p { color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.5rem; }
-        .footer-links h4 { font-size: 1.1rem; margin-bottom: 1rem; color: white; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.5rem; }
-        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
-        .footer-links a:hover { color: #10B981; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
-
-        /* Discord float */
-        
-        @media (min-width: 768px) {  }
-        
-
-        @media (max-width: 768px) {
-            .footer-content { text-align: center; }
-            .results-panel { position: static; }
-        }
-
-        /* Count-up animation helper */
-        .counting { transition: color 0.1s; }
-    
-    </style>
-</head>
-<body>
-
-    <!-- NAV -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-brand">ONLINE SIDEHUSTLES</a>
-            <div class="nav-links">
-                <a href="/getting-started" class="nav-link">Get Started</a>
-                <a href="/sweepstakes" class="nav-link">Sweepstakes</a>
-                <a href="/side-hustles" class="nav-link">Side Hustles</a>
-                <a href="/tools" class="nav-link">Tools</a>
-                <a href="/blog" class="nav-link">Blog</a>
-                <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
-            </div>
-            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="/getting-started">Get Started</a>
-        <a href="/sweepstakes">Sweepstakes</a>
-        <a href="/side-hustles">Side Hustles</a>
-        <a href="/tools">Tools</a>
-        <a href="/blog">Blog</a>
-        <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
-    </div>
-
-
-    <div style="padding-top: 72px;">
-<main id="main-content" role="main">
-        <section class="page-hero">
-            <div class="container">
-                <h1>&#128176; <span class="highlight">Income Calculator</span></h1>
-                <p>See how much you could earn from daily collection sites. Adjust the sliders to match your routine and watch your projected income update in real time.</p>
-            </div>
-        </section>
-
-        <section class="calculator-section">
-            <div class="calc-grid">
-                <!-- Inputs Panel -->
-                <div class="calc-panel">
-                    <h2>&#9881;&#65039; Your Daily Routine</h2>
-
-                    <!-- Casinos -->
-                    <div class="input-group">
-                        <label>
-                            Number of casinos you log into daily
-                            <span class="value-display" id="casinosDisplay">10</span>
-                        </label>
-                        <input type="range" id="casinos" min="1" max="50" value="10" step="1">
-                    </div>
-
-                    <!-- Avg bonus -->
-                    <div class="input-group">
-                        <label>
-                            Average daily bonus per casino
-                            <span class="value-display" id="bonusDisplay">$0.30</span>
-                        </label>
-                        <input type="range" id="bonus" min="0.10" max="2.00" value="0.30" step="0.05">
-                    </div>
-
-                    <!-- Days per week -->
-                    <div class="input-group">
-                        <label>
-                            Days per week you collect
-                            <span class="value-display" id="daysDisplay">6</span>
-                        </label>
-                        <input type="range" id="days" min="1" max="7" value="6" step="1">
-                    </div>
-
-                    <!-- Package Churning -->
-                    <div class="input-group">
-                        <div class="toggle-row">
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="churningToggle">
-                                <span class="toggle-slider"></span>
-                            </label>
-                            <span class="toggle-label">Do you do package churning?</span>
-                        </div>
-                        <div class="sub-inputs" id="churningInputs">
-                            <div class="sub-input-row">
-                                <label>Monthly spend ($)</label>
-                                <input type="number" class="number-input" id="churningSpend" value="200" min="0" step="10">
-                            </div>
-                            <div class="sub-input-row">
-                                <label>Avg return (%)</label>
-                                <input type="number" class="number-input" id="churningReturn" value="15" min="0" max="100" step="1">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Referrals -->
-                    <div class="input-group">
-                        <div class="toggle-row">
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="referralToggle">
-                                <span class="toggle-slider"></span>
-                            </label>
-                            <span class="toggle-label">Do you use referral programs?</span>
-                        </div>
-                        <div class="sub-inputs" id="referralInputs">
-                            <div class="sub-input-row">
-                                <label>Active referrals</label>
-                                <input type="number" class="number-input" id="referralCount" value="5" min="0" step="1">
-                            </div>
-                            <div class="sub-input-row">
-                                <label>Avg monthly per referral ($)</label>
-                                <input type="number" class="number-input" id="referralValue" value="5" min="0" step="0.50">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Results Panel -->
-                <div class="calc-panel results-panel">
-                    <h2>&#128200; Your Projected Earnings</h2>
-
-                    <div class="result-item">
-                        <span class="result-label">Daily earnings (logins)</span>
-                        <span class="result-value" id="dailyEarnings">$0.00</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Weekly earnings</span>
-                        <span class="result-value" id="weeklyEarnings">$0.00</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Monthly earnings (logins)</span>
-                        <span class="result-value" id="monthlyEarnings">$0.00</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Yearly projection (logins)</span>
-                        <span class="result-value" id="yearlyEarnings">$0.00</span>
-                    </div>
-
-                    <div class="result-item sub-result" id="churningRow" style="display:none;">
-                        <span class="result-label">Churning profit / month</span>
-                        <span class="result-value" id="churningProfit">$0.00</span>
-                    </div>
-                    <div class="result-item sub-result" id="referralRow" style="display:none;">
-                        <span class="result-label">Referral income / month</span>
-                        <span class="result-value" id="referralIncome">$0.00</span>
-                    </div>
-
-                    <div class="result-item highlight-row">
-                        <span class="result-label">&#128176; Total Monthly Income</span>
-                        <span class="result-value" id="totalMonthly">$0.00</span>
-                    </div>
-                    <div class="result-item highlight-row">
-                        <span class="result-label">&#127775; Total Yearly Income</span>
-                        <span class="result-value" id="totalYearly">$0.00</span>
-                    </div>
-
-                    <!-- Breakdown Bar -->
-                    <div class="breakdown-section">
-                        <h3>Monthly Earnings Breakdown</h3>
-                        <div class="breakdown-bar" id="breakdownBar">
-                            <div class="bar-segment bar-login" id="barLogin" style="width:100%"></div>
-                            <div class="bar-segment bar-churning" id="barChurning" style="width:0%"></div>
-                            <div class="bar-segment bar-referral" id="barReferral" style="width:0%"></div>
-                        </div>
-                        <div class="breakdown-legend">
-                            <div class="legend-item"><div class="legend-dot login"></div><span id="legendLogin">Logins: $0</span></div>
-                            <div class="legend-item" id="legendChurningWrap" style="display:none;"><div class="legend-dot churning"></div><span id="legendChurning">Churning: $0</span></div>
-                            <div class="legend-item" id="legendReferralWrap" style="display:none;"><div class="legend-dot referral"></div><span id="legendReferral">Referrals: $0</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Share -->
-        <section class="calculator-section" style="padding-top:0;">
-            <div class="share-section">
-                <h2>&#128640; Share Your Results</h2>
-                <p>Compare your projected earnings with other members in our Discord community. Get tips to maximize your income!</p>
-                <a href="https://discord.com/invite/onlinesidehustles" target="_blank" class="share-btn">
-                    <span>&#128172;</span>
-                    Share in Discord
-                </a>
-            </div>
-        </section>
-    </main>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                &copy; 2026 Online Sidehustles<br>
-                Your trusted partner in building multiple income streams through proven online side hustles.
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Guides</p>
-                <a href="/getting-started">Getting Started</a>
-                <a href="/daily-login-guide">Daily Login Guide</a>
-                <a href="/guides">Complete Guide List</a>
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Resources</p>
-                <a href="/casino-directory">Casino Directory</a>
-                <a href="/income-calculator">Income Calculator</a>
-                <a href="/tools">Tools</a>
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Legal</p>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms</a>
-                <a href="/affiliate-disclosure">Affiliate Disclosure</a>
-                <a href="/contact">Contact</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Online Sidehustles. All rights reserved.</span>
-            <a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Discord</a>
-        </div>
-    </footer>
-
-    <script>
-        // Nav scroll effect
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 20);
-        }, { passive: true });
-
-        // Mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Fade-in on scroll
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-    </script>
-    <script>
-// Year auto-update
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Mobile menu
-        function toggleMobileMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
-
-        // Elements
-        const casinosSlider = document.getElementById('casinos');
-        const bonusSlider = document.getElementById('bonus');
-        const daysSlider = document.getElementById('days');
-        const churningToggle = document.getElementById('churningToggle');
-        const referralToggle = document.getElementById('referralToggle');
-        const churningSpend = document.getElementById('churningSpend');
-        const churningReturn = document.getElementById('churningReturn');
-        const referralCount = document.getElementById('referralCount');
-        const referralValue = document.getElementById('referralValue');
-
-        // Displays
-        const casinosDisplay = document.getElementById('casinosDisplay');
-        const bonusDisplay = document.getElementById('bonusDisplay');
-        const daysDisplay = document.getElementById('daysDisplay');
-
-        // Results
-        const dailyEl = document.getElementById('dailyEarnings');
-        const weeklyEl = document.getElementById('weeklyEarnings');
-        const monthlyEl = document.getElementById('monthlyEarnings');
-        const yearlyEl = document.getElementById('yearlyEarnings');
-        const churningProfitEl = document.getElementById('churningProfit');
-        const referralIncomeEl = document.getElementById('referralIncome');
-        const totalMonthlyEl = document.getElementById('totalMonthly');
-        const totalYearlyEl = document.getElementById('totalYearly');
-
-        // Rows
-        const churningRow = document.getElementById('churningRow');
-        const referralRow = document.getElementById('referralRow');
-
-        // Breakdown
-        const barLogin = document.getElementById('barLogin');
-        const barChurning = document.getElementById('barChurning');
-        const barReferral = document.getElementById('barReferral');
-        const legendLogin = document.getElementById('legendLogin');
-        const legendChurning = document.getElementById('legendChurning');
-        const legendReferral = document.getElementById('legendReferral');
-        const legendChurningWrap = document.getElementById('legendChurningWrap');
-        const legendReferralWrap = document.getElementById('legendReferralWrap');
-
-        // Toggle sub-inputs
-        churningToggle.addEventListener('change', () => {
-            document.getElementById('churningInputs').classList.toggle('visible', churningToggle.checked);
-            calculate();
-        });
-        referralToggle.addEventListener('change', () => {
-            document.getElementById('referralInputs').classList.toggle('visible', referralToggle.checked);
-            calculate();
-        });
-
-        // Animate number count-up
-        const animationFrames = {};
-        function animateValue(el, newValue) {
-            const key = el.id;
-            if (animationFrames[key]) cancelAnimationFrame(animationFrames[key]);
-
-            const currentText = el.textContent.replace(/[^0-9.\-]/g, '');
-            let start = parseFloat(currentText) || 0;
-            const end = newValue;
-            const duration = 300;
-            const startTime = performance.now();
-
-            function step(now) {
-                const elapsed = now - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                // Ease out
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = start + (end - start) * eased;
-                el.textContent = '$' + current.toFixed(2);
-                if (progress < 1) {
-                    animationFrames[key] = requestAnimationFrame(step);
-                }
-            }
-            animationFrames[key] = requestAnimationFrame(step);
-        }
-
-        function calculate() {
-            const casinos = parseInt(casinosSlider.value);
-            const bonus = parseFloat(bonusSlider.value);
-            const daysPerWeek = parseInt(daysSlider.value);
-
-            // Display values
-            casinosDisplay.textContent = casinos;
-            bonusDisplay.textContent = '$' + bonus.toFixed(2);
-            daysDisplay.textContent = daysPerWeek;
-
-            // Login earnings
-            const daily = casinos * bonus;
-            const weekly = daily * daysPerWeek;
-            const monthlyLogin = weekly * (52 / 12); // avg weeks per month
-            const yearlyLogin = weekly * 52;
-
-            animateValue(dailyEl, daily);
-            animateValue(weeklyEl, weekly);
-            animateValue(monthlyEl, monthlyLogin);
-            animateValue(yearlyEl, yearlyLogin);
-
-            // Churning
-            let churningMonthly = 0;
-            if (churningToggle.checked) {
-                const spend = parseFloat(churningSpend.value) || 0;
-                const ret = parseFloat(churningReturn.value) || 0;
-                churningMonthly = spend * (ret / 100);
-                churningRow.style.display = 'flex';
-                animateValue(churningProfitEl, churningMonthly);
-            } else {
-                churningRow.style.display = 'none';
-            }
-
-            // Referrals
-            let referralMonthly = 0;
-            if (referralToggle.checked) {
-                const count = parseFloat(referralCount.value) || 0;
-                const val = parseFloat(referralValue.value) || 0;
-                referralMonthly = count * val;
-                referralRow.style.display = 'flex';
-                animateValue(referralIncomeEl, referralMonthly);
-            } else {
-                referralRow.style.display = 'none';
-            }
-
-            // Totals
-            const totalMonth = monthlyLogin + churningMonthly + referralMonthly;
-            const totalYear = totalMonth * 12;
-
-            animateValue(totalMonthlyEl, totalMonth);
-            animateValue(totalYearlyEl, totalYear);
-
-            // Breakdown bar
-            const total = totalMonth || 1;
-            const loginPct = (monthlyLogin / total) * 100;
-            const churningPct = (churningMonthly / total) * 100;
-            const referralPct = (referralMonthly / total) * 100;
-
-            barLogin.style.width = loginPct + '%';
-            barChurning.style.width = churningPct + '%';
-            barReferral.style.width = referralPct + '%';
-
-            // Labels inside segments
-            barLogin.textContent = loginPct > 15 ? Math.round(loginPct) + '%' : '';
-            barChurning.textContent = churningPct > 15 ? Math.round(churningPct) + '%' : '';
-            barReferral.textContent = referralPct > 15 ? Math.round(referralPct) + '%' : '';
-
-            // Legend
-            legendLogin.textContent = 'Logins: $' + monthlyLogin.toFixed(2);
-            legendChurningWrap.style.display = churningToggle.checked ? 'flex' : 'none';
-            legendChurning.textContent = 'Churning: $' + churningMonthly.toFixed(2);
-            legendReferralWrap.style.display = referralToggle.checked ? 'flex' : 'none';
-            legendReferral.textContent = 'Referrals: $' + referralMonthly.toFixed(2);
-        }
-
-        // Bind all inputs
-        [casinosSlider, bonusSlider, daysSlider, churningSpend, churningReturn, referralCount, referralValue].forEach(el => {
-            el.addEventListener('input', calculate);
-        });
-
-        // Initial calc
-        calculate();
-    </script>
-</body>
-</html>
+<!DOCTYPE html> <html lang="en-US"> <head> <!-- Google Analytics 4 --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script> <script> window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-D9MKJR8494');
+ </script> <script src="/js/analytics.js" defer></script> <!-- End Google Analytics 4 --> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"> <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> <meta name="language" content="English"> <meta name="revisit-after" content="3 days"> <meta name="rating" content="General"> <meta name="distribution" content="global"> <meta name="geo.region" content="US"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta http-equiv="Content-Language" content="en"> <title>Sweepstakes Casino Income Calculator 2026 | Online Side Hustles</title> <meta name="description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator."> <meta name="author" content="Online Sidehustles"> <link rel="canonical" href="https://onlinesidehustles.info/income-calculator.html"> <meta property="og:type" content="website"> <meta property="og:url" content="https://onlinesidehustles.info/income-calculator.html"> <meta property="og:site_name" content="Online Sidehustles"> <meta property="og:locale" content="en_US"> <meta property="og:title" content="Sweepstakes Casino Income Calculator 2026 | Online Side Hustles"> <meta property="og:description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator."> <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg"> <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Sweepstakes Casino Income Calculator 2026 | Online Side Hustles"> <meta name="twitter:description" content="Calculate your potential sweepstakes casino income from daily logins, package churning, and referrals. See projected daily, weekly, monthly, and yearly earnings with our free interactive calculator."> <meta name="twitter:image" content="https://onlinesidehustles.info/og-image.jpg"> <link rel="icon" href="/favicon.ico"> <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest"> <meta name="theme-color" content="#D4AF37"> <meta name="msapplication-TileColor" content="#D4AF37"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> <style> *, *::before, *::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+ html {
+ scroll-behavior: smooth;
+ }
+
+ body {
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ background: #F2F0EB;
+ color: #111;
+ font-size: 16px;
+ line-height: 1.6;
+ overflow-x: hidden;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ }
+ /* Gold stars scattered across entire page */
+ body::before {
+ content: '';
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ pointer-events: none;
+ z-index: 0;
+ background-image:
+ radial-gradient(2px 2px at 5% 8%, rgba(212,175,55,0.5) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 12% 25%, rgba(212,175,55,0.35) 50%, transparent 50%),
+ radial-gradient(2.5px 2.5px at 22% 12%, rgba(212,175,55,0.6) 50%, transparent 50%),
+ radial-gradient(1px 1px at 30% 45%, rgba(212,175,55,0.3) 50%, transparent 50%),
+ radial-gradient(2px 2px at 38% 5%, rgba(212,175,55,0.45) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 45% 32%, rgba(212,175,55,0.4) 50%, transparent 50%),
+ radial-gradient(1px 1px at 52% 18%, rgba(212,175,55,0.3) 50%, transparent 50%),
+ radial-gradient(2px 2px at 60% 40%, rgba(212,175,55,0.5) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 68% 10%, rgba(212,175,55,0.35) 50%, transparent 50%),
+ radial-gradient(2.5px 2.5px at 75% 28%, rgba(212,175,55,0.55) 50%, transparent 50%),
+ radial-gradient(1px 1px at 82% 48%, rgba(212,175,55,0.3) 50%, transparent 50%),
+ radial-gradient(2px 2px at 88% 15%, rgba(212,175,55,0.45) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 95% 35%, rgba(212,175,55,0.4) 50%, transparent 50%),
+ radial-gradient(1px 1px at 15% 55%, rgba(212,175,55,0.25) 50%, transparent 50%),
+ radial-gradient(2px 2px at 25% 70%, rgba(212,175,55,0.4) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 35% 62%, rgba(212,175,55,0.35) 50%, transparent 50%),
+ radial-gradient(2px 2px at 48% 75%, rgba(212,175,55,0.45) 50%, transparent 50%),
+ radial-gradient(1px 1px at 55% 58%, rgba(212,175,55,0.3) 50%, transparent 50%),
+ radial-gradient(2.5px 2.5px at 65% 68%, rgba(212,175,55,0.5) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 72% 82%, rgba(212,175,55,0.35) 50%, transparent 50%),
+ radial-gradient(2px 2px at 80% 60%, rgba(212,175,55,0.4) 50%, transparent 50%),
+ radial-gradient(1px 1px at 90% 72%, rgba(212,175,55,0.3) 50%, transparent 50%),
+ radial-gradient(2px 2px at 8% 85%, rgba(212,175,55,0.45) 50%, transparent 50%),
+ radial-gradient(1.5px 1.5px at 42% 90%, rgba(212,175,55,0.35) 50%, transparent 50%),
+ radial-gradient(2px 2px at 58% 95%, rgba(212,175,55,0.4) 50%, transparent 50%),
+ radial-gradient(1px 1px at 78% 92%, rgba(212,175,55,0.3) 50%, transparent 50%);
+ }
+
+ /* Ensure all content sits above stars */
+ .nav, .page-hero, .hero-section, .section, .info-section, .stats-section, .cta-section, .footer, hr.divider, main {
+ position: relative;
+ z-index: 1;
+ }
+
+
+ a {
+ color: inherit;
+ text-decoration: none;
+ }
+
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+
+ /* ===== NAV ===== */
+ .nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 1000;
+ padding: 0 24px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .nav.scrolled {
+ background: rgba(242,240,235,0.9);
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ border-bottom: 1px solid rgba(0,0,0,0.08);
+ }
+
+ .nav-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 72px;
+ }
+
+ .nav-brand { display: flex; align-items: center; gap: 10px;
+ font-size: 0.85rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: #111;
+ }
+ .nav-logo { height: 32px; width: auto; }
+
+ .nav-links {
+ display: flex;
+ align-items: center;
+ gap: 32px;
+ }
+
+ .nav-link {
+ font-size: 0.9rem;
+ font-weight: 400;
+ color: rgba(0,0,0,0.55);
+ transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .nav-link:hover {
+ color: #111;
+ }
+
+ .nav-cta {
+ display: inline-flex;
+ align-items: center;
+ padding: 10px 24px;
+ background: #D4AF37;
+ color: #fff;
+ font-size: 0.85rem;
+ font-weight: 600;
+ border-radius: 100px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .nav-cta:hover {
+ background: #B8962E;
+ transform: translateY(-1px);
+ }
+
+ .nav-hamburger {
+ display: none;
+ flex-direction: column;
+ gap: 5px;
+ background: none;
+ border: none;
+ cursor: pointer;
+ padding: 4px;
+ }
+
+ .nav-hamburger span {
+ display: block;
+ width: 24px;
+ height: 1.5px;
+ background: #111;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .nav-hamburger.active span:nth-child(1) {
+ transform: rotate(45deg) translate(4.5px, 4.5px);
+ }
+
+ .nav-hamburger.active span:nth-child(2) {
+ opacity: 0;
+ }
+
+ .nav-hamburger.active span:nth-child(3) {
+ transform: rotate(-45deg) translate(4.5px, -4.5px);
+ }
+
+ .mobile-menu {
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(242,240,235,0.98);
+ z-index: 999;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 40px;
+ opacity: 0;
+ transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .mobile-menu.active {
+ display: flex;
+ opacity: 1;
+ }
+
+ .mobile-menu a {
+ font-size: 1.5rem;
+ font-weight: 500;
+ color: rgba(0,0,0,0.7);
+ transition: color 0.3s;
+ }
+
+ .mobile-menu a:hover {
+ color: #111;
+ }
+
+ .mobile-menu .nav-cta {
+ font-size: 1.1rem;
+ padding: 14px 36px;
+ }
+
+ @media (max-width: 768px) {
+ .nav-links {
+ display: none;
+ }
+ .nav-hamburger {
+ display: flex;
+ }
+ }
+
+ /* ===== HERO ===== */
+ .hero {
+ position: relative;
+ padding: 180px 24px 120px;
+ text-align: center;
+ overflow: hidden;
+ }
+
+ .hero::before {
+ content: '';
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: 800px;
+ height: 800px;
+ background: radial-gradient(circle, rgba(212,175,55, 0.08) 0%, transparent 70%);
+ pointer-events: none;
+ }
+
+ .hero-content {
+ position: relative;
+ z-index: 1;
+ max-width: 800px;
+ margin: 0 auto;
+ }
+
+ .hero h1 {
+ font-size: clamp(2.5rem, 6vw, 4.5rem);
+ font-weight: 700;
+ letter-spacing: -0.02em;
+ line-height: 1.1;
+ margin-bottom: 24px;
+ color: #111;
+ }
+
+ .hero-subtitle {
+ font-size: clamp(1rem, 2vw, 1.2rem);
+ color: #666;
+ max-width: 600px;
+ margin: 0 auto 40px;
+ line-height: 1.7;
+ }
+
+ /* ===== SECTION STYLES ===== */
+ .section {
+ padding: 120px 24px;
+ position: relative;
+ }
+
+ .section-label {
+ font-size: 0.85rem;
+ font-weight: 500;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: #999;
+ margin-bottom: 48px;
+ }
+
+ .section-label.center {
+ text-align: center;
+ }
+
+ .divider {
+ border: none;
+ border-top: 1px solid rgba(0,0,0,0.08);
+ margin: 0 auto;
+ max-width: 1200px;
+ }
+
+ /* ===== CARDS ===== */
+ .cards-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 16px;
+ max-width: 1200px;
+ margin: 0 auto;
+ }
+
+ .card {
+ background: rgba(0,0,0,0.02);
+ border: 1px solid rgba(0,0,0,0.08);
+ border-radius: 16px;
+ padding: 32px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ position: relative;
+ overflow: hidden;
+ }
+
+ .card:hover {
+ transform: scale(1.02);
+ border-color: rgba(212,175,55, 0.3);
+ background: rgba(0,0,0,0.02);
+ }
+
+ .card-title {
+ font-size: 1.15rem;
+ font-weight: 600;
+ color: #111;
+ margin-bottom: 8px;
+ }
+
+ .card-desc {
+ font-size: 0.9rem;
+ color: #666;
+ margin-bottom: 16px;
+ line-height: 1.5;
+ }
+
+ .card-arrow {
+ position: absolute;
+ top: 32px;
+ right: 32px;
+ font-size: 1.1rem;
+ color: rgba(0,0,0,0.2);
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .card:hover .card-arrow {
+ color: #D4AF37;
+ transform: translateX(4px);
+ }
+
+ @media (max-width: 992px) {
+ .cards-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+ }
+
+ @media (max-width: 600px) {
+ .cards-grid {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ @media (max-width: 768px) {
+ .section {
+ padding: 80px 24px;
+ }
+ }
+
+ /* ===== FOOTER ===== */
+ .footer {
+ border-top: 1px solid rgba(0,0,0,0.08);
+ padding: 64px 24px 40px;
+ }
+
+ .footer-grid {
+ display: grid;
+ grid-template-columns: 1.5fr repeat(3, 1fr);
+ gap: 48px;
+ max-width: 1200px;
+ margin: 0 auto 48px;
+ }
+
+ .footer-brand {
+ font-size: 0.8rem;
+ color: #666;
+ line-height: 1.7;
+ }
+
+ .footer-col-title {
+ font-size: 0.8rem;
+ font-weight: 600;
+ color: rgba(0,0,0,0.5);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ margin-bottom: 16px;
+ }
+
+ .footer-col a {
+ display: block;
+ font-size: 0.9rem;
+ color: #666;
+ padding: 4px 0;
+ transition: color 0.3s;
+ }
+
+ .footer-col a:hover {
+ color: #111;
+ }
+
+ .footer-bottom {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding-top: 24px;
+ border-top: 1px solid rgba(0,0,0,0.03);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 0.8rem;
+ color: #aaa;
+ }
+
+ .footer-bottom a {
+ color: #666;
+ transition: color 0.3s;
+ }
+
+ .footer-bottom a:hover {
+ color: #111;
+ }
+
+ @media (max-width: 768px) {
+ .footer-grid {
+ grid-template-columns: 1fr 1fr;
+ gap: 32px;
+ }
+ .footer-bottom {
+ flex-direction: column;
+ gap: 8px;
+ text-align: center;
+ }
+ }
+
+ @media (max-width: 480px) {
+ .footer-grid {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ /* ===== ANIMATIONS ===== */
+ .fade-in {
+ opacity: 0;
+ transform: translateY(20px);
+ transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .fade-in.visible {
+ opacity: 1;
+ transform: translateY(0);
+ }
+
+ .fade-in-delay-1 { transition-delay: 0.1s; }
+ .fade-in-delay-2 { transition-delay: 0.2s; }
+ .fade-in-delay-3 { transition-delay: 0.3s; }
+
+ /* ===== BUTTONS ===== */
+ .btn-primary {
+ display: inline-flex;
+ align-items: center;
+ padding: 14px 32px;
+ background: #fff;
+ color: #000;
+ font-size: 0.95rem;
+ font-weight: 600;
+ border-radius: 100px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .btn-primary:hover {
+ background: rgba(17,17,17,0.85);
+ transform: translateY(-1px);
+ }
+
+ .btn-secondary {
+ display: inline-flex;
+ align-items: center;
+ padding: 14px 32px;
+ background: transparent;
+ color: #111;
+ font-size: 0.95rem;
+ font-weight: 600;
+ border-radius: 100px;
+ border: 1px solid rgba(0,0,0,0.2);
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .btn-secondary:hover {
+ border-color: rgba(0,0,0,0.5);
+ transform: translateY(-1px);
+ }
+
+ .tool-link {
+ font-size: 0.9rem;
+ font-weight: 500;
+ color: #D4AF37;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .card:hover .tool-link {
+ gap: 10px;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #F2F0EB; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+ @media (min-width: 768px) { .container { padding: 0 2rem; } }
+ @media (min-width: 1200px) { .container { padding: 0 3rem; } }
+
+ /* Background effects */
+ 
+ 50% { transform: scale(1.1) rotate(5deg); } }
+ 
+ 100% { transform: translate(50px,50px); } }
+ 
+ 
+ 
+ 
+ 
+ 
+ 25% { transform: translate(100px,-100px) scale(1.1); } 50% { transform: translate(-100px,100px) scale(0.9); } 75% { transform: translate(50px,50px) scale(1.05); } }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 10% { opacity: 0.1; } 90% { opacity: 0.1; } 100% { top: 110%; transform: translateX(20px) rotate(360deg); opacity: 0; } }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+
+ /* Header / Nav */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ @media (max-width: 768px) {
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ }
+
+ /* Page content */
+ .page-hero { padding: 120px 1rem 40px; position: relative; z-index: 1; text-align: center; }
+ @media (min-width: 768px) { .page-hero { padding: 140px 2rem 50px; } }
+ .page-hero h1 { font-size: 2rem; font-weight: 900; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+ @media (min-width: 768px) { .page-hero h1 { font-size: 2.8rem; } }
+ .highlight { background: linear-gradient(135deg, #EAB308, #D97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+ .page-hero p { color: rgba(0,0,0,0.6); font-size: 1.05rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+ /* Calculator */
+ .calculator-section { padding: 2rem 1rem 4rem; position: relative; z-index: 1; }
+ @media (min-width: 768px) { .calculator-section { padding: 2rem 2rem 5rem; } }
+ .calc-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+ @media (min-width: 900px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
+
+ .calc-panel { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 2rem; }
+ .calc-panel h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: #D4AF37; display: flex; align-items: center; gap: 0.5rem; }
+
+ /* Input groups */
+ .input-group { margin-bottom: 2rem; }
+ .input-group label { display: block; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.95rem; color: rgba(0,0,0,0.8); }
+ .input-group .value-display { float: right; color: #EAB308; font-weight: 700; font-size: 1.05rem; }
+
+ /* Sliders */
+ input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 4px; background: rgba(0,0,0,0.08); outline: none; cursor: pointer; }
+ input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #D4AF37; cursor: pointer; box-shadow: 0 0 10px rgba(212,175,55,0.5); transition: box-shadow 0.2s; }
+ input[type="range"]::-webkit-slider-thumb:hover { box-shadow: 0 0 20px rgba(212,175,55,0.8); }
+ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #D4AF37; cursor: pointer; border: none; box-shadow: 0 0 10px rgba(212,175,55,0.5); }
+ input[type="range"]::-moz-range-track { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.08); }
+
+ /* Number inputs */
+ .number-input { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.12); color: white; padding: 0.6rem 1rem; border-radius: 10px; font-size: 1rem; width: 120px; outline: none; transition: border-color 0.3s; }
+ .number-input:focus { border-color: #D4AF37; }
+ .number-input::-webkit-inner-spin-button { opacity: 1; }
+
+ /* Toggle */
+ .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+ .toggle-switch { position: relative; width: 52px; height: 28px; flex-shrink: 0; }
+ .toggle-switch input { opacity: 0; width: 0; height: 0; }
+ .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.12); border-radius: 28px; transition: 0.3s; }
+ .toggle-slider::before { content: ''; position: absolute; height: 22px; width: 22px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+ .toggle-switch input:checked + .toggle-slider { background: #D4AF37; }
+ .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+ .toggle-label { font-weight: 600; font-size: 0.95rem; }
+
+ .sub-inputs { display: none; padding: 1rem; margin-top: 0.75rem; background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.15); border-radius: 12px; }
+ .sub-inputs.visible { display: block; }
+ .sub-input-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+ .sub-input-row:last-child { margin-bottom: 0; }
+ .sub-input-row label { font-size: 0.9rem; color: rgba(0,0,0,0.7); }
+
+ /* Results panel */
+ .results-panel { position: sticky; top: 100px; }
+ .result-item { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+ .result-item:last-child { border-bottom: none; }
+ .result-label { font-size: 0.95rem; color: rgba(0,0,0,0.6); }
+ .result-value { font-size: 1.15rem; font-weight: 700; color: #D4AF37; font-variant-numeric: tabular-nums; }
+ .result-item.highlight-row { padding: 1rem 0; margin-top: 0.5rem; border-top: 2px solid rgba(234,179,8,0.3); border-bottom: none; }
+ .result-item.highlight-row .result-label { font-size: 1.1rem; font-weight: 700; color: #EAB308; }
+ .result-item.highlight-row .result-value { font-size: 1.5rem; color: #EAB308; }
+ .result-item.sub-result .result-label { font-size: 0.85rem; padding-left: 1rem; color: rgba(0,0,0,0.5); }
+ .result-item.sub-result .result-value { font-size: 1rem; color: rgba(212,175,55,0.7); }
+
+ /* Visual breakdown bar */
+ .breakdown-section { margin-top: 2rem; }
+ .breakdown-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: rgba(0,0,0,0.7); }
+ .breakdown-bar { display: flex; height: 32px; border-radius: 16px; overflow: hidden; background: rgba(0,0,0,0.03); margin-bottom: 1rem; }
+ .bar-segment { height: 100%; transition: width 0.6s ease; min-width: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: rgba(0,0,0,0.8); overflow: hidden; white-space: nowrap; }
+ .bar-login { background: linear-gradient(135deg, #D4AF37, #66BB6A); }
+ .bar-churning { background: linear-gradient(135deg, #EAB308, #D97706); }
+ .bar-referral { background: linear-gradient(135deg, #2196F3, #42A5F5); }
+ .breakdown-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+ .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(0,0,0,0.6); }
+ .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+ .legend-dot.login { background: #D4AF37; }
+ .legend-dot.churning { background: #EAB308; }
+ .legend-dot.referral { background: #2196F3; }
+
+ /* Share section */
+ .share-section { max-width: 1100px; margin: 0 auto 3rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(88,101,242,0.1), rgba(212,175,55,0.1)); border: 1px solid rgba(88,101,242,0.3); border-radius: 20px; text-align: center; position: relative; z-index: 1; }
+ .share-section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; }
+ .share-section p { color: rgba(0,0,0,0.6); margin-bottom: 1.5rem; font-size: 1rem; }
+ .share-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #5865F2, #7289DA); color: white; padding: 0.9rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: all 0.3s; box-shadow: 0 5px 25px rgba(88,101,242,0.3); }
+ .share-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(88,101,242,0.5); }
+
+ /* Footer */
+ footer { background: rgba(0,0,0,0.8); padding: 2rem 1rem 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); position: relative; z-index: 1; }
+ @media (min-width: 768px) { footer { padding: 3rem 2rem 2rem; } }
+ .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+ @media (min-width: 768px) { .footer-content { grid-template-columns: 2fr 1fr 1fr; gap: 3rem; } }
+ .footer-brand h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #D4AF37; }
+ .footer-brand p { color: rgba(0,0,0,0.55); line-height: 1.6; margin-bottom: 1.5rem; }
+ .footer-links h4 { font-size: 1.1rem; margin-bottom: 1rem; color: white; }
+ .footer-links ul { list-style: none; }
+ .footer-links li { margin-bottom: 0.5rem; }
+ .footer-links a { color: rgba(0,0,0,0.55); text-decoration: none; transition: color 0.3s; }
+ .footer-links a:hover { color: #D4AF37; }
+ .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); color: rgba(0,0,0,0.5); }
+
+ /* Discord float */
+ 
+ @media (min-width: 768px) { }
+ 
+
+ @media (max-width: 768px) {
+ .footer-content { text-align: center; }
+ .results-panel { position: static; }
+ }
+
+ /* Count-up animation helper */
+ .counting { transition: color 0.1s; }
+ 
+ </style> </head> <body> <!-- NAV --> <nav class="nav" id="nav"> <div class="nav-inner"> <a href="/" class="nav-brand">ONLINE SIDEHUSTLES</a> <div class="nav-links"> <a href="/getting-started" class="nav-link">Get Started</a> <a href="/sweepstakes" class="nav-link">Sweepstakes</a> <a href="/side-hustles" class="nav-link">Side Hustles</a> <a href="/tools" class="nav-link">Tools</a> <a href="/blog" class="nav-link">Blog</a> <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a> </div> <button class="nav-hamburger" id="hamburger" aria-label="Menu"> <span></span> <span></span> <span></span> </button> </div> </nav> <!-- MOBILE MENU --> <div class="mobile-menu" id="mobileMenu"> <a href="/getting-started">Get Started</a> <a href="/sweepstakes">Sweepstakes</a> <a href="/side-hustles">Side Hustles</a> <a href="/tools">Tools</a> <a href="/blog">Blog</a> <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a> </div> <div style="padding-top: 72px;"> <main id="main-content" role="main"> <section class="page-hero"> <div class="container"> <h1>&#128176; <span class="highlight">Income Calculator</span></h1> <p>See how much you could earn from daily collection sites. Adjust the sliders to match your routine and watch your projected income update in real time.</p> </div> </section> <section class="calculator-section"> <div class="calc-grid"> <!-- Inputs Panel --> <div class="calc-panel"> <h2>&#9881;&#65039; Your Daily Routine</h2> <!-- Casinos --> <div class="input-group"> <label> Number of casinos you log into daily
+ <span class="value-display" id="casinosDisplay">10</span> </label> <input type="range" id="casinos" min="1" max="50" value="10" step="1"> </div> <!-- Avg bonus --> <div class="input-group"> <label> Average daily bonus per casino
+ <span class="value-display" id="bonusDisplay">$0.30</span> </label> <input type="range" id="bonus" min="0.10" max="2.00" value="0.30" step="0.05"> </div> <!-- Days per week --> <div class="input-group"> <label> Days per week you collect
+ <span class="value-display" id="daysDisplay">6</span> </label> <input type="range" id="days" min="1" max="7" value="6" step="1"> </div> <!-- Package Churning --> <div class="input-group"> <div class="toggle-row"> <label class="toggle-switch"> <input type="checkbox" id="churningToggle"> <span class="toggle-slider"></span> </label> <span class="toggle-label">Do you do package churning?</span> </div> <div class="sub-inputs" id="churningInputs"> <div class="sub-input-row"> <label>Monthly spend ($)</label> <input type="number" class="number-input" id="churningSpend" value="200" min="0" step="10"> </div> <div class="sub-input-row"> <label>Avg return (%)</label> <input type="number" class="number-input" id="churningReturn" value="15" min="0" max="100" step="1"> </div> </div> </div> <!-- Referrals --> <div class="input-group"> <div class="toggle-row"> <label class="toggle-switch"> <input type="checkbox" id="referralToggle"> <span class="toggle-slider"></span> </label> <span class="toggle-label">Do you use referral programs?</span> </div> <div class="sub-inputs" id="referralInputs"> <div class="sub-input-row"> <label>Active referrals</label> <input type="number" class="number-input" id="referralCount" value="5" min="0" step="1"> </div> <div class="sub-input-row"> <label>Avg monthly per referral ($)</label> <input type="number" class="number-input" id="referralValue" value="5" min="0" step="0.50"> </div> </div> </div> </div> <!-- Results Panel --> <div class="calc-panel results-panel"> <h2>&#128200; Your Projected Earnings</h2> <div class="result-item"> <span class="result-label">Daily earnings (logins)</span> <span class="result-value" id="dailyEarnings">$0.00</span> </div> <div class="result-item"> <span class="result-label">Weekly earnings</span> <span class="result-value" id="weeklyEarnings">$0.00</span> </div> <div class="result-item"> <span class="result-label">Monthly earnings (logins)</span> <span class="result-value" id="monthlyEarnings">$0.00</span> </div> <div class="result-item"> <span class="result-label">Yearly projection (logins)</span> <span class="result-value" id="yearlyEarnings">$0.00</span> </div> <div class="result-item sub-result" id="churningRow" style="display:none;"> <span class="result-label">Churning profit / month</span> <span class="result-value" id="churningProfit">$0.00</span> </div> <div class="result-item sub-result" id="referralRow" style="display:none;"> <span class="result-label">Referral income / month</span> <span class="result-value" id="referralIncome">$0.00</span> </div> <div class="result-item highlight-row"> <span class="result-label">&#128176; Total Monthly Income</span> <span class="result-value" id="totalMonthly">$0.00</span> </div> <div class="result-item highlight-row"> <span class="result-label">&#127775; Total Yearly Income</span> <span class="result-value" id="totalYearly">$0.00</span> </div> <!-- Breakdown Bar --> <div class="breakdown-section"> <h3>Monthly Earnings Breakdown</h3> <div class="breakdown-bar" id="breakdownBar"> <div class="bar-segment bar-login" id="barLogin" style="width:100%"></div> <div class="bar-segment bar-churning" id="barChurning" style="width:0%"></div> <div class="bar-segment bar-referral" id="barReferral" style="width:0%"></div> </div> <div class="breakdown-legend"> <div class="legend-item"><div class="legend-dot login"></div><span id="legendLogin">Logins: $0</span></div> <div class="legend-item" id="legendChurningWrap" style="display:none;"><div class="legend-dot churning"></div><span id="legendChurning">Churning: $0</span></div> <div class="legend-item" id="legendReferralWrap" style="display:none;"><div class="legend-dot referral"></div><span id="legendReferral">Referrals: $0</span></div> </div> </div> </div> </div> </section> <!-- Share --> <section class="calculator-section" style="padding-top:0;"> <div class="share-section"> <h2>&#128640; Share Your Results</h2> <p>Compare your projected earnings with other members in our Discord community. Get tips to maximize your income!</p> <a href="https://discord.com/invite/onlinesidehustles" target="_blank" class="share-btn"> <span>&#128172;</span> Share in Discord
+ </a> </div> </section> </main> </div> <!-- FOOTER --> <footer class="footer"> <div class="footer-grid"> <div class="footer-brand"> &copy; 2026 Online Sidehustles<br> Your trusted partner in building multiple income streams through proven online side hustles.
+ </div> <div class="footer-col"> <p class="footer-col-title">Guides</p> <a href="/getting-started">Getting Started</a> <a href="/daily-login-guide">Daily Login Guide</a> <a href="/guides">Complete Guide List</a> </div> <div class="footer-col"> <p class="footer-col-title">Resources</p> <a href="/casino-directory">Casino Directory</a> <a href="/income-calculator">Income Calculator</a> <a href="/tools">Tools</a> </div> <div class="footer-col"> <p class="footer-col-title">Legal</p> <a href="/privacy-policy">Privacy Policy</a> <a href="/terms">Terms</a> <a href="/affiliate-disclosure">Affiliate Disclosure</a> <a href="/contact">Contact</a> </div> </div> <div class="footer-bottom"> <span>&copy; 2026 Online Sidehustles. All rights reserved.</span> <a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Discord</a> </div> </footer> <script> // Nav scroll effect
+ const nav = document.getElementById('nav');
+ window.addEventListener('scroll', () => {
+ nav.classList.toggle('scrolled', window.scrollY > 20);
+ }, { passive: true });
+
+ // Mobile menu
+ const hamburger = document.getElementById('hamburger');
+ const mobileMenu = document.getElementById('mobileMenu');
+ hamburger.addEventListener('click', () => {
+ hamburger.classList.toggle('active');
+ mobileMenu.classList.toggle('active');
+ document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+ });
+ mobileMenu.querySelectorAll('a').forEach(link => {
+ link.addEventListener('click', () => {
+ hamburger.classList.remove('active');
+ mobileMenu.classList.remove('active');
+ document.body.style.overflow = '';
+ });
+ });
+
+ // Fade-in on scroll
+ const fadeObserver = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('visible');
+ fadeObserver.unobserve(entry.target);
+ }
+ });
+ }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+ document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+ </script> <script> // Year auto-update
+ document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+ // Mobile menu
+ function toggleMobileMenu() {
+ document.getElementById('navMenu').classList.toggle('active');
+ }
+
+ // Elements
+ const casinosSlider = document.getElementById('casinos');
+ const bonusSlider = document.getElementById('bonus');
+ const daysSlider = document.getElementById('days');
+ const churningToggle = document.getElementById('churningToggle');
+ const referralToggle = document.getElementById('referralToggle');
+ const churningSpend = document.getElementById('churningSpend');
+ const churningReturn = document.getElementById('churningReturn');
+ const referralCount = document.getElementById('referralCount');
+ const referralValue = document.getElementById('referralValue');
+
+ // Displays
+ const casinosDisplay = document.getElementById('casinosDisplay');
+ const bonusDisplay = document.getElementById('bonusDisplay');
+ const daysDisplay = document.getElementById('daysDisplay');
+
+ // Results
+ const dailyEl = document.getElementById('dailyEarnings');
+ const weeklyEl = document.getElementById('weeklyEarnings');
+ const monthlyEl = document.getElementById('monthlyEarnings');
+ const yearlyEl = document.getElementById('yearlyEarnings');
+ const churningProfitEl = document.getElementById('churningProfit');
+ const referralIncomeEl = document.getElementById('referralIncome');
+ const totalMonthlyEl = document.getElementById('totalMonthly');
+ const totalYearlyEl = document.getElementById('totalYearly');
+
+ // Rows
+ const churningRow = document.getElementById('churningRow');
+ const referralRow = document.getElementById('referralRow');
+
+ // Breakdown
+ const barLogin = document.getElementById('barLogin');
+ const barChurning = document.getElementById('barChurning');
+ const barReferral = document.getElementById('barReferral');
+ const legendLogin = document.getElementById('legendLogin');
+ const legendChurning = document.getElementById('legendChurning');
+ const legendReferral = document.getElementById('legendReferral');
+ const legendChurningWrap = document.getElementById('legendChurningWrap');
+ const legendReferralWrap = document.getElementById('legendReferralWrap');
+
+ // Toggle sub-inputs
+ churningToggle.addEventListener('change', () => {
+ document.getElementById('churningInputs').classList.toggle('visible', churningToggle.checked);
+ calculate();
+ });
+ referralToggle.addEventListener('change', () => {
+ document.getElementById('referralInputs').classList.toggle('visible', referralToggle.checked);
+ calculate();
+ });
+
+ // Animate number count-up
+ const animationFrames = {};
+ function animateValue(el, newValue) {
+ const key = el.id;
+ if (animationFrames[key]) cancelAnimationFrame(animationFrames[key]);
+
+ const currentText = el.textContent.replace(/[^0-9.\-]/g, '');
+ let start = parseFloat(currentText) || 0;
+ const end = newValue;
+ const duration = 300;
+ const startTime = performance.now();
+
+ function step(now) {
+ const elapsed = now - startTime;
+ const progress = Math.min(elapsed / duration, 1);
+ // Ease out
+ const eased = 1 - Math.pow(1 - progress, 3);
+ const current = start + (end - start) * eased;
+ el.textContent = '$' + current.toFixed(2);
+ if (progress < 1) {
+ animationFrames[key] = requestAnimationFrame(step);
+ }
+ }
+ animationFrames[key] = requestAnimationFrame(step);
+ }
+
+ function calculate() {
+ const casinos = parseInt(casinosSlider.value);
+ const bonus = parseFloat(bonusSlider.value);
+ const daysPerWeek = parseInt(daysSlider.value);
+
+ // Display values
+ casinosDisplay.textContent = casinos;
+ bonusDisplay.textContent = '$' + bonus.toFixed(2);
+ daysDisplay.textContent = daysPerWeek;
+
+ // Login earnings
+ const daily = casinos * bonus;
+ const weekly = daily * daysPerWeek;
+ const monthlyLogin = weekly * (52 / 12); // avg weeks per month
+ const yearlyLogin = weekly * 52;
+
+ animateValue(dailyEl, daily);
+ animateValue(weeklyEl, weekly);
+ animateValue(monthlyEl, monthlyLogin);
+ animateValue(yearlyEl, yearlyLogin);
+
+ // Churning
+ let churningMonthly = 0;
+ if (churningToggle.checked) {
+ const spend = parseFloat(churningSpend.value) || 0;
+ const ret = parseFloat(churningReturn.value) || 0;
+ churningMonthly = spend * (ret / 100);
+ churningRow.style.display = 'flex';
+ animateValue(churningProfitEl, churningMonthly);
+ } else {
+ churningRow.style.display = 'none';
+ }
+
+ // Referrals
+ let referralMonthly = 0;
+ if (referralToggle.checked) {
+ const count = parseFloat(referralCount.value) || 0;
+ const val = parseFloat(referralValue.value) || 0;
+ referralMonthly = count * val;
+ referralRow.style.display = 'flex';
+ animateValue(referralIncomeEl, referralMonthly);
+ } else {
+ referralRow.style.display = 'none';
+ }
+
+ // Totals
+ const totalMonth = monthlyLogin + churningMonthly + referralMonthly;
+ const totalYear = totalMonth * 12;
+
+ animateValue(totalMonthlyEl, totalMonth);
+ animateValue(totalYearlyEl, totalYear);
+
+ // Breakdown bar
+ const total = totalMonth || 1;
+ const loginPct = (monthlyLogin / total) * 100;
+ const churningPct = (churningMonthly / total) * 100;
+ const referralPct = (referralMonthly / total) * 100;
+
+ barLogin.style.width = loginPct + '%';
+ barChurning.style.width = churningPct + '%';
+ barReferral.style.width = referralPct + '%';
+
+ // Labels inside segments
+ barLogin.textContent = loginPct > 15 ? Math.round(loginPct) + '%' : '';
+ barChurning.textContent = churningPct > 15 ? Math.round(churningPct) + '%' : '';
+ barReferral.textContent = referralPct > 15 ? Math.round(referralPct) + '%' : '';
+
+ // Legend
+ legendLogin.textContent = 'Logins: $' + monthlyLogin.toFixed(2);
+ legendChurningWrap.style.display = churningToggle.checked ? 'flex' : 'none';
+ legendChurning.textContent = 'Churning: $' + churningMonthly.toFixed(2);
+ legendReferralWrap.style.display = referralToggle.checked ? 'flex' : 'none';
+ legendReferral.textContent = 'Referrals: $' + referralMonthly.toFixed(2);
+ }
+
+ // Bind all inputs
+ [casinosSlider, bonusSlider, daysSlider, churningSpend, churningReturn, referralCount, referralValue].forEach(el => {
+ el.addEventListener('input', calculate);
+ });
+
+ // Initial calc
+ calculate();
+ </script> </body> </html>
