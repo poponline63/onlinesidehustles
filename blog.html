@@ -25,9 +25,9 @@
     <title>The Hustle Blog — Online Side Hustles</title>
     <meta name="description" content="Expert strategies, guides, and insights to build your income streams. Sweepstakes casino tips, automation tools, and side hustle strategies.">
     <meta name="author" content="Online Sidehustles">
-    <link rel="canonical" href="https://onlinesidehustles.info/blog.html">
+    <link rel="canonical" href="https://onlinesidehustles.info/blog">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onlinesidehustles.info/blog.html">
+    <meta property="og:url" content="https://onlinesidehustles.info/blog">
     <meta property="og:site_name" content="Online Sidehustles">
     <meta property="og:locale" content="en_US">
     <meta property="og:title" content="The Hustle Blog — Online Side Hustles">
@@ -70,6 +70,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            position: relative;
         }
 
         /* Gold stars scattered across entire page */
@@ -112,7 +113,7 @@
         }
 
         /* Ensure all content sits above stars */
-        .nav, .hero, .section, .page-hero, .stats-section, .footer, hr.divider, .content-section, .legal-content, .main-content, .page-content {
+        .nav, .hero, .section, .footer, hr.divider {
             position: relative;
             z-index: 1;
         }
@@ -155,14 +156,21 @@
             height: 72px;
         }
 
-        .nav-logo { height: 32px; width: auto; }
         .nav-brand {
             font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #111;
-         display: flex; align-items: center; gap: 10px; }
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo {
+            height: 32px;
+            width: auto;
+        }
 
         .nav-links {
             display: flex;
@@ -275,7 +283,7 @@
         /* ===== HERO ===== */
         .hero {
             position: relative;
-            padding: 180px 24px 120px;
+            padding: 180px 24px 100px;
             text-align: center;
             overflow: hidden;
         }
@@ -312,27 +320,48 @@
             font-size: clamp(1rem, 2vw, 1.2rem);
             color: #666;
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto;
             line-height: 1.7;
         }
 
-        /* ===== SECTION STYLES ===== */
-        .section {
-            padding: 120px 24px;
-            position: relative;
-        }
-
-        .section-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #666;
+        /* ===== FILTERS ===== */
+        .blog-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 48px;
         }
 
-        .section-label.center {
-            text-align: center;
+        .filter-btn {
+            padding: 10px 24px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 100px;
+            color: #666;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+            color: #111;
+        }
+
+        .filter-btn.active {
+            background: rgba(212, 175, 55, 0.12);
+            border-color: rgba(212, 175, 55, 0.4);
+            color: #B8962E;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 80px 24px 120px;
+            position: relative;
         }
 
         .divider {
@@ -342,7 +371,7 @@
             max-width: 1200px;
         }
 
-        /* ===== CARDS ===== */
+        /* ===== CARDS GRID ===== */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -359,26 +388,53 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: block;
         }
 
         .card:hover {
             transform: scale(1.02);
-            border-color: rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.4);
             background: rgba(0, 0, 0, 0.03);
         }
 
+        .card-category {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+
         .card-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #111;
             margin-bottom: 8px;
+            line-height: 1.35;
+            padding-right: 28px;
         }
 
         .card-desc {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: #666;
             margin-bottom: 16px;
-            line-height: 1.5;
+            line-height: 1.55;
+        }
+
+        .card-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #D4AF37;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover .card-link {
+            gap: 10px;
         }
 
         .card-arrow {
@@ -409,7 +465,7 @@
 
         @media (max-width: 768px) {
             .section {
-                padding: 80px 24px;
+                padding: 60px 24px 80px;
             }
         }
 
@@ -458,7 +514,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 24px;
-            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -508,167 +564,6 @@
         .fade-in-delay-1 { transition-delay: 0.1s; }
         .fade-in-delay-2 { transition-delay: 0.2s; }
         .fade-in-delay-3 { transition-delay: 0.3s; }
-
-        /* ===== BUTTONS ===== */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 32px;
-            background: #fff;
-            color: #000;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-primary:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 32px;
-            background: transparent;
-            color: #111;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 100px;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-secondary:hover {
-            border-color: rgba(0, 0, 0, 0.45);
-            transform: translateY(-1px);
-        }
-
-        .tool-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #D4AF37;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover .tool-link {
-            gap: 10px;
-        }
-
-        .blog-filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 0 24px 48px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 100px;
-            color: #666;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.3s;
-        }
-
-        .filter-btn:hover {
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #111;
-        }
-
-        .filter-btn.active {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: rgba(212, 175, 55, 0.3);
-            color: #D4AF37;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .blog-card {
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .blog-card:hover {
-            transform: scale(1.01);
-            border-color: rgba(212, 175, 55, 0.3);
-            background: rgba(0, 0, 0, 0.03);
-        }
-
-        .featured-post {
-            grid-column: 1 / -1;
-        }
-
-        .blog-card-meta {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .blog-card-category {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #D4AF37;
-        }
-
-        .blog-card-date {
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        .blog-card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .featured-post .blog-card-title {
-            font-size: 1.5rem;
-        }
-
-        .blog-card-excerpt {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .blog-card-link {
-            color: #D4AF37;
-            font-weight: 500;
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
@@ -703,40 +598,230 @@
         <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
     </div>
 
-
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1>The Hustle Blog</h1>
-            <p class="hero-subtitle">Expert strategies, guides, and insights to build your income streams.</p>
+            <h1 class="fade-in">The Hustle Blog</h1>
+            <p class="hero-subtitle fade-in fade-in-delay-1">Expert strategies, guides, and insights to build your income streams.</p>
         </div>
     </section>
 
     <hr class="divider">
 
-    <section class="section" style="padding-bottom: 48px;">
-        <div class="blog-filters">
-            <button class="filter-btn active" data-filter="all" onclick="filterBlog('all', this)">All Posts</button>
-            <button class="filter-btn" data-filter="stocks" onclick="filterBlog('stocks', this)">Stock Trading</button>
-            <button class="filter-btn" data-filter="sweepstakes" onclick="filterBlog('sweepstakes', this)">Sweepstakes</button>
-            <button class="filter-btn" data-filter="ecommerce" onclick="filterBlog('ecommerce', this)">E-Commerce</button>
-            <button class="filter-btn" data-filter="automation" onclick="filterBlog('automation', this)">Automation</button>
-        </div>
-    </section>
+    <!-- BLOG POSTS -->
+    <section class="section">
+        <div class="container">
 
-    <section style="padding: 0 0 120px;">
-        <div class="blog-grid">
-            <div class="featured-post blog-card fade-in" data-category="automation" onclick="window.location.href='https://onlinesidehustles.info/blog/automate-sweepstakes-casino-bonuses.html'">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="blog-card-category">Automation</span>
-                        <span class="blog-card-date">January 01, 2026</span>
-                    </div>
-                    <h2 class="blog-card-title">Sweeps-App Review 2026: Automate Sweepstakes Casino Daily Collection Bonuses ($500+/Month)</h2>
-                    <p class="blog-card-excerpt">Save hours every day with automated tools that collect bonuses across 50+ platforms automatically. Complete Sweeps-App review with pricing, features, user reviews, and realistic earning potential of $300-500+ monthly. Get 50% off your first month with code GZSweeps50!</p>
-                    <a href="https://onlinesidehustles.info/blog/automate-sweepstakes-casino-bonuses.html" class="blog-card-link">Read Full Guide &rarr;</a>
-                </div>
+            <!-- Category Filters -->
+            <div class="blog-filters fade-in">
+                <button class="filter-btn active" onclick="filterBlog('all', this)">All</button>
+                <button class="filter-btn" onclick="filterBlog('sweepstakes', this)">Sweepstakes</button>
+                <button class="filter-btn" onclick="filterBlog('automation', this)">Automation &amp; Tools</button>
+                <button class="filter-btn" onclick="filterBlog('sidehustles', this)">Side Hustles</button>
             </div>
 
+            <!-- Cards Grid -->
+            <div class="cards-grid">
+
+                <!-- ========== SWEEPSTAKES CASINOS ========== -->
+
+                <a href="/blog/best-sweepstakes-casinos-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Best Sweepstakes Casinos 2026: Top 10 Sites Compared</h3>
+                    <p class="card-desc">Side-by-side comparison of the top 10 sweepstakes casinos for payouts, bonuses, and daily collection value.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/complete-beginners-guide-to-sweepstake-casinos" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">How to Make Money with Sweepstakes Casinos: Complete Guide 2026</h3>
+                    <p class="card-desc">Everything you need to know about earning real money from sweepstakes casinos, from signup to cashout.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">How to Start Sweepstakes Casinos: Complete Beginner Guide 2026</h3>
+                    <p class="card-desc">Step-by-step walkthrough for absolute beginners to start collecting daily bonuses and building income.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/maximize-sweepstakes-casino-winnings-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">How to Maximize Sweepstakes Casino Winnings: Strategy Guide 2026</h3>
+                    <p class="card-desc">Advanced strategies for maximizing your returns across multiple sweepstakes platforms.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/sweepstakes-vs-real-money-casinos-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Sweepstakes vs Real Money Casinos: Complete Comparison 2026</h3>
+                    <p class="card-desc">Key differences between sweepstakes and real money casinos — legality, payouts, and which earns more.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/new-sweepstakes-casinos-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">New Sweepstakes Casinos 2026: Latest Sites Launched</h3>
+                    <p class="card-desc">Freshly launched sweepstakes casinos with the best welcome bonuses and daily collection offers.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/free-daily-login-bonuses-worth-it-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Are Free Daily Collection Bonuses Worth It? The Math Breakdown</h3>
+                    <p class="card-desc">We ran the numbers on daily login bonuses across 70+ sites to find the real hourly earnings.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/sweepstakes-casino-payout-guide-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Sweepstakes Casino Payout Guide 2026: How to Cash Out</h3>
+                    <p class="card-desc">Complete guide to redemption methods, processing times, minimums, and avoiding payout delays.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/sweepstakes-casino-package-churning-guide-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Sweepstakes Casino Package Churning Guide 2026</h3>
+                    <p class="card-desc">How to strategically buy and churn welcome packages for maximum value and profit.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/skrill-sweepstakes-casinos-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Skrill Sweepstakes Casinos 2026: 0% Fees &amp; Best Sites</h3>
+                    <p class="card-desc">Use Skrill to avoid fees on sweepstakes purchases and cashouts. Best sites that accept Skrill.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/luckyland-slots-vip-quacky-hours-guide-2026" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">LuckyLand Slots VIP Guide: Unlock Quacky Hours</h3>
+                    <p class="card-desc">How to unlock VIP Quacky Hours on LuckyLand Slots for boosted rewards and exclusive bonuses.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/make-money-daily-on-stake" class="card fade-in" data-category="sweepstakes">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Sweepstakes</span>
+                    <h3 class="card-title">Stake.us VIP Grinding Guide: $20-$30/Day with Dice</h3>
+                    <p class="card-desc">Detailed Stake.us strategy for consistent $20-$30 daily income using the Dice game and VIP rewards.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <!-- ========== AUTOMATION & TOOLS ========== -->
+
+                <a href="/blog/automate-sweepstakes-casino-bonuses" class="card fade-in" data-category="automation">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Automation &amp; Tools</span>
+                    <h3 class="card-title">Sweeps-App Review: Automate Daily Collection Bonuses</h3>
+                    <p class="card-desc">Full review of Sweeps-App — automate daily bonus collection across 50+ sweepstakes sites.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/automate-sweepstakes-daily-collection-2026" class="card fade-in" data-category="automation">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Automation &amp; Tools</span>
+                    <h3 class="card-title">How to Automate Sweepstakes Daily Collection 2026</h3>
+                    <p class="card-desc">Tools, scripts, and workflows to automate your daily sweepstakes collections and save hours.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/sweepstats-sweepstakes-transaction-tracker-2026" class="card fade-in" data-category="automation">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Automation &amp; Tools</span>
+                    <h3 class="card-title">SweepStats: Free Sweepstakes Transaction Tracker</h3>
+                    <p class="card-desc">Track your sweepstakes earnings, purchases, and ROI across all platforms with SweepStats.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/openclaw-ai-setup-tutorial-2026" class="card fade-in" data-category="automation">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Automation &amp; Tools</span>
+                    <h3 class="card-title">OpenClaw AI Setup Tutorial 2026</h3>
+                    <p class="card-desc">Step-by-step tutorial to install and configure OpenClaw AI for task automation.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/openclaw-setup-guide-2026" class="card fade-in" data-category="automation">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Automation &amp; Tools</span>
+                    <h3 class="card-title">OpenClaw AI Setup Guide: Run Your Own AI Assistant 24/7</h3>
+                    <p class="card-desc">Deploy your own always-on AI assistant with OpenClaw — complete setup and configuration guide.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <!-- ========== SIDE HUSTLES & INCOME ========== -->
+
+                <a href="/blog/best-side-hustles-no-money-to-start-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">Best Side Hustles That Cost $0 to Start</h3>
+                    <p class="card-desc">Proven side hustles that require zero upfront investment to start earning real money.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/how-to-make-50-dollars-a-day-from-phone-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">How to Make $50/Day From Your Phone</h3>
+                    <p class="card-desc">Realistic strategies to earn $50+ daily using just your phone — no laptop required.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/apps-that-pay-real-money-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">10 Apps That Pay Real Money (Tested)</h3>
+                    <p class="card-desc">We tested dozens of money-making apps and found 10 that actually pay. Here are the results.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/best-reward-apps-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">Best Reward Apps 2026: Earn $50-$300/Month</h3>
+                    <p class="card-desc">Top reward apps ranked by earnings potential — earn $50 to $300 per month with minimal effort.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/credit-card-churning-guide-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">Credit Card Churning Guide 2026</h3>
+                    <p class="card-desc">How to earn thousands in signup bonuses and cashback through strategic credit card churning.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/matched-betting-guide-2026" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">Matched Betting Guide 2026</h3>
+                    <p class="card-desc">Extract guaranteed profit from sportsbook promotions using matched betting strategies.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+                <a href="/blog/how-to-make-money-with-stocks-falling-under-$1" class="card fade-in" data-category="sidehustles">
+                    <span class="card-arrow">&rarr;</span>
+                    <span class="card-category">Side Hustles</span>
+                    <h3 class="card-title">Reverse Stock Arbitrage Guide 2026</h3>
+                    <p class="card-desc">How to profit from stocks falling under $1 using reverse stock arbitrage strategies.</p>
+                    <span class="card-link">Read Guide <span>&rarr;</span></span>
+                </a>
+
+            </div>
         </div>
     </section>
 
@@ -806,12 +891,12 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-    </script>
-    <script>
+
+        // Blog category filter
         function filterBlog(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.querySelectorAll('.blog-card').forEach(card => {
+            document.querySelectorAll('.card[data-category]').forEach(card => {
                 if (category === 'all' || card.dataset.category === category) {
                     card.style.display = '';
                 } else {
