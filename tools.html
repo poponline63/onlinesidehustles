@@ -226,23 +226,23 @@
                 <div class="results-title">&#128176; Your Daily Bonus Income</div>
                 <div class="result-row">
                     <span class="result-label">Effective sites collected daily</span>
-                    <span class="result-value" id="effSites">�</span>
+                    <span class="result-value" id="effSites">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Daily earnings</span>
-                    <span class="result-value" id="dailyEarn">�</span>
+                    <span class="result-value" id="dailyEarn">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Weekly earnings</span>
-                    <span class="result-value" id="weeklyEarn">�</span>
+                    <span class="result-value" id="weeklyEarn">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Monthly earnings</span>
-                    <span class="result-value gold big" id="monthlyEarn">�</span>
+                    <span class="result-value gold big" id="monthlyEarn">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Yearly earnings</span>
-                    <span class="result-value gold big" id="yearlyEarn">�</span>
+                    <span class="result-value gold big" id="yearlyEarn">—</span>
                 </div>
                 <div class="result-note" id="dailyNote"></div>
             </div>
@@ -284,31 +284,31 @@
                 <div class="results-title">&#128184; Churning Profit Breakdown</div>
                 <div class="result-row">
                     <span class="result-label">Bonus percentage</span>
-                    <span class="result-value" id="bonusPct">�</span>
+                    <span class="result-value" id="bonusPct">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Total wagering required</span>
-                    <span class="result-value" id="totalWager">�</span>
+                    <span class="result-value" id="totalWager">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Expected SC after playthrough</span>
-                    <span class="result-value" id="scAfter">�</span>
+                    <span class="result-value" id="scAfter">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">Profit per package</span>
-                    <span class="result-value gold" id="profitPer">�</span>
+                    <span class="result-value gold" id="profitPer">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label">ROI per package</span>
-                    <span class="result-value gold" id="roiPer">�</span>
+                    <span class="result-value gold" id="roiPer">—</span>
                 </div>
                 <div class="result-row" style="padding-top: 1rem; border-top: 2px solid rgba(255,215,0,0.2);">
                     <span class="result-label"><strong>Total investment (all packages)</strong></span>
-                    <span class="result-value" id="totalInvest">�</span>
+                    <span class="result-value" id="totalInvest">—</span>
                 </div>
                 <div class="result-row">
                     <span class="result-label"><strong>Total expected profit</strong></span>
-                    <span class="result-value gold big" id="totalProfit">�</span>
+                    <span class="result-value gold big" id="totalProfit">—</span>
                 </div>
                 <div class="result-note" id="churnNote"></div>
             </div>
@@ -384,7 +384,7 @@ function calcChurning() {
 
     document.getElementById('bonusPct').textContent = bonusPct + '%';
     document.getElementById('totalWager').textContent = '$' + totalWager.toFixed(2);
-    document.getElementById('scAfter').textContent = sc > 0 ? scAfter.toFixed(2) + ' SC' : '�';
+    document.getElementById('scAfter').textContent = sc > 0 ? scAfter.toFixed(2) + ' SC' : '—';
     document.getElementById('profitPer').textContent = (profitPer >= 0 ? '+' : '') + '$' + profitPer.toFixed(2);
     document.getElementById('roiPer').textContent = (profitPer >= 0 ? '+' : '') + roiPer + '%';
     document.getElementById('totalInvest').textContent = '$' + totalInvest.toFixed(2);
