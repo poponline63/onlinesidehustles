@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <!-- Google Analytics 4 -->
+<!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -43,7 +43,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#4CAF50">
+    <meta name="theme-color" content="#10B981">
 
     <script type="application/ld+json">
     {
@@ -129,259 +129,687 @@ NoLimitCoins is best viewed as an addition to an existing rotation rather than a
       ]
     }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; overflow-x: hidden; position: relative; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
-        @media (min-width: 768px) { .container { padding: 0 2rem; } }
-        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(76,175,80,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,215,0,0.1) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(139,195,74,0.1) 0%, transparent 50%); animation: backgroundShift 20s ease-in-out infinite; z-index: -2; }
-        @keyframes backgroundShift { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } }
-        .grid-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px); background-size: 50px 50px; animation: gridMove 15s linear infinite; z-index: -1; pointer-events: none; }
-        @keyframes gridMove { 0% { transform: translate(0,0); } 100% { transform: translate(50px,50px); } }
-        .floating-orbs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.4; animation: float 20s infinite ease-in-out; }
-        .orb1 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,215,0,0.8), transparent); top: -150px; left: -150px; animation-duration: 25s; }
-        .orb2 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(76,175,80,0.8), transparent); top: 50%; right: -100px; animation-duration: 30s; animation-delay: 5s; }
-        .orb3 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,165,0,0.8), transparent); bottom: -125px; left: 30%; animation-duration: 35s; animation-delay: 10s; }
-        @keyframes float { 0%, 100% { transform: translate(0,0) scale(1); } 25% { transform: translate(100px,-100px) scale(1.1); } 50% { transform: translate(-100px,100px) scale(0.9); } 75% { transform: translate(50px,50px) scale(1.05); } }
-        .money-rain { position: fixed; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .money-symbol { position: absolute; color: rgba(255,215,0,0.1); font-size: 20px; animation: fall linear infinite; font-weight: bold; }
-        .money-symbol:nth-child(1) { left: 5%; animation-duration: 15s; }
-        .money-symbol:nth-child(2) { left: 25%; animation-duration: 20s; animation-delay: 2s; font-size: 15px; }
-        .money-symbol:nth-child(3) { left: 45%; animation-duration: 18s; animation-delay: 4s; }
-        .money-symbol:nth-child(4) { left: 65%; animation-duration: 22s; animation-delay: 1s; font-size: 25px; }
-        .money-symbol:nth-child(5) { left: 85%; animation-duration: 17s; animation-delay: 3s; }
-        @keyframes fall { 0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.1; } 90% { opacity: 0.1; } 100% { top: 110%; transform: translateX(20px) rotate(360deg); opacity: 0; } }
-        .glow-lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .glow-line { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6), transparent); animation: glowMove 8s linear infinite; }
-        .glow-line:nth-child(1) { top: 20%; width: 200px; }
-        .glow-line:nth-child(2) { top: 50%; width: 300px; animation-delay: 3s; }
-        .glow-line:nth-child(3) { top: 80%; width: 250px; animation-delay: 6s; }
-        @keyframes glowMove { 0% { left: -400px; opacity: 0; } 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
-
-        /* Header */
-        header { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        nav { max-width: 1400px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: bold; font-size: 1.3rem; }
-        .logo-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(76,175,80,0.3); }
-        .logo-icon svg { width: 100%; height: 100%; border-radius: 12px; }
-        .mobile-menu-toggle { display: none; background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.25rem; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; }
-        .nav-menu { display: flex; gap: 0.5rem; align-items: center; }
-        .nav-link { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.25s; }
-        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-link-primary { color: #FFD700; font-weight: 600; }
-        .nav-link-primary:hover { color: #FFD700; background: rgba(255,215,0,0.12); }
-        .nav-link-gold { color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.45rem 1.1rem; border-radius: 20px; }
-        .nav-link-gold:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
-        @media (max-width: 768px) {
-            nav { padding: 1rem; }
-            .logo { font-size: 1.1rem; }
-            .logo-icon { width: 35px; height: 35px; }
-            .mobile-menu-toggle { display: block; }
-            .nav-menu { display: none; width: 100%; flex-direction: column; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0.75rem; }
-            .nav-menu.active { display: flex; }
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Breadcrumbs */
-        .breadcrumbs { padding: 90px 1rem 0; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .breadcrumbs { padding: 100px 2rem 0; } }
-        .breadcrumbs nav { padding: 0; display: block; }
-        .breadcrumb-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.85rem; max-width: 900px; margin: 0 auto; }
-        .breadcrumb-list li { display: flex; align-items: center; gap: 0.5rem; }
-        .breadcrumb-list a { color: #4CAF50; text-decoration: none; }
-        .breadcrumb-list a:hover { text-decoration: underline; }
-        .breadcrumb-list .separator { color: rgba(255,255,255,0.4); }
-        .breadcrumb-list .current { color: rgba(255,255,255,0.6); }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* Page Content */
-        .page-content { padding: 1.5rem 1rem 3rem; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .page-content { padding: 2rem 2rem 4rem; } }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-        /* Review Header */
-        h1 { font-size: 1.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @media (min-width: 768px) { h1 { font-size: 2.4rem; } }
-        .highlight { background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        /* Verdict Box */
-        .verdict-box { background: rgba(76,175,80,0.08); border: 2px solid rgba(76,175,80,0.4); border-radius: 15px; padding: 1.5rem; margin-bottom: 2rem; text-align: center; }
-        .verdict-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #4CAF50, #8BC34A); color: #000; font-weight: 800; font-size: 1.3rem; padding: 0.6rem 1.5rem; border-radius: 30px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .verdict-summary { color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.6; margin-bottom: 0.75rem; }
-        .verdict-rating { font-size: 1.2rem; color: #2196F3; font-weight: 700; }
-        .verdict-stars { color: #FFD700; font-size: 1.4rem; letter-spacing: 2px; }
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* Section Styles */
-        .review-section { margin-bottom: 2.5rem; }
-        .review-section h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: #fff; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        @media (min-width: 768px) { .review-section h2 { font-size: 1.6rem; } }
-        .review-section p { color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 1rem; font-size: 1rem; }
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
-        /* Quick Facts Grid */
-        .quick-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
-        @media (min-width: 640px) { .quick-facts { grid-template-columns: repeat(4, 1fr); } }
-        .fact-item { background: rgba(20,20,20,0.9); padding: 1rem; text-align: center; }
-        .fact-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; font-weight: 600; }
-        .fact-value { font-size: 0.95rem; color: #FFD700; font-weight: 600; }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
 
-        /* Pros & Cons */
-        .pros-cons { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 0.5rem; }
-        @media (min-width: 640px) { .pros-cons { grid-template-columns: 1fr 1fr; } }
-        .pros-list, .cons-list { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 1.25rem; }
-        .pros-list { border: 1px solid rgba(76,175,80,0.3); }
-        .cons-list { border: 1px solid rgba(244,67,54,0.3); }
-        .pros-list h3 { color: #4CAF50; margin-bottom: 0.75rem; font-size: 1.1rem; }
-        .cons-list h3 { color: #F44336; margin-bottom: 0.75rem; font-size: 1.1rem; }
-        .pros-list ul, .cons-list ul { list-style: none; }
-        .pros-list li, .cons-list li { padding: 0.4rem 0; color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; }
-        .pros-list li::before { content: '✅ '; }
-        .cons-list li::before { content: '❌ '; }
+        .nav-brand {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fff;
+        }
 
-        /* Rating Breakdown */
-        .rating-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-        @media (min-width: 480px) { .rating-grid { grid-template-columns: repeat(2, 1fr); } }
-        .rating-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem; text-align: center; }
-        .rating-item-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; text-transform: uppercase; font-weight: 600; }
-        .rating-item-value { font-size: 1.5rem; font-weight: 800; color: #FFD700; }
-        .rating-item-stars { color: #FFD700; font-size: 1rem; }
-        .rating-overall { border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.05); }
-        .rating-overall .rating-item-value { font-size: 2rem; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
 
-        /* CTA Button */
-        .cta-section { text-align: center; margin: 2.5rem 0; }
-        .cta-btn { display: inline-block; background: linear-gradient(135deg, #4CAF50, #8BC34A); color: #000; font-weight: 800; font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; transition: all 0.3s; box-shadow: 0 5px 20px rgba(76,175,80,0.4); text-transform: uppercase; letter-spacing: 1px; }
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(76,175,80,0.5); }
-        .cta-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* FAQ */
-        .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
-        .faq-question { font-weight: 700; color: #fff; margin-bottom: 0.5rem; font-size: 1.05rem; }
-        .faq-answer { color: rgba(255,255,255,0.7); line-height: 1.6; font-size: 0.95rem; }
+        .nav-link:hover {
+            color: #fff;
+        }
 
-        /* Restricted States */
-        .states-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-        .state-tag { background: rgba(244,67,54,0.15); border: 1px solid rgba(244,67,54,0.3); color: rgba(255,255,255,0.8); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.85rem; font-weight: 500; }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            background: #10B981;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* Internal Links */
-        .internal-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .internal-link { color: #4CAF50; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.95rem; }
-        .internal-link:hover { text-decoration: underline; }
+        .nav-cta:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
 
-        /* Footer */
-        footer { background: rgba(0,0,0,0.95); border-top: 1px solid rgba(255,255,255,0.1); padding: 3rem 1rem; margin-top: 2rem; position: relative; z-index: 1; }
-        .footer-content { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media (min-width: 768px) { .footer-content { grid-template-columns: 2fr 1fr 1fr; } }
-        .footer-brand h3 { color: #4CAF50; font-size: 1.1rem; margin-bottom: 0.75rem; }
-        .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; }
-        .footer-links h4 { color: #fff; font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.4rem; }
-        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-        .footer-links a:hover { color: #4CAF50; }
-        .footer-bottom { max-width: 900px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
 
-        /* Discord Float */
-        .discord-float { position: fixed; bottom: 20px; right: 20px; background: #5865F2; color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(88,101,242,0.4); z-index: 999; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
-        .discord-float:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(88,101,242,0.5); }
-        @media (max-width: 480px) { .discord-float { padding: 10px 15px; font-size: 0.8rem; bottom: 15px; right: 15px; } }
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* Tier Badge */
-        .tier-badge-inline { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 0.5rem; vertical-align: middle; }
-        .tier-god { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; }
-        .tier-high { background: linear-gradient(135deg, #4CAF50, #8BC34A); color: #000; }
-        .tier-medium { background: linear-gradient(135deg, #2196F3, #03A9F4); color: #fff; }
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4.5px, 4.5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.5px, -4.5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #fff;
+        }
+
+        .mobile-menu .nav-cta {
+            font-size: 1.1rem;
+            padding: 14px 36px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== BREADCRUMBS ===== */
+        .breadcrumbs {
+            padding-top: 96px;
+            margin-bottom: 48px;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .breadcrumb-list a {
+            color: #888;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb-list a:hover {
+            color: #fff;
+        }
+
+        .breadcrumb-sep {
+            color: #444;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+
+        .page-header h1 .highlight {
+            color: #10B981;
+        }
+
+        /* ===== VERDICT CARD ===== */
+        .verdict-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .verdict-label {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .verdict-tier {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .verdict-summary {
+            font-size: 1rem;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .verdict-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .verdict-score span {
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* ===== QUICK FACTS ===== */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 640px) {
+            .quick-facts {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .fact-item {
+            background: #0a0a0a;
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .fact-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .fact-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ===== REVIEW SECTIONS ===== */
+        .review-block {
+            margin-bottom: 48px;
+        }
+
+        .review-block h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .review-block p {
+            font-size: 1rem;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        /* ===== PROS & CONS ===== */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .pros-cons {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .pros-card, .cons-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .pros-card h3, .cons-card h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .pros-card h3 { color: #10B981; }
+        .cons-card h3 { color: #EF4444; }
+
+        .pros-card ul, .cons-card ul {
+            list-style: none;
+        }
+
+        .pros-card li, .cons-card li {
+            padding: 6px 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .check { color: #10B981; margin-right: 8px; font-weight: 600; }
+        .cross { color: #EF4444; margin-right: 8px; font-weight: 600; }
+
+        /* ===== RATING GRID ===== */
+        .rating-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .rating-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .rating-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .rating-item-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .rating-item-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .rating-item.overall {
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.03);
+        }
+
+        .rating-item.overall .rating-item-value {
+            font-size: 2.2rem;
+            color: #10B981;
+        }
+
+        /* ===== RESTRICTED STATES ===== */
+        .states-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .state-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 14px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== CTA ===== */
+        .cta-block {
+            text-align: center;
+            padding: 48px 0;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 40px;
+            background: #10B981;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .cta-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 12px;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* ===== INTERNAL LINKS ===== */
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 64px;
+        }
+
+        .related-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #10B981;
+            transition: color 0.3s;
+        }
+
+        .related-link:hover {
+            color: #059669;
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 64px 24px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+
+        .footer-brand {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .footer-col-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.9rem;
+            color: #888;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
     </style>
 </head>
 <body>
-    <div class="grid-animation"></div>
-    <div class="floating-orbs">
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="orb orb3"></div>
-    </div>
-    <div class="money-rain">
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">$</div>
-        <div class="money-symbol">$</div>
-    </div>
-    <div class="glow-lines">
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-        <div class="glow-line"></div>
-    </div>
 
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="logo" aria-label="Online Sidehustles - Home">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-                        <defs>
-                            <linearGradient id="emeraldLogo" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#004D40"/>
-                                <stop offset="33%" style="stop-color:#00695C"/>
-                                <stop offset="66%" style="stop-color:#4CAF50"/>
-                                <stop offset="100%" style="stop-color:#FFD700"/>
-                            </linearGradient>
-                            <radialGradient id="centerGoldLogo">
-                                <stop offset="0%" style="stop-color:#FFD700"/>
-                                <stop offset="50%" style="stop-color:#FFA500"/>
-                                <stop offset="100%" style="stop-color:#4CAF50"/>
-                            </radialGradient>
-                            <linearGradient id="stumpGradLogo" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#8B4513"/>
-                                <stop offset="50%" style="stop-color:#6D4C41"/>
-                                <stop offset="100%" style="stop-color:#5D4037"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="64" height="64" fill="url(#emeraldLogo)"/>
-                        <rect x="26" y="36" width="12" height="18" fill="url(#stumpGradLogo)" rx="1"/>
-                        <circle cx="32" cy="24" r="15" fill="url(#centerGoldLogo)" opacity="0.9"/>
-                        <circle cx="20" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <circle cx="44" cy="32" r="11" fill="#4CAF50" opacity="0.7"/>
-                        <text x="32" y="30" text-anchor="middle" fill="#FFF" font-size="18" font-weight="bold">$</text>
-                    </svg>
-                </div>
-                <span>ONLINE SIDEHUSTLES</span>
-            </a>
-            <button class="mobile-menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')">Menu &#9776;</button>
-            <div class="nav-menu" id="navMenu">
-                <a href="https://onlinesidehustles.info/daily-login-guide" class="nav-link nav-link-primary">Daily Collection Sites</a>
-                <a href="casino-directory.html" class="nav-link">Casino Directory</a>
-                <a href="https://onlinesidehustles.info/blog" class="nav-link">Blog</a>
-                <a href="getting-started.html" class="nav-link">Get Started</a>
-                <a href="patreon.html" class="nav-link nav-link-gold">Patreon</a>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">ONLINE SIDEHUSTLES</a>
+            <div class="nav-links">
+                <a href="/getting-started" class="nav-link">Get Started</a>
+                <a href="/sweepstakes" class="nav-link">Sweepstakes</a>
+                <a href="/side-hustles" class="nav-link">Side Hustles</a>
+                <a href="/tools" class="nav-link">Tools</a>
+                <a href="/blog" class="nav-link">Blog</a>
+                <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
             </div>
-        </nav>
-    </header>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-    <div class="breadcrumbs">
-        <nav aria-label="Breadcrumb">
-            <ol class="breadcrumb-list">
-                <li><a href="index.html">Home</a></li>
-                <li><span class="separator">›</span></li>
-                <li><a href="casino-directory.html">Casino Directory</a></li>
-                <li><span class="separator">›</span></li>
-                <li><span class="current">NoLimitCoins Review</span></li>
-            </ol>
-        </nav>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/getting-started">Get Started</a>
+        <a href="/sweepstakes">Sweepstakes</a>
+        <a href="/side-hustles">Side Hustles</a>
+        <a href="/tools">Tools</a>
+        <a href="/blog">Blog</a>
+        <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
     </div>
 
-    <main class="page-content">
+    <main>
         <div class="container">
-            <h1>Is <span class="highlight">NoLimitCoins</span> Legit? Our Honest 2026 Review</h1>
-
-            <!-- Verdict Box -->
-            <div class="verdict-box">
-                <div class="verdict-badge">✅ LEGIT</div>
-                <span class="tier-badge-inline tier-medium">Medium Tier</span>
-                <p class="verdict-summary">NoLimitCoins is a legitimate sweepstakes casino operated by A1. It's legal in most US states and pays out real prizes through sweep coins.</p>
-                <div class="verdict-stars">★★★½☆</div>
-                <div class="verdict-rating">3.5 / 5.0</div>
+            <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                <div class="breadcrumb-list">
+                    <a href="index.html">Home</a> <span class="breadcrumb-sep">/</span>
+                    <a href="casino-directory.html">Casino Directory</a> <span class="breadcrumb-sep">/</span>
+                    <span>NoLimitCoins Review</span>
+                </div>
             </div>
 
-            <!-- Quick Facts -->
-            <div class="quick-facts">
+            <!-- PAGE HEADER -->
+            <div class="page-header fade-in">
+                <h1>Is <span class="highlight">NoLimitCoins</span> Legit? Our Honest 2026 Review</h1>
+            </div>
+
+            <!-- VERDICT -->
+            <div class="verdict-card fade-in fade-in-delay-1">
+                <div class="verdict-label" style="color: #10B981">LEGIT</div>
+                <div class="verdict-tier" style="color: #3B82F6; border: 1px solid #3B82F633; background: #3B82F60a;">Medium Tier</div>
+                <p class="verdict-summary">NoLimitCoins is a legitimate sweepstakes casino operated by A1. It's legal in most US states and pays out real prizes through sweep coins.</p>
+                <div class="verdict-score">3.5 / 5.0</div>
+            </div>
+
+            <!-- QUICK FACTS -->
+            <div class="quick-facts fade-in fade-in-delay-2">
                 <div class="fact-item">
                     <div class="fact-label">Parent Company</div>
                     <div class="fact-value">A1</div>
@@ -416,58 +844,58 @@ NoLimitCoins is best viewed as an addition to an existing rotation rather than a
                 </div>
             </div>
 
-            <!-- What Is Section -->
-            <div class="review-section">
+            <!-- WHAT IS -->
+            <section class="review-block fade-in">
                 <h2>What is NoLimitCoins?</h2>
                 <p>NoLimitCoins is an A1 platform, sister site to FunRize and Tao Fortune. It launched in 2023 and sits squarely in medium tier territory. Nothing spectacular, nothing terrible — it's a functional sweepstakes casino that does what it says.</p>
                 <p>The game library has around 300+ titles. The daily bonus is modest at $0.20-$0.30 SC, but the 7th-day free spins perk adds a nice touch for weekly grinders. The welcome offers are fair at 200% on the first two purchases.</p>
                 <p>NoLimitCoins is best viewed as an addition to an existing rotation rather than a primary platform. The 18+ age requirement helps, but the $100 minimum redemption and slower payouts hold it back from higher tiers.</p>
-            </div>
+            </section>
 
-            <!-- Pros & Cons -->
-            <div class="review-section">
-                <h2>Pros & Cons</h2>
+            <!-- PROS & CONS -->
+            <section class="review-block fade-in">
+                <h2>Pros &amp; Cons</h2>
                 <div class="pros-cons">
-                    <div class="pros-list">
-                        <h3>👍 What We Like</h3>
+                    <div class="pros-card">
+                        <h3>What We Like</h3>
                         <ul>
-                            <li>18+ age requirement</li>
-                            <li>7th day free spins reward weekly consistency</li>
-                            <li>200% welcome offers on first purchases</li>
-                            <li>Free to play without purchases</li>
-                            <li>Decent variety for an A1 platform</li>
+                            <li><span class="check">&#10003;</span>18+ age requirement</li>
+                            <li><span class="check">&#10003;</span>7th day free spins reward weekly consistency</li>
+                            <li><span class="check">&#10003;</span>200% welcome offers on first purchases</li>
+                            <li><span class="check">&#10003;</span>Free to play without purchases</li>
+                            <li><span class="check">&#10003;</span>Decent variety for an A1 platform</li>
                         </ul>
                     </div>
-                    <div class="cons-list">
-                        <h3>👎 What Could Be Better</h3>
+                    <div class="cons-card">
+                        <h3>What Could Be Better</h3>
                         <ul>
-                            <li>Low daily bonus ($0.20-$0.30 SC)</li>
-                            <li>$100 minimum redemption</li>
-                            <li>Slower payouts (3-7 business days)</li>
-                            <li>Restricted in 10 states</li>
-                            <li>Smaller game library</li>
+                            <li><span class="cross">&#10007;</span>Low daily bonus ($0.20-$0.30 SC)</li>
+                            <li><span class="cross">&#10007;</span>$100 minimum redemption</li>
+                            <li><span class="cross">&#10007;</span>Slower payouts (3-7 business days)</li>
+                            <li><span class="cross">&#10007;</span>Restricted in 10 states</li>
+                            <li><span class="cross">&#10007;</span>Smaller game library</li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Daily Bonus Details -->
-            <div class="review-section">
+            <!-- DAILY BONUS -->
+            <section class="review-block fade-in">
                 <h2>Daily Bonus Details</h2>
                 <p>NoLimitCoins gives $0.20-$0.30 SC daily with a bonus of free spins on the 7th consecutive day of collecting. The free spins add extra value for players who log in consistently every day. It's a nice incentive to maintain your streak through the week.</p>
-            </div>
+            </section>
 
-            <!-- Payout & Redemption -->
-            <div class="review-section">
+            <!-- PAYOUT -->
+            <section class="review-block fade-in">
                 <h2>Payout & Redemption</h2>
                 <p>Minimum redemption is $100. Payouts take 3-7 business days. Standard payment methods are available. The A1 platform has improved their redemption process over time. Identity verification required for first withdrawal.</p>
-            </div>
+            </section>
 
-            <!-- Restricted States -->
-            <div class="review-section">
+            <!-- RESTRICTED STATES -->
+            <section class="review-block fade-in">
                 <h2>Restricted States</h2>
                 <p>NoLimitCoins is <strong>not available</strong> in the following states:</p>
-                <div class="states-list">
+                <div class="states-grid">
                     <span class="state-tag">CT</span>
                     <span class="state-tag">DE</span>
                     <span class="state-tag">ID</span>
@@ -479,44 +907,42 @@ NoLimitCoins is best viewed as an addition to an existing rotation rather than a
                     <span class="state-tag">WV</span>
                     <span class="state-tag">WY</span>
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">If your state isn't listed above, you're good to play. State restrictions can change — verify on NoLimitCoins's website before signing up.</p>
-            </div>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">If your state isn't listed above, you're good to play. State restrictions can change — verify on NoLimitCoins's website before signing up.</p>
+            </section>
 
-            <!-- Our Rating -->
-            <div class="review-section">
-                <h2>Our Rating Breakdown</h2>
+
+
+            <!-- RATING -->
+            <section class="review-block fade-in">
+                <h2>Our Rating</h2>
                 <div class="rating-grid">
                     <div class="rating-item">
                         <div class="rating-item-label">Games</div>
                         <div class="rating-item-value">3.3/5</div>
-                        <div class="rating-item-stars">★★★☆☆</div>
                     </div>
                     <div class="rating-item">
                         <div class="rating-item-label">Daily Bonus</div>
                         <div class="rating-item-value">3/5</div>
-                        <div class="rating-item-stars">★★★☆☆</div>
                     </div>
                     <div class="rating-item">
                         <div class="rating-item-label">Payout Speed</div>
                         <div class="rating-item-value">3/5</div>
-                        <div class="rating-item-stars">★★★☆☆</div>
                     </div>
-                    <div class="rating-item rating-overall">
+                    <div class="rating-item overall">
                         <div class="rating-item-label">Overall</div>
                         <div class="rating-item-value">3.5/5</div>
-                        <div class="rating-item-stars">★★★½☆</div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Sign Up CTA -->
-            <div class="cta-section">
-                <a href="https://www.nolimitcoins.com" target="_blank" rel="noopener noreferrer" class="cta-btn">Sign Up at NoLimitCoins →</a>
+            <!-- CTA -->
+            <div class="cta-block fade-in">
+                <a href="https://www.nolimitcoins.com" target="_blank" rel="noopener noreferrer" class="cta-btn">Sign Up at NoLimitCoins</a>
                 <p class="cta-note">Opens in a new tab. Free to join — no purchase required to play.</p>
             </div>
 
             <!-- FAQ -->
-            <div class="review-section">
+            <section class="review-block fade-in">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-item">
                     <div class="faq-question">Is NoLimitCoins legal in my state?</div>
@@ -534,58 +960,85 @@ NoLimitCoins is best viewed as an addition to an existing rotation rather than a
                     <div class="faq-question">Is NoLimitCoins the same as FunRize?</div>
                     <div class="faq-answer">They're sister sites run by A1. They share some features and games but operate as separate platforms with their own accounts and promotions.</div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Internal Links -->
-            <div class="internal-links">
-                <a href="casino-directory.html" class="internal-link">📂 Browse All Casinos</a>
-                <a href="https://onlinesidehustles.info/daily-login-guide" class="internal-link">📖 Daily Login Guide</a>
-                <a href="casino-ratings.html" class="internal-link">🏆 Casino Ratings</a>
-                <a href="getting-started.html" class="internal-link">🚀 Getting Started</a>
+            <!-- RELATED LINKS -->
+            <div class="related-links fade-in">
+                <a href="casino-directory.html" class="related-link">Browse All Casinos &rarr;</a>
+                <a href="https://onlinesidehustles.info/daily-login-guide" class="related-link">Daily Login Guide &rarr;</a>
+                <a href="casino-ratings.html" class="related-link">Casino Ratings &rarr;</a>
+                <a href="getting-started.html" class="related-link">Getting Started &rarr;</a>
             </div>
         </div>
     </main>
 
-    <footer role="contentinfo">
-        <div class="footer-content">
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
             <div class="footer-brand">
-                <h3>ONLINE SIDEHUSTLES</h3>
-                <p>Your trusted source for legitimate online side hustles in 2026. Join 2,400+ members who've built successful passive income streams through daily collection sites, online store automation, AI services, and proven digital strategies.</p>
-                <p style="color:#4CAF50;font-style:italic;margin-top:0.5rem;">Website by Crossroads - Sidehustle Wiki</p>
+                &copy; 2026 Online Sidehustles<br>
+                Your trusted partner in building multiple income streams through proven online side hustles.
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="24-to-1000-guide.html">$24 to $1000 Guide</a></li>
-                    <li><a href="getting-started.html">Getting Started</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="tools.html">Tools</a></li>
-                    <li><a href="https://onlinesidehustles.info/blog">Blog</a></li>
-                </ul>
+            <div class="footer-col">
+                <p class="footer-col-title">Guides</p>
+                <a href="/getting-started">Getting Started</a>
+                <a href="/daily-login-guide">Daily Login Guide</a>
+                <a href="/guides">Complete Guide List</a>
             </div>
-            <div class="footer-links">
-                <h4>Categories</h4>
-                <ul>
-                    <li><a href="https://onlinesidehustles.info/daily-login-guide">Daily Collection Sites</a></li>
-                    <li><a href="casino-directory.html">Casino Directory</a></li>
-                    <li><a href="casino-ratings.html">Casino Ratings</a></li>
-                    <li><a href="skrill-casinos.html">Skrill Sites</a></li>
-                    <li><a href="affiliate-marketing.html">Affiliate Marketing</a></li>
-                </ul>
+            <div class="footer-col">
+                <p class="footer-col-title">Resources</p>
+                <a href="/casino-directory">Casino Directory</a>
+                <a href="/income-calculator">Income Calculator</a>
+                <a href="/tools">Tools</a>
+            </div>
+            <div class="footer-col">
+                <p class="footer-col-title">Legal</p>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms</a>
+                <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+                <a href="/contact">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span class="autoYear">2026</span> Online Sidehustles. All rights reserved.</p>
+            <span>&copy; 2026 Online Sidehustles. All rights reserved.</span>
+            <a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Discord</a>
         </div>
     </footer>
 
-    <a href="https://discord.com/invite/onlinesidehustles" class="discord-float" target="_blank">
-        <span>&#128172;</span>
-        Join Discord
-    </a>
-
     <script>
-        document.querySelectorAll('.autoYear').forEach(el => { el.textContent = new Date().getFullYear(); });
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Fade-in on scroll
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
     </script>
 </body>
 </html>
