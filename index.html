@@ -60,8 +60,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#10B981">
-    <meta name="msapplication-TileColor" content="#10B981">
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="msapplication-TileColor" content="#D4AF37">
     <link rel="alternate" type="application/rss+xml" title="Online Side Hustles Blog" href="https://onlinesidehustles.info/feed.xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,8 +95,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            background: #FAFAFA;
+            color: #111;
             font-size: 16px;
             line-height: 1.6;
             overflow-x: hidden;
@@ -127,10 +127,10 @@
         }
 
         .nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .nav-inner {
@@ -147,7 +147,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #fff;
+            color: #111;
         }
 
         .nav-links {
@@ -159,19 +159,19 @@
         .nav-link {
             font-size: 0.9rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(0, 0, 0, 0.55);
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #111;
         }
 
         .nav-cta {
             display: inline-flex;
             align-items: center;
             padding: 10px 24px;
-            background: #10B981;
+            background: #D4AF37;
             color: #fff;
             font-size: 0.85rem;
             font-weight: 600;
@@ -180,7 +180,7 @@
         }
 
         .nav-cta:hover {
-            background: #059669;
+            background: #B8962E;
             transform: translateY(-1px);
         }
 
@@ -198,7 +198,7 @@
             display: block;
             width: 24px;
             height: 1.5px;
-            background: #fff;
+            background: #111;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -219,7 +219,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             z-index: 999;
             flex-direction: column;
             align-items: center;
@@ -237,12 +237,12 @@
         .mobile-menu a {
             font-size: 1.5rem;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.7);
             transition: color 0.3s;
         }
 
         .mobile-menu a:hover {
-            color: #fff;
+            color: #111;
         }
 
         .mobile-menu .nav-cta {
@@ -275,8 +275,52 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
             pointer-events: none;
+        }
+
+        /* Subtle space dots (stars) behind hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            opacity: 0.3;
+            background-image:
+                radial-gradient(1px 1px at 12% 15%, rgba(0,0,0,0.35) 50%, transparent 50%),
+                radial-gradient(1px 1px at 28% 42%, rgba(0,0,0,0.3) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 45% 8%, rgba(0,0,0,0.25) 50%, transparent 50%),
+                radial-gradient(1px 1px at 62% 35%, rgba(0,0,0,0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 78% 18%, rgba(0,0,0,0.35) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 88% 55%, rgba(0,0,0,0.2) 50%, transparent 50%),
+                radial-gradient(1px 1px at 35% 68%, rgba(0,0,0,0.25) 50%, transparent 50%),
+                radial-gradient(1px 1px at 55% 58%, rgba(0,0,0,0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 8% 52%, rgba(0,0,0,0.2) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 72% 72%, rgba(0,0,0,0.2) 50%, transparent 50%),
+                radial-gradient(1px 1px at 92% 30%, rgba(0,0,0,0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 18% 80%, rgba(0,0,0,0.2) 50%, transparent 50%),
+                radial-gradient(1px 1px at 50% 25%, rgba(0,0,0,0.25) 50%, transparent 50%),
+                radial-gradient(1px 1px at 82% 48%, rgba(0,0,0,0.2) 50%, transparent 50%),
+                radial-gradient(1px 1px at 40% 90%, rgba(0,0,0,0.15) 50%, transparent 50%);
+        }
+
+        /* Faint constellation lines */
+        .hero-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        .hero-stars svg {
+            width: 100%;
+            height: 100%;
         }
 
         .hero-content {
@@ -292,12 +336,12 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 24px;
-            color: #fff;
+            color: #111;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #888;
+            color: #666;
             max-width: 600px;
             margin: 0 auto 40px;
             line-height: 1.7;
@@ -315,8 +359,8 @@
             display: inline-flex;
             align-items: center;
             padding: 14px 32px;
-            background: #fff;
-            color: #000;
+            background: #111;
+            color: #fff;
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 100px;
@@ -324,7 +368,7 @@
         }
 
         .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(17, 17, 17, 0.85);
             transform: translateY(-1px);
         }
 
@@ -333,16 +377,16 @@
             align-items: center;
             padding: 14px 32px;
             background: transparent;
-            color: #fff;
+            color: #111;
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-secondary:hover {
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(0, 0, 0, 0.5);
             transform: translateY(-1px);
         }
 
@@ -353,7 +397,7 @@
             gap: 8px;
             flex-wrap: wrap;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(0, 0, 0, 0.4);
         }
 
         .trust-indicators span {
@@ -361,7 +405,7 @@
         }
 
         .trust-dot {
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(0, 0, 0, 0.2);
         }
 
         /* ===== SECTION STYLES ===== */
@@ -375,7 +419,7 @@
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #666;
+            color: #999;
             margin-bottom: 48px;
         }
 
@@ -385,7 +429,7 @@
 
         .divider {
             border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             margin: 0 auto;
             max-width: 1200px;
         }
@@ -402,7 +446,7 @@
         .step-number {
             font-size: 3.5rem;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(0, 0, 0, 0.06);
             letter-spacing: -0.02em;
             margin-bottom: 16px;
         }
@@ -410,13 +454,13 @@
         .step-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #fff;
+            color: #111;
             margin-bottom: 8px;
         }
 
         .step-desc {
             font-size: 0.95rem;
-            color: #888;
+            color: #666;
             line-height: 1.6;
         }
 
@@ -440,8 +484,8 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 16px;
             padding: 32px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -451,20 +495,20 @@
 
         .card:hover {
             transform: scale(1.02);
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(0, 0, 0, 0.03);
         }
 
         .card-title {
             font-size: 1.15rem;
             font-weight: 600;
-            color: #fff;
+            color: #111;
             margin-bottom: 8px;
         }
 
         .card-desc {
             font-size: 0.9rem;
-            color: #888;
+            color: #666;
             margin-bottom: 16px;
             line-height: 1.5;
         }
@@ -472,7 +516,7 @@
         .card-earning {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #10B981;
+            color: #D4AF37;
         }
 
         .card-arrow {
@@ -480,12 +524,12 @@
             top: 32px;
             right: 32px;
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(0, 0, 0, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card:hover .card-arrow {
-            color: #10B981;
+            color: #D4AF37;
             transform: translateX(4px);
         }
 
@@ -503,7 +547,7 @@
 
         /* ===== STATS ===== */
         .stats-section {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(0, 0, 0, 0.02);
         }
 
         .stats-grid {
@@ -518,7 +562,7 @@
         .stat-number {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            color: #fff;
+            color: #111;
             letter-spacing: -0.02em;
             line-height: 1;
             margin-bottom: 8px;
@@ -526,7 +570,7 @@
 
         .stat-label {
             font-size: 0.85rem;
-            color: #666;
+            color: #999;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -551,7 +595,7 @@
         .tool-link {
             font-size: 0.9rem;
             font-weight: 500;
-            color: #10B981;
+            color: #D4AF37;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -578,8 +622,8 @@
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 16px;
             padding: 32px;
         }
@@ -587,14 +631,14 @@
         .testimonial-quote {
             font-size: 1rem;
             font-style: italic;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(0, 0, 0, 0.8);
             line-height: 1.7;
             margin-bottom: 20px;
         }
 
         .testimonial-attr {
             font-size: 0.85rem;
-            color: #666;
+            color: #999;
         }
 
         @media (max-width: 768px) {
@@ -617,7 +661,7 @@
 
         .cta-subtitle {
             font-size: 1.1rem;
-            color: #888;
+            color: #666;
             margin-bottom: 36px;
         }
 
@@ -625,7 +669,7 @@
             display: inline-flex;
             align-items: center;
             padding: 16px 40px;
-            background: #10B981;
+            background: #D4AF37;
             color: #fff;
             font-size: 1rem;
             font-weight: 600;
@@ -635,7 +679,7 @@
         }
 
         .btn-cta:hover {
-            background: #059669;
+            background: #B8962E;
             transform: translateY(-2px);
         }
 
@@ -648,17 +692,17 @@
 
         .cta-links a {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(0, 0, 0, 0.4);
             transition: color 0.3s;
         }
 
         .cta-links a:hover {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(0, 0, 0, 0.7);
         }
 
         /* ===== FOOTER ===== */
         .footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             padding: 64px 24px 40px;
         }
 
@@ -672,14 +716,14 @@
 
         .footer-brand {
             font-size: 0.8rem;
-            color: #666;
+            color: #999;
             line-height: 1.7;
         }
 
         .footer-col-title {
             font-size: 0.8rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.45);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 16px;
@@ -688,34 +732,34 @@
         .footer-col a {
             display: block;
             font-size: 0.9rem;
-            color: #888;
+            color: #666;
             padding: 4px 0;
             transition: color 0.3s;
         }
 
         .footer-col a:hover {
-            color: #fff;
+            color: #111;
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.8rem;
-            color: #555;
+            color: #aaa;
         }
 
         .footer-bottom a {
-            color: #888;
+            color: #666;
             transition: color 0.3s;
         }
 
         .footer-bottom a:hover {
-            color: #fff;
+            color: #111;
         }
 
         @media (max-width: 768px) {
@@ -789,6 +833,32 @@
 
     <!-- HERO -->
     <section class="hero">
+        <!-- Subtle constellation lines -->
+        <div class="hero-stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+                <!-- Constellation group 1 (left) -->
+                <line x1="144" y1="90" x2="336" y2="252" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+                <line x1="336" y1="252" x2="420" y2="150" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+                <line x1="420" y1="150" x2="540" y2="210" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+                <circle cx="144" cy="90" r="1.5" fill="rgba(0,0,0,0.3)"/>
+                <circle cx="336" cy="252" r="1.5" fill="rgba(0,0,0,0.25)"/>
+                <circle cx="420" cy="150" r="2" fill="rgba(0,0,0,0.2)"/>
+                <circle cx="540" cy="210" r="1.5" fill="rgba(0,0,0,0.25)"/>
+                <!-- Constellation group 2 (right) -->
+                <line x1="780" y1="120" x2="900" y2="180" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+                <line x1="900" y1="180" x2="1020" y2="108" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+                <line x1="1020" y1="108" x2="1080" y2="240" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+                <circle cx="780" cy="120" r="1.5" fill="rgba(0,0,0,0.25)"/>
+                <circle cx="900" cy="180" r="2" fill="rgba(0,0,0,0.2)"/>
+                <circle cx="1020" cy="108" r="1.5" fill="rgba(0,0,0,0.3)"/>
+                <circle cx="1080" cy="240" r="1.5" fill="rgba(0,0,0,0.2)"/>
+                <!-- A few extra solo dots -->
+                <circle cx="96" cy="360" r="1" fill="rgba(0,0,0,0.15)"/>
+                <circle cx="660" cy="72" r="1" fill="rgba(0,0,0,0.2)"/>
+                <circle cx="1140" cy="420" r="1" fill="rgba(0,0,0,0.15)"/>
+                <circle cx="480" cy="480" r="1" fill="rgba(0,0,0,0.1)"/>
+            </svg>
+        </div>
         <div class="hero-content">
             <h1 class="fade-in">Turn Your Free Time<br>Into Real Income</h1>
             <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,400+ members earning $30+ daily from sweepstakes casinos, automated selling, and smart side hustles.</p>
