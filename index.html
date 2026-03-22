@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <!-- Google Analytics 4 -->
@@ -131,29 +131,18 @@
         .nav-link-primary:hover { color: #FFD700; background: rgba(255,215,0,0.12); }
         .nav-link-gold { color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.45rem 1.1rem; border-radius: 20px; }
         .nav-link-gold:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; }
-        .mega-dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; z-index: 9999; }
-        .browse-btn { background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border: 1px solid rgba(76,175,80,0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
-        .browse-btn:hover { background: linear-gradient(135deg, #3a3a3a, #4a4a4a); border-color: #4CAF50; transform: translateY(-2px); }
-        .mega-menu { position: absolute; top: 100%; right: -50px; margin-top: 0.5rem; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; width: min(750px, calc(100vw - 2rem)); max-width: calc(100vw - 2rem); max-height: calc(100vh - 100px); overflow-y: auto; overflow-x: hidden; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9999; }
-        .mega-menu::-webkit-scrollbar { width: 8px; }
-        .mega-menu::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
-        .mega-menu::-webkit-scrollbar-thumb { background: rgba(76,175,80,0.5); border-radius: 10px; }
-        .mega-menu::-webkit-scrollbar-thumb:hover { background: rgba(76,175,80,0.7); }
-        @media (max-width: 700px) { .mega-menu { right: -1rem; width: calc(100vw - 2rem); } }
-        .mega-dropdown:hover .mega-menu, .mega-menu:hover, .mega-dropdown.active .mega-menu { opacity: 1; visibility: visible; }
-        .mega-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 20px; display: none; }
-        .mega-dropdown:hover::after { display: block; }
-        .mega-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 900px) { .mega-menu-grid { grid-template-columns: repeat(2, 1fr); } }
-        .menu-category { padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
-        .menu-category-title { color: #4CAF50; font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .menu-items { display: flex; flex-direction: column; gap: 0.5rem; }
-        .menu-item { color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.5rem 0.75rem; border-radius: 8px; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
-        .menu-item:hover { background: rgba(76,175,80,0.1); color: white; transform: translateX(5px); }
-        .menu-item.coming-soon { cursor: not-allowed; pointer-events: none; }
-        .menu-item-new { background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 10px; font-weight: bold; margin-left: auto; }
-        .menu-item-coming { background: linear-gradient(135deg, #607D8B, #90A4AE); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 10px; font-weight: bold; margin-left: auto; }
-        @media (max-width: 1400px) { .mega-menu { right: 0; } }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.25s; cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.35rem; font-family: inherit; }
+        .nav-dropdown-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
+        .nav-dropdown-toggle .dd-arrow { font-size: 0.7rem; transition: transform 0.2s; }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 6px); left: 0; min-width: 220px; background: rgba(20,20,20,0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.5rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; box-shadow: 0 15px 40px rgba(0,0,0,0.5); z-index: 9999; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
+        .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 10px; }
+        .nav-dropdown-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
+        .nav-dropdown-menu a:hover { background: rgba(76,175,80,0.15); color: #fff; transform: translateX(4px); }
+        .nav-cta { color: #0a0a0a !important; background: linear-gradient(135deg, #FFD700, #FFA500) !important; font-weight: 700 !important; padding: 0.5rem 1.2rem !important; border-radius: 20px !important; font-size: 0.9rem !important; transition: all 0.3s !important; box-shadow: 0 4px 15px rgba(255,215,0,0.3); }
+        .nav-cta:hover { transform: translateY(-2px) !important; box-shadow: 0 6px 20px rgba(255,215,0,0.5) !important; background: linear-gradient(135deg, #FFD700, #FFA500) !important; }
+        @media (max-width: 1400px) { .nav-dropdown-menu { left: 0; } }
         @media (max-width: 768px) {
             nav { padding: 1rem; }
             .logo { font-size: 1.1rem; }
@@ -163,16 +152,15 @@
             .nav-menu.active { display: flex; }
             .nav-link { padding: 0.6rem 1rem; font-size: 1rem; }
             .nav-link-gold { text-align: center; }
-            .mega-dropdown { width: 100%; padding-bottom: 0; margin-bottom: 0; }
-            .browse-btn { width: 100%; justify-content: center; }
-            .mega-menu { position: relative; top: 0; right: auto; width: 100%; max-width: 100%; margin: 1rem 0; padding: 1.5rem; display: none; max-height: 50vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-            .mega-dropdown.active .mega-menu { display: block; opacity: 1; visibility: visible; }
-            .mega-menu-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .menu-category { padding: 0.75rem; }
-            .menu-category-title { font-size: 1rem; }
-            .menu-item { font-size: 0.9rem; padding: 0.4rem 0.6rem; }
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-toggle { width: 100%; justify-content: center; padding: 0.6rem 1rem; font-size: 1rem; }
+            .nav-dropdown-menu { position: relative; top: 0; left: 0; width: 100%; margin: 0.25rem 0; display: none; opacity: 1; visibility: visible; box-shadow: none; border: 1px solid rgba(255,255,255,0.05); }
+            .nav-dropdown.active .nav-dropdown-menu { display: block; }
+            .nav-dropdown:hover .nav-dropdown-menu { opacity: 0; visibility: hidden; }
+            .nav-dropdown.active .nav-dropdown-menu { opacity: 1 !important; visibility: visible !important; display: block !important; }
+            .nav-cta { display: block; text-align: center; }
         }
-        @media (max-width: 600px) { .mega-menu { padding: 1rem; } .menu-items { gap: 0.25rem; } .menu-item { font-size: 0.85rem; } .menu-item-new, .menu-item-coming { font-size: 0.65rem; } }
+        @media (max-width: 600px) { .nav-dropdown-menu a { font-size: 0.85rem; padding: 0.5rem 0.75rem; } }
         .hero { padding: 140px 1rem 60px; position: relative; z-index: 1; }
         @media (min-width: 768px) { .hero { padding: 180px 2rem 80px; } }
         @keyframes glow { 0%, 100% { box-shadow: 0 5px 20px rgba(255,215,0,0.4); } 50% { box-shadow: 0 5px 30px rgba(255,215,0,0.6); } }
@@ -206,7 +194,7 @@
         @media (min-width: 992px) { .money-graphic { width: 400px; height: 400px; margin: 50px auto 0; } }
         .money-circle { width: 100%; height: 100%; background: radial-gradient(circle at 30% 30%, #4CAF50, #2E7D32); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 80px rgba(76,175,80,0.3); animation: floatHero 6s ease-in-out infinite; position: relative; }
         @keyframes floatHero { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-        .money-circle::before { content: "💰"; font-size: 120px; }
+        .money-circle::before { content: "ðŸ’°"; font-size: 120px; }
         .floating-icon { position: absolute; font-size: 2.5rem; top: 50%; left: 50%; animation: orbit 10s linear infinite; }
         @media (min-width: 480px) { .floating-icon { font-size: 3rem; } }
         @media (min-width: 768px) { .floating-icon { font-size: 3.5rem; } }
@@ -378,414 +366,386 @@
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Menu &#9776;</button>
 
             <div class="nav-menu" id="navMenu">
-                <a href="https://onlinesidehustles.info/daily-login-guide" class="nav-link nav-link-primary">Daily Collection Sites</a>
-                <a href="https://onlinesidehustles.info/blog" class="nav-link">Blog</a>
                 <a href="getting-started.html" class="nav-link">Get Started</a>
-                <a href="income-reports.html" class="nav-link">Income Reports</a>
-                <a href="income-calculator.html" class="nav-link">💰 Calculator</a>
-                <a href="casino-directory.html" class="nav-link">🎰 Directory</a>
-                <a href="patreon.html" class="nav-link nav-link-gold">Patreon</a>
-                <div class="mega-dropdown" id="megaDropdown">
-                    <button class="browse-btn" onclick="toggleMegaMenu(event)">Browse All Hustles <span>&#9660;</span></button>
-                    <div class="mega-menu">
-                        <div class="mega-menu-grid">
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#127920;</span> Daily Collection Sidehustle</div>
-                                <div class="menu-items">
-                                    <a href="https://onlinesidehustles.info/daily-login-guide" class="menu-item"><span>&#128178;</span> Daily Collection Sites Ultimate Guide <span class="menu-item-new">HOT</span></a>
-                                    <a href="jupiter-post.html" class="menu-item"><span>&#129680;</span> Jupiter Post Letterwriting</a>
-                                    <a href="complete-guide-list.html" class="menu-item"><span>&#9998;</span> Written Guides for Daily Collection Sites</a>
-                                    <a href="daily-free-sc.html" class="menu-item"><span>&#127873;</span> Daily Free Rewards</a>
-                                    <a href="package-sales.html" class="menu-item"><span>&#128230;</span> Package Sales</a>
-                                    <a href="skrill-casinos.html" class="menu-item"><span>&#128179;</span> Skrill Eligible Sites</a>
-                                    <a href="bonus-collection-software.html" class="menu-item"><span>&#129302;</span> Daily Bonus Collection Software</a>
-                                    <a href="auto-giveaways-software.html" class="menu-item"><span>&#10024;</span> Auto Giveaways Signup Software</a>
-                                    <a href="casino-ratings.html" class="menu-item"><span>&#127942;</span> Casino Ratings <span class="menu-item-new">NEW</span></a>
-                                    <a href="vote.html" class="menu-item"><span>&#128499;</span> Vote for Casinos</a>
-                                    <a href="sweepstakes-casino-list.html" class="menu-item"><span>&#128203;</span> Complete Casino List 2026 <span class="menu-item-new">NEW</span></a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128218;</span> Resources & Tools for Daily Collection</div>
-                                <div class="menu-items">
-                                    <a href="getting-started.html" class="menu-item"><span>&#128506;</span> Getting Started Roadmap</a>
-                                    <a href="tools.html" class="menu-item"><span>&#128295;</span> Calculators & Tools</a>
-                                    <a href="sweepstats.html" class="menu-item"><span>&#128202;</span> SweepStats Tracker <span class="menu-item-new">NEW</span></a>
-                                    <a href="faq.html" class="menu-item"><span>&#10067;</span> FAQ / Help Center</a>
-                                    <a href="glossary.html" class="menu-item"><span>&#128214;</span> Glossary of Terms</a>
-                                    <a href="earnings-potential.html" class="menu-item"><span>&#128176;</span> Earnings Potential</a>
-                                    <a href="new-sites.html" class="menu-item"><span>&#127381;</span> New Sites This Month</a>
-                                    <a href="comparisons/best-welcome-packages.html" class="menu-item"><span>&#127873;</span> Best Welcome Packages</a>
-                                    <a href="comparisons/fastest-payout-sites.html" class="menu-item"><span>&#9889;</span> Fastest Payout Sites</a>
-                                    <a href="newsletter.html" class="menu-item"><span>&#128233;</span> Newsletter Signup</a>
-                                    <a href="best-sweepstakes-card.html" class="menu-item"><span>&#127183;</span> Best Sweepstakes Card <span class="menu-item-new">NEW</span></a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128188;</span> Online Selling</div>
-                                <div class="menu-items">
-                                    <a href="sell-on-ebay-automated.html" class="menu-item"><span>&#129302;</span> Sell on Ebay Automated</a>
-                                    <a href="sell-on-tiktok-automated.html" class="menu-item"><span>&#128241;</span> Sell on Tiktok Automated</a>
-                                    <a href="https://onlinesidehustles.info/tracking-number-generator" class="menu-item"><span>&#128230;</span> Tracking Number Generator</a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128184;</span> Online Sidehustles</div>
-                                <div class="menu-items">
-                                    <a href="reverse-stock-arbitrage.html" class="menu-item"><span>&#128202;</span> Reverse Stock Arbitrage</a>
-                                    <a href="sportsbetting-automation.html" class="menu-item"><span>&#127922;</span> Sportsbetting Automated</a>
-                                    <a href="credit-card-churning.html" class="menu-item"><span>&#128179;</span> Credit Card Churning</a>
-                                    <a href="credit-cards.html" class="menu-item"><span>&#128176;</span> Best Credit Cards <span class="menu-item-new">NEW</span></a>
-                                    <a href="best-sweepstakes-card.html" class="menu-item"><span>&#127183;</span> Best Sweepstakes Card <span class="menu-item-new">NEW</span></a>
-                                    <a href="matched-betting.html" class="menu-item"><span>&#9917;</span> Matched Betting <span class="menu-item-new">NEW</span></a>
-                                    <a href="openclaw-setup.html" class="menu-item"><span>&#129302;</span> OpenClaw AI Setup <span class="menu-item-new">NEW</span></a>
-                                    <a href="reward-apps.html" class="menu-item"><span>&#127873;</span> Reward Apps <span class="menu-item-new">NEW</span></a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128187;</span> Digital Services</div>
-                                <div class="menu-items">
-                                    <a href="freelancing.html" class="menu-item"><span>&#128187;</span> Freelancing Guide <span class="menu-item-new">NEW</span></a>
-                                    <a href="affiliate-marketing.html" class="menu-item"><span>&#128279;</span> Affiliate Marketing <span class="menu-item-new">NEW</span></a>
-                                    <a href="dropshipping.html" class="menu-item"><span>&#128230;</span> Dropshipping <span class="menu-item-new">NEW</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127912;</span> Graphic Design <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127909;</span> Video Editing <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#129302;</span> AI Services <span class="menu-item-coming">COMING SOON</span></a>
-                                </div>
-                            </div>
-                            <div class="menu-category">
-                                <div class="menu-category-title"><span>&#128202;</span> Investing &amp; Trading</div>
-                                <div class="menu-items">
-                                    <a href="passive-investing.html" class="menu-item"><span>&#128200;</span> Passive Investing Guide <span class="menu-item-new">NEW</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127974;</span> High-Yield Savings <span class="menu-item-coming">COMING SOON</span></a>
-                                    <a href="#" class="menu-item coming-soon"><span>&#127919;</span> Cashback Programs <span class="menu-item-coming">COMING SOON</span></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="nav-dropdown" id="sweepsDropdown">
+                    <button class="nav-dropdown-toggle" onclick="toggleDropdown('sweepsDropdown', event)">Sweepstakes <span class="dd-arrow">â–¼</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="casino-directory.html">ðŸŽ° Casino Directory</a>
+                        <a href="reviews-hub.html">â­ Casino Reviews</a>
+                        <a href="states-hub.html">ðŸ“ State Guide</a>
+                        <a href="daily-login-guide.html">ðŸ“… Daily Login Guide</a>
+                        <a href="sweepstakes-casino-list.html">ðŸ“‹ Casino List</a>
                     </div>
                 </div>
-            </div>
+                <div class="nav-dropdown" id="hustlesDropdown">
+                    <button class="nav-dropdown-toggle" onclick="toggleDropdown('hustlesDropdown', event)">Side Hustles <span class="dd-arrow">â–¼</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="sell-on-ebay-automated.html">ðŸ›’ Selling Online</a>
+                        <a href="credit-card-churning.html">ðŸ’³ Credit Card Churning</a>
+                        <a href="matched-betting.html">âš½ Matched Betting</a>
+                        <a href="freelancing.html">ðŸ’» Freelancing</a>
+                        <a href="passive-investing.html">ðŸ“ˆ Passive Investing</a>
+                        <a href="sportsbetting-automation.html">ðŸˆ Sports Betting</a>
+                        <a href="complete-guide-list.html">ðŸ“š All Guides</a>
+                    </div>
+                </div>
+                <a href="tools-hub.html" class="nav-link">Tools</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="https://discord.gg/xdCeN8jMdK" class="nav-link nav-cta" target="_blank" rel="noopener">ðŸ’¬ Join Discord</a>
+                            </div>
         </nav>
     </header>
 
-    <div id="moneyGuideBanner" style="position:fixed;top:100px;left:0;right:0;z-index:999;background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(76,175,80,0.2));backdrop-filter:blur(10px);border-bottom:2px solid rgba(255,215,0,0.4);padding:1rem;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,0.3);opacity:0;transform:translateY(-20px);transition:all 0.5s ease;display:none;">
-        <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;padding:0 0.5rem;">
-            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
-                <span style="font-size:1.5rem;animation:pulse 2s infinite;">&#127873;</span>
-                <div style="text-align:left;">
-                    <h3 style="font-size:1.1rem;font-weight:bold;margin:0;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Collect Free Login Money Daily!</h3>
-                    <p style="margin:0;color:rgba(255,255,255,0.9);font-size:0.85rem;">Login to <strong style="color:#FFD700;">70+ sites</strong> and make $30+ daily from free daily collection rewards!</p>
-                </div>
-            </div>
-            <a href="https://onlinesidehustles.info/daily-login-guide" style="display:inline-block;background:linear-gradient(135deg,#FFD700,#FFA500);color:black;padding:0.7rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:bold;font-size:0.9rem;transition:all 0.3s;box-shadow:0 5px 20px rgba(255,215,0,0.4);white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)';this.style.boxShadow='0 8px 30px rgba(255,215,0,0.6)';" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 5px 20px rgba(255,215,0,0.4)';">
-                Ultimate Free Daily Rewards Guide &rarr;
-            </a>
-        </div>
-    </div>
 
+    <!-- Homepage Redesign Styles -->
     <style>
-        @media (min-width: 768px) {
-            #moneyGuideBanner { top: 70px !important; padding: 1.5rem !important; }
-            #moneyGuideBanner h3 { font-size: 1.4rem !important; }
-            #moneyGuideBanner p { font-size: 0.95rem !important; }
-            #moneyGuideBanner a { padding: 0.8rem 2rem !important; font-size: 1rem !important; }
-            #moneyGuideBanner > div { gap: 2rem !important; }
-            #moneyGuideBanner > div > div { gap: 1rem !important; }
-            #moneyGuideBanner span { font-size: 2rem !important; }
-        }
+        /* Hero Section */
+        .new-hero { padding: 140px 1rem 80px; position: relative; z-index: 1; overflow: hidden; }
+        @media (min-width: 768px) { .new-hero { padding: 160px 2rem 100px; } }
+        .new-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(76,175,80,0.08) 0%, transparent 40%, rgba(255,215,0,0.06) 70%, transparent 100%); animation: heroGradient 8s ease-in-out infinite alternate; z-index: -1; }
+        @keyframes heroGradient { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 1; transform: scale(1.05); } }
+        .hero-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+        .hero-headline { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; background: linear-gradient(135deg, #fff 0%, #e0e0e0 50%, #FFD700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        @media (min-width: 768px) { .hero-headline { font-size: 3.5rem; } }
+        @media (min-width: 992px) { .hero-headline { font-size: 4rem; } }
+        .hero-sub { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto 2.5rem; }
+        @media (min-width: 768px) { .hero-sub { font-size: 1.2rem; } }
+        .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .cta-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #4CAF50, #45a049); color: #fff; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 6px 25px rgba(76,175,80,0.4); }
+        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(76,175,80,0.5); }
+        .cta-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #fff; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 2px solid rgba(255,255,255,0.25); transition: all 0.3s; }
+        .cta-outline:hover { border-color: #FFD700; color: #FFD700; transform: translateY(-3px); }
+        .trust-badges { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .trust-badge { font-size: 0.95rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+        /* How It Works */
+        .how-section { padding: 5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .how-section { padding: 6rem 2rem; } }
+        .how-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+        @media (min-width: 768px) { .how-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+        .how-step { text-align: center; padding: 2.5rem 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; position: relative; }
+        .how-step-num { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; background: linear-gradient(135deg, #4CAF50, #8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; color: #fff; border: 3px solid #0a0a0a; }
+        .how-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .how-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .how-desc { color: rgba(255,255,255,0.65); line-height: 1.6; font-size: 0.95rem; }
+
+        /* Section Headers */
+        .sec-header { text-align: center; margin-bottom: 3rem; }
+        .sec-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+        @media (min-width: 768px) { .sec-title { font-size: 2.5rem; } }
+        .sec-subtitle { color: rgba(255,255,255,0.6); font-size: 1.05rem; }
+
+        /* Income Paths */
+        .paths-section { padding: 5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .paths-section { padding: 6rem 2rem; } }
+        .paths-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        @media (min-width: 640px) { .paths-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .paths-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+        .path-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; transition: all 0.35s; text-decoration: none; color: #fff; display: flex; flex-direction: column; }
+        .path-card:hover { transform: translateY(-5px); border-color: rgba(76,175,80,0.4); box-shadow: 0 20px 50px rgba(76,175,80,0.15); background: rgba(255,255,255,0.05); }
+        .path-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .path-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .path-earn { display: inline-block; background: rgba(76,175,80,0.15); color: #4CAF50; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; width: fit-content; }
+        .path-desc { color: rgba(255,255,255,0.65); line-height: 1.6; font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.25rem; }
+        .path-link { color: #4CAF50; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.3s; }
+        .path-card:hover .path-link { gap: 0.8rem; color: #8BC34A; }
+
+        /* Stats Bar */
+        .stats-bar { background: rgba(76,175,80,0.06); border-top: 1px solid rgba(76,175,80,0.15); border-bottom: 1px solid rgba(76,175,80,0.15); padding: 3.5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .stats-bar { padding: 4rem 2rem; } }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center; }
+        @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+        .stat-item .stat-num { font-size: 2.2rem; font-weight: 800; color: #FFD700; margin-bottom: 0.25rem; }
+        @media (min-width: 768px) { .stat-item .stat-num { font-size: 2.8rem; } }
+        .stat-item .stat-lbl { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+        /* Tools Section */
+        .tools-section { padding: 5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .tools-section { padding: 6rem 2rem; } }
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+        @media (min-width: 768px) { .tools-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+        .tool-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.35s; text-decoration: none; color: #fff; display: block; }
+        .tool-card:hover { transform: translateY(-5px); border-color: rgba(255,215,0,0.4); box-shadow: 0 15px 40px rgba(255,215,0,0.1); }
+        .tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .tool-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFD700; }
+        .tool-desc { color: rgba(255,255,255,0.6); line-height: 1.6; font-size: 0.9rem; }
+
+        /* Testimonials */
+        .testi-section { padding: 5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .testi-section { padding: 6rem 2rem; } }
+        .testi-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+        @media (min-width: 768px) { .testi-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+        .testi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; position: relative; }
+        .testi-card::before { content: '\201C'; position: absolute; top: 12px; left: 20px; font-size: 4rem; color: rgba(76,175,80,0.2); font-family: Georgia, serif; line-height: 1; }
+        .testi-text { color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 0.95rem; font-style: italic; margin-bottom: 1.25rem; padding-top: 1rem; }
+        .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+        .testi-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #5865F2, #7289DA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .testi-name { font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.9); }
+        .testi-role { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+
+        /* Blog Section */
+        .blog-section { padding: 5rem 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .blog-section { padding: 6rem 2rem; } }
+        .blog-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+        @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; overflow: hidden; transition: all 0.35s; text-decoration: none; color: #fff; display: block; }
+        .blog-card:hover { transform: translateY(-5px); border-color: rgba(76,175,80,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .blog-thumb { height: 160px; background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(255,215,0,0.1)); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .blog-body { padding: 1.5rem; }
+        .blog-tag { display: inline-block; background: rgba(76,175,80,0.15); color: #4CAF50; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .blog-title-card { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4; }
+        .blog-excerpt { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; }
+
+        /* Final CTA */
+        .final-cta { padding: 5rem 1rem; text-align: center; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .final-cta { padding: 6rem 2rem; } }
+        .final-cta-box { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 3rem 2rem; }
+        .final-headline { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+        @media (min-width: 768px) { .final-headline { font-size: 2.5rem; } }
+        .final-sub { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 2rem; }
+        .discord-cta-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #4CAF50, #FFD700); color: #0a0a0a; padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 1.15rem; transition: all 0.3s; box-shadow: 0 8px 30px rgba(76,175,80,0.4); margin-bottom: 1.5rem; }
+        .discord-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(76,175,80,0.5); }
+        .final-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+        .final-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .final-link:hover { color: #4CAF50; }
+
+        /* Scroll animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 
     <main id="main-content" role="main">
-        <section class="hero" aria-label="Hero section introducing online side hustles">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <div class="hero-badge">
-                            <div class="hero-badge-dot"></div>
-                            <span>2400+ Active Members</span>
-                        </div>
-                        <h1>Build Your <span class="highlight">Online Side Hustle</span> in <span id="heroYear">2026</span><br>and Earn Real Passive Income</h1>
-                        <p class="hero-description">
-                            Learn proven methods to generate passive income online in <span id="heroDescYear">2026</span>. 
-                            From daily collection sites to AI automation and online store automation, 
-                            discover legitimate side hustles with real earnings potential. Join 2,400+ 
-                            members on the path to financial independence.
-                        </p>
-                        <div class="hero-stats">
-                            <div class="stat">
-                                <div class="stat-number">$7K-$10K</div>
-                                <div class="stat-label">Average Monthly Earnings</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">15+</div>
-                                <div class="stat-label">Income Streams</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">24/7</div>
-                                <div class="stat-label">Community Support</div>
-                            </div>
+
+        <!-- 1. Hero Section -->
+        <section class="new-hero" aria-label="Hero">
+            <div class="hero-inner">
+                <h1 class="hero-headline">Turn Your Free Time Into Real Income</h1>
+                <p class="hero-sub">Join 2,400+ members earning $30+ daily from sweepstakes casinos, selling online, and automated side hustles</p>
+                <div class="hero-ctas">
+                    <a href="getting-started.html" class="cta-primary">Get Started Free &#8594;</a>
+                    <a href="casino-directory.html" class="cta-outline">Browse Casinos</a>
+                </div>
+                <div class="trust-badges">
+                    <span class="trust-badge">&#9989; No investment needed</span>
+                    <span class="trust-badge">&#9989; 100+ sites reviewed</span>
+                    <span class="trust-badge">&#9989; 2,400+ active members</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. How It Works -->
+        <section class="how-section fade-in" aria-label="How it works">
+            <div class="sec-header">
+                <h2 class="sec-title">How It Works</h2>
+                <p class="sec-subtitle">Three simple steps to start earning</p>
+            </div>
+            <div class="how-grid">
+                <div class="how-step">
+                    <div class="how-step-num">1</div>
+                    <div class="how-icon">&#128241;</div>
+                    <h3 class="how-title">Sign Up</h3>
+                    <p class="how-desc">Create free accounts at sweepstakes casinos and side hustle platforms</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-num">2</div>
+                    <div class="how-icon">&#128176;</div>
+                    <h3 class="how-title">Collect Daily</h3>
+                    <p class="how-desc">Log in daily to collect free bonuses worth $0.10&#8211;$2.00 per site</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-num">3</div>
+                    <div class="how-icon">&#127974;</div>
+                    <h3 class="how-title">Cash Out</h3>
+                    <p class="how-desc">Redeem your earnings for real cash via PayPal, bank transfer, or crypto</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Income Paths -->
+        <section class="paths-section fade-in" aria-label="Income paths">
+            <div class="sec-header">
+                <h2 class="sec-title">Choose Your Income Path</h2>
+                <p class="sec-subtitle">Multiple proven ways to earn &#8212; pick what fits your style</p>
+            </div>
+            <div class="paths-grid">
+                <a href="daily-login-guide.html" class="path-card">
+                    <div class="path-icon">&#127920;</div>
+                    <h3 class="path-title">Daily Collection Sites</h3>
+                    <span class="path-earn">$15&#8211;$50/day</span>
+                    <p class="path-desc">Earn from free daily login bonuses across 100+ sweepstakes casino sites. No deposit required.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+                <a href="sell-on-ebay-automated.html" class="path-card">
+                    <div class="path-icon">&#128230;</div>
+                    <h3 class="path-title">Sell on eBay &amp; TikTok</h3>
+                    <span class="path-earn">$500&#8211;$3,000/mo</span>
+                    <p class="path-desc">Automated dropshipping and reselling with minimal effort. Zero inventory needed.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+                <a href="credit-card-churning.html" class="path-card">
+                    <div class="path-icon">&#128179;</div>
+                    <h3 class="path-title">Credit Card Churning</h3>
+                    <span class="path-earn">$500&#8211;$2,000+/quarter</span>
+                    <p class="path-desc">Turn signup bonuses into real cash. Banks literally pay you to open accounts.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+                <a href="matched-betting.html" class="path-card">
+                    <div class="path-icon">&#127919;</div>
+                    <h3 class="path-title">Matched Betting</h3>
+                    <span class="path-earn">$500&#8211;$1,500+ signup</span>
+                    <p class="path-desc">Risk-free profit from sportsbook promotions. Not gambling &#8212; it's math.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+                <a href="passive-investing.html" class="path-card">
+                    <div class="path-icon">&#128200;</div>
+                    <h3 class="path-title">Passive Investing</h3>
+                    <span class="path-earn">Long-term wealth</span>
+                    <p class="path-desc">Build long-term wealth with automated strategies. Dividends, REITs, and crypto staking.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+                <a href="sportsbetting-automation.html" class="path-card">
+                    <div class="path-icon">&#9917;</div>
+                    <h3 class="path-title">Sports Betting Automation</h3>
+                    <span class="path-earn">Varies</span>
+                    <p class="path-desc">AI-powered picks and automated arbitrage across sportsbooks.</p>
+                    <span class="path-link">Learn More &#8594;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. Stats Bar -->
+        <section class="stats-bar fade-in" aria-label="Community statistics">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-num" data-target="2400" data-suffix="+">0</div>
+                    <div class="stat-lbl">Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="100" data-suffix="+">0</div>
+                    <div class="stat-lbl">Sites Reviewed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="30" data-prefix="$" data-suffix="+">0</div>
+                    <div class="stat-lbl">Avg Daily Earnings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="49" data-suffix="&#9733;" data-decimal="true">0</div>
+                    <div class="stat-lbl">Community Rating</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Featured Tools -->
+        <section class="tools-section fade-in" aria-label="Featured tools">
+            <div class="sec-header">
+                <h2 class="sec-title">Featured Tools</h2>
+                <p class="sec-subtitle">Everything you need to get started and scale</p>
+            </div>
+            <div class="tools-grid">
+                <a href="income-calculator.html" class="tool-card">
+                    <div class="tool-icon">&#128176;</div>
+                    <h3 class="tool-title">Income Calculator</h3>
+                    <p class="tool-desc">See how much you could earn based on the number of sites and time invested</p>
+                </a>
+                <a href="casino-directory.html" class="tool-card">
+                    <div class="tool-icon">&#127920;</div>
+                    <h3 class="tool-title">Casino Directory</h3>
+                    <p class="tool-desc">Search and filter 110+ sweepstakes casinos with ratings, bonuses, and payout info</p>
+                </a>
+                <a href="bonus-collection-software.html" class="tool-card">
+                    <div class="tool-icon">&#129302;</div>
+                    <h3 class="tool-title">Automation Software</h3>
+                    <p class="tool-desc">Automate your daily logins and bonus collection across multiple sites</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 6. Testimonials -->
+        <section class="testi-section fade-in" aria-label="Testimonials">
+            <div class="sec-header">
+                <h2 class="sec-title">What Members Are Saying</h2>
+                <p class="sec-subtitle">Real talk from the community</p>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <p class="testi-text">I started with 5 casinos and now I'm doing 30+ daily. Making about $40/day just from logins.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">&#128172;</div>
+                        <div>
+                            <div class="testi-name">Discord Member</div>
+                            <div class="testi-role">Daily collection user</div>
                         </div>
                     </div>
-                    <div class="hero-graphic">
-                        <div class="money-graphic">
-                            <div class="money-circle"></div>
-                            <div class="floating-icon">&#128142;</div>
-                            <div class="floating-icon">&#128640;</div>
-                            <div class="floating-icon">&#128179;</div>
-                            <div class="floating-icon">&#128200;</div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-text">The churning guide alone paid for itself 10x over. Made $1,200 in my first month.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">&#128172;</div>
+                        <div>
+                            <div class="testi-name">Discord Member</div>
+                            <div class="testi-role">Credit card churner</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-text">Best community I've found. The guides are actually useful, not just hype.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">&#128172;</div>
+                        <div>
+                            <div class="testi-name">Discord Member</div>
+                            <div class="testi-role">Community member since 2024</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="categories-section" aria-label="Main side hustle categories">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Best Online Side Hustles for <span id="sectionYear">2026</span></h2>
-                    <p class="section-subtitle">Explore proven income streams with real earning potential</p>
-                </div>
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <div class="category-icon">&#127920;</div>
-                        <h3 class="category-title">Daily Collection Sidehustle</h3>
-                        <p class="category-description">Make money with legal daily collection sites in <span class="autoYear">2026</span>. Access exclusive daily bonuses, VIP cash rewards, automated bonus collection software, and proven strategies to maximize your earnings risk-free.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Daily Free Rewards <span class="autoYear">2026</span></span>
-                            <span class="category-tag">VIP Cash Rewards</span>
-                            <span class="category-tag">Auto Collection Bot</span>
-                            <span class="category-tag">Legal USA</span>
-                        </div>
-                        <a href="https://onlinesidehustles.info/daily-login-guide" class="category-link">Explore Gaming &rarr;</a>
+        <!-- 7. Latest from the Blog -->
+        <section class="blog-section fade-in" aria-label="Latest blog posts">
+            <div class="sec-header">
+                <h2 class="sec-title">Latest from the Blog</h2>
+                <p class="sec-subtitle">Guides, news, and strategies updated weekly</p>
+            </div>
+            <div class="blog-grid">
+                <a href="blog.html" class="blog-card">
+                    <div class="blog-thumb">&#128218;</div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Guide</span>
+                        <h3 class="blog-title-card">How to Start Earning $30/Day With Daily Login Sites</h3>
+                        <p class="blog-excerpt">A step-by-step walkthrough for complete beginners. No deposit required.</p>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128188;</div>
-                        <h3 class="category-title">Online Selling</h3>
-                        <p class="category-description">Start your online store in <span class="autoYear">2026</span> with zero inventory risk. Automated eBay and TikTok Shop selling with wholesale arbitrage strategies that generate consistent income.</p>
-                        <div class="category-items">
-                            <span class="category-tag">eBay Online Store Automation</span>
-                            <span class="category-tag">TikTok Shop <span class="autoYear">2026</span></span>
-                            <span class="category-tag">Zero Inventory</span>
-                            <span class="category-tag">AI Automation</span>
-                        </div>
-                        <a href="sell-on-ebay-automated.html" class="category-link">Start Selling &rarr;</a>
+                </a>
+                <a href="blog.html" class="blog-card">
+                    <div class="blog-thumb">&#128179;</div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Strategy</span>
+                        <h3 class="blog-title-card">Credit Card Churning: The Complete Playbook for 2026</h3>
+                        <p class="blog-excerpt">Stack signup bonuses the smart way. Which cards to hit first and when.</p>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128184;</div>
-                        <h3 class="category-title">Online Sidehustles</h3>
-                        <p class="category-description">Advanced passive income strategies for <span class="autoYear">2026</span> including reverse stock arbitrage with guaranteed returns, automated sports betting systems, and AI-powered income automation for experienced hustlers.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Stock Arbitrage</span>
-                            <span class="category-tag">Auto Sports Betting</span>
-                            <span class="category-tag">Guaranteed Returns</span>
-                            <span class="category-tag">Advanced <span class="autoYear">2026</span></span>
-                        </div>
-                        <a href="reverse-stock-arbitrage.html" class="category-link">Explore Methods &rarr;</a>
+                </a>
+                <a href="blog.html" class="blog-card">
+                    <div class="blog-thumb">&#129302;</div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Tools</span>
+                        <h3 class="blog-title-card">Automating Your Daily Bonus Collection &#8212; What Actually Works</h3>
+                        <p class="blog-excerpt">Software and scripts that save hours every week. Honest review.</p>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#127873;</div>
-                        <h3 class="category-title">Reward Apps</h3>
-                        <p class="category-description">Earn $50–$300/month in <span class="autoYear">2026</span> from apps that pay you for things you already do. Grocery receipts, online shopping, walking around, watching videos — stack FreeCash, Rakuten, Ibotta, Fetch Rewards, Swagbucks and more for effortless passive income.</p>
-                        <div class="category-items">
-                            <span class="category-tag">$50–$300/Month</span>
-                            <span class="category-tag">Stacks with Sweepstakes</span>
-                            <span class="category-tag">100% Free to Join</span>
-                            <span class="category-tag">Passive Income</span>
-                        </div>
-                        <a href="reward-apps.html" class="category-link">See All Apps &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#129302;</div>
-                        <h3 class="category-title">OpenClaw AI Setup</h3>
-                        <p class="category-description">Run your own personal AI assistant 24/7 on a VPS. Connects to your Discord, automates tasks, tracks sweepstakes sites, creates content, and works while you sleep. This is the exact setup I use — get started with Virtarix.</p>
-                        <div class="category-items">
-                            <span class="category-tag">15 Min Setup</span>
-                            <span class="category-tag">Discord Connected</span>
-                            <span class="category-tag">24/7 VPS</span>
-                            <span class="category-tag">Open Source</span>
-                        </div>
-                        <a href="openclaw-setup.html" class="category-link">Setup Guide &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#9917;</div>
-                        <h3 class="category-title">Matched Betting</h3>
-                        <p class="category-description">Turn sportsbook sign-up bonuses into guaranteed profit in <span class="autoYear">2026</span>. Cover both sides of a bet to neutralize risk, then pocket the free bet bonus. Work through DraftKings, FanDuel, BetMGM, Caesars and more — $500–$1,500+ from sign-up offers alone.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Risk-Free Strategy</span>
-                            <span class="category-tag">$500–$1,500 Sign-Ups</span>
-                            <span class="category-tag">Not Gambling</span>
-                            <span class="category-tag">US Legal <span class="autoYear">2026</span></span>
-                        </div>
-                        <a href="matched-betting.html" class="category-link">Start Extracting &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128179;</div>
-                        <h3 class="category-title">Credit Card Churning</h3>
-                        <p class="category-description">Earn $500–$2,000+/month in sign-up bonuses in <span class="autoYear">2026</span>. Banks pay you hundreds of dollars just for opening a card and hitting a minimum spend. Stack it with sweepstakes purchases for double income from the same spend.</p>
-                        <div class="category-items">
-                            <span class="category-tag">$500–$750 Per Card</span>
-                            <span class="category-tag">Sign-Up Bonuses <span class="autoYear">2026</span></span>
-                            <span class="category-tag">Stack with Sweepstakes</span>
-                            <span class="category-tag">No Interest Paid</span>
-                        </div>
-                        <a href="credit-card-churning.html" class="category-link">Start Churning &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128187;</div>
-                        <h3 class="category-title">Freelancing</h3>
-                        <p class="category-description">Turn your skills into income in <span class="autoYear">2026</span>. AI-powered content writing, web design, virtual assistant work, and social media management. Start with $0 and land your first client in 1–2 weeks.</p>
-                        <div class="category-items">
-                            <span class="category-tag">AI Content Writing</span>
-                            <span class="category-tag">$500–$5K/Month</span>
-                            <span class="category-tag">$0 Startup</span>
-                            <span class="category-tag">Remote Work <span class="autoYear">2026</span></span>
-                        </div>
-                        <a href="freelancing.html" class="category-link">Start Freelancing &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128279;</div>
-                        <h3 class="category-title">Affiliate Marketing</h3>
-                        <p class="category-description">Earn commissions promoting products in <span class="autoYear">2026</span>. Amazon Associates, ShareASale, CJ Affiliate and more. Build a content site, drive traffic, and earn $100–$10,000+/month in recurring passive income.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Passive Income</span>
-                            <span class="category-tag">$100–$10K/Month</span>
-                            <span class="category-tag">No Inventory</span>
-                            <span class="category-tag">Recurring Revenue</span>
-                        </div>
-                        <a href="affiliate-marketing.html" class="category-link">Start Earning &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128202;</div>
-                        <h3 class="category-title">Passive Investing</h3>
-                        <p class="category-description">Grow your side hustle earnings in <span class="autoYear">2026</span> with dividend stocks, REITs, high-yield savings, and crypto staking. Start with as little as $100 and build real wealth over time.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Dividend Stocks</span>
-                            <span class="category-tag">REITs</span>
-                            <span class="category-tag">Crypto Staking</span>
-                            <span class="category-tag">Start with $100</span>
-                        </div>
-                        <a href="passive-investing.html" class="category-link">Start Investing &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128230;</div>
-                        <h3 class="category-title">Dropshipping</h3>
-                        <p class="category-description">Build an online store without touching inventory in <span class="autoYear">2026</span>. Shopify, WooCommerce, or print-on-demand — find winning products, connect to suppliers, and scale with paid ads.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Zero Inventory</span>
-                            <span class="category-tag">$1K—$10K/Month</span>
-                            <span class="category-tag">Shopify</span>
-                            <span class="category-tag">Print-on-Demand</span>
-                        </div>
-                        <a href="dropshipping.html" class="category-link">Start Selling &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#127942;</div>
-                        <h3 class="category-title">Casino Ratings</h3>
-                        <p class="category-description">See which sweepstakes casinos are actually worth your time in <span class="autoYear">2026</span>. Community-voted rankings for 20+ casinos — rated by real players on daily bonus value, payout speed, game selection, and trustworthiness.</p>
-                        <div class="category-items">
-                            <span class="category-tag">Community Voted</span>
-                            <span class="category-tag">20+ Casinos Ranked</span>
-                            <span class="category-tag">Live Scores</span>
-                            <span class="category-tag">Rate &amp; Compare</span>
-                        </div>
-                        <a href="casino-ratings.html" class="category-link">See Rankings &rarr;</a>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#128203;</div>
-                        <h3 class="category-title">Complete Casino List 2026</h3>
-                        <p class="category-description">The biggest sweepstakes casino list online. 150+ sites ranked by tier — God, High, Medium, and 18+ — with welcome offers, daily bonuses, payout speeds, and honest reviews. Our pillar guide for <span class="autoYear">2026</span>.</p>
-                        <div class="category-items">
-                            <span class="category-tag">150+ Sites</span>
-                            <span class="category-tag">Tiered Rankings</span>
-                            <span class="category-tag">Full Reviews</span>
-                            <span class="category-tag">State Restrictions</span>
-                        </div>
-                        <a href="sweepstakes-casino-list.html" class="category-link">See Full List &rarr;</a>
-                    </div>
-                </div>
+                </a>
             </div>
         </section>
 
-        <section class="featured-section" aria-label="Key features and benefits">
-            <div class="featured-content">
-                <div class="featured-item">
-                    <div class="featured-icon">&#127919;</div>
-                    <h3 class="featured-title">100% Beginner Friendly</h3>
-                    <p class="featured-text">No experience needed. Complete step-by-step tutorials for every side hustle in <span class="autoYear">2026</span>.</p>
-                </div>
-                <div class="featured-item">
-                    <div class="featured-icon">&#128176;</div>
-                    <h3 class="featured-title">Start with $24, Make $1000+</h3>
-                    <p class="featured-text">Turn a small investment into big returns. our proven daily collection strategy guide included.</p>
-                </div>
-                <div class="featured-item">
-                    <div class="featured-icon">&#128200;</div>
-                    <h3 class="featured-title">Real Members, Real Results</h3>
-                    <p class="featured-text">2,400+ verified success stories earning $7K-$10K monthly from our community.</p>
-                </div>
-                <div class="featured-item">
-                    <div class="featured-icon">&#129309;</div>
-                    <h3 class="featured-title">Expert 24/7 Support</h3>
-                    <p class="featured-text">Active Discord community with experienced mentors and automated tools.</p>
+        <!-- 8. Final CTA -->
+        <section class="final-cta fade-in" aria-label="Join the community">
+            <div class="final-cta-box">
+                <h2 class="final-headline">Ready to Start Earning?</h2>
+                <p class="final-sub">Join 2,400+ members in our free Discord community</p>
+                <a href="https://discord.com/invite/onlinesidehustles" class="discord-cta-btn" target="_blank">&#128172; Join Discord Free</a>
+                <div class="final-links">
+                    <a href="getting-started.html" class="final-link">Or start with our Getting Started Guide</a>
+                    <a href="casino-directory.html" class="final-link">Browse the Casino Directory</a>
                 </div>
             </div>
         </section>
-
-        <section class="testimonials-section" aria-label="Member testimonials and success stories">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">What Our Members Say</h2>
-                    <p class="section-subtitle">Real results from real community members</p>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-                        <p class="testimonial-text">"I was skeptical at first, but after joining the Discord and following the daily collection guide, I'm now making $35-40 daily just from daily collection bonuses. The community is incredibly helpful!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">M</div>
-                            <div class="author-info">
-                                <div class="author-name">Mike T.</div>
-                                <div class="author-detail">Member since March 2026</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-                        <p class="testimonial-text">"The daily collection site database is a goldmine. I didn't know there were so many sites offering free daily rewards. Already cashed out over $500 this month!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">S</div>
-                            <div class="author-info">
-                                <div class="author-name">Sarah K.</div>
-                                <div class="author-detail">Member since January 2026</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-                        <p class="testimonial-text">"Started with eBay automation and now I'm running 3 different side hustles. The guides here are step-by-step and easy to follow. Best investment of my time!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">J</div>
-                            <div class="author-info">
-                                <div class="author-name">Jason R.</div>
-                                <div class="author-detail">Member since November 2024</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-                        <p class="testimonial-text">"The bonus collection software alone is worth it. What used to take me 2 hours now takes 15 minutes. More time for other hustles!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">A</div>
-                            <div class="author-info">
-                                <div class="author-name">Alex P.</div>
-                                <div class="author-detail">Member since February 2026</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 
     </main>
 
@@ -848,27 +808,70 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        function toggleMegaMenu(event) {
-            event.stopPropagation();
-            event.preventDefault();
-            document.getElementById('megaDropdown').classList.toggle('active');
+        function toggleDropdown(id, event) {
+            if (window.innerWidth <= 768) {
+                event.stopPropagation();
+                event.preventDefault();
+                document.getElementById(id).classList.toggle('active');
+            }
         }
 
         document.addEventListener('click', function(event) {
-            const megaDropdown = document.getElementById('megaDropdown');
             const navMenu = document.getElementById('navMenu');
-            if (!event.target.closest('.mega-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
-                megaDropdown.classList.remove('active');
+            if (!event.target.closest('.nav-dropdown') && !event.target.closest('.mobile-menu-toggle')) {
+                document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('active'));
                 if (window.innerWidth <= 768) navMenu.classList.remove('active');
             }
         });
 
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                document.getElementById('megaDropdown').classList.remove('active');
+                document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('active'));
                 document.getElementById('navMenu').classList.remove('active');
             }
         });
+        // Scroll fade-in animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+        // Count-up animation for stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const nums = entry.target.querySelectorAll('.stat-num[data-target]');
+                    nums.forEach(num => {
+                        const target = parseInt(num.dataset.target);
+                        const prefix = num.dataset.prefix || '';
+                        const suffix = num.dataset.suffix || '';
+                        const isDecimal = num.dataset.decimal === 'true';
+                        const duration = 1500;
+                        const start = performance.now();
+                        function update(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            let val = Math.round(eased * target);
+                            if (isDecimal) {
+                                val = (eased * target / 10).toFixed(1);
+                            }
+                            num.textContent = prefix + val + suffix;
+                            if (progress < 1) requestAnimationFrame(update);
+                        }
+                        requestAnimationFrame(update);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        const statsBar = document.querySelector('.stats-bar');
+        if (statsBar) statsObserver.observe(statsBar);
     </script>
 </body>
 </html>
