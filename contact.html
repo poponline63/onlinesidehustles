@@ -63,8 +63,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #F2F0EB;
-            color: #111;
+            background: var(--sky-deep);
+            color: var(--text-primary);
             font-size: 16px;
             line-height: 1.6;
             overflow-x: hidden;
@@ -161,7 +161,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #111;
+            color: var(--text-primary);
          display: flex; align-items: center; gap: 10px; }
 
         .nav-links {
@@ -178,7 +178,7 @@
         }
 
         .nav-link:hover {
-            color: #111;
+            color: var(--text-primary);
         }
 
         .nav-cta {
@@ -255,7 +255,7 @@
         }
 
         .mobile-menu a:hover {
-            color: #111;
+            color: var(--text-primary);
         }
 
         .mobile-menu .nav-cta {
@@ -305,7 +305,7 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 24px;
-            color: #111;
+            color: var(--text-primary);
         }
 
         .hero-subtitle {
@@ -370,7 +370,7 @@
         .card-title {
             font-size: 1.15rem;
             font-weight: 600;
-            color: #111;
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
@@ -451,7 +451,7 @@
         }
 
         .footer-col a:hover {
-            color: #111;
+            color: var(--text-primary);
         }
 
         .footer-bottom {
@@ -472,7 +472,7 @@
         }
 
         .footer-bottom a:hover {
-            color: #111;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
@@ -514,8 +514,8 @@
             display: inline-flex;
             align-items: center;
             padding: 14px 32px;
-            background: #fff;
-            color: #000;
+            background: var(--sky-deep);
+            color: var(--text-primary);
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 100px;
@@ -532,7 +532,7 @@
             align-items: center;
             padding: 14px 32px;
             background: transparent;
-            color: #111;
+            color: var(--text-primary);
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 100px;
@@ -589,7 +589,7 @@
             background: rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 10px;
-            color: #111;
+            color: var(--text-primary);
             font-size: 0.95rem;
             font-family: inherit;
             outline: none;
@@ -634,7 +634,7 @@
         .contact-info h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #111;
+            color: var(--text-primary);
             margin-bottom: 16px;
         }
 
@@ -651,38 +651,39 @@
             text-underline-offset: 2px;
         }
     </style>
+  <link rel="stylesheet" href="/forest-theme.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+<canvas id="starfield"></canvas>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><img src="/logo.png" alt="Online Sidehustles" class="nav-logo">ONLINE SIDEHUSTLES</a>
+    <div class="nav-links">
+      <a href="/getting-started" class="nav-link">Get Started</a>
+      <a href="/daily-login-guide" class="nav-link">Daily Guide</a>
+      <a href="/side-hustles" class="nav-link">Side Hustles</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/blog" class="nav-link">Blog</a>
+      <a href="https://discord.gg/crossroads" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/getting-started">Get Started</a>
+  <a href="/daily-login-guide">Daily Guide</a>
+  <a href="/side-hustles">Side Hustles</a>
+  <a href="/tools">Tools</a>
+  <a href="/blog">Blog</a>
+  <a href="https://discord.gg/crossroads" target="_blank" rel="noopener">Join Discord</a>
+</div>
 
     <!-- NAV -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="/" class="nav-brand"><img src="/logo.png" alt="Online Sidehustles" class="nav-logo">ONLINE SIDEHUSTLES</a>
-            <div class="nav-links">
-                <a href="/getting-started" class="nav-link">Get Started</a>
-                <a href="/sweepstakes" class="nav-link">Sweepstakes</a>
-                <a href="/side-hustles" class="nav-link">Side Hustles</a>
-                <a href="/tools" class="nav-link">Tools</a>
-                <a href="/blog" class="nav-link">Blog</a>
-                <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
-            </div>
-            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    
 
     <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="/getting-started">Get Started</a>
-        <a href="/sweepstakes">Sweepstakes</a>
-        <a href="/side-hustles">Side Hustles</a>
-        <a href="/tools">Tools</a>
-        <a href="/blog">Blog</a>
-        <a href="https://discord.com/invite/onlinesidehustles" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
-    </div>
+    
 
 
     <section class="hero">
@@ -713,8 +714,8 @@
             </div>
             <div class="contact-info fade-in fade-in-delay-1">
                 <h3>Other Ways to Reach Us</h3>
-                <p><strong style="color: #111;">Discord</strong><br>The fastest way to get a response. Join our community and ask in any channel.<br><a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Join Discord Server</a></p>
-                <p><strong style="color: #111;">Email</strong><br>For partnerships, press, and business inquiries.<br><a href="mailto:crossroads@onlinesidehustles.info">crossroads@onlinesidehustles.info</a></p>
+                <p><strong style="color: var(--text-primary);">Discord</strong><br>The fastest way to get a response. Join our community and ask in any channel.<br><a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Join Discord Server</a></p>
+                <p><strong style="color: var(--text-primary);">Email</strong><br>For partnerships, press, and business inquiries.<br><a href="mailto:crossroads@onlinesidehustles.info">crossroads@onlinesidehustles.info</a></p>
                 <h3>Common Questions</h3>
                 <p>Before reaching out, check our <a href="faq.html">FAQ page</a> -- most common questions are answered there.</p>
             </div>
@@ -722,37 +723,20 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                &copy; 2026 Online Sidehustles<br>
-                Your trusted partner in building multiple income streams through proven online side hustles.
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Guides</p>
-                <a href="/getting-started">Getting Started</a>
-                <a href="/daily-login-guide">Daily Login Guide</a>
-                <a href="/guides">Complete Guide List</a>
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Resources</p>
-                <a href="/casino-directory">Casino Directory</a>
-                <a href="/income-calculator">Income Calculator</a>
-                <a href="/tools">Tools</a>
-            </div>
-            <div class="footer-col">
-                <p class="footer-col-title">Legal</p>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms</a>
-                <a href="/affiliate-disclosure">Affiliate Disclosure</a>
-                <a href="/contact">Contact</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 Online Sidehustles. All rights reserved.</span>
-            <a href="https://discord.com/invite/onlinesidehustles" target="_blank" rel="noopener">Discord</a>
-        </div>
-    </footer>
+    <footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div><div class="footer-brand">🌲 ONLINE SIDEHUSTLES</div><p class="footer-tagline">Free guides, community tips, and automation tools for earning from sweepstakes casinos and daily login sites.</p></div>
+      <div class="footer-col"><h4>Guides</h4><a href="/daily-login-guide">Daily Login Guide</a><a href="/getting-started">Getting Started</a><a href="/side-hustles">Side Hustles</a><a href="/blog">Blog</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/tools">Tools</a><a href="/sweepstakes">Sweepstakes</a><a href="/casino-directory">Casino Directory</a><a href="/faq">FAQ</a></div>
+      <div class="footer-col"><h4>Community</h4><a href="https://discord.gg/crossroads" target="_blank" rel="noopener">Discord</a><a href="https://onlinesidehustles.info">Website</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Online Sidehustles · All rights reserved</span>
+      <div class="footer-links"><a href="/privacy-policy">Privacy</a><a href="/terms">Terms</a><a href="/affiliate-disclosure">Disclosure</a></div>
+    </div>
+  </div>
+</footer>
 
     <script>
         // Nav scroll effect
@@ -796,5 +780,24 @@
             }
         }
     </script>
+
+<script>
+(function(){
+  var c=document.getElementById('starfield');
+  if(!c)return;
+  var ctx=c.getContext('2d'),stars=[],W,H,frame=0;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function init(){stars=[];var n=Math.floor(W*H/3000);for(var i=0;i<n;i++){var r=Math.random();stars.push({x:Math.random()*W,y:Math.random()*H*0.75,r:Math.random()*1.4+0.15,a:Math.random()*0.85+0.15,s:Math.random()*0.004+0.001,p:Math.random()*Math.PI*2,c:r>0.88?'#c8e6ff':r>0.75?'#ffe8c0':'#ffffff'});}}
+  function draw(){ctx.clearRect(0,0,W,H);frame++;stars.forEach(function(s){var t=0.45+0.55*Math.sin(frame*s.s+s.p);ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.c;ctx.globalAlpha=s.a*t;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}
+  resize();init();draw();
+  window.addEventListener('resize',function(){resize();init();});
+})();
+var faders=document.querySelectorAll('.fade-in');
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+faders.forEach(function(f){io.observe(f);});
+var ham=document.getElementById('hamburger'),menu=document.getElementById('mobileMenu');
+if(ham&&menu){ham.addEventListener('click',function(){menu.classList.toggle('open');});}
+</script>
+
 </body>
 </html>
