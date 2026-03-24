@@ -140,12 +140,12 @@ body {
   background: rgba(5, 8, 16, 0.97);
 }
 .content-area .container {
-  background: rgba(10, 20, 14, 0.98);
-  border: 1px solid rgba(64, 145, 108, 0.3);
+  background: rgba(15, 30, 22, 1);
+  border: 1px solid rgba(64, 145, 108, 0.35);
   border-radius: 18px;
   padding: 2.5rem;
   margin-top: 0;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(64, 145, 108, 0.08);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), inset 0 0 80px rgba(64, 145, 108, 0.03);
 }
 .section .container {
   background: rgba(10, 20, 14, 0.95);
@@ -188,8 +188,8 @@ body {
 .phase-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
 .step-list { display: flex; flex-direction: column; gap: 1.2rem; }
 .step {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: rgba(18, 38, 26, 0.95);
+  border: 1px solid rgba(64, 145, 108, 0.25);
   border-radius: 14px;
   padding: 1.4rem;
   display: flex;
@@ -213,8 +213,8 @@ body {
 .tag-free { background: rgba(82,183,136,0.15); color: var(--leaf-accent); }
 .tag-optional { background: rgba(240,192,64,0.15); color: var(--gold-accent); }
 .earnings-box {
-  background: rgba(82,183,136,0.06);
-  border: 1px solid rgba(82,183,136,0.2);
+  background: rgba(20, 45, 30, 0.9);
+  border: 1px solid rgba(82,183,136,0.3);
   border-radius: 14px;
   padding: 1.4rem;
   margin-top: 1.2rem;
