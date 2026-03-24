@@ -835,6 +835,37 @@ a, button {
 
  
 
+/* === Dark Forest Overrides === */
+/* Table row dark backing for readability */
+tbody tr {
+  background: rgba(10, 20, 14, 0.85);
+}
+tbody tr:nth-child(even) {
+  background: rgba(10, 20, 14, 0.92);
+}
+tbody tr:hover {
+  background: linear-gradient(90deg, rgba(76, 175, 80, 0.15), rgba(10, 20, 14, 0.9)) !important;
+}
+/* Fix text colors for dark background */
+.casino-name { color: #e0e0e0 !important; }
+.daily-amount { color: #FFD700 !important; }
+td { color: rgba(220, 220, 220, 0.85); }
+.notes-cell { color: rgba(220, 220, 220, 0.8); }
+.welcome-cell { color: rgba(220, 220, 220, 0.75); }
+th { color: rgba(180, 200, 180, 0.8) !important; }
+thead { background: rgba(10, 20, 14, 0.95) !important; }
+.tier-header { background: rgba(10, 20, 14, 0.8); }
+.tier-section { background: rgba(10, 20, 14, 0.7); border-color: rgba(76, 175, 80, 0.25); }
+.tier-desc { color: rgba(200, 200, 200, 0.7); }
+.tier-count { color: rgba(220, 220, 220, 0.9); background: rgba(0,0,0,0.3); border-color: rgba(76,175,80,0.3); }
+/* Hero text fixes */
+.hero-subtitle { color: rgba(200, 220, 200, 0.75) !important; }
+.stat-label { color: rgba(200, 220, 200, 0.7) !important; }
+.search-box input { color: #e0e0e0; }
+.search-box input::placeholder { color: rgba(200, 200, 200, 0.4); }
+/* Transparency/spreadsheet notice fixes */
+.hero-section p[style*="color: rgba(0, 0, 0"] { color: rgba(200, 220, 200, 0.8) !important; }
+.hero-section strong[style*="color: #4CAF50"] { color: #4CAF50 !important; }
  </style>
 
 </head>
