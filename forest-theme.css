@@ -11,8 +11,8 @@
   --leaf-bright: #74c69d;
   --gold-accent: #f0c040;
   --text-primary: #e8f0e9;
-  --text-secondary: #a8c5b0;
-  --text-muted: #6b9070;
+  --text-secondary: #c8d8cc;
+  --text-muted: #8aad90;
   --card-bg: rgba(9,21,12,0.88);
   --card-border: rgba(64,145,108,0.22);
   --nav-bg: rgba(5,8,16,0.95);
@@ -69,7 +69,7 @@ footer { position:relative; z-index:5; background:var(--sky-deep); border-top:1p
 .footer-links { display:flex; gap:1.5rem; }
 .footer-links a { color:var(--text-muted); text-decoration:none; font-size:0.8rem; transition:color 0.2s; }
 .footer-links a:hover { color:var(--leaf-accent); }
-.fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.fade-in { opacity:1; transform:translateY(0); }
 .fade-in.visible { opacity:1; transform:translateY(0); }
 .fade-in-delay-1 { transition-delay:0.15s; }
 .fade-in-delay-2 { transition-delay:0.3s; }
