@@ -13,8 +13,8 @@
   --gold-accent: #f0c040;
   --moon-color: #e8f4fd;
   --text-primary: #e8f0e9;
-  --text-secondary: #a8c5b0;
-  --text-muted: #6b9070;
+  --text-secondary: #c8d8cc;
+  --text-muted: #8aad90;
   --card-bg: rgba(9, 21, 12, 0.88);
   --card-border: rgba(64, 145, 108, 0.22);
   --nav-bg: rgba(5, 8, 16, 0.95);
@@ -587,9 +587,346 @@ footer {
 .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
 .footer-links a:hover { color: var(--leaf-accent); }
 
+/* === REVIEW PAGE STYLES === */
+.page-header {
+  text-align: center;
+  padding: 2rem 0 1.5rem;
+}
+.page-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  color: #f0f8f2;
+  margin-bottom: 0.5rem;
+}
+.page-header h1 .highlight {
+  color: var(--leaf-accent);
+}
+
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+.breadcrumb-list {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.breadcrumb-list a {
+  color: var(--leaf-accent);
+  text-decoration: none;
+}
+.breadcrumb-list a:hover {
+  text-decoration: underline;
+}
+.breadcrumb-sep {
+  margin: 0 0.4rem;
+  color: var(--text-muted);
+}
+
+/* Verdict Card */
+.verdict-card {
+  background: rgba(18, 38, 26, 0.95);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.verdict-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.verdict-tier {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+.verdict-summary {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+.verdict-score {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--leaf-accent);
+  text-shadow: 0 0 20px rgba(82, 183, 136, 0.3);
+}
+
+/* Quick Facts Grid */
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.fact-item {
+  background: rgba(9, 21, 12, 0.9);
+  border: 1px solid rgba(64, 145, 108, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+.fact-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+.fact-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f0f8f2;
+}
+
+/* Review Blocks */
+.review-block {
+  margin-bottom: 2rem;
+}
+.review-block h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #f0f8f2;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(64, 145, 108, 0.15);
+}
+.review-block p {
+  color: var(--text-secondary);
+  line-height: 1.78;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Pros & Cons */
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.pros-card, .cons-card {
+  background: rgba(9, 21, 12, 0.9);
+  border-radius: 14px;
+  padding: 1.4rem;
+}
+.pros-card {
+  border: 1px solid rgba(82, 183, 136, 0.3);
+}
+.cons-card {
+  border: 1px solid rgba(220, 80, 80, 0.25);
+}
+.pros-card h3, .cons-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f0f8f2;
+  margin-bottom: 0.8rem;
+}
+.pros-card ul, .cons-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pros-card li, .cons-card li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  line-height: 1.6;
+}
+.check {
+  color: var(--leaf-accent);
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+.cross {
+  color: #dc5050;
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+/* Rating Grid */
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+.rating-item {
+  background: rgba(9, 21, 12, 0.9);
+  border: 1px solid rgba(64, 145, 108, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+.rating-item.overall {
+  border-color: rgba(82, 183, 136, 0.4);
+  background: rgba(18, 38, 26, 0.95);
+}
+.rating-item-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.rating-item-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--leaf-accent);
+}
+
+/* States Grid */
+.states-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.state-tag {
+  background: rgba(220, 80, 80, 0.12);
+  border: 1px solid rgba(220, 80, 80, 0.25);
+  color: #e88;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* CTA Block */
+.cta-block {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #2d6a4f, #52b788);
+  color: white !important;
+  text-decoration: none;
+  padding: 0.95rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 0 35px rgba(82, 183, 136, 0.4);
+  transition: all 0.3s;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 55px rgba(82, 183, 136, 0.6);
+}
+.cta-note {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 0.8rem;
+}
+
+/* FAQ */
+.faq-item {
+  background: rgba(9, 21, 12, 0.9);
+  border: 1px solid rgba(64, 145, 108, 0.15);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.faq-question {
+  font-weight: 700;
+  color: #f0f8f2;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.faq-answer {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Related Links */
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+.related-link {
+  background: rgba(82, 183, 136, 0.08);
+  border: 1px solid rgba(82, 183, 136, 0.2);
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  color: var(--leaf-accent) !important;
+  text-decoration: none !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.related-link:hover {
+  background: rgba(82, 183, 136, 0.15);
+  border-color: rgba(82, 183, 136, 0.4);
+}
+
+/* Blog Filters */
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.filter-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 0.45rem 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(82, 183, 136, 0.12);
+  border-color: var(--leaf-accent);
+  color: var(--leaf-accent);
+}
+
+/* Blog card extras */
+.card-arrow {
+  float: right;
+  color: var(--leaf-accent);
+  font-size: 1.2rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.card:hover .card-arrow { opacity: 1; }
+.card-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--leaf-accent);
+  margin-bottom: 0.5rem;
+}
+.card-earning {
+  display: inline-block;
+  color: var(--leaf-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+
 /* === ANIMATIONS === */
-.fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.fade-in { opacity: 1; transform: translateY(0); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .pros-cons { grid-template-columns: 1fr; }
+  .quick-facts { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
