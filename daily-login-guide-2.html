@@ -521,6 +521,119 @@ function esc(str) {
 }
 
 // Build table
+// Signup links map (casino name → referral URL)
+const SIGNUP_LINKS = {
+  "Stake.us": "https://affiliates.routy.app/route/91253?affId=3353&ts=5005447",
+  "WOW Vegas": "https://www.wowvegas.com/?raf=4166140",
+  "Crown Coins": "https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends",
+  "Realprize": "https://affiliates.routy.app/route/91231?affId=3353&ts=5005447",
+  "Lonestar": "https://affiliates.routy.app/route/114339?affId=3353&ts=5005447",
+  "LuckyLandSlots": "https://luckylandslots.com/",
+  "GoldTreasureCasino": "https://goldtreasurecasino.com/?referrer=AymNdsGB",
+  "McLuck": "https://affiliates.routy.app/route/91184?affId=3353&ts=5005447",
+  "MyPrize": "https://affiliates.routy.app/route/91204?affId=3353&ts=5005447",
+  "Chumba Casino": "https://login.chumbacasino.com/register",
+  "Moozi": "https://moozi.com/signup?referral_code=1483842358",
+  "LuckyBitsVegas": "https://affiliates.routy.app/route/114338?affId=3353&ts=5005447",
+  "PulszBingo": "https://www.pulszbingo.com/home?invited_by=u358hj",
+  "Pulsz": "https://affiliates.routy.app/route/91228?affId=3353&ts=5005447",
+  "Sportzino": "https://track.sportzino.fun/click?o=2&a=101612&c=18",
+  "Zula": "https://track.zulacasino.fun/click?o=3&a=101612&c=17",
+  "YayCasino .com": "https://track.yaycasino.fun/click?o=5&a=101612&c=28",
+  "SpinSaga": "https://play.spinsagacasino.com/?ref=29904&campaign=referFriend",
+  "Rolla": "https://affiliates.routy.app/route/114425?affId=3353&ts=5005447",
+  "Casino.Click": "https://affiliates.routy.app/route/91131?affId=3353&ts=5005447",
+  "NioPlay": "http://nioplay.net/?referralcode=89112214-2896-4529-907b-8fd7e7821635",
+  "Global Poker": "https://play.globalpoker.com",
+  "Stackr": "https://www.stackrcasino.com/?referralcode=bbde20f1-7e87-497b-862b-c49b3f11024c",
+  "SpinPals": "https://www.spinpals.com/?referralcode=50405075-7105-4b67-b399-a16f9599a795",
+  "GoldRushCity": "https://www.goldrushcity.com/",
+  "LuckyLandCasino": "https://luckylandcasino.com/",
+  "Sixty6": "https://affiliates.routy.app/route/114424?affId=3353&ts=5005447",
+  "Legendz": "https://affiliates.routy.app/route/91174?affId=3353&ts=5005447",
+  "RubySweeps": "https://play.rubysweeps.com/",
+  "RichSweeps": "https://richsweeps.com/?ref=r_poponline63",
+  "Golden Hearts Games": "https://www.goldenheartsgames.com/",
+  "SweepNext": "https://sweepnext.com/?c=65707_bRrgq9N8",
+  "ReBet": "https://rebet.page.link/2Rmytf3dtYSbor9m9",
+  "Fliff": "https://apps.apple.com/us/app/fliff-social-sports-picks/id1489145500?mt=8",
+  "Sidepot": "https://sidepot.us/home",
+  "MoonSpin": "https://moonspin.us/",
+  "SpeedSweeps": "https://speedsweeps.com/?ref=r_poponline63",
+  "Lavish Luck": "https://affiliates.routy.app/route/114340?affId=3353&ts=5005447",
+  "American Luck": "https://americanluck.com/signup/90a4a8d4-856c-46e8-b853-26c91db2051e",
+  "Shuffle .us": "https://shuffle.us/?r=5b9js7cl9r",
+  "PeakPlay": "https://tracking.rubystone.co/C.ashx?btag=a_75b_26c_&affid=39&siteid=75&adid=26&c=",
+  "Jefebet": "https://www.jefebet.com/",
+  "Rolling Riches": "https://affiliates.routy.app/route/91243?affId=3353&ts=5005447",
+  "Fortune Coins": "https://track.fortunecoins.fun/click?o=1&a=101612&c=16",
+  "Clubs Poker": "https://affiliates.routy.app/route/91132?affId=3353&ts=5005447",
+  "High5Casino": "https://affiliates.routy.app/route/83977?affId=3353&ts=5004204",
+  "Modo": "https://modo.us/?referralCode=AWJF69",
+  "Spree": "https://affiliates.routy.app/route/95239?affId=3353&ts=5005447",
+  "LunaLandCasino": "https://lunalandcasino.com/?inviter=9d8611a0-3ce7-5f54-a691-261bb2e300e2&utm_source=referral&utm_medium=inviteafriend",
+  "GetZoot": "https://getzoot.us/?referralCode=ZOOTwithUSER75787",
+  "LuckyStake": "https://luckystake.com/?c=64471_2GUt5Hff",
+  "Hello Millions": "https://affiliates.routy.app/route/91164?affId=3353&ts=5005447",
+  "Ace .com": "https://www.ace.com/lp?r=256fce50%2F25500653",
+  "NoLimitCoins": "https://nolimitcoins.com/lobby/?invited_by=0MB973",
+  "ChipNWin": "https://chipnwin.com/?earn=6bPxVnUp",
+  "FortuneWheelz": "https://fortunewheelz.com/lobby/?invited_by=97XS6G",
+  "FunzCity": "http://funzcity.com/?invited_by=Z1Y2ZX",
+  "MegaFrenzy": "https://affiliates.routy.app/route/114341?affId=3353&ts=5005447",
+  "TaoFortune": "https://taofortune.com/lobby/?invited_by=N9YAYZ",
+  "FunRize": "https://funzcity.com/lobby/?invited_by=Z1Y2ZX",
+  "Chanced.com": "https://www.chanced.com/c/q9xsr3",
+  "SpinQuest": "http://spinquest.com/?u=WXSBTAN",
+  "Jackpota": "https://www.sweepstakescasino.com/go/geo/Jackpota/socialcasino?utm_campaign=forum",
+  "SpinBlitz": "https://affiliates.routy.app/route/114426?affId=3353&ts=5005447",
+  "Playfame": "https://affiliates.routy.app/route/91215?affId=3353&ts=5005447",
+  "MegaBonanza": "https://affiliates.routy.app/route/91194?affId=3353&ts=5005447",
+  "AcornFun": "https://game.acornfun.com/#/dashboard/welcome?channel=Refer&campaign=Refer&invite_code=EFRH1XB1",
+  "Baba Casino": "https://play.babacasino.com/#/?referral_id=789d7759b1186d217055694a509bea3f&inv_referral=true&fb_source=invite",
+  "Dara Casino": "https://daracasino.com/signup?refferalCode=lrl7Kl4GhU",
+  "JackpotRabbit": "https://jackpotrabbit.com/?invited_by=8ZGOFC",
+  "The Money Factory": "https://affiliates.routy.app/route/91263?affId=3353&ts=5005447",
+  "Sheeshcasino": "https://sheeshcasino.com/?ref=m2zkndr",
+  "GoodVibesCasino": "https://goodvibescasino.com/?r=T5-kzApSyLKE",
+  "Wild World Casino": "https://wildworldcasino.com/ref/riley630326",
+  "Spinfinite": "https://www.spinfinite.com/welcome/#",
+  "Luckyhands": "https://luckyhands.com/sign-up?code=0f6adf5b-61c1-47c4-b19d-ed570fcb6263",
+  "SorceryReels": "https://game.sorceryreels.com/?raf=A0Z49X7A",
+  "Smiles Casino": "https://smilescasino.com/",
+  "Cluck": "https://playoncluck.com/tfc09c765",
+  "Lucky Slots .us": "https://luckyslots.us/?raf=aG5NSE5FalVwN1U2Z0xzbW9VcDc=",
+  "Card Crush": "http://www.cardcrush.com/",
+  "SpinDoo": "https://www.spindoo.us/?r=28402933",
+  "SweepsRoyal": "https://sweepsroyal.com/?ref=r_poponline63",
+  "DimeSweeps": "https://dimesweeps.com/?ref=r_poponline63",
+  "ScarletSands": "https://affiliates.routy.app/route/114302?affId=3353&ts=5005447",
+  "Cazino": "https://affiliates.routy.app/route/114303?affId=3353&ts=5005447",
+  "Sweepshark": "https://affiliates.routy.app/route/114301?affId=3353&ts=5005447",
+  "CrashDuel": "https://crashduel.com/games?source=website&referralId=RN34Z5&type=create-account",
+  "Sweet Sweeps": "https://sweetsweeps.com/",
+  "BangCoins": "https://bangcoins.com/",
+  "Bankrolla": "https://bankrolla.com/",
+  "MegaSpinz": "https://megaspinz.com/",
+  "Zonko": "https://zonko.com/",
+  "LuckLake": "https://lucklake.com/",
+  "Sweepico": "https://sweepico.com/",
+  "EpicSweep": "https://epicsweep.com/",
+  "SweepJungle": "https://sweepjungle.com/"
+};
+
+function getSignupLink(casinoName) {
+  if (!casinoName) return null;
+  const name = casinoName.trim();
+  if (SIGNUP_LINKS[name]) return SIGNUP_LINKS[name];
+  // Try case-insensitive match
+  const lower = name.toLowerCase();
+  for (const [k, v] of Object.entries(SIGNUP_LINKS)) {
+    if (k.toLowerCase() === lower) return v;
+  }
+  return null;
+}
+
 function buildTable(rows) {
   const thead = document.getElementById('tableHead');
   const tbody = document.getElementById('tableBody');
@@ -604,7 +717,15 @@ function buildTable(rows) {
       const td = document.createElement('td');
       const val = row[c] || '';
 
-      if (c === 3) {
+      if (c === 0 && col0.toLowerCase().includes('signup')) {
+        // Signup column — make it a link using casino name from col1
+        const link = getSignupLink(col1);
+        if (link) {
+          td.innerHTML = '<a href="' + esc(link) + '" target="_blank" rel="noopener" style="color:#52b788;font-weight:600;">Sign Up</a>';
+        } else {
+          td.textContent = val;
+        }
+      } else if (c === 3) {
         // Notes column — truncatable
         td.className = 'notes-cell';
         const inner = document.createElement('div');
