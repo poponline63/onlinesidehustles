@@ -52,11 +52,17 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   }
   .sheet-wrapper iframe {
-    width: 100%;
-    height: calc(100vh - 220px);
-    min-height: 600px;
+    width: 166.67%;
+    height: calc((100vh - 220px) * 1.6667);
+    min-height: 1000px;
     border: none;
     display: block;
+    transform: scale(0.6);
+    transform-origin: top left;
+  }
+  .sheet-wrapper {
+    height: calc((100vh - 220px));
+    min-height: 600px;
   }
   .guide-stats {
     display: flex;
