@@ -830,6 +830,27 @@ a, button {
 
  
 /* === Dark Forest Overrides === */
+/* Main content dark backing */
+.page-wrapper {
+  background: rgba(6, 14, 9, 0.82);
+  border: 1px solid rgba(64, 145, 108, 0.3);
+  border-radius: 18px;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.6), inset 0 0 120px rgba(82, 183, 136, 0.03);
+  backdrop-filter: blur(6px) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) saturate(1.2);
+}
+.hero-section {
+  background: rgba(6, 14, 9, 0.75);
+  border: 1px solid rgba(64, 145, 108, 0.25);
+  border-radius: 18px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 1.5rem;
+}
+/* Fix all dark-on-dark text */
 tbody tr { background: rgba(10, 20, 14, 0.85); }
 tbody tr:nth-child(even) { background: rgba(10, 20, 14, 0.92); }
 tbody tr:hover { background: linear-gradient(90deg, rgba(76, 175, 80, 0.15), rgba(10, 20, 14, 0.9)) !important; }
@@ -837,6 +858,7 @@ tbody tr:hover { background: linear-gradient(90deg, rgba(76, 175, 80, 0.15), rgb
 .daily-amount { color: #FFD700 !important; }
 td { color: rgba(220, 220, 220, 0.85); }
 .notes-cell { color: rgba(220, 220, 220, 0.8); }
+.notes-cell strong { color: rgba(240, 240, 240, 0.95); }
 .welcome-cell { color: rgba(220, 220, 220, 0.75); }
 th { color: rgba(180, 200, 180, 0.8) !important; }
 thead { background: rgba(10, 20, 14, 0.95) !important; }
@@ -846,8 +868,18 @@ thead { background: rgba(10, 20, 14, 0.95) !important; }
 .tier-count { color: rgba(220, 220, 220, 0.9); background: rgba(0,0,0,0.3); border-color: rgba(76,175,80,0.3); }
 .hero-subtitle { color: rgba(200, 220, 200, 0.75) !important; }
 .stat-label { color: rgba(200, 220, 200, 0.7) !important; }
-.search-box input { color: #e0e0e0; }
+.stat-item { color: rgba(220, 220, 220, 0.9); }
+.stats-bar { background: rgba(10, 20, 14, 0.7); border-color: rgba(76, 175, 80, 0.3); }
+.search-box input { color: #e0e0e0; background: rgba(10, 20, 14, 0.6) !important; }
 .search-box input::placeholder { color: rgba(200, 200, 200, 0.4); }
+.feature-filter-btn { color: #FFD700; }
+.tier-filter-btn { color: rgba(220, 220, 220, 0.9); }
+/* Fix inline style dark-on-dark text in hero notices */
+.hero-section p, .hero-section div p { color: rgba(200, 220, 200, 0.8) !important; }
+.hero-section strong { color: rgba(240, 240, 240, 0.95) !important; }
+.hero-section a { color: #FFD700 !important; }
+.featured-casino p { color: rgba(200, 220, 200, 0.8) !important; }
+.featured-casino strong { color: rgba(240, 240, 240, 0.95) !important; }
 
 /* Hide duplicate slide-menu nav (by ID only) */
 #slideMenu, #menuOverlay { display: none !important; }
