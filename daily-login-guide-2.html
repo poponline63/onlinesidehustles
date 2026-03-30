@@ -330,6 +330,7 @@
     <!-- Action Buttons -->
     <div class="guide-actions">
       <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=2061760812#gid=2061760812" target="_blank" rel="noopener" class="btn-sheet">📊 Open Full Spreadsheet</a>
+      <a href="/gameplay-sheet" class="btn-sheet-outline">🎰 Gameplay Sheet</a>
       <button onclick="loadData()" class="btn-sheet-outline">🔄 Refresh Data</button>
     </div>
 
@@ -506,7 +507,9 @@ const COL_HEADERS = [
 ];
 // RTP game columns will be taken from the first tier separator row dynamically
 let rtpHeaders = [];
-const TAIL_HEADERS = ['Other RTP Games', 'Daily Links', 'Rules', 'Parent Company', 'Canada', 'Restricted States'];
+const TAIL_HEADERS = ['Daily Links', 'Rules', 'Parent Company', 'Canada', 'Restricted States'];
+// Columns to skip in main table: RTP game cols (6-11) and Other RTP Games (12)
+const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12]);
 
 // Make links clickable
 function linkify(text) {
@@ -669,18 +672,20 @@ function buildTable(rows) {
   // Pad RTP headers
   while (rtpHeaders.length < 6) rtpHeaders.push('RTP ' + (rtpHeaders.length + 1));
 
-  // Build header
-  const allHeaders = [...COL_HEADERS, ...rtpHeaders, ...TAIL_HEADERS];
+  // Build header (skip RTP game columns)
+  const allHeadersFull = [...COL_HEADERS, ...rtpHeaders, ...['Other RTP Games'], ...TAIL_HEADERS];
+  const displayHeaders = [...COL_HEADERS, ...TAIL_HEADERS];
   const headerRow = document.createElement('tr');
-  allHeaders.forEach(h => {
+  displayHeaders.forEach(h => {
     const th = document.createElement('th');
     th.textContent = h;
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
 
-  // Total columns
-  const totalCols = allHeaders.length;
+  // Total columns in CSV data
+  const totalCols = allHeadersFull.length;
+  const displayCols = displayHeaders.length;
   let currentTier = 'tier-new'; // first batch before any tier marker = New Websites
 
   // Process data rows
@@ -698,7 +703,7 @@ function buildTable(rows) {
         const tr = document.createElement('tr');
         tr.className = 'tier-row ' + tierClass;
         const td = document.createElement('td');
-        td.colSpan = totalCols;
+        td.colSpan = displayCols;
         td.textContent = col1;
         tr.appendChild(td);
         tbody.appendChild(tr);
@@ -714,6 +719,9 @@ function buildTable(rows) {
     tr.className = 'casino-row';
 
     for (let c = 0; c < totalCols; c++) {
+      // Skip RTP game columns and Other RTP Games
+      if (SKIP_COLS.has(c)) continue;
+
       const td = document.createElement('td');
       const val = row[c] || '';
 
