@@ -1283,31 +1283,7 @@ var statObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.5 });
 if (statNumbers[0]) statObserver.observe(statNumbers[0].parentElement.parentElement);
 
-// === MOUSE PARALLAX ON HERO (desktop only) ===
-(function() {
-  if (window.innerWidth < 769) return;
-  var moon = document.getElementById('hero-moon');
-  var trees = document.getElementById('hero-trees');
-  var heroText = document.getElementById('hero-text');
-  var hero = document.getElementById('hero');
-  if (!hero) return;
-
-  hero.addEventListener('mousemove', function(e) {
-    var rect = hero.getBoundingClientRect();
-    var x = (e.clientX - rect.left) / rect.width - 0.5;
-    var y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    if (moon) moon.style.transform = 'translate(' + (x * -25) + 'px, ' + (y * -18) + 'px)';
-    if (trees) trees.style.transform = 'translate(' + (x * 10) + 'px, ' + (y * 5) + 'px)';
-    if (heroText) heroText.style.transform = 'translate(' + (x * -8) + 'px, ' + (y * -6) + 'px)';
-  });
-
-  hero.addEventListener('mouseleave', function() {
-    if (moon) moon.style.transform = '';
-    if (trees) trees.style.transform = '';
-    if (heroText) heroText.style.transform = '';
-  });
-})();
+// Mouse parallax removed per owner request
 
 // === TYPING EFFECT ON HERO SUBTITLE ===
 (function() {
