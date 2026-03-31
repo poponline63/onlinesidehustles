@@ -124,32 +124,55 @@ body, .page-wrapper { background: #000000 !important; }
   margin-bottom: 1.8rem;
 }
 
-/* Animated coin in hero */
-.casino-coin {
-  width: 90px; height: 90px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 35% 30%, #ffe066, #f0c040, #b8860b, #8b6508);
-  box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2), inset 0 0 20px rgba(255,255,200,0.2);
+/* Animated vault emblem in hero */
+.vault-emblem {
+  width: 110px; height: 110px;
   position: relative;
   margin: 0 auto 2rem;
-  animation: coinSpin 6s ease-in-out infinite;
   flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.2rem; font-weight: 900; color: rgba(100,70,0,0.8);
-  overflow: hidden;
 }
-.casino-coin::before {
-  content: '';
-  position: absolute;
-  top: 15%; left: 15%;
-  width: 70%; height: 70%;
+.vault-ring-outer {
+  position: absolute; inset: 0;
   border-radius: 50%;
-  border: 2px solid rgba(255,230,100,0.4);
+  border: 3px solid rgba(240,192,64,0.5);
+  border-top-color: #f0c040;
+  border-right-color: rgba(240,192,64,0.2);
+  animation: vaultSpinCW 4s linear infinite;
+  box-shadow: 0 0 14px rgba(240,192,64,0.3);
 }
-@keyframes coinSpin {
-  0%,100% { box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2); transform: rotateY(0deg) scale(1); }
-  25%      { box-shadow: 0 0 50px rgba(240,192,64,0.8), 0 0 100px rgba(240,192,64,0.35); transform: rotateY(180deg) scale(1.05); }
-  50%      { box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2); transform: rotateY(360deg) scale(1); }
+.vault-ring-mid {
+  position: absolute; inset: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(240,192,64,0.35);
+  border-bottom-color: #f0c040;
+  border-left-color: rgba(240,192,64,0.15);
+  animation: vaultSpinCCW 3s linear infinite;
+}
+.vault-ring-inner {
+  position: absolute; inset: 24px;
+  border-radius: 50%;
+  border: 2px dashed rgba(240,192,64,0.3);
+  animation: vaultSpinCW 8s linear infinite;
+}
+.vault-core {
+  position: absolute; inset: 34px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 35%, rgba(240,192,64,0.15), rgba(10,8,0,0.9));
+  border: 1px solid rgba(240,192,64,0.4);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(240,192,64,0.25), inset 0 0 15px rgba(240,192,64,0.1);
+}
+.vault-dollar {
+  font-size: 1.1rem; font-weight: 900;
+  color: #f0c040;
+  text-shadow: 0 0 10px rgba(240,192,64,0.8);
+  animation: vaultPulse 2s ease-in-out infinite;
+}
+@keyframes vaultSpinCW  { to { transform: rotate(360deg); } }
+@keyframes vaultSpinCCW { to { transform: rotate(-360deg); } }
+@keyframes vaultPulse {
+  0%,100% { opacity:0.8; text-shadow: 0 0 10px rgba(240,192,64,0.6); }
+  50%     { opacity:1;   text-shadow: 0 0 20px rgba(240,192,64,1), 0 0 40px rgba(240,192,64,0.5); }
 }
 
 /* Stats grid in hero */
@@ -409,7 +432,12 @@ body, .page-wrapper { background: #000000 !important; }
 
     <!-- Hero Section -->
     <div class="dlg-hero dlg-fade">
-      <div class="casino-coin">$</div>
+      <div class="vault-emblem">
+        <div class="vault-ring-outer"></div>
+        <div class="vault-ring-mid"></div>
+        <div class="vault-ring-inner"></div>
+        <div class="vault-core"><span class="vault-dollar">$</span></div>
+      </div>
       <div class="dlg-badge">DAILY LOGIN GUIDE &middot; SWEEPSTAKES VAULT</div>
       <h1><span class="gold-text">Daily Login</span> Guide</h1>
       <p class="dlg-hero-desc">Live data pulled from our community spreadsheet — 80+ sweepstakes casinos ranked by tier, daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
@@ -681,9 +709,9 @@ const COL_HEADERS = [
 ];
 // RTP game columns will be taken from the first tier separator row dynamically
 let rtpHeaders = [];
-const TAIL_HEADERS = ['Daily Links', 'Rules', 'Parent Company', 'Canada', 'Restricted States'];
-// Columns to skip in main table: RTP game cols (6-11) and Other RTP Games (12)
-const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12]);
+const TAIL_HEADERS = ['Parent Company', 'Canada', 'Restricted States'];
+// Columns to skip: RTP game cols (6-11), Other RTP Games (12), Daily Links (13), Rules (14)
+const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12, 13, 14]);
 
 // Make links clickable
 function linkify(text) {
@@ -897,7 +925,9 @@ function buildTable(rows) {
       if (SKIP_COLS.has(c)) continue;
 
       const td = document.createElement('td');
-      const val = row[c] || '';
+      let val = row[c] || '';
+      // Strip trailing apostrophe from Daily Bonuses column
+      if (c === 2) val = val.replace(/'$/, '');
 
       if (c === 0 && col0.toLowerCase().includes('signup')) {
         // Signup column — make it a link using casino name from col1
