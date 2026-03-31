@@ -605,9 +605,155 @@ footer {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
+
+/* === SCROLL PROGRESS BAR === */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--leaf-green), var(--leaf-accent), var(--gold-accent));
+  z-index: 10000;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(82,183,136,0.6);
+}
+
+/* === AURORA BOREALIS === */
+.aurora-container {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 70%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.45;
+}
+.aurora-wave {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: -20%;
+  left: -50%;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(82,183,136,0.08) 20%,
+    rgba(45,106,79,0.12) 35%,
+    rgba(82,183,136,0.06) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: auroraDrift1 12s ease-in-out infinite;
+  filter: blur(40px);
+}
+.aurora-wave:nth-child(2) {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(64,145,108,0.06) 25%,
+    rgba(82,183,136,0.1) 40%,
+    rgba(116,198,157,0.05) 55%,
+    transparent 75%
+  );
+  animation: auroraDrift2 16s ease-in-out infinite;
+  top: -10%;
+}
+.aurora-wave:nth-child(3) {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(13,34,64,0.08) 30%,
+    rgba(82,183,136,0.07) 45%,
+    transparent 65%
+  );
+  animation: auroraDrift3 20s ease-in-out infinite;
+  top: -30%;
+}
+@keyframes auroraDrift1 {
+  0%, 100% { transform: translateX(0%) rotate(-2deg) scaleY(1); }
+  50% { transform: translateX(15%) rotate(2deg) scaleY(1.2); }
+}
+@keyframes auroraDrift2 {
+  0%, 100% { transform: translateX(10%) rotate(1deg) scaleY(1.1); }
+  50% { transform: translateX(-10%) rotate(-1deg) scaleY(0.9); }
+}
+@keyframes auroraDrift3 {
+  0%, 100% { transform: translateX(-5%) rotate(-1deg); }
+  50% { transform: translateX(8%) rotate(2deg); }
+}
+
+/* === ANIMATED GRADIENT SECTION TITLES === */
+.section-title, .cta-title {
+  background: linear-gradient(135deg, #e8f0e9 0%, #74c69d 30%, #52b788 50%, #f0c040 70%, #74c69d 85%, #e8f0e9 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerTitle 6s linear infinite;
+}
+@keyframes shimmerTitle {
+  0% { background-position: 300% center; }
+  100% { background-position: -300% center; }
+}
+
+/* === 3D TILT CARDS === */
+.card, .site-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* === GLOWING CURSOR EFFECT ON SITE CARDS === */
+.site-card {
+  position: relative;
+  overflow: hidden;
+}
+.site-card .glow-follow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82,183,136,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.site-card:hover .glow-follow { opacity: 1; }
+.site-card .site-name, .site-card .site-daily { position: relative; z-index: 1; }
+
+/* === TYPING CURSOR === */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--leaf-accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* === STAGGERED CARD ENTRANCE === */
+.cards-grid .card:nth-child(1), .sites-grid .site-card:nth-child(1) { transition-delay: 0.05s; }
+.cards-grid .card:nth-child(2), .sites-grid .site-card:nth-child(2) { transition-delay: 0.12s; }
+.cards-grid .card:nth-child(3), .sites-grid .site-card:nth-child(3) { transition-delay: 0.19s; }
+.cards-grid .card:nth-child(4), .sites-grid .site-card:nth-child(4) { transition-delay: 0.26s; }
+.cards-grid .card:nth-child(5), .sites-grid .site-card:nth-child(5) { transition-delay: 0.33s; }
+.cards-grid .card:nth-child(6), .sites-grid .site-card:nth-child(6) { transition-delay: 0.40s; }
+.cards-grid .card:nth-child(7), .sites-grid .site-card:nth-child(7) { transition-delay: 0.47s; }
+
+/* === MOBILE: disable heavy effects === */
+@media (max-width: 768px) {
+  .aurora-container { display: none; }
+  .site-card .glow-follow { display: none; }
+}
 </style>
 </head>
 <body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
 
 <div id="side-left" style="position:fixed;top:0;bottom:0;left:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.8) 30%,rgba(240,192,64,0.6) 55%,rgba(82,183,136,0.8) 75%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite;box-shadow:2px 0 16px rgba(82,183,136,0.4);"></div>
 <div id="side-right" style="position:fixed;top:0;bottom:0;right:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.6) 35%,rgba(240,192,64,0.5) 55%,rgba(82,183,136,0.6) 78%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite reverse;box-shadow:-2px 0 16px rgba(82,183,136,0.35);"></div>
@@ -647,13 +793,20 @@ footer {
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+
+  <!-- Aurora Borealis -->
+  <div class="aurora-container">
+    <div class="aurora-wave"></div>
+    <div class="aurora-wave"></div>
+    <div class="aurora-wave"></div>
+  </div>
 
   <!-- Moon -->
-  <div class="hero-moon"></div>
+  <div class="hero-moon" id="hero-moon"></div>
 
   <!-- Forest tree silhouettes -->
-  <div class="hero-trees">
+  <div class="hero-trees" id="hero-trees">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" width="100%" height="100%">
       <!-- Far background trees (lighter) -->
       <polygon points="0,420 50,260 100,420" fill="#071009" opacity="0.7"/>
@@ -703,7 +856,7 @@ footer {
   </div>
 
   <!-- Hero content -->
-  <div class="hero-content">
+  <div class="hero-content" id="hero-text">
     <h1 class="fade-in">Build Side Hustles.<br><span>Automate. Stack Income.</span></h1>
     <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members running multiple income streams they built once and automated. Daily collection sites, sweepstake package churning, credit card churning, Reverse Stock Arbitrage and more. Each one compounds on the last.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
@@ -931,11 +1084,12 @@ footer {
 
 <!-- SCRIPTS -->
 <script>
-// Starfield animation
+// === STARFIELD WITH SHOOTING STARS ===
 (function() {
   var canvas = document.getElementById('starfield');
   var ctx = canvas.getContext('2d');
   var stars = [];
+  var shootingStars = [];
   var W, H, frame = 0;
 
   function resize() {
@@ -960,9 +1114,32 @@ footer {
     }
   }
 
-  function draw() {
+  // Shooting star spawner
+  var lastShoot = 0;
+  var nextShootDelay = 3000 + Math.random() * 5000;
+  function maybeSpawnShootingStar(now) {
+    if (now - lastShoot > nextShootDelay) {
+      lastShoot = now;
+      nextShootDelay = 3000 + Math.random() * 5000;
+      var startX = Math.random() * W * 0.7 + W * 0.1;
+      var startY = Math.random() * H * 0.35;
+      var angle = Math.PI * 0.15 + Math.random() * 0.25;
+      shootingStars.push({
+        x: startX, y: startY,
+        vx: Math.cos(angle) * (4 + Math.random() * 3),
+        vy: Math.sin(angle) * (4 + Math.random() * 3),
+        life: 1,
+        decay: 0.012 + Math.random() * 0.008,
+        len: 40 + Math.random() * 60
+      });
+    }
+  }
+
+  function draw(timestamp) {
     ctx.clearRect(0, 0, W, H);
     frame++;
+
+    // Stars
     for (var i = 0; i < stars.length; i++) {
       var s = stars[i];
       var twinkle = 0.45 + 0.55 * Math.sin(frame * s.speed + s.phase);
@@ -973,16 +1150,53 @@ footer {
       ctx.fill();
     }
     ctx.globalAlpha = 1;
+
+    // Shooting stars
+    maybeSpawnShootingStar(timestamp || 0);
+    for (var j = shootingStars.length - 1; j >= 0; j--) {
+      var ss = shootingStars[j];
+      ss.x += ss.vx;
+      ss.y += ss.vy;
+      ss.life -= ss.decay;
+      if (ss.life <= 0) { shootingStars.splice(j, 1); continue; }
+      var tailX = ss.x - ss.vx * (ss.len / 5);
+      var tailY = ss.y - ss.vy * (ss.len / 5);
+      var grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(1, 'rgba(255,255,255,' + (ss.life * 0.9) + ')');
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(ss.x, ss.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      // bright head
+      ctx.beginPath();
+      ctx.arc(ss.x, ss.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + ss.life + ')';
+      ctx.fill();
+    }
+
     requestAnimationFrame(draw);
   }
 
   resize();
   initStars();
-  draw();
+  draw(0);
   window.addEventListener('resize', function() { resize(); initStars(); });
 })();
 
-// Scroll fade-in
+// === SCROLL PROGRESS BAR ===
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (scrollTop / scrollHeight * 100) + '%';
+  }, { passive: true });
+})();
+
+// === SCROLL FADE-IN ===
 var faders = document.querySelectorAll('.fade-in');
 var io = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
@@ -996,7 +1210,7 @@ document.querySelectorAll('.hero .fade-in').forEach(function(el) {
   setTimeout(function() { el.classList.add('visible'); }, 100);
 });
 
-// Mobile menu
+// === MOBILE MENU ===
 var ham = document.getElementById('hamburger');
 var menu = document.getElementById('mobileMenu');
 if (ham && menu) {
@@ -1005,7 +1219,7 @@ if (ham && menu) {
   });
 }
 
-// Floating green particles
+// === FLOATING GREEN PARTICLES ===
 (function() {
   var colors = ['rgba(82,183,136,0.35)', 'rgba(116,198,157,0.25)', 'rgba(240,192,64,0.2)', 'rgba(82,183,136,0.2)'];
   for (var i = 0; i < 12; i++) {
@@ -1025,19 +1239,24 @@ if (ham && menu) {
   }
 })();
 
-// Animated stat counters
-function animateCounter(el, target, suffix, duration) {
+// === SMOOTH COUNTER ANIMATION WITH COMMA FORMATTING ===
+function formatNumber(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function animateCounter(el, target, prefix, suffix, duration) {
   var start = 0;
   var startTime = null;
   var isDecimal = target !== Math.floor(target);
   function step(timestamp) {
     if (!startTime) startTime = timestamp;
     var progress = Math.min((timestamp - startTime) / duration, 1);
-    var ease = 1 - Math.pow(1 - progress, 3);
+    // Smooth ease-out-quart
+    var ease = 1 - Math.pow(1 - progress, 4);
     var current = start + (target - start) * ease;
-    el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+    var display = isDecimal ? current.toFixed(1) : formatNumber(Math.floor(current));
+    el.textContent = prefix + display + suffix;
     if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+    else el.textContent = prefix + (isDecimal ? target.toFixed(1) : formatNumber(target)) + suffix;
   }
   requestAnimationFrame(step);
 }
@@ -1049,20 +1268,119 @@ var statObserver = new IntersectionObserver(function(entries) {
     if (entry.isIntersecting && !countersTriggered) {
       countersTriggered = true;
       var targets = [
-        { val: 50, suffix: '+', el: statNumbers[0] },
-        { val: 100, suffix: '+', el: statNumbers[1] },
-        { val: 2500, suffix: '+', el: statNumbers[2] },
-        { val: 0, suffix: '', el: statNumbers[3] }
+        { val: 50, prefix: '$', suffix: '+', el: statNumbers[0] },
+        { val: 100, prefix: '', suffix: '+', el: statNumbers[1] },
+        { val: 2500, prefix: '', suffix: '+', el: statNumbers[2] },
+        { val: 0, prefix: '$', suffix: '', el: statNumbers[3] }
       ];
       targets.forEach(function(t, i) {
         setTimeout(function() {
-          if (t.el) animateCounter(t.el, t.val, t.suffix, 1400);
-        }, i * 120);
+          if (t.el) animateCounter(t.el, t.val, t.prefix, t.suffix, 1800);
+        }, i * 150);
       });
     }
   });
 }, { threshold: 0.5 });
 if (statNumbers[0]) statObserver.observe(statNumbers[0].parentElement.parentElement);
+
+// === MOUSE PARALLAX ON HERO (desktop only) ===
+(function() {
+  if (window.innerWidth < 769) return;
+  var moon = document.getElementById('hero-moon');
+  var trees = document.getElementById('hero-trees');
+  var heroText = document.getElementById('hero-text');
+  var hero = document.getElementById('hero');
+  if (!hero) return;
+
+  hero.addEventListener('mousemove', function(e) {
+    var rect = hero.getBoundingClientRect();
+    var x = (e.clientX - rect.left) / rect.width - 0.5;
+    var y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    if (moon) moon.style.transform = 'translate(' + (x * -25) + 'px, ' + (y * -18) + 'px)';
+    if (trees) trees.style.transform = 'translate(' + (x * 10) + 'px, ' + (y * 5) + 'px)';
+    if (heroText) heroText.style.transform = 'translate(' + (x * -8) + 'px, ' + (y * -6) + 'px)';
+  });
+
+  hero.addEventListener('mouseleave', function() {
+    if (moon) moon.style.transform = '';
+    if (trees) trees.style.transform = '';
+    if (heroText) heroText.style.transform = '';
+  });
+})();
+
+// === TYPING EFFECT ON HERO SUBTITLE ===
+(function() {
+  var subtitle = document.querySelector('.hero-subtitle');
+  if (!subtitle) return;
+  var fullText = subtitle.textContent;
+  subtitle.textContent = '';
+  var cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+
+  // Wait for fade-in to complete
+  setTimeout(function() {
+    subtitle.textContent = '';
+    subtitle.appendChild(cursor);
+    var idx = 0;
+    function typeChar() {
+      if (idx < fullText.length) {
+        subtitle.insertBefore(document.createTextNode(fullText[idx]), cursor);
+        idx++;
+        setTimeout(typeChar, 18 + Math.random() * 22);
+      } else {
+        // Remove cursor after a pause
+        setTimeout(function() { cursor.style.display = 'none'; }, 2000);
+      }
+    }
+    typeChar();
+  }, 800);
+})();
+
+// === 3D TILT CARDS ===
+(function() {
+  if (window.innerWidth < 769) return;
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width;
+      var y = (e.clientY - rect.top) / rect.height;
+      var tiltX = (0.5 - y) * 12;
+      var tiltY = (x - 0.5) * 12;
+      card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-4px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.transition = 'all 0.4s ease';
+      setTimeout(function() { card.style.transition = 'all 0.3s'; }, 400);
+    });
+  });
+})();
+
+// === GLOWING HOVER ON SITE CARDS ===
+(function() {
+  if (window.innerWidth < 769) return;
+  var siteCards = document.querySelectorAll('.site-card');
+  siteCards.forEach(function(card) {
+    var glow = document.createElement('div');
+    glow.className = 'glow-follow';
+    card.appendChild(glow);
+
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      glow.style.left = (e.clientX - rect.left) + 'px';
+      glow.style.top = (e.clientY - rect.top) + 'px';
+      // Subtle 3D tilt for site cards too
+      var x = (e.clientX - rect.left) / rect.width;
+      var y = (e.clientY - rect.top) / rect.height;
+      card.style.transform = 'perspective(600px) rotateX(' + ((0.5 - y) * 8) + 'deg) rotateY(' + ((x - 0.5) * 8) + 'deg) translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+    });
+  });
+})();
 </script>
 
 </body>
