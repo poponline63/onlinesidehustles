@@ -164,6 +164,118 @@ div[style*="rgba(0, 0, 0, 0.6)"],
 div[style*="rgba(0,0,0,0.6)"] {
     color: rgba(200, 225, 200, 0.8) !important;
 }
+
+/* ===== CAROUSEL REDESIGN ===== */
+.testimonials-carousel-wrapper {
+    position: relative;
+    padding: 1rem 60px 2rem;
+    overflow: visible;
+}
+.testimonials-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    position: relative;
+    overflow: visible;
+}
+.testimonial-card {
+    position: absolute;
+    width: min(480px, 85vw);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.75) translateX(0);
+    pointer-events: none;
+    border: 2px solid rgba(200,149,108,0.15);
+    background: rgba(10,15,35,0.6);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    pointer-events: all;
+    z-index: 3;
+    border-color: rgba(200,149,108,0.6);
+    box-shadow: 0 0 30px rgba(200,149,108,0.3), 0 8px 40px rgba(0,0,0,0.5);
+}
+.testimonial-card.prev {
+    opacity: 0.4;
+    transform: scale(0.82) translateX(-105%);
+    pointer-events: all;
+    z-index: 2;
+    filter: blur(1px);
+}
+.testimonial-card.next {
+    opacity: 0.4;
+    transform: scale(0.82) translateX(105%);
+    pointer-events: all;
+    z-index: 2;
+    filter: blur(1px);
+}
+.testimonial-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+}
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(200,149,108,0.5);
+    background: rgba(10,15,35,0.8);
+    color: #e8a87c;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+.carousel-arrow:hover {
+    background: rgba(200,149,108,0.2);
+    border-color: rgba(200,149,108,0.9);
+    box-shadow: 0 0 15px rgba(200,149,108,0.4);
+    transform: translateY(-60%) scale(1.1);
+}
+.carousel-arrow.left { left: 4px; }
+.carousel-arrow.right { right: 4px; }
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+}
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(200,149,108,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+}
+.carousel-dot.active {
+    background: #e8a87c;
+    transform: scale(1.4);
+    box-shadow: 0 0 8px rgba(200,149,108,0.6);
+}
+@media (max-width: 600px) {
+    .testimonial-card.prev,
+    .testimonial-card.next { display: none; }
+    .testimonials-carousel-wrapper { padding: 1rem 50px 2rem; }
+}
     </style>
 </head>
 <body>
@@ -543,8 +655,8 @@ div[style*="rgba(0,0,0,0.6)"] {
                 </div>
                 
                 <div class="testimonials-carousel-wrapper">
-                    <button class="carousel-arrow left" onclick="scrollCarousel('left')">—</button>
-                    <button class="carousel-arrow right" onclick="scrollCarousel('right')">—</button>
+                    <button class="carousel-arrow left" id="carouselPrev" aria-label="Previous">&#8592;</button>
+                    <button class="carousel-arrow right" id="carouselNext" aria-label="Next">&#8594;</button>
                     
                     <div class="testimonials-grid" id="testimonialsCarousel">
                     <div class="testimonial-card">
@@ -611,6 +723,7 @@ div[style*="rgba(0,0,0,0.6)"] {
                             <p class="testimonial-author">— Vazry</p>
                         </div>
                     </div>
+                    <div class="carousel-dots" id="carouselDots"></div>
                 </div>
             </div>
             
@@ -666,28 +779,58 @@ div[style*="rgba(0,0,0,0.6)"] {
         
         createStars();
         
-        // Carousel scroll function with infinite loop
-        function scrollCarousel(direction) {
+        // Full carousel with dots and autoplay
+        (function() {
             const carousel = document.getElementById('testimonialsCarousel');
-            const scrollAmount = 400; // Card width + gap
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            
-            if (direction === 'left') {
-                if (carousel.scrollLeft <= 0) {
-                    // At the beginning, jump to end
-                    carousel.scrollLeft = maxScroll;
-                } else {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                }
-            } else {
-                if (carousel.scrollLeft >= maxScroll) {
-                    // At the end, jump to beginning
-                    carousel.scrollLeft = 0;
-                } else {
-                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
+            const dotsContainer = document.getElementById('carouselDots');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            if (!carousel) return;
+
+            const cards = carousel.querySelectorAll('.testimonial-card');
+            let current = 0;
+            let autoTimer = null;
+            const total = cards.length;
+
+            // Build dots
+            cards.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                current = (index + total) % total;
+                cards.forEach((c, i) => {
+                    c.classList.toggle('active', i === current);
+                    c.classList.toggle('prev', i === (current - 1 + total) % total);
+                    c.classList.toggle('next', i === (current + 1) % total);
+                });
+                const allDots = dotsContainer.querySelectorAll('.carousel-dot');
+                allDots.forEach((d, i) => d.classList.toggle('active', i === current));
+                resetAuto();
             }
-        }
+
+            function resetAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => goTo(current + 1), 4000);
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            carousel.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+            });
+
+            goTo(0);
+        })();
         
         // Lightbox functions
         function openLightbox(imageSrc) {
