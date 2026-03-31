@@ -223,6 +223,11 @@ body {
     0 0 70px rgba(180,215,255,0.4),
     0 0 120px rgba(150,195,255,0.2);
   z-index: 3;
+  animation: moonFloat 8s ease-in-out infinite;
+}
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0px); box-shadow: 0 0 30px rgba(210,235,255,0.7), 0 0 70px rgba(180,215,255,0.4), 0 0 120px rgba(150,195,255,0.2); }
+  50% { transform: translateY(-12px); box-shadow: 0 0 45px rgba(210,235,255,0.9), 0 0 90px rgba(180,215,255,0.6), 0 0 160px rgba(150,195,255,0.3); }
 }
 
 /* Forest tree silhouettes */
@@ -245,10 +250,18 @@ body {
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight: 900;
   line-height: 1.12;
-  color: var(--text-primary);
-  text-shadow: 0 0 50px rgba(82,183,136,0.25), 0 2px 24px rgba(0,0,0,0.9);
   margin-bottom: 1.3rem;
   letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #e8f0e9 0%, #74c69d 35%, #52b788 50%, #74c69d 65%, #e8f0e9 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 .hero-content h1 span { color: var(--leaf-accent); }
 .hero-subtitle {
@@ -278,6 +291,11 @@ body {
   transition: all 0.3s;
   border: none;
   cursor: pointer;
+  animation: btnPulse 2.5s ease-in-out infinite;
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 35px rgba(82,183,136,0.45); }
+  50% { box-shadow: 0 0 60px rgba(82,183,136,0.75), 0 0 100px rgba(82,183,136,0.25); }
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 55px rgba(82,183,136,0.65); }
 .btn-secondary {
@@ -325,6 +343,11 @@ body {
   color: var(--leaf-accent);
   line-height: 1;
   text-shadow: 0 0 20px rgba(82,183,136,0.4);
+  animation: statGlow 3s ease-in-out infinite;
+}
+@keyframes statGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(82,183,136,0.4); }
+  50% { text-shadow: 0 0 40px rgba(82,183,136,0.75), 0 0 80px rgba(82,183,136,0.25); }
 }
 .stat-label {
   font-size: 0.8rem;
@@ -415,7 +438,7 @@ body {
 .card:hover {
   border-color: rgba(82,183,136,0.5);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 25px rgba(82,183,136,0.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 25px rgba(82,183,136,0.15), 0 0 0 1px rgba(82,183,136,0.15);
 }
 .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
 .card-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
@@ -548,8 +571,8 @@ footer {
 .footer-links a:hover { color: var(--leaf-accent); }
 
 /* === ANIMATIONS === */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; transform: translateY(28px) scale(0.98); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0) scale(1); }
 .fade-in-delay-1 { transition-delay: 0.15s; }
 .fade-in-delay-2 { transition-delay: 0.3s; }
 .fade-in-delay-3 { transition-delay: 0.45s; }
@@ -567,9 +590,27 @@ footer {
   .hero-buttons { flex-direction: column; align-items: center; }
   .trust-indicators { gap: 0.5rem; font-size: 0.78rem; }
 }
+
+/* === FLOATING PARTICLES === */
+.fp { position: fixed; pointer-events: none; z-index: 2; border-radius: 50%; animation: fpRise linear infinite; }
+@keyframes fpRise {
+  0%   { transform: translateY(110vh) scale(0.5); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 0.6; }
+  100% { transform: translateY(-60px) scale(1); opacity: 0; }
+}
+
+/* === SIDE ACCENT BARS === */
+@keyframes sidePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
 </style>
 </head>
 <body>
+
+<div id="side-left" style="position:fixed;top:0;bottom:0;left:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.8) 30%,rgba(240,192,64,0.6) 55%,rgba(82,183,136,0.8) 75%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite;box-shadow:2px 0 16px rgba(82,183,136,0.4);"></div>
+<div id="side-right" style="position:fixed;top:0;bottom:0;right:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.6) 35%,rgba(240,192,64,0.5) 55%,rgba(82,183,136,0.6) 78%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite reverse;box-shadow:-2px 0 16px rgba(82,183,136,0.35);"></div>
 
 <!-- Starfield Canvas -->
 <canvas id="starfield"></canvas>
@@ -868,7 +909,7 @@ footer {
         <h4>Resources</h4>
         <a href="/tools">Tools</a>
         <a href="/sweepstakes">Sweepstakes</a>
-        <a href="/casino-directory">Casino Directory</a>
+        <a href="/daily-login-guide">Daily Login Guide</a>
         <a href="/faq">FAQ</a>
       </div>
       <div class="footer-col">
@@ -963,6 +1004,65 @@ if (ham && menu) {
     menu.classList.toggle('open');
   });
 }
+
+// Floating green particles
+(function() {
+  var colors = ['rgba(82,183,136,0.35)', 'rgba(116,198,157,0.25)', 'rgba(240,192,64,0.2)', 'rgba(82,183,136,0.2)'];
+  for (var i = 0; i < 12; i++) {
+    var p = document.createElement('div');
+    p.className = 'fp';
+    var size = (3 + Math.random() * 5).toFixed(1);
+    p.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (Math.random() * 100).toFixed(1) + '%',
+      'background:' + colors[Math.floor(Math.random() * colors.length)],
+      'animation-duration:' + (12 + Math.random() * 20).toFixed(1) + 's',
+      'animation-delay:-' + (Math.random() * 25).toFixed(1) + 's',
+      'filter:blur(' + (Math.random() * 1.5).toFixed(1) + 'px)'
+    ].join(';');
+    document.body.appendChild(p);
+  }
+})();
+
+// Animated stat counters
+function animateCounter(el, target, suffix, duration) {
+  var start = 0;
+  var startTime = null;
+  var isDecimal = target !== Math.floor(target);
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    var ease = 1 - Math.pow(1 - progress, 3);
+    var current = start + (target - start) * ease;
+    el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+var statNumbers = document.querySelectorAll('.stat-number');
+var countersTriggered = false;
+var statObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !countersTriggered) {
+      countersTriggered = true;
+      var targets = [
+        { val: 50, suffix: '+', el: statNumbers[0] },
+        { val: 100, suffix: '+', el: statNumbers[1] },
+        { val: 2500, suffix: '+', el: statNumbers[2] },
+        { val: 0, suffix: '', el: statNumbers[3] }
+      ];
+      targets.forEach(function(t, i) {
+        setTimeout(function() {
+          if (t.el) animateCounter(t.el, t.val, t.suffix, 1400);
+        }, i * 120);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+if (statNumbers[0]) statObserver.observe(statNumbers[0].parentElement.parentElement);
 </script>
 
 </body>
