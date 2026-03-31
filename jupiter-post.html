@@ -44,6 +44,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
+    <style>
+/* Jupiter Planet Animation in Hero */
+.jupiter-planet-hero {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 35% 35%, #c8956c 0%, #e8a87c 20%, #d4724a 40%, #b05a30 60%, #8b3a1a 80%, #5c1f08 100%);
+    box-shadow:
+        inset -20px -10px 40px rgba(0,0,0,0.5),
+        inset 10px 5px 20px rgba(255,200,150,0.3),
+        0 0 40px rgba(200,100,50,0.4),
+        0 0 80px rgba(200,100,50,0.2);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 2rem;
+    animation: jupiterSpin 20s linear infinite;
+    flex-shrink: 0;
+}
+.jupiter-planet-hero::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: -10%;
+    width: 120%;
+    height: 12px;
+    background: rgba(180,80,30,0.6);
+    border-radius: 50%;
+    box-shadow: 0 8px 0 rgba(220,120,60,0.4), 0 16px 0 rgba(180,80,30,0.3), 0 -8px 0 rgba(140,60,20,0.5);
+}
+.jupiter-planet-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    left: -5%;
+    width: 110%;
+    height: 8px;
+    background: rgba(210,100,40,0.5);
+    border-radius: 50%;
+}
+@keyframes jupiterSpin {
+    0% { box-shadow: 0 0 40px rgba(200,100,50,0.4), 0 0 80px rgba(200,100,50,0.2); }
+    50% { box-shadow: 0 0 60px rgba(220,130,70,0.6), 0 0 120px rgba(200,100,50,0.3); }
+    100% { box-shadow: 0 0 40px rgba(200,100,50,0.4), 0 0 80px rgba(200,100,50,0.2); }
+}
+
+/* Letter animation floating */
+.letter-float {
+    display: inline-block;
+    animation: letterFloat 3s ease-in-out infinite;
+    font-size: 3rem;
+    margin: 0 0.5rem;
+}
+.letter-float:nth-child(2) { animation-delay: 0.5s; }
+.letter-float:nth-child(3) { animation-delay: 1s; }
+@keyframes letterFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+/* Jupiter stripe text accent */
+.jupiter-text {
+    background: linear-gradient(135deg, #e8a87c 0%, #c8956c 25%, #ff6b35 50%, #e8a87c 75%, #d4724a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: jupiterShimmer 4s linear infinite;
+}
+@keyframes jupiterShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Orbital ring decoration */
+.orbital-ring {
+    width: 200px;
+    height: 60px;
+    border: 2px solid rgba(200,149,108,0.3);
+    border-radius: 50%;
+    margin: 1rem auto;
+    position: relative;
+    animation: orbitalSpin 8s linear infinite;
+}
+.orbital-ring::after {
+    content: '✉️';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    animation: orbitalSpin 8s linear infinite reverse;
+}
+@keyframes orbitalSpin {
+    from { transform: rotateX(70deg) rotate(0deg); }
+    to { transform: rotateX(70deg) rotate(360deg); }
+}
+
+/* Enhanced CTA button */
+.cta-button {
+    background: linear-gradient(135deg, #5865F2, #4752c4) !important;
+    box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 4px 15px rgba(0,0,0,0.3) !important;
+    animation: discordPulse 2.5s ease-in-out infinite !important;
+}
+@keyframes discordPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 4px 15px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 0 35px rgba(88,101,242,0.8), 0 4px 25px rgba(88,101,242,0.4); }
+}
+
+/* Profit table green glow */
+.profit-value {
+    color: #52b788 !important;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(82,183,136,0.4);
+}
+
+/* Fix black text in pricing table note */
+div[style*="rgba(0, 0, 0, 0.6)"],
+div[style*="rgba(0,0,0,0.6)"] {
+    color: rgba(200, 225, 200, 0.8) !important;
+}
+    </style>
 </head>
 <body>
 
@@ -108,58 +229,6 @@
     <!-- Header -->
             
 
-    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="slide-menu" id="slideMenu">
-            <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
-            
-            <div class="slide-menu-title">🎰 Daily Collection Sidehustle</div>
-            <a href="daily-login-guide.html">📋 Daily Collection Sites Guide</a>
-            <a href="jupiter-post.html">✉️ Jupiter Post Letterwriting</a>
-            <a href="complete-guide-list.html">📝 Written Guides</a>
-            <a href="daily-free-sc.html">🎁 Daily Free Rewards</a>
-            <a href="package-sales.html">📦 Package Sales</a>
-            <a href="skrill-casinos.html">💳 Skrill Eligible Sites</a>
-            <a href="bonus-collection-software.html">🤖 Daily Bonus Collection Software</a>
-        <a href="casino-ratings.html">🏆 Casino Ratings</a>
-        <a href="vote.html">🗳️ Vote on Casinos</a>
-        <a href="sweepstakes-casino-list.html">📋 Complete Casino List</a>
-            <a href="auto-giveaways-software.html">? Auto Giveaways Signup Software</a>
-            <a href="daily-login-reviews.html">? Site Reviews</a>
-            <a href="new-sites.html">🆕 New Sites This Month</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Resources & Tools</div>
-            <a href="getting-started.html">🗺️ Getting Started Roadmap</a>
-            <a href="tools.html">🔧 Calculators & Tools</a>
-            <a href="sweepstats.html">📊 SweepStats Tracker</a>
-            <a href="faq.html">? FAQ / Help Center</a>
-            <a href="glossary.html">📖 Glossary of Terms</a>
-            <a href="earnings-potential.html">💰 Earnings Potential</a>
-            <a href="comparisons/best-welcome-packages.html">🎁 Best Welcome Packages</a>
-            <a href="comparisons/fastest-payout-sites.html">? Fastest Payout Sites</a>
-            <a href="newsletter.html">📧 Newsletter Signup</a>
-            <a href="best-sweepstakes-card.html">💳 Best Sweepstakes Card</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Online Selling</div>
-            <a href="sell-on-ebay-automated.html">🏷️ Sell on eBay Automated</a>
-            <a href="sell-on-tiktok-automated.html">📱 Sell on TikTok Automated</a>
-            <a href="tracking-number-generator.html">📦 Tracking Number Generator</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Online Sidehustles</div>
-            <a href="reverse-stock-arbitrage.html">📊 Reverse Stock Arbitrage</a>
-            <a href="sportsbetting-automation.html">⚽ Sportsbetting Automated</a>
-            <a href="credit-card-churning.html">💳 Credit Card Churning</a>
-            <a href="credit-cards.html">💳 Best Credit Cards</a>
-            <a href="matched-betting.html">🎲 Matched Betting</a>
-            <a href="openclaw-setup.html">🤖 OpenClaw AI Setup</a>
-            <a href="reward-apps.html">📱 Reward Apps</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ More</div>
-            <a href="blog.html">✍️ Blog</a>
-            <a href="comparisons/chumba-vs-stake.html">✨ Chumba vs Stake.us</a>
-            <a href="income-reports.html">💵 Income Reports</a>
-            <a href="about.html">ℹ️ About Us</a>
-            <a href="contact.html">📬 Contact</a>
-        </div>
     
     <!-- Quick Navigation Bar -->
     
@@ -169,17 +238,24 @@
         <div class="content-wrapper">
             <!-- Hero Section -->
             <div class="hero-section">
+                <div class="jupiter-planet-hero"></div>
                 <div class="space-badge">
-                    ✨ AUTOMATED LETTERWRITING SERVICE
+                    ✉️ JUPITER POST · LETTERWRITING SERVICE
                 </div>
-                <h1><span class="jupiter-text">Jupiter Post Letterwriting</span> Letterwriting</h1>
+                <h1><span class="jupiter-text">Jupiter Post</span> Letterwriting</h1>
+                <div style="margin: 0.5rem 0 1rem;">
+                    <span class="letter-float">✉️</span>
+                    <span class="letter-float">🪐</span>
+                    <span class="letter-float">✉️</span>
+                </div>
                 <p class="hero-description">
                     The Ultimate automated letterwriting service for sweepstakes casinos. Earn SC through AMOE 
                     (Alternative Method of Entry) without the tedious work. We handle everything—from handwriting 
                     to mailing—so you can focus on cashing out real money.
                 </p>
             </div>
-            
+            <div class="orbital-ring"></div>
+
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
@@ -554,7 +630,7 @@
                         Join our Discord community to place your order and start your passive income journey with Jupiter Post Letterwriting
                     </p>
                     <a href="https://discord.gg/PhJ2xg6nMk" class="cta-button" target="_blank">
-                        Join Jupiter Post Letterwriting Discord ✨
+                        Join Jupiter Post on Discord →
                     </a>
                 </div>
             </div>
@@ -650,12 +726,6 @@
         });
     </script>
 
-    <script>
-    function toggleMenu() {
-        document.getElementById('slideMenu').classList.toggle('open');
-        document.getElementById('menuOverlay').classList.toggle('open');
-    }
-    </script>
   </div>
 </div>
 
