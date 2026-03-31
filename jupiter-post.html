@@ -48,7 +48,7 @@
 /* ===== JUPITER POST LAYOUT STYLES ===== */
 
 /* Space background elements */
-.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:radial-gradient(ellipse at center top, #0a0a2e 0%, #000010 50%, #000000 100%); z-index:-3; }
+.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000000; z-index:-3; }
 .stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
 .star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite; }
 @keyframes twinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.3;transform:scale(0.5);} }
@@ -64,7 +64,7 @@
 
 /* Main layout */
 .main-container { padding: 2rem 0; }
-.content-wrapper { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+.content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; }
 
 /* Hero section */
 .hero-section { text-align:left; padding:3rem 2.5rem 2.5rem; background:rgba(10,15,40,0.6); border:1px solid rgba(200,149,108,0.2); border-radius:20px; margin-bottom:2rem; backdrop-filter:blur(10px); }
@@ -393,25 +393,37 @@ body, .page-wrapper {
 }
 .main-container {
     max-width: 100% !important;
+    padding: 0 !important;
 }
 .content-wrapper {
-    max-width: 960px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* ===== JUPITER POST COLOR THEME ===== */
-/* Remove blue-navy backing, replace with warm Jupiter amber-dark */
+/* Remove blue-navy backing, replace with warm Jupiter amber-dark, full width */
 .hero-section {
-    background: rgba(22, 9, 2, 0.88) !important;
+    background: rgba(22, 9, 2, 0.95) !important;
+    border-left: none !important;
+    border-right: none !important;
     border-color: rgba(200,149,108,0.3) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 .stat-card {
     background: rgba(22, 9, 2, 0.85) !important;
     border-color: rgba(200,149,108,0.22) !important;
 }
 .content-section {
-    background: rgba(18, 7, 2, 0.82) !important;
+    background: rgba(18, 7, 2, 0.88) !important;
+    border-left: none !important;
+    border-right: none !important;
     border-color: rgba(200,149,108,0.15) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 .info-box {
     background: rgba(200,149,108,0.1) !important;
@@ -433,8 +445,13 @@ body, .page-wrapper {
     border-color: rgba(200,149,108,0.15) !important;
 }
 .cta-section {
-    background: linear-gradient(135deg, rgba(25,10,3,0.95), rgba(35,12,5,0.95)) !important;
+    background: linear-gradient(135deg, rgba(25,10,3,0.98), rgba(35,12,5,0.98)) !important;
+    border-left: none !important;
+    border-right: none !important;
     border-color: rgba(200,149,108,0.35) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 .testimonial-content {
     background: rgba(15, 6, 1, 0.97) !important;
