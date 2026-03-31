@@ -44,228 +44,333 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/forest-theme.css?v=2">
 <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
 <style>
-/* === SPREADSHEET TABLE STYLES === */
-.stats-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+/* ===== GOLD VAULT — DAILY LOGIN GUIDE THEME ===== */
+
+/* Space / background */
+body, html { background: #000000 !important; }
+.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000000; z-index:-3; }
+.dlg-stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
+.dlg-star { position:absolute; background:#fff; border-radius:50%; animation:dlgTwinkle 3s infinite; }
+.dlg-star.gold  { background: rgba(240,192,64,0.9) !important; }
+.dlg-star.amber { background: rgba(200,150,40,0.85) !important; }
+@keyframes dlgTwinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.25;transform:scale(0.4);} }
+.dlg-shooting { position:fixed; width:90px; height:2px; background:linear-gradient(90deg,rgba(240,192,64,0),rgba(240,192,64,0.8),rgba(240,192,64,0)); border-radius:50%; animation:dlgShoot 9s linear infinite; z-index:-1; pointer-events:none; }
+@keyframes dlgShoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{opacity:0;} }
+.dlg-nebula { position:fixed; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:-2; }
+.dlg-nebula-gold  { width:600px; height:400px; top:10%; right:-10%; background:rgba(180,140,20,0.07); }
+.dlg-nebula-green { width:500px; height:300px; bottom:15%; left:-5%; background:rgba(30,100,60,0.07); }
+
+/* Page wrapper */
+body, .page-wrapper { background: #000000 !important; }
+.content-area { background: transparent !important; padding-top: 60px !important; }
+
+/* Container — centered, gold border glow */
+.content-area .container {
+  max-width: 1200px !important;
+  width: calc(100% - 8rem) !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+  border: 1px solid rgba(240,192,64,0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 60px rgba(180,140,20,0.1), 0 0 120px rgba(180,140,20,0.05) !important;
+  overflow: hidden !important;
 }
-.stat-card {
-  background: rgba(9, 21, 12, 0.88);
-  border: 1px solid rgba(64, 145, 108, 0.3);
-  border-radius: 10px;
-  padding: 0.75rem 1.25rem;
-  text-align: center;
-  min-width: 140px;
+
+/* ===== HERO SECTION ===== */
+.dlg-hero {
+  background: rgba(10, 8, 0, 0.97);
+  border-bottom: 1px solid rgba(240,192,64,0.2);
+  padding: 3rem 4rem 2.5rem;
+  text-align: left;
 }
-.stat-value {
-  font-size: 1.4rem;
-  font-weight: 800;
+.dlg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(240,192,64,0.12);
+  border: 1px solid rgba(240,192,64,0.4);
   color: #f0c040;
-}
-.stat-label {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
   font-size: 0.75rem;
-  color: #c8d8cc;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 2px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
 }
-.guide-header {
+.dlg-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0.4rem 0 0.8rem;
+  line-height: 1.1;
+}
+.gold-text {
+  background: linear-gradient(135deg, #f0c040 0%, #d4a010 30%, #ffd700 60%, #f0c040 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+@keyframes goldShimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+.dlg-hero-desc {
+  color: rgba(220,210,180,0.85);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 1.8rem;
+}
+
+/* Animated coin in hero */
+.casino-coin {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, #ffe066, #f0c040, #b8860b, #8b6508);
+  box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2), inset 0 0 20px rgba(255,255,200,0.2);
+  position: relative;
+  margin: 0 auto 2rem;
+  animation: coinSpin 6s ease-in-out infinite;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; font-weight: 900; color: rgba(100,70,0,0.8);
+  overflow: hidden;
+}
+.casino-coin::before {
+  content: '';
+  position: absolute;
+  top: 15%; left: 15%;
+  width: 70%; height: 70%;
+  border-radius: 50%;
+  border: 2px solid rgba(255,230,100,0.4);
+}
+@keyframes coinSpin {
+  0%,100% { box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2); transform: rotateY(0deg) scale(1); }
+  25%      { box-shadow: 0 0 50px rgba(240,192,64,0.8), 0 0 100px rgba(240,192,64,0.35); transform: rotateY(180deg) scale(1.05); }
+  50%      { box-shadow: 0 0 30px rgba(240,192,64,0.5), 0 0 70px rgba(240,192,64,0.2); transform: rotateY(360deg) scale(1); }
+}
+
+/* Stats grid in hero */
+.dlg-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+@media(max-width:768px){ .dlg-stats { grid-template-columns: repeat(2,1fr); } }
+.dlg-stat-card {
+  background: rgba(20, 16, 0, 0.9);
+  border: 1px solid rgba(240,192,64,0.2);
+  border-radius: 12px;
+  padding: 1.2rem 1rem;
   text-align: center;
-  margin-bottom: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.guide-header h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #e8f0e9;
-  margin-bottom: 0.5rem;
-}
-.guide-header p {
-  color: #c8d8cc;
-  font-size: 0.95rem;
-  max-width: 100%;
-  margin: 0 auto 1rem;
-}
+.dlg-stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(240,192,64,0.18); }
+.dlg-stat-value { font-size: 1.7rem; font-weight: 800; color: #f0c040; margin-bottom: 0.2rem; }
+.dlg-stat-label { font-size: 0.75rem; color: rgba(200,185,140,0.8); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Action buttons */
 .guide-actions {
   display: flex;
   gap: 0.75rem;
-  justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
 }
 .btn-sheet {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: linear-gradient(135deg, #2d6a4f, #52b788);
-  color: #fff;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #c8960a, #f0c040);
+  color: #1a1000;
   text-decoration: none;
-  padding: 0.55rem 1.2rem;
-  border-radius: 20px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 25px;
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 800;
   transition: all 0.25s;
-  box-shadow: 0 0 18px rgba(82,183,136,0.25);
+  box-shadow: 0 0 20px rgba(240,192,64,0.35);
   border: none;
   cursor: pointer;
+  letter-spacing: 0.02em;
 }
-.btn-sheet:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(82,183,136,0.45); }
+.btn-sheet:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(240,192,64,0.6); }
 .btn-sheet-outline {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background: transparent;
-  color: #52b788;
+  color: #f0c040;
   text-decoration: none;
-  padding: 0.55rem 1.2rem;
-  border-radius: 20px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 25px;
   font-size: 0.88rem;
   font-weight: 600;
-  border: 1px solid rgba(82,183,136,0.4);
+  border: 1px solid rgba(240,192,64,0.45);
   transition: all 0.25s;
   cursor: pointer;
 }
-.btn-sheet-outline:hover { background: rgba(82,183,136,0.1); border-color: #52b788; }
+.btn-sheet-outline:hover { background: rgba(240,192,64,0.1); border-color: #f0c040; }
+
+/* ===== TABLE SECTION ===== */
+.dlg-table-section {
+  background: rgba(6, 5, 0, 0.95);
+  padding: 2rem 2rem 2.5rem;
+}
 
 /* Loading & Error */
-.loading-state, .error-state {
-  text-align: center;
-  padding: 3rem 1rem;
-}
+.loading-state, .error-state { text-align:center; padding: 3rem 1rem; }
 .spinner {
-  width: 40px; height: 40px;
-  border: 3px solid rgba(64, 145, 108, 0.2);
-  border-top-color: #52b788;
+  width: 44px; height: 44px;
+  border: 3px solid rgba(240,192,64,0.15);
+  border-top-color: #f0c040;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin: 0 auto 1rem;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.error-state { color: #ff6b6b; }
+.error-state { color: #ff8888; }
 .error-state button { margin-top: 1rem; }
 
-/* Table Wrapper */
+/* Table wrapper */
 .table-wrap {
   overflow-x: auto;
-  border: 1px solid rgba(64, 145, 108, 0.3);
-  border-radius: 8px;
-  margin-bottom: 2rem;
+  border: 1px solid rgba(240,192,64,0.2);
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
   -webkit-overflow-scrolling: touch;
 }
 .table-wrap::-webkit-scrollbar { height: 8px; }
-.table-wrap::-webkit-scrollbar-track { background: rgba(6, 14, 9, 0.5); }
-.table-wrap::-webkit-scrollbar-thumb { background: rgba(64, 145, 108, 0.4); border-radius: 4px; }
+.table-wrap::-webkit-scrollbar-track { background: rgba(10,8,0,0.6); }
+.table-wrap::-webkit-scrollbar-thumb { background: rgba(240,192,64,0.35); border-radius: 4px; }
 
-/* The Table */
+/* Table */
 #guide-table {
   width: 100%;
   border-collapse: collapse;
-  background: rgba(6, 14, 9, 0.85);
+  background: rgba(8, 6, 0, 0.9);
   font-size: 0.8rem;
   line-height: 1.35;
   min-width: 1600px;
 }
-#guide-table thead {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+#guide-table thead { position:sticky; top:0; z-index:10; }
 #guide-table th {
-  background: rgba(18, 38, 26, 0.95);
+  background: rgba(25, 18, 0, 0.98);
   color: #f0c040;
   font-weight: 700;
   font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 5px 6px;
-  border: 1px solid rgba(64, 145, 108, 0.3);
+  letter-spacing: 0.04em;
+  padding: 6px 8px;
+  border: 1px solid rgba(240,192,64,0.2);
   white-space: nowrap;
   text-align: left;
 }
 #guide-table td {
-  padding: 4px 6px;
-  border: 1px solid rgba(64, 145, 108, 0.18);
-  color: #e8f0e9;
+  padding: 5px 8px;
+  border: 1px solid rgba(240,192,64,0.1);
+  color: #e8e0c8;
   vertical-align: top;
   font-size: 0.75rem;
   line-height: 1.3;
 }
-#guide-table tbody tr.casino-row:nth-child(odd) { background: rgba(18, 38, 26, 0.4); }
-#guide-table tbody tr.casino-row:nth-child(even) { background: rgba(12, 28, 18, 0.4); }
-#guide-table tbody tr.casino-row:hover { background: rgba(30, 58, 42, 0.55); }
+#guide-table tbody tr.casino-row:nth-child(odd)  { background: rgba(18,14,0,0.5); }
+#guide-table tbody tr.casino-row:nth-child(even) { background: rgba(10,8,0,0.5); }
+#guide-table tbody tr.casino-row:hover           { background: rgba(40,30,0,0.65); }
 
-/* Tier separator rows */
-.tier-row td {
-  padding: 5px 10px !important;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: none !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-}
-.tier-god td { background: linear-gradient(90deg, rgba(240,192,64,0.35), rgba(240,192,64,0.12)); color: #f0c040; }
-.tier-high td { background: linear-gradient(90deg, rgba(82,183,136,0.35), rgba(82,183,136,0.12)); color: #74c69d; }
-.tier-medium td { background: linear-gradient(90deg, rgba(70,130,220,0.35), rgba(70,130,220,0.12)); color: #7fb3f0; }
-.tier-trash td { background: linear-gradient(90deg, rgba(220,70,70,0.35), rgba(220,70,70,0.12)); color: #f08080; }
-.tier-new td { background: linear-gradient(90deg, rgba(170,100,220,0.35), rgba(170,100,220,0.12)); color: #c8a0f0; }
+/* Tier rows */
+.tier-row td { padding:6px 10px !important; font-weight:800; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; border:none !important; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
+.tier-god    td { background:linear-gradient(90deg,rgba(240,192,64,0.4),rgba(240,192,64,0.1)); color:#f0c040; }
+.tier-high   td { background:linear-gradient(90deg,rgba(82,183,136,0.35),rgba(82,183,136,0.1)); color:#74c69d; }
+.tier-medium td { background:linear-gradient(90deg,rgba(70,130,220,0.35),rgba(70,130,220,0.1)); color:#7fb3f0; }
+.tier-trash  td { background:linear-gradient(90deg,rgba(220,70,70,0.35),rgba(220,70,70,0.1)); color:#f08080; }
+.tier-new    td { background:linear-gradient(90deg,rgba(170,100,220,0.35),rgba(170,100,220,0.1)); color:#c8a0f0; }
 
-/* Notes column truncation */
-.notes-cell {
-  max-width: 180px;
-  position: relative;
-}
-.notes-inner {
-  max-height: 2.7em;
-  overflow: hidden;
-  cursor: pointer;
-  transition: max-height 0.3s ease;
-}
-.notes-inner.expanded {
-  max-height: 600px;
-}
-.notes-toggle {
-  color: #52b788;
-  font-size: 0.7rem;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 2px;
-  user-select: none;
-}
-.notes-toggle:hover { text-decoration: underline; }
+/* Notes */
+.notes-cell { max-width: 180px; position:relative; }
+.notes-inner { max-height:2.7em; overflow:hidden; cursor:pointer; transition:max-height 0.3s ease; }
+.notes-inner.expanded { max-height:600px; }
+.notes-toggle { color:#f0c040; font-size:0.7rem; cursor:pointer; display:inline-block; margin-top:2px; user-select:none; }
+.notes-toggle:hover { text-decoration:underline; }
 
-/* Links in table */
-#guide-table a {
-  color: #52b788;
-  text-decoration: none;
-}
-#guide-table a:hover { text-decoration: underline; color: #74c69d; }
+/* Table links */
+#guide-table a { color: #f0c040; text-decoration:none; }
+#guide-table a:hover { text-decoration:underline; color:#ffe066; }
 
 /* Last updated */
-.last-updated {
-  text-align: center;
-  color: #8aad90;
-  font-size: 0.78rem;
-  margin-top: 0.5rem;
+.last-updated { text-align:center; color:rgba(200,180,100,0.6); font-size:0.78rem; margin-top:0.75rem; }
+
+/* ===== FLYING COINS ===== */
+.fly-coin {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  filter: drop-shadow(0 0 8px rgba(240,192,64,0.7));
+  will-change: transform;
+}
+@keyframes coinFlyRTL {
+  0%   { opacity:0; transform:translateX(0) translateY(0) rotate(0deg) scale(var(--cscale)); }
+  8%   { opacity:0.85; }
+  92%  { opacity:0.85; }
+  100% { opacity:0; transform:translateX(-110vw) translateY(var(--drift)) rotate(720deg) scale(var(--cscale)); }
+}
+@keyframes coinFlyLTR {
+  0%   { opacity:0; transform:translateX(0) translateY(0) rotate(0deg) scale(var(--cscale)); }
+  8%   { opacity:0.85; }
+  92%  { opacity:0.85; }
+  100% { opacity:0; transform:translateX(110vw) translateY(var(--drift)) rotate(-720deg) scale(var(--cscale)); }
 }
 
+/* ===== GOLD SPARKLES ===== */
+.dlg-spark {
+  position:fixed; pointer-events:none; z-index:2;
+  animation: dlgSparkPop var(--dur,1.1s) ease-out forwards;
+  transform-origin: center;
+}
+.dlg-spark::before, .dlg-spark::after {
+  content:''; position:absolute; border-radius:2px;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.dlg-spark::before { width:var(--sz,8px); height:2px; }
+.dlg-spark::after  { width:2px; height:var(--sz,8px); }
+.dlg-spark.sp-gold::before,  .dlg-spark.sp-gold::after  { background:rgba(240,192,64,0.95); box-shadow:0 0 8px rgba(240,192,64,1); }
+.dlg-spark.sp-white::before, .dlg-spark.sp-white::after { background:rgba(255,250,220,0.95); box-shadow:0 0 5px rgba(255,240,180,0.9); }
+.dlg-spark.sp-green::before, .dlg-spark.sp-green::after { background:rgba(82,183,136,0.9); box-shadow:0 0 7px rgba(82,183,136,0.8); }
+@keyframes dlgSparkPop {
+  0%   { opacity:0;   transform:scale(0) rotate(0deg); }
+  25%  { opacity:1;   transform:scale(1.5) rotate(45deg); }
+  60%  { opacity:0.85; transform:scale(1.1) rotate(90deg); }
+  100% { opacity:0;   transform:scale(0.4) rotate(180deg) translateY(-16px); }
+}
+
+/* ===== SCROLL FADE-IN ===== */
+.dlg-fade {
+  opacity:0; transform:translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.dlg-fade.visible { opacity:1; transform:translateY(0); }
+
 @media (max-width: 768px) {
-  .guide-header h1 { font-size: 1.4rem; }
-  .stats-bar { gap: 0.5rem; }
-  .stat-card { min-width: 110px; padding: 0.5rem 0.75rem; }
-  .stat-value { font-size: 1.1rem; }
+  .dlg-hero { padding: 2rem 1.5rem; }
+  .dlg-hero h1 { font-size: 1.6rem; }
+  .content-area .container { width: calc(100% - 2rem) !important; }
+  .dlg-table-section { padding: 1.5rem 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Starfield Canvas -->
-<canvas id="starfield"></canvas>
+<!-- Space Background -->
+<div class="space-background"></div>
+<div class="dlg-stars" id="dlgStars"></div>
+<div class="dlg-shooting" style="top:8%;  left:85%; animation-delay:0s;"></div>
+<div class="dlg-shooting" style="top:25%; left:65%; animation-delay:3s;"></div>
+<div class="dlg-shooting" style="top:55%; left:80%; animation-delay:6s;"></div>
+<div class="dlg-shooting" style="top:75%; left:50%; animation-delay:9s;"></div>
+<div class="dlg-nebula dlg-nebula-gold"></div>
+<div class="dlg-nebula dlg-nebula-green"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -300,61 +405,69 @@
 
 <!-- PAGE CONTENT -->
 <div class="content-area" style="padding-top:80px;">
-  <div class="container" style="max-width: 98vw; width: 98vw; padding: 1.5rem;">
+  <div class="container">
 
-    <div class="guide-header">
-      <h1>📋 Daily Login Guide — Full Spreadsheet</h1>
-      <p>Live data from our community spreadsheet. Auto-updates whenever the sheet is edited. Click any Notes cell to expand it.</p>
-    </div>
+    <!-- Hero Section -->
+    <div class="dlg-hero dlg-fade">
+      <div class="casino-coin">$</div>
+      <div class="dlg-badge">DAILY LOGIN GUIDE &middot; SWEEPSTAKES VAULT</div>
+      <h1><span class="gold-text">Daily Login</span> Guide</h1>
+      <p class="dlg-hero-desc">Live data pulled from our community spreadsheet — 80+ sweepstakes casinos ranked by tier, daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-      <div class="stat-card">
-        <div class="stat-value">80+</div>
-        <div class="stat-label">Casinos</div>
+      <!-- Stats -->
+      <div class="dlg-stats">
+        <div class="dlg-stat-card">
+          <div class="dlg-stat-value">80+</div>
+          <div class="dlg-stat-label">Casinos</div>
+        </div>
+        <div class="dlg-stat-card">
+          <div class="dlg-stat-value">$50.21</div>
+          <div class="dlg-stat-label">Daily SC</div>
+        </div>
+        <div class="dlg-stat-card">
+          <div class="dlg-stat-value">$1,506</div>
+          <div class="dlg-stat-label">Monthly SC</div>
+        </div>
+        <div class="dlg-stat-card">
+          <div class="dlg-stat-value">$8,532</div>
+          <div class="dlg-stat-label">Welcome SC</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value">$50.21</div>
-        <div class="stat-label">Daily SC</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">$1,506</div>
-        <div class="stat-label">Monthly SC</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">$8,532</div>
-        <div class="stat-label">Welcome SC</div>
+
+      <!-- Action Buttons -->
+      <div class="guide-actions">
+        <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=2061760812#gid=2061760812" target="_blank" rel="noopener" class="btn-sheet">Open Full Spreadsheet</a>
+        <a href="/gameplay-sheet" class="btn-sheet-outline">Gameplay Sheet</a>
+        <button onclick="loadData()" class="btn-sheet-outline">Refresh Data</button>
       </div>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="guide-actions">
-      <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=2061760812#gid=2061760812" target="_blank" rel="noopener" class="btn-sheet">📊 Open Full Spreadsheet</a>
-      <a href="/gameplay-sheet" class="btn-sheet-outline">🎰 Gameplay Sheet</a>
-      <button onclick="loadData()" class="btn-sheet-outline">🔄 Refresh Data</button>
-    </div>
+    <!-- Table Section -->
+    <div class="dlg-table-section dlg-fade">
 
-    <!-- Loading State -->
-    <div id="loading" class="loading-state">
-      <div class="spinner"></div>
-      <p style="color:#c8d8cc;">Loading spreadsheet data...</p>
-    </div>
+      <!-- Loading State -->
+      <div id="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p style="color:rgba(220,195,120,0.7);">Loading spreadsheet data...</p>
+      </div>
 
-    <!-- Error State -->
-    <div id="error" class="error-state" style="display:none;">
-      <p>⚠️ Failed to load spreadsheet data.</p>
-      <button onclick="loadData()" class="btn-sheet">Try Again</button>
-    </div>
+      <!-- Error State -->
+      <div id="error" class="error-state" style="display:none;">
+        <p>Failed to load spreadsheet data.</p>
+        <button onclick="loadData()" class="btn-sheet">Try Again</button>
+      </div>
 
-    <!-- Table -->
-    <div class="table-wrap" id="tableWrap" style="display:none;">
-      <table id="guide-table">
-        <thead id="tableHead"></thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-    </div>
+      <!-- Table -->
+      <div class="table-wrap" id="tableWrap" style="display:none;">
+        <table id="guide-table">
+          <thead id="tableHead"></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
 
-    <div class="last-updated" id="lastUpdated"></div>
+      <div class="last-updated" id="lastUpdated"></div>
+
+    </div>
 
   </div>
 </div>
@@ -399,16 +512,77 @@
 </footer>
 
 <script>
-// Starfield
+// ===== GOLD VAULT STARS =====
 (function(){
-  var c=document.getElementById('starfield');
-  if(!c)return;
-  var ctx=c.getContext('2d'),stars=[],W,H,frame=0;
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-  function init(){stars=[];var n=Math.floor(W*H/3000);for(var i=0;i<n;i++){var r=Math.random();stars.push({x:Math.random()*W,y:Math.random()*H*0.75,r:Math.random()*1.4+0.15,a:Math.random()*0.85+0.15,s:Math.random()*0.004+0.001,p:Math.random()*Math.PI*2,c:r>0.88?'#c8e6ff':r>0.75?'#ffe8c0':'#ffffff'});}}
-  function draw(){ctx.clearRect(0,0,W,H);frame++;stars.forEach(function(s){var t=0.45+0.55*Math.sin(frame*s.s+s.p);ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.c;ctx.globalAlpha=s.a*t;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}
-  resize();init();draw();
-  window.addEventListener('resize',function(){resize();init();});
+  var c = document.getElementById('dlgStars');
+  if (!c) return;
+  var types = ['','','','','gold','gold','amber'];
+  for (var i = 0; i < 280; i++) {
+    var s = document.createElement('div');
+    var t = types[Math.floor(Math.random() * types.length)];
+    s.className = 'dlg-star' + (t ? ' ' + t : '');
+    var sz = (Math.random() * 2.4 + 0.4).toFixed(1) + 'px';
+    s.style.cssText = 'width:'+sz+';height:'+sz+';left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;animation-delay:'+(Math.random()*5).toFixed(2)+'s;animation-duration:'+(2+Math.random()*3).toFixed(2)+'s;';
+    c.appendChild(s);
+  }
+})();
+
+// ===== FLYING COINS =====
+(function(){
+  var coinSVG = '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    + '<circle cx="16" cy="16" r="15" fill="rgba(12,9,0,0.92)" stroke="rgba(240,192,64,0.9)" stroke-width="1.5"/>'
+    + '<circle cx="16" cy="16" r="10" fill="none" stroke="rgba(240,192,64,0.5)" stroke-width="1"/>'
+    + '<text x="16" y="21" text-anchor="middle" fill="rgba(240,192,64,0.9)" font-size="12" font-weight="900" font-family="Arial">$</text>'
+    + '</svg>';
+  function spawnCoin() {
+    var el = document.createElement('div');
+    el.className = 'fly-coin';
+    var fromRight = Math.random() > 0.45;
+    var yPos = (5 + Math.random() * 75).toFixed(1);
+    var drift = (Math.random() * 80 - 40).toFixed(0) + 'px';
+    var dur = (10 + Math.random() * 10).toFixed(1);
+    var sc = (0.6 + Math.random() * 0.7).toFixed(2);
+    el.style.setProperty('--drift', drift);
+    el.style.setProperty('--cscale', sc);
+    if (fromRight) {
+      el.style.cssText += 'top:'+yPos+'vh;right:-40px;animation:coinFlyRTL '+dur+'s linear forwards;';
+    } else {
+      el.style.cssText += 'top:'+yPos+'vh;left:-40px;animation:coinFlyLTR '+dur+'s linear forwards;';
+    }
+    el.innerHTML = coinSVG;
+    document.body.appendChild(el);
+    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, (parseFloat(dur)+2)*1000);
+    setTimeout(spawnCoin, 5000 + Math.random() * 9000);
+  }
+  setTimeout(spawnCoin, 1500);
+})();
+
+// ===== GOLD SPARKLES =====
+(function(){
+  var types = ['sp-gold','sp-gold','sp-gold','sp-white','sp-white','sp-green'];
+  function spawnSpark() {
+    var el = document.createElement('div');
+    el.className = 'dlg-spark ' + types[Math.floor(Math.random()*types.length)];
+    var sz = (4 + Math.random()*11).toFixed(1)+'px';
+    var dur = (0.7 + Math.random()*0.9).toFixed(2)+'s';
+    el.style.cssText = 'left:'+(Math.random()*98).toFixed(1)+'vw;top:'+(Math.random()*95).toFixed(1)+'vh;--sz:'+sz+';--dur:'+dur+';';
+    document.body.appendChild(el);
+    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 2200);
+  }
+  setInterval(spawnSpark, 165);
+})();
+
+// ===== SCROLL FADE-IN =====
+(function(){
+  var els = document.querySelectorAll('.dlg-fade');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('visible'); });
+  }
 })();
 
 // Nav scroll effect
