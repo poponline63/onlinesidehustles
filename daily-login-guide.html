@@ -709,7 +709,7 @@ const COL_HEADERS = [
 ];
 // RTP game columns will be taken from the first tier separator row dynamically
 let rtpHeaders = [];
-const TAIL_HEADERS = ['Parent Company', 'Canada', 'Restricted States'];
+const TAIL_HEADERS = ['Daily Links', 'Rules', 'Parent Company', 'Canada', 'Restricted States'];
 // Columns to skip: RTP game cols (6-11), Other RTP Games (12), Daily Links (13), Rules (14)
 const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12, 13, 14]);
 
@@ -876,7 +876,7 @@ function buildTable(rows) {
 
   // Build header (skip RTP game columns)
   const allHeadersFull = [...COL_HEADERS, ...rtpHeaders, ...['Other RTP Games'], ...TAIL_HEADERS];
-  const displayHeaders = [...COL_HEADERS, ...TAIL_HEADERS];
+  const displayHeaders = allHeadersFull.filter((_, i) => !SKIP_COLS.has(i));
   const headerRow = document.createElement('tr');
   displayHeaders.forEach(h => {
     const th = document.createElement('th');
