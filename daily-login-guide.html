@@ -713,6 +713,13 @@ const TAIL_HEADERS = ['Daily Links', 'Rules', 'Parent Company', 'Canada', 'Restr
 // Columns to skip: RTP game cols (6-11), Other RTP Games (12), Daily Links (13), Rules (14)
 const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12, 13, 14]);
 
+// Canada-eligible casinos (hardcoded from ExampleCanada.xlsx)
+const CANADA_YES = new Set([
+  'WOW Vegas', 'Crown Coins', 'McLuck', 'Rolla', 'Fortune Coins',
+  'High5Casino', 'SpinQuest', 'Lavish Luck', 'Wild World Casino',
+  'Luckyhands', 'Cluck', 'Luckybird.io'
+]);
+
 // Make links clickable
 function linkify(text) {
   if (!text) return '';
@@ -959,6 +966,12 @@ function buildTable(rows) {
           });
           td.appendChild(toggle);
         }
+      } else if (c === 16) {
+        // Canada eligibility — hardcoded Yes/No by casino name
+        const eligible = CANADA_YES.has(col1);
+        td.innerHTML = eligible
+          ? '<span style="color:#52b788;font-weight:700;">Yes</span>'
+          : '<span style="color:#f08080;">No</span>';
       } else {
         td.innerHTML = linkify(esc(val));
       }
