@@ -44,6 +44,502 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
+    <style>
+/* ===== JUPITER POST LAYOUT STYLES ===== */
+
+/* Space background elements */
+.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000000; z-index:-3; }
+.stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
+.star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite; }
+@keyframes twinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.3;transform:scale(0.5);} }
+.shooting-star { position:fixed; width:100px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.8),rgba(255,255,255,0)); border-radius:50%; animation:shoot 8s linear infinite; z-index:-1; pointer-events:none; }
+@keyframes shoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} }
+.planet { position:fixed; border-radius:50%; pointer-events:none; z-index:-1; }
+.planet.jupiter { width:200px; height:200px; top:10%; right:5%; background:radial-gradient(ellipse at 35% 35%,#c8956c,#d4724a,#8b3a1a); opacity:0.15; }
+.planet.saturn { width:120px; height:120px; bottom:20%; left:5%; background:radial-gradient(ellipse at 35% 35%,#d4b896,#a0785a); opacity:0.1; }
+.planet.moon { width:60px; height:60px; top:30%; left:10%; background:radial-gradient(ellipse at 35% 35%,#d4d4d4,#888); opacity:0.12; }
+.nebula { position:fixed; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:-2; }
+.nebula-purple { width:600px; height:400px; top:20%; right:-10%; background:rgba(100,50,150,0.08); }
+.nebula-blue { width:500px; height:300px; bottom:20%; left:-5%; background:rgba(30,80,150,0.08); }
+
+/* Main layout */
+.main-container { padding: 2rem 0; }
+.content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; }
+
+/* Hero section */
+.hero-section { text-align:left; padding:3rem 4rem 3rem; background:rgba(10,15,40,0.6); border:1px solid rgba(200,149,108,0.2); border-radius:20px; margin-bottom:2rem; backdrop-filter:blur(10px); }
+.hero-section h1 { font-size:clamp(2rem,4vw,3.2rem); font-weight:900; color:#fff; margin:0.5rem 0 1rem; line-height:1.1; }
+.space-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(200,149,108,0.15); border:1px solid rgba(200,149,108,0.4); color:#e8a87c; padding:0.4rem 1rem; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; margin-bottom:1rem; }
+.hero-description { color:rgba(220,235,220,0.85); font-size:1.05rem; line-height:1.7; max-width:700px; }
+
+/* Stats grid */
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; padding:0 2rem; }
+@media(max-width:768px){ .stats-grid { grid-template-columns:repeat(2,1fr); } }
+.stat-card { background:rgba(10,20,50,0.7); border:1px solid rgba(200,149,108,0.25); border-radius:14px; padding:1.5rem 1rem; text-align:center; transition:transform 0.2s,box-shadow 0.2s; backdrop-filter:blur(8px); }
+.stat-card:hover { transform:translateY(-4px); box-shadow:0 8px 25px rgba(200,149,108,0.2); }
+.stat-icon { font-size:1.5rem; margin-bottom:0.5rem; }
+.stat-value { font-size:1.8rem; font-weight:800; color:#e8a87c; margin-bottom:0.25rem; }
+.stat-label { font-size:0.8rem; color:rgba(200,180,160,0.8); font-weight:500; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* Content sections */
+.content-section { background:rgba(8,12,35,0.7); border:1px solid rgba(200,149,108,0.15); border-radius:16px; padding:2.5rem 4rem; margin-bottom:1.5rem; backdrop-filter:blur(8px); }
+.section-title { font-size:1.6rem; font-weight:800; color:#e8f0e9; margin:0 0 1.5rem; display:flex; align-items:center; gap:0.7rem; }
+.section-icon { font-size:1.4rem; }
+.section-content p { color:rgba(200,230,200,0.9); line-height:1.8; margin-bottom:1rem; }
+.section-content ul { color:rgba(200,230,200,0.9); line-height:1.8; padding-left:1.5rem; }
+.section-content li { margin-bottom:0.6rem; }
+.highlight { color:#e8a87c; font-weight:600; }
+
+/* Steps */
+.steps-container { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem; }
+@media(max-width:768px){ .steps-container { grid-template-columns:repeat(2,1fr); } }
+.step-card { background:rgba(200,149,108,0.08); border:1px solid rgba(200,149,108,0.2); border-radius:12px; padding:1.5rem 1rem; text-align:center; }
+.step-number { width:40px; height:40px; background:linear-gradient(135deg,#e8a87c,#c8956c); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:800; color:#0a0f20; margin:0 auto 0.8rem; }
+.step-title { font-size:0.95rem; font-weight:700; color:#e8d5c0; margin-bottom:0.5rem; }
+.step-description { font-size:0.82rem; color:rgba(200,180,160,0.8); line-height:1.5; }
+
+/* Info boxes */
+.info-box { background:rgba(200,149,108,0.08); border:1px solid rgba(200,149,108,0.3); border-radius:12px; padding:1.5rem; margin-top:1.5rem; }
+.warning-box { background:rgba(255,180,50,0.06); border-color:rgba(255,180,50,0.3); }
+.info-box-title { font-size:1rem; font-weight:700; color:#e8a87c; margin-bottom:0.75rem; }
+.info-box-content { font-size:0.9rem; color:rgba(220,210,195,0.9); line-height:1.7; }
+
+/* Pricing table */
+.pricing-table { background:rgba(5,10,30,0.8); border:1px solid rgba(200,149,108,0.2); border-radius:14px; overflow:hidden; margin-top:1rem; }
+.pricing-header { padding:1.5rem 2rem; background:rgba(200,149,108,0.1); border-bottom:1px solid rgba(200,149,108,0.2); }
+.pricing-header h3 { color:#e8d5c0; font-size:1.1rem; margin:0 0 0.3rem; }
+.pricing-subtitle { color:rgba(200,180,160,0.8); font-size:0.85rem; margin:0; }
+.pricing-table table { width:100%; border-collapse:collapse; }
+.pricing-table th { padding:1rem 1.5rem; text-align:left; color:rgba(200,149,108,0.9); font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid rgba(200,149,108,0.15); background:rgba(200,149,108,0.05); }
+.pricing-table td { padding:1rem 1.5rem; color:rgba(220,235,220,0.9); border-bottom:1px solid rgba(255,255,255,0.05); font-size:0.95rem; }
+.pricing-table tr:last-child td { border-bottom:none; }
+.pricing-table tr:hover td { background:rgba(200,149,108,0.05); }
+
+/* FAQ */
+.faq-container { display:flex; flex-direction:column; gap:0.75rem; }
+.faq-item { background:rgba(10,20,50,0.6); border:1px solid rgba(200,149,108,0.15); border-radius:12px; overflow:hidden; }
+.faq-question { padding:1.2rem 1.5rem; font-weight:700; color:#e8d5c0; font-size:0.95rem; cursor:pointer; }
+.faq-answer { padding:0 1.5rem 1.2rem; color:rgba(200,230,200,0.85); font-size:0.9rem; line-height:1.7; }
+
+/* CTA section */
+.cta-section { background:linear-gradient(135deg,rgba(15,20,50,0.9),rgba(30,15,60,0.9)); border:1px solid rgba(200,149,108,0.3); border-radius:20px; padding:3rem 2rem; text-align:center; margin-top:2rem; }
+.cta-title { font-size:2rem; font-weight:800; color:#e8f0e9; margin-bottom:1rem; }
+.cta-description { color:rgba(200,230,200,0.85); font-size:1rem; line-height:1.7; max-width:600px; margin:0 auto 2rem; }
+.discord-float { position:fixed; bottom:2rem; right:2rem; background:linear-gradient(135deg,#5865F2,#4752c4); color:#fff; padding:0.8rem 1.5rem; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; box-shadow:0 4px 20px rgba(88,101,242,0.5); z-index:100; display:flex; align-items:center; gap:0.5rem; transition:transform 0.2s,box-shadow 0.2s; }
+.discord-float:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(88,101,242,0.7); }
+
+/* Lightbox */
+.lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; display:none; align-items:center; justify-content:center; }
+.lightbox.active { display:flex; }
+.lightbox-close { position:absolute; top:1rem; right:1.5rem; color:#fff; font-size:2rem; cursor:pointer; background:none; border:none; }
+#lightboxImage { max-width:90vw; max-height:90vh; border-radius:8px; }
+
+/* Jupiter Planet Animation in Hero */
+.jupiter-planet-hero {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 35% 35%, #c8956c 0%, #e8a87c 20%, #d4724a 40%, #b05a30 60%, #8b3a1a 80%, #5c1f08 100%);
+    box-shadow:
+        inset -20px -10px 40px rgba(0,0,0,0.5),
+        inset 10px 5px 20px rgba(255,200,150,0.3),
+        0 0 40px rgba(200,100,50,0.4),
+        0 0 80px rgba(200,100,50,0.2);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 2rem;
+    animation: jupiterSpin 20s linear infinite;
+    flex-shrink: 0;
+}
+.jupiter-planet-hero::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: -10%;
+    width: 120%;
+    height: 12px;
+    background: rgba(180,80,30,0.6);
+    border-radius: 50%;
+    box-shadow: 0 8px 0 rgba(220,120,60,0.4), 0 16px 0 rgba(180,80,30,0.3), 0 -8px 0 rgba(140,60,20,0.5);
+}
+.jupiter-planet-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    left: -5%;
+    width: 110%;
+    height: 8px;
+    background: rgba(210,100,40,0.5);
+    border-radius: 50%;
+}
+@keyframes jupiterSpin {
+    0% { box-shadow: 0 0 40px rgba(200,100,50,0.4), 0 0 80px rgba(200,100,50,0.2); }
+    50% { box-shadow: 0 0 60px rgba(220,130,70,0.6), 0 0 120px rgba(200,100,50,0.3); }
+    100% { box-shadow: 0 0 40px rgba(200,100,50,0.4), 0 0 80px rgba(200,100,50,0.2); }
+}
+
+/* Letter animation floating */
+.letter-float {
+    display: inline-block;
+    animation: letterFloat 3s ease-in-out infinite;
+    font-size: 3rem;
+    margin: 0 0.5rem;
+}
+.letter-float:nth-child(2) { animation-delay: 0.5s; }
+.letter-float:nth-child(3) { animation-delay: 1s; }
+@keyframes letterFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+/* Jupiter stripe text accent */
+.jupiter-text {
+    background: linear-gradient(135deg, #e8a87c 0%, #c8956c 25%, #ff6b35 50%, #e8a87c 75%, #d4724a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: jupiterShimmer 4s linear infinite;
+}
+@keyframes jupiterShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+
+/* Discord CTA button */
+.cta-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    background: linear-gradient(135deg, #5865F2, #4752c4) !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 1rem 2.5rem !important;
+    border-radius: 50px !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 4px 15px rgba(0,0,0,0.3) !important;
+    animation: discordPulse 2.5s ease-in-out infinite !important;
+    transition: transform 0.2s !important;
+}
+.cta-button:hover { transform: translateY(-3px) scale(1.03) !important; }
+@keyframes discordPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(88,101,242,0.5), 0 4px 15px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 0 40px rgba(88,101,242,0.9), 0 4px 30px rgba(88,101,242,0.5); }
+}
+
+/* Profit table green glow */
+.profit-value {
+    color: #52b788 !important;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(82,183,136,0.4);
+}
+
+/* Fix black text in pricing table note */
+div[style*="rgba(0, 0, 0, 0.6)"],
+div[style*="rgba(0,0,0,0.6)"] {
+    color: rgba(200, 225, 200, 0.8) !important;
+}
+
+/* ===== CAROUSEL REDESIGN ===== */
+.testimonials-carousel-wrapper {
+    position: relative;
+    padding: 1rem 60px 2rem;
+    overflow: hidden;
+}
+.testimonials-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    position: relative;
+    overflow: visible;
+}
+.testimonial-card {
+    position: absolute;
+    width: min(480px, 85vw);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.75) translateX(0);
+    pointer-events: none;
+    border: 2px solid rgba(200,149,108,0.15);
+    background: rgba(10,15,35,0.6);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    pointer-events: all;
+    z-index: 3;
+    border-color: rgba(200,149,108,0.6);
+    box-shadow: 0 0 30px rgba(200,149,108,0.3), 0 8px 40px rgba(0,0,0,0.5);
+}
+.testimonial-card.prev {
+    opacity: 0.4;
+    transform: scale(0.82) translateX(-105%);
+    pointer-events: all;
+    z-index: 2;
+    filter: blur(1px);
+}
+.testimonial-card.next {
+    opacity: 0.4;
+    transform: scale(0.82) translateX(105%);
+    pointer-events: all;
+    z-index: 2;
+    filter: blur(1px);
+}
+.testimonial-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 360px;
+    object-fit: cover;
+}
+.testimonial-content {
+    padding: 1rem 1.2rem;
+    background: rgba(5, 10, 30, 0.95);
+    border-top: 1px solid rgba(200,149,108,0.2);
+    width: 100%;
+    box-sizing: border-box;
+}
+.testimonial-quote {
+    color: rgba(220, 235, 220, 0.92);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin: 0 0 0.5rem;
+    font-style: italic;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.testimonial-author {
+    color: #e8a87c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(200,149,108,0.5);
+    background: rgba(10,15,35,0.8);
+    color: #e8a87c;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+.carousel-arrow:hover {
+    background: rgba(200,149,108,0.2);
+    border-color: rgba(200,149,108,0.9);
+    box-shadow: 0 0 15px rgba(200,149,108,0.4);
+    transform: translateY(-60%) scale(1.1);
+}
+.carousel-arrow.left { left: 4px; }
+.carousel-arrow.right { right: 4px; }
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+}
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(200,149,108,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+}
+.carousel-dot.active {
+    background: #e8a87c;
+    transform: scale(1.4);
+    box-shadow: 0 0 8px rgba(200,149,108,0.6);
+}
+@media (max-width: 600px) {
+    .testimonial-card.prev,
+    .testimonial-card.next { display: none; }
+    .testimonials-carousel-wrapper { padding: 1rem 50px 2rem; }
+}
+
+/* ===== FULL-WIDTH PAGE OVERRIDE ===== */
+.content-area .container {
+    max-width: 1060px !important;
+    width: calc(100% - 8rem) !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    border: 1px solid rgba(200,149,108,0.25) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 0 60px rgba(180,80,20,0.12), 0 0 120px rgba(180,80,20,0.06) !important;
+    overflow: hidden !important;
+}
+.content-area {
+    background: transparent !important;
+    padding-top: 60px !important;
+}
+body, .page-wrapper, html {
+    background: #000000 !important;
+}
+.main-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+.content-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== JUPITER POST COLOR THEME ===== */
+/* Remove blue-navy backing, replace with warm Jupiter amber-dark, full width */
+.hero-section {
+    background: rgba(22, 9, 2, 0.95) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: rgba(200,149,108,0.3) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.stat-card {
+    background: rgba(22, 9, 2, 0.85) !important;
+    border-color: rgba(200,149,108,0.22) !important;
+}
+.content-section {
+    background: rgba(18, 7, 2, 0.88) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: rgba(200,149,108,0.15) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.info-box {
+    background: rgba(200,149,108,0.1) !important;
+    border-color: rgba(200,149,108,0.3) !important;
+}
+.warning-box {
+    background: rgba(180,100,30,0.1) !important;
+    border-color: rgba(220,140,50,0.3) !important;
+}
+.pricing-table {
+    background: rgba(15, 6, 1, 0.9) !important;
+    border-color: rgba(200,149,108,0.2) !important;
+}
+.pricing-header {
+    background: rgba(200,149,108,0.12) !important;
+}
+.faq-item {
+    background: rgba(22, 9, 2, 0.75) !important;
+    border-color: rgba(200,149,108,0.15) !important;
+}
+.cta-section {
+    background: linear-gradient(135deg, rgba(25,10,3,0.98), rgba(35,12,5,0.98)) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: rgba(200,149,108,0.35) !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.testimonial-content {
+    background: rgba(15, 6, 1, 0.97) !important;
+    border-top-color: rgba(200,149,108,0.25) !important;
+}
+.space-badge {
+    background: rgba(200,149,108,0.18) !important;
+}
+
+/* ===== FLYING ENVELOPES ===== */
+.fly-envelope {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(200,149,108,0.7));
+    will-change: transform;
+}
+@keyframes flyAcrossRTL {
+    0%   { opacity: 0; transform: translateX(0) translateY(0) rotate(-6deg) scale(var(--escale)); }
+    8%   { opacity: 0.8; }
+    92%  { opacity: 0.8; }
+    100% { opacity: 0; transform: translateX(-110vw) translateY(var(--drift)) rotate(-6deg) scale(var(--escale)); }
+}
+@keyframes flyAcrossLTR {
+    0%   { opacity: 0; transform: translateX(0) translateY(0) rotate(6deg) scale(var(--escale)) scaleX(-1); }
+    8%   { opacity: 0.8; }
+    92%  { opacity: 0.8; }
+    100% { opacity: 0; transform: translateX(110vw) translateY(var(--drift)) rotate(6deg) scale(var(--escale)) scaleX(-1); }
+}
+
+/* ===== SPARKLE PARTICLES ===== */
+.sparkle-p {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    animation: sparklePop var(--dur,1.2s) ease-out forwards;
+    transform-origin: center;
+}
+.sparkle-p::before,
+.sparkle-p::after {
+    content: '';
+    position: absolute;
+    border-radius: 2px;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+.sparkle-p::before { width: var(--sz,8px); height: 2px; }
+.sparkle-p::after  { width: 2px; height: var(--sz,8px); }
+.sparkle-p.sp-white::before, .sparkle-p.sp-white::after {
+    background: rgba(255,250,235,0.95);
+    box-shadow: 0 0 6px rgba(255,245,200,0.9);
+}
+.sparkle-p.sp-amber::before, .sparkle-p.sp-amber::after {
+    background: rgba(230,150,60,0.95);
+    box-shadow: 0 0 8px rgba(210,110,30,1);
+}
+.sparkle-p.sp-orange::before, .sparkle-p.sp-orange::after {
+    background: rgba(255,120,40,0.9);
+    box-shadow: 0 0 8px rgba(255,80,10,0.8);
+}
+@keyframes sparklePop {
+    0%   { opacity: 0;   transform: scale(0) rotate(0deg); }
+    25%  { opacity: 1;   transform: scale(1.4) rotate(45deg); }
+    60%  { opacity: 0.85; transform: scale(1.1) rotate(90deg); }
+    100% { opacity: 0;   transform: scale(0.4) rotate(180deg) translateY(-18px); }
+}
+
+/* ===== SCROLL FADE-IN ===== */
+.anim-fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+.anim-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== STAR ENHANCEMENTS ===== */
+.star.amber { background: rgba(210,130,50,0.9) !important; }
+.star.gold  { background: rgba(240,190,80,0.85) !important; }
+    </style>
 </head>
 <body>
 
@@ -59,7 +555,7 @@
     </a>
     <div class="nav-links">
       <a href="/getting-started" class="nav-link">Get Started</a>
-      <a href="/daily-login-guide" class="nav-link">Daily Guide</a>
+      <a href="/daily-login-guide" class="nav-link">Daily Login Guide</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
@@ -74,7 +570,7 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
-  <a href="/daily-login-guide">Daily Guide</a>
+  <a href="/daily-login-guide">Daily Login Guide</a>
   <a href="/side-hustles">Side Hustles</a>
   <a href="/tools">Tools</a>
   <a href="/blog">Blog</a>
@@ -108,58 +604,6 @@
     <!-- Header -->
             
 
-    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="slide-menu" id="slideMenu">
-            <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
-            
-            <div class="slide-menu-title">🎰 Daily Collection Sidehustle</div>
-            <a href="daily-login-guide.html">📋 Daily Collection Sites Guide</a>
-            <a href="jupiter-post.html">✉️ Jupiter Post Letterwriting</a>
-            <a href="complete-guide-list.html">📝 Written Guides</a>
-            <a href="daily-free-sc.html">🎁 Daily Free Rewards</a>
-            <a href="package-sales.html">📦 Package Sales</a>
-            <a href="skrill-casinos.html">💳 Skrill Eligible Sites</a>
-            <a href="bonus-collection-software.html">🤖 Daily Bonus Collection Software</a>
-        <a href="casino-ratings.html">🏆 Casino Ratings</a>
-        <a href="vote.html">🗳️ Vote on Casinos</a>
-        <a href="sweepstakes-casino-list.html">📋 Complete Casino List</a>
-            <a href="auto-giveaways-software.html">? Auto Giveaways Signup Software</a>
-            <a href="daily-login-reviews.html">? Site Reviews</a>
-            <a href="new-sites.html">🆕 New Sites This Month</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Resources & Tools</div>
-            <a href="getting-started.html">🗺️ Getting Started Roadmap</a>
-            <a href="tools.html">🔧 Calculators & Tools</a>
-            <a href="sweepstats.html">📊 SweepStats Tracker</a>
-            <a href="faq.html">? FAQ / Help Center</a>
-            <a href="glossary.html">📖 Glossary of Terms</a>
-            <a href="earnings-potential.html">💰 Earnings Potential</a>
-            <a href="comparisons/best-welcome-packages.html">🎁 Best Welcome Packages</a>
-            <a href="comparisons/fastest-payout-sites.html">? Fastest Payout Sites</a>
-            <a href="newsletter.html">📧 Newsletter Signup</a>
-            <a href="best-sweepstakes-card.html">💳 Best Sweepstakes Card</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Online Selling</div>
-            <a href="sell-on-ebay-automated.html">🏷️ Sell on eBay Automated</a>
-            <a href="sell-on-tiktok-automated.html">📱 Sell on TikTok Automated</a>
-            <a href="tracking-number-generator.html">📦 Tracking Number Generator</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ Online Sidehustles</div>
-            <a href="reverse-stock-arbitrage.html">📊 Reverse Stock Arbitrage</a>
-            <a href="sportsbetting-automation.html">⚽ Sportsbetting Automated</a>
-            <a href="credit-card-churning.html">💳 Credit Card Churning</a>
-            <a href="credit-cards.html">💳 Best Credit Cards</a>
-            <a href="matched-betting.html">🎲 Matched Betting</a>
-            <a href="openclaw-setup.html">🤖 OpenClaw AI Setup</a>
-            <a href="reward-apps.html">📱 Reward Apps</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">✨ More</div>
-            <a href="blog.html">✍️ Blog</a>
-            <a href="comparisons/chumba-vs-stake.html">✨ Chumba vs Stake.us</a>
-            <a href="income-reports.html">💵 Income Reports</a>
-            <a href="about.html">ℹ️ About Us</a>
-            <a href="contact.html">📬 Contact</a>
-        </div>
     
     <!-- Quick Navigation Bar -->
     
@@ -169,36 +613,36 @@
         <div class="content-wrapper">
             <!-- Hero Section -->
             <div class="hero-section">
+                <div class="jupiter-planet-hero"></div>
                 <div class="space-badge">
-                    ✨ AUTOMATED LETTERWRITING SERVICE
+                    JUPITER POST · LETTERWRITING SERVICE
                 </div>
-                <h1><span class="jupiter-text">Jupiter Post Letterwriting</span> Letterwriting</h1>
+                <h1><span class="jupiter-text">Jupiter Post</span> Letterwriting</h1>
                 <p class="hero-description">
                     The Ultimate automated letterwriting service for sweepstakes casinos. Earn SC through AMOE 
                     (Alternative Method of Entry) without the tedious work. We handle everything—from handwriting 
                     to mailing—so you can focus on cashing out real money.
                 </p>
             </div>
-            
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon">✨</div>
+                    <div class="stat-icon">★</div>
                     <div class="stat-value">$5</div>
                     <div class="stat-label">Profit Per Letter</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">✨</div>
+                    <div class="stat-icon">★</div>
                     <div class="stat-value">$2</div>
                     <div class="stat-label">Cost Per Letter</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">✨</div>
+                    <div class="stat-icon">★</div>
                     <div class="stat-value">250 Letters</div>
                     <div class="stat-label">Minimum Order</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">✨</div>
+                    <div class="stat-icon">★</div>
                     <div class="stat-value">4-6</div>
                     <div class="stat-label">Months Processing</div>
                 </div>
@@ -207,7 +651,7 @@
             <!-- What is Letter Writing Section -->
             <div class="content-section">
                 <h2 class="section-title">
-                    <span class="section-icon">✨</span>
+                    <span class="section-icon">★</span>
                     What is Letter Writing for Sweepstakes?
                 </h2>
                 <div class="section-content">
@@ -240,7 +684,7 @@
             <!-- How It Works Section -->
             <div class="content-section">
                 <h2 class="section-title">
-                    <span class="section-icon">✨</span>
+                    <span class="section-icon">★</span>
                     How Our Service Works
                 </h2>
                 <div class="section-content">
@@ -295,7 +739,7 @@
             <!-- Why Use Our Service Section -->
             <div class="content-section">
                 <h2 class="section-title">
-                    <span class="section-icon">✨</span>
+                    <span class="section-icon">★</span>
                     Why Use Jupiter Post Letterwriting?
                 </h2>
                 <div class="section-content">
@@ -316,7 +760,7 @@
                 
                 <div class="info-box">
                     <div class="info-box-title">
-                        ✨ Why $2 Per Letter?
+                        ★ Why $2 Per Letter?
                     </div>
                     <div class="info-box-content">
                         Our pricing covers the cost of materials ($1.22 for handwritten letter + envelope), code collection, 
@@ -329,7 +773,7 @@
             <!-- Pricing Section -->
             <div class="content-section">
                 <h2 class="section-title">
-                    <span class="section-icon">✨</span>
+                    <span class="section-icon">★</span>
                     Letter Writing Service — Pricing
                 </h2>
                 
@@ -383,7 +827,7 @@
                 
                 <div class="info-box warning-box">
                     <div class="info-box-title">
-                        ✨ Average Processing Times
+                        ★ Average Processing Times
                     </div>
                     <div class="info-box-content">
                         <strong>Pulsz:</strong> 4–5 months<br>
@@ -396,7 +840,7 @@
             <!-- FAQ Section -->
             <div class="content-section">
                 <h2 class="section-title">
-                    <span class="section-icon">?</span>
+                    <span class="section-icon">★</span>
                     Frequently Asked Questions
                 </h2>
                 
@@ -467,8 +911,8 @@
                 </div>
                 
                 <div class="testimonials-carousel-wrapper">
-                    <button class="carousel-arrow left" onclick="scrollCarousel('left')">—</button>
-                    <button class="carousel-arrow right" onclick="scrollCarousel('right')">—</button>
+                    <button class="carousel-arrow left" id="carouselPrev" aria-label="Previous">&#8592;</button>
+                    <button class="carousel-arrow right" id="carouselNext" aria-label="Next">&#8594;</button>
                     
                     <div class="testimonials-grid" id="testimonialsCarousel">
                     <div class="testimonial-card">
@@ -535,6 +979,7 @@
                             <p class="testimonial-author">— Vazry</p>
                         </div>
                     </div>
+                    <div class="carousel-dots" id="carouselDots"></div>
                 </div>
             </div>
             
@@ -553,8 +998,9 @@
                     <p class="cta-description">
                         Join our Discord community to place your order and start your passive income journey with Jupiter Post Letterwriting
                     </p>
-                    <a href="https://discord.gg/PhJ2xg6nMk" class="cta-button" target="_blank">
-                        Join Jupiter Post Letterwriting Discord ✨
+                    <a href="https://discord.gg/PhJ2xg6nMk" class="cta-button" target="_blank" rel="noopener">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                        Join Jupiter Post on Discord
                     </a>
                 </div>
             </div>
@@ -564,54 +1010,155 @@
     <!-- Footer -->
     
     
-    <!-- Discord Floating Button -->
-    <a href="https://discord.gg/PhJ2xg6nMk" class="discord-float" target="_blank">
-        <span>✨</span>
-        Order Jupiter Post Letterwriting Letters
-    </a>
     
     <script>
-        // Generate random stars
+        // Generate random stars (enhanced)
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 150;
-            
+            if (!starsContainer) return;
+            const starCount = 280;
+            const colorTypes = ['', '', '', '', 'amber', 'amber', 'gold'];
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
-                star.className = 'star';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
+                const type = colorTypes[Math.floor(Math.random() * colorTypes.length)];
+                star.className = 'star' + (type ? ' ' + type : '');
+                const size = (Math.random() * 2.5 + 0.5).toFixed(1) + 'px';
+                star.style.width = size;
+                star.style.height = size;
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDelay = (Math.random() * 5).toFixed(2) + 's';
+                star.style.animationDuration = (2 + Math.random() * 3).toFixed(2) + 's';
                 starsContainer.appendChild(star);
             }
         }
-        
         createStars();
-        
-        // Carousel scroll function with infinite loop
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('testimonialsCarousel');
-            const scrollAmount = 400; // Card width + gap
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            
-            if (direction === 'left') {
-                if (carousel.scrollLeft <= 0) {
-                    // At the beginning, jump to end
-                    carousel.scrollLeft = maxScroll;
+
+        // ===== FLYING ENVELOPE SPAWNER =====
+        (function() {
+            var envelopeSVG = '<svg width="48" height="34" viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">'
+                + '<rect x="1" y="1" width="46" height="32" rx="3" fill="rgba(22,9,2,0.92)" stroke="rgba(200,149,108,0.9)" stroke-width="1.5"/>'
+                + '<polyline points="1,1 24,20 47,1" stroke="rgba(200,149,108,0.9)" stroke-width="1.5" fill="none"/>'
+                + '<line x1="1" y1="33" x2="17" y2="16" stroke="rgba(200,149,108,0.55)" stroke-width="1"/>'
+                + '<line x1="47" y1="33" x2="31" y2="16" stroke="rgba(200,149,108,0.55)" stroke-width="1"/>'
+                + '<rect x="33" y="4" width="11" height="9" rx="1.5" fill="none" stroke="rgba(200,149,108,0.5)" stroke-width="1"/>'
+                + '<line x1="35" y1="7.5" x2="42" y2="7.5" stroke="rgba(200,149,108,0.45)" stroke-width="0.8"/>'
+                + '<line x1="35" y1="9.5" x2="42" y2="9.5" stroke="rgba(200,149,108,0.45)" stroke-width="0.8"/>'
+                + '</svg>';
+
+            function spawnEnvelope() {
+                var el = document.createElement('div');
+                el.className = 'fly-envelope';
+                var fromRight = Math.random() > 0.45;
+                var yPos = (8 + Math.random() * 72).toFixed(1);
+                var drift = (Math.random() * 70 - 35).toFixed(0) + 'px';
+                var duration = (11 + Math.random() * 9).toFixed(1);
+                var scale = (0.55 + Math.random() * 0.6).toFixed(2);
+                el.style.setProperty('--drift', drift);
+                el.style.setProperty('--escale', scale);
+                if (fromRight) {
+                    el.style.top = yPos + 'vh';
+                    el.style.right = '-60px';
+                    el.style.animation = 'flyAcrossRTL ' + duration + 's linear forwards';
                 } else {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    el.style.top = yPos + 'vh';
+                    el.style.left = '-60px';
+                    el.style.animation = 'flyAcrossLTR ' + duration + 's linear forwards';
                 }
-            } else {
-                if (carousel.scrollLeft >= maxScroll) {
-                    // At the end, jump to beginning
-                    carousel.scrollLeft = 0;
-                } else {
-                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
+                el.innerHTML = envelopeSVG;
+                document.body.appendChild(el);
+                setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, (parseFloat(duration) + 2) * 1000);
+                setTimeout(spawnEnvelope, 5000 + Math.random() * 9000);
             }
-        }
+            setTimeout(spawnEnvelope, 1800);
+        })();
+
+        // ===== SPARKLE PARTICLE SPAWNER =====
+        (function() {
+            var types = ['sp-white','sp-white','sp-white','sp-amber','sp-amber','sp-orange'];
+            function spawnSparkle() {
+                var el = document.createElement('div');
+                el.className = 'sparkle-p ' + types[Math.floor(Math.random() * types.length)];
+                var sz = (4 + Math.random() * 11).toFixed(1) + 'px';
+                var dur = (0.7 + Math.random() * 0.9).toFixed(2) + 's';
+                el.style.cssText = 'left:' + (Math.random()*98).toFixed(1) + 'vw;top:' + (Math.random()*95).toFixed(1) + 'vh;--sz:' + sz + ';--dur:' + dur + ';';
+                document.body.appendChild(el);
+                setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 2200);
+            }
+            setInterval(spawnSparkle, 160);
+        })();
+
+        // ===== SCROLL FADE-IN =====
+        (function() {
+            var els = document.querySelectorAll('.content-section, .stat-card, .step-card, .info-box, .pricing-table, .faq-item');
+            els.forEach(function(el) { el.classList.add('anim-fade-up'); });
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('visible');
+                            obs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+                els.forEach(function(el) { obs.observe(el); });
+            } else {
+                els.forEach(function(el) { el.classList.add('visible'); });
+            }
+        })();
+        
+        // Full carousel with dots and autoplay
+        (function() {
+            const carousel = document.getElementById('testimonialsCarousel');
+            const dotsContainer = document.getElementById('carouselDots');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            if (!carousel) return;
+
+            const cards = carousel.querySelectorAll('.testimonial-card');
+            let current = 0;
+            let autoTimer = null;
+            const total = cards.length;
+
+            // Build dots
+            cards.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                current = (index + total) % total;
+                cards.forEach((c, i) => {
+                    c.classList.toggle('active', i === current);
+                    c.classList.toggle('prev', i === (current - 1 + total) % total);
+                    c.classList.toggle('next', i === (current + 1) % total);
+                });
+                const allDots = dotsContainer.querySelectorAll('.carousel-dot');
+                allDots.forEach((d, i) => d.classList.toggle('active', i === current));
+                resetAuto();
+            }
+
+            function resetAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => goTo(current + 1), 4000);
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            carousel.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+            });
+
+            goTo(0);
+        })();
         
         // Lightbox functions
         function openLightbox(imageSrc) {
@@ -634,28 +1181,17 @@
                 closeLightbox();
             }
         });
-    
-        
-
-        
-        }
-
-        
 
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                document.getElementById('megaDropdown').classList.remove('active');
-                document.getElementById('navMenu').classList.remove('active');
+                const md = document.getElementById('megaDropdown');
+                const nm = document.getElementById('navMenu');
+                if (md) md.classList.remove('active');
+                if (nm) nm.classList.remove('active');
             }
         });
     </script>
 
-    <script>
-    function toggleMenu() {
-        document.getElementById('slideMenu').classList.toggle('open');
-        document.getElementById('menuOverlay').classList.toggle('open');
-    }
-    </script>
   </div>
 </div>
 

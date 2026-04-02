@@ -1,18 +1,35 @@
 # Netlify redirects
 
 # Clean URLs (no .html extension)
-/faq            /faq.html           200
-/glossary       /glossary.html      200
-/getting-started /getting-started.html 200
-/tools          /tools.html         200
-/newsletter     /newsletter.html    200
-/earnings-potential /earnings-potential.html 200
-/new-sites      /new-sites.html     200
+/faq                    /faq.html                   200
+/glossary               /glossary.html              200
+/getting-started        /getting-started.html       200
+/tools                  /tools.html                 200
+/newsletter             /newsletter.html            200
+/earnings-potential     /earnings-potential.html    200
+/new-sites              /new-sites.html             200
+/daily-login-guide      /daily-login-guide.html     200
+/side-hustles           /side-hustles.html          200
+/blog                   /blog.html                  200
+/about                  /about.html                 200
+/contact                /contact.html               200
+/sweepstakes            /sweepstakes.html           200
+/casino-directory       /casino-directory.html      200
+/privacy                /privacy-policy.html        200
+/terms                  /terms.html                 200
+/disclaimer             /affiliate-disclosure.html  200
+/freelancing            /freelancing.html           200
+/matched-betting        /matched-betting.html       200
+/credit-card-churning   /credit-card-churning.html  200
+/jupiter-post           /jupiter-post.html          200
+/reward-apps            /reward-apps.html           200
+/reverse-stock-arbitrage /reverse-stock-arbitrage.html 200
+/guides                 /guides.html                200
 
 # Comparison pages
-/comparisons/chumba-vs-stake      /comparisons/chumba-vs-stake.html      200
-/comparisons/fastest-payout-sites /comparisons/fastest-payout-sites.html 200
-/comparisons/best-welcome-packages /comparisons/best-welcome-packages.html 200
+/comparisons/chumba-vs-stake        /comparisons/chumba-vs-stake.html       200
+/comparisons/fastest-payout-sites   /comparisons/fastest-payout-sites.html  200
+/comparisons/best-welcome-packages  /comparisons/best-welcome-packages.html 200
 
 # RSS feed
 /rss            /feed.xml           200

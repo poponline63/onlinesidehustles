@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <title>Online Side Hustles 2026 - Earn $30+ Daily | Daily Collection Site Reviews</title>
-    <meta name="description" content="Join 2,500+ members earning $30+/day from daily collection sites. Free guides, 100+ site reviews, and automation tools. Start with $0 today.">
+    <meta name="description" content="Build side hustles you can automate and stack. Daily collection sites, sweepstake package churning, credit card churning, Reverse Stock Arbitrage and more. 2,500+ members. Free to start.">
     <meta name="keywords" content="online side hustles 2026, sweepstakes 2026, sweepstakes casinos 2026, best sweepstakes casinos 2026, sweepstakes casino guide 2026, free sweepstakes coins 2026">
     <meta name="author" content="Online Sidehustles">
     <link rel="canonical" href="https://onlinesidehustles.info/">
@@ -31,7 +31,7 @@
     <meta property="og:url" content="https://onlinesidehustles.info/">
     <meta property="og:title" content="Online Side Hustles 2026 - Earn $30+ Daily">
     <meta property="og:description" content="Join 2,500+ members earning $30+/day from daily collection sites.">
-    <meta property="og:image" content="https://onlinesidehustles.info/og-image.png">
+    <meta property="og:image" content="https://onlinesidehustles.info/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -223,6 +223,11 @@ body {
     0 0 70px rgba(180,215,255,0.4),
     0 0 120px rgba(150,195,255,0.2);
   z-index: 3;
+  animation: moonFloat 8s ease-in-out infinite;
+}
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0px); box-shadow: 0 0 30px rgba(210,235,255,0.7), 0 0 70px rgba(180,215,255,0.4), 0 0 120px rgba(150,195,255,0.2); }
+  50% { transform: translateY(-12px); box-shadow: 0 0 45px rgba(210,235,255,0.9), 0 0 90px rgba(180,215,255,0.6), 0 0 160px rgba(150,195,255,0.3); }
 }
 
 /* Forest tree silhouettes */
@@ -245,10 +250,18 @@ body {
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight: 900;
   line-height: 1.12;
-  color: var(--text-primary);
-  text-shadow: 0 0 50px rgba(82,183,136,0.25), 0 2px 24px rgba(0,0,0,0.9);
   margin-bottom: 1.3rem;
   letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #e8f0e9 0%, #74c69d 35%, #52b788 50%, #74c69d 65%, #e8f0e9 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 .hero-content h1 span { color: var(--leaf-accent); }
 .hero-subtitle {
@@ -278,6 +291,11 @@ body {
   transition: all 0.3s;
   border: none;
   cursor: pointer;
+  animation: btnPulse 2.5s ease-in-out infinite;
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 35px rgba(82,183,136,0.45); }
+  50% { box-shadow: 0 0 60px rgba(82,183,136,0.75), 0 0 100px rgba(82,183,136,0.25); }
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 55px rgba(82,183,136,0.65); }
 .btn-secondary {
@@ -325,6 +343,11 @@ body {
   color: var(--leaf-accent);
   line-height: 1;
   text-shadow: 0 0 20px rgba(82,183,136,0.4);
+  animation: statGlow 3s ease-in-out infinite;
+}
+@keyframes statGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(82,183,136,0.4); }
+  50% { text-shadow: 0 0 40px rgba(82,183,136,0.75), 0 0 80px rgba(82,183,136,0.25); }
 }
 .stat-label {
   font-size: 0.8rem;
@@ -415,7 +438,7 @@ body {
 .card:hover {
   border-color: rgba(82,183,136,0.5);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 25px rgba(82,183,136,0.1);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 25px rgba(82,183,136,0.15), 0 0 0 1px rgba(82,183,136,0.15);
 }
 .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
 .card-title { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
@@ -548,8 +571,8 @@ footer {
 .footer-links a:hover { color: var(--leaf-accent); }
 
 /* === ANIMATIONS === */
-.fade-in { opacity: 1; transform: translateY(0); }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; transform: translateY(28px) scale(0.98); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0) scale(1); }
 .fade-in-delay-1 { transition-delay: 0.15s; }
 .fade-in-delay-2 { transition-delay: 0.3s; }
 .fade-in-delay-3 { transition-delay: 0.45s; }
@@ -567,9 +590,173 @@ footer {
   .hero-buttons { flex-direction: column; align-items: center; }
   .trust-indicators { gap: 0.5rem; font-size: 0.78rem; }
 }
+
+/* === FLOATING PARTICLES === */
+.fp { position: fixed; pointer-events: none; z-index: 2; border-radius: 50%; animation: fpRise linear infinite; }
+@keyframes fpRise {
+  0%   { transform: translateY(110vh) scale(0.5); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 0.6; }
+  100% { transform: translateY(-60px) scale(1); opacity: 0; }
+}
+
+/* === SIDE ACCENT BARS === */
+@keyframes sidePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* === SCROLL PROGRESS BAR === */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--leaf-green), var(--leaf-accent), var(--gold-accent));
+  z-index: 10000;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(82,183,136,0.6);
+}
+
+/* === AURORA BOREALIS === */
+.aurora-container {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 70%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.45;
+}
+.aurora-wave {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: -20%;
+  left: -50%;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(82,183,136,0.08) 20%,
+    rgba(45,106,79,0.12) 35%,
+    rgba(82,183,136,0.06) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: auroraDrift1 12s ease-in-out infinite;
+  filter: blur(40px);
+}
+.aurora-wave:nth-child(2) {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(64,145,108,0.06) 25%,
+    rgba(82,183,136,0.1) 40%,
+    rgba(116,198,157,0.05) 55%,
+    transparent 75%
+  );
+  animation: auroraDrift2 16s ease-in-out infinite;
+  top: -10%;
+}
+.aurora-wave:nth-child(3) {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(13,34,64,0.08) 30%,
+    rgba(82,183,136,0.07) 45%,
+    transparent 65%
+  );
+  animation: auroraDrift3 20s ease-in-out infinite;
+  top: -30%;
+}
+@keyframes auroraDrift1 {
+  0%, 100% { transform: translateX(0%) rotate(-2deg) scaleY(1); }
+  50% { transform: translateX(15%) rotate(2deg) scaleY(1.2); }
+}
+@keyframes auroraDrift2 {
+  0%, 100% { transform: translateX(10%) rotate(1deg) scaleY(1.1); }
+  50% { transform: translateX(-10%) rotate(-1deg) scaleY(0.9); }
+}
+@keyframes auroraDrift3 {
+  0%, 100% { transform: translateX(-5%) rotate(-1deg); }
+  50% { transform: translateX(8%) rotate(2deg); }
+}
+
+/* === ANIMATED GRADIENT SECTION TITLES === */
+.section-title, .cta-title {
+  background: linear-gradient(135deg, #e8f0e9 0%, #74c69d 30%, #52b788 50%, #f0c040 70%, #74c69d 85%, #e8f0e9 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerTitle 6s linear infinite;
+}
+@keyframes shimmerTitle {
+  0% { background-position: 300% center; }
+  100% { background-position: -300% center; }
+}
+
+/* === 3D TILT CARDS === */
+.card, .site-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* === GLOWING CURSOR EFFECT ON SITE CARDS === */
+.site-card {
+  position: relative;
+  overflow: hidden;
+}
+.site-card .glow-follow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82,183,136,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.site-card:hover .glow-follow { opacity: 1; }
+.site-card .site-name, .site-card .site-daily { position: relative; z-index: 1; }
+
+/* === TYPING CURSOR === */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--leaf-accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* === STAGGERED CARD ENTRANCE === */
+.cards-grid .card:nth-child(1), .sites-grid .site-card:nth-child(1) { transition-delay: 0.05s; }
+.cards-grid .card:nth-child(2), .sites-grid .site-card:nth-child(2) { transition-delay: 0.12s; }
+.cards-grid .card:nth-child(3), .sites-grid .site-card:nth-child(3) { transition-delay: 0.19s; }
+.cards-grid .card:nth-child(4), .sites-grid .site-card:nth-child(4) { transition-delay: 0.26s; }
+.cards-grid .card:nth-child(5), .sites-grid .site-card:nth-child(5) { transition-delay: 0.33s; }
+.cards-grid .card:nth-child(6), .sites-grid .site-card:nth-child(6) { transition-delay: 0.40s; }
+.cards-grid .card:nth-child(7), .sites-grid .site-card:nth-child(7) { transition-delay: 0.47s; }
+
+/* === MOBILE: disable heavy effects === */
+@media (max-width: 768px) {
+  .aurora-container { display: none; }
+  .site-card .glow-follow { display: none; }
+}
 </style>
 </head>
 <body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<div id="side-left" style="position:fixed;top:0;bottom:0;left:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.8) 30%,rgba(240,192,64,0.6) 55%,rgba(82,183,136,0.8) 75%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite;box-shadow:2px 0 16px rgba(82,183,136,0.4);"></div>
+<div id="side-right" style="position:fixed;top:0;bottom:0;right:0;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(82,183,136,0) 8%,rgba(82,183,136,0.6) 35%,rgba(240,192,64,0.5) 55%,rgba(82,183,136,0.6) 78%,rgba(82,183,136,0) 92%,transparent 100%);z-index:400;pointer-events:none;animation:sidePulse 4s ease-in-out infinite reverse;box-shadow:-2px 0 16px rgba(82,183,136,0.35);"></div>
 
 <!-- Starfield Canvas -->
 <canvas id="starfield"></canvas>
@@ -583,7 +770,7 @@ footer {
     </a>
     <div class="nav-links">
       <a href="/getting-started" class="nav-link">Get Started</a>
-      <a href="/daily-login-guide" class="nav-link">Daily Guide</a>
+      <a href="/daily-login-guide" class="nav-link">Daily Login Guide</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
@@ -598,7 +785,7 @@ footer {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
-  <a href="/daily-login-guide">Daily Guide</a>
+  <a href="/daily-login-guide">Daily Login Guide</a>
   <a href="/side-hustles">Side Hustles</a>
   <a href="/tools">Tools</a>
   <a href="/blog">Blog</a>
@@ -606,13 +793,20 @@ footer {
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+
+  <!-- Aurora Borealis -->
+  <div class="aurora-container">
+    <div class="aurora-wave"></div>
+    <div class="aurora-wave"></div>
+    <div class="aurora-wave"></div>
+  </div>
 
   <!-- Moon -->
-  <div class="hero-moon"></div>
+  <div class="hero-moon" id="hero-moon"></div>
 
   <!-- Forest tree silhouettes -->
-  <div class="hero-trees">
+  <div class="hero-trees" id="hero-trees">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" width="100%" height="100%">
       <!-- Far background trees (lighter) -->
       <polygon points="0,420 50,260 100,420" fill="#071009" opacity="0.7"/>
@@ -662,17 +856,17 @@ footer {
   </div>
 
   <!-- Hero content -->
-  <div class="hero-content">
-    <h1 class="fade-in">Turn Your Free Time<br><span>Into Real Income</span></h1>
-    <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members earning $30–50+ daily from sweepstakes casinos, automated tools, and smart side hustles. No investment required.</p>
+  <div class="hero-content" id="hero-text">
+    <h1 class="fade-in">Build Side Hustles.<br><span>Automate. Stack Income.</span></h1>
+    <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members running multiple income streams they built once and automated. Daily collection sites, sweepstake package churning, credit card churning, Reverse Stock Arbitrage and more. Each one compounds on the last.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
       <a href="/getting-started" class="btn-primary">🌲 Get Started Free</a>
-      <a href="/daily-login-guide" class="btn-secondary">Browse the Guide</a>
+      <a href="/side-hustles" class="btn-secondary">Browse Side Hustles</a>
     </div>
     <div class="trust-indicators fade-in fade-in-delay-3">
-      <span>✦ No Investment Needed</span>
+      <span>✦ Multiple Income Streams</span>
       <span class="trust-dot">·</span>
-      <span>✦ 100+ Sites Reviewed</span>
+      <span>✦ All Automatable</span>
       <span class="trust-dot">·</span>
       <span>✦ 2,500+ Active Members</span>
     </div>
@@ -746,6 +940,20 @@ footer {
         <a href="/daily-login-guide" class="card-link">View Guide →</a>
       </div>
       <div class="card fade-in fade-in-delay-2">
+        <div class="card-icon">
+          <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="34" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <polyline points="1,1 18,16 35,1" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="1" y1="27" x2="12" y2="13" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="35" y1="27" x2="24" y2="13" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Jupiter Post</h3>
+        <p class="card-desc">Automated AMOE letterwriting service for sweepstakes casinos. We write and mail letters for you — earn SC without the tedious work.</p>
+        <span class="card-badge">$5 profit/letter</span>
+        <a href="/jupiter-post" class="card-link">Learn More →</a>
+      </div>
+      <div class="card fade-in fade-in-delay-3">
         <div class="card-icon">🤖</div>
         <h3 class="card-title">Automation Tools</h3>
         <p class="card-desc">Let Sweeps App collect your daily bonuses automatically across all sites. Set it up once, earn while you sleep.</p>
@@ -755,7 +963,7 @@ footer {
       <div class="card fade-in fade-in-delay-3">
         <div class="card-icon">📈</div>
         <h3 class="card-title">Side Hustle Guides</h3>
-        <p class="card-desc">Beyond sweepstakes — RSA stock arbitrage, Jupiter Post letterwriting, sportsbetting EV, and more income streams.</p>
+        <p class="card-desc">Beyond sweepstakes - RSA stock arbitrage, Jupiter Post letterwriting, sportsbetting EV, and more income streams.</p>
         <span class="card-badge">Multiple streams</span>
         <a href="/side-hustles" class="card-link">Explore →</a>
       </div>
@@ -775,20 +983,20 @@ footer {
 <!-- TOP SITES -->
 <section class="section">
   <div class="container">
-    <p class="section-label fade-in">Top picks right now</p>
+    <p class="section-label fade-in">Daily login sites</p>
     <h2 class="section-title fade-in">Best daily collection sites</h2>
     <div class="sites-grid">
       <a href="http://stake.us/?c=GZSweeps&offer=gzsweeps" class="site-card fade-in" target="_blank" rel="noopener">
         <div class="site-name">Stake.us</div><div class="site-daily">$1.00/day</div>
       </a>
       <a href="https://crowncoinscasino.com/?utm_campaign=364f186" class="site-card fade-in" target="_blank" rel="noopener">
-        <div class="site-name">Crown Coins</div><div class="site-daily">$0.05–$1.50/day</div>
+        <div class="site-name">Crown Coins</div><div class="site-daily">$0.05-$1.50/day</div>
       </a>
       <a href="https://affiliates.routy.app/route/91184?affId=3353&ts=5005447" class="site-card fade-in" target="_blank" rel="noopener">
-        <div class="site-name">McLuck</div><div class="site-daily">$0.20–$2.00/day</div>
+        <div class="site-name">McLuck</div><div class="site-daily">$0.20-$2.00/day</div>
       </a>
-      <a href="https://crashduel.com/games?source=website&referralId=RN34Z5&type=create-account" class="site-card fade-in" target="_blank" rel="noopener">
-        <div class="site-name">CrashDuel</div><div class="site-daily">$0.10–$5.00/day</div>
+      <a href="https://www.wowvegas.com/" class="site-card fade-in" target="_blank" rel="noopener">
+        <div class="site-name">WOW Vegas</div><div class="site-daily">$0.30–$1.50/day</div>
       </a>
       <a href="https://sweepjungle.com/" class="site-card fade-in" target="_blank" rel="noopener">
         <div class="site-name">SweepJungle</div><div class="site-daily">Progressive VIP</div>
@@ -804,11 +1012,44 @@ footer {
   </div>
 </section>
 
+<!-- SIDE HUSTLES SHOWCASE -->
+<hr class="divider">
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-label fade-in">More ways to earn</p>
+    <h2 class="section-title fade-in">Top online side hustles</h2>
+    <div class="sites-grid">
+      <a href="/daily-login-guide" class="site-card fade-in">
+        <div class="site-name">&#x1F3B0; Daily Collection Sites</div><div class="site-daily">$30&ndash;$50+/day</div>
+      </a>
+      <a href="/sweepstakes" class="site-card fade-in">
+        <div class="site-name">&#x1F4E6; Sweepstake Package Churning</div><div class="site-daily">$200&ndash;$1k/month</div>
+      </a>
+      <a href="/credit-card-churning" class="site-card fade-in">
+        <div class="site-name">&#x1F4B3; Credit Card Churning</div><div class="site-daily">$300&ndash;$3k/month</div>
+      </a>
+      <a href="/reverse-stock-arbitrage" class="site-card fade-in">
+        <div class="site-name">&#x1F4C8; Reverse Stock Arbitrage</div><div class="site-daily">$500&ndash;$5k/month</div>
+      </a>
+      <a href="/jupiter-post" class="site-card fade-in">
+        <div class="site-name">&#x2709;&#xFE0F; Jupiter Post</div><div class="site-daily">$200&ndash;$800/month</div>
+      </a>
+      <a href="/matched-betting" class="site-card fade-in">
+        <div class="site-name">&#x1F3AF; Matched Betting</div><div class="site-daily">$300&ndash;$1k/month</div>
+      </a>
+      <a href="/side-hustles" class="site-card fade-in" style="border-color:rgba(82,183,136,0.4);">
+        <div class="site-name" style="color:var(--leaf-accent)">View All Hustles</div>
+        <div class="site-daily">Guides &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="container">
-    <h2 class="cta-title fade-in">Ready to start earning?</h2>
-    <p class="cta-desc fade-in fade-in-delay-1">It's free to start. No investment required. Just daily logins and a bit of strategy.</p>
+    <h2 class="cta-title fade-in">Ready to build your first stream?</h2>
+    <p class="cta-desc fade-in fade-in-delay-1">Pick a side hustle, follow the guide to set it up, then automate it and move to the next. Every stream you add compounds on what you already have running.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
       <a href="/getting-started" class="btn-primary">🌲 Start for Free</a>
       <a href="https://discord.gg/W9bPGH8crh" class="btn-secondary" target="_blank" rel="noopener">Join the Discord</a>
@@ -835,7 +1076,7 @@ footer {
         <h4>Resources</h4>
         <a href="/tools">Tools</a>
         <a href="/sweepstakes">Sweepstakes</a>
-        <a href="/casino-directory">Casino Directory</a>
+        <a href="/daily-login-guide">Daily Login Guide</a>
         <a href="/faq">FAQ</a>
       </div>
       <div class="footer-col">
@@ -857,11 +1098,12 @@ footer {
 
 <!-- SCRIPTS -->
 <script>
-// Starfield animation
+// === STARFIELD WITH SHOOTING STARS ===
 (function() {
   var canvas = document.getElementById('starfield');
   var ctx = canvas.getContext('2d');
   var stars = [];
+  var shootingStars = [];
   var W, H, frame = 0;
 
   function resize() {
@@ -886,9 +1128,32 @@ footer {
     }
   }
 
-  function draw() {
+  // Shooting star spawner
+  var lastShoot = 0;
+  var nextShootDelay = 3000 + Math.random() * 5000;
+  function maybeSpawnShootingStar(now) {
+    if (now - lastShoot > nextShootDelay) {
+      lastShoot = now;
+      nextShootDelay = 3000 + Math.random() * 5000;
+      var startX = Math.random() * W * 0.7 + W * 0.1;
+      var startY = Math.random() * H * 0.35;
+      var angle = Math.PI * 0.15 + Math.random() * 0.25;
+      shootingStars.push({
+        x: startX, y: startY,
+        vx: Math.cos(angle) * (4 + Math.random() * 3),
+        vy: Math.sin(angle) * (4 + Math.random() * 3),
+        life: 1,
+        decay: 0.012 + Math.random() * 0.008,
+        len: 40 + Math.random() * 60
+      });
+    }
+  }
+
+  function draw(timestamp) {
     ctx.clearRect(0, 0, W, H);
     frame++;
+
+    // Stars
     for (var i = 0; i < stars.length; i++) {
       var s = stars[i];
       var twinkle = 0.45 + 0.55 * Math.sin(frame * s.speed + s.phase);
@@ -899,16 +1164,53 @@ footer {
       ctx.fill();
     }
     ctx.globalAlpha = 1;
+
+    // Shooting stars
+    maybeSpawnShootingStar(timestamp || 0);
+    for (var j = shootingStars.length - 1; j >= 0; j--) {
+      var ss = shootingStars[j];
+      ss.x += ss.vx;
+      ss.y += ss.vy;
+      ss.life -= ss.decay;
+      if (ss.life <= 0) { shootingStars.splice(j, 1); continue; }
+      var tailX = ss.x - ss.vx * (ss.len / 5);
+      var tailY = ss.y - ss.vy * (ss.len / 5);
+      var grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(1, 'rgba(255,255,255,' + (ss.life * 0.9) + ')');
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(ss.x, ss.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      // bright head
+      ctx.beginPath();
+      ctx.arc(ss.x, ss.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + ss.life + ')';
+      ctx.fill();
+    }
+
     requestAnimationFrame(draw);
   }
 
   resize();
   initStars();
-  draw();
+  draw(0);
   window.addEventListener('resize', function() { resize(); initStars(); });
 })();
 
-// Scroll fade-in
+// === SCROLL PROGRESS BAR ===
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (scrollTop / scrollHeight * 100) + '%';
+  }, { passive: true });
+})();
+
+// === SCROLL FADE-IN ===
 var faders = document.querySelectorAll('.fade-in');
 var io = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
@@ -922,7 +1224,7 @@ document.querySelectorAll('.hero .fade-in').forEach(function(el) {
   setTimeout(function() { el.classList.add('visible'); }, 100);
 });
 
-// Mobile menu
+// === MOBILE MENU ===
 var ham = document.getElementById('hamburger');
 var menu = document.getElementById('mobileMenu');
 if (ham && menu) {
@@ -930,6 +1232,145 @@ if (ham && menu) {
     menu.classList.toggle('open');
   });
 }
+
+// === FLOATING GREEN PARTICLES ===
+(function() {
+  var colors = ['rgba(82,183,136,0.35)', 'rgba(116,198,157,0.25)', 'rgba(240,192,64,0.2)', 'rgba(82,183,136,0.2)'];
+  for (var i = 0; i < 12; i++) {
+    var p = document.createElement('div');
+    p.className = 'fp';
+    var size = (3 + Math.random() * 5).toFixed(1);
+    p.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (Math.random() * 100).toFixed(1) + '%',
+      'background:' + colors[Math.floor(Math.random() * colors.length)],
+      'animation-duration:' + (12 + Math.random() * 20).toFixed(1) + 's',
+      'animation-delay:-' + (Math.random() * 25).toFixed(1) + 's',
+      'filter:blur(' + (Math.random() * 1.5).toFixed(1) + 'px)'
+    ].join(';');
+    document.body.appendChild(p);
+  }
+})();
+
+// === SMOOTH COUNTER ANIMATION WITH COMMA FORMATTING ===
+function formatNumber(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function animateCounter(el, target, prefix, suffix, duration) {
+  var start = 0;
+  var startTime = null;
+  var isDecimal = target !== Math.floor(target);
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    // Smooth ease-out-quart
+    var ease = 1 - Math.pow(1 - progress, 4);
+    var current = start + (target - start) * ease;
+    var display = isDecimal ? current.toFixed(1) : formatNumber(Math.floor(current));
+    el.textContent = prefix + display + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = prefix + (isDecimal ? target.toFixed(1) : formatNumber(target)) + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+var statNumbers = document.querySelectorAll('.stat-number');
+var countersTriggered = false;
+var statObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !countersTriggered) {
+      countersTriggered = true;
+      var targets = [
+        { val: 50, prefix: '$', suffix: '+', el: statNumbers[0] },
+        { val: 100, prefix: '', suffix: '+', el: statNumbers[1] },
+        { val: 2500, prefix: '', suffix: '+', el: statNumbers[2] },
+        { val: 0, prefix: '$', suffix: '', el: statNumbers[3] }
+      ];
+      targets.forEach(function(t, i) {
+        setTimeout(function() {
+          if (t.el) animateCounter(t.el, t.val, t.prefix, t.suffix, 1800);
+        }, i * 150);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+if (statNumbers[0]) statObserver.observe(statNumbers[0].parentElement.parentElement);
+
+// Mouse parallax removed per owner request
+
+// === TYPING EFFECT ON HERO SUBTITLE ===
+(function() {
+  var subtitle = document.querySelector('.hero-subtitle');
+  if (!subtitle) return;
+  var fullText = subtitle.textContent;
+  subtitle.textContent = '';
+  var cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+
+  // Wait for fade-in to complete
+  setTimeout(function() {
+    subtitle.textContent = '';
+    subtitle.appendChild(cursor);
+    var idx = 0;
+    function typeChar() {
+      if (idx < fullText.length) {
+        subtitle.insertBefore(document.createTextNode(fullText[idx]), cursor);
+        idx++;
+        setTimeout(typeChar, 18 + Math.random() * 22);
+      } else {
+        // Remove cursor after a pause
+        setTimeout(function() { cursor.style.display = 'none'; }, 2000);
+      }
+    }
+    typeChar();
+  }, 800);
+})();
+
+// === 3D TILT CARDS ===
+(function() {
+  if (window.innerWidth < 769) return;
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width;
+      var y = (e.clientY - rect.top) / rect.height;
+      var tiltX = (0.5 - y) * 12;
+      var tiltY = (x - 0.5) * 12;
+      card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-4px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.transition = 'all 0.4s ease';
+      setTimeout(function() { card.style.transition = 'all 0.3s'; }, 400);
+    });
+  });
+})();
+
+// === GLOWING HOVER ON SITE CARDS ===
+(function() {
+  if (window.innerWidth < 769) return;
+  var siteCards = document.querySelectorAll('.site-card');
+  siteCards.forEach(function(card) {
+    var glow = document.createElement('div');
+    glow.className = 'glow-follow';
+    card.appendChild(glow);
+
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      glow.style.left = (e.clientX - rect.left) + 'px';
+      glow.style.top = (e.clientY - rect.top) + 'px';
+      // Subtle 3D tilt for site cards too
+      var x = (e.clientX - rect.left) / rect.width;
+      var y = (e.clientY - rect.top) / rect.height;
+      card.style.transform = 'perspective(600px) rotateX(' + ((0.5 - y) * 8) + 'deg) rotateY(' + ((x - 0.5) * 8) + 'deg) translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+    });
+  });
+})();
 </script>
 
 </body>
