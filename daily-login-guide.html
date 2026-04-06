@@ -48,59 +48,83 @@
 <style>
 /* ===== GOLD VAULT — DAILY LOGIN GUIDE THEME ===== */
 
-/* Pip-Boy / Fallout Terminal Background */
+/* ===== PIP-BOY TERMINAL BACKGROUND ===== */
 body, html { background: #0a0d0a !important; }
+
+/* Base CRT screen — dark with green phosphor center glow */
 .space-background {
   position:fixed; top:0; left:0; width:100%; height:100%;
-  background: radial-gradient(ellipse at 50% 50%, #0d1a0d 0%, #060d06 50%, #030803 100%);
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(20,40,20,0.6) 0%, rgba(8,14,8,0.3) 40%, transparent 70%),
+    radial-gradient(ellipse at 30% 70%, rgba(15,30,15,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(15,30,15,0.2) 0%, transparent 50%),
+    #080e08;
   z-index:-3;
 }
 
-/* CRT Scanlines overlay */
-.crt-scanlines {
-  position:fixed; top:0; left:0; width:100%; height:100%; z-index:9998; pointer-events:none;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+/* Pip-Boy grid lines — subtle graph paper effect */
+.space-background::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(173,255,47,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(173,255,47,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -2;
+  pointer-events: none;
 }
 
-/* Stars still visible but green-tinted */
-.dlg-stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
-.dlg-star { position:absolute; background:rgba(173,255,47,0.6); border-radius:50%; animation:dlgTwinkle 3s infinite; }
-.dlg-star.lime  { background: rgba(173,255,47,0.9) !important; box-shadow: 0 0 4px rgba(173,255,47,0.5); }
-.dlg-star.bright { background: rgba(154,205,50,0.85) !important; box-shadow: 0 0 6px rgba(154,205,50,0.4); }
-@keyframes dlgTwinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.15;transform:scale(0.4);} }
+/* Heavy CRT Scanlines */
+.crt-scanlines {
+  position:fixed; top:0; left:0; width:100%; height:100%; z-index:9998; pointer-events:none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 6px);
+}
 
-/* CRT Vignette */
+/* Hide space elements — no stars, no shooting stars */
+.dlg-stars, .dlg-star { display:none !important; }
+.dlg-shooting { display:none !important; }
+.dlg-nebula { display:none !important; }
+
+/* CRT Vignette — heavy dark edges like looking through a monitor */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.85) 100%);
   pointer-events: none;
   z-index: 9997;
 }
 
-/* CRT Flicker */
+/* CRT Flicker — green phosphor pulse */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(173,255,47,0.015);
   pointer-events: none;
   z-index: 9996;
-  animation: crtFlicker 0.1s infinite;
+  animation: crtFlicker 4s ease-in-out infinite;
 }
 @keyframes crtFlicker {
-  0% { opacity: 0.02; }
-  50% { opacity: 0.04; }
-  100% { opacity: 0.02; }
+  0%, 100% { background: rgba(173,255,47,0.01); }
+  30% { background: rgba(173,255,47,0.025); }
+  50% { background: rgba(173,255,47,0.005); }
+  80% { background: rgba(173,255,47,0.02); }
 }
 
-/* Phosphor glow blobs */
-.dlg-shooting { position:fixed; width:120px; height:2px; background:linear-gradient(90deg,rgba(173,255,47,0),rgba(173,255,47,0.6),rgba(173,255,47,0)); border-radius:50%; animation:dlgShoot 12s linear infinite; z-index:-1; pointer-events:none; filter: blur(1px); }
-@keyframes dlgShoot { 0%{transform:translateX(0) translateY(0) rotate(-25deg);opacity:1;} 70%{transform:translateX(-600px) translateY(200px) rotate(-25deg);opacity:0;} 100%{opacity:0;} }
-.dlg-nebula { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:-2; }
-.dlg-nebula-lime  { width:800px; height:500px; top:5%; right:-15%; background:rgba(173,255,47,0.04); }
-.dlg-nebula-green { width:600px; height:400px; bottom:10%; left:-10%; background:rgba(50,205,50,0.04); }
+/* Pip-Boy screen curvature — subtle barrel distortion feel via inner shadow */
+.content-area {
+  position: relative;
+}
+.content-area::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.4), inset 0 0 300px rgba(0,0,0,0.2);
+  pointer-events: none;
+  z-index: 9995;
+  border-radius: 8px;
+}
 
 /* Page wrapper */
 body, .page-wrapper { background: #0a0d0a !important; }
