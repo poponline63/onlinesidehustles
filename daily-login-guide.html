@@ -118,7 +118,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
   text-align: center;
 }
 
-/* Hero top row: emblem + text side by side */
+/* Hero top row: UFO + text side by side */
 .dlg-hero-top {
   display: flex;
   align-items: center;
@@ -126,6 +126,18 @@ body, .page-wrapper { background: #0a0d0a !important; }
   max-width: 900px;
   margin: 0 auto 2.5rem;
   text-align: left;
+}
+.hero-ufo-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 20px rgba(173,255,47,0.3));
+  animation: ufoFloat 4s ease-in-out infinite;
+}
+@keyframes ufoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 @media(max-width:768px){
   .dlg-hero-top { flex-direction: column; text-align: center; gap: 1.5rem; }
@@ -488,9 +500,14 @@ body, .page-wrapper { background: #0a0d0a !important; }
     <!-- Hero Section -->
     <div class="dlg-hero dlg-fade">
 
-      <div class="dlg-badge">DAILY LOGIN GUIDE</div>
-      <h1><span class="gold-text">Daily Login</span> Guide</h1>
-      <p class="dlg-hero-desc">Live data from our community spreadsheet &mdash; 80+ sweepstakes casinos ranked by tier with daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
+      <div class="dlg-hero-top">
+        <img src="/ufo-money.png" alt="UFO beaming up money" class="hero-ufo-img">
+        <div>
+          <div class="dlg-badge">DAILY LOGIN GUIDE</div>
+          <h1><span class="gold-text">Daily Login</span> Guide</h1>
+          <p class="dlg-hero-desc" style="text-align:left; margin:0;">Live data from our community spreadsheet &mdash; 80+ sweepstakes casinos ranked by tier with daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
+        </div>
+      </div>
 
       <!-- Stats -->
       <div class="dlg-stats">
