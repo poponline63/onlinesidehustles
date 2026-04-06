@@ -56,13 +56,18 @@ body, html { background: #0a0d0a !important; }
   z-index:-3;
 }
 
-/* CRT Scanlines */
-.dlg-stars {
+/* CRT Scanlines overlay */
+.crt-scanlines {
   position:fixed; top:0; left:0; width:100%; height:100%; z-index:9998; pointer-events:none;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
-  opacity: 0.4;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
 }
-.dlg-star { display:none; }
+
+/* Stars still visible but green-tinted */
+.dlg-stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
+.dlg-star { position:absolute; background:rgba(173,255,47,0.6); border-radius:50%; animation:dlgTwinkle 3s infinite; }
+.dlg-star.lime  { background: rgba(173,255,47,0.9) !important; box-shadow: 0 0 4px rgba(173,255,47,0.5); }
+.dlg-star.bright { background: rgba(154,205,50,0.85) !important; box-shadow: 0 0 6px rgba(154,205,50,0.4); }
+@keyframes dlgTwinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.15;transform:scale(0.4);} }
 
 /* CRT Vignette */
 body::before {
@@ -91,7 +96,8 @@ body::after {
 }
 
 /* Phosphor glow blobs */
-.dlg-shooting { display:none; }
+.dlg-shooting { position:fixed; width:120px; height:2px; background:linear-gradient(90deg,rgba(173,255,47,0),rgba(173,255,47,0.6),rgba(173,255,47,0)); border-radius:50%; animation:dlgShoot 12s linear infinite; z-index:-1; pointer-events:none; filter: blur(1px); }
+@keyframes dlgShoot { 0%{transform:translateX(0) translateY(0) rotate(-25deg);opacity:1;} 70%{transform:translateX(-600px) translateY(200px) rotate(-25deg);opacity:0;} 100%{opacity:0;} }
 .dlg-nebula { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:-2; }
 .dlg-nebula-lime  { width:800px; height:500px; top:5%; right:-15%; background:rgba(173,255,47,0.04); }
 .dlg-nebula-green { width:600px; height:400px; bottom:10%; left:-10%; background:rgba(50,205,50,0.04); }
@@ -421,7 +427,12 @@ body, .page-wrapper { background: #0a0d0a !important; }
 
 <!-- Terminal Background -->
 <div class="space-background"></div>
+<div class="crt-scanlines"></div>
 <div class="dlg-stars" id="dlgStars"></div>
+<div class="dlg-shooting" style="top:8%;  left:85%; animation-delay:0s;"></div>
+<div class="dlg-shooting" style="top:25%; left:65%; animation-delay:3s;"></div>
+<div class="dlg-shooting" style="top:55%; left:80%; animation-delay:6s;"></div>
+<div class="dlg-shooting" style="top:75%; left:50%; animation-delay:9s;"></div>
 <div class="dlg-nebula dlg-nebula-lime"></div>
 <div class="dlg-nebula dlg-nebula-green"></div>
 
