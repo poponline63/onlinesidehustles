@@ -48,19 +48,53 @@
 <style>
 /* ===== GOLD VAULT — DAILY LOGIN GUIDE THEME ===== */
 
-/* Space / background */
+/* Pip-Boy / Fallout Terminal Background */
 body, html { background: #0a0d0a !important; }
-.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#0a0d0a; z-index:-3; }
-.dlg-stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
-.dlg-star { position:absolute; background:#fff; border-radius:50%; animation:dlgTwinkle 3s infinite; }
-.dlg-star.lime  { background: rgba(173,255,47,0.9) !important; }
-.dlg-star.bright { background: rgba(154,205,50,0.85) !important; }
-@keyframes dlgTwinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.25;transform:scale(0.4);} }
-.dlg-shooting { position:fixed; width:90px; height:2px; background:linear-gradient(90deg,rgba(173,255,47,0),rgba(173,255,47,0.8),rgba(173,255,47,0)); border-radius:50%; animation:dlgShoot 9s linear infinite; z-index:-1; pointer-events:none; }
-@keyframes dlgShoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{opacity:0;} }
-.dlg-nebula { position:fixed; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:-2; }
-.dlg-nebula-lime  { width:600px; height:400px; top:10%; right:-10%; background:rgba(124,252,0,0.07); }
-.dlg-nebula-green { width:500px; height:300px; bottom:15%; left:-5%; background:rgba(40,120,40,0.07); }
+.space-background {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background: radial-gradient(ellipse at 50% 50%, #0d1a0d 0%, #060d06 50%, #030803 100%);
+  z-index:-3;
+}
+
+/* CRT Scanlines */
+.dlg-stars {
+  position:fixed; top:0; left:0; width:100%; height:100%; z-index:9998; pointer-events:none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+  opacity: 0.4;
+}
+.dlg-star { display:none; }
+
+/* CRT Vignette */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* CRT Flicker */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(173,255,47,0.015);
+  pointer-events: none;
+  z-index: 9996;
+  animation: crtFlicker 0.1s infinite;
+}
+@keyframes crtFlicker {
+  0% { opacity: 0.02; }
+  50% { opacity: 0.04; }
+  100% { opacity: 0.02; }
+}
+
+/* Phosphor glow blobs */
+.dlg-shooting { display:none; }
+.dlg-nebula { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:-2; }
+.dlg-nebula-lime  { width:800px; height:500px; top:5%; right:-15%; background:rgba(173,255,47,0.04); }
+.dlg-nebula-green { width:600px; height:400px; bottom:10%; left:-10%; background:rgba(50,205,50,0.04); }
 
 /* Page wrapper */
 body, .page-wrapper { background: #0a0d0a !important; }
@@ -72,10 +106,10 @@ body, .page-wrapper { background: #0a0d0a !important; }
   width: calc(100% - 8rem) !important;
   padding: 0 !important;
   margin: 0 auto !important;
-  background: transparent !important;
-  border: 1px solid rgba(173,255,47,0.2) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 0 60px rgba(124,252,0,0.1), 0 0 120px rgba(124,252,0,0.05) !important;
+  background: rgba(5,12,5,0.92) !important;
+  border: 2px solid rgba(173,255,47,0.35) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 30px rgba(173,255,47,0.08), 0 0 80px rgba(173,255,47,0.04), inset 0 0 60px rgba(0,0,0,0.4) !important;
   overflow: hidden !important;
 }
 
@@ -385,13 +419,9 @@ body, .page-wrapper { background: #0a0d0a !important; }
 </head>
 <body>
 
-<!-- Space Background -->
+<!-- Terminal Background -->
 <div class="space-background"></div>
 <div class="dlg-stars" id="dlgStars"></div>
-<div class="dlg-shooting" style="top:8%;  left:85%; animation-delay:0s;"></div>
-<div class="dlg-shooting" style="top:25%; left:65%; animation-delay:3s;"></div>
-<div class="dlg-shooting" style="top:55%; left:80%; animation-delay:6s;"></div>
-<div class="dlg-shooting" style="top:75%; left:50%; animation-delay:9s;"></div>
 <div class="dlg-nebula dlg-nebula-lime"></div>
 <div class="dlg-nebula dlg-nebula-green"></div>
 
