@@ -471,7 +471,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
   background: rgba(6, 12, 6, 0.9);
   font-size: 0.8rem;
   line-height: 1.35;
-  min-width: 1600px;
+  min-width: 1000px;
 }
 #guide-table thead { position:sticky; top:0; z-index:10; }
 #guide-table th {
@@ -1139,8 +1139,9 @@ function buildTable(rows) {
       if (c === 2) val = val.replace(/'$/, '');
 
       if (c === 0 && col0.toLowerCase().includes('signup')) {
-        // Signup column — make it a link, centered, bigger text
+        // Signup column — centered, bigger text
         td.style.textAlign = 'center';
+        td.style.verticalAlign = 'middle';
         const link = getSignupLink(col1);
         if (link) {
           td.innerHTML = '<a href="' + esc(link) + '" target="_blank" rel="noopener" style="color:#ADFF2F;font-weight:800;font-size:0.9rem;">Sign Up</a>';
@@ -1172,10 +1173,12 @@ function buildTable(rows) {
       } else if (c === 5) {
         // Min Redemption — centered
         td.style.textAlign = 'center';
+        td.style.verticalAlign = 'middle';
         td.innerHTML = linkify(esc(val));
       } else if (c === 16) {
         // Canada eligibility — hardcoded Yes/No, centered
         td.style.textAlign = 'center';
+        td.style.verticalAlign = 'middle';
         const eligible = CANADA_YES.has(col1);
         td.innerHTML = eligible
           ? '<span style="color:#ADFF2F;font-weight:700;">Yes</span>'
