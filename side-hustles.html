@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <!-- Google Analytics 4 -->
@@ -12,15 +12,15 @@
     <script src="/js/analytics.js" defer></script>
     <!-- End Google Analytics 4 -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="robots" content="index, follow">
-    <title>Side Hustles - Proven Income Streams | Online Side Hustles</title>
-    <meta name="description" content="Proven income streams from selling online to matched betting. Explore affiliate marketing, credit card churning, dropshipping, freelancing, and more.">
+    <title>Side Hustles 2026 | All Proven Income Streams | Online Sidehustles</title>
+    <meta name="description" content="Browse all side hustles: sweepstakes, affiliate marketing, sports betting automation, selling online, credit card churning, freelancing, and more. Real earnings, real guides.">
     <link rel="canonical" href="https://onlinesidehustles.info/side-hustles">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://onlinesidehustles.info/side-hustles">
-    <meta property="og:title" content="Side Hustles - Proven Income Streams | Online Side Hustles">
-    <meta property="og:description" content="Proven income streams from selling online to matched betting.">
+    <meta property="og:title" content="Side Hustles 2026 | All Proven Income Streams">
+    <meta property="og:description" content="Browse all side hustles: sweepstakes, affiliate marketing, sports betting, selling online, and more.">
     <meta property="og:image" content="https://onlinesidehustles.info/og-image.png">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,16 +28,87 @@
     <meta name="theme-color" content="#050810">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-  <link rel="stylesheet" href="/forest-theme.css?v=2">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
+    <style>
+/* ===== SIDE HUSTLES PORTAL ===== */
+.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:-3; }
+.stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
+.star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite; }
+@keyframes twinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.3;transform:scale(0.5);} }
+.shooting-star { position:fixed; width:100px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.8),rgba(255,255,255,0)); border-radius:50%; animation:shoot 8s linear infinite; z-index:-1; pointer-events:none; }
+@keyframes shoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} }
+
+body,.page-wrapper,html { background:#000 !important; }
+.content-area { background:transparent !important; padding-top:60px !important; }
+.content-area .container { max-width:1100px !important; width:calc(100% - 4rem) !important; padding:0 !important; margin:0 auto !important; background:transparent !important; border:none !important; box-shadow:none !important; }
+
+/* Hero */
+.portal-hero { text-align:center; padding:3.5rem 2rem 2.5rem; margin-bottom:2rem; }
+.portal-hero h1 { font-size:clamp(2.2rem,5vw,3.5rem); font-weight:900; color:#fff; margin:0 0 1rem; line-height:1.1; }
+.portal-hero .accent { background:linear-gradient(135deg,#34d399,#10b981,#6ee7b7,#34d399); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
+@keyframes shimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+.portal-hero p { color:rgba(255,255,255,0.6); font-size:1.1rem; max-width:650px; margin:0 auto; line-height:1.6; }
+
+/* Category filter tabs */
+.filter-bar { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem; margin-bottom:2.5rem; padding:0 1rem; }
+.filter-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.6); padding:0.5rem 1.2rem; border-radius:50px; font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+.filter-btn:hover { border-color:rgba(255,255,255,0.25); color:rgba(255,255,255,0.85); }
+.filter-btn.active { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.3); color:#fff; }
+
+/* Category headers */
+.category-header { padding:0 0.5rem; margin:2.5rem 0 1.2rem; display:flex; align-items:center; gap:0.8rem; }
+.category-header:first-of-type { margin-top:0; }
+.category-header h2 { font-size:1.4rem; font-weight:800; color:#fff; margin:0; white-space:nowrap; }
+.category-line { flex:1; height:1px; background:linear-gradient(90deg,rgba(255,255,255,0.15),transparent); }
+
+/* Cards grid */
+.hustle-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem; }
+@media(max-width:900px){ .hustle-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:550px){ .hustle-grid { grid-template-columns:1fr; } }
+
+/* Card */
+.hustle-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.6rem 1.4rem; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; position:relative; overflow:hidden; }
+.hustle-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.18); }
+.hustle-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent,rgba(255,255,255,0.1)); opacity:0; transition:opacity 0.2s; }
+.hustle-card:hover::before { opacity:1; }
+.card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem; }
+.card-icon { font-size:2rem; line-height:1; }
+.card-arrow { color:rgba(255,255,255,0.2); font-size:1.2rem; transition:color 0.2s, transform 0.2s; }
+.hustle-card:hover .card-arrow { color:rgba(255,255,255,0.6); transform:translateX(3px); }
+.card-title { font-size:1.05rem; font-weight:700; color:#fff; margin:0 0 0.5rem; }
+.card-desc { font-size:0.83rem; color:rgba(255,255,255,0.5); line-height:1.55; flex:1; margin:0 0 0.8rem; }
+.card-footer { display:flex; justify-content:space-between; align-items:center; }
+.card-earning { font-size:0.78rem; font-weight:700; color:#34d399; }
+.card-tag { font-size:0.65rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:20px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.04em; }
+.card-tag.hot { background:rgba(239,68,68,0.12); color:#f87171; }
+.card-tag.new { background:rgba(59,130,246,0.12); color:#60a5fa; }
+.card-tag.popular { background:rgba(245,158,11,0.12); color:#fbbf24; }
+.card-tag.automated { background:rgba(16,185,129,0.12); color:#34d399; }
+
+/* Fade-in */
+.anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
+.anim-fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* Sparkles */
+.sparkle-p { position:fixed; pointer-events:none; z-index:2; animation:sparklePop var(--dur,1.2s) ease-out forwards; }
+.sparkle-p::before,.sparkle-p::after { content:''; position:absolute; border-radius:2px; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(255,255,255,0.8); box-shadow:0 0 4px rgba(255,255,255,0.5); }
+.sparkle-p::before { width:var(--sz,7px); height:2px; }
+.sparkle-p::after { width:2px; height:var(--sz,7px); }
+@keyframes sparklePop { 0%{opacity:0;transform:scale(0) rotate(0deg);} 25%{opacity:1;transform:scale(1.3) rotate(45deg);} 60%{opacity:0.8;transform:scale(1) rotate(90deg);} 100%{opacity:0;transform:scale(0.3) rotate(180deg) translateY(-15px);} }
+
+/* Discord float */
+.discord-float { position:fixed; bottom:2rem; right:2rem; background:linear-gradient(135deg,#5865F2,#4752c4); color:#fff; padding:0.8rem 1.5rem; border-radius:50px; font-weight:700; font-size:0.9rem; text-decoration:none; box-shadow:0 4px 20px rgba(88,101,242,0.5); z-index:100; display:flex; align-items:center; gap:0.5rem; transition:transform 0.2s,box-shadow 0.2s; }
+.discord-float:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(88,101,242,0.7); }
+
+@media(max-width:768px){
+    .content-area .container { width:calc(100% - 2rem) !important; }
+    .portal-hero { padding:2.5rem 1rem 2rem; }
+}
+    </style>
 </head>
 <body>
 
-<!-- Starfield Canvas -->
 <canvas id="starfield"></canvas>
 
 <!-- NAV -->
@@ -61,7 +132,6 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
   <a href="/daily-login-guide">Daily Login Guide</a>
@@ -74,145 +144,209 @@
 <!-- PAGE CONTENT -->
 <div class="content-area" style="padding-top:80px;">
   <div class="container">
-<section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Side Hustles</h1>
-            <p class="hero-subtitle fade-in fade-in-delay-1">Proven income streams from selling online to matched betting.</p>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="cards-grid">
-                <a href="/affiliate-marketing" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">💰</div>
-                    <h3 class="card-title">Affiliate Marketing</h3>
-                    <p class="card-desc">Earn commissions by promoting products and services through referral links.</p>
-                    <span class="card-earning">$500 - $5,000 / month</span>
-                </a>
-                <a href="/credit-card-churning" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">💳</div>
-                    <h3 class="card-title">Credit Card Churning</h3>
-                    <p class="card-desc">Strategically earn sign-up bonuses and cashback from credit card offers.</p>
-                    <span class="card-earning">$500 - $2,000 / quarter</span>
-                </a>
-                <a href="/credit-cards" class="card fade-in fade-in-delay-3">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">🏦</div>
-                    <h3 class="card-title">Credit Cards</h3>
-                    <p class="card-desc">Best credit cards for maximizing rewards, cashback, and travel points.</p>
-                </a>
-                <a href="/dropshipping" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">📦</div>
-                    <h3 class="card-title">Dropshipping</h3>
-                    <p class="card-desc">Sell products online without holding inventory. Suppliers ship directly to customers.</p>
-                    <span class="card-earning">$500 - $3,000 / month</span>
-                </a>
-                <a href="/freelancing" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">💻</div>
-                    <h3 class="card-title">Freelancing</h3>
-                    <p class="card-desc">Offer your skills as a freelancer on platforms like Fiverr, Upwork, and more.</p>
-                    <span class="card-earning">$1,000 - $5,000 / month</span>
-                </a>
-                <a href="/matched-betting" class="card fade-in fade-in-delay-3">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Matched Betting</h3>
-                    <p class="card-desc">Use mathematical strategies to extract guaranteed profit from promotions.</p>
-                    <span class="card-earning">$300 - $1,000 / month</span>
-                </a>
-                <a href="/passive-investing" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">📈</div>
-                    <h3 class="card-title">Passive Investing</h3>
-                    <p class="card-desc">Set-and-forget strategies for building long-term wealth with minimal effort.</p>
-                    <span class="card-earning">$200 - $1,000 / month</span>
-                </a>
-                <a href="/reward-apps" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">📱</div>
-                    <h3 class="card-title">Reward Apps</h3>
-                    <p class="card-desc">Earn cashback and gift cards from everyday shopping and simple tasks.</p>
-                    <span class="card-earning">$50 - $300 / month</span>
-                </a>
-                <a href="/sell-on-ebay-automated" class="card fade-in fade-in-delay-3">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">🛒</div>
-                    <h3 class="card-title">Sell on eBay (Automated)</h3>
-                    <p class="card-desc">Automated sourcing, listing, and shipping tools to scale your eBay store.</p>
-                    <span class="card-earning">$500 - $2,000 / month</span>
-                </a>
-                <a href="/sell-on-tiktok-automated" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">🎵</div>
-                    <h3 class="card-title">Sell on TikTok (Automated)</h3>
-                    <p class="card-desc">Leverage TikTok Shop with automated product listing and fulfillment workflows.</p>
-                    <span class="card-earning">$500 - $3,000 / month</span>
-                </a>
-                <a href="/sportsbetting-automation" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">🤖</div>
-                    <h3 class="card-title">Sports Betting Automation</h3>
-                    <p class="card-desc">Automated tools that find and place value bets across multiple platforms.</p>
-                    <span class="card-earning">$500 - $3,000 / month</span>
-                </a>
-                <a href="/reverse-stock-arbitrage" class="card fade-in fade-in-delay-3">
-                    <span class="card-arrow">&rarr;</span>
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Reverse Stock Arbitrage</h3>
-                    <p class="card-desc">Exploit price differences between retail and resale markets for guaranteed profit.</p>
-                    <span class="card-earning">$300 - $1,500 / month</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="space-background"></div>
+    <div class="stars" id="stars"></div>
+    <div class="shooting-star" style="top:12%;left:75%;animation-delay:0s;"></div>
+    <div class="shooting-star" style="top:40%;left:60%;animation-delay:3s;"></div>
+    <div class="shooting-star" style="top:65%;left:85%;animation-delay:6s;"></div>
 
-    
+    <!-- Hero -->
+    <div class="portal-hero anim-fade-up">
+        <h1>All <span class="accent">Side Hustles</span></h1>
+        <p>Every income stream we cover &mdash; from sweepstakes casinos to automated selling. Pick a category or browse them all.</p>
+    </div>
 
-    <script>
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); });
-        const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-    </script>
+    <!-- Filter Tabs -->
+    <div class="filter-bar anim-fade-up" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="sweepstakes">Sweepstakes</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+        <button class="filter-btn" data-filter="selling">Selling Online</button>
+        <button class="filter-btn" data-filter="investing">Investing & Betting</button>
+        <button class="filter-btn" data-filter="earning">Earning & Rewards</button>
+    </div>
 
-<script>
-(function(){
-  var c=document.getElementById('starfield');
-  if(!c)return;
-  var ctx=c.getContext('2d'),stars=[],W,H,frame=0;
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-  function init(){stars=[];var n=Math.floor(W*H/3000);for(var i=0;i<n;i++){var r=Math.random();stars.push({x:Math.random()*W,y:Math.random()*H*0.75,r:Math.random()*1.4+0.15,a:Math.random()*0.85+0.15,s:Math.random()*0.004+0.001,p:Math.random()*Math.PI*2,c:r>0.88?'#c8e6ff':r>0.75?'#ffe8c0':'#ffffff'});}}
-  function draw(){ctx.clearRect(0,0,W,H);frame++;stars.forEach(function(s){var t=0.45+0.55*Math.sin(frame*s.s+s.p);ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.c;ctx.globalAlpha=s.a*t;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}
-  resize();init();draw();
-  window.addEventListener('resize',function(){resize();init();});
-})();
-var faders=document.querySelectorAll('.fade-in');
-var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
-faders.forEach(function(f){io.observe(f);});
-var ham=document.getElementById('hamburger'),menu=document.getElementById('mobileMenu');
-if(ham&&menu){ham.addEventListener('click',function(){menu.classList.toggle('open');});}
-</script>
+    <!-- ==================== SWEEPSTAKES ==================== -->
+    <div class="category-header anim-fade-up" data-category="sweepstakes">
+        <h2>&#127920; Sweepstakes &amp; Casinos</h2>
+        <div class="category-line"></div>
+    </div>
+    <div class="hustle-grid" data-category="sweepstakes">
+        <a href="/sweepstakes" class="hustle-card anim-fade-up" style="--accent:#fbbf24;">
+            <div class="card-top"><div class="card-icon">&#127920;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Sweepstakes Casinos</div>
+            <div class="card-desc">Earn real money through sweepstakes casino bonuses, daily logins, and AMOE entries. The core of our community.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $5,000 / month</span><span class="card-tag popular">POPULAR</span></div>
+        </a>
+        <a href="/daily-login-guide" class="hustle-card anim-fade-up" style="--accent:#60a5fa;">
+            <div class="card-top"><div class="card-icon">&#128197;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Daily Login Bonuses</div>
+            <div class="card-desc">Collect free sweepstakes coins every day from dozens of casinos. Takes 15-30 minutes for $5-$20+ in daily value.</div>
+            <div class="card-footer"><span class="card-earning">$150 - $600 / month</span><span class="card-tag">DAILY</span></div>
+        </a>
+        <a href="/jupiter-post" class="hustle-card anim-fade-up" style="--accent:#e8a87c;">
+            <div class="card-top"><div class="card-icon">&#9993;&#65039;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Jupiter Post Letterwriting</div>
+            <div class="card-desc">Automated AMOE letterwriting service for sweepstakes. $5 profit per letter, $2 cost. Hands-off passive income.</div>
+            <div class="card-footer"><span class="card-earning">$5 profit / letter</span><span class="card-tag hot">HOT</span></div>
+        </a>
+        <a href="/daily-free-sc" class="hustle-card anim-fade-up" style="--accent:#a78bfa;">
+            <div class="card-top"><div class="card-icon">&#127873;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Daily Free SC Guide</div>
+            <div class="card-desc">Complete guide to claiming free sweepstakes coins daily across all major platforms.</div>
+            <div class="card-footer"><span class="card-earning">$100 - $500 / month</span><span class="card-tag">FREE</span></div>
+        </a>
+        <a href="/casino-directory" class="hustle-card anim-fade-up" style="--accent:#34d399;">
+            <div class="card-top"><div class="card-icon">&#128218;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Casino Directory</div>
+            <div class="card-desc">Browse all sweepstakes casinos with ratings, bonuses, and payout info. Find the best ones for your state.</div>
+            <div class="card-footer"><span class="card-earning">Directory</span><span class="card-tag">GUIDE</span></div>
+        </a>
+        <a href="/package-sales" class="hustle-card anim-fade-up" style="--accent:#fbbf24;">
+            <div class="card-top"><div class="card-icon">&#128230;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Package Sales / Churning</div>
+            <div class="card-desc">Buy sweepstakes packages strategically and churn bonuses for profit. Works best with multiple casino accounts.</div>
+            <div class="card-footer"><span class="card-earning">$300 - $2,000 / month</span><span class="card-tag popular">POPULAR</span></div>
+        </a>
+    </div>
+
+    <!-- ==================== AUTOMATION ==================== -->
+    <div class="category-header anim-fade-up" data-category="automation">
+        <h2>&#129302; Automation</h2>
+        <div class="category-line"></div>
+    </div>
+    <div class="hustle-grid" data-category="automation">
+        <a href="/sportsbetting-automation" class="hustle-card anim-fade-up" style="--accent:#fff;">
+            <div class="card-top"><div class="card-icon">&#129302;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Bookie Bandit - Sports Betting</div>
+            <div class="card-desc">AI bot that finds and places +EV bets automatically across 14+ sportsbooks. No sports knowledge needed.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $3,000 / month</span><span class="card-tag automated">AUTOMATED</span></div>
+        </a>
+        <a href="/sell-on-ebay-automated" class="hustle-card anim-fade-up" style="--accent:#60a5fa;">
+            <div class="card-top"><div class="card-icon">&#128722;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Sell on eBay (Automated)</div>
+            <div class="card-desc">Automated sourcing, listing, and shipping tools to scale your eBay store without manual work.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $2,000 / month</span><span class="card-tag automated">AUTOMATED</span></div>
+        </a>
+        <a href="/sell-on-tiktok-automated" class="hustle-card anim-fade-up" style="--accent:#f87171;">
+            <div class="card-top"><div class="card-icon">&#127925;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Sell on TikTok (Automated)</div>
+            <div class="card-desc">TikTok Shop with automated product listing and fulfillment. Leverage viral content for sales.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $3,000 / month</span><span class="card-tag hot">HOT</span></div>
+        </a>
+        <a href="/openclaw-setup" class="hustle-card anim-fade-up" style="--accent:#34d399;">
+            <div class="card-top"><div class="card-icon">&#129462;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">OpenClaw AI Setup</div>
+            <div class="card-desc">Automate sweepstakes casino daily bonus collection with AI. Set it and forget it.</div>
+            <div class="card-footer"><span class="card-earning">Save 30+ min/day</span><span class="card-tag automated">AUTOMATED</span></div>
+        </a>
+        <a href="/automation" class="hustle-card anim-fade-up" style="--accent:#a78bfa;">
+            <div class="card-top"><div class="card-icon">&#9881;&#65039;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Automation Overview</div>
+            <div class="card-desc">General guide to automating your side hustles. Tools, strategies, and workflows to earn more with less effort.</div>
+            <div class="card-footer"><span class="card-earning">Guide</span><span class="card-tag">GUIDE</span></div>
+        </a>
+    </div>
+
+    <!-- ==================== SELLING ONLINE ==================== -->
+    <div class="category-header anim-fade-up" data-category="selling">
+        <h2>&#128722; Selling Online</h2>
+        <div class="category-line"></div>
+    </div>
+    <div class="hustle-grid" data-category="selling">
+        <a href="/dropshipping" class="hustle-card anim-fade-up" style="--accent:#60a5fa;">
+            <div class="card-top"><div class="card-icon">&#128230;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Dropshipping</div>
+            <div class="card-desc">Sell products online without holding inventory. Suppliers ship directly to your customers.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $3,000 / month</span><span class="card-tag">E-COMMERCE</span></div>
+        </a>
+        <a href="/selling-online" class="hustle-card anim-fade-up" style="--accent:#34d399;">
+            <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Selling Online (General)</div>
+            <div class="card-desc">Overview of all online selling methods &mdash; from reselling to print-on-demand to digital products.</div>
+            <div class="card-footer"><span class="card-earning">$300 - $5,000 / month</span><span class="card-tag">GUIDE</span></div>
+        </a>
+        <a href="/affiliate-marketing" class="hustle-card anim-fade-up" style="--accent:#34d399;">
+            <div class="card-top"><div class="card-icon">&#128279;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Affiliate Marketing</div>
+            <div class="card-desc">Promote products, share your link, earn commissions. Best programs with real rates from 3% to 75%.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $5,000 / month</span><span class="card-tag popular">POPULAR</span></div>
+        </a>
+    </div>
+
+    <!-- ==================== INVESTING & BETTING ==================== -->
+    <div class="category-header anim-fade-up" data-category="investing">
+        <h2>&#128200; Investing &amp; Betting</h2>
+        <div class="category-line"></div>
+    </div>
+    <div class="hustle-grid" data-category="investing">
+        <a href="/matched-betting" class="hustle-card anim-fade-up" style="--accent:#fbbf24;">
+            <div class="card-top"><div class="card-icon">&#127919;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Matched Betting</div>
+            <div class="card-desc">Extract guaranteed profit from sportsbook promotions using mathematical strategies. Low risk when done right.</div>
+            <div class="card-footer"><span class="card-earning">$300 - $1,000 / month</span><span class="card-tag">STRATEGY</span></div>
+        </a>
+        <a href="/passive-investing" class="hustle-card anim-fade-up" style="--accent:#60a5fa;">
+            <div class="card-top"><div class="card-icon">&#128200;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Passive Investing</div>
+            <div class="card-desc">Set-and-forget strategies for building long-term wealth. Dividends, index funds, and compound interest.</div>
+            <div class="card-footer"><span class="card-earning">$200 - $1,000 / month</span><span class="card-tag">LONG-TERM</span></div>
+        </a>
+        <a href="/reverse-stock-arbitrage" class="hustle-card anim-fade-up" style="--accent:#a78bfa;">
+            <div class="card-top"><div class="card-icon">&#128202;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Reverse Stock Arbitrage</div>
+            <div class="card-desc">Exploit price differences between retail and resale markets for consistent profit.</div>
+            <div class="card-footer"><span class="card-earning">$300 - $1,500 / month</span><span class="card-tag">ARBITRAGE</span></div>
+        </a>
+        <a href="/credit-card-churning" class="hustle-card anim-fade-up" style="--accent:#fbbf24;">
+            <div class="card-top"><div class="card-icon">&#128179;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Credit Card Churning</div>
+            <div class="card-desc">Strategically earn sign-up bonuses and cashback from credit card offers. $500-$1,000+ per card.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $2,000 / quarter</span><span class="card-tag popular">POPULAR</span></div>
+        </a>
+    </div>
+
+    <!-- ==================== EARNING & REWARDS ==================== -->
+    <div class="category-header anim-fade-up" data-category="earning">
+        <h2>&#128176; Earning &amp; Rewards</h2>
+        <div class="category-line"></div>
+    </div>
+    <div class="hustle-grid" data-category="earning">
+        <a href="/freelancing" class="hustle-card anim-fade-up" style="--accent:#60a5fa;">
+            <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Freelancing</div>
+            <div class="card-desc">Offer your skills on Fiverr, Upwork, and more. Writing, design, development, VA work &mdash; anything goes.</div>
+            <div class="card-footer"><span class="card-earning">$1,000 - $5,000 / month</span><span class="card-tag">SKILLS</span></div>
+        </a>
+        <a href="/reward-apps" class="hustle-card anim-fade-up" style="--accent:#34d399;">
+            <div class="card-top"><div class="card-icon">&#128241;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Reward Apps</div>
+            <div class="card-desc">Earn cashback and gift cards from everyday shopping and simple tasks. Low effort, consistent returns.</div>
+            <div class="card-footer"><span class="card-earning">$50 - $300 / month</span><span class="card-tag">EASY</span></div>
+        </a>
+        <a href="/credit-cards" class="hustle-card anim-fade-up" style="--accent:#fbbf24;">
+            <div class="card-top"><div class="card-icon">&#127974;</div><span class="card-arrow">&rarr;</span></div>
+            <div class="card-title">Credit Card Rewards</div>
+            <div class="card-desc">Best credit cards for maximizing cashback, travel points, and everyday rewards on spending you already do.</div>
+            <div class="card-footer"><span class="card-earning">$500 - $2,000 / year</span><span class="card-tag">REWARDS</span></div>
+        </a>
+    </div>
+
   </div>
 </div>
+
+<!-- Discord Float -->
+<a href="https://discord.gg/W9bPGH8crh" class="discord-float" target="_blank" rel="noopener">
+    &#128172; Join Discord
+</a>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">🌲 ONLINE SIDEHUSTLES</div>
+        <div class="footer-brand">&#127794; ONLINE SIDEHUSTLES</div>
         <p class="footer-tagline">Free guides, community tips, and automation tools for earning from sweepstakes casinos and daily login sites.</p>
       </div>
       <div class="footer-col">
@@ -236,7 +370,7 @@ if(ham&&menu){ham.addEventListener('click',function(){menu.classList.toggle('ope
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Online Sidehustles · All rights reserved</span>
+      <span class="footer-copy">&copy; 2026 Online Sidehustles &middot; All rights reserved</span>
       <div class="footer-links">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
@@ -248,5 +382,79 @@ if(ham&&menu){ham.addEventListener('click',function(){menu.classList.toggle('ope
 
 <script src="/js/dark-forest.js"></script>
 <script src="/js/analytics.js" defer></script>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
+});
+
+// Fade-in
+const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.anim-fade-up').forEach(el => fadeObs.observe(el));
+
+// Stars
+(function(){
+    const c = document.getElementById('stars');
+    if (!c) return;
+    for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const sz = Math.random()*2+0.5;
+        s.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s;animation-duration:'+(2+Math.random()*3)+'s;';
+        c.appendChild(s);
+    }
+})();
+
+// Sparkles
+(function(){
+    function pop(){
+        const el = document.createElement('div');
+        const sz = 5+Math.random()*8;
+        const dur = 0.8+Math.random()*0.6;
+        el.className = 'sparkle-p';
+        el.style.cssText = 'left:'+Math.random()*100+'vw;top:'+Math.random()*100+'vh;--sz:'+sz+'px;--dur:'+dur+'s;';
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(), dur*1000+100);
+    }
+    setInterval(pop, 1000);
+})();
+
+// Category filter
+(function(){
+    const btns = document.querySelectorAll('.filter-btn');
+    const headers = document.querySelectorAll('.category-header');
+    const grids = document.querySelectorAll('.hustle-grid');
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+
+            headers.forEach(h => {
+                h.style.display = (filter === 'all' || h.dataset.category === filter) ? '' : 'none';
+            });
+            grids.forEach(g => {
+                g.style.display = (filter === 'all' || g.dataset.category === filter) ? '' : 'none';
+            });
+        });
+    });
+})();
+</script>
+
 </body>
 </html>
