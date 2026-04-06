@@ -411,6 +411,27 @@ body, .page-wrapper { background: #0a0d0a !important; }
 }
 .btn-sheet-outline:hover { background: rgba(173,255,47,0.15); border-color: #ADFF2F; transform: translateY(-2px); color: #fff; }
 
+/* Restricted States toggle */
+.restricted-states-col { display: none; }
+.show-restricted .restricted-states-col { display: table-cell; }
+.toggle-restricted {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(173,255,47,0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+.toggle-restricted:hover { border-color: #ADFF2F; background: rgba(173,255,47,0.1); }
+.toggle-restricted.active { background: rgba(173,255,47,0.15); border-color: #ADFF2F; color: #ADFF2F; }
+
 /* ===== TABLE SECTION ===== */
 .dlg-table-section {
   background: rgba(6, 12, 6, 0.95);
@@ -669,6 +690,9 @@ body, .page-wrapper { background: #0a0d0a !important; }
         <p>Failed to load spreadsheet data.</p>
         <button onclick="loadData()" class="btn-sheet">Try Again</button>
       </div>
+
+      <!-- Restricted States Toggle -->
+      <button class="toggle-restricted" id="toggleRestricted" onclick="document.getElementById('tableWrap').classList.toggle('show-restricted'); this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'Hide Restricted States' : 'Show Restricted States';">Show Restricted States</button>
 
       <!-- Table -->
       <div class="table-wrap" id="tableWrap" style="display:none;">
@@ -1060,6 +1084,12 @@ function buildTable(rows) {
   displayHeaders.forEach(h => {
     const th = document.createElement('th');
     th.textContent = h;
+    if (h === 'Min Redemption' || h === 'Canada' || h === 'Signup/Referrals') {
+      th.style.textAlign = 'center';
+    }
+    if (h === 'Restricted States') {
+      th.className = 'restricted-states-col';
+    }
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
@@ -1109,10 +1139,11 @@ function buildTable(rows) {
       if (c === 2) val = val.replace(/'$/, '');
 
       if (c === 0 && col0.toLowerCase().includes('signup')) {
-        // Signup column — make it a link using casino name from col1
+        // Signup column — make it a link, centered, bigger text
+        td.style.textAlign = 'center';
         const link = getSignupLink(col1);
         if (link) {
-          td.innerHTML = '<a href="' + esc(link) + '" target="_blank" rel="noopener" style="color:#52b788;font-weight:600;">Sign Up</a>';
+          td.innerHTML = '<a href="' + esc(link) + '" target="_blank" rel="noopener" style="color:#ADFF2F;font-weight:800;font-size:0.9rem;">Sign Up</a>';
         } else {
           td.textContent = val;
         }
@@ -1138,12 +1169,21 @@ function buildTable(rows) {
           });
           td.appendChild(toggle);
         }
+      } else if (c === 5) {
+        // Min Redemption — centered
+        td.style.textAlign = 'center';
+        td.innerHTML = linkify(esc(val));
       } else if (c === 16) {
-        // Canada eligibility — hardcoded Yes/No by casino name
+        // Canada eligibility — hardcoded Yes/No, centered
+        td.style.textAlign = 'center';
         const eligible = CANADA_YES.has(col1);
         td.innerHTML = eligible
-          ? '<span style="color:#52b788;font-weight:700;">Yes</span>'
+          ? '<span style="color:#ADFF2F;font-weight:700;">Yes</span>'
           : '<span style="color:#f08080;">No</span>';
+      } else if (c === 17) {
+        // Restricted States — hidden by default, toggle-able
+        td.className = 'restricted-states-col';
+        td.innerHTML = linkify(esc(val));
       } else {
         td.innerHTML = linkify(esc(val));
       }
