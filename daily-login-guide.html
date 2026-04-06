@@ -113,33 +113,48 @@ body, .page-wrapper { background: #0a0d0a !important; }
 /* ===== HERO SECTION ===== */
 .dlg-hero {
   background: rgba(8, 16, 8, 0.97);
-  border-bottom: 1px solid rgba(173,255,47,0.2);
-  padding: 3rem 4rem 2.5rem;
+  border-bottom: 2px solid rgba(173,255,47,0.15);
+  padding: 4rem 4rem 3rem;
+  text-align: center;
+}
+
+/* Hero top row: emblem + text side by side */
+.dlg-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
   text-align: left;
 }
+@media(max-width:768px){
+  .dlg-hero-top { flex-direction: column; text-align: center; gap: 1.5rem; }
+}
+
 .dlg-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(173,255,47,0.12);
-  border: 1px solid rgba(173,255,47,0.4);
+  background: rgba(173,255,47,0.08);
+  border: 1px solid rgba(173,255,47,0.3);
   color: #ADFF2F;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 .dlg-hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   font-weight: 900;
   color: #fff;
-  margin: 0.4rem 0 0.8rem;
-  line-height: 1.1;
+  margin: 0 0 0.8rem;
+  line-height: 1.15;
 }
 .gold-text {
-  background: linear-gradient(135deg, #ADFF2F 0%, #9ACD32 30%, #7CFC00 60%, #ADFF2F 100%);
+  background: linear-gradient(135deg, #ADFF2F 0%, #7CFC00 40%, #BFFF50 70%, #ADFF2F 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -148,55 +163,55 @@ body, .page-wrapper { background: #0a0d0a !important; }
 }
 @keyframes goldShimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
 .dlg-hero-desc {
-  color: rgba(200,240,200,0.85);
-  font-size: 1rem;
+  color: rgba(200,240,200,0.8);
+  font-size: 1.05rem;
   line-height: 1.7;
   max-width: 680px;
-  margin-bottom: 1.8rem;
+  margin: 0;
 }
 
-/* Animated vault emblem in hero */
+/* Animated vault emblem */
 .vault-emblem {
-  width: 110px; height: 110px;
+  width: 130px; height: 130px;
+  min-width: 130px;
   position: relative;
-  margin: 0 auto 2rem;
   flex-shrink: 0;
 }
 .vault-ring-outer {
   position: absolute; inset: 0;
   border-radius: 50%;
-  border: 3px solid rgba(173,255,47,0.5);
+  border: 3px solid rgba(173,255,47,0.4);
   border-top-color: #ADFF2F;
-  border-right-color: rgba(173,255,47,0.2);
+  border-right-color: rgba(173,255,47,0.15);
   animation: vaultSpinCW 4s linear infinite;
-  box-shadow: 0 0 14px rgba(173,255,47,0.3);
+  box-shadow: 0 0 20px rgba(173,255,47,0.2), 0 0 40px rgba(173,255,47,0.08);
 }
 .vault-ring-mid {
-  position: absolute; inset: 12px;
+  position: absolute; inset: 14px;
   border-radius: 50%;
-  border: 2px solid rgba(173,255,47,0.35);
+  border: 2px solid rgba(173,255,47,0.25);
   border-bottom-color: #ADFF2F;
-  border-left-color: rgba(173,255,47,0.15);
+  border-left-color: rgba(173,255,47,0.1);
   animation: vaultSpinCCW 3s linear infinite;
 }
 .vault-ring-inner {
-  position: absolute; inset: 24px;
+  position: absolute; inset: 28px;
   border-radius: 50%;
-  border: 2px dashed rgba(173,255,47,0.3);
+  border: 2px dashed rgba(173,255,47,0.2);
   animation: vaultSpinCW 8s linear infinite;
 }
 .vault-core {
-  position: absolute; inset: 34px;
+  position: absolute; inset: 40px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at 40% 35%, rgba(173,255,47,0.15), rgba(8,14,8,0.9));
-  border: 1px solid rgba(173,255,47,0.4);
+  background: radial-gradient(ellipse at 40% 35%, rgba(173,255,47,0.12), rgba(8,14,8,0.95));
+  border: 1px solid rgba(173,255,47,0.35);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 20px rgba(173,255,47,0.25), inset 0 0 15px rgba(173,255,47,0.1);
+  box-shadow: 0 0 25px rgba(173,255,47,0.2), inset 0 0 15px rgba(173,255,47,0.08);
 }
 .vault-dollar {
-  font-size: 1.1rem; font-weight: 900;
+  font-size: 1.3rem; font-weight: 900;
   color: #ADFF2F;
-  text-shadow: 0 0 10px rgba(173,255,47,0.8);
+  text-shadow: 0 0 12px rgba(173,255,47,0.8);
   animation: vaultPulse 2s ease-in-out infinite;
 }
 @keyframes vaultSpinCW  { to { transform: rotate(360deg); } }
@@ -206,31 +221,43 @@ body, .page-wrapper { background: #0a0d0a !important; }
   50%     { opacity:1;   text-shadow: 0 0 20px rgba(173,255,47,1), 0 0 40px rgba(173,255,47,0.5); }
 }
 
-/* Stats grid in hero */
+/* Stats grid */
 .dlg-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.8rem;
+  gap: 1.2rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
 }
 @media(max-width:768px){ .dlg-stats { grid-template-columns: repeat(2,1fr); } }
 .dlg-stat-card {
-  background: rgba(12, 24, 12, 0.9);
+  background: rgba(10, 20, 10, 0.9);
   border: 1px solid rgba(173,255,47,0.2);
-  border-radius: 12px;
-  padding: 1.2rem 1rem;
+  border-radius: 8px;
+  padding: 1.4rem 1rem;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
 }
-.dlg-stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(173,255,47,0.18); }
-.dlg-stat-value { font-size: 1.7rem; font-weight: 800; color: #ADFF2F; margin-bottom: 0.2rem; }
-.dlg-stat-label { font-size: 0.75rem; color: rgba(180,230,150,0.8); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.dlg-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(173,255,47,0.06), transparent);
+  animation: statShimmer 3s infinite;
+}
+@keyframes statShimmer { 0%{left:-100%;} 100%{left:100%;} }
+.dlg-stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(173,255,47,0.15); border-color: rgba(173,255,47,0.4); }
+.dlg-stat-value { font-size: 2rem; font-weight: 900; color: #ADFF2F; margin-bottom: 0.3rem; text-shadow: 0 0 8px rgba(173,255,47,0.3); }
+.dlg-stat-label { font-size: 0.72rem; color: rgba(173,255,47,0.6); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
 
 /* Action buttons */
 .guide-actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .btn-sheet {
   display: inline-flex;
@@ -458,15 +485,21 @@ body, .page-wrapper { background: #0a0d0a !important; }
 
     <!-- Hero Section -->
     <div class="dlg-hero dlg-fade">
-      <div class="vault-emblem">
-        <div class="vault-ring-outer"></div>
-        <div class="vault-ring-mid"></div>
-        <div class="vault-ring-inner"></div>
-        <div class="vault-core"><span class="vault-dollar">$</span></div>
+
+      <!-- Hero top: emblem + text side by side -->
+      <div class="dlg-hero-top">
+        <div class="vault-emblem">
+          <div class="vault-ring-outer"></div>
+          <div class="vault-ring-mid"></div>
+          <div class="vault-ring-inner"></div>
+          <div class="vault-core"><span class="vault-dollar">$</span></div>
+        </div>
+        <div>
+          <div class="dlg-badge">DAILY LOGIN GUIDE</div>
+          <h1><span class="gold-text">Daily Login</span> Guide</h1>
+          <p class="dlg-hero-desc">Live data from our community spreadsheet &mdash; 80+ sweepstakes casinos ranked by tier with daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
+        </div>
       </div>
-      <div class="dlg-badge">DAILY LOGIN GUIDE &middot; SWEEPSTAKES VAULT</div>
-      <h1><span class="gold-text">Daily Login</span> Guide</h1>
-      <p class="dlg-hero-desc">Live data pulled from our community spreadsheet — 80+ sweepstakes casinos ranked by tier, daily bonuses, welcome packages, and referral links. Auto-updates whenever the sheet is edited.</p>
 
       <!-- Stats -->
       <div class="dlg-stats">
