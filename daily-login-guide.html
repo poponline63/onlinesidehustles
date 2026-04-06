@@ -127,17 +127,121 @@ body, .page-wrapper { background: #0a0d0a !important; }
   margin: 0 auto 2.5rem;
   text-align: left;
 }
-.hero-ufo-img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
+/* CSS UFO Visual */
+.ufo-visual {
+  width: 180px;
+  min-width: 180px;
+  height: 220px;
+  position: relative;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 20px rgba(173,255,47,0.3));
   animation: ufoFloat 4s ease-in-out infinite;
 }
 @keyframes ufoFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-10px); }
+}
+.ufo-body {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+}
+.ufo-dome {
+  width: 50px;
+  height: 30px;
+  background: linear-gradient(180deg, rgba(173,255,47,0.3), rgba(173,255,47,0.08));
+  border: 2px solid rgba(173,255,47,0.5);
+  border-bottom: none;
+  border-radius: 50px 50px 0 0;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(173,255,47,0.3), inset 0 0 10px rgba(173,255,47,0.1);
+}
+.ufo-saucer {
+  width: 140px;
+  height: 28px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border-radius: 50%;
+  border: 2px solid rgba(173,255,47,0.3);
+  box-shadow: 0 0 20px rgba(173,255,47,0.2), 0 4px 8px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 2;
+}
+.ufo-lights {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  z-index: 3;
+}
+.ufo-lights span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ADFF2F;
+  box-shadow: 0 0 8px #ADFF2F, 0 0 16px rgba(173,255,47,0.5);
+  animation: lightBlink 1.5s ease-in-out infinite;
+}
+.ufo-lights span:nth-child(2) { animation-delay: 0.3s; }
+.ufo-lights span:nth-child(3) { animation-delay: 0.6s; }
+.ufo-lights span:nth-child(4) { animation-delay: 0.9s; }
+.ufo-lights span:nth-child(5) { animation-delay: 1.2s; }
+@keyframes lightBlink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px #ADFF2F, 0 0 16px rgba(173,255,47,0.5); }
+  50% { opacity: 0.3; box-shadow: 0 0 4px rgba(173,255,47,0.3); }
+}
+.ufo-rim {
+  width: 100px;
+  height: 12px;
+  background: linear-gradient(180deg, #2a2a2a, #111);
+  border-radius: 50%;
+  margin: -4px auto 0;
+  border: 1px solid rgba(173,255,47,0.15);
+}
+/* Tractor beam */
+.ufo-beam {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(173,255,47,0.25) 0%, rgba(173,255,47,0.08) 50%, rgba(173,255,47,0) 100%);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  animation: beamPulse 2s ease-in-out infinite;
+}
+@keyframes beamPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+/* Floating coins in beam */
+.ufo-coins {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 120px;
+}
+.ufo-coin {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ADFF2F;
+  text-shadow: 0 0 6px rgba(173,255,47,0.8);
+  animation: coinRise 2.5s ease-in infinite;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+@keyframes coinRise {
+  0% { opacity: 0; transform: translate(var(--x), 0) scale(1); }
+  20% { opacity: 1; }
+  80% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(0, -110px) scale(0.5); }
 }
 @media(max-width:768px){
   .dlg-hero-top { flex-direction: column; text-align: center; gap: 1.5rem; }
@@ -501,7 +605,22 @@ body, .page-wrapper { background: #0a0d0a !important; }
     <div class="dlg-hero dlg-fade">
 
       <div class="dlg-hero-top">
-        <img src="/ufo-money.png" alt="UFO beaming up money" class="hero-ufo-img">
+        <div class="ufo-visual">
+          <div class="ufo-body">
+            <div class="ufo-dome"></div>
+            <div class="ufo-saucer"></div>
+            <div class="ufo-lights"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="ufo-rim"></div>
+          </div>
+          <div class="ufo-beam"></div>
+          <div class="ufo-coins">
+            <span class="ufo-coin" style="--delay:0s;--x:-15px;">$</span>
+            <span class="ufo-coin" style="--delay:0.4s;--x:10px;">$</span>
+            <span class="ufo-coin" style="--delay:0.8s;--x:-5px;">$</span>
+            <span class="ufo-coin" style="--delay:1.2s;--x:20px;">$</span>
+            <span class="ufo-coin" style="--delay:1.6s;--x:-20px;">$</span>
+          </div>
+        </div>
         <div>
           <div class="dlg-badge">DAILY LOGIN GUIDE</div>
           <h1><span class="gold-text">Daily Login</span> Guide</h1>
