@@ -167,7 +167,8 @@ body, .page-wrapper { background: #0a0d0a !important; }
   font-size: 1.05rem;
   line-height: 1.7;
   max-width: 680px;
-  margin: 0;
+  margin: 0 auto 2rem;
+  text-align: center;
 }
 
 /* Animated vault emblem */
@@ -264,34 +265,35 @@ body, .page-wrapper { background: #0a0d0a !important; }
   align-items: center;
   gap: 0.5rem;
   background: linear-gradient(135deg, #6B8E23, #ADFF2F);
-  color: #0a1a0a;
+  color: #000;
   text-decoration: none;
-  padding: 0.65rem 1.4rem;
-  border-radius: 25px;
-  font-size: 0.88rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: 800;
   transition: all 0.25s;
-  box-shadow: 0 0 20px rgba(173,255,47,0.35);
-  border: none;
+  box-shadow: 0 0 20px rgba(173,255,47,0.3);
+  border: 2px solid #ADFF2F;
   cursor: pointer;
   letter-spacing: 0.02em;
 }
-.btn-sheet:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(173,255,47,0.6); }
+.btn-sheet:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(173,255,47,0.5); }
 .btn-sheet-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: transparent;
+  background: rgba(173,255,47,0.08);
   color: #ADFF2F;
   text-decoration: none;
-  padding: 0.65rem 1.4rem;
-  border-radius: 25px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  border: 1px solid rgba(173,255,47,0.45);
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 2px solid rgba(173,255,47,0.4);
   transition: all 0.25s;
   cursor: pointer;
 }
+.btn-sheet-outline:hover { background: rgba(173,255,47,0.15); border-color: #ADFF2F; transform: translateY(-2px); }
 .btn-sheet-outline:hover { background: rgba(173,255,47,0.1); border-color: #ADFF2F; }
 
 /* ===== TABLE SECTION ===== */
