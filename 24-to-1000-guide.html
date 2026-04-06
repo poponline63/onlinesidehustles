@@ -28,8 +28,8 @@
 .step-card .step-number { width: 32px; height: 32px; background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(82,183,136,0.08)); border: 1px solid rgba(82,183,136,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #52b788; margin-bottom: 0.7rem; font-size: 0.85rem; }
 .step-card .step-title { font-weight: 700; color: #a0e8a0; margin-bottom: 0.4rem; font-size: 0.95rem; }
 .step-card .step-desc { color: #9ab89a; font-size: 0.85rem; line-height: 1.6; }
-.stage-section { margin: 2.5rem 0; }
-.stage-header { background: rgba(10,25,14,0.98); border: 1px solid rgba(82,183,136,0.25); border-left: 3px solid #52b788; border-radius: 14px; padding: 1.2rem 1.5rem; margin-bottom: 1.2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.stage-section { margin: 3.5rem 0; padding-top: 1rem; border-top: 1px solid rgba(82,183,136,0.08); }
+.stage-header { background: rgba(10,25,14,0.98); border: 1px solid rgba(82,183,136,0.3); border-left: 4px solid #52b788; border-radius: 14px; padding: 1.5rem 1.8rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
 .stage-number { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; color: #52b788; background: rgba(82,183,136,0.12); border: 1px solid rgba(82,183,136,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; }
 .stage-title { font-size: 1.3rem; font-weight: 800; color: #e0ffe0; flex: 1; }
 .stage-subtitle { font-size: 0.85rem; color: #8ab88a; }
@@ -38,18 +38,19 @@
 .stage-stat-value { font-size: 1.1rem; font-weight: 800; color: #FFD700; }
 .stage-info { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
 .casinos-grid { display: flex; flex-direction: column; gap: 0.8rem; }
-.casino-card { background: rgba(12,28,18,0.95); border: 1px solid rgba(82,183,136,0.18); border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color 0.2s, box-shadow 0.2s; }
-.casino-card:hover { border-color: rgba(82,183,136,0.35); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.casino-card { background: rgba(12,28,18,0.95); border: 1px solid rgba(82,183,136,0.18); border-radius: 14px; padding: 1.5rem 1.6rem; display: flex; gap: 1.2rem; align-items: flex-start; transition: border-color 0.2s, box-shadow 0.2s; margin-bottom: 0.3rem; }
+.casino-card:hover { border-color: rgba(82,183,136,0.4); box-shadow: 0 6px 25px rgba(0,0,0,0.3); }
 .casino-card.free-signup { border-color: rgba(82,183,136,0.28); }
 .casino-step-number { width: 34px; height: 34px; min-width: 34px; background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(82,183,136,0.08)); border: 1px solid rgba(82,183,136,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: #52b788; }
 .casino-info { flex: 1; }
-.casino-name { font-size: 1rem; font-weight: 700; color: #e0ffe0; margin-bottom: 0.4rem; }
+.casino-name { font-size: 1.15rem; font-weight: 800; color: #e0ffe0; margin-bottom: 0.5rem; }
 .casino-quick-info { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
-.info-badge { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 12px; background: rgba(82,183,136,0.12); border: 1px solid rgba(82,183,136,0.2); color: #90EE90; }
-.info-badge.profit { background: rgba(255,215,0,0.15); border-color: rgba(255,215,0,0.3); color: #FFD700; }
+.info-badge { font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 12px; background: rgba(82,183,136,0.12); border: 1px solid rgba(82,183,136,0.25); color: #90EE90; }
+.info-badge.profit { background: rgba(255,215,0,0.18); border-color: rgba(255,215,0,0.35); color: #FFD700; font-size: 0.85rem; }
 .casino-details { color: #9ab89a; font-size: 0.85rem; line-height: 1.65; }
-.signup-link { display: inline-block; margin-top: 0.7rem; background: linear-gradient(135deg, #40d840, #228B22); color: white !important; padding: 0.45rem 1.2rem; border-radius: 20px; text-decoration: none !important; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 16px rgba(50,205,50,0.25); transition: transform 0.2s, box-shadow 0.2s; }
-.signup-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(50,205,50,0.35); }
+.signup-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; background: linear-gradient(135deg, #40d840, #228B22); color: white !important; padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none !important; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.02em; box-shadow: 0 0 20px rgba(50,205,50,0.35), 0 4px 16px rgba(50,205,50,0.25); transition: transform 0.2s, box-shadow 0.2s; animation: signupPulse 2.5s ease-in-out infinite; }
+.signup-link:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 0 30px rgba(50,205,50,0.5), 0 8px 24px rgba(50,205,50,0.35); }
+@keyframes signupPulse { 0%,100%{box-shadow:0 0 20px rgba(50,205,50,0.35),0 4px 16px rgba(50,205,50,0.25);} 50%{box-shadow:0 0 35px rgba(50,205,50,0.55),0 4px 25px rgba(50,205,50,0.4);} }
 .info-dropdown { background: rgba(10,25,14,0.95); border: 1px solid rgba(82,183,136,0.2); border-radius: 14px; margin: 1.5rem 0; overflow: hidden; }
 .info-dropdown-header { padding: 1rem 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
 .info-dropdown-title { font-size: 1.1rem; font-weight: 700; color: #90EE90; }
@@ -68,10 +69,10 @@
 .progress-steps { display: flex; align-items: flex-end; justify-content: space-between; position: relative; gap: 0.5rem; }
 .progress-line, .progress-line-filled { display: none; }
 .progress-step { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-decoration: none; flex: 1; }
-.step-circle { width: 36px; height: 36px; background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(82,183,136,0.08)); border: 2px solid rgba(82,183,136,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #52b788; }
-.progress-step.completed .step-circle { background: linear-gradient(135deg, rgba(82,183,136,0.3), rgba(82,183,136,0.15)); border-color: #52b788; }
-.step-label { font-size: 0.7rem; font-weight: 700; color: #90EE90; text-align: center; }
-.step-amount { font-size: 0.65rem; color: #FFD700; font-weight: 600; text-align: center; }
+.step-circle { width: 42px; height: 42px; background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(82,183,136,0.08)); border: 2px solid rgba(82,183,136,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #52b788; }
+.progress-step.completed .step-circle { background: linear-gradient(135deg, rgba(82,183,136,0.35), rgba(82,183,136,0.18)); border-color: #52b788; }
+.step-label { font-size: 0.78rem; font-weight: 700; color: #90EE90; text-align: center; }
+.step-amount { font-size: 0.75rem; color: #FFD700; font-weight: 700; text-align: center; }
 /* Text color overrides */
 main p, main li, main div { color: #cce8cc; }
 main h1, main h2, main h3 { color: #90EE90; }
