@@ -75,55 +75,22 @@ body, html { background: #0a0d0a !important; }
   pointer-events: none;
 }
 
-/* Heavy CRT Scanlines */
+/* CRT Scanlines — BEHIND content */
 .crt-scanlines {
-  position:fixed; top:0; left:0; width:100%; height:100%; z-index:9998; pointer-events:none;
+  position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;
   background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 6px);
 }
 
-/* Hide space elements — no stars, no shooting stars */
-.dlg-stars, .dlg-star { display:none !important; }
-.dlg-shooting { display:none !important; }
-.dlg-nebula { display:none !important; }
+/* Kill all space elements */
+.dlg-stars, .dlg-star, .dlg-shooting, .dlg-nebula { display:none !important; }
 
-/* CRT Vignette — heavy dark edges like looking through a monitor */
-body::before {
-  content: '';
+/* CRT Vignette — BEHIND content */
+.crt-vignette {
   position: fixed;
   inset: 0;
   background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.85) 100%);
   pointer-events: none;
-  z-index: 9997;
-}
-
-/* CRT Flicker — green phosphor pulse */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9996;
-  animation: crtFlicker 4s ease-in-out infinite;
-}
-@keyframes crtFlicker {
-  0%, 100% { background: rgba(173,255,47,0.01); }
-  30% { background: rgba(173,255,47,0.025); }
-  50% { background: rgba(173,255,47,0.005); }
-  80% { background: rgba(173,255,47,0.02); }
-}
-
-/* Pip-Boy screen curvature — subtle barrel distortion feel via inner shadow */
-.content-area {
-  position: relative;
-}
-.content-area::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  box-shadow: inset 0 0 150px rgba(0,0,0,0.4), inset 0 0 300px rgba(0,0,0,0.2);
-  pointer-events: none;
-  z-index: 9995;
-  border-radius: 8px;
+  z-index: -1;
 }
 
 /* Page wrapper */
@@ -449,16 +416,10 @@ body, .page-wrapper { background: #0a0d0a !important; }
 </head>
 <body>
 
-<!-- Terminal Background -->
+<!-- Pip-Boy Terminal Background -->
 <div class="space-background"></div>
 <div class="crt-scanlines"></div>
-<div class="dlg-stars" id="dlgStars"></div>
-<div class="dlg-shooting" style="top:8%;  left:85%; animation-delay:0s;"></div>
-<div class="dlg-shooting" style="top:25%; left:65%; animation-delay:3s;"></div>
-<div class="dlg-shooting" style="top:55%; left:80%; animation-delay:6s;"></div>
-<div class="dlg-shooting" style="top:75%; left:50%; animation-delay:9s;"></div>
-<div class="dlg-nebula dlg-nebula-lime"></div>
-<div class="dlg-nebula dlg-nebula-green"></div>
+<div class="crt-vignette"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -605,20 +566,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
 </footer>
 
 <script>
-// ===== GOLD VAULT STARS =====
-(function(){
-  var c = document.getElementById('dlgStars');
-  if (!c) return;
-  var types = ['','','','','lime','lime','bright'];
-  for (var i = 0; i < 280; i++) {
-    var s = document.createElement('div');
-    var t = types[Math.floor(Math.random() * types.length)];
-    s.className = 'dlg-star' + (t ? ' ' + t : '');
-    var sz = (Math.random() * 2.4 + 0.4).toFixed(1) + 'px';
-    s.style.cssText = 'width:'+sz+';height:'+sz+';left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;animation-delay:'+(Math.random()*5).toFixed(2)+'s;animation-duration:'+(2+Math.random()*3).toFixed(2)+'s;';
-    c.appendChild(s);
-  }
-})();
+// Stars disabled — Pip-Boy terminal mode
 
 // ===== FLYING COINS =====
 (function(){
