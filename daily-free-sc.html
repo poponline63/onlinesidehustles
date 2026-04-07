@@ -166,6 +166,23 @@ body,.page-wrapper,html { background:#000 !important; }
 .step-card h3 { font-size:1rem; font-weight:800; color:#fff; margin:0 0 0.5rem; }
 .step-card p { font-size:0.85rem; color:rgba(255,255,255,0.65); line-height:1.6; margin:0; }
 
+/* Live links section */
+.live-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem; }
+.live-header h2 { margin:0; font-size:1.3rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:0.5rem; }
+.live-count { background:rgba(251,191,36,0.15); color:#fbbf24; font-size:0.8rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:20px; }
+.live-refresh { background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); color:#fbbf24; padding:0.4rem 1rem; border-radius:50px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+.live-refresh:hover { background:rgba(251,191,36,0.15); border-color:rgba(251,191,36,0.4); }
+.live-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.8rem; }
+@media(max-width:700px){ .live-grid { grid-template-columns:1fr; } }
+.link-card { background:rgba(251,191,36,0.04); border:1px solid rgba(251,191,36,0.12); border-radius:12px; padding:1.2rem 1.4rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:border-color 0.2s, transform 0.2s; }
+.link-card:hover { border-color:rgba(251,191,36,0.3); transform:translateY(-2px); }
+.link-info h3 { font-size:0.95rem; font-weight:700; color:#fff; margin:0 0 0.3rem; }
+.link-info p { font-size:0.78rem; color:rgba(255,255,255,0.5); margin:0; }
+.link-claim { display:inline-flex; align-items:center; gap:0.4rem; background:linear-gradient(135deg,#fbbf24,#f59e0b); color:#000; padding:0.5rem 1.2rem; border-radius:50px; font-size:0.82rem; font-weight:700; text-decoration:none; white-space:nowrap; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 0 12px rgba(251,191,36,0.2); }
+.link-claim:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(251,191,36,0.4); }
+.live-loading { text-align:center; padding:2rem; color:rgba(255,255,255,0.5); }
+.live-timestamp { text-align:center; margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.35); }
+
 /* Source list */
 .source-list { list-style:none; padding:0; margin:0.5rem 0 0; }
 .source-list li { padding:0.8rem 0; border-bottom:1px solid rgba(251,191,36,0.06); color:rgba(255,255,255,0.75); font-size:0.95rem; line-height:1.7; }
@@ -299,6 +316,22 @@ body,.page-wrapper,html { background:#000 !important; }
             <div class="stat-value">$150-$450</div>
             <div class="stat-label">Monthly Potential</div>
         </div>
+    </div>
+
+    <!-- Live Giveaway Links from Google Sheet -->
+    <div class="cat-header anim-fade-up">
+        <h2>&#128308; Live Giveaway Links</h2>
+        <div class="cat-line"></div>
+    </div>
+    <div class="info-section anim-fade-up" style="padding:1.5rem;">
+        <div class="live-header">
+            <h2>&#127873; Active Free SC Links <span class="live-count" id="linkCount">Loading...</span></h2>
+            <button class="live-refresh" onclick="fetchLinks()">&#128260; Refresh</button>
+        </div>
+        <div class="live-grid" id="liveLinksGrid">
+            <div class="live-loading">Loading latest giveaway links...</div>
+        </div>
+        <div class="live-timestamp" id="liveTimestamp"></div>
     </div>
 
     <!-- What Are Free SC Links? -->
@@ -572,6 +605,87 @@ document.querySelectorAll('.anim-fade-up').forEach(el => fadeObs.observe(el));
         });
     });
 })();
+
+// Fetch live giveaway links from Google Sheet
+const SHEET_ID = '1m7XOzxrJaLwuW4nICTEGPdBlIbktxBVjsMYCYj95wa0';
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=Sheet1';
+
+function fetchLinks() {
+    var grid = document.getElementById('liveLinksGrid');
+    var countEl = document.getElementById('linkCount');
+    var tsEl = document.getElementById('liveTimestamp');
+    grid.innerHTML = '<div class="live-loading">Loading latest giveaway links...</div>';
+
+    fetch(SHEET_URL)
+        .then(function(r){ return r.text(); })
+        .then(function(text){
+            // Google Sheets returns JSONP-like response, extract the JSON
+            var json = JSON.parse(text.substring(47).slice(0, -2));
+            var rows = json.table.rows;
+            if (!rows || rows.length === 0) {
+                grid.innerHTML = '<div class="live-loading">No links available right now. Check back soon!</div>';
+                countEl.textContent = '0 links';
+                return;
+            }
+
+            // Get last 20 rows (most recent), reversed so newest first
+            var recent = rows.slice(-20).reverse();
+            var html = '';
+            var count = 0;
+
+            recent.forEach(function(row){
+                var title = (row.c[0] && row.c[0].v) ? row.c[0].v : '';
+                var desc = (row.c[1] && row.c[1].v) ? row.c[1].v : '';
+                var link = (row.c[2] && row.c[2].v) ? row.c[2].v : '';
+                var ts = (row.c[3] && row.c[3].v) ? row.c[3].v : '';
+
+                if (!title) return;
+                count++;
+
+                // Extract first URL from description or link column
+                var url = link || '';
+                if (!url && desc) {
+                    var urlMatch = desc.match(/https?:\/\/[^\s<>"]+/);
+                    if (urlMatch) url = urlMatch[0];
+                }
+
+                // Clean up timestamp for display
+                var timeDisplay = '';
+                if (ts) {
+                    try {
+                        var d = new Date(ts);
+                        if (!isNaN(d.getTime())) {
+                            timeDisplay = d.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' at ' + d.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+                        } else {
+                            timeDisplay = ts.replace(/Date\(|\)/g,'').substring(0,20);
+                        }
+                    } catch(e) { timeDisplay = ts.substring(0,25); }
+                }
+
+                html += '<div class="link-card">';
+                html += '<div class="link-info">';
+                html += '<h3>' + title.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</h3>';
+                if (timeDisplay) html += '<p>' + timeDisplay + '</p>';
+                html += '</div>';
+                if (url) {
+                    html += '<a href="' + url + '" class="link-claim" target="_blank" rel="noopener">Claim &rarr;</a>';
+                }
+                html += '</div>';
+            });
+
+            grid.innerHTML = html || '<div class="live-loading">No links available right now.</div>';
+            countEl.textContent = count + ' link' + (count !== 1 ? 's' : '');
+            tsEl.textContent = 'Last refreshed: ' + new Date().toLocaleTimeString();
+        })
+        .catch(function(err){
+            grid.innerHTML = '<div class="live-loading">Could not load links. Try refreshing.</div>';
+            console.error('Sheet fetch error:', err);
+        });
+}
+
+// Fetch on load and auto-refresh every 60 seconds
+fetchLinks();
+setInterval(fetchLinks, 60000);
 </script>
 
 </body>
