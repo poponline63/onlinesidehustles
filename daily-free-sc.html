@@ -298,6 +298,22 @@ body,.page-wrapper,html { background:#000 !important; }
         <p>Get free sweepstakes coins every day from 20+ verified casinos. No purchase needed &mdash; just click, claim, and collect. Earn $5&ndash;$15 in free SC daily with about 10 minutes of effort.</p>
     </div>
 
+    <!-- Live Giveaway Links from Google Sheet — FRONT AND CENTER -->
+    <div class="cat-header anim-fade-up">
+        <h2>&#128308; Live Giveaway Links</h2>
+        <div class="cat-line"></div>
+    </div>
+    <div class="info-section anim-fade-up" style="padding:1.5rem 1.5rem 1rem; border-color:rgba(251,191,36,0.25);">
+        <div class="live-header">
+            <h2>&#127873; Active Free SC Links <span class="live-count" id="linkCount">Loading...</span></h2>
+            <button class="live-refresh" onclick="fetchLinks()">&#128260; Refresh</button>
+        </div>
+        <div class="live-grid" id="liveLinksGrid">
+            <div class="live-loading">Loading latest giveaway links...</div>
+        </div>
+        <div class="live-timestamp" id="liveTimestamp"></div>
+    </div>
+
     <!-- Stats -->
     <div class="stats-row anim-fade-up">
         <div class="stat-card">
@@ -316,22 +332,6 @@ body,.page-wrapper,html { background:#000 !important; }
             <div class="stat-value">$150-$450</div>
             <div class="stat-label">Monthly Potential</div>
         </div>
-    </div>
-
-    <!-- Live Giveaway Links from Google Sheet -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#128308; Live Giveaway Links</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="info-section anim-fade-up" style="padding:1.5rem;">
-        <div class="live-header">
-            <h2>&#127873; Active Free SC Links <span class="live-count" id="linkCount">Loading...</span></h2>
-            <button class="live-refresh" onclick="fetchLinks()">&#128260; Refresh</button>
-        </div>
-        <div class="live-grid" id="liveLinksGrid">
-            <div class="live-loading">Loading latest giveaway links...</div>
-        </div>
-        <div class="live-timestamp" id="liveTimestamp"></div>
     </div>
 
     <!-- What Are Free SC Links? -->
