@@ -140,8 +140,8 @@ body,.page-wrapper,html { background:#000 !important; }
 /* Stats */
 .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:2rem 0 2.5rem; padding:0 0.5rem; }
 @media(max-width:700px){ .stats-row { grid-template-columns:repeat(2,1fr); } }
-.stat-card { background:rgba(251,191,36,0.04); border:1px solid rgba(251,191,36,0.15); border-radius:14px; padding:1.3rem 1rem; text-align:center; backdrop-filter:blur(6px); }
-.stat-value { font-size:1.7rem; font-weight:800; color:#fbbf24; margin-bottom:0.2rem; }
+.stat-card { background:rgba(251,191,36,0.04); border:1px solid rgba(251,191,36,0.15); border-radius:14px; padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem; backdrop-filter:blur(6px); }
+.stat-value { font-size:1.5rem; font-weight:800; color:#fbbf24; white-space:nowrap; }
 .stat-label { font-size:0.78rem; color:rgba(255,255,255,0.6); font-weight:500; text-transform:uppercase; letter-spacing:0.05em; }
 
 /* Category headers */
@@ -311,23 +311,7 @@ body,.page-wrapper,html { background:#000 !important; }
         </a>
     </div>
 
-    <!-- Live Giveaway Links from Google Sheet — FRONT AND CENTER -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#128308; Live Giveaway Links</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="info-section anim-fade-up" style="padding:1.5rem 1.5rem 1rem; border-color:rgba(251,191,36,0.25);">
-        <div class="live-header">
-            <h2>&#127873; Active Free SC Links <span class="live-count" id="linkCount">Loading...</span></h2>
-            <button class="live-refresh" onclick="fetchLinks()">&#128260; Refresh</button>
-        </div>
-        <div class="live-grid" id="liveLinksGrid">
-            <div class="live-loading">Loading latest giveaway links...</div>
-        </div>
-        <div class="live-timestamp" id="liveTimestamp"></div>
-    </div>
-
-    <!-- Stats -->
+    <!-- Stats — horizontal cards above live links -->
     <div class="stats-row anim-fade-up">
         <div class="stat-card">
             <div class="stat-value">20+</div>
@@ -345,6 +329,22 @@ body,.page-wrapper,html { background:#000 !important; }
             <div class="stat-value">$150-$450</div>
             <div class="stat-label">Monthly Potential</div>
         </div>
+    </div>
+
+    <!-- Live Giveaway Links from Google Sheet — FRONT AND CENTER -->
+    <div class="cat-header anim-fade-up">
+        <h2>&#128308; Live Giveaway Links</h2>
+        <div class="cat-line"></div>
+    </div>
+    <div class="info-section anim-fade-up" style="padding:1.5rem 1.5rem 1rem; border-color:rgba(251,191,36,0.25);">
+        <div class="live-header">
+            <h2>&#127873; Active Free SC Links <span class="live-count" id="linkCount">Loading...</span></h2>
+            <button class="live-refresh" onclick="fetchLinks()">&#128260; Refresh</button>
+        </div>
+        <div class="live-grid" id="liveLinksGrid">
+            <div class="live-loading">Loading latest giveaway links...</div>
+        </div>
+        <div class="live-timestamp" id="liveTimestamp"></div>
     </div>
 
     <!-- What Are Free SC Links? -->
