@@ -73,19 +73,21 @@ body,.page-wrapper,html { background:#000 !important; }
 @media(max-width:550px){ .blog-grid { grid-template-columns:1fr; } }
 
 /* Card */
-.blog-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:1.5rem 1.4rem; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; position:relative; overflow:hidden; }
-.blog-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.18); }
-.blog-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent,rgba(255,255,255,0.1)); opacity:0; transition:opacity 0.2s; }
+.blog-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:1.8rem 1.6rem; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; position:relative; overflow:hidden; }
+.blog-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.5); border-color:rgba(249,115,22,0.3); }
+.blog-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent,rgba(249,115,22,0.4)); opacity:0; transition:opacity 0.2s; }
 .blog-card:hover::before { opacity:1; }
-.card-tag { display:inline-block; font-size:0.68rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.7rem; width:fit-content; }
-.card-tag.sweepstakes { background:rgba(249,115,22,0.15); color:#fb923c; }
-.card-tag.automation { background:rgba(34,211,238,0.15); color:#22d3ee; }
-.card-tag.sidehustles { background:rgba(74,222,128,0.15); color:#4ade80; }
-.card-title { font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.45rem; line-height:1.3; }
-.card-desc { font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.6; flex:1; margin:0 0 0.8rem; }
-.card-read { display:flex; justify-content:flex-end; }
-.card-read span { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.3); transition:color 0.2s, transform 0.2s; }
-.blog-card:hover .card-read span { color:#f97316; transform:translateX(3px); }
+.card-top-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; }
+.card-tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.04em; width:fit-content; }
+.card-tag.sweepstakes { background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.25); }
+.card-tag.automation { background:rgba(34,211,238,0.15); color:#22d3ee; border:1px solid rgba(34,211,238,0.2); }
+.card-tag.sidehustles { background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.2); }
+.card-date { font-size:0.72rem; color:rgba(255,255,255,0.35); font-weight:500; }
+.card-title { font-size:1.15rem; font-weight:800; color:#fff; margin:0 0 0.5rem; line-height:1.3; }
+.card-desc { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.65; flex:1; margin:0 0 1rem; }
+.card-read { display:flex; justify-content:flex-end; align-items:center; }
+.card-read span { font-size:0.85rem; font-weight:700; color:rgba(249,115,22,0.6); transition:color 0.2s, transform 0.2s; }
+.blog-card:hover .card-read span { color:#f97316; transform:translateX(4px); }
 
 /* Fade-in */
 .anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
@@ -173,79 +175,79 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
     <div class="blog-grid" data-category="sweepstakes">
         <a href="/blog/best-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 7, 2025</span></div>
             <div class="card-title">Best Sweepstakes Casinos 2026: Top 10 Compared</div>
             <div class="card-desc">Side-by-side comparison of the top 10 sites for payouts, bonuses, and daily collection value.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/complete-beginners-guide-to-sweepstake-casinos" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 4, 2025</span></div>
             <div class="card-title">How to Make Money with Sweepstakes Casinos</div>
             <div class="card-desc">Everything from signup to cashout for earning real money.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 1, 2025</span></div>
             <div class="card-title">How to Start Sweepstakes: Beginner Guide</div>
             <div class="card-desc">Step-by-step walkthrough for absolute beginners.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/maximize-sweepstakes-casino-winnings-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 29, 2025</span></div>
             <div class="card-title">Maximize Sweepstakes Winnings: Strategy Guide</div>
             <div class="card-desc">Advanced strategies for maximizing returns across platforms.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/sweepstakes-vs-real-money-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 26, 2025</span></div>
             <div class="card-title">Sweepstakes vs Real Money Casinos</div>
             <div class="card-desc">Key differences in legality, payouts, and earnings.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/new-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 23, 2025</span></div>
             <div class="card-title">New Sweepstakes Casinos 2026</div>
             <div class="card-desc">Freshly launched sites with the best welcome bonuses.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/free-daily-login-bonuses-worth-it-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 20, 2025</span></div>
             <div class="card-title">Are Daily Login Bonuses Worth It?</div>
             <div class="card-desc">We ran the numbers across 70+ sites.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/sweepstakes-casino-payout-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 17, 2025</span></div>
             <div class="card-title">Payout Guide: How to Cash Out</div>
             <div class="card-desc">Redemption methods, processing times, and minimums.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/sweepstakes-casino-package-churning-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 14, 2025</span></div>
             <div class="card-title">Package Churning Guide</div>
             <div class="card-desc">How to buy and churn welcome packages for profit.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/skrill-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 11, 2025</span></div>
             <div class="card-title">Skrill Casinos: 0% Fees Guide</div>
             <div class="card-desc">Best sites that accept Skrill for deposits and cashouts.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/luckyland-slots-vip-quacky-hours-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 8, 2025</span></div>
             <div class="card-title">LuckyLand VIP: Unlock Quacky Hours</div>
             <div class="card-desc">How to unlock boosted rewards and exclusive bonuses.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/make-money-daily-on-stake" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 5, 2025</span></div>
             <div class="card-title">Stake.us VIP Guide: $20-$30/Day</div>
             <div class="card-desc">Daily income strategy using Dice and VIP rewards.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/apps-that-pay-real-money-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
-            <span class="card-tag sweepstakes">Sweepstakes</span>
+            <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 2, 2025</span></div>
             <div class="card-title">10 Apps That Pay Real Money (Tested)</div>
             <div class="card-desc">We tested dozens and found 10 that actually pay.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
@@ -259,31 +261,31 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
     <div class="blog-grid" data-category="automation">
         <a href="/blog/automate-sweepstakes-casino-bonuses" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
-            <span class="card-tag automation">Automation</span>
+            <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 27, 2025</span></div>
             <div class="card-title">Sweeps-App: Automate Daily Bonuses</div>
             <div class="card-desc">Full review of automating collection across 50+ sites.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/automate-sweepstakes-daily-collection-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
-            <span class="card-tag automation">Automation</span>
+            <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 24, 2025</span></div>
             <div class="card-title">How to Automate Daily Collection</div>
             <div class="card-desc">Tools, scripts, and workflows to save hours.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/sweepstats-sweepstakes-transaction-tracker-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
-            <span class="card-tag automation">Automation</span>
+            <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 21, 2025</span></div>
             <div class="card-title">SweepStats: Transaction Tracker</div>
             <div class="card-desc">Track earnings, purchases, and ROI across all platforms.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/openclaw-ai-setup-tutorial-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
-            <span class="card-tag automation">Automation</span>
+            <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 18, 2025</span></div>
             <div class="card-title">OpenClaw AI Setup Tutorial</div>
             <div class="card-desc">Step-by-step install and configure OpenClaw AI.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/openclaw-setup-guide-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
-            <span class="card-tag automation">Automation</span>
+            <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 15, 2025</span></div>
             <div class="card-title">OpenClaw: Run Your Own AI 24/7</div>
             <div class="card-desc">Deploy an always-on AI assistant guide.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
@@ -297,37 +299,37 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
     <div class="blog-grid" data-category="sidehustles">
         <a href="/blog/best-side-hustles-no-money-to-start-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 12, 2025</span></div>
             <div class="card-title">Best Side Hustles: $0 to Start</div>
             <div class="card-desc">Proven hustles requiring zero upfront investment.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/how-to-make-50-dollars-a-day-from-phone-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 9, 2025</span></div>
             <div class="card-title">Make $50/Day From Your Phone</div>
             <div class="card-desc">Realistic strategies using just your phone.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/best-reward-apps-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 6, 2025</span></div>
             <div class="card-title">Best Reward Apps 2026</div>
             <div class="card-desc">Top reward apps ranked by earnings potential.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/credit-card-churning-guide-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 3, 2025</span></div>
             <div class="card-title">Credit Card Churning Guide</div>
             <div class="card-desc">Earn thousands in signup bonuses and cashback.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/matched-betting-guide-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Jan 31, 2025</span></div>
             <div class="card-title">Matched Betting Guide</div>
             <div class="card-desc">Extract guaranteed profit from sportsbook promotions.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
         <a href="/blog/how-to-make-money-with-stocks-falling-under-$1" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
-            <span class="card-tag sidehustles">Side Hustles</span>
+            <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Jan 28, 2025</span></div>
             <div class="card-title">Reverse Stock Arbitrage Guide</div>
             <div class="card-desc">Profit from stocks falling under $1.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
