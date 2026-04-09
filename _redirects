@@ -35,6 +35,9 @@
 /rss            /feed.xml           200
 /feed           /feed.xml           200
 
+# Blog clean URLs
+/blog/make-50-day-from-your-phone  /blog/make-50-day-from-your-phone.html  200
+
 # Page redirects
 /sweepstake-casinos             /daily-login-guide  302
 /daily-collection-guide         /daily-login-guide  301
@@ -42,6 +45,7 @@
 /casino-list                       /daily-login-guide          301
 /complete-casino-list              /daily-login-guide          301
 /how-to-automate-daily-collection  /bonus-collection-software  301
+/make-50-day-from-your-phone       /blog/make-50-day-from-your-phone  301
 
 # Custom 404
 /*              /404.html           404
