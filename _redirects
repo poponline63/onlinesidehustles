@@ -36,7 +36,9 @@
 /feed           /feed.xml           200
 
 # Page redirects
-/sweepstake-casinos /daily-login-guide  302
+/sweepstake-casinos             /daily-login-guide  302
+/daily-collection-guide         /daily-login-guide  301
+/sweeps-app-automate-daily-bonuses /daily-login-guide 301
 
 # Custom 404
 /*              /404.html           404
