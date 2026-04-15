@@ -200,8 +200,8 @@
 .info-box-content a { color:rgba(196,181,253,0.9); text-decoration:underline; }
 
 /* Pricing grid */
-.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:1.5rem; }
-@media(max-width:768px){ .pricing-grid { grid-template-columns:1fr; } }
+.pricing-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:1.5rem; }
+@media(max-width:768px){ .pricing-grid { grid-template-columns:1fr !important; } }
 .pricing-card { background:rgba(8,3,22,0.9); border:1px solid rgba(139,92,246,0.22); border-radius:16px; overflow:hidden; text-align:center; transition:transform 0.2s,box-shadow 0.2s; }
 .pricing-card:hover { transform:translateY(-4px); box-shadow:0 12px 35px rgba(139,92,246,0.18); }
 .pricing-card.popular { border-color:rgba(167,139,250,0.6); position:relative; }
@@ -701,7 +701,7 @@ body, .page-wrapper, html {
                 </h2>
                 <div class="section-content">
                     <p>Infinity offers a <span class="highlight">Do It Yourself</span> path for hands-on sellers and a <span class="highlight">Done For You</span> managed service for fully passive income. Start free &mdash; no credit card required.</p>
-                    <div class="pricing-grid" style="grid-template-columns:repeat(2,1fr);">
+                    <div class="pricing-grid">
                         <!-- Free / DIY -->
                         <div class="pricing-card">
                             <div class="pricing-card-header">
