@@ -123,7 +123,7 @@ body {
 }
 .nav-link:hover { color: var(--leaf-accent); background: rgba(82,183,136,0.08); }
 .nav-cta {
-  background: linear-gradient(135deg, var(--leaf-green), var(--leaf-accent));
+  background: linear-gradient(135deg, #5865F2, #4752c4);
   color: #fff !important;
   text-decoration: none;
   padding: 0.45rem 1.1rem;
@@ -132,9 +132,64 @@ body {
   font-weight: 700;
   margin-left: 0.5rem;
   transition: all 0.25s;
-  box-shadow: 0 0 18px rgba(82,183,136,0.3);
+  box-shadow: 0 0 18px rgba(88,101,242,0.45);
+  animation: discordNavPulse 3s ease-in-out infinite;
 }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(82,183,136,0.5); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(88,101,242,0.7); }
+@keyframes discordNavPulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(88,101,242,0.45); }
+  50% { box-shadow: 0 0 28px rgba(88,101,242,0.75), 0 0 50px rgba(88,101,242,0.25); }
+}
+
+/* Discord-branded button */
+.btn-discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2.1rem;
+  background: linear-gradient(135deg, #5865F2, #4752c4);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: discordPulse 2.5s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(88,101,242,0.5);
+}
+.btn-discord:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(88,101,242,0.75); }
+@keyframes discordPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(88,101,242,0.5); }
+  50% { box-shadow: 0 0 60px rgba(88,101,242,0.85), 0 0 100px rgba(88,101,242,0.3); }
+}
+
+/* Discord floating button */
+.discord-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #5865F2, #4752c4);
+  color: #fff;
+  padding: 0.85rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 25px rgba(88,101,242,0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: discordFloat 3s ease-in-out infinite;
+}
+.discord-float:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 35px rgba(88,101,242,0.8); }
+@keyframes discordFloat {
+  0%, 100% { box-shadow: 0 4px 25px rgba(88,101,242,0.6); }
+  50% { box-shadow: 0 4px 40px rgba(88,101,242,0.9), 0 0 60px rgba(88,101,242,0.25); }
+}
 
 .nav-hamburger {
   display: none;
@@ -782,7 +837,7 @@ footer {
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
-      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">💬 Join Discord</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -869,6 +924,7 @@ footer {
     <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members running multiple income streams they built once and automated. Daily collection sites, sweepstake package churning, credit card churning, Reverse Stock Arbitrage and more. Each one compounds on the last.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
       <a href="/24-to-1000-guide" class="btn-primary">💰 $24 to $1000+ Guide</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="btn-discord" target="_blank" rel="noopener">💬 Join Discord</a>
       <a href="/getting-started" class="btn-secondary">Get Started Free</a>
     </div>
     <div class="trust-indicators fade-in fade-in-delay-3">
@@ -1048,11 +1104,16 @@ footer {
     <h2 class="cta-title fade-in">Ready to build your first stream?</h2>
     <p class="cta-desc fade-in fade-in-delay-1">Pick a side hustle, follow the guide to set it up, then automate it and move to the next. Every stream you add compounds on what you already have running.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
-      <a href="/getting-started" class="btn-primary">🌲 Start for Free</a>
-      <a href="https://discord.gg/W9bPGH8crh" class="btn-secondary" target="_blank" rel="noopener">Join the Discord</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="btn-discord" target="_blank" rel="noopener">💬 Join the Discord</a>
+      <a href="/getting-started" class="btn-secondary">🌲 Start for Free</a>
     </div>
   </div>
 </section>
+
+<!-- Discord Float -->
+<a href="https://discord.gg/W9bPGH8crh" class="discord-float" target="_blank" rel="noopener">
+  💬 Join Discord
+</a>
 
 <!-- FOOTER -->
 <footer>
