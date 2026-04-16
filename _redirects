@@ -1,51 +1,155 @@
 # Netlify redirects
 
-# Clean URLs (no .html extension)
-/faq                    /faq.html                   200
-/glossary               /glossary.html              200
-/getting-started        /getting-started.html       200
-/tools                  /tools.html                 200
-/newsletter             /newsletter.html            200
-/earnings-potential     /earnings-potential.html    200
-/new-sites              /new-sites.html             200
-/daily-login-guide      /daily-login-guide.html     200
-/side-hustles           /side-hustles.html          200
-/blog                   /blog.html                  200
-/about                  /about.html                 200
-/contact                /contact.html               200
-/sweepstakes            /sweepstakes.html           200
-/casino-directory       /casino-directory.html      200
-/privacy                /privacy-policy.html        200
-/terms                  /terms.html                 200
-/disclaimer             /affiliate-disclosure.html  200
-/freelancing            /freelancing.html           200
-/matched-betting        /matched-betting.html       200
-/credit-card-churning   /credit-card-churning.html  200
-/jupiter-post           /jupiter-post.html          200
-/reward-apps            /reward-apps.html           200
-/reverse-stock-arbitrage /reverse-stock-arbitrage.html 200
-/guides                 /guides.html                200
+# ============================================================
+# CLEAN URL REWRITES (serve .html at clean path, URL stays clean)
+# ============================================================
+
+# Core pages
+/getting-started            /getting-started.html               200
+/daily-login-guide          /daily-login-guide.html             200
+/side-hustles               /side-hustles.html                  200
+/blog                       /blog.html                          200
+/tools                      /tools.html                         200
+/sweepstakes                /sweepstakes.html                   200
+/faq                        /faq.html                           200
+/about                      /about.html                         200
+/contact                    /contact.html                       200
+/glossary                   /glossary.html                      200
+/newsletter                 /newsletter.html                    200
+/vote                       /vote.html                          200
+
+# Guides & strategies
+/24-to-1000-guide           /24-to-1000-guide.html              200
+/earnings-potential         /earnings-potential.html            200
+/guides                     /guides.html                        200
+/complete-guide-list        /complete-guide-list.html           200
+/guide-player-2             /guide-player-2.html                200
+/guide-luckyland-vip        /guide-luckyland-vip.html           200
+/guide-stake-make-money-churning /guide-stake-make-money-churning.html 200
+/guide-to-quacky-hours      /guide-to-quacky-hours.html         200
+/gameplay-sheet             /gameplay-sheet.html                200
+/income-calculator          /income-calculator.html             200
+/income-reports             /income-reports.html                200
+/success-stories            /success-stories.html               200
+/package-sales              /package-sales.html                 200
+/new-sites                  /new-sites.html                     200
+
+# Side hustles
+/sportsbetting-automation   /sportsbetting-automation.html      200
+/dropshipping               /dropshipping.html                  200
+/sell-on-ebay-automated     /sell-on-ebay-automated.html        200
+/sell-on-tiktok-automated   /sell-on-tiktok-automated.html      200
+/reverse-stock-arbitrage    /reverse-stock-arbitrage.html       200
+/matched-betting            /matched-betting.html               200
+/credit-card-churning       /credit-card-churning.html          200
+/jupiter-post               /jupiter-post.html                  200
+/bonus-collection-software  /bonus-collection-software.html     200
+/affiliate-marketing        /affiliate-marketing.html           200
+/freelancing                /freelancing.html                   200
+/passive-investing          /passive-investing.html             200
+/selling-online             /selling-online.html                200
+/reward-apps                /reward-apps.html                   200
+/auto-giveaways-software    /auto-giveaways-software.html       200
+/automation                 /automation.html                    200
+/openclaw-setup             /openclaw-setup.html                200
+
+# Sweepstakes casino pages
+/sweepstakes-casino-list    /sweepstakes-casino-list.html       200
+/casino-ratings             /casino-ratings.html                200
+/reviews-hub                /reviews-hub.html                   200
+/daily-login-reviews        /daily-login-reviews.html           200
+/daily-free-sc              /daily-free-sc.html                 200
+/best-sweepstakes-card      /best-sweepstakes-card.html         200
+/skrill-casinos             /skrill-casinos.html                200
+/sweepstats                 /sweepstats.html                    200
+
+# Tools
+/tools-hub                  /tools-hub.html                     200
+/tracking-number-generator  /tracking-number-generator.html     200
+/income-calculator          /income-calculator.html             200
+/credit-cards               /credit-cards.html                  200
+
+# Info / legal
+/privacy-policy             /privacy-policy.html                200
+/privacy                    /privacy-policy.html                200
+/terms                      /terms.html                         200
+/disclaimer                 /affiliate-disclosure.html          200
+/affiliate-disclosure       /affiliate-disclosure.html          200
+
+# States hub
+/states-hub                 /states-hub.html                    200
+/casinos-in-arizona         /casinos-in-arizona.html            200
+/casinos-in-california      /casinos-in-california.html         200
+/casinos-in-colorado        /casinos-in-colorado.html           200
+/casinos-in-florida         /casinos-in-florida.html            200
+/casinos-in-georgia         /casinos-in-georgia.html            200
+/casinos-in-illinois        /casinos-in-illinois.html           200
+/casinos-in-michigan        /casinos-in-michigan.html           200
+/casinos-in-new-jersey      /casinos-in-new-jersey.html         200
+/casinos-in-new-york        /casinos-in-new-york.html           200
+/casinos-in-north-carolina  /casinos-in-north-carolina.html     200
+/casinos-in-ohio            /casinos-in-ohio.html               200
+/casinos-in-pennsylvania    /casinos-in-pennsylvania.html       200
+/casinos-in-tennessee       /casinos-in-tennessee.html          200
+/casinos-in-texas           /casinos-in-texas.html              200
+/casinos-in-virginia        /casinos-in-virginia.html           200
+
+# Reviews
+/review-chanced             /review-chanced.html                200
+/review-chumba              /review-chumba.html                 200
+/review-crown-coins         /review-crown-coins.html            200
+/review-dinersweeps         /review-dinersweeps.html            200
+/review-fliff               /review-fliff.html                  200
+/review-fortune-coins       /review-fortune-coins.html          200
+/review-funrize             /review-funrize.html                200
+/review-global-poker        /review-global-poker.html           200
+/review-golden-hearts       /review-golden-hearts.html          200
+/review-hello-millions      /review-hello-millions.html         200
+/review-high5               /review-high5.html                  200
+/review-luckyland           /review-luckyland.html              200
+/review-mcluck              /review-mcluck.html                 200
+/review-modo                /review-modo.html                   200
+/review-moonspin            /review-moonspin.html               200
+/review-nolimitcoins        /review-nolimitcoins.html           200
+/review-pulsz               /review-pulsz.html                  200
+/review-realprize           /review-realprize.html              200
+/review-sportzino           /review-sportzino.html              200
+/review-spree               /review-spree.html                  200
+/review-stake-us            /review-stake-us.html               200
+/review-sweeptastic         /review-sweeptastic.html            200
+/review-tao-fortune         /review-tao-fortune.html            200
+/review-wow-vegas           /review-wow-vegas.html              200
+/review-zula                /review-zula.html                   200
 
 # Comparison pages
 /comparisons/chumba-vs-stake        /comparisons/chumba-vs-stake.html       200
 /comparisons/fastest-payout-sites   /comparisons/fastest-payout-sites.html  200
 /comparisons/best-welcome-packages  /comparisons/best-welcome-packages.html 200
 
+# ============================================================
+# 301 PERMANENT REDIRECTS (old URLs → correct current URLs)
+# ============================================================
+
+# Consolidate sports-betting-automation duplicate
+/sports-betting-automation          /sportsbetting-automation               301
+
+# Legacy URL aliases
+/sweepstake-casinos                 /daily-login-guide                      301
+/daily-collection-guide             /daily-login-guide                      301
+/casino-list                        /daily-login-guide                      301
+/complete-casino-list               /daily-login-guide                      301
+/sweeps-app-automate-daily-bonuses  /bonus-collection-software              301
+/how-to-automate-daily-collection   /bonus-collection-software              301
+/make-50-day-from-your-phone        /blog/make-50-day-from-your-phone       301
+
 # RSS feed
 /rss            /feed.xml           200
 /feed           /feed.xml           200
 
 # Blog clean URLs
-/blog/make-50-day-from-your-phone  /blog/make-50-day-from-your-phone.html  200
+/blog/make-50-day-from-your-phone   /blog/make-50-day-from-your-phone.html  200
 
-# Page redirects
-/sweepstake-casinos             /daily-login-guide  302
-/daily-collection-guide         /daily-login-guide  301
-/sweeps-app-automate-daily-bonuses /bonus-collection-software 301
-/casino-list                       /daily-login-guide          301
-/complete-casino-list              /daily-login-guide          301
-/how-to-automate-daily-collection  /bonus-collection-software  301
-/make-50-day-from-your-phone       /blog/make-50-day-from-your-phone  301
-
-# Custom 404
+# ============================================================
+# CUSTOM 404 — must be last
+# ============================================================
 /*              /404.html           404
