@@ -475,7 +475,7 @@ article {
 <!-- HERO -->
 <div class="oc-hero">
     <div class="breadcrumb">
-        <a href="/">Home</a> &rarr; <a href="/blog">Blog</a>
+        <a href="/">Home</a> &rarr; <a href="/blog">Blog</a> &rarr; New Sweepstakes Casinos 2026
     </div>
     <div class="category-badge">BLOG &middot; 10 MIN READ</div>
     <h1>New Sweepstakes Casinos 2026: Latest Sites Launched & Reviewed</h1>
@@ -487,17 +487,21 @@ article {
 
 <div class="article-body">
 
+<div class="stat-grid anim-fade-up">
+    <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">New Sites 2025–26</div></div>
+    <div class="stat-card"><div class="stat-number">$2+</div><div class="stat-label">Daily SC Potential</div></div>
+    <div class="stat-card"><div class="stat-number">$500+</div><div class="stat-label">Welcome SC Value</div></div>
+    <div class="stat-card"><div class="stat-number">$0</div><div class="stat-label">Cost to Start</div></div>
 </div>
 
   <p>The sweepstakes casino space is growing fast. New sites launched in late 2025 and early 2026 mean more daily SC to collect, more welcome packages to churn, and more opportunities to stack monthly income. Here's our complete breakdown of every major new site worth your attention.</p>
-</div>
 
 <div class="highlight-box">
   <h4>📌 Why New Sites Matter</h4>
   <p>Each new verified site you sign up to adds to your daily collection permanently. Even a site giving $0.20/day adds $6/month — and welcome packages from new sites can be worth $50–$200+ in SC profit. New sites = permanent income increases.</p>
 </div>
 
-<div class="toc">
+<div class="toc anim-fade-up">
   <h3>📋 Table of Contents</h3>
   <ul>
     <li><a href="#metawin">MetaWin.us</a></li>
@@ -645,118 +649,32 @@ article {
   <a href="/daily-login-guide.html" class="cta-btn">View Full Site List →</a>
 </div>
 
-</article>
 
-<script>
-(function(){
-  var bar = document.getElementById('oc-progress-bar');
-  if(!bar) return;
-  window.addEventListener('scroll', function(){
-    var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
-    var total = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
-  }, {passive: true});
-})();
-</script>
-<script id="oc-side-elements">
-(function(){
-  // ---- Side structural elements ----
-  var sideEls = [
-    'oc-side-left','oc-side-right',
-    'oc-side-left-inner','oc-side-right-inner',
-    'oc-glow-left','oc-glow-right',
-    'oc-glow-left2','oc-glow-right2',
-    
-  ];
-  sideEls.forEach(function(cls){
-    var el = document.createElement('div');
-    el.className = cls;
-    document.body.appendChild(el);
-  });
+<!-- ============================================ -->
+<!-- RELATED ARTICLES -->
+<!-- ============================================ -->
+<h2>&#128218; Related Articles</h2>
 
-  // ---- Floating particles ----
-  var leftSymbols  = ['✦','◈','⬡','✧','◇','⬟','✦','◈'];
-  var rightSymbols = ['⋆','◉','✦','◈','⬡','✧','◇','⬟'];
-  var colors = ['#50e050','#90EE90','#FFD700','#6ee86e','#b0ffb0'];
-
-  function makeParticle(sym, side, idx) {
-    var p = document.createElement('div');
-    p.className = 'oc-particle';
-    p.textContent = sym;
-    var size = (1.2 + Math.random() * 1.4).toFixed(2) + 'rem';
-    p.style.fontSize = size;
-    var offsets = [6,18,32,44,58,72,12,26,40,54];
-    var offset  = offsets[idx % offsets.length] + 'px';
-    if(side === 'left')  { p.style.left  = offset; }
-    else                 { p.style.right = offset; }
-    p.style.color           = colors[idx % colors.length];
-    p.style.opacity         = '0';
-    p.style.animationDuration = (16 + Math.random() * 18).toFixed(1) + 's';
-    p.style.animationDelay    = -(Math.random() * 25).toFixed(1) + 's';
-    p.style.filter = 'drop-shadow(0 0 8px ' + colors[idx % colors.length] + ')';
-    document.body.appendChild(p);
-  }
-
-  for(var i = 0; i < 10; i++) makeParticle(leftSymbols[i % leftSymbols.length],   'left',  i);
-  for(var j = 0; j < 10; j++) makeParticle(rightSymbols[j % rightSymbols.length], 'right', j + 10);
-
-  // ---- Sticky mini-TOC ----
-  if(window.innerWidth <= 1380) return;
-  var toc = document.querySelector('.toc');
-  if(!toc) return;
-  var links = toc.querySelectorAll('a[href^="#"]');
-  if(!links.length) return;
-
-  var sidebar = document.createElement('div');
-  sidebar.id = 'oc-toc-sidebar';
-  var title = document.createElement('div');
-  title.className = 'oc-toc-title';
-  title.textContent = 'On This Page';
-  sidebar.appendChild(title);
-  var ul = document.createElement('ul');
-  links.forEach(function(a){
-    var li = document.createElement('li');
-    var link = document.createElement('a');
-    link.href = a.href;
-    link.textContent = a.textContent.replace(/^\d+\.\s*/, '');
-    li.appendChild(link);
-    ul.appendChild(li);
-  });
-  sidebar.appendChild(ul);
-  document.body.appendChild(sidebar);
-
-  // Scroll spy
-  var headings  = Array.from(document.querySelectorAll('article h2[id], article h3[id]'));
-  var sideLinks = Array.from(sidebar.querySelectorAll('a'));
-  function onScroll(){
-    var scrollY = window.scrollY + 130;
-    var current = '';
-    headings.forEach(function(h){ if(h.offsetTop <= scrollY) current = h.id; });
-    sideLinks.forEach(function(a){
-      a.classList.toggle('oc-toc-active', a.getAttribute('href').replace('#','') === current);
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-
-        
-
-        
-        }
-
-        
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                document.getElementById('megaDropdown').classList.remove('active');
-                document.getElementById('navMenu').classList.remove('active');
-            }
-        });
-    </script>
-
-
-    <script></script>
+<div class="related-grid anim-fade-up">
+    <a href="/blog/best-sweepstakes-casinos-2026.html" class="related-card">
+        <div class="rc-icon">&#127942;</div>
+        <div class="rc-title">Best Sweepstakes Casinos 2026</div>
+        <div class="rc-desc">The top 10 established sweepstakes casinos ranked by bonuses, games, and daily earning potential.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+    <a href="/blog/maximize-sweepstakes-casino-winnings-2026.html" class="related-card">
+        <div class="rc-icon">&#128200;</div>
+        <div class="rc-title">Maximize Sweepstakes Winnings</div>
+        <div class="rc-desc">Advanced strategies for turning daily bonuses into consistent monthly income from sweepstakes casinos.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+    <a href="/blog/sweepstakes-casino-payout-guide-2026.html" class="related-card">
+        <div class="rc-icon">&#128176;</div>
+        <div class="rc-title">Payout Guide 2026</div>
+        <div class="rc-desc">Everything you need to know about cashing out: methods, timelines, minimums, and tips for faster payouts.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+</div>
 
 </div><!-- /article-body -->
 </article>
