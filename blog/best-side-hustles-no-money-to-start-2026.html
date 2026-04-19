@@ -418,6 +418,65 @@ article {
 /* Fade-in */
 .anim-fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
 .anim-fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* Content sections */
+.content-section { margin: 2.5rem 0; }
+
+/* Hustle cards */
+.hustle-card {
+    background: linear-gradient(135deg, rgba(14,6,24,0.9), rgba(12,6,22,0.9));
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.8rem 2rem; margin: 1.2rem 0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hustle-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 20px rgba(167,139,250,0.08); }
+.hustle-header {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(167,139,250,0.15);
+}
+.hustle-rating {
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em;
+    background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.35);
+    color: var(--violet); padding: 0.3rem 0.85rem; border-radius: 20px;
+}
+.hustle-earning {
+    font-size: 1rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--violet-bright), var(--violet-deep));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* CTA button */
+.cta-button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    background: linear-gradient(135deg, var(--violet), var(--violet-deep));
+    color: #fff; font-weight: 800; font-size: 0.95rem;
+    padding: 0.85rem 2.2rem; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(167,139,250,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(167,139,250,0.6); }
+
+/* Big number in highlight box */
+.big-number {
+    display: block; font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--violet-bright), var(--violet-deep));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Comparison table */
+.article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+.article-body table th {
+    padding: 0.8rem 1rem; text-align: left; font-weight: 700; color: var(--violet);
+    border-bottom: 2px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.08);
+    font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.article-body table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(167,139,250,0.08); color: var(--text); }
+.article-body table tbody tr:hover { background: rgba(167,139,250,0.04); }
+@media(max-width:600px) { .article-body table { font-size: 0.78rem; } .article-body table th, .article-body table td { padding: 0.5rem 0.6rem; } }
+
+/* Related articles grid (old style) */
+.related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
     </style>
 </head>
 <body>
@@ -471,7 +530,7 @@ article {
 <!-- HERO -->
 <div class="oc-hero">
     <div class="breadcrumb">
-        <a href="/">Home</a> &rarr; <a href="/blog">Blog</a>
+        <a href="/">Home</a> &rarr; <a href="/blog">Blog</a> &rarr; Best Side Hustles No Money to Start 2026
     </div>
     <div class="category-badge">💸 SIDE HUSTLES &middot; 13 MIN READ</div>
     <h1>Best Side Hustles That Cost $0 to Start in 2026</h1>
@@ -482,8 +541,6 @@ article {
 </div>
 
 <div class="article-body">
-
-</div>
 
         <p>Most "make money online" lists are full of stuff that costs money upfront — dropshipping needs inventory, course creation needs expertise, real estate needs capital. What if you're starting from literally zero?</p>
         
@@ -752,23 +809,31 @@ article {
             </p>
         </div>
 
-        <div class="content-section">
-            <h2>📖 Related Guides</h2>
-            <div class="related-articles">
-                <a href="https://onlinesidehustles.info/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026" class="related-card">
-                    <h4>🎰 Sweepstakes Beginner Guide</h4>
-                    <p>Step-by-step guide to starting with sweepstakes casino daily collections from zero.</p>
-                </a>
-                <a href="https://onlinesidehustles.info/blog/free-daily-login-bonuses-worth-it-2026" class="related-card">
-                    <h4>📊 Daily Bonus Math</h4>
-                    <p>Full math breakdown of time vs money for daily collection bonuses.</p>
-                </a>
-                <a href="https://onlinesidehustles.info/blog/matched-betting-guide-2026" class="related-card">
-                    <h4>⚽ Matched Betting Guide</h4>
-                    <p>Make $500-1,500/month risk-free from sportsbook bonuses.</p>
-                </a>
-            </div>
-        </div>
+<!-- ============================================ -->
+<!-- RELATED ARTICLES -->
+<!-- ============================================ -->
+<h2>&#128218; Related Articles</h2>
+
+<div class="related-grid anim-fade-up">
+    <a href="/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026.html" class="related-card">
+        <div class="rc-icon">&#127920;</div>
+        <div class="rc-title">Sweepstakes Beginner Guide</div>
+        <div class="rc-desc">Step-by-step guide to starting with sweepstakes casino daily collections from zero.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+    <a href="/blog/free-daily-login-bonuses-worth-it-2026.html" class="related-card">
+        <div class="rc-icon">&#128202;</div>
+        <div class="rc-title">Daily Bonus Math</div>
+        <div class="rc-desc">Full math breakdown of time vs money for daily collection bonuses.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+    <a href="/blog/matched-betting-guide-2026.html" class="related-card">
+        <div class="rc-icon">&#9917;</div>
+        <div class="rc-title">Matched Betting Guide</div>
+        <div class="rc-desc">Make $500–1,500/month risk-free from sportsbook bonuses.</div>
+        <div class="rc-link">Read article &rarr;</div>
+    </a>
+</div>
 
 </div><!-- /article-body -->
 </article>
