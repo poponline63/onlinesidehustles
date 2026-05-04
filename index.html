@@ -782,6 +782,53 @@ footer {
 .site-card:hover .glow-follow { opacity: 1; }
 .site-card .site-name, .site-card .site-daily { position: relative; z-index: 1; }
 
+/* === PATH EXPLAINER === */
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.path-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.8rem;
+}
+.path-card h3 {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+.path-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.path-card ul {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
+}
+.path-card li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.path-card li::before {
+  content: ">";
+  color: var(--leaf-accent);
+  font-weight: 800;
+  margin-right: 0.5rem;
+}
+.path-link {
+  color: var(--leaf-accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+.path-link:hover { color: var(--leaf-bright); }
+
 /* === TYPING CURSOR === */
 .typing-cursor {
   display: inline-block;
@@ -921,7 +968,7 @@ footer {
   <!-- Hero content -->
   <div class="hero-content" id="hero-text">
     <h1 class="fade-in">Build Side Hustles.<br><span>Automate. Stack Income.</span></h1>
-    <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members running multiple income streams they built once and automated. Daily collection sites, sweepstake package churning, credit card churning, Reverse Stock Arbitrage and more. Each one compounds on the last.</p>
+    <p class="hero-subtitle fade-in fade-in-delay-1">Join 2,500+ members stacking two kinds of online income: daily login websites that give recurring bonuses, plus bigger side hustles like package churning, credit card rewards, Reverse Stock Arbitrage, automation tools, and more.</p>
     <div class="hero-buttons fade-in fade-in-delay-2">
       <a href="/24-to-1000-guide" class="btn-primary">💰 $24 to $1000+ Guide</a>
       <a href="https://discord.gg/W9bPGH8crh" class="btn-discord" target="_blank" rel="noopener">💬 Join Discord</a>
@@ -956,6 +1003,38 @@ footer {
     <div class="stat-label">To Get Started</div>
   </div>
 </div>
+
+<!-- PATH EXPLAINER -->
+<hr class="divider">
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-label fade-in">Start with the right path</p>
+    <h2 class="section-title fade-in">Daily login bonuses vs online side hustles</h2>
+    <p class="section-desc fade-in" style="text-align:center; margin-left:auto; margin-right:auto;">Online Sidehustles covers both quick-start bonus plays and larger income streams. If you are new here, this is the simple split.</p>
+    <div class="path-grid">
+      <div class="path-card fade-in fade-in-delay-1">
+        <h3>Daily Login Websites</h3>
+        <p>These are sweepstakes-style sites that give free daily rewards just for signing in. You collect coins, credits, spins, or bonus balances across multiple sites, then follow each site's rules to play through and redeem when eligible.</p>
+        <ul>
+          <li>Best for beginners and bonus hunters</li>
+          <li>Usually takes 10-30 minutes per day</li>
+          <li>Can be tracked, stacked, and automated over time</li>
+        </ul>
+        <a href="/daily-login-guide" class="path-link">See the Daily Login Guide &rarr;</a>
+      </div>
+      <div class="path-card fade-in fade-in-delay-2">
+        <h3>Online Side Hustles</h3>
+        <p>These are broader income streams you build or manage over time: reward apps, bank and card bonuses, selling online, AI services, sports betting promos, stock arbitrage, affiliate marketing, and automation tools.</p>
+        <ul>
+          <li>Best for stacking higher-upside income streams</li>
+          <li>Time and risk vary by strategy</li>
+          <li>Works well after you learn the bonus-hunting basics</li>
+        </ul>
+        <a href="/side-hustles" class="path-link">Explore All Side Hustles &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- HOW IT WORKS -->
 <hr class="divider">
