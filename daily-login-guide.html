@@ -1171,6 +1171,9 @@ function buildTable(rows) {
     // Skip empty rows
     if (!col0 && !col1) continue;
 
+    // Skip spreadsheet notes, summary totals, and mobile helper rows.
+    if (!col0.toLowerCase().includes('signup')) continue;
+
     // Casino data row
     const tr = document.createElement('tr');
     tr.className = 'casino-row';
