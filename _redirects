@@ -147,9 +147,36 @@
 /feed           /feed.xml           200
 
 # Blog clean URLs
+/blog/apps-that-pay-real-money-2026   /blog/apps-that-pay-real-money-2026.html  200
+/blog/automate-sweepstakes-casino-bonuses   /blog/automate-sweepstakes-casino-bonuses.html  200
+/blog/automate-sweepstakes-daily-collection-2026   /blog/automate-sweepstakes-daily-collection-2026.html  200
+/blog/best-reward-apps-2026   /blog/best-reward-apps-2026.html  200
+/blog/best-side-hustles-no-money-to-start-2026   /blog/best-side-hustles-no-money-to-start-2026.html  200
+/blog/best-sweepstakes-casinos-2026   /blog/best-sweepstakes-casinos-2026.html  200
+/blog/can-sweepstakes-casinos-ban-you-for-winning   /blog/can-sweepstakes-casinos-ban-you-for-winning.html  200
+/blog/complete-beginners-guide-to-sweepstake-casinos   /blog/complete-beginners-guide-to-sweepstake-casinos.html  200
+/blog/credit-card-churning-guide-2026   /blog/credit-card-churning-guide-2026.html  200
+/blog/fortune-coins-review-2026-fortune-wins-rebrand   /blog/fortune-coins-review-2026-fortune-wins-rebrand.html  200
+/blog/free-daily-login-bonuses-worth-it-2026   /blog/free-daily-login-bonuses-worth-it-2026.html  200
+/blog/global-poker-review-2026   /blog/global-poker-review-2026.html  200
+/blog/how-to-make-50-dollars-a-day-from-phone-2026   /blog/how-to-make-50-dollars-a-day-from-phone-2026.html  200
+/blog/how-to-make-money-with-stocks-falling-under-$1   /blog/how-to-make-money-with-stocks-falling-under-$1.html  200
+/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026   /blog/how-to-start-sweepstakes-casinos-complete-beginner-2026.html  200
+/blog/luckyland-slots-vip-quacky-hours-guide-2026   /blog/luckyland-slots-vip-quacky-hours-guide-2026.html  200
 /blog/make-50-day-from-your-phone   /blog/make-50-day-from-your-phone.html  200
+/blog/make-money-daily-on-stake   /blog/make-money-daily-on-stake.html  200
+/blog/matched-betting-guide-2026   /blog/matched-betting-guide-2026.html  200
+/blog/maximize-sweepstakes-casino-winnings-2026   /blog/maximize-sweepstakes-casino-winnings-2026.html  200
+/blog/new-sweepstakes-casinos-2026   /blog/new-sweepstakes-casinos-2026.html  200
+/blog/openclaw-ai-setup-tutorial-2026   /blog/openclaw-ai-setup-tutorial-2026.html  200
+/blog/openclaw-setup-guide-2026   /blog/openclaw-setup-guide-2026.html  200
+/blog/skrill-sweepstakes-casinos-2026   /blog/skrill-sweepstakes-casinos-2026.html  200
+/blog/sweepstakes-casino-autopilot-automation-2026   /blog/sweepstakes-casino-autopilot-automation-2026.html  200
+/blog/sweepstakes-casino-package-churning-guide-2026   /blog/sweepstakes-casino-package-churning-guide-2026.html  200
+/blog/sweepstakes-casino-payout-guide-2026   /blog/sweepstakes-casino-payout-guide-2026.html  200
+/blog/sweepstakes-casino-redemption-problems-wont-pay   /blog/sweepstakes-casino-redemption-problems-wont-pay.html  200
+/blog/sweepstakes-vs-real-money-casinos-2026   /blog/sweepstakes-vs-real-money-casinos-2026.html  200
+/blog/sweepstats-sweepstakes-transaction-tracker-2026   /blog/sweepstats-sweepstakes-transaction-tracker-2026.html  200
+/blog/zula-casino-vs-fortune-coins-vs-sportzino   /blog/zula-casino-vs-fortune-coins-vs-sportzino.html  200
 
-# ============================================================
-# CUSTOM 404 — must be last
-# ============================================================
-/*              /404.html           404
+
