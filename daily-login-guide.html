@@ -443,8 +443,8 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .btn-sheet-outline:hover { background: rgba(173,255,47,0.15); border-color: #ADFF2F; transform: translateY(-2px); color: #fff; }
 
 /* Restricted States toggle */
-.restricted-states-col { display: none; }
-.show-restricted .restricted-states-col { display: table-cell; }
+#guide-table .restricted-states-col { display: none; }
+#guide-table.show-restricted .restricted-states-col { display: table-cell; }
 .toggle-restricted {
   display: inline-flex;
   align-items: center;
@@ -739,7 +739,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
       </div>
 
       <!-- Restricted States Toggle -->
-      <button class="toggle-restricted" id="toggleRestricted" onclick="document.getElementById('tableWrap').classList.toggle('show-restricted'); this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'Hide Restricted States' : 'Show Restricted States';">Show Restricted States</button>
+      <button class="toggle-restricted" id="toggleRestricted" type="button" aria-pressed="false">Show Restricted States</button>
 
       <!-- Table -->
       <div class="table-wrap" id="tableWrap" style="display:none;">
@@ -879,6 +879,16 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
+// Restricted states column toggle
+const toggleRestricted = document.getElementById('toggleRestricted');
+toggleRestricted.addEventListener('click', () => {
+  const table = document.getElementById('guide-table');
+  const isActive = table.classList.toggle('show-restricted');
+  toggleRestricted.classList.toggle('active', isActive);
+  toggleRestricted.setAttribute('aria-pressed', String(isActive));
+  toggleRestricted.textContent = isActive ? 'Hide Restricted States' : 'Show Restricted States';
+});
+
 // CSV Parser (handles quoted fields with commas and newlines)
 function parseCSV(text) {
   const rows = [];
@@ -942,6 +952,14 @@ function detectTier(val) {
     if (lower.includes(key)) return cls;
   }
   return null;
+}
+
+function getTierLabel(val) {
+  const lower = (val || '').toLowerCase();
+  if (lower.includes('new website') || lower === 'new' || lower.includes('new site')) {
+    return 'New Casinos';
+  }
+  return val;
 }
 
 // Column headers
@@ -1151,21 +1169,18 @@ function buildTable(rows) {
     const col0 = (row[0] || '').trim();
     const col1 = (row[1] || '').trim();
 
-    // Tier separator detection: empty first column, tier name in second
-    if (!col0 && col1) {
-      const tierClass = detectTier(col1);
-      if (tierClass) {
-        currentTier = tierClass;
-        // Render tier separator row
-        const tr = document.createElement('tr');
-        tr.className = 'tier-row ' + tierClass;
-        const td = document.createElement('td');
-        td.colSpan = displayCols;
-        td.textContent = col1;
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        continue;
-      }
+    // Tier separator detection. Some sheet marker rows include helper text in column 1.
+    const tierClass = col1 ? detectTier(col1) : null;
+    if (tierClass && !col0.toLowerCase().includes('signup')) {
+      currentTier = tierClass;
+      const tr = document.createElement('tr');
+      tr.className = 'tier-row ' + tierClass;
+      const td = document.createElement('td');
+      td.colSpan = displayCols;
+      td.textContent = getTierLabel(col1);
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      continue;
     }
 
     // Skip empty rows
