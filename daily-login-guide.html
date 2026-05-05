@@ -129,60 +129,98 @@ body, .page-wrapper { background: #0a0d0a !important; }
 }
 /* CSS UFO Visual */
 .ufo-visual {
-  width: 180px;
-  min-width: 180px;
-  height: 220px;
+  width: 220px;
+  min-width: 220px;
+  height: 240px;
   position: relative;
   flex-shrink: 0;
   animation: ufoFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(173,255,47,0.28));
 }
 @keyframes ufoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
 }
 .ufo-body {
   position: absolute;
-  top: 0;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 140px;
+  width: 178px;
+  height: 86px;
+  z-index: 3;
 }
 .ufo-dome {
-  width: 50px;
-  height: 30px;
-  background: linear-gradient(180deg, rgba(173,255,47,0.3), rgba(173,255,47,0.08));
-  border: 2px solid rgba(173,255,47,0.5);
+  width: 78px;
+  height: 44px;
+  background:
+    radial-gradient(circle at 35% 18%, rgba(245,255,220,0.45), transparent 18px),
+    linear-gradient(180deg, rgba(173,255,47,0.34), rgba(82,183,136,0.12) 72%, rgba(5,12,5,0.84));
+  border: 2px solid rgba(173,255,47,0.55);
   border-bottom: none;
-  border-radius: 50px 50px 0 0;
+  border-radius: 90px 90px 18px 18px;
   margin: 0 auto;
-  box-shadow: 0 0 15px rgba(173,255,47,0.3), inset 0 0 10px rgba(173,255,47,0.1);
+  box-shadow:
+    0 0 18px rgba(173,255,47,0.28),
+    inset 0 8px 18px rgba(255,255,255,0.12),
+    inset 0 -8px 14px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 4;
 }
 .ufo-saucer {
-  width: 140px;
-  height: 28px;
-  background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  width: 178px;
+  height: 42px;
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(220,255,185,0.32), transparent 38%),
+    linear-gradient(180deg, #596055 0%, #273027 38%, #101810 62%, #2f392f 100%);
   border-radius: 50%;
-  border: 2px solid rgba(173,255,47,0.3);
-  box-shadow: 0 0 20px rgba(173,255,47,0.2), 0 4px 8px rgba(0,0,0,0.5);
+  border: 2px solid rgba(173,255,47,0.36);
+  box-shadow:
+    0 0 24px rgba(173,255,47,0.22),
+    0 10px 18px rgba(0,0,0,0.55),
+    inset 0 7px 12px rgba(255,255,255,0.08),
+    inset 0 -10px 12px rgba(0,0,0,0.5);
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  margin-top: -5px;
+}
+.ufo-saucer::before {
+  content: '';
+  position: absolute;
+  inset: 9px 17px;
+  border-radius: 50%;
+  border: 1px solid rgba(173,255,47,0.28);
+  box-shadow: inset 0 0 14px rgba(173,255,47,0.14);
+}
+.ufo-saucer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 112px;
+  height: 17px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(173,255,47,0.18), rgba(3,8,3,0.96));
+  border: 1px solid rgba(173,255,47,0.22);
 }
 .ufo-lights {
   position: absolute;
-  top: 32px;
+  top: 47px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 18px;
-  z-index: 3;
+  gap: 20px;
+  z-index: 5;
 }
 .ufo-lights span {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #ADFF2F;
-  box-shadow: 0 0 8px #ADFF2F, 0 0 16px rgba(173,255,47,0.5);
+  box-shadow: 0 0 10px #ADFF2F, 0 0 20px rgba(173,255,47,0.55);
   animation: lightBlink 1.5s ease-in-out infinite;
+  outline: 1px solid rgba(255,255,255,0.18);
 }
 .ufo-lights span:nth-child(2) { animation-delay: 0.3s; }
 .ufo-lights span:nth-child(3) { animation-delay: 0.6s; }
@@ -193,24 +231,30 @@ body, .page-wrapper { background: #0a0d0a !important; }
   50% { opacity: 0.3; box-shadow: 0 0 4px rgba(173,255,47,0.3); }
 }
 .ufo-rim {
-  width: 100px;
-  height: 12px;
-  background: linear-gradient(180deg, #2a2a2a, #111);
+  width: 132px;
+  height: 16px;
+  background: linear-gradient(180deg, #303b30, #081008);
   border-radius: 50%;
-  margin: -4px auto 0;
-  border: 1px solid rgba(173,255,47,0.15);
+  margin: -8px auto 0;
+  border: 1px solid rgba(173,255,47,0.22);
+  box-shadow: inset 0 -5px 9px rgba(0,0,0,0.6), 0 0 14px rgba(173,255,47,0.12);
 }
 /* Tractor beam */
 .ufo-beam {
   position: absolute;
-  top: 58px;
+  top: 68px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 140px;
-  background: linear-gradient(180deg, rgba(173,255,47,0.25) 0%, rgba(173,255,47,0.08) 50%, rgba(173,255,47,0) 100%);
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-  animation: beamPulse 2s ease-in-out infinite;
+  width: 112px;
+  height: 158px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(173,255,47,0.12), transparent 58%),
+    linear-gradient(90deg, transparent, rgba(173,255,47,0.12), transparent),
+    linear-gradient(180deg, rgba(173,255,47,0.3) 0%, rgba(173,255,47,0.11) 42%, rgba(173,255,47,0) 100%);
+  clip-path: polygon(34% 0%, 66% 0%, 100% 100%, 0% 100%);
+  animation: beamPulse 2.2s ease-in-out infinite;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 @keyframes beamPulse {
   0%, 100% { opacity: 0.7; }
@@ -219,29 +263,38 @@ body, .page-wrapper { background: #0a0d0a !important; }
 /* Floating coins in beam */
 .ufo-coins {
   position: absolute;
-  top: 70px;
+  top: 94px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 120px;
+  width: 96px;
+  height: 118px;
+  z-index: 2;
 }
 .ufo-coin {
   position: absolute;
   bottom: 0;
   left: 50%;
-  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(173,255,47,0.74);
+  background: radial-gradient(circle at 35% 28%, rgba(245,255,200,0.8), rgba(173,255,47,0.9) 34%, rgba(18,42,18,0.92) 72%);
+  color: #071007;
+  font-size: 0.88rem;
   font-weight: 900;
-  color: #ADFF2F;
-  text-shadow: 0 0 6px rgba(173,255,47,0.8);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 0 12px rgba(173,255,47,0.55);
   animation: coinRise 2.5s ease-in infinite;
   animation-delay: var(--delay);
   opacity: 0;
 }
 @keyframes coinRise {
-  0% { opacity: 0; transform: translate(var(--x), 0) scale(1); }
+  0% { opacity: 0; transform: translate(var(--x), 0) rotate(0deg) scale(0.85); }
   20% { opacity: 1; }
   80% { opacity: 0.8; }
-  100% { opacity: 0; transform: translate(0, -110px) scale(0.5); }
+  100% { opacity: 0; transform: translate(0, -112px) rotate(360deg) scale(0.45); }
 }
 @media(max-width:768px){
   .dlg-hero-top { flex-direction: column; text-align: center; gap: 1.5rem; }
