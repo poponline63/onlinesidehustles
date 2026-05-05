@@ -49,7 +49,7 @@
 /* ===== GOLD VAULT — DAILY LOGIN GUIDE THEME ===== */
 
 /* ===== PIP-BOY TERMINAL BACKGROUND ===== */
-body, html { background: #0a0d0a !important; }
+body, html { background: #0a0d0a !important; max-width: 100%; overflow-x: hidden; }
 
 /* Base CRT screen — dark with green phosphor center glow */
 .space-background {
@@ -731,20 +731,39 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .dlg-fade.visible { opacity:1; transform:translateY(0); }
 
 @media (max-width: 768px) {
-  .dlg-hero { padding: 2rem 1.5rem; }
+  .page-wrapper,
+  .content-area {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .dlg-hero {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+  }
   .dlg-hero h1 { font-size: 1.6rem; }
   .content-area .container {
     width: calc(100% - 1rem) !important;
     max-width: calc(100% - 1rem) !important;
   }
+  .dlg-hero-top {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
   .dlg-hero-top > div:last-child {
     width: 100%;
+    max-width: 100%;
     min-width: 0;
     text-align: center;
   }
   .dlg-hero-desc {
+    display: block;
+    width: 100%;
     max-width: 100%;
     overflow-wrap: break-word;
+    word-break: normal;
   }
   .dlg-explainer,
   .dlg-stats,
