@@ -18,7 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Language" content="en">
 <title>Gameplay Sheet — RTP Games & Strategy | Online Sidehustles</title>
-<meta name="description" content="RTP games and strategy data for 80+ sweepstakes casinos. Find the best games to play, RTP percentages, and winning strategies — live from our community spreadsheet.">
+<meta name="description" content="RTP games and strategy data for 96 sweepstakes casinos. Compare core RTP games, extra playable games, and sign-up links from our current community spreadsheet.">
 <meta name="author" content="Online Sidehustles">
 <link rel="canonical" href="https://onlinesidehustles.info/gameplay-sheet">
 <meta property="og:type" content="website">
@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="Online Sidehustles">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Gameplay Sheet — RTP Games & Strategy | Online Sidehustles">
-<meta property="og:description" content="RTP games and strategy data for 80+ sweepstakes casinos. Find the best games to play, RTP percentages, and winning strategies.">
+<meta property="og:description" content="RTP games and strategy data for 96 sweepstakes casinos. Compare core RTP games, extra playable games, and sign-up links.">
 <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gameplay Sheet — RTP Games & Strategy | Online Sidehustles">
-<meta name="twitter:description" content="RTP games and strategy data for 80+ sweepstakes casinos. Find the best games to play, RTP percentages, and winning strategies.">
+<meta name="twitter:description" content="RTP games and strategy data for 96 sweepstakes casinos. Compare core RTP games, extra playable games, and sign-up links.">
 <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -141,7 +141,7 @@
   background: rgba(6, 14, 9, 0.85);
   font-size: 0.8rem;
   line-height: 1.35;
-  min-width: 900px;
+  min-width: 1120px;
 }
 #guide-table thead {
   position: sticky;
@@ -159,6 +159,13 @@
   border: 1px solid rgba(64, 145, 108, 0.3);
   white-space: nowrap;
   text-align: left;
+}
+#guide-table th.game-col,
+#guide-table td.game-cell {
+  text-align: center;
+}
+#guide-table th.other-games-col {
+  min-width: 190px;
 }
 #guide-table td {
   padding: 4px 6px;
@@ -187,6 +194,30 @@
 .tier-medium td { background: linear-gradient(90deg, rgba(70,130,220,0.35), rgba(70,130,220,0.12)); color: #7fb3f0; }
 .tier-trash td { background: linear-gradient(90deg, rgba(220,70,70,0.35), rgba(220,70,70,0.12)); color: #f08080; }
 .tier-new td { background: linear-gradient(90deg, rgba(170,100,220,0.35), rgba(170,100,220,0.12)); color: #c8a0f0; }
+
+.game-status {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.game-status.yes { background: #10b956; box-shadow: 0 0 14px rgba(16,185,86,0.35); }
+.game-status.no { background: #ff1f2d; box-shadow: 0 0 14px rgba(255,31,45,0.28); }
+.game-status.unknown {
+  background: rgba(255,255,255,0.08);
+  color: rgba(232,240,233,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 1rem;
+}
+.other-games-cell {
+  max-width: 230px;
+  white-space: normal;
+}
 
 /* Links in table */
 #guide-table a {
@@ -255,9 +286,9 @@
 
     <!-- Action Buttons -->
     <div class="guide-actions">
-      <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=2061760812#gid=2061760812" target="_blank" rel="noopener" class="btn-sheet">📊 Open Full Spreadsheet</a>
-      <a href="/daily-login-guide-2" class="btn-sheet-outline">📋 Daily Login Guide</a>
-      <button onclick="loadData()" class="btn-sheet-outline">🔄 Refresh Data</button>
+      <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=1278774725#gid=1278774725" target="_blank" rel="noopener" class="btn-sheet">Open Full Spreadsheet</a>
+      <a href="/daily-login-guide" class="btn-sheet-outline">Daily Login Guide</a>
+      <button onclick="loadData()" class="btn-sheet-outline">Refresh Data</button>
     </div>
 
     <!-- Loading State -->
@@ -323,6 +354,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 <script>
 // Starfield
 (function(){
@@ -423,6 +455,39 @@ function detectTier(val) {
     if (lower.includes(key)) return cls;
   }
   return null;
+}
+
+function getTierLabel(val) {
+  const lower = (val || '').toLowerCase();
+  if (lower.includes('new website') || lower === 'new' || lower.includes('new site')) {
+    return 'New Casinos';
+  }
+  return val;
+}
+
+function renderGameStatus(val) {
+  const text = String(val || '');
+  if (text.includes('PNbQx4N')) {
+    return '<span class="game-status yes" title="Available">✓</span>';
+  }
+  if (text.includes('gys4itG')) {
+    return '<span class="game-status no" title="Not available">×</span>';
+  }
+  return '<span class="game-status unknown" title="No data">–</span>';
+}
+
+function worksheetToRows(sheet) {
+  const range = XLSX.utils.decode_range(sheet['!ref']);
+  const rows = [];
+  for (let r = range.s.r; r <= range.e.r; r++) {
+    const row = [];
+    for (let c = range.s.c; c <= range.e.c; c++) {
+      const cell = sheet[XLSX.utils.encode_cell({ r, c })];
+      row.push(cell ? (cell.f ? '=' + cell.f : (cell.v == null ? '' : String(cell.v))) : '');
+    }
+    rows.push(row);
+  }
+  return rows;
 }
 
 // Column headers for this page (only Signup + Casino shown as fixed cols)
@@ -565,23 +630,22 @@ function buildTable(rows) {
 
   if (rows.length === 0) return;
 
-  // Find RTP headers from the spreadsheet header row
   let dataStart = 0;
   const firstRow = rows[0];
-  if (firstRow[0] && firstRow[0].toLowerCase().includes('signup')) {
-    rtpHeaders = [];
+  rtpHeaders = [];
+  for (let r = 0; r < rows.length; r++) {
+    const hasGameplayLabels = rows[r].slice(6, 12).some(v => String(v || '').toLowerCase().includes('rtp'));
+    if (hasGameplayLabels) {
+      for (let c = 6; c < 12 && c < rows[r].length; c++) {
+        rtpHeaders.push(rows[r][c] || ('RTP ' + (c - 5)));
+      }
+      break;
+    }
+  }
+  if (firstRow[0] && firstRow[0].toLowerCase().includes('signup')) dataStart = 1;
+  if (rtpHeaders.length === 0) {
     for (let c = 6; c < 12 && c < firstRow.length; c++) {
       rtpHeaders.push(firstRow[c] || ('RTP ' + (c - 5)));
-    }
-    dataStart = 1;
-  } else {
-    for (let r = 0; r < rows.length; r++) {
-      if (!rows[r][0] && rows[r][1] && detectTier(rows[r][1])) {
-        for (let c = 6; c < 12 && c < rows[r].length; c++) {
-          if (rows[r][c]) rtpHeaders.push(rows[r][c]);
-        }
-        break;
-      }
     }
   }
 
@@ -596,15 +660,18 @@ function buildTable(rows) {
   // Display headers: Signup, Casino, 6 RTP game cols, Other RTP Games
   const displayHeaders = [...COL_HEADERS, ...rtpHeaders, ...TAIL_HEADERS];
   const headerRow = document.createElement('tr');
-  displayHeaders.forEach(h => {
+  displayHeaders.forEach((h, i) => {
     const th = document.createElement('th');
     th.textContent = h;
+    if (i >= 2 && i <= 7) th.className = 'game-col';
+    if (i === 8) th.className = 'other-games-col';
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
 
   const totalCols = allHeadersFull.length;
   const displayCols = displayHeaders.length;
+  let skipCurrentTier = false;
 
   // Process data rows
   for (let r = dataStart; r < rows.length; r++) {
@@ -612,23 +679,28 @@ function buildTable(rows) {
     const col0 = (row[0] || '').trim();
     const col1 = (row[1] || '').trim();
 
-    // Tier separator detection
-    if (!col0 && col1) {
-      const tierClass = detectTier(col1);
-      if (tierClass) {
-        const tr = document.createElement('tr');
-        tr.className = 'tier-row ' + tierClass;
-        const td = document.createElement('td');
-        td.colSpan = displayCols;
-        td.textContent = col1;
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        continue;
-      }
+    const tierClass = col1 ? detectTier(col1) : null;
+    if (tierClass && !col0.toLowerCase().includes('signup')) {
+      skipCurrentTier = tierClass === 'tier-trash';
+      if (skipCurrentTier) continue;
+      const tr = document.createElement('tr');
+      tr.className = 'tier-row ' + tierClass;
+      const td = document.createElement('td');
+      td.colSpan = displayCols;
+      td.textContent = getTierLabel(col1);
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      continue;
     }
 
     // Skip empty rows
     if (!col0 && !col1) continue;
+
+    // Skip spreadsheet notes, summary totals, and mobile helper rows.
+    if (!col0.toLowerCase().includes('signup')) continue;
+
+    // Hide Trash Tier and all casino rows beneath it from the website.
+    if (skipCurrentTier) continue;
 
     // Casino data row
     const tr = document.createElement('tr');
@@ -649,6 +721,13 @@ function buildTable(rows) {
         } else {
           td.innerHTML = linkify(esc(val));
         }
+      } else if (c >= 6 && c <= 11) {
+        td.className = 'game-cell';
+        td.innerHTML = renderGameStatus(val);
+      } else if (c === 12) {
+        td.className = 'other-games-cell';
+        const cleanVal = val && val.trim() ? val : 'None';
+        td.innerHTML = linkify(esc(cleanVal));
       } else {
         td.innerHTML = linkify(esc(val));
       }
@@ -661,7 +740,7 @@ function buildTable(rows) {
 }
 
 // Fetch and render
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/gviz/tq?tqx=out:csv&gid=2061760812';
+const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/export?format=xlsx&gid=1278774725';
 
 async function loadData() {
   const loading = document.getElementById('loading');
@@ -674,17 +753,20 @@ async function loadData() {
   tableWrap.style.display = 'none';
 
   try {
-    const resp = await fetch(CSV_URL);
+    if (typeof XLSX === 'undefined') throw new Error('XLSX parser did not load');
+    const resp = await fetch(XLSX_URL);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const text = await resp.text();
-    const rows = parseCSV(text);
+    const buffer = await resp.arrayBuffer();
+    const workbook = XLSX.read(buffer, { type: 'array', cellFormula: true });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = worksheetToRows(sheet);
     buildTable(rows);
 
     loading.style.display = 'none';
     tableWrap.style.display = '';
     lastUpdated.textContent = 'Data loaded ' + new Date().toLocaleString();
   } catch (e) {
-    console.error('Failed to load CSV:', e);
+    console.error('Failed to load gameplay sheet:', e);
     loading.style.display = 'none';
     error.style.display = '';
   }
