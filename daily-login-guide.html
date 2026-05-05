@@ -101,6 +101,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .content-area .container {
   max-width: 1500px !important;
   width: calc(100% - 4rem) !important;
+  box-sizing: border-box !important;
   padding: 0 !important;
   margin: 0 auto !important;
   background: rgba(5,12,5,0.92) !important;
@@ -116,6 +117,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
   border-bottom: 2px solid rgba(173,255,47,0.15);
   padding: 4rem 4rem 3rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
 /* Hero top row: UFO + text side by side */
@@ -127,6 +129,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
   margin: 0 auto 2.5rem;
   text-align: left;
 }
+.dlg-hero-top > div { min-width: 0; }
 /* CSS UFO Visual */
 .ufo-visual {
   width: 220px;
@@ -343,11 +346,13 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .dlg-explainer {
   margin: 2rem auto 0;
   max-width: 860px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.85rem;
 }
 .dlg-explainer-card {
+  min-width: 0;
   background: rgba(173,255,47,0.045);
   border: 1px solid rgba(173,255,47,0.16);
   border-radius: 12px;
@@ -728,7 +733,30 @@ body, .page-wrapper { background: #0a0d0a !important; }
 @media (max-width: 768px) {
   .dlg-hero { padding: 2rem 1.5rem; }
   .dlg-hero h1 { font-size: 1.6rem; }
-  .content-area .container { width: calc(100% - 1rem) !important; }
+  .content-area .container {
+    width: calc(100% - 1rem) !important;
+    max-width: calc(100% - 1rem) !important;
+  }
+  .dlg-hero-top > div:last-child {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+  .dlg-hero-desc {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .dlg-explainer,
+  .dlg-stats,
+  .table-help {
+    width: 100%;
+    min-width: 0;
+  }
+  .dlg-explainer-card,
+  .dlg-stat-card,
+  .table-help-item {
+    min-width: 0;
+  }
   .ufo-visual {
     width: 190px;
     min-width: 190px;
