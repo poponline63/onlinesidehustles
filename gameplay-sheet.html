@@ -636,8 +636,8 @@ const COL_HEADERS = ['Signup/Referrals', 'Casino'];
 // RTP game columns (6-11) will be extracted dynamically from spreadsheet header
 let rtpHeaders = [];
 const TAIL_HEADERS = ['Other RTP Games'];
-// Columns to SKIP: 2=Daily Bonuses, 3=Notes, 4=Welcome Package, 5=Min Redemption, 13+=Daily Links, Rules, Parent Company, Canada, Restricted States
-const SKIP_COLS = new Set([2, 3, 4, 5, 13, 14, 15, 16, 17]);
+// Columns to SKIP: 2=Daily Bonuses, 3=Notes, 4=Welcome Package, 5=Min Redemption, 13+=metadata/eligibility/restrictions
+const SKIP_COLS = new Set([2, 3, 4, 5, 13, 14, 15, 16, 17, 18]);
 
 // Make links clickable
 function linkify(text) {
@@ -671,14 +671,13 @@ const SIGNUP_LINKS = {
   "LuckyLandSlots": "https://luckylandslots.com/",
   "ScarletSands": "https://affiliates.routy.app/route/114302?affId=3353&ts=5005447",
   "GoldTreasureCasino": "https://goldtreasurecasino.com/?referrer=AymNdsGB",
-  "McLuck": "https://affiliates.routy.app/route/91184?affId=3353&ts=5005447",
   "MyPrize": "https://myprize.us/invite/harshRefrigerator34",
   "Moozi": "https://moozi.com/signup?referral_code=1483842358",
   "LuckyBitsVegas": "https://affiliates.routy.app/route/114338?affId=3353&ts=5005447",
   "PulszBingo": "https://www.pulszbingo.com/home?invited_by=u358hj",
   "Pulsz": "https://affiliates.routy.app/route/91228?affId=3353&ts=5005447",
-  "Sportzino": "https://sportzino.com/signup/cf426cec-b18d-4de5-a59d-118a403fae7c",
-  "Zula": "https://www.zulacasino.com/signup/c72bf76a-566c-4fb8-a4f4-9da6a2536108",
+  "Sportzino": "https://track.sportzino.fun/click?o=2&a=101612&c=18",
+  "Zula": "https://track.zulacasino.fun/click?o=3&a=101612&c=17",
   "YayCasino .com": "https://track.yaycasino.fun/click?o=5&a=101612&c=28",
   "SpinSaga": "https://play.spinsagacasino.com/?ref=29904&campaign=referFriend",
   "Rolla": "https://affiliates.routy.app/route/114425?affId=3353&ts=5005447",
@@ -692,7 +691,6 @@ const SIGNUP_LINKS = {
   "Sixty6": "https://affiliates.routy.app/route/114424?affId=3353&ts=5005447",
   "Legendz": "https://affiliates.routy.app/route/91174?affId=3353&ts=5005447",
   "American Luck": "https://americanluck.com/signup/90a4a8d4-856c-46e8-b853-26c91db2051e",
-  "RubySweeps": "https://play.rubysweeps.com/user?mode=verifyEmail&oobCode=CVnNo78pOavT5cqXYybkDcze_ojCSytVXUNMrFo0PMIAAAGRjb9X4w&apiKey=AIzaSyC1jg1tAa4a6ceTcA3Zgn482uiAAjcpNLA&lang=en",
   "RichSweeps": "https://richsweeps.com/?ref=r_poponline63",
   "Golden Hearts Games": "https://www.goldenheartsgames.com/",
   "SweepNext": "https://sweepnext.com/?c=65707_bRrgq9N8",
@@ -706,7 +704,7 @@ const SIGNUP_LINKS = {
   "Card Crush": "http://www.cardcrush.com/",
   "Jefebet": "https://www.jefebet.com/",
   "Rolling Riches": "https://affiliates.routy.app/route/91243?affId=3353&ts=5005447",
-  "FortuneWin": "https://fortunewins.com/signup/0a00cd5a-cb5b-40a5-92ab-b50020253adf",
+  "Fortune Wins": "https://track.fortunecoins.fun/click?o=1&a=101612&c=16",
   "Clubs Poker": "https://affiliates.routy.app/route/91132?affId=3353&ts=5005447",
   "High5Casino": "https://affiliates.routy.app/route/83977?affId=3353&ts=5004204",
   "Shuffle .us": "https://shuffle.us/?r=5b9js7cl9r",
@@ -728,9 +726,8 @@ const SIGNUP_LINKS = {
   "Chanced.com": "https://www.chanced.com/c/q9xsr3",
   "SpinQuest": "http://spinquest.com/?u=WXSBTAN",
   "Lavish Luck": "https://affiliates.routy.app/route/114340?affId=3353&ts=5005447",
-  "Jackpota": "https://www.sweepstakescasino.com/go/geo/Jackpota/socialcasino?utm_campaign=forum",
+  "Jackpota": "https://www.jackpota.com/?r=55627563",
   "SpinBlitz": "https://affiliates.routy.app/route/114426?affId=3353&ts=5005447",
-  "Playfame": "https://affiliates.routy.app/route/91215?affId=3353&ts=5005447",
   "MegaBonanza": "https://affiliates.routy.app/route/91194?affId=3353&ts=5005447",
   "AcornFun": "https://game.acornfun.com/",
   "Baba Casino": "https://play.babacasino.com/",
@@ -747,6 +744,8 @@ const SIGNUP_LINKS = {
   "Cazino": "https://affiliates.routy.app/route/114303?affId=3353&ts=5005447",
   "Smiles Casino": "https://smilescasino.com/",
   "Cluck": "https://playoncluck.com/tfc09c765",
+  "McLuck": "https://affiliates.routy.app/route/91184?affId=3353&ts=5005447",
+  "Playfame": "https://affiliates.routy.app/route/91215?affId=3353&ts=5005447",
   "Chumba Casino": "https://login.chumbacasino.com/register",
   "Lucky Slots .us": "https://luckyslots.us/?raf=aG5NSE5FalVwN1U2Z0xzbW9VcDc=",
   "CrashDuel": "https://crashduel.com/games?source=website&referralId=RN34Z5&type=create-account",
@@ -796,8 +795,8 @@ function buildTable(rows) {
 
   // Full CSV column mapping (for index-based access)
   // 0=Signup, 1=Casino, 2=DailyBonuses, 3=Notes, 4=WelcomePackage, 5=MinRedemption,
-  // 6-11=RTP games, 12=Other RTP Games, 13=Daily Links, 14=Rules, 15=Parent Company, 16=Canada, 17=Restricted States
-  const allHeadersFull = [...COL_HEADERS, ...['Daily Bonuses','Notes','Welcome Package','Min Redemption'], ...rtpHeaders, ...['Other RTP Games','Daily Links','Rules','Parent Company','Canada','Restricted States']];
+  // 6-11=RTP games, 12=Other RTP Games, 13=Daily Links, 14=Rules, 15=Parent Company, 16=Canada, 17=Ontario, 18=Restricted States
+  const allHeadersFull = [...COL_HEADERS, ...['Daily Bonuses','Notes','Welcome Package','Min Redemption'], ...rtpHeaders, ...['Other RTP Games','Daily Links','Rules','Parent Company','Canada','Ontario','Restricted States']];
 
   // Display headers: Signup, Casino, 6 RTP game cols, Other RTP Games
   const displayHeaders = [...COL_HEADERS, ...rtpHeaders, ...TAIL_HEADERS];
@@ -882,7 +881,7 @@ function buildTable(rows) {
 }
 
 // Fetch and render
-const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/export?format=xlsx&gid=1278774725';
+const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=xlsx&gid=1759950549';
 
 async function loadData() {
   const loading = document.getElementById('loading');
