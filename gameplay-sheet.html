@@ -277,6 +277,57 @@
 }
 #guide-table a:hover { text-decoration: underline; color: #74c69d; }
 
+@media (max-width: 1024px) {
+  #guide-table {
+    min-width: 1040px;
+    font-size: 0.82rem;
+  }
+  #guide-table th {
+    font-size: 0.68rem;
+    padding: 7px 8px;
+  }
+  #guide-table td {
+    font-size: 0.78rem;
+    padding: 7px 8px;
+  }
+  .game-status {
+    width: 34px;
+    height: 34px;
+    font-size: 1.25rem;
+  }
+  .other-games-cell { max-width: 200px; }
+}
+
+@media (max-width: 640px) {
+  #guide-table {
+    min-width: 860px;
+    font-size: 0.74rem;
+  }
+  #guide-table th {
+    font-size: 0.62rem;
+    padding: 6px 7px;
+  }
+  #guide-table td {
+    font-size: 0.7rem;
+    padding: 6px 7px;
+  }
+  .tier-row td {
+    font-size: 0.78rem;
+    padding: 7px 8px !important;
+  }
+  .game-status {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+  .other-games-cell { max-width: 170px; }
+  .btn-sheet,
+  .btn-sheet-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Last updated */
 .last-updated {
   text-align: center;

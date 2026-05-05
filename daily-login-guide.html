@@ -576,6 +576,48 @@ body, .page-wrapper { background: #0a0d0a !important; }
 #guide-table a { color: #ADFF2F; text-decoration:none; }
 #guide-table a:hover { text-decoration:underline; color:#BFFF50; }
 
+@media (max-width: 1024px) {
+  #guide-table {
+    min-width: 1080px;
+    font-size: 0.82rem;
+  }
+  #guide-table th {
+    font-size: 0.68rem;
+    padding: 7px 8px;
+  }
+  #guide-table td {
+    font-size: 0.78rem;
+    padding: 7px 8px;
+  }
+  .notes-cell { max-width: 220px; }
+}
+
+@media (max-width: 640px) {
+  #guide-table {
+    min-width: 920px;
+    font-size: 0.74rem;
+  }
+  #guide-table th {
+    font-size: 0.62rem;
+    padding: 6px 7px;
+  }
+  #guide-table td {
+    font-size: 0.7rem;
+    padding: 6px 7px;
+  }
+  .tier-row td {
+    font-size: 0.78rem;
+    padding: 7px 8px !important;
+  }
+  .notes-cell { max-width: 180px; }
+  .toggle-restricted,
+  .btn-sheet,
+  .btn-sheet-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Last updated */
 .last-updated { text-align:center; color:rgba(150,230,100,0.6); font-size:0.78rem; margin-top:0.75rem; }
 
