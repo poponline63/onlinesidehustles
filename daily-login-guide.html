@@ -503,6 +503,29 @@ body, .page-wrapper { background: #0a0d0a !important; }
 /* Restricted States toggle */
 #guide-table .restricted-states-col { display: none; }
 #guide-table.show-restricted .restricted-states-col { display: table-cell; }
+#guide-table.show-restricted {
+  min-width: 1420px;
+}
+#guide-table.show-restricted .restricted-states-col {
+  min-width: 280px;
+  max-width: 340px;
+  width: 320px;
+  text-align: left;
+  white-space: normal;
+  vertical-align: top;
+}
+.restricted-states-list {
+  display: block;
+  max-height: 8.5rem;
+  overflow-y: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.45;
+  color: rgba(232,248,218,0.9);
+}
+.restricted-states-list::-webkit-scrollbar { width: 6px; }
+.restricted-states-list::-webkit-scrollbar-thumb { background: rgba(173,255,47,0.35); border-radius: 4px; }
 .toggle-restricted {
   display: inline-flex;
   align-items: center;
@@ -648,6 +671,13 @@ body, .page-wrapper { background: #0a0d0a !important; }
     padding: 7px 8px;
   }
   .notes-cell { max-width: 220px; }
+  #guide-table.show-restricted {
+    min-width: 1220px;
+  }
+  #guide-table.show-restricted .restricted-states-col {
+    min-width: 240px;
+    width: 260px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -668,6 +698,16 @@ body, .page-wrapper { background: #0a0d0a !important; }
     padding: 7px 8px !important;
   }
   .notes-cell { max-width: 180px; }
+  #guide-table.show-restricted {
+    min-width: 980px;
+  }
+  #guide-table.show-restricted .restricted-states-col {
+    min-width: 210px;
+    width: 220px;
+  }
+  .restricted-states-list {
+    max-height: 7.5rem;
+  }
   .toggle-restricted,
   .btn-sheet,
   .btn-sheet-outline {
@@ -1465,7 +1505,7 @@ function buildTable(rows) {
       } else if (c === 17) {
         // Restricted States — hidden by default, toggle-able
         td.className = 'restricted-states-col';
-        td.innerHTML = linkify(esc(val));
+        td.innerHTML = '<span class="restricted-states-list">' + linkify(esc(val || 'None listed')) + '</span>';
       } else {
         td.innerHTML = linkify(esc(val));
       }
