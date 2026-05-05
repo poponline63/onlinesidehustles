@@ -99,8 +99,8 @@ body, .page-wrapper { background: #0a0d0a !important; }
 
 /* Container — centered, gold border glow */
 .content-area .container {
-  max-width: 1200px !important;
-  width: calc(100% - 8rem) !important;
+  max-width: 1500px !important;
+  width: calc(100% - 4rem) !important;
   padding: 0 !important;
   margin: 0 auto !important;
   background: rgba(5,12,5,0.92) !important;
@@ -463,6 +463,33 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .toggle-restricted:hover { border-color: #ADFF2F; background: rgba(173,255,47,0.1); }
 .toggle-restricted.active { background: rgba(173,255,47,0.15); border-color: #ADFF2F; color: #ADFF2F; }
 
+.table-help {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0 0 1.2rem;
+}
+.table-help-item {
+  background: rgba(10, 20, 10, 0.88);
+  border: 1px solid rgba(173,255,47,0.22);
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+.table-help-item strong {
+  display: block;
+  color: #ADFF2F;
+  font-size: 0.82rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+.table-help-item span {
+  color: rgba(232,248,218,0.82);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+@media(max-width:900px){ .table-help { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(max-width:560px){ .table-help { grid-template-columns: 1fr; } }
+
 /* ===== TABLE SECTION ===== */
 .dlg-table-section {
   background: rgba(6, 12, 6, 0.95);
@@ -500,38 +527,38 @@ body, .page-wrapper { background: #0a0d0a !important; }
   width: 100%;
   border-collapse: collapse;
   background: rgba(6, 12, 6, 0.9);
-  font-size: 0.8rem;
-  line-height: 1.35;
-  min-width: 1000px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  min-width: 1240px;
 }
 #guide-table thead { position:sticky; top:0; z-index:10; }
 #guide-table th {
   background: rgba(12, 25, 12, 0.98);
   color: #ADFF2F;
   font-weight: 700;
-  font-size: 0.65rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  padding: 6px 8px;
+  padding: 9px 10px;
   border: 1px solid rgba(173,255,47,0.2);
   white-space: nowrap;
   text-align: center;
 }
 #guide-table td {
-  padding: 5px 8px;
+  padding: 8px 10px;
   border: 1px solid rgba(173,255,47,0.1);
   color: #d0f0d0;
   vertical-align: middle;
   text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.3;
+  font-size: 0.88rem;
+  line-height: 1.42;
 }
 #guide-table tbody tr.casino-row:nth-child(odd)  { background: rgba(10,18,10,0.5); }
 #guide-table tbody tr.casino-row:nth-child(even) { background: rgba(8,14,8,0.5); }
 #guide-table tbody tr.casino-row:hover           { background: rgba(20,40,20,0.65); }
 
 /* Tier rows */
-.tier-row td { padding:6px 10px !important; font-weight:800; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; border:none !important; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
+.tier-row td { padding:9px 12px !important; font-weight:800; font-size:0.9rem; letter-spacing:0.06em; text-transform:uppercase; border:none !important; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
 .tier-god    td { background:linear-gradient(90deg,rgba(173,255,47,0.4),rgba(173,255,47,0.1)); color:#ADFF2F; }
 .tier-high   td { background:linear-gradient(90deg,rgba(82,183,136,0.35),rgba(82,183,136,0.1)); color:#74c69d; }
 .tier-medium td { background:linear-gradient(90deg,rgba(70,130,220,0.35),rgba(70,130,220,0.1)); color:#7fb3f0; }
@@ -539,8 +566,8 @@ body, .page-wrapper { background: #0a0d0a !important; }
 .tier-new    td { background:linear-gradient(90deg,rgba(170,100,220,0.35),rgba(170,100,220,0.1)); color:#c8a0f0; }
 
 /* Notes */
-.notes-cell { max-width: 180px; position:relative; }
-.notes-inner { max-height:2.7em; overflow:hidden; cursor:pointer; transition:max-height 0.3s ease; }
+.notes-cell { max-width: 260px; position:relative; text-align:left !important; }
+.notes-inner { max-height:3.1em; overflow:hidden; cursor:pointer; transition:max-height 0.3s ease; }
 .notes-inner.expanded { max-height:600px; }
 .notes-toggle { color:#ADFF2F; font-size:0.7rem; cursor:pointer; display:inline-block; margin-top:2px; user-select:none; }
 .notes-toggle:hover { text-decoration:underline; }
@@ -725,6 +752,25 @@ body, .page-wrapper { background: #0a0d0a !important; }
 
     <!-- Table Section -->
     <div class="dlg-table-section dlg-fade">
+
+      <div class="table-help">
+        <div class="table-help-item">
+          <strong>1. Start high</strong>
+          <span>Begin with New Casinos, God Tier, and High Tier before working down the list.</span>
+        </div>
+        <div class="table-help-item">
+          <strong>2. Use Sign Up</strong>
+          <span>Click Sign Up, verify your account, then claim the daily login bonus shown.</span>
+        </div>
+        <div class="table-help-item">
+          <strong>3. Check redeem rules</strong>
+          <span>Watch minimum redemption, rules, and restricted states before spending money.</span>
+        </div>
+        <div class="table-help-item">
+          <strong>4. Mobile tip</strong>
+          <span>Swipe the table sideways. Use the restricted states button when you need eligibility details.</span>
+        </div>
+      </div>
 
       <!-- Loading State -->
       <div id="loading" class="loading-state">
