@@ -505,12 +505,13 @@ body, .page-wrapper { background: #0a0d0a !important; }
 #guide-table .restricted-states-col { display: none; }
 #guide-table.show-restricted .restricted-states-col { display: table-cell; }
 #guide-table.show-restricted {
-  min-width: 1420px;
+  min-width: 1760px;
+  width: max-content;
 }
 #guide-table.show-restricted .restricted-states-col {
-  min-width: 280px;
-  max-width: 340px;
-  width: 320px;
+  min-width: 360px;
+  max-width: 420px;
+  width: 390px;
   text-align: left;
   white-space: normal;
   vertical-align: top;
@@ -596,6 +597,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
 /* Table wrapper */
 .table-wrap {
   overflow-x: auto;
+  overflow-y: visible;
   border: 1px solid rgba(173,255,47,0.2);
   border-radius: 10px;
   margin-bottom: 1.5rem;
@@ -674,11 +676,11 @@ body, .page-wrapper { background: #0a0d0a !important; }
   }
   .notes-cell { max-width: 220px; }
   #guide-table.show-restricted {
-    min-width: 1220px;
+    min-width: 1540px;
   }
   #guide-table.show-restricted .restricted-states-col {
-    min-width: 240px;
-    width: 260px;
+    min-width: 320px;
+    width: 340px;
   }
 }
 
@@ -701,11 +703,11 @@ body, .page-wrapper { background: #0a0d0a !important; }
   }
   .notes-cell { max-width: 180px; }
   #guide-table.show-restricted {
-    min-width: 980px;
+    min-width: 1280px;
   }
   #guide-table.show-restricted .restricted-states-col {
-    min-width: 210px;
-    width: 220px;
+    min-width: 280px;
+    width: 300px;
   }
   .restricted-states-list {
     max-height: 7.5rem;
@@ -1133,10 +1135,20 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 const toggleRestricted = document.getElementById('toggleRestricted');
 toggleRestricted.addEventListener('click', () => {
   const table = document.getElementById('guide-table');
+  const tableWrap = document.getElementById('tableWrap');
   const isActive = table.classList.toggle('show-restricted');
   toggleRestricted.classList.toggle('active', isActive);
   toggleRestricted.setAttribute('aria-pressed', String(isActive));
   toggleRestricted.textContent = isActive ? 'Hide Restricted States' : 'Show Restricted States';
+
+  if (tableWrap) {
+    requestAnimationFrame(() => {
+      tableWrap.scrollTo({
+        left: isActive ? tableWrap.scrollWidth : 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
 
 // CSV Parser (handles quoted fields with commas and newlines)
