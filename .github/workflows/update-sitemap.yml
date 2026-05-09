@@ -43,9 +43,10 @@ jobs:
             <priority>1.0</priority>
           </url>" >> sitemap-pages.xml
           
-          # Find all HTML files in root (excluding reviews/ and blog/)
+          # Find indexable root HTML files. Keep review pages in sitemap-reviews.xml
+          # and keep demo/example files out of search sitemaps.
           for file in *.html; do
-            if [ -f "$file" ] && [ "$file" != "index.html" ]; then
+            if [ -f "$file" ] && [ "$file" != "index.html" ] && [[ "$file" != review-*.html ]] && [[ "$file" != *example* ]] && [[ "$file" != *-old* ]]; then
               filename="${file%.html}"
               echo "  <url>
             <loc>${SITE_URL}/${file}</loc>
@@ -65,20 +66,17 @@ jobs:
           <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
           HEADER
           
-          # Find all HTML files in reviews/
-          if [ -d "reviews" ]; then
-            for file in reviews/*.html; do
-              if [ -f "$file" ]; then
-                filename=$(basename "$file" .html)
-                echo "  <url>
-            <loc>${SITE_URL}/reviews/${filename}</loc>
+          # Find all root review pages
+          for file in review-*.html; do
+            if [ -f "$file" ]; then
+              echo "  <url>
+            <loc>${SITE_URL}/${file}</loc>
             <lastmod>${TODAY}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.85</priority>
           </url>" >> sitemap-reviews.xml
-              fi
-            done
-          fi
+            fi
+          done
           
           # Close sitemap-reviews.xml
           echo "</urlset>" >> sitemap-reviews.xml
