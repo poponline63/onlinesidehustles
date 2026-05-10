@@ -199,6 +199,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
   margin: 0 1.5rem 1.5rem;
   -webkit-overflow-scrolling: touch;
   min-height: 0;
+  position: relative;
 }
 .table-wrap::-webkit-scrollbar { width: 8px; height: 8px; }
 .table-wrap::-webkit-scrollbar-track { background: rgba(6, 14, 9, 0.5); }
@@ -207,7 +208,8 @@ body, .page-wrapper { background: #0a0d0a !important; }
 /* The Table */
 #guide-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background: rgba(6, 14, 9, 0.85);
   font-size: 0.98rem;
   line-height: 1.5;
@@ -246,6 +248,39 @@ body, .page-wrapper { background: #0a0d0a !important; }
   line-height: 1.48;
   text-align: center;
 }
+#guide-table th:nth-child(1),
+#guide-table td:nth-child(1),
+#guide-table th:nth-child(2),
+#guide-table td:nth-child(2) {
+  position: sticky;
+  z-index: 8;
+  background: rgba(8, 22, 12, 0.98);
+  background-clip: padding-box;
+}
+#guide-table th:nth-child(1),
+#guide-table td:nth-child(1) {
+  left: 0;
+  min-width: 150px;
+  width: 150px;
+}
+#guide-table th:nth-child(2),
+#guide-table td:nth-child(2) {
+  left: 150px;
+  min-width: 165px;
+  width: 165px;
+  box-shadow: 10px 0 16px rgba(0,0,0,0.32);
+}
+#guide-table th:nth-child(1),
+#guide-table th:nth-child(2) {
+  z-index: 14;
+  background: rgba(18, 38, 26, 0.98);
+}
+#guide-table tbody tr.casino-row:nth-child(odd) td:nth-child(1),
+#guide-table tbody tr.casino-row:nth-child(odd) td:nth-child(2) { background: rgba(18, 38, 26, 0.98); }
+#guide-table tbody tr.casino-row:nth-child(even) td:nth-child(1),
+#guide-table tbody tr.casino-row:nth-child(even) td:nth-child(2) { background: rgba(12, 28, 18, 0.98); }
+#guide-table tbody tr.casino-row:hover td:nth-child(1),
+#guide-table tbody tr.casino-row:hover td:nth-child(2) { background: rgba(30, 58, 42, 0.98); }
 #guide-table tbody tr.casino-row:nth-child(odd) { background: rgba(18, 38, 26, 0.4); }
 #guide-table tbody tr.casino-row:nth-child(even) { background: rgba(12, 28, 18, 0.4); }
 #guide-table tbody tr.casino-row:hover { background: rgba(30, 58, 42, 0.55); }
@@ -302,6 +337,17 @@ body, .page-wrapper { background: #0a0d0a !important; }
     min-width: 1040px;
     font-size: 0.82rem;
   }
+  #guide-table th:nth-child(1),
+  #guide-table td:nth-child(1) {
+    min-width: 120px;
+    width: 120px;
+  }
+  #guide-table th:nth-child(2),
+  #guide-table td:nth-child(2) {
+    left: 120px;
+    min-width: 140px;
+    width: 140px;
+  }
   #guide-table th {
     font-size: 0.68rem;
     padding: 7px 8px;
@@ -322,6 +368,17 @@ body, .page-wrapper { background: #0a0d0a !important; }
   #guide-table {
     min-width: 860px;
     font-size: 0.74rem;
+  }
+  #guide-table th:nth-child(1),
+  #guide-table td:nth-child(1) {
+    min-width: 98px;
+    width: 98px;
+  }
+  #guide-table th:nth-child(2),
+  #guide-table td:nth-child(2) {
+    left: 98px;
+    min-width: 120px;
+    width: 120px;
   }
   #guide-table th {
     font-size: 0.62rem;
