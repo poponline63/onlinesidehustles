@@ -176,13 +176,14 @@
 
 /* Table Wrapper */
 .table-wrap {
-  overflow-x: auto;
+  overflow: auto;
   border: 1px solid rgba(173,255,47,0.24);
   border-radius: 10px;
   margin-bottom: 2rem;
   -webkit-overflow-scrolling: touch;
+  min-height: 0;
 }
-.table-wrap::-webkit-scrollbar { height: 8px; }
+.table-wrap::-webkit-scrollbar { width: 8px; height: 8px; }
 .table-wrap::-webkit-scrollbar-track { background: rgba(6, 14, 9, 0.5); }
 .table-wrap::-webkit-scrollbar-thumb { background: rgba(64, 145, 108, 0.4); border-radius: 4px; }
 
@@ -193,7 +194,8 @@
   background: rgba(6, 14, 9, 0.85);
   font-size: 0.98rem;
   line-height: 1.5;
-  min-width: 1360px;
+  table-layout: fixed;
+  min-width: 100%;
 }
 #guide-table thead {
   position: sticky;
@@ -211,13 +213,15 @@
   border: 1px solid rgba(173,255,47,0.2);
   white-space: nowrap;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #guide-table th.game-col,
 #guide-table td.game-cell {
   text-align: center;
 }
 #guide-table th.other-games-col {
-  min-width: 190px;
+  width: 22%;
 }
 #guide-table td {
   padding: 9px 12px;
@@ -226,7 +230,12 @@
   vertical-align: top;
   font-size: 0.94rem;
   line-height: 1.48;
+  overflow-wrap: anywhere;
 }
+#guide-table th:nth-child(1), #guide-table td:nth-child(1) { width: 9%; }
+#guide-table th:nth-child(2), #guide-table td:nth-child(2) { width: 13%; }
+#guide-table th:nth-child(n+3):nth-child(-n+8),
+#guide-table td:nth-child(n+3):nth-child(-n+8) { width: 8.7%; }
 #guide-table tbody tr.casino-row:nth-child(odd) { background: rgba(18, 38, 26, 0.4); }
 #guide-table tbody tr.casino-row:nth-child(even) { background: rgba(12, 28, 18, 0.4); }
 #guide-table tbody tr.casino-row:hover { background: rgba(30, 58, 42, 0.55); }
@@ -280,7 +289,7 @@
 
 @media (max-width: 1024px) {
   #guide-table {
-    min-width: 1040px;
+    min-width: 940px;
     font-size: 0.82rem;
   }
   #guide-table th {
@@ -301,7 +310,7 @@
 
 @media (max-width: 640px) {
   #guide-table {
-    min-width: 860px;
+    min-width: 820px;
     font-size: 0.74rem;
   }
   #guide-table th {
@@ -340,10 +349,140 @@
 @media (max-width: 768px) {
   .guide-header h1 { font-size: 1.4rem; }
 }
+
+/* Full-screen sheet layout */
+body.gameplay-sheet-page {
+  height: 100vh;
+  overflow: hidden;
+}
+body.gameplay-sheet-page .content-area {
+  height: 100vh;
+  padding-top: 66px !important;
+  overflow: hidden;
+}
+body.gameplay-sheet-page .sheet-container {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 0.65rem;
+  height: calc(100vh - 66px);
+  max-width: none !important;
+  width: 100vw !important;
+  padding: 0.75rem !important;
+}
+body.gameplay-sheet-page .guide-header {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(360px, 1.3fr);
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  margin: 0;
+}
+body.gameplay-sheet-page .guide-kicker {
+  margin: 0 0 0.2rem;
+}
+body.gameplay-sheet-page .guide-header h1 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  margin: 0;
+}
+body.gameplay-sheet-page .guide-header p {
+  max-width: none;
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+body.gameplay-sheet-page .guide-steps,
+body.gameplay-sheet-page .guide-stats {
+  margin: 0;
+  gap: 0.55rem;
+}
+body.gameplay-sheet-page .guide-step-card,
+body.gameplay-sheet-page .guide-stat-card {
+  padding: 0.55rem 0.65rem;
+}
+body.gameplay-sheet-page .guide-step-card span {
+  display: none;
+}
+body.gameplay-sheet-page .guide-step-card strong,
+body.gameplay-sheet-page .guide-stat-label {
+  font-size: 0.68rem;
+}
+body.gameplay-sheet-page .guide-stat-value {
+  font-size: 1.05rem;
+}
+body.gameplay-sheet-page .guide-actions {
+  justify-content: flex-start;
+  margin: 0;
+  gap: 0.5rem;
+}
+body.gameplay-sheet-page .btn-sheet,
+body.gameplay-sheet-page .btn-sheet-outline {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.78rem;
+}
+body.gameplay-sheet-page .table-wrap {
+  height: 100%;
+  margin: 0;
+}
+body.gameplay-sheet-page #guide-table th {
+  padding: 7px 8px;
+  font-size: 0.66rem;
+}
+body.gameplay-sheet-page #guide-table td {
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  line-height: 1.22;
+}
+body.gameplay-sheet-page .game-status {
+  width: 30px;
+  height: 30px;
+  font-size: 1.1rem;
+}
+body.gameplay-sheet-page .tier-row td {
+  padding: 6px 8px !important;
+  font-size: 0.72rem;
+}
+body.gameplay-sheet-page .last-updated {
+  margin: 0;
+  line-height: 1;
+}
+body.gameplay-sheet-page footer {
+  display: none;
+}
+@media (max-width: 900px) {
+  body.gameplay-sheet-page .guide-header {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  body.gameplay-sheet-page .guide-header p {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  body.gameplay-sheet-page {
+    overflow: auto;
+  }
+  body.gameplay-sheet-page .content-area {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+  body.gameplay-sheet-page .sheet-container {
+    height: auto;
+    min-height: calc(100vh - 66px);
+  }
+  body.gameplay-sheet-page .guide-steps {
+    display: none;
+  }
+  body.gameplay-sheet-page .table-wrap {
+    height: calc(100vh - 280px);
+    min-height: 420px;
+  }
+}
 </style>
     <script src="/js/animated-favicon.js" defer></script>
 </head>
-<body>
+<body class="gameplay-sheet-page">
 
 <!-- Starfield Canvas -->
 <canvas id="starfield"></canvas>
@@ -381,7 +520,7 @@
 
 <!-- PAGE CONTENT -->
 <div class="content-area" style="padding-top:80px;">
-  <div class="container" style="max-width: 1680px; width: calc(100vw - 2.5rem); padding: 1.5rem;">
+  <div class="container sheet-container" style="max-width: 1680px; width: calc(100vw - 2.5rem); padding: 1.5rem;">
 
     <div class="guide-header">
       <div class="guide-kicker">Gameplay Sheet</div>
