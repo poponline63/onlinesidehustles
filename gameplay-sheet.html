@@ -18,7 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Language" content="en">
 <title>Gameplay Sheet — RTP Games & Strategy | Online Sidehustles</title>
-<meta name="description" content="RTP games and strategy data for 96 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
+<meta name="description" content="RTP games and strategy data for 87 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
 <meta name="author" content="Online Sidehustles">
 <link rel="canonical" href="https://onlinesidehustles.info/gameplay-sheet">
 <meta property="og:type" content="website">
@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="Online Sidehustles">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Gameplay Sheet — RTP Games & Strategy | Online Sidehustles">
-<meta property="og:description" content="RTP games and strategy data for 96 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
+<meta property="og:description" content="RTP games and strategy data for 87 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
 <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gameplay Sheet — RTP Games & Strategy | Online Sidehustles">
-<meta name="twitter:description" content="RTP games and strategy data for 96 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
+<meta name="twitter:description" content="RTP games and strategy data for 87 sweepstakes casinos. Learn which games may help complete playthrough while losing the least amount of earned SC.">
 <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
 <link rel="icon" type="image/gif" href="/favicon.gif">
 <link rel="icon" href="/favicon.ico">
@@ -410,7 +410,7 @@
 
     <div class="guide-stats">
       <div class="guide-stat-card">
-        <div class="guide-stat-value">96</div>
+        <div class="guide-stat-value">87</div>
         <div class="guide-stat-label">Casinos</div>
       </div>
       <div class="guide-stat-card">
@@ -640,6 +640,21 @@ let rtpHeaders = [];
 const TAIL_HEADERS = ['Other RTP Games'];
 // Columns to SKIP: 2=Daily Bonuses, 3=Notes, 4=Welcome Package, 5=Min Redemption, 13+=metadata/eligibility/restrictions
 const SKIP_COLS = new Set([2, 3, 4, 5, 13, 14, 15, 16, 17, 18]);
+const EXCLUDED_CASINOS = new Set([
+  'dorados',
+  'kingprize',
+  'splashcoins',
+  'bigpirate',
+  'dealornodealwin',
+  'blitzmania',
+  'luckybunny',
+  'thewinzone',
+  'zunado'
+]);
+
+function normalizeCasinoName(name) {
+  return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
 
 // Make links clickable
 function linkify(text) {
@@ -844,6 +859,9 @@ function buildTable(rows) {
 
     // Hide Trash Tier and all casino rows beneath it from the website.
     if (skipCurrentTier) continue;
+
+    // Hide sites removed from the public gameplay sheet.
+    if (EXCLUDED_CASINOS.has(normalizeCasinoName(col1))) continue;
 
     // Casino data row
     const tr = document.createElement('tr');
