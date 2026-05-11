@@ -933,7 +933,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
       <!-- Stats -->
       <div class="dlg-stats">
         <div class="dlg-stat-card">
-          <div class="dlg-stat-value">96</div>
+          <div class="dlg-stat-value">87</div>
           <div class="dlg-stat-label">Casinos</div>
         </div>
         <div class="dlg-stat-card">
@@ -1234,6 +1234,21 @@ let rtpHeaders = [];
 const TAIL_HEADERS = ['Daily Links', 'Rules', 'Parent Company', 'Canada', 'Ontario', 'Restricted States'];
 // Columns to skip: RTP game cols (6-11), Other RTP Games (12), Daily Links (13), Rules (14)
 const SKIP_COLS = new Set([6, 7, 8, 9, 10, 11, 12, 13, 14]);
+const EXCLUDED_CASINOS = new Set([
+  'dorados',
+  'kingprize',
+  'splashcoins',
+  'bigpirate',
+  'dealornodealwin',
+  'blitzmania',
+  'luckybunny',
+  'thewinzone',
+  'zunado'
+]);
+
+function normalizeCasinoName(name) {
+  return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
 
 // Eligibility image formulas do not survive Google CSV export, so keep these in sync from the workbook.
 const CANADA_YES = new Set([
@@ -1462,6 +1477,9 @@ function buildTable(rows) {
 
     // Hide Trash Tier and all casino rows beneath it from the website.
     if (skipCurrentTier) continue;
+
+    // Hide sites removed from the public daily login guide.
+    if (EXCLUDED_CASINOS.has(normalizeCasinoName(col1))) continue;
 
     // Casino data row
     const tr = document.createElement('tr');
