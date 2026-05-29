@@ -84,6 +84,7 @@
         event_category: 'community',
         destination: 'discord'
       }, baseParams));
+      return;
     }
 
     if (isAffiliateLikeLink(href)) {
