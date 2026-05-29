@@ -203,20 +203,29 @@
         </div>
 
         <div>
-            <form action="https://formsubmit.co/your-email@example.com" method="POST">
+            <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/newsletter?subscribed=true">
+                <input type="hidden" name="form-name" value="newsletter">
+                <p style="display:none;">
+                    <label>Do not fill this out: <input name="bot-field"></label>
+                </p>
                 <label for="nl-name">First name</label>
                 <input type="text" id="nl-name" name="name" placeholder="Your first name" required>
 
                 <label for="nl-email">Email address</label>
                 <input type="email" id="nl-email" name="email" placeholder="you@example.com" required>
 
-                <input type="hidden" name="_subject" value="New Newsletter Signup - Online Sidehustles">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://onlinesidehustles.info/newsletter?subscribed=true">
+                <label for="nl-interest">What should we send you first?</label>
+                <select id="nl-interest" name="interest" required>
+                    <option value="daily-bonuses">Daily bonus alerts</option>
+                    <option value="new-sites">New site drops</option>
+                    <option value="package-plays">Package and churning strategies</option>
+                    <option value="automation">Automation tools</option>
+                    <option value="side-hustles">Broader side hustles</option>
+                </select>
 
                 <button type="submit">&#128640; Subscribe — It's Free</button>
             </form>
-            <p>&#128274; No spam, ever. Unsubscribe anytime. We respect your inbox.</p>
+            <p>&#128274; No spam, ever. Unsubscribe anytime. Your first email tells you the best next page to start with.</p>
         </div>
 
         <p>Join <strong>2,300+</strong> members already earning from daily collection sites.</p>
@@ -296,6 +305,7 @@
         <a href="/tools">Tools</a>
         <a href="/sweepstakes">Sweepstakes</a>
         <a href="/faq">FAQ</a>
+        <a href="/methodology">Methodology</a>
       </div>
       <div class="footer-col">
         <h4>Community</h4>
@@ -308,13 +318,12 @@
       <div class="footer-links">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
-        <a href="/disclaimer">Disclaimer</a>
+        <a href="/affiliate-disclosure">Disclosure</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script src="/js/dark-forest.js"></script>
-<script src="/js/analytics.js" defer></script>
 </body>
 </html>

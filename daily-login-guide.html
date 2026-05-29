@@ -34,6 +34,59 @@
 <meta name="twitter:title" content="Daily Login Guide — Full Casino Spreadsheet | Online Sidehustles">
 <meta name="twitter:description" content="Learn what daily login websites are and compare 96 sweepstakes-style sites by free daily bonuses, welcome offers, RTP notes, and redemption details.">
 <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://onlinesidehustles.info/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Daily Login Guide",
+          "item": "https://onlinesidehustles.info/daily-login-guide"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are daily login websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Daily login websites are sweepstakes-style platforms that give free daily rewards for signing in. Users can stack small bonuses across many sites and redeem when each site's requirements are met."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should beginners spend money first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beginners should start with free daily bonuses, learn redemption rules, and verify eligibility before considering package purchases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can users get fast free SC promotion alerts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Online Sidehustles shares email alerts for new drops and Discord alerts for exclusive free SC promotions, codes, and fast-moving updates."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/gif" href="/favicon.gif">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -501,6 +554,64 @@ body, .page-wrapper { background: #0a0d0a !important; }
 }
 .btn-sheet-outline:hover { background: rgba(173,255,47,0.15); border-color: #ADFF2F; transform: translateY(-2px); color: #fff; }
 
+.dlg-alert-panel {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  padding: 1.1rem;
+  background: rgba(10, 24, 10, 0.82);
+  border: 1px solid rgba(173,255,47,0.22);
+  border-radius: 8px;
+  text-align: left;
+}
+.dlg-alert-panel h2 {
+  margin: 0 0 0.35rem;
+  color: #ADFF2F;
+  font-size: 1rem;
+}
+.dlg-alert-panel p {
+  margin: 0 0 0.9rem;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+.dlg-alert-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+.dlg-alert-form label {
+  display: block;
+  color: rgba(173,255,47,0.78);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.dlg-alert-form input,
+.dlg-alert-form select {
+  width: 100%;
+  min-height: 44px;
+  background: rgba(0,0,0,0.38);
+  border: 1px solid rgba(173,255,47,0.24);
+  border-radius: 6px;
+  color: rgba(255,255,255,0.92);
+  padding: 0 0.8rem;
+  font: inherit;
+}
+.dlg-alert-form button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 1rem;
+  background: #ADFF2F;
+  color: #081008;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 /* Restricted States toggle */
 #guide-table .restricted-states-col { display: none; }
 #guide-table.show-restricted .restricted-states-col { display: table-cell; }
@@ -685,6 +796,7 @@ body, .page-wrapper { background: #0a0d0a !important; }
 }
 
 @media (max-width: 640px) {
+  .dlg-alert-form { grid-template-columns: 1fr; }
   #guide-table {
     min-width: 920px;
     font-size: 0.74rem;
@@ -956,6 +1068,31 @@ body, .page-wrapper { background: #0a0d0a !important; }
         <a href="/gameplay-sheet" class="btn-sheet-outline">Gameplay Sheet</a>
         <button class="toggle-restricted" id="toggleRestricted" type="button" aria-pressed="false">Show Restricted States</button>
         <button onclick="loadData()" class="btn-sheet-outline">Refresh Data</button>
+      </div>
+
+      <div class="dlg-alert-panel">
+        <h2>Get free SC and new-site alerts</h2>
+        <p>Join email alerts for new drops and rule changes, and join Discord for exclusive free SC promos, codes, and fast-moving giveaway links.</p>
+        <form class="dlg-alert-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/newsletter?subscribed=true">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p style="display:none;">
+            <label>Do not fill this out: <input name="bot-field"></label>
+          </p>
+          <div>
+            <label for="dlg-email">Email</label>
+            <input type="email" id="dlg-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div>
+            <label for="dlg-interest">Alert type</label>
+            <select id="dlg-interest" name="interest" required>
+              <option value="daily-bonuses">Daily bonus alerts</option>
+              <option value="new-sites">New site drops</option>
+              <option value="package-plays">Package and churning strategies</option>
+              <option value="automation">Automation tools</option>
+            </select>
+          </div>
+          <button type="submit">Get Alerts</button>
+        </form>
       </div>
     </div>
 

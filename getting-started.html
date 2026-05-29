@@ -39,6 +39,59 @@
     <meta name="twitter:title" content="Getting Started: Your Roadmap to Online Side Hustle Income">
     <meta name="twitter:description" content="Step-by-step guide to start earning from sweepstakes casinos and daily collection sites. From zero to passive income in under a week.">
     <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://onlinesidehustles.info/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Getting Started",
+          "item": "https://onlinesidehustles.info/getting-started.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best first step for beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with free daily login bonuses, bookmark your first five sites from the daily login guide, then join the Discord and email alerts for free SC promotions and offer changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to spend money to start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Beginners should start with free daily bonuses before considering package purchases or churning strategies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why join the Discord?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Discord shares exclusive free SC promotions, giveaway links, codes, new launch alerts, and fast-moving updates that may not be posted publicly."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
     <link rel="icon" type="image/gif" href="/favicon.gif">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -387,6 +440,48 @@
         margin: 0;
     }
 
+    .inline-alert-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 0.8rem;
+        align-items: end;
+        margin-top: 1.5rem;
+    }
+
+    .inline-alert-form label {
+        display: block;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+    }
+
+    .inline-alert-form input,
+    .inline-alert-form select {
+        width: 100%;
+        min-height: 46px;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(50, 205, 50, 0.24);
+        border-radius: 10px;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0 0.9rem;
+        font: inherit;
+    }
+
+    .inline-alert-form button {
+        min-height: 46px;
+        border: 0;
+        border-radius: 10px;
+        padding: 0 1.2rem;
+        background: linear-gradient(135deg, #32CD32, #90EE90);
+        color: #061006;
+        font-weight: 900;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
     /* CTA Section */
     .cta-section {
         text-align: center;
@@ -525,6 +620,10 @@
         .cta-title {
             font-size: 1.7rem;
         }
+
+        .inline-alert-form {
+            grid-template-columns: 1fr;
+        }
     }
     </style>
     <script src="/js/animated-favicon.js" defer></script>
@@ -570,21 +669,46 @@
 <!-- HERO -->
 <div class="hero-section fade-in">
     <h1 class="hero-title">Your Getting Started Roadmap</h1>
-    <p class="hero-subtitle">Follow this step-by-step plan to go from zero to passive income. Free to start, no investment required.</p>
+    <p class="hero-subtitle">Follow this step-by-step plan to set up your first daily bonus routine, track the right sites, and avoid the common beginner mistakes.</p>
     <div class="stats-row">
         <div class="stat-card">
             <div class="stat-value">100+</div>
             <div class="stat-label">Sites</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$1,400/mo</div>
-            <div class="stat-label">Potential</div>
+            <div class="stat-value">$0</div>
+            <div class="stat-label">First Step Cost</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">$0</div>
-            <div class="stat-label">Free to Start</div>
+            <div class="stat-value">15 min</div>
+            <div class="stat-label">Daily Routine Target</div>
         </div>
     </div>
+</div>
+
+<div class="content-section fade-in" id="alert-list">
+    <div class="section-title">Get the Daily Stack Alerts</div>
+    <div class="section-subtitle">Free SC promos move fast. Get email alerts for new site drops, rule changes, and the best next pages to check.</div>
+    <form class="inline-alert-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/newsletter?subscribed=true">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none;">
+            <label>Do not fill this out: <input name="bot-field"></label>
+        </p>
+        <div>
+            <label for="starter-email">Email</label>
+            <input type="email" id="starter-email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+            <label for="starter-interest">Alert type</label>
+            <select id="starter-interest" name="interest" required>
+                <option value="daily-bonuses">Daily bonus alerts</option>
+                <option value="new-sites">New site drops</option>
+                <option value="package-plays">Package and churning strategies</option>
+                <option value="automation">Automation tools</option>
+            </select>
+        </div>
+        <button type="submit">Get Alerts</button>
+    </form>
 </div>
 
 <!-- PHASE 1 -->
@@ -595,8 +719,8 @@
     <div class="step-item">
         <div class="step-num">1</div>
         <div class="step-content">
-            <h3>Join the Discord community <span class="tag-free">FREE</span></h3>
-            <p><a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Join Crossroads Discord</a> and join 2,500+ members. Grab the <strong style="color:rgba(255,255,255,0.95)">#giveaways</strong> role for daily free SC alerts. Introduce yourself in <strong style="color:rgba(255,255,255,0.95)">#general</strong> &mdash; people are friendly and will answer any questions you have.</p>
+            <h3>Pick the free starter path <span class="tag-free">FREE</span></h3>
+            <p>Start with free daily login bonuses before buying any packages. Open the <a href="/daily-login-guide">daily login guide</a>, bookmark your first 5 sites, and join the <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Discord</a> for exclusive free SC promotions, giveaway links, and member-only updates that are not always posted publicly.</p>
         </div>
     </div>
 
@@ -622,9 +746,8 @@
     <div class="step-item">
         <div class="step-num">3</div>
         <div class="step-content">
-            <h3>Grab free SC from the Discord <span class="tag-free">FREE</span></h3>
-            <p>Head to the <strong style="color: #32CD32;">Free SC</strong> channel on our <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Discord</a> to get free Sweeps Coins posted daily. Members share codes, links, and giveaways from all the major sites. This is one of the easiest ways to boost your earnings from day one.</p>
-            <p style="margin-top: 0.6rem;">You can also check our <a href="/daily-free-sc" style="color: #fbbf24; font-weight: 700;">Daily Free SC Links</a> page &mdash; it pulls live giveaway links automatically so you can claim free SC from 20+ casinos in one place without even opening Discord.</p>
+            <h3>Grab free SC promotions <span class="tag-free">FREE</span></h3>
+            <p>Check the <a href="/daily-free-sc" style="color: #fbbf24; font-weight: 700;">Daily Free SC Links</a> page after you create your first accounts, then join the <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Discord</a> for exclusive free SC promotions, codes, giveaway links, and fast-moving alerts that members share throughout the day.</p>
         </div>
     </div>
 
@@ -800,7 +923,7 @@
         <div class="step-num">15</div>
         <div class="step-content">
             <h3>Watch for new site launches</h3>
-            <p>New sweepstakes sites launch every month with fresh welcome packages and generous daily bonuses. Our <a href="/new-sites">new sites page</a> and the Discord <strong style="color:rgba(255,255,255,0.95)">#new-launches</strong> channel track every launch so you never miss an opportunity.</p>
+            <p>New sweepstakes sites launch every month with fresh welcome packages and generous daily bonuses. Our <a href="/new-sites">new sites page</a>, <a href="/newsletter">free alert list</a>, and Discord launch alerts track every launch so you never miss an opportunity.</p>
         </div>
     </div>
 
@@ -836,10 +959,11 @@
 <!-- CTA -->
 <div class="cta-section fade-in">
     <h2 class="cta-title">Start Right Now</h2>
-    <p class="cta-text">The sooner you start, the sooner your daily streaks build up. Most members see their first payout within 2 weeks.</p>
+    <p class="cta-text">Start with the free guide, join Discord for exclusive free SC promos, then get email alerts when offers or rules change.</p>
     <div class="cta-buttons">
         <a href="https://discord.gg/W9bPGH8crh" class="btn-primary" target="_blank" rel="noopener">Join Discord</a>
         <a href="/daily-login-guide" class="btn-secondary">Browse Daily Login Guide</a>
+        <a href="/newsletter" class="btn-secondary">Get Email Alerts</a>
     </div>
 </div>
 
@@ -864,6 +988,7 @@
         <a href="/sweepstakes">Sweepstakes</a>
         <a href="/daily-login-guide">Daily Login Guide</a>
         <a href="/faq">FAQ</a>
+        <a href="/methodology">Methodology</a>
       </div>
       <div class="footer-col">
         <h4>Community</h4>
@@ -876,7 +1001,7 @@
       <div class="footer-links">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
-        <a href="/disclaimer">Disclaimer</a>
+        <a href="/affiliate-disclosure">Disclosure</a>
       </div>
     </div>
   </div>
@@ -971,7 +1096,6 @@ if (ham && menu) {
   });
 }
 </script>
-<script src="/js/analytics.js" defer></script>
 
 </body>
 </html>
