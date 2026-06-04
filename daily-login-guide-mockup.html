@@ -8,74 +8,65 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ===== EXACT TOKENS FROM GUIDE2 ===== */
+/* ===== TOKENS ===== */
 :root {
   --bg:        #111c2e;
   --bg-card:   #0f1723;
   --bg-nav:    #0c1526;
   --bg-darker: #0a1120;
-  --teal:      #6ee7b7;         /* section headers, labels        */
+  --bg-row-a:  #0d1828;
+  --bg-row-b:  #0b1422;
+  --teal:      #6ee7b7;
   --teal-dim:  rgba(110,231,183,0.55);
   --teal-faint:rgba(110,231,183,0.10);
-  --green:     hsl(150,60%,52%); /* primary green                  */
-  --lime:      #ADFF2F;          /* sign-up buttons, active chips  */
+  --green:     hsl(150,60%,52%);
+  --lime:      #ADFF2F;
   --lime-text: #060a0f;
   --text:      #e8e6e0;
   --text-muted:#7a8fa8;
   --text-dim:  #94a3b8;
-  --border:    rgba(110,231,183,0.13);
-  --border-md: rgba(110,231,183,0.25);
-
-  --tier-s:   #6ee7b7;
-  --tier-a:   hsl(150,60%,52%);
-  --tier-b:   #60a5fa;
-  --tier-new: #c084fc;
+  --border:    rgba(110,231,183,0.12);
+  --border-md: rgba(110,231,183,0.22);
+  --tier-s:    #6ee7b7;
+  --tier-a:    hsl(150,60%,52%);
+  --tier-b:    #60a5fa;
+  --tier-new:  #c084fc;
 }
-
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  min-height:100vh;
+  background:var(--bg); color:var(--text);
+  overflow-x:hidden; min-height:100vh;
 }
-/* mono only where it matters */
-.mono { font-family:'IBM Plex Mono','Courier New',Courier,monospace; }
+.mono{font-family:'IBM Plex Mono','Courier New',Courier,monospace;}
 
 /* ===== NAV ===== */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:var(--bg-nav);
-  border-bottom:1px solid var(--border);
-  height:58px;display:flex;align-items:center;padding:0 2rem;
+  background:var(--bg-nav);border-bottom:1px solid var(--border);
+  height:54px;display:flex;align-items:center;padding:0 1.5rem;
 }
-.nav-inner{
-  max-width:1400px;margin:0 auto;width:100%;
-  display:flex;align-items:center;justify-content:space-between;
-}
+.nav-inner{max-width:1500px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-brand{
-  display:flex;align-items:center;gap:0.5rem;
-  text-decoration:none;font-weight:700;font-size:0.85rem;
-  color:var(--text);letter-spacing:0.08em;text-transform:uppercase;
+  display:flex;align-items:center;gap:0.45rem;text-decoration:none;
+  font-weight:700;font-size:0.82rem;color:var(--text);
+  letter-spacing:0.08em;text-transform:uppercase;
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
 }
 .nav-brand svg{color:var(--teal);}
-.nav-links{display:flex;align-items:center;gap:0.1rem;}
+.nav-links{display:flex;align-items:center;gap:0.05rem;}
 .nav-link{
   color:var(--text-dim);text-decoration:none;
-  padding:0.35rem 0.75rem;font-size:0.8rem;font-weight:500;
+  padding:0.3rem 0.7rem;font-size:0.78rem;font-weight:500;
   border-bottom:2px solid transparent;transition:all 0.18s;
 }
 .nav-link:hover{color:var(--teal);}
 .nav-link.active{color:var(--teal);border-bottom-color:var(--teal);}
 .nav-cta{
-  background:var(--lime);color:var(--lime-text);
-  text-decoration:none;padding:0.4rem 1.1rem;
-  font-size:0.8rem;font-weight:700;
-  border-radius:4px;margin-left:0.75rem;
-  transition:opacity 0.2s;
+  background:var(--lime);color:var(--lime-text);text-decoration:none;
+  padding:0.35rem 1rem;font-size:0.78rem;font-weight:700;
+  border-radius:4px;margin-left:0.6rem;transition:opacity 0.2s;
 }
 .nav-cta:hover{opacity:0.88;}
 
@@ -83,161 +74,118 @@ nav{
 .mockup-badge{
   position:fixed;bottom:1rem;right:1rem;z-index:9999;
   background:rgba(173,255,47,0.12);border:1px solid var(--lime);
-  border-radius:4px;padding:0.45rem 0.9rem;
-  font-size:0.72rem;font-weight:700;color:var(--lime);
+  border-radius:4px;padding:0.4rem 0.8rem;
+  font-size:0.7rem;font-weight:700;color:var(--lime);
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;letter-spacing:0.06em;
 }
 
 /* ===== PAGE ===== */
-.page{
-  max-width:1400px;margin:0 auto;
-  padding:74px 1.5rem 3rem;
-}
+.page{max-width:1500px;margin:0 auto;padding:68px 1.25rem 3rem;}
 
 /* ===== HERO ===== */
-.hero{
-  padding:2.5rem 0 2rem;
-  border-bottom:1px solid var(--border);
-  margin-bottom:0;
-}
+.hero{padding:1.8rem 0 1.5rem;border-bottom:1px solid var(--border);}
 .hero-label{
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.68rem;font-weight:600;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:0.65rem;
+  font-size:0.66rem;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;
 }
-.hero h1{
-  font-size:2.6rem;font-weight:800;letter-spacing:-0.03em;
-  line-height:1.1;color:var(--text);margin-bottom:0.6rem;
-}
-.hero-desc{
-  color:var(--text-dim);font-size:0.95rem;line-height:1.7;
-  max-width:640px;margin-bottom:1.75rem;
-}
-
-/* Stats row */
-.stats{
-  display:grid;grid-template-columns:repeat(4,auto);
-  gap:0 2.5rem;width:fit-content;
-}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr);gap:1rem;}}
-.stat{border-left:2px solid var(--teal);padding-left:0.85rem;}
-.stat-val{font-size:1.6rem;font-weight:700;color:var(--teal);}
+.hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:#fff;margin-bottom:0.45rem;}
+.hero-desc{color:var(--text-dim);font-size:0.88rem;line-height:1.65;max-width:600px;margin-bottom:1.4rem;}
+.stats{display:flex;gap:2rem;flex-wrap:wrap;}
+.stat{border-left:2px solid var(--teal);padding-left:0.75rem;}
+.stat-val{font-size:1.45rem;font-weight:700;color:var(--teal);}
 .stat-lbl{
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--text-muted);margin-top:0.15rem;
+  font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text-muted);margin-top:0.1rem;
 }
 
 /* ===== TOOLBAR ===== */
 .toolbar{
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-top:none;
-  padding:1rem 1.4rem;
-  display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;
+  background:var(--bg-card);border:1px solid var(--border);border-top:none;
+  padding:0.75rem 1.1rem;
+  display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;
 }
 
-.search-wrap{position:relative;flex:1;min-width:200px;max-width:300px;}
+/* List / Cards view tabs */
+.view-tabs{display:flex;background:var(--bg-darker);border:1px solid var(--border-md);border-radius:6px;overflow:hidden;}
+.view-tab{
+  padding:0.3rem 0.9rem;font-size:0.78rem;font-weight:600;cursor:pointer;
+  color:var(--text-muted);background:transparent;border:none;
+  transition:all 0.15s;letter-spacing:0.02em;
+}
+.view-tab.active{background:rgba(110,231,183,0.12);color:var(--teal);}
+.view-tab:hover:not(.active){color:var(--text-dim);}
+
+/* Quick filter tabs (All / Best / New) */
+.quick-tabs{display:flex;gap:0.25rem;}
+.qt{
+  padding:0.28rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:600;
+  cursor:pointer;border:1px solid var(--border-md);
+  background:transparent;color:var(--text-muted);transition:all 0.15s;
+}
+.qt.active{background:rgba(110,231,183,0.12);border-color:var(--teal);color:var(--teal);}
+.qt:hover:not(.active){border-color:var(--teal-dim);color:var(--text-dim);}
+
+/* Search */
+.search-wrap{position:relative;min-width:200px;max-width:260px;}
 .search-wrap svg{
-  position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);
-  color:var(--text-muted);width:14px;height:14px;pointer-events:none;
+  position:absolute;left:0.65rem;top:50%;transform:translateY(-50%);
+  color:var(--text-muted);width:13px;height:13px;pointer-events:none;
 }
 #searchInput{
   width:100%;background:var(--bg-darker);
   border:1px solid var(--border-md);border-radius:6px;
-  color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:0.88rem;
-  padding:0.5rem 0.8rem 0.5rem 2.2rem;outline:none;
-  transition:border-color 0.18s;
+  color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:0.84rem;
+  padding:0.42rem 0.75rem 0.42rem 2rem;outline:none;transition:border-color 0.18s;
 }
 #searchInput::placeholder{color:var(--text-muted);}
 #searchInput:focus{border-color:var(--teal);}
 
-.filter-group{display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;}
+/* Region / feature chips */
+.filter-group{display:flex;align-items:center;gap:0.25rem;}
 .filter-lbl{
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
   color:var(--text-muted);white-space:nowrap;
 }
 .chip{
-  display:inline-flex;align-items:center;gap:0.25rem;
-  padding:0.32rem 0.75rem;border-radius:20px;
-  font-size:0.78rem;font-weight:600;
-  cursor:pointer;
-  border:1px solid var(--border-md);
-  background:transparent;color:var(--text-dim);
+  display:inline-flex;align-items:center;gap:0.22rem;
+  padding:0.27rem 0.65rem;border-radius:20px;font-size:0.76rem;font-weight:600;
+  cursor:pointer;border:1px solid var(--border-md);
+  background:transparent;color:var(--text-muted);
   transition:all 0.15s;user-select:none;white-space:nowrap;
 }
 .chip:hover{border-color:var(--teal);color:var(--teal);}
 .chip.active{background:rgba(110,231,183,0.12);border-color:var(--teal);color:var(--teal);}
 
-.view-toggle{margin-left:auto;display:flex;gap:0.25rem;}
-.view-btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:6px;cursor:pointer;
-  border:1px solid var(--border-md);background:transparent;
-  color:var(--text-muted);font-size:1rem;transition:all 0.15s;
+/* Showing X of Y */
+.showing{
+  margin-left:auto;font-size:0.76rem;color:var(--text-muted);white-space:nowrap;
 }
-.view-btn:hover{border-color:var(--teal);color:var(--teal);}
-.view-btn.active{background:rgba(110,231,183,0.12);border-color:var(--teal);color:var(--teal);}
-
-.result-count{
-  font-size:0.8rem;font-weight:500;color:var(--text-muted);
-  padding:0.32rem 0.75rem;
-  border:1px solid var(--border);border-radius:20px;
-  background:var(--bg-darker);
-}
-.result-count b{color:var(--teal);}
-
-/* ===== HOW-TO TIPS ===== */
-.tips-row{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;
-  background:var(--bg-card);
-  border:1px solid var(--border);border-top:none;
-  padding:1rem 1.4rem;
-}
-@media(max-width:900px){.tips-row{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:520px){.tips-row{grid-template-columns:1fr;}}
-.tip{border-left:2px solid rgba(110,231,183,0.35);padding-left:0.85rem;}
-.tip b{
-  display:block;
-  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:0.35rem;
-}
-.tip span{font-size:0.84rem;color:var(--text-dim);line-height:1.5;}
+.showing b{color:var(--text-dim);}
+.showing .upd{color:rgba(110,231,183,0.4);margin-left:0.5rem;}
 
 /* ===== TABLE SECTION ===== */
 .table-section{
-  background:var(--bg-card);
-  border:1px solid var(--border);border-top:none;
-  border-radius:0 0 6px 6px;
-  overflow:hidden;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-top:none;border-radius:0 0 6px 6px;overflow:hidden;
 }
-
-/* scrollable wrapper */
-.table-wrap{
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.table-wrap::-webkit-scrollbar{height:7px;}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.table-wrap::-webkit-scrollbar{height:6px;}
 .table-wrap::-webkit-scrollbar-track{background:var(--bg-darker);}
-.table-wrap::-webkit-scrollbar-thumb{background:rgba(110,231,183,0.3);border-radius:4px;}
+.table-wrap::-webkit-scrollbar-thumb{background:rgba(110,231,183,0.25);border-radius:4px;}
 
 #mainTable{
-  width:100%;border-collapse:collapse;
-  font-size:0.88rem;line-height:1.5;
-  min-width:1100px;
+  width:100%;border-collapse:collapse;font-size:0.84rem;
+  min-width:1200px;
 }
-
-/* sticky header */
 #mainTable thead{position:sticky;top:0;z-index:10;}
 #mainTable th{
-  background:var(--bg-darker);
-  color:var(--teal);
+  background:var(--bg-darker);color:var(--teal);
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.62rem;font-weight:600;
-  text-transform:uppercase;letter-spacing:0.1em;
-  padding:11px 14px;
+  font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;
+  padding:9px 12px;
   border-bottom:1px solid var(--border-md);
   border-right:1px solid var(--border);
   white-space:nowrap;cursor:pointer;user-select:none;
@@ -245,155 +193,159 @@ nav{
 }
 #mainTable th:hover{background:rgba(110,231,183,0.06);}
 #mainTable th:last-child{border-right:none;}
+.th-sort{opacity:0.45;font-size:0.6em;margin-left:2px;}
 
+/* Compact rows */
 #mainTable td{
-  padding:13px 14px;
-  border-bottom:1px solid var(--border);
-  border-right:1px solid rgba(110,231,183,0.07);
+  padding:8px 12px;
+  border-bottom:1px solid rgba(110,231,183,0.07);
+  border-right:1px solid rgba(110,231,183,0.05);
   vertical-align:middle;text-align:center;
-  font-size:0.88rem;color:var(--text);
+  font-size:0.82rem;color:var(--text);
 }
 #mainTable td:last-child{border-right:none;}
-#mainTable td.name-cell{text-align:left;min-width:160px;}
+#mainTable td.name-cell{text-align:left;min-width:170px;}
+#mainTable tbody tr:nth-child(odd) {background:var(--bg-row-a);}
+#mainTable tbody tr:nth-child(even){background:var(--bg-row-b);}
+#mainTable tbody tr:hover{background:rgba(110,231,183,0.055);}
 
-/* row stripes */
-#mainTable tbody tr.casino-row:nth-child(odd)  {background:rgba(15,23,35,0.85);}
-#mainTable tbody tr.casino-row:nth-child(even) {background:rgba(11,18,28,0.7);}
-#mainTable tbody tr.casino-row:hover           {background:rgba(110,231,183,0.06);}
-
-/* section header rows */
-.section-row td{
-  padding:9px 14px;font-weight:700;
+/* Casino name cell */
+.casino-wrap{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.casino-name{color:#fff;font-weight:700;font-size:0.88rem;line-height:1.2;}
+.casino-name:hover{color:var(--teal);}
+.badge-best{
+  display:inline-block;padding:0.1rem 0.4rem;
+  background:#b45309;color:#fef3c7;
+  font-size:0.56rem;font-weight:700;letter-spacing:0.06em;
+  border-radius:3px;text-transform:uppercase;
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
-  border-right:none !important;
+  flex-shrink:0;
 }
-.sec-s   td{background:rgba(110,231,183,0.1);color:var(--tier-s);border-left:3px solid var(--tier-s);}
-.sec-a   td{background:rgba(51,200,125,0.1);color:var(--tier-a);border-left:3px solid var(--tier-a);}
-.sec-b   td{background:rgba(96,165,250,0.1);color:var(--tier-b);border-left:3px solid var(--tier-b);}
-.sec-new td{background:rgba(192,132,252,0.1);color:var(--tier-new);border-left:3px solid var(--tier-new);}
+.badge-new{
+  display:inline-block;padding:0.1rem 0.4rem;
+  background:rgba(192,132,252,0.18);color:var(--tier-new);
+  border:1px solid rgba(192,132,252,0.35);
+  font-size:0.56rem;font-weight:700;letter-spacing:0.06em;
+  border-radius:3px;text-transform:uppercase;
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
+  flex-shrink:0;
+}
+.casino-parent-inline{font-size:0.68rem;color:var(--text-muted);font-weight:400;}
 
-/* casino name */
-.casino-name{color:#fff;font-weight:700;font-size:0.95rem;line-height:1.3;}
-.casino-parent{font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;font-weight:400;}
-
-/* tier badge */
+/* Tier badge */
 .tier{
   display:inline-flex;align-items:center;justify-content:center;
-  width:30px;height:30px;border-radius:5px;
-  font-weight:700;font-size:0.8rem;
+  width:26px;height:26px;border-radius:4px;
+  font-weight:700;font-size:0.75rem;
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
 }
-.t-s{background:rgba(110,231,183,0.18);color:var(--tier-s);border:1px solid rgba(110,231,183,0.4);}
-.t-a{background:rgba(51,200,125,0.18);color:var(--tier-a);border:1px solid rgba(51,200,125,0.4);}
-.t-b{background:rgba(96,165,250,0.18);color:var(--tier-b);border:1px solid rgba(96,165,250,0.4);}
-.t-n{background:rgba(192,132,252,0.18);color:var(--tier-new);border:1px solid rgba(192,132,252,0.4);}
+.t-s{background:rgba(110,231,183,0.15);color:var(--tier-s);border:1px solid rgba(110,231,183,0.35);}
+.t-a{background:rgba(51,200,125,0.15);color:var(--tier-a);border:1px solid rgba(51,200,125,0.35);}
+.t-b{background:rgba(96,165,250,0.15);color:var(--tier-b);border:1px solid rgba(96,165,250,0.35);}
+.t-n{background:rgba(192,132,252,0.15);color:var(--tier-new);border:1px solid rgba(192,132,252,0.35);}
 
-/* daily badge */
+/* Daily badge */
 .daily{
-  display:inline-block;padding:0.22rem 0.6rem;
-  border-radius:20px;font-size:0.75rem;font-weight:600;
-}
-.d-yes {background:rgba(110,231,183,0.14);color:var(--teal);border:1px solid rgba(110,231,183,0.32);}
-.d-rndm{background:rgba(250,204,21,0.12);color:#fbbf24;border:1px solid rgba(250,204,21,0.3);}
-.d-no  {background:rgba(248,113,113,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.28);}
-
-/* dot rating */
-.dots{letter-spacing:0.1em;font-size:0.88rem;}
-.dot-on{color:var(--teal);}
-.dot-off{color:rgba(110,231,183,0.15);}
-
-/* yes/no */
-.yes{color:#4ade80;font-size:1.05rem;font-weight:700;}
-.no {color:rgba(248,113,113,0.55);font-size:1.05rem;}
-.dash{color:rgba(110,231,183,0.2);font-size:0.9rem;}
-
-/* min redeem — make it stand out */
-.redeem-val{
-  color:var(--teal);font-weight:700;font-size:0.95rem;
-}
-
-/* sign up button */
-.btn-signup{
-  display:inline-block;padding:0.4rem 0.95rem;
-  background:var(--lime);color:var(--lime-text);
-  font-size:0.78rem;font-weight:700;
+  display:inline-block;padding:0.15rem 0.5rem;
+  border-radius:4px;font-size:0.72rem;font-weight:700;
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
   letter-spacing:0.03em;
-  border-radius:5px;text-decoration:none;
-  transition:opacity 0.18s;white-space:nowrap;
+}
+.d-yes{background:rgba(110,231,183,0.12);color:#6ee7b7;border:1px solid rgba(110,231,183,0.28);}
+.d-rndm{background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.28);}
+.d-no{background:rgba(248,113,113,0.1);color:#f87171;border:1px solid rgba(248,113,113,0.25);}
+
+/* HIGH / MED / LOW */
+.hml{
+  display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.04em;
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
+}
+.hml-h{background:rgba(110,231,183,0.12);color:#6ee7b7;border:1px solid rgba(110,231,183,0.28);}
+.hml-m{background:rgba(251,191,36,0.10);color:#fbbf24;border:1px solid rgba(251,191,36,0.25);}
+.hml-l{background:rgba(148,163,184,0.10);color:#94a3b8;border:1px solid rgba(148,163,184,0.22);}
+
+/* YES / NO / dash */
+.yn-y{color:#4ade80;font-weight:700;font-size:0.82rem;}
+.yn-n{color:rgba(248,113,113,0.5);font-size:0.82rem;}
+.yn-d{color:rgba(110,231,183,0.18);font-size:0.82rem;}
+
+/* Dollar values */
+.dollar{color:var(--teal);font-weight:700;font-size:0.84rem;}
+.dollar-dash{color:rgba(110,231,183,0.2);font-size:0.8rem;}
+
+/* Notes */
+.notes-cell{text-align:left !important;max-width:220px;min-width:140px;}
+.notes-txt{
+  font-size:0.76rem;color:rgba(200,215,225,0.7);line-height:1.5;
+  max-height:2.4em;overflow:hidden;cursor:pointer;transition:max-height 0.25s;
+  white-space:normal;
+}
+.notes-txt.open{max-height:200px;}
+.notes-more{color:var(--teal);font-size:0.65rem;cursor:pointer;margin-top:2px;font-weight:600;}
+
+/* Sign Up button */
+.btn-signup{
+  display:inline-block;padding:0.32rem 0.8rem;
+  background:var(--lime);color:var(--lime-text);
+  font-size:0.72rem;font-weight:700;letter-spacing:0.03em;
+  border-radius:4px;text-decoration:none;transition:opacity 0.18s;white-space:nowrap;
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
 }
 .btn-signup:hover{opacity:0.85;}
 
-/* notes */
-.notes-wrap{text-align:left !important;max-width:200px;}
-.notes-txt{
-  max-height:3em;overflow:hidden;
-  font-size:0.8rem;color:rgba(200,215,225,0.75);line-height:1.5;
-  cursor:pointer;transition:max-height 0.25s;
-}
-.notes-txt.open{max-height:180px;}
-.notes-more{color:var(--teal);font-size:0.7rem;cursor:pointer;margin-top:3px;font-weight:600;}
+/* Parent company */
+.parent-cell{font-size:0.72rem;color:var(--text-muted);white-space:nowrap;}
 
 /* ===== CARD GRID ===== */
 #cardGrid{
   display:none;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:1px;
-  background:var(--border);
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1px;background:var(--border);
 }
-.c-card{
-  background:var(--bg-card);
-  padding:1.1rem 1.25rem;
-  transition:background 0.18s;
-}
+.c-card{background:var(--bg-card);padding:1rem 1.15rem;transition:background 0.18s;}
 .c-card:hover{background:rgba(15,29,46,0.95);}
-.c-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;margin-bottom:0.85rem;}
-.c-name{color:var(--teal);font-weight:600;font-size:0.9rem;}
-.c-parent{font-size:0.65rem;color:var(--text-muted);margin-top:0.12rem;}
-.c-data{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:0.85rem;}
-.c-k{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.15rem;opacity:0.7;}
-.c-v{font-size:0.82rem;color:var(--text);}
-.c-icons{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.85rem;}
+.c-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;}
+.c-name-wrap .c-name{color:#fff;font-weight:700;font-size:0.88rem;}
+.c-name-wrap .c-parent{font-size:0.63rem;color:var(--text-muted);margin-top:0.1rem;}
+.c-data{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem 0.8rem;margin-bottom:0.75rem;}
+.c-k{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.1rem;opacity:0.7;font-family:'IBM Plex Mono',monospace;}
+.c-v{font-size:0.8rem;color:var(--text);}
+.c-icons{display:flex;gap:0.25rem;flex-wrap:wrap;margin-bottom:0.75rem;}
 .c-icon{
-  padding:0.18rem 0.5rem;border-radius:3px;
-  font-size:0.65rem;font-weight:600;letter-spacing:0.04em;
+  padding:0.15rem 0.45rem;border-radius:3px;
+  font-size:0.62rem;font-weight:600;letter-spacing:0.04em;
   border:1px solid var(--border-md);color:var(--text-muted);
 }
-.c-icon.on{color:var(--teal);border-color:rgba(110,231,183,0.3);background:rgba(110,231,183,0.07);}
-.c-icon.on-lime{color:var(--lime);border-color:rgba(173,255,47,0.3);background:rgba(173,255,47,0.07);}
-.c-notes{font-size:0.75rem;color:var(--text-muted);line-height:1.45;border-top:1px solid var(--border);padding-top:0.75rem;margin-bottom:0.85rem;}
-.c-footer{display:flex;justify-content:flex-end;}
+.c-icon.on{color:var(--teal);border-color:rgba(110,231,183,0.28);background:rgba(110,231,183,0.07);}
+.c-icon.on-lime{color:var(--lime);border-color:rgba(173,255,47,0.28);background:rgba(173,255,47,0.06);}
+.c-notes{font-size:0.72rem;color:var(--text-muted);line-height:1.45;border-top:1px solid var(--border);padding-top:0.6rem;margin-bottom:0.7rem;}
+.c-footer{display:flex;justify-content:space-between;align-items:center;}
+.c-footer-parent{font-size:0.65rem;color:var(--text-muted);}
 
-/* ===== NO RESULTS ===== */
-.no-results{
-  padding:3rem;text-align:center;
-  font-size:0.85rem;color:var(--text-muted);
-  border-top:1px solid var(--border);
-}
+/* No results */
+.no-results{padding:2.5rem;text-align:center;font-size:0.84rem;color:var(--text-muted);}
 .no-results b{color:var(--teal);}
 
-/* ===== LAST UPDATED ===== */
-.last-upd{
-  padding:0.6rem 1.2rem;
-  font-size:0.68rem;letter-spacing:0.06em;
+/* Footer bar */
+.table-footer{
+  padding:0.5rem 1rem;font-size:0.66rem;letter-spacing:0.04em;
   color:var(--text-muted);border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
 }
 
 /* ===== FOOTER ===== */
-footer{
-  background:var(--bg-nav);border-top:1px solid var(--border);
-  padding:2rem;margin-top:3rem;
-}
-.footer-inner{max-width:1400px;margin:0 auto;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.5rem;}
+footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75rem;margin-top:3rem;}
+.footer-inner{max-width:1500px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.25rem;}
 @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
-.footer-brand{font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);margin-bottom:0.5rem;}
-.footer-tagline{font-size:0.75rem;color:var(--text-muted);line-height:1.55;}
-.footer-col h4{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.65rem;}
-.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:0.78rem;margin-bottom:0.35rem;transition:color 0.18s;}
+.footer-brand{font-weight:700;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);margin-bottom:0.45rem;}
+.footer-tagline{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+.footer-col h4{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.55rem;}
+.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:0.76rem;margin-bottom:0.3rem;transition:color 0.18s;}
 .footer-col a:hover{color:var(--teal);}
-.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;padding-top:1.25rem;border-top:1px solid var(--border);}
-.footer-copy,.footer-links a{font-size:0.72rem;color:var(--text-muted);}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.footer-copy,.footer-links a{font-size:0.7rem;color:var(--text-muted);}
 .footer-links{display:flex;gap:1rem;}
 .footer-links a:hover{color:var(--text);}
 </style>
@@ -406,7 +358,7 @@ footer{
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-brand">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8 8H4l4 4-2 6 6-3 6 3-2-6 4-4h-4z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8 8H4l4 4-2 6 6-3 6 3-2-6 4-4h-4z"/></svg>
       Online Sidehustles
     </a>
     <div class="nav-links">
@@ -425,8 +377,8 @@ footer{
   <!-- HERO -->
   <div class="hero">
     <div class="hero-label">Daily Login Guide</div>
-    <h1>Daily Login</h1>
-    <p class="hero-desc">Daily login websites are sweepstakes-style platforms that give free daily rewards for signing in. This guide tracks 87 sites by bonus value, welcome offers, and redemption details.</p>
+    <h1>Daily Login Guide 2026</h1>
+    <p class="hero-desc">Full list of sweepstakes casinos offering free daily SC. Tracks 87 sites by bonus value, welcome packages, and redemption details.</p>
     <div class="stats">
       <div class="stat"><div class="stat-val">87</div><div class="stat-lbl">Sites Tracked</div></div>
       <div class="stat"><div class="stat-val">$50.21</div><div class="stat-lbl">Daily SC Possible</div></div>
@@ -438,11 +390,26 @@ footer{
   <!-- TOOLBAR -->
   <div class="toolbar">
 
+    <!-- List / Cards toggle -->
+    <div class="view-tabs">
+      <button class="view-tab active" id="btnTbl"  onclick="setView('table')">List</button>
+      <button class="view-tab"        id="btnCard" onclick="setView('card')">Cards</button>
+    </div>
+
+    <!-- All / Best / New -->
+    <div class="quick-tabs">
+      <span class="qt active" data-q="all"  onclick="setQuick(this)">All</span>
+      <span class="qt"        data-q="best" onclick="setQuick(this)">Best</span>
+      <span class="qt"        data-q="new"  onclick="setQuick(this)">New</span>
+    </div>
+
+    <!-- Search -->
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="searchInput" placeholder="Search casinos, notes…" oninput="filterAll()">
     </div>
 
+    <!-- Region -->
     <div class="filter-group">
       <span class="filter-lbl">Region</span>
       <span class="chip active" data-g="geo" data-v="all"    onclick="setChip(this,'geo')">All</span>
@@ -450,43 +417,19 @@ footer{
       <span class="chip"        data-g="geo" data-v="canada" onclick="setChip(this,'geo')">🇨🇦 Canada</span>
     </div>
 
+    <!-- Features -->
     <div class="filter-group">
-      <span class="filter-lbl">Tier</span>
-      <span class="chip" data-g="tier" data-v="S"   onclick="toggleChip(this,'tier')" style="color:var(--tier-s)">S</span>
-      <span class="chip" data-g="tier" data-v="A"   onclick="toggleChip(this,'tier')" style="color:var(--tier-a)">A</span>
-      <span class="chip" data-g="tier" data-v="B"   onclick="toggleChip(this,'tier')" style="color:var(--tier-b)">B</span>
-      <span class="chip" data-g="tier" data-v="NEW" onclick="toggleChip(this,'tier')" style="color:var(--tier-new)">★ New</span>
-    </div>
-
-    <div class="filter-group">
-      <span class="filter-lbl">Has</span>
-      <span class="chip" data-g="feat" data-v="daily"  onclick="toggleChip(this,'feat')">✅ Daily SC</span>
+      <span class="chip" data-g="feat" data-v="daily"  onclick="toggleChip(this,'feat')">✅ Free Daily</span>
       <span class="chip" data-g="feat" data-v="crypto" onclick="toggleChip(this,'feat')">₿ Crypto</span>
       <span class="chip" data-g="feat" data-v="vip"    onclick="toggleChip(this,'feat')">👑 VIP</span>
     </div>
 
-    <div class="filter-group">
-      <span class="filter-lbl">Sort</span>
-      <span class="chip active" data-g="sort" data-v="tier"   onclick="setChip(this,'sort')">↑ Tier</span>
-      <span class="chip"        data-g="sort" data-v="az"     onclick="setChip(this,'sort')">A–Z</span>
-      <span class="chip"        data-g="sort" data-v="daily"  onclick="setChip(this,'sort')">Daily $</span>
-      <span class="chip"        data-g="sort" data-v="redeem" onclick="setChip(this,'sort')">Min Redeem</span>
+    <!-- Showing X of Y + Last updated -->
+    <div class="showing" id="showingEl">
+      Showing <b>15 of 15</b> casinos
+      <span class="upd">• Last updated: Jun 4, 2026</span>
     </div>
 
-    <span class="result-count" id="rc"><b id="rcn">16</b> / 16 sites</span>
-
-    <div class="view-toggle">
-      <button class="view-btn active" id="btnTbl" onclick="setView('table')" title="Table view">☰</button>
-      <button class="view-btn"        id="btnCard" onclick="setView('card')"  title="Card view">⊞</button>
-    </div>
-  </div>
-
-  <!-- TIPS -->
-  <div class="tips-row">
-    <div class="tip"><b>1. Start with S Tier</b><span>Highest daily value and welcome packages relative to effort.</span></div>
-    <div class="tip"><b>2. Sign up &amp; verify</b><span>Click Sign Up, verify email, then claim the welcome package before your first daily login.</span></div>
-    <div class="tip"><b>3. Check redeem rules</b><span>Watch the minimum redemption and your state eligibility before depositing.</span></div>
-    <div class="tip"><b>4. Swipe on mobile</b><span>Table scrolls sideways. Switch to Card view for a cleaner mobile layout.</span></div>
   </div>
 
   <!-- TABLE SECTION -->
@@ -498,26 +441,29 @@ footer{
         <table id="mainTable">
           <thead>
             <tr>
-              <th onclick="sortBy('name')" style="text-align:left">Casino ↕</th>
-              <th onclick="sortBy('tier')">Tier ↕</th>
-              <th onclick="sortBy('daily')">Free Daily?</th>
-              <th onclick="sortBy('amt')">Daily Amt ↕</th>
-              <th style="text-align:left">Welcome Pkg</th>
-              <th onclick="sortBy('redeem')">Min Redeem ↕</th>
-              <th>Cash</th>
-              <th>Gift Card</th>
+              <th style="text-align:left" onclick="sortBy('name')">Name <span class="th-sort">↕</span></th>
+              <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
+              <th onclick="sortBy('daily')">Free SC<br>Daily?</th>
+              <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
+              <th onclick="sortBy('promo')">Promo<br>Value <span class="th-sort">↕</span></th>
+              <th class="notes-cell" style="text-align:left">Notes (tap to expand)</th>
+              <th onclick="sortBy('redeem')">Cash<br>Redeem <span class="th-sort">↕</span></th>
+              <th>Gift<br>Card</th>
               <th>Crypto</th>
-              <th>VIP</th>
+              <th>VIP?</th>
               <th>🇨🇦</th>
-              <th style="text-align:left">Notes</th>
+              <th style="text-align:left">Parent Company</th>
               <th>Sign Up</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
         </table>
       </div>
-      <div id="noRes" class="no-results" style="display:none">No sites match — <b>clear filters</b> to see all 16.</div>
-      <div class="last-upd">Last updated: May 28, 2026 · Data synced from Google Sheets</div>
+      <div id="noRes" class="no-results" style="display:none">No sites match — <b>clear your filters</b> to see all.</div>
+      <div class="table-footer">
+        <span>Online Sidehustles Daily Login Guide · Data verified by hand</span>
+        <span>Last updated: Jun 4, 2026</span>
+      </div>
     </div>
 
     <!-- CARD VIEW -->
@@ -545,7 +491,6 @@ footer{
       <div class="footer-col">
         <h4>Resources</h4>
         <a href="/tools">Tools</a>
-        <a href="/sweepstakes">Sweepstakes</a>
         <a href="/faq">FAQ</a>
       </div>
       <div class="footer-col">
@@ -567,60 +512,77 @@ footer{
 
 <script>
 const TIER_ORDER = {S:0,A:1,B:2,NEW:3};
+const PROMO_ORDER = {HIGH:0,MED:1,LOW:2};
+
+// dailyAmt / promoVal: 'HIGH' | 'MED' | 'LOW'
+// cashMin: min cash redeem in $, 0 = not available
+// gcMin: min gift card redeem in $, 0 = not available
 const DATA = [
-  {name:'WOW Vegas',     tier:'S',  daily:'Yes', amt:3, welcome:'350K WC + 35 SC',      redeem:50,  cash:1,gc:1,crypto:0,vip:1,canada:1,parent:'DoubleDown',     notes:'One of the best daily SC bonuses. Large welcome package. Consistent every day.'},
-  {name:'Pulsz',         tier:'S',  daily:'Yes', amt:3, welcome:'32.3 SC + 4,500 GC',   redeem:50,  cash:1,gc:1,crypto:0,vip:1,canada:1,parent:'Pulsz',          notes:'Top-tier daily SC. Consistent free SC every login.'},
-  {name:'Stake.us',      tier:'S',  daily:'Yes', amt:3, welcome:'25 SC + 250K GC',       redeem:50,  cash:0,gc:1,crypto:1,vip:1,canada:0,parent:'Stake',           notes:'Big rakeback + daily bonus for active players. No direct cash out — GC only.'},
-  {name:'Crown Coins',   tier:'A',  daily:'Yes', amt:2, welcome:'2 SC + 200K GC',        redeem:25,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'Crown Coins',     notes:'Low $25 min redeem threshold. Steady daily login SC.'},
-  {name:'Fortune Coins', tier:'A',  daily:'Yes', amt:2, welcome:'190K FC + 460 SC',      redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'Fortune Coins',   notes:'Consistent daily FC. Multiple redemption options available.'},
-  {name:'Global Poker',  tier:'A',  daily:'RNDM',amt:1, welcome:'20 SC + 500K GC',       redeem:20,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'GAN',             notes:'Poker-focused. Lowest min redeem on the list. Random daily bonus.'},
-  {name:'High5Casino',   tier:'A',  daily:'Yes', amt:2, welcome:'5 HC + 250 H5G',        redeem:100, cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'High 5 Games',    notes:'Higher min redemption. Solid daily free chips.'},
-  {name:'McLuck',        tier:'A',  daily:'RNDM',amt:2, welcome:'7.5 SC + 57,500 GC',    redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'McLuck',          notes:'Random daily bonus amount. Good welcome offer.'},
-  {name:'SpinQuest',     tier:'A',  daily:'Yes', amt:2, welcome:'50K GC + 5 SC',         redeem:25,  cash:1,gc:0,crypto:0,vip:1,canada:1,parent:'SpinQuest',       notes:'Good VIP system and low $25 min redeem threshold.'},
-  {name:'Sportzino',     tier:'A',  daily:'Yes', amt:2, welcome:'55 SC + 220K GC',       redeem:25,  cash:1,gc:0,crypto:0,vip:0,canada:0,parent:'Sportzino',       notes:'Sports + casino hybrid. Great for sports fans.'},
-  {name:'Fortune Coins', tier:'A',  daily:'Yes', amt:2, welcome:'190K FC + 460 SC',      redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'Fortune Coins',   notes:'Consistent daily FC. Multiple redemption options.'},
-  {name:'Chanced',       tier:'B',  daily:'Yes', amt:1, welcome:'5 SC + 100K GC',        redeem:50,  cash:1,gc:0,crypto:1,vip:0,canada:1,parent:'Chanced',         notes:'Crypto redemption option. Smaller daily SC.'},
-  {name:'Funrize',       tier:'B',  daily:'Yes', amt:1, welcome:'30 SC + 500K GC',       redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:0,parent:'Funrize',         notes:'Small but consistent daily login bonus.'},
-  {name:'Hello Millions',tier:'B',  daily:'Yes', amt:1, welcome:'30 SC + 300K GC',       redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:0,parent:'Hello Millions',  notes:'Decent welcome package. Low daily SC value.'},
-  {name:'PulszBingo',    tier:'NEW',daily:'Yes', amt:2, welcome:'2 SC + 200K GC',        redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'Pulsz',           notes:'New bingo-focused site from Pulsz. Worth watching.'},
-  {name:'Lavish Luck',   tier:'NEW',daily:'RNDM',amt:1, welcome:'5 SC + 75K GC',         redeem:50,  cash:1,gc:0,crypto:0,vip:0,canada:1,parent:'Lavish Luck',     notes:'Newly launched. Daily bonus varies. Canada eligible.'},
+  {name:'WOW Vegas',      tier:'S',  daily:'Yes', dailyAmt:'HIGH', promoVal:'HIGH', cashMin:100, gcMin:10,  crypto:0,vip:1,canada:1, parent:'DoubleDown',   notes:'One of the best daily SC bonuses. Large welcome package (350K WC + 35 SC). Consistent every day.'},
+  {name:'Pulsz',          tier:'S',  daily:'Yes', dailyAmt:'HIGH', promoVal:'HIGH', cashMin:100, gcMin:10,  crypto:0,vip:1,canada:1, parent:'Yellow Social', notes:'Top-tier daily SC. Consistent free SC every login. 32.3 SC + 4,500 GC welcome.'},
+  {name:'Stake.us',       tier:'S',  daily:'Yes', dailyAmt:'HIGH', promoVal:'HIGH', cashMin:0,   gcMin:50,  crypto:1,vip:1,canada:0, parent:'Stake',         notes:'Big rakeback + daily bonus for active players. No direct cash out — GC only. Crypto redemption available.'},
+  {name:'McLuck',         tier:'A',  daily:'RNDM',dailyAmt:'MED',  promoVal:'HIGH', cashMin:75,  gcMin:10,  crypto:0,vip:0,canada:1, parent:'B-Two Ops',    notes:'Random daily bonus amount. Good welcome offer (7.5 SC + 57,500 GC).'},
+  {name:'Crown Coins',    tier:'A',  daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:1, parent:'Crown Coins',   notes:'Low $50 min redeem. Steady daily login SC. 2 SC + 200K GC welcome.'},
+  {name:'Fortune Coins',  tier:'A',  daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:1, parent:'Fortune Coins', notes:'Consistent daily FC. Multiple redemption options. 190K FC + 460 SC welcome.'},
+  {name:'Global Poker',   tier:'A',  daily:'RNDM',dailyAmt:'LOW',  promoVal:'MED',  cashMin:20,  gcMin:0,   crypto:0,vip:0,canada:1, parent:'GAN',           notes:'Poker-focused. Lowest min redeem ($20). Random daily bonus. 20 SC + 500K GC welcome.'},
+  {name:'High5Casino',    tier:'A',  daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:100, gcMin:0,   crypto:0,vip:0,canada:1, parent:'High 5 Games',  notes:'Higher min redemption ($100). Solid daily free chips. 5 HC + 250 H5G welcome.'},
+  {name:'SpinQuest',      tier:'A',  daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:25,  gcMin:0,   crypto:0,vip:1,canada:1, parent:'SpinQuest',     notes:'Good VIP system and low $25 min redeem. 50K GC + 5 SC welcome.'},
+  {name:'Sportzino',      tier:'A',  daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:25,  gcMin:0,   crypto:0,vip:0,canada:0, parent:'Sportzino',     notes:'Sports + casino hybrid. Great for sports fans. 55 SC + 220K GC welcome.'},
+  {name:'Chanced',        tier:'B',  daily:'Yes', dailyAmt:'LOW',  promoVal:'LOW',  cashMin:50,  gcMin:0,   crypto:1,vip:0,canada:1, parent:'Chanced',       notes:'Crypto redemption option. Smaller daily SC. 5 SC + 100K GC welcome.'},
+  {name:'Funrize',        tier:'B',  daily:'Yes', dailyAmt:'LOW',  promoVal:'LOW',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:0, parent:'Funrize',       notes:'Small but consistent daily login bonus. 30 SC + 500K GC welcome.'},
+  {name:'Hello Millions', tier:'B',  daily:'Yes', dailyAmt:'LOW',  promoVal:'LOW',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:0, parent:'Hello Millions',notes:'Decent welcome package. Low daily SC value. 30 SC + 300K GC welcome.'},
+  {name:'PulszBingo',     tier:'NEW',daily:'Yes', dailyAmt:'MED',  promoVal:'MED',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:1, parent:'Yellow Social', notes:'New bingo-focused site from Pulsz. Worth watching. 2 SC + 200K GC welcome.'},
+  {name:'Lavish Luck',    tier:'NEW',daily:'RNDM',dailyAmt:'LOW',  promoVal:'LOW',  cashMin:50,  gcMin:0,   crypto:0,vip:0,canada:1, parent:'Lavish Luck',   notes:'Newly launched. Daily bonus varies. Canada eligible. 5 SC + 75K GC welcome.'},
 ];
 
-// deduplicate Fortune Coins
-const CASINOS = DATA.filter((c,i,a) => a.findIndex(x=>x.name===c.name)===i);
+const CASINOS = DATA;
+const filters = {geo:'all', quick:'all', feat:null, sort:'tier'};
+let sortDir = 1;
+let lastSort = 'tier';
 
-const filters = {geo:'all', tier:null, feat:null, sort:'tier'};
-
-function dots(n){
-  return `<span class="dots">${[1,2,3].map(i=>`<span class="${i<=n?'dot-on':'dot-off'}">●</span>`).join('')}</span>`;
+function hml(v){
+  if(v==='HIGH') return '<span class="hml hml-h">HIGH</span>';
+  if(v==='MED')  return '<span class="hml hml-m">MED</span>';
+  return '<span class="hml hml-l">LOW</span>';
 }
 function dailyBadge(v){
-  if(v==='Yes')  return '<span class="daily d-yes">Yes</span>';
-  if(v==='RNDM') return '<span class="daily d-rndm">Rndm</span>';
-  return '<span class="daily d-no">No</span>';
+  if(v==='Yes')  return '<span class="daily d-yes">YES</span>';
+  if(v==='RNDM') return '<span class="daily d-rndm">RNDM</span>';
+  return '<span class="daily d-no">NO</span>';
 }
 function tierBadge(t){
   const c={S:'t-s',A:'t-a',B:'t-b',NEW:'t-n'}[t]||'t-n';
   return `<span class="tier ${c}">${t==='NEW'?'★':t}</span>`;
 }
-function yn(v){ return v?'<span class="yes">✓</span>':'<span class="no">✗</span>'; }
+function dollar(v){
+  if(!v) return '<span class="dollar-dash">—</span>';
+  return `<span class="dollar">$${v}</span>`;
+}
+function ynIcon(v){
+  return v ? '<span class="yn-y">YES</span>' : '<span class="yn-n">NO</span>';
+}
 
 function getVisible(){
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   return CASINOS.filter(c=>{
     if(q && !(`${c.name} ${c.parent} ${c.notes}`.toLowerCase().includes(q))) return false;
+    if(filters.geo==='usa'    && !c.canada) return false; // simplified: usa = non-canada
     if(filters.geo==='canada' && !c.canada) return false;
-    if(filters.tier && c.tier!==filters.tier) return false;
+    if(filters.quick==='best' && c.tier!=='S' && c.tier!=='A') return false;
+    if(filters.quick==='new'  && c.tier!=='NEW') return false;
     if(filters.feat==='daily'  && c.daily!=='Yes') return false;
     if(filters.feat==='crypto' && !c.crypto) return false;
     if(filters.feat==='vip'    && !c.vip)   return false;
     return true;
   }).sort((a,b)=>{
-    if(filters.sort==='tier')   return (TIER_ORDER[a.tier]-TIER_ORDER[b.tier])||a.name.localeCompare(b.name);
-    if(filters.sort==='az')     return a.name.localeCompare(b.name);
-    if(filters.sort==='daily')  return (b.amt-a.amt)||(TIER_ORDER[a.tier]-TIER_ORDER[b.tier]);
-    if(filters.sort==='redeem') return a.redeem-b.redeem;
-    return 0;
+    let r=0;
+    if(filters.sort==='tier')   r = (TIER_ORDER[a.tier]-TIER_ORDER[b.tier])||a.name.localeCompare(b.name);
+    else if(filters.sort==='name')   r = a.name.localeCompare(b.name);
+    else if(filters.sort==='daily')  r = TIER_ORDER[a.tier]-TIER_ORDER[b.tier];
+    else if(filters.sort==='amt')    r = PROMO_ORDER[a.dailyAmt]-PROMO_ORDER[b.dailyAmt];
+    else if(filters.sort==='promo')  r = PROMO_ORDER[a.promoVal]-PROMO_ORDER[b.promoVal];
+    else if(filters.sort==='redeem') r = a.cashMin-b.cashMin;
+    return r * sortDir;
   });
 }
 
@@ -630,41 +592,34 @@ function renderTable(data){
   if(!data.length){ document.getElementById('noRes').style.display='block'; return; }
   document.getElementById('noRes').style.display='none';
 
-  const SECS = {S:'sec-s',A:'sec-a',B:'sec-b',NEW:'sec-new'};
-  const LABELS = {S:'⭐ S Tier — Best Daily Value',A:'● A Tier — Solid Picks',B:'○ B Tier — Worth Trying',NEW:'★ New Sites'};
-  let lastTier=null;
-
   data.forEach(c=>{
-    if(c.tier!==lastTier){
-      lastTier=c.tier;
-      const tr=document.createElement('tr');
-      tr.className=`section-row ${SECS[c.tier]}`;
-      const td=document.createElement('td');
-      td.colSpan=13; td.textContent=LABELS[c.tier];
-      tr.appendChild(td); tb.appendChild(tr);
-    }
     const tr=document.createElement('tr');
-    tr.className='casino-row';
+    const isBest = c.tier==='S' || c.tier==='A';
+    const isNew  = c.tier==='NEW';
     tr.innerHTML=`
       <td class="name-cell">
-        <div class="casino-name">${c.name}</div>
-        <div class="casino-parent">${c.parent}</div>
+        <div class="casino-wrap">
+          <span class="casino-name">${c.name}</span>
+          ${isBest && c.tier==='S' ? '<span class="badge-best">BEST</span>' : ''}
+          ${isNew ? '<span class="badge-new">NEW</span>' : ''}
+        </div>
+        <div class="casino-parent-inline">${c.parent}</div>
       </td>
       <td>${tierBadge(c.tier)}</td>
       <td>${dailyBadge(c.daily)}</td>
-      <td>${dots(c.amt)}</td>
-      <td style="text-align:left;font-size:0.75rem;color:var(--text-dim);white-space:nowrap">${c.welcome}</td>
-      <td><span class="redeem-val">$${c.redeem}</span></td>
-      <td>${yn(c.cash)}</td>
-      <td>${yn(c.gc)}</td>
-      <td>${yn(c.crypto)}</td>
-      <td>${yn(c.vip)}</td>
-      <td>${c.canada?'<span class="yes">✓</span>':'<span class="dash">—</span>'}</td>
-      <td class="notes-wrap">
+      <td>${hml(c.dailyAmt)}</td>
+      <td>${hml(c.promoVal)}</td>
+      <td class="notes-cell">
         <div class="notes-txt" onclick="this.classList.toggle('open');this.nextElementSibling.textContent=this.classList.contains('open')?'▲ less':'▼ more'">${c.notes}</div>
         <span class="notes-more">▼ more</span>
       </td>
-      <td><a href="#" class="btn-signup" onclick="return false">Sign Up</a></td>`;
+      <td>${dollar(c.cashMin)}</td>
+      <td>${dollar(c.gcMin)}</td>
+      <td>${ynIcon(c.crypto)}</td>
+      <td>${ynIcon(c.vip)}</td>
+      <td>${c.canada ? '<span class="yn-y">YES</span>' : '<span class="yn-d">—</span>'}</td>
+      <td class="parent-cell">${c.parent}</td>
+      <td><a href="#" class="btn-signup" onclick="return false">SIGNUP</a></td>`;
     tb.appendChild(tr);
   });
 }
@@ -672,39 +627,53 @@ function renderTable(data){
 function renderCards(data){
   const g=document.getElementById('cardGrid');
   g.innerHTML='';
-  if(!data.length){g.innerHTML='<div class="no-results" style="grid-column:1/-1">No sites match your filters.</div>';return;}
+  if(!data.length){
+    g.innerHTML='<div class="no-results" style="grid-column:1/-1">No sites match your filters.</div>';
+    return;
+  }
   data.forEach(c=>{
     const d=document.createElement('div');
     d.className='c-card';
     d.innerHTML=`
       <div class="c-card-top">
-        <div><div class="c-name">${c.name}</div><div class="c-parent">${c.parent}</div></div>
+        <div class="c-name-wrap">
+          <div class="c-name">${c.name}${c.tier==='S'?' <span class="badge-best">BEST</span>':''}${c.tier==='NEW'?' <span class="badge-new">NEW</span>':''}</div>
+          <div class="c-parent">${c.parent}</div>
+        </div>
         ${tierBadge(c.tier)}
       </div>
       <div class="c-data">
-        <div><div class="c-k">Daily Bonus</div><div class="c-v">${dailyBadge(c.daily)} ${dots(c.amt)}</div></div>
-        <div><div class="c-k">Min Redeem</div><div class="c-v" style="color:var(--teal);font-weight:700">$${c.redeem}</div></div>
-        <div><div class="c-k">Welcome</div><div class="c-v" style="font-size:0.74rem">${c.welcome}</div></div>
-        <div><div class="c-k">Redeem Via</div><div class="c-v" style="font-size:0.74rem">${[c.cash&&'Cash',c.gc&&'GC',c.crypto&&'Crypto'].filter(Boolean).join(' · ')||'—'}</div></div>
+        <div><div class="c-k">Daily SC</div><div class="c-v">${dailyBadge(c.daily)} ${hml(c.dailyAmt)}</div></div>
+        <div><div class="c-k">Cash Redeem</div><div class="c-v">${c.cashMin ? '$'+c.cashMin : '—'}</div></div>
+        <div><div class="c-k">Promo Value</div><div class="c-v">${hml(c.promoVal)}</div></div>
+        <div><div class="c-k">GC Redeem</div><div class="c-v">${c.gcMin ? '$'+c.gcMin : '—'}</div></div>
       </div>
       <div class="c-icons">
-        <span class="c-icon ${c.cash?'on':''}">💵 Cash</span>
-        <span class="c-icon ${c.gc?'on':''}">🎁 GC</span>
-        <span class="c-icon ${c.crypto?'on-lime':''}">₿ Crypto</span>
-        <span class="c-icon ${c.vip?'on':''}">👑 VIP</span>
-        ${c.canada?'<span class="c-icon on">🇨🇦 Canada</span>':''}
+        ${c.cashMin ? '<span class="c-icon on">💵 Cash</span>' : '<span class="c-icon">💵 Cash</span>'}
+        ${c.gcMin   ? '<span class="c-icon on">🎁 Gift Card</span>' : ''}
+        ${c.crypto  ? '<span class="c-icon on-lime">₿ Crypto</span>' : ''}
+        ${c.vip     ? '<span class="c-icon on">👑 VIP</span>' : ''}
+        ${c.canada  ? '<span class="c-icon on">🇨🇦 Canada</span>' : ''}
       </div>
       <div class="c-notes">${c.notes}</div>
-      <div class="c-footer"><a href="#" class="btn-signup" onclick="return false">Sign Up</a></div>`;
+      <div class="c-footer">
+        <span class="c-footer-parent">${c.parent}</span>
+        <a href="#" class="btn-signup" onclick="return false">SIGNUP</a>
+      </div>`;
     g.appendChild(d);
   });
 }
 
+function updateShowing(count){
+  document.getElementById('showingEl').innerHTML=
+    `Showing <b>${count} of ${CASINOS.length}</b> casinos <span class="upd">• Last updated: Jun 4, 2026</span>`;
+}
+
 function filterAll(){
   const v=getVisible();
-  document.getElementById('rcn').textContent=v.length;
-  document.getElementById('rc').innerHTML=`<b id="rcn">${v.length}</b> / ${CASINOS.length} sites`;
-  renderTable(v); renderCards(v);
+  updateShowing(v.length);
+  renderTable(v);
+  renderCards(v);
 }
 
 function setChip(el,group){
@@ -720,11 +689,27 @@ function toggleChip(el,group){
   if(!was) el.classList.add('active');
   filterAll();
 }
+function setQuick(el){
+  document.querySelectorAll('.qt').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  filters.quick=el.dataset.q;
+  filterAll();
+}
 function setView(v){
   const tv=document.getElementById('tableView'), cg=document.getElementById('cardGrid');
   const bt=document.getElementById('btnTbl'), bc=document.getElementById('btnCard');
-  if(v==='table'){tv.style.display='block';cg.style.display='none';bt.classList.add('active');bc.classList.remove('active');}
-  else{tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
+  if(v==='table'){
+    tv.style.display='block';cg.style.display='none';
+    bt.classList.add('active');bc.classList.remove('active');
+  } else {
+    tv.style.display='none';cg.style.display='grid';
+    bc.classList.add('active');bt.classList.remove('active');
+  }
+}
+function sortBy(col){
+  if(lastSort===col) sortDir*=-1; else sortDir=1;
+  lastSort=col; filters.sort=col;
+  filterAll();
 }
 
 filterAll();
