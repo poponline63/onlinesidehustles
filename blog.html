@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <!-- Google Analytics 4 -->
@@ -31,101 +31,226 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#050810">
+    <meta name="theme-color" content="#111c2e">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="/js/animated-favicon.js" defer></script>
     <style>
-/* ===== BLOG PORTAL ===== */
-.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:-3; }
-.stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
-.star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite; }
-@keyframes twinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.3;transform:scale(0.5);} }
-.shooting-star { position:fixed; width:100px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.8),rgba(255,255,255,0)); border-radius:50%; animation:shoot 8s linear infinite; z-index:-1; pointer-events:none; }
-@keyframes shoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} }
-
-body,.page-wrapper,html { background:#000 !important; }
-.content-area { background:transparent !important; padding-top:60px !important; }
-.content-area .container { max-width:1100px !important; width:calc(100% - 4rem) !important; padding:0 !important; margin:0 auto !important; background:transparent !important; border:none !important; box-shadow:none !important; }
-
-/* Hero */
-.portal-hero { text-align:center; padding:3.5rem 2rem 2.5rem; margin-bottom:2rem; }
-.portal-hero h1 { font-size:clamp(2.2rem,5vw,3.5rem); font-weight:900; color:#fff; margin:0 0 1rem; line-height:1.1; }
-.portal-hero .accent { background:linear-gradient(135deg,#f97316,#fb923c,#fbbf24,#f97316); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
-@keyframes shimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
-.portal-hero p { color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:650px; margin:0 auto; line-height:1.7; }
-
-/* Category filter tabs */
-.filter-bar { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem; margin-bottom:2.5rem; padding:0 1rem; }
-.filter-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.75); padding:0.55rem 1.3rem; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
-.filter-btn:hover { border-color:rgba(255,255,255,0.3); color:#fff; }
-.filter-btn.active { background:rgba(249,115,22,0.15); border-color:rgba(249,115,22,0.4); color:#f97316; }
-
-/* Category headers */
-.category-header { padding:0 0.5rem; margin:2.5rem 0 1.2rem; display:flex; align-items:center; gap:0.8rem; }
-.category-header:first-of-type { margin-top:0; }
-.category-header h2 { font-size:1.4rem; font-weight:800; color:#fff; margin:0; white-space:nowrap; }
-.category-line { flex:1; height:1px; background:linear-gradient(90deg,rgba(255,255,255,0.15),transparent); }
-
-/* Cards grid */
-.blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem; }
-@media(max-width:900px){ .blog-grid { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:550px){ .blog-grid { grid-template-columns:1fr; } }
-
-/* Card */
-.blog-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:1.8rem 1.6rem; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; position:relative; overflow:hidden; }
-.blog-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.5); border-color:rgba(249,115,22,0.3); }
-.blog-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent,rgba(249,115,22,0.4)); opacity:0; transition:opacity 0.2s; }
-.blog-card:hover::before { opacity:1; }
-.card-top-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; }
-.card-tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.04em; width:fit-content; }
-.card-tag.sweepstakes { background:rgba(249,115,22,0.15); color:#fb923c; border:1px solid rgba(249,115,22,0.25); }
-.card-tag.automation { background:rgba(34,211,238,0.15); color:#22d3ee; border:1px solid rgba(34,211,238,0.2); }
-.card-tag.sidehustles { background:rgba(74,222,128,0.15); color:#4ade80; border:1px solid rgba(74,222,128,0.2); }
-.card-date { font-size:0.72rem; color:rgba(255,255,255,0.35); font-weight:500; }
-.card-title { font-size:1.15rem; font-weight:800; color:#fff; margin:0 0 0.5rem; line-height:1.3; }
-.card-desc { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.65; flex:1; margin:0 0 1rem; }
-.card-read { display:flex; justify-content:flex-end; align-items:center; }
-.card-read span { font-size:0.85rem; font-weight:700; color:rgba(249,115,22,0.6); transition:color 0.2s, transform 0.2s; }
-.blog-card:hover .card-read span { color:#f97316; transform:translateX(4px); }
-
-/* Fade-in */
-.anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
-.anim-fade-up.visible { opacity:1; transform:translateY(0); }
-
-/* Sparkles */
-.sparkle-p { position:fixed; pointer-events:none; z-index:2; animation:sparklePop var(--dur,1.2s) ease-out forwards; }
-.sparkle-p::before,.sparkle-p::after { content:''; position:absolute; border-radius:2px; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(255,255,255,0.8); box-shadow:0 0 4px rgba(255,255,255,0.5); }
-.sparkle-p::before { width:var(--sz,7px); height:2px; }
-.sparkle-p::after { width:2px; height:var(--sz,7px); }
-@keyframes sparklePop { 0%{opacity:0;transform:scale(0) rotate(0deg);} 25%{opacity:1;transform:scale(1.3) rotate(45deg);} 60%{opacity:0.8;transform:scale(1) rotate(90deg);} 100%{opacity:0;transform:scale(0.3) rotate(180deg) translateY(-15px);} }
-
-/* Discord float */
-
-
-
-@media(max-width:768px){
-    .content-area .container { width:calc(100% - 2rem) !important; }
-    .portal-hero { padding:2.5rem 1rem 2rem; }
+/* ==============================
+   DESIGN TOKENS
+============================== */
+:root{
+  --bg:#111c2e;
+  --bg-card:#0f1723;
+  --bg-nav:#0c1526;
+  --teal:#6ee7b7;
+  --teal-dim:rgba(110,231,183,0.55);
+  --teal-faint:rgba(110,231,183,0.10);
+  --lime:#ADFF2F;
+  --lime-text:#060a0f;
+  --text:#e8e6e0;
+  --text-muted:#7a8fa8;
+  --text-dim:#94a3b8;
+  --border:rgba(110,231,183,0.12);
+  --border-md:rgba(110,231,183,0.22);
 }
 
-/* Latest Posts featured section */
-.latest-section { margin-bottom:0.5rem; }
-.latest-header { display:flex; align-items:center; gap:0.8rem; padding:0 0.5rem; margin:0 0 1.2rem; }
-.latest-label { font-size:1.4rem; font-weight:800; color:#fff; white-space:nowrap; }
-.latest-card { border-color:rgba(249,115,22,0.3) !important; background:rgba(249,115,22,0.06) !important; }
-.latest-card::before { opacity:0.7 !important; }
+/* ==============================
+   RESET / BASE
+============================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
-/* NEW badge (absolute, top-right corner of card) */
-.badge-new { position:absolute; top:12px; right:12px; background:linear-gradient(135deg,#f97316,#fbbf24); color:#000; font-size:0.6rem; font-weight:800; padding:0.2rem 0.6rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.05em; box-shadow:0 2px 8px rgba(249,115,22,0.45); }
+/* ==============================
+   BACKGROUND SYSTEM
+============================== */
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.bg-orb-1{width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(110,231,183,0.08) 0%,transparent 70%);}
+.bg-orb-2{width:500px;height:500px;bottom:-150px;right:-150px;background:radial-gradient(circle,rgba(110,231,183,0.07) 0%,transparent 70%);}
+.bg-orb-3{width:400px;height:400px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(110,231,183,0.05) 0%,transparent 70%);}
+.bg-orb-4{width:350px;height:350px;top:20%;right:10%;background:radial-gradient(circle,rgba(110,231,183,0.04) 0%,transparent 70%);}
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:0.4;z-index:0;pointer-events:none;}
+.bg-scanlines{position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);z-index:0;pointer-events:none;}
+.bg-vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(7,11,20,0.6) 100%);z-index:0;pointer-events:none;}
 
-/* Old posts — dimmed, brighten on hover */
-.blog-card.old-post { opacity:0.55; }
-.blog-card.old-post:hover { opacity:0.95; }
-    </style>
-    <script src="/js/animated-favicon.js" defer></script>
-<style>
+/* ==============================
+   COIN ANIMATIONS
+============================== */
+@keyframes coinFlyRTL{
+  0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:1;}
+  80%{opacity:1;}
+  100%{transform:translateX(-110vw) translateY(var(--dy,20px)) rotate(-720deg);opacity:0;}
+}
+@keyframes coinFlyLTR{
+  0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:1;}
+  80%{opacity:1;}
+  100%{transform:translateX(110vw) translateY(var(--dy,-20px)) rotate(720deg);opacity:0;}
+}
+.fly-coin{position:fixed;pointer-events:none;z-index:9999;font-size:1.4rem;animation-timing-function:linear;animation-fill-mode:forwards;}
+
+/* ==============================
+   NAV
+============================== */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background 0.3s,box-shadow 0.3s;height:64px;}
+#nav.scrolled{background:rgba(12,21,38,0.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.nav-brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:var(--teal);font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:0.85rem;letter-spacing:0.05em;white-space:nowrap;}
+.nav-logo{height:30px;width:auto;}
+.nav-links{display:flex;align-items:center;gap:0.25rem;}
+.nav-link{color:var(--text-muted);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.4rem 0.75rem;border-radius:6px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-link:hover{color:var(--text);background:var(--teal-faint);}
+.nav-link.active{color:var(--teal);background:var(--teal-faint);}
+.nav-cta{background:var(--teal-faint);border:1px solid var(--border-md);color:var(--teal);text-decoration:none;font-size:0.85rem;font-weight:700;padding:0.45rem 1rem;border-radius:8px;transition:background 0.2s,border-color 0.2s;white-space:nowrap;font-family:'IBM Plex Mono',monospace;}
+.nav-cta:hover{background:rgba(110,231,183,0.18);border-color:var(--teal-dim);}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:36px;height:36px;background:transparent;border:1px solid var(--border-md);border-radius:8px;cursor:pointer;padding:0;}
+.nav-hamburger span{display:block;width:18px;height:2px;background:var(--teal);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
+.nav-hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.active span:nth-child(2){opacity:0;}
+.nav-hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}}
+
+/* Mobile Menu */
+.mobile-menu{position:fixed;top:64px;left:0;right:0;background:rgba(12,21,38,0.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;display:flex;flex-direction:column;padding:1rem;gap:0.25rem;transform:translateY(-110%);opacity:0;transition:transform 0.3s,opacity 0.3s;pointer-events:none;}
+.mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.mobile-menu a{color:var(--text-muted);text-decoration:none;font-size:0.95rem;font-weight:500;padding:0.7rem 1rem;border-radius:8px;transition:color 0.2s,background 0.2s;}
+.mobile-menu a:hover{color:var(--teal);background:var(--teal-faint);}
+.mobile-menu a:last-child{color:var(--teal);font-weight:700;font-family:'IBM Plex Mono',monospace;margin-top:0.25rem;border:1px solid var(--border-md);}
+
+/* ==============================
+   LAYOUT
+============================== */
+.page-wrap{position:relative;z-index:1;padding-top:64px;max-width:1200px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem;}
+
+/* ==============================
+   FADE-IN ANIMATION
+============================== */
+.dlg-fade{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.dlg-fade.visible{opacity:1;transform:translateY(0);}
+
+/* ==============================
+   HERO
+============================== */
+.portal-hero{text-align:center;padding:3.5rem 1rem 2.5rem;margin-bottom:2rem;}
+.hero-label{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);background:var(--teal-faint);border:1px solid var(--border-md);border-radius:20px;padding:0.35rem 1rem;margin-bottom:1rem;}
+.portal-hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;color:var(--text);margin:0 0 1rem;line-height:1.1;}
+.portal-hero h1 .hl{color:var(--teal);}
+.portal-hero p{color:var(--text-muted);font-size:1.05rem;max-width:620px;margin:0 auto;line-height:1.75;}
+
+/* ==============================
+   FILTER BAR
+============================== */
+.filter-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-bottom:2.5rem;padding:0 1rem;}
+.filter-btn{background:var(--teal-faint);border:1px solid var(--border);color:var(--text-muted);padding:0.5rem 1.2rem;border-radius:50px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'IBM Plex Mono',monospace;letter-spacing:0.03em;}
+.filter-btn:hover{border-color:var(--border-md);color:var(--text);}
+.filter-btn.active{background:rgba(110,231,183,0.15);border-color:var(--teal-dim);color:var(--teal);}
+
+/* ==============================
+   CATEGORY HEADERS
+============================== */
+.category-header{padding:0 0.25rem;margin:2.5rem 0 1.2rem;display:flex;align-items:center;gap:0.8rem;}
+.category-header h2{font-family:'IBM Plex Mono',monospace;font-size:1.05rem;font-weight:700;color:var(--teal);margin:0;white-space:nowrap;letter-spacing:0.04em;}
+.category-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-md),transparent);}
+
+/* ==============================
+   LATEST SECTION
+============================== */
+.latest-section{margin-bottom:0.5rem;}
+.latest-header{display:flex;align-items:center;gap:0.8rem;padding:0 0.25rem;margin:0 0 1.2rem;}
+.latest-label{font-family:'IBM Plex Mono',monospace;font-size:1.05rem;font-weight:700;color:var(--teal);white-space:nowrap;letter-spacing:0.04em;}
+.latest-card{border-color:rgba(110,231,183,0.25) !important;background:rgba(110,231,183,0.06) !important;}
+.latest-card::before{opacity:0.7 !important;}
+
+/* ==============================
+   BLOG GRID
+============================== */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:550px){.blog-grid{grid-template-columns:1fr;}}
+
+/* ==============================
+   BLOG CARD
+============================== */
+.blog-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.6rem 1.5rem;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+  position:relative;
+  overflow:hidden;
+}
+.blog-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--teal);
+  opacity:0;
+  transition:opacity 0.2s;
+}
+.blog-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 36px rgba(0,0,0,0.5),0 0 0 1px rgba(110,231,183,0.15);
+  border-color:var(--border-md);
+}
+.blog-card:hover::before{opacity:1;}
+.card-top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;}
+.card-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.22rem 0.6rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;font-family:'IBM Plex Mono',monospace;}
+.card-tag.sweepstakes{background:rgba(110,231,183,0.12);color:var(--teal);border:1px solid rgba(110,231,183,0.22);}
+.card-tag.automation{background:rgba(173,255,47,0.12);color:#ADFF2F;border:1px solid rgba(173,255,47,0.22);}
+.card-tag.sidehustles{background:rgba(96,165,250,0.12);color:#60a5fa;border:1px solid rgba(96,165,250,0.22);}
+.card-date{font-size:0.7rem;color:var(--text-muted);font-weight:500;font-family:'IBM Plex Mono',monospace;}
+.card-title{font-size:1.05rem;font-weight:800;color:var(--text);margin:0 0 0.5rem;line-height:1.35;}
+.card-desc{font-size:0.85rem;color:var(--text-dim);line-height:1.65;flex:1;margin:0 0 1rem;}
+.card-read{display:flex;justify-content:flex-end;align-items:center;}
+.card-read span{font-size:0.82rem;font-weight:700;color:var(--teal-dim);font-family:'IBM Plex Mono',monospace;transition:color 0.2s,transform 0.2s;display:inline-block;}
+.blog-card:hover .card-read span{color:var(--teal);transform:translateX(4px);}
+
+/* NEW badge */
+.badge-new{
+  position:absolute;top:12px;right:12px;
+  background:linear-gradient(135deg,#ADFF2F,#7fff00);
+  color:#060a0f;
+  font-size:0.6rem;font-weight:800;
+  padding:0.2rem 0.55rem;
+  border-radius:20px;
+  text-transform:uppercase;letter-spacing:0.05em;
+  font-family:'IBM Plex Mono',monospace;
+  box-shadow:0 2px 8px rgba(173,255,47,0.35);
+}
+
+/* Old posts — dimmed */
+.blog-card.old-post{opacity:0.5;}
+.blog-card.old-post:hover{opacity:0.9;}
+
+/* ==============================
+   FOOTER
+============================== */
+footer{position:relative;z-index:1;margin-top:4rem;border-top:1px solid var(--border);background:var(--bg-nav);padding:3rem 1.5rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand{font-family:'IBM Plex Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--teal);margin-bottom:0.6rem;}
+.footer-tagline{font-size:0.82rem;color:var(--text-muted);line-height:1.65;max-width:280px;}
+.footer-col h4{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;}
+.footer-col a{display:block;font-size:0.83rem;color:var(--text-muted);text-decoration:none;margin-bottom:0.4rem;transition:color 0.2s;}
+.footer-col a:hover{color:var(--teal);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.footer-copy{font-size:0.78rem;color:var(--text-muted);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.78rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--teal);}
+
+/* ==============================
+   DISCORD WIDGET
+============================== */
 .discord-widget{position:fixed;bottom:1.25rem;left:1.25rem;z-index:9997;background:#5865F2;border-radius:14px;padding:.7rem 1rem .7rem .85rem;display:flex;align-items:center;gap:.65rem;box-shadow:0 4px 22px rgba(88,101,242,.45),0 0 0 1px rgba(255,255,255,.08);text-decoration:none;color:#fff;animation:discordIn .55s cubic-bezier(.22,1,.36,1) 2.5s both;transition:transform .18s,box-shadow .18s;max-width:230px;}
 .discord-widget:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(88,101,242,.55);}
 @keyframes discordIn{from{transform:translateX(-130%) scale(.9);opacity:0;}to{transform:translateX(0) scale(1);opacity:1;}}
@@ -135,14 +260,22 @@ body,.page-wrapper,html { background:#000 !important; }
 .discord-sub{font-size:.68rem;opacity:.82;}
 .discord-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:rgba(20,20,40,.75);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
 .discord-x:hover{background:rgba(248,113,113,.8);}
-</style>
+    </style>
 </head>
 <body>
 
-<canvas id="starfield"></canvas>
+<!-- BACKGROUND -->
+<canvas id="bgCanvas"></canvas>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="bg-orb bg-orb-4"></div>
+<div class="bg-grid"></div>
+<div class="bg-scanlines"></div>
+<div class="bg-vignette"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <img src="/logo.png" alt="Online Sidehustles" class="nav-logo">
@@ -153,7 +286,7 @@ body,.page-wrapper,html { background:#000 !important; }
       <a href="/sweepstakes-casino-list" class="nav-link">Sweepstakes Casinos List</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
-      <a href="/blog" class="nav-link">Blog</a>
+      <a href="/blog" class="nav-link active">Blog</a>
       <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">&#128225; Join Discord</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -172,23 +305,17 @@ body,.page-wrapper,html { background:#000 !important; }
 </div>
 
 <!-- PAGE CONTENT -->
-<div class="content-area" style="padding-top:80px;">
-  <div class="container">
-
-    <div class="space-background"></div>
-    <div class="stars" id="stars"></div>
-    <div class="shooting-star" style="top:12%;left:75%;animation-delay:0s;"></div>
-    <div class="shooting-star" style="top:40%;left:60%;animation-delay:3s;"></div>
-    <div class="shooting-star" style="top:65%;left:85%;animation-delay:6s;"></div>
+<div class="page-wrap">
 
     <!-- Hero -->
-    <div class="portal-hero anim-fade-up">
-        <h1>The Hustle <span class="accent">Blog</span></h1>
-        <p>Expert strategies, guides, and deep dives on sweepstakes, automation, and side hustles.</p>
+    <div class="portal-hero dlg-fade">
+        <div class="hero-label">&#128293; The Hustle Blog</div>
+        <h1>Guides, Strategies &amp; <span class="hl">Deep Dives</span></h1>
+        <p>Expert breakdowns on sweepstakes casinos, automation tools, and side hustles that actually work.</p>
     </div>
 
     <!-- Filter Tabs -->
-    <div class="filter-bar anim-fade-up" id="filterBar">
+    <div class="filter-bar dlg-fade" id="filterBar">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="sweepstakes">Sweepstakes</button>
         <button class="filter-btn" data-filter="automation">Automation &amp; Tools</button>
@@ -196,48 +323,48 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
 
     <!-- ==================== LATEST POSTS ==================== -->
-    <div class="latest-section anim-fade-up" id="latestSection">
+    <div class="latest-section dlg-fade" id="latestSection">
         <div class="latest-header">
             <span class="latest-label">&#128293; Latest Posts</span>
             <div class="category-line"></div>
         </div>
         <div class="blog-grid">
-            <a href="/blog/best-sweepstakes-casinos-low-minimum-redemption-2026" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#22c55e;">
+            <a href="/blog/best-sweepstakes-casinos-low-minimum-redemption-2026" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
                 <div class="card-title">Low Minimum Redemption Casinos 2026</div>
                 <div class="card-desc">The best sweepstakes casinos for faster cashouts, lower gift-card thresholds, and fewer dead balances.</div>
                 <div class="card-read"><span>Read &rarr;</span></div>
             </a>
-            <a href="/blog/daily-login-bonus-routine-15-minute-workflow-2026" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#06b6d4;">
+            <a href="/blog/daily-login-bonus-routine-15-minute-workflow-2026" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
                 <div class="card-title">Daily Login Bonus Routine: 15-Minute Workflow</div>
                 <div class="card-desc">A tactical routine for collecting free Sweeps Coins across 50+ sites without losing track or wasting time.</div>
                 <div class="card-read"><span>Read &rarr;</span></div>
             </a>
-            <a href="/blog/sweepstakes-casino-amoe-mail-in-requests-2026" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+            <a href="/blog/sweepstakes-casino-amoe-mail-in-requests-2026" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
                 <div class="card-title">AMOE Mail-In Requests: Free Sweeps Coins by Mail</div>
                 <div class="card-desc">How no-purchase mail-in requests work, when they are worth doing, and the mistakes that cause letters to get rejected.</div>
                 <div class="card-read"><span>Read &rarr;</span></div>
             </a>
-            <a href="/blog/sweepstakes-casino-autopilot-automation-2026" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#06b6d4;">
+            <a href="/blog/sweepstakes-casino-autopilot-automation-2026" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
                 <div class="card-title">Run Sweepstakes Casinos on Autopilot: The 2026 Stack</div>
                 <div class="card-desc">60+ sites, under 30 minutes a day. Tab groups, password managers, and the exact daily routine that serious collectors use.</div>
                 <div class="card-read"><span>Read &rarr;</span></div>
             </a>
-            <a href="/blog/sweepstakes-casino-redemption-problems-wont-pay" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#ef4444;">
+            <a href="/blog/sweepstakes-casino-redemption-problems-wont-pay" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
                 <div class="card-title">Sweepstakes Casino Won't Pay? Step-by-Step Fix</div>
                 <div class="card-desc">Your withdrawal is stuck. Here's the exact fix — from pending KYC to BBB escalation — to get your money out fast.</div>
                 <div class="card-read"><span>Read &rarr;</span></div>
             </a>
-            <a href="/blog/fortune-coins-review-2026-fortune-wins-rebrand" class="blog-card latest-card anim-fade-up" data-category="sweepstakes" style="--accent:#eab308;">
+            <a href="/blog/fortune-coins-review-2026-fortune-wins-rebrand" class="blog-card latest-card dlg-fade" data-category="sweepstakes">
                 <span class="badge-new">&#10024; NEW</span>
                 <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
                 <div class="card-title">Fortune Coins Review 2026: After the Rebrand to Fortune Wins</div>
@@ -248,144 +375,144 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
 
     <!-- ==================== SWEEPSTAKES ==================== -->
-    <div class="category-header anim-fade-up" data-category="sweepstakes">
+    <div class="category-header dlg-fade" data-category="sweepstakes">
         <h2>&#127920; Sweepstakes</h2>
         <div class="category-line"></div>
     </div>
     <div class="blog-grid" data-category="sweepstakes">
-        <a href="/blog/best-sweepstakes-casinos-low-minimum-redemption-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#22c55e;">
+        <a href="/blog/best-sweepstakes-casinos-low-minimum-redemption-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
             <div class="card-title">Best Low Minimum Redemption Casinos</div>
             <div class="card-desc">Compare WOW Vegas, Crown Coins, Fortune Coins, LuckyLand, High 5, Stake.us, and which sites are not really low-minimum anymore.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/daily-login-bonus-routine-15-minute-workflow-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#06b6d4;">
+        <a href="/blog/daily-login-bonus-routine-15-minute-workflow-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
             <div class="card-title">Daily Login Bonus Routine: 15-Minute Workflow</div>
             <div class="card-desc">How to organize tabs, claim in batches, retry failed sites, and track a 50+ site daily bonus routine.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-casino-amoe-mail-in-requests-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/sweepstakes-casino-amoe-mail-in-requests-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">May 9, 2026</span></div>
             <div class="card-title">AMOE Mail-In Requests: Free Sweeps Coins by Mail</div>
             <div class="card-desc">No-purchase mail-in requests explained: when AMOE is worth doing, what to track, and how to avoid rejected letters.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-casino-autopilot-automation-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#06b6d4;">
+        <a href="/blog/sweepstakes-casino-autopilot-automation-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Run Sweepstakes Casinos on Autopilot: The 2026 Stack</div>
             <div class="card-desc">60+ sites in under 30 minutes. The complete automation stack — tab groups, password managers, and the exact daily routine.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/global-poker-review-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#10b981;">
+        <a href="/blog/global-poker-review-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Global Poker Review 2026: The Only Real Poker Sweepstakes Option?</div>
             <div class="card-desc">~2 SC daily login, VGW Group payout track record, and the largest sweepstakes poker player pool in the US. Is it worth it?</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-casino-redemption-problems-wont-pay" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#ef4444;">
+        <a href="/blog/sweepstakes-casino-redemption-problems-wont-pay" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Sweepstakes Casino Won't Pay? Step-by-Step Fix</div>
             <div class="card-desc">Withdrawal stuck? Here's the exact fix — from KYC issues to BBB escalation — to get your sweepstakes payout released.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/fortune-coins-review-2026-fortune-wins-rebrand" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#eab308;">
+        <a href="/blog/fortune-coins-review-2026-fortune-wins-rebrand" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Fortune Coins Review 2026: After the Rebrand to Fortune Wins</div>
             <div class="card-desc">What changed when Fortune Coins rebranded to Fortune Wins? We tested both — daily bonuses, payouts, game library, and more.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/zula-casino-vs-fortune-coins-vs-sportzino" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#38bdf8;">
+        <a href="/blog/zula-casino-vs-fortune-coins-vs-sportzino" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Zula Casino vs Fortune Coins vs Sportzino: Same Company?</div>
             <div class="card-desc">All three owned by Blazesoft — but they're not identical. Triple your daily bonuses by stacking all three accounts.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/can-sweepstakes-casinos-ban-you-for-winning" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/can-sweepstakes-casinos-ban-you-for-winning" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 27, 2026</span></div>
             <div class="card-title">Can Sweepstakes Casinos Ban You for Winning Too Much?</div>
             <div class="card-desc">Yes — here's exactly why it happens, which platforms do it, and 7 strategies that keep your account safe.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/make-50-day-from-your-phone" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/make-50-day-from-your-phone" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 8, 2026</span></div>
             <div class="card-title">Make $50/Day From Your Phone: Daily Collection Guide</div>
             <div class="card-desc">How to earn $50/day collecting free daily bonuses from 60+ sweepstakes casinos. Full routine and automation tips.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/best-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/best-sweepstakes-casinos-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 7, 2025</span></div>
             <div class="card-title">Best Sweepstakes Casinos 2026: Top 10 Compared</div>
             <div class="card-desc">Side-by-side comparison of the top 10 sites for payouts, bonuses, and daily collection value.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/complete-beginners-guide-to-sweepstake-casinos" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/complete-beginners-guide-to-sweepstake-casinos" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 4, 2025</span></div>
             <div class="card-title">How to Make Money with Sweepstakes Casinos</div>
             <div class="card-desc">Everything from signup to cashout for earning real money.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/how-to-start-sweepstakes-casinos-complete-beginner-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Apr 1, 2025</span></div>
             <div class="card-title">How to Start Sweepstakes: Beginner Guide</div>
             <div class="card-desc">Step-by-step walkthrough for absolute beginners.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/maximize-sweepstakes-casino-winnings-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/maximize-sweepstakes-casino-winnings-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 29, 2025</span></div>
             <div class="card-title">Maximize Sweepstakes Winnings: Strategy Guide</div>
             <div class="card-desc">Advanced strategies for maximizing returns across platforms.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-vs-real-money-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/sweepstakes-vs-real-money-casinos-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 26, 2025</span></div>
             <div class="card-title">Sweepstakes vs Real Money Casinos</div>
             <div class="card-desc">Key differences in legality, payouts, and earnings.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/new-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/new-sweepstakes-casinos-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 23, 2025</span></div>
             <div class="card-title">New Sweepstakes Casinos 2026</div>
             <div class="card-desc">Freshly launched sites with the best welcome bonuses.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/free-daily-login-bonuses-worth-it-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/free-daily-login-bonuses-worth-it-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 20, 2025</span></div>
             <div class="card-title">Are Daily Login Bonuses Worth It?</div>
             <div class="card-desc">We ran the numbers across 70+ sites.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-casino-payout-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/sweepstakes-casino-payout-guide-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 17, 2025</span></div>
             <div class="card-title">Payout Guide: How to Cash Out</div>
             <div class="card-desc">Redemption methods, processing times, and minimums.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstakes-casino-package-churning-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/sweepstakes-casino-package-churning-guide-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 14, 2025</span></div>
             <div class="card-title">Package Churning Guide</div>
             <div class="card-desc">How to buy and churn welcome packages for profit.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/skrill-sweepstakes-casinos-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/skrill-sweepstakes-casinos-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 11, 2025</span></div>
             <div class="card-title">Skrill Casinos: 0% Fees Guide</div>
             <div class="card-desc">Best sites that accept Skrill for deposits and cashouts.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/luckyland-slots-vip-quacky-hours-guide-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/luckyland-slots-vip-quacky-hours-guide-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 8, 2025</span></div>
             <div class="card-title">LuckyLand VIP: Unlock Quacky Hours</div>
             <div class="card-desc">How to unlock boosted rewards and exclusive bonuses.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/make-money-daily-on-stake" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/make-money-daily-on-stake" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 5, 2025</span></div>
             <div class="card-title">Stake.us VIP Guide: $20-$30/Day</div>
             <div class="card-desc">Daily income strategy using Dice and VIP rewards.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/apps-that-pay-real-money-2026" class="blog-card anim-fade-up" data-category="sweepstakes" style="--accent:#f97316;">
+        <a href="/blog/apps-that-pay-real-money-2026" class="blog-card dlg-fade" data-category="sweepstakes">
             <div class="card-top-row"><span class="card-tag sweepstakes">Sweepstakes</span><span class="card-date">Mar 2, 2025</span></div>
             <div class="card-title">10 Apps That Pay Real Money (Tested)</div>
             <div class="card-desc">We tested dozens and found 10 that actually pay.</div>
@@ -394,36 +521,36 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
 
     <!-- ==================== AUTOMATION & TOOLS ==================== -->
-    <div class="category-header anim-fade-up" data-category="automation">
+    <div class="category-header dlg-fade" data-category="automation">
         <h2>&#9881;&#65039; Automation &amp; Tools</h2>
         <div class="category-line"></div>
     </div>
     <div class="blog-grid" data-category="automation">
-        <a href="/blog/automate-sweepstakes-casino-bonuses" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
+        <a href="/blog/automate-sweepstakes-casino-bonuses" class="blog-card dlg-fade" data-category="automation">
             <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 27, 2025</span></div>
             <div class="card-title">Sweeps-App: Automate Daily Bonuses</div>
             <div class="card-desc">Full review of automating collection across 50+ sites.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/automate-sweepstakes-daily-collection-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
+        <a href="/blog/automate-sweepstakes-daily-collection-2026" class="blog-card dlg-fade" data-category="automation">
             <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 24, 2025</span></div>
             <div class="card-title">How to Automate Daily Collection</div>
             <div class="card-desc">Tools, scripts, and workflows to save hours.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/sweepstats-sweepstakes-transaction-tracker-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
+        <a href="/blog/sweepstats-sweepstakes-transaction-tracker-2026" class="blog-card dlg-fade" data-category="automation">
             <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 21, 2025</span></div>
             <div class="card-title">SweepStats: Transaction Tracker</div>
             <div class="card-desc">Track earnings, purchases, and ROI across all platforms.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/openclaw-ai-setup-tutorial-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
+        <a href="/blog/openclaw-ai-setup-tutorial-2026" class="blog-card dlg-fade" data-category="automation">
             <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 18, 2025</span></div>
             <div class="card-title">OpenClaw AI Setup Tutorial</div>
             <div class="card-desc">Step-by-step install and configure OpenClaw AI.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/openclaw-setup-guide-2026" class="blog-card anim-fade-up" data-category="automation" style="--accent:#22d3ee;">
+        <a href="/blog/openclaw-setup-guide-2026" class="blog-card dlg-fade" data-category="automation">
             <div class="card-top-row"><span class="card-tag automation">Automation</span><span class="card-date">Feb 15, 2025</span></div>
             <div class="card-title">OpenClaw: Run Your Own AI 24/7</div>
             <div class="card-desc">Deploy an always-on AI assistant guide.</div>
@@ -432,42 +559,42 @@ body,.page-wrapper,html { background:#000 !important; }
     </div>
 
     <!-- ==================== SIDE HUSTLES ==================== -->
-    <div class="category-header anim-fade-up" data-category="sidehustles">
+    <div class="category-header dlg-fade" data-category="sidehustles">
         <h2>&#128176; Side Hustles</h2>
         <div class="category-line"></div>
     </div>
     <div class="blog-grid" data-category="sidehustles">
-        <a href="/blog/best-side-hustles-no-money-to-start-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/best-side-hustles-no-money-to-start-2026" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 12, 2025</span></div>
             <div class="card-title">Best Side Hustles: $0 to Start</div>
             <div class="card-desc">Proven hustles requiring zero upfront investment.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/how-to-make-50-dollars-a-day-from-phone-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/how-to-make-50-dollars-a-day-from-phone-2026" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 9, 2025</span></div>
             <div class="card-title">Make $50/Day From Your Phone</div>
             <div class="card-desc">Realistic strategies using just your phone.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/best-reward-apps-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/best-reward-apps-2026" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 6, 2025</span></div>
             <div class="card-title">Best Reward Apps 2026</div>
             <div class="card-desc">Top reward apps ranked by earnings potential.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/credit-card-churning-guide-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/credit-card-churning-guide-2026" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Feb 3, 2025</span></div>
             <div class="card-title">Credit Card Churning Guide</div>
             <div class="card-desc">Earn thousands in signup bonuses and cashback.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/matched-betting-guide-2026" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/matched-betting-guide-2026" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Jan 31, 2025</span></div>
             <div class="card-title">Matched Betting Guide</div>
             <div class="card-desc">Extract guaranteed profit from sportsbook promotions.</div>
             <div class="card-read"><span>Read &rarr;</span></div>
         </a>
-        <a href="/blog/how-to-make-money-with-stocks-falling-under-$1" class="blog-card anim-fade-up" data-category="sidehustles" style="--accent:#4ade80;">
+        <a href="/blog/how-to-make-money-with-stocks-falling-under-$1" class="blog-card dlg-fade" data-category="sidehustles">
             <div class="card-top-row"><span class="card-tag sidehustles">Side Hustles</span><span class="card-date">Jan 28, 2025</span></div>
             <div class="card-title">Reverse Stock Arbitrage Guide</div>
             <div class="card-desc">Profit from stocks falling under $1.</div>
@@ -475,11 +602,7 @@ body,.page-wrapper,html { background:#000 !important; }
         </a>
     </div>
 
-  </div>
-</div>
-
-<!-- Discord Float -->
-
+</div><!-- /page-wrap -->
 
 <!-- FOOTER -->
 <footer>
@@ -519,116 +642,138 @@ body,.page-wrapper,html { background:#000 !important; }
   </div>
 </footer>
 
-<script src="/js/dark-forest.js"></script>
-<script src="/js/analytics.js" defer></script>
-
-<script>
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
-});
-
-// Fade-in
-const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); } });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.anim-fade-up').forEach(el => fadeObs.observe(el));
-
-// Stars
-(function(){
-    const c = document.getElementById('stars');
-    if (!c) return;
-    for (let i = 0; i < 80; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        const sz = Math.random()*2+0.5;
-        s.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s;animation-duration:'+(2+Math.random()*3)+'s;';
-        c.appendChild(s);
-    }
-})();
-
-// Sparkles
-(function(){
-    function pop(){
-        const el = document.createElement('div');
-        const sz = 5+Math.random()*8;
-        const dur = 0.8+Math.random()*0.6;
-        el.className = 'sparkle-p';
-        el.style.cssText = 'left:'+Math.random()*100+'vw;top:'+Math.random()*100+'vh;--sz:'+sz+'px;--dur:'+dur+'s;';
-        document.body.appendChild(el);
-        setTimeout(()=>el.remove(), dur*1000+100);
-    }
-    setInterval(pop, 1000);
-})();
-
-// Category filter
-(function(){
-    const btns = document.querySelectorAll('.filter-btn');
-    const headers = document.querySelectorAll('.category-header');
-    const grids = document.querySelectorAll('.blog-grid');
-    const latestSection = document.getElementById('latestSection');
-
-    btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-
-            // Show/hide latest section — only visible in "All" view
-            if (latestSection) latestSection.style.display = filter === 'all' ? '' : 'none';
-
-            headers.forEach(h => {
-                h.style.display = (filter === 'all' || h.dataset.category === filter) ? '' : 'none';
-            });
-            grids.forEach(g => {
-                // Skip the latest-section grid (no data-category on it)
-                if (!g.dataset.category) return;
-                g.style.display = (filter === 'all' || g.dataset.category === filter) ? '' : 'none';
-            });
-        });
-    });
-})();
-
-// Auto-dim old posts & badge new ones
-(function(){
-    const now = new Date();
-    const SIX_MONTHS = 180 * 24 * 60 * 60 * 1000;
-    // Only apply to category section cards (not the latest-section duplicates)
-    document.querySelectorAll('.blog-grid[data-category] .blog-card').forEach(card => {
-        const dateEl = card.querySelector('.card-date');
-        if (!dateEl) return;
-        const postDate = new Date(dateEl.textContent.trim() + ' 12:00:00');
-        if (isNaN(postDate)) return;
-        const ageMs = now - postDate;
-        if (ageMs > SIX_MONTHS) {
-            card.classList.add('old-post');
-        } else {
-            // Add NEW badge if within 6 months and not already badged
-            if (!card.querySelector('.badge-new')) {
-                const badge = document.createElement('span');
-                badge.className = 'badge-new';
-                badge.textContent = '✨ NEW';
-                card.insertBefore(badge, card.firstChild);
-            }
-        }
-    });
-})();
-</script>
-
-
 <!-- Discord widget -->
 <a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener"><button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button><svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg><div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div></a>
 <script>(function(){var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){w.style.display='none';},300);localStorage.setItem('dcDismissed','1');});})();</script>
+
+<script>
+/* ==============================
+   BGCANVAS STARFIELD
+============================== */
+(function(){
+  const canvas = document.getElementById('bgCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  function mkStar(){
+    return { x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.2+0.2, a:Math.random(), da:(Math.random()*0.004+0.001)*(Math.random()<0.5?1:-1) };
+  }
+  function init(){ resize(); stars=[]; for(let i=0;i<120;i++) stars.push(mkStar()); }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.a+=s.da; if(s.a<=0||s.a>=1) s.da*=-1;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(110,231,183,'+s.a.toFixed(2)+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{ resize(); stars=[]; for(let i=0;i<120;i++) stars.push(mkStar()); });
+  init(); draw();
+})();
+
+/* ==============================
+   FLYING COINS
+============================== */
+(function(){
+  const COINS=['💰','🪙','💵','💎'];
+  function spawnCoin(){
+    const el=document.createElement('div');
+    el.className='fly-coin';
+    const rtl=Math.random()<0.5;
+    const dy=(Math.random()*80-40)+'px';
+    const dur=(4+Math.random()*4).toFixed(1)+'s';
+    el.textContent=COINS[Math.floor(Math.random()*COINS.length)];
+    el.style.cssText='top:'+(10+Math.random()*80)+'vh;'+(rtl?'right:-60px':'left:-60px')+';--dy:'+dy+';animation:coin'+(rtl?'FlyRTL':'FlyLTR')+' '+dur+' linear forwards;';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),(parseFloat(dur)+0.3)*1000);
+  }
+  setTimeout(()=>spawnCoin(),2000);
+  setInterval(spawnCoin,7000);
+})();
+
+/* ==============================
+   NAV SCROLL + HAMBURGER
+============================== */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ==============================
+   FADE-IN OBSERVER
+============================== */
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.dlg-fade').forEach(el => fadeObs.observe(el));
+
+/* ==============================
+   CATEGORY FILTER
+============================== */
+(function(){
+  const btns = document.querySelectorAll('.filter-btn');
+  const headers = document.querySelectorAll('.category-header');
+  const grids = document.querySelectorAll('.blog-grid');
+  const latestSection = document.getElementById('latestSection');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      if (latestSection) latestSection.style.display = filter === 'all' ? '' : 'none';
+      headers.forEach(h => {
+        h.style.display = (filter === 'all' || h.dataset.category === filter) ? '' : 'none';
+      });
+      grids.forEach(g => {
+        if (!g.dataset.category) return;
+        g.style.display = (filter === 'all' || g.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+})();
+
+/* ==============================
+   AUTO-DIM OLD POSTS & BADGE NEW
+============================== */
+(function(){
+  const now = new Date();
+  const SIX_MONTHS = 180 * 24 * 60 * 60 * 1000;
+  document.querySelectorAll('.blog-grid[data-category] .blog-card').forEach(card => {
+    const dateEl = card.querySelector('.card-date');
+    if (!dateEl) return;
+    const postDate = new Date(dateEl.textContent.trim() + ' 12:00:00');
+    if (isNaN(postDate)) return;
+    const ageMs = now - postDate;
+    if (ageMs > SIX_MONTHS) {
+      card.classList.add('old-post');
+    } else {
+      if (!card.querySelector('.badge-new')) {
+        const badge = document.createElement('span');
+        badge.className = 'badge-new';
+        badge.textContent = '✨ NEW';
+        card.insertBefore(badge, card.firstChild);
+      }
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
