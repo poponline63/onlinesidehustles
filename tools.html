@@ -1,137 +1,210 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D9MKJR8494');
-    </script>
-    <script src="/js/analytics.js" defer></script>
-    <!-- End Google Analytics 4 -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="robots" content="index, follow">
-    <title>Automation Tools 2026 | Bots, Trackers &amp; Software | Online Sidehustles</title>
-    <meta name="description" content="Automation tools for side hustles: Bookie Bandit sports betting bot, OpenClaw daily collection AI, SweepStats tracker, and more. Automate your income streams.">
-    <link rel="canonical" href="https://onlinesidehustles.info/tools">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onlinesidehustles.info/tools">
-    <meta property="og:title" content="Automation Tools 2026 | Bots, Trackers &amp; Software">
-    <meta property="og:description" content="Automation tools for side hustles: sports betting bots, daily collection AI, transaction trackers, and more.">
-    <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
-    <link rel="icon" type="image/gif" href="/favicon.gif">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#050810">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
-    <style>
-/* ===== TOOLS HUB — CYAN / TECH THEME ===== */
-.space-background { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:-3; }
-.stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2; pointer-events:none; }
-.star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite; }
-@keyframes twinkle { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.3;transform:scale(0.5);} }
-.shooting-star { position:fixed; width:100px; height:2px; background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.8),rgba(255,255,255,0)); border-radius:50%; animation:shoot 8s linear infinite; z-index:-1; pointer-events:none; }
-@keyframes shoot { 0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:1;} 70%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} 100%{transform:translateX(-500px) translateY(200px) rotate(-30deg);opacity:0;} }
-
-body,.page-wrapper,html { background:#000 !important; }
-.content-area { background:transparent !important; padding-top:60px !important; }
-.content-area .container { max-width:1100px !important; width:calc(100% - 4rem) !important; padding:0 !important; margin:0 auto !important; background:transparent !important; border:none !important; box-shadow:none !important; }
-
-/* Hero */
-.portal-hero { text-align:center; padding:3.5rem 2rem 1.5rem; }
-.portal-hero h1 { font-size:clamp(2.2rem,5vw,3.5rem); font-weight:900; color:#fff; margin:0 0 1rem; line-height:1.1; }
-.portal-hero .accent { background:linear-gradient(135deg,#22d3ee,#06b6d4,#67e8f9,#22d3ee); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
-@keyframes shimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
-.portal-hero p { color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:700px; margin:0 auto; line-height:1.7; }
-.hero-icon { width:100px; height:100px; border-radius:50%; background:radial-gradient(ellipse at 35% 35%,#67e8f9,#22d3ee,#06b6d4,#0891b2); box-shadow:0 0 40px rgba(6,182,212,0.3),0 0 80px rgba(6,182,212,0.1); margin:0 auto 1.5rem; display:flex; align-items:center; justify-content:center; font-size:3rem; animation:heroGlow 3s ease-in-out infinite; }
-@keyframes heroGlow { 0%,100%{box-shadow:0 0 40px rgba(6,182,212,0.3),0 0 80px rgba(6,182,212,0.1);} 50%{box-shadow:0 0 60px rgba(34,211,238,0.5),0 0 120px rgba(6,182,212,0.2);} }
-
-/* Category headers */
-.cat-header { padding:0 0.5rem; margin:2.5rem 0 1.2rem; display:flex; align-items:center; gap:0.8rem; }
-.cat-header h2 { font-size:1.3rem; font-weight:800; color:#fff; margin:0; white-space:nowrap; }
-.cat-line { flex:1; height:1px; background:linear-gradient(90deg,rgba(6,182,212,0.2),transparent); }
-
-/* Card grid */
-.tools-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-bottom:1rem; }
-@media(max-width:700px){ .tools-grid { grid-template-columns:1fr; } }
-
-/* Tool card */
-.tool-card { background:rgba(255,255,255,0.04); border:1px solid rgba(6,182,212,0.12); border-radius:16px; padding:2rem 1.8rem; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; position:relative; overflow:hidden; }
-.tool-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.4); border-color:rgba(6,182,212,0.25); }
-.tool-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent,rgba(6,182,212,0.3)); opacity:0; transition:opacity 0.2s; }
-.tool-card:hover::before { opacity:1; }
-.card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
-.card-icon { font-size:2.2rem; line-height:1; }
-.card-arrow { color:rgba(255,255,255,0.2); font-size:1.2rem; transition:color 0.2s, transform 0.2s; }
-.tool-card:hover .card-arrow { color:rgba(6,182,212,0.7); transform:translateX(3px); }
-.card-title { font-size:1.2rem; font-weight:800; color:#fff; margin:0 0 0.5rem; }
-.card-subtitle { font-size:0.8rem; color:rgba(6,182,212,0.8); font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.6rem; }
-.card-desc { font-size:0.9rem; color:rgba(255,255,255,0.7); line-height:1.65; flex:1; margin:0 0 1rem; }
-.card-footer { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
-.card-tag { font-size:0.7rem; font-weight:700; padding:0.25rem 0.65rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.04em; }
-.tag-cyan { background:rgba(6,182,212,0.12); color:#22d3ee; border:1px solid rgba(6,182,212,0.25); }
-.tag-green { background:rgba(52,211,153,0.12); color:#34d399; border:1px solid rgba(52,211,153,0.2); }
-.tag-gold { background:rgba(251,191,36,0.12); color:#fbbf24; border:1px solid rgba(251,191,36,0.2); }
-.tag-white { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.8); border:1px solid rgba(255,255,255,0.15); }
-.tag-purple { background:rgba(167,139,250,0.12); color:#a78bfa; border:1px solid rgba(167,139,250,0.2); }
-
-/* Featured card (full width) */
-.featured-tool { grid-column: span 2; border-color:rgba(6,182,212,0.2); background:rgba(6,182,212,0.03); }
-.featured-tool:hover { border-color:rgba(6,182,212,0.35); }
-@media(max-width:700px){ .featured-tool { grid-column: span 1; } }
-.featured-inner { display:flex; gap:2rem; align-items:flex-start; }
-@media(max-width:600px){ .featured-inner { flex-direction:column; } }
-.featured-content { flex:1; }
-.featured-side { display:flex; flex-direction:column; align-items:center; gap:0.5rem; min-width:140px; }
-.featured-cta { display:inline-flex; align-items:center; gap:0.5rem; background:#fff; color:#000; padding:0.9rem 2rem; border-radius:50px; font-size:1rem; font-weight:700; text-decoration:none; box-shadow:0 0 20px rgba(255,255,255,0.2); transition:transform 0.2s,box-shadow 0.2s; }
-.featured-cta:hover { transform:translateY(-2px) scale(1.03); box-shadow:0 0 35px rgba(255,255,255,0.35); }
-
-/* Fade-in */
-.anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
-.anim-fade-up.visible { opacity:1; transform:translateY(0); }
-
-/* Sparkles */
-.sparkle-p { position:fixed; pointer-events:none; z-index:2; animation:sparklePop var(--dur,1.2s) ease-out forwards; }
-.sparkle-p::before,.sparkle-p::after { content:''; position:absolute; border-radius:2px; top:50%; left:50%; transform:translate(-50%,-50%); }
-.sparkle-p::before { width:var(--sz,7px); height:2px; background:rgba(6,182,212,0.8); box-shadow:0 0 4px rgba(6,182,212,0.5); }
-.sparkle-p::after { width:2px; height:var(--sz,7px); background:rgba(6,182,212,0.8); box-shadow:0 0 4px rgba(6,182,212,0.5); }
-@keyframes sparklePop { 0%{opacity:0;transform:scale(0) rotate(0deg);} 25%{opacity:1;transform:scale(1.3) rotate(45deg);} 60%{opacity:0.8;transform:scale(1) rotate(90deg);} 100%{opacity:0;transform:scale(0.3) rotate(180deg) translateY(-15px);} }
-
-/* Discord float */
-
-
-
-@media(max-width:768px){
-    .content-area .container { width:calc(100% - 2rem) !important; }
-    .portal-hero { padding:2.5rem 1rem 1.5rem; }
-}
-    </style>
-    <script src="/js/animated-favicon.js" defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D9MKJR8494');
+</script>
+<script src="/js/analytics.js" defer></script>
+<!-- End Google Analytics 4 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="robots" content="index, follow">
+<title>Automation Tools 2026 | Bots, Trackers &amp; Software | Online Sidehustles</title>
+<meta name="description" content="Automation tools for side hustles: Bookie Bandit sports betting bot, OpenClaw daily collection AI, SweepStats tracker, and more. Automate your income streams.">
+<link rel="canonical" href="https://onlinesidehustles.info/tools">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onlinesidehustles.info/tools">
+<meta property="og:title" content="Automation Tools 2026 | Bots, Trackers &amp; Software">
+<meta property="og:description" content="Automation tools for side hustles: sports betting bots, daily collection AI, transaction trackers, and more.">
+<meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+<link rel="icon" type="image/gif" href="/favicon.gif">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111c2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="/js/animated-favicon.js" defer></script>
 <style>
+/* ===== DESIGN TOKENS ===== */
+:root{
+  --bg:#111c2e;--bg-card:#0f1723;--bg-nav:#0c1526;
+  --teal:#6ee7b7;--teal-dim:rgba(110,231,183,0.55);--teal-faint:rgba(110,231,183,0.10);
+  --lime:#ADFF2F;--lime-text:#060a0f;
+  --text:#e8e6e0;--text-muted:#7a8fa8;--text-dim:#94a3b8;
+  --border:rgba(110,231,183,0.12);--border-md:rgba(110,231,183,0.22);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;}
+
+/* ===== DISCORD WIDGET ===== */
 .discord-widget{position:fixed;bottom:1.25rem;left:1.25rem;z-index:9997;background:#5865F2;border-radius:14px;padding:.7rem 1rem .7rem .85rem;display:flex;align-items:center;gap:.65rem;box-shadow:0 4px 22px rgba(88,101,242,.45),0 0 0 1px rgba(255,255,255,.08);text-decoration:none;color:#fff;animation:discordIn .55s cubic-bezier(.22,1,.36,1) 2.5s both;transition:transform .18s,box-shadow .18s;max-width:230px;}
 .discord-widget:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(88,101,242,.55);}
 @keyframes discordIn{from{transform:translateX(-130%) scale(.9);opacity:0;}to{transform:translateX(0) scale(1);opacity:1;}}
 .discord-icon{flex-shrink:0;width:28px;height:28px;}
 .discord-text{display:flex;flex-direction:column;line-height:1.25;}
 .discord-title{font-weight:700;font-size:.82rem;}
-.discord-sub{font-size:.68rem;opacity:.82;}
+.discord-sub{font-size:.68rem;opacity:.82;font-family:'IBM Plex Mono',monospace;}
 .discord-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:rgba(20,20,40,.75);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
 .discord-x:hover{background:rgba(248,113,113,.8);}
+
+/* ===== BACKGROUND ===== */
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-4;pointer-events:none;}
+.bg-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:-3;filter:blur(100px);animation:orbDrift var(--dur,26s) ease-in-out infinite alternate;}
+@keyframes orbDrift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(var(--tx,40px),var(--ty,-30px)) scale(var(--ts,1.08));}}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(rgba(110,231,183,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,0.025) 1px,transparent 1px);background-size:56px 56px;}
+.bg-vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(5,9,18,0.45) 72%,rgba(4,8,16,0.82) 100%);}
+.bg-scanlines{position:fixed;inset:0;z-index:-2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);}
+.fly-coin{position:fixed;pointer-events:none;z-index:-1;opacity:0;filter:drop-shadow(0 0 6px rgba(110,231,183,0.5));will-change:transform;}
+@keyframes coinFlyRTL{0%{opacity:0;transform:translateX(0) translateY(0) rotate(0deg) scale(var(--cs));}8%{opacity:0.6;}92%{opacity:0.6;}100%{opacity:0;transform:translateX(-110vw) translateY(var(--drift)) rotate(720deg) scale(var(--cs));}}
+@keyframes coinFlyLTR{0%{opacity:0;transform:translateX(0) translateY(0) rotate(0deg) scale(var(--cs));}8%{opacity:0.6;}92%{opacity:0.6;}100%{opacity:0;transform:translateX(110vw) translateY(var(--drift)) rotate(-720deg) scale(var(--cs));}}
+
+/* ===== SCROLL FADE ===== */
+.dlg-fade{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease-out,transform 0.55s ease-out;}
+.dlg-fade.visible{opacity:1;transform:translateY(0);}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-nav);border-bottom:1px solid var(--border);height:54px;display:flex;align-items:center;padding:0 1.5rem;transition:box-shadow 0.2s;}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
+.nav-inner{max-width:1600px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:0.45rem;text-decoration:none;font-weight:700;font-size:0.82rem;color:var(--text);letter-spacing:0.08em;text-transform:uppercase;font-family:'IBM Plex Mono','Courier New',monospace;}
+.nav-logo{width:20px;height:20px;border-radius:4px;}
+.nav-links{display:flex;align-items:center;gap:0.05rem;}
+.nav-link{color:var(--text-dim);text-decoration:none;padding:0.3rem 0.7rem;font-size:0.78rem;font-weight:500;border-bottom:2px solid transparent;transition:all 0.18s;}
+.nav-link:hover{color:var(--teal);}
+.nav-link.active{color:var(--teal);border-bottom-color:var(--teal);}
+.nav-cta{background:var(--lime);color:var(--lime-text);text-decoration:none;padding:0.35rem 1rem;font-size:0.78rem;font-weight:700;border-radius:4px;margin-left:0.6rem;transition:opacity 0.2s;}
+.nav-cta:hover{opacity:0.88;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text-dim);border-radius:2px;transition:all 0.2s;}
+.nav-hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.active span:nth-child(2){opacity:0;}
+.nav-hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;z-index:999;background:var(--bg-nav);border-bottom:1px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.25rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text-dim);text-decoration:none;padding:0.5rem 0;font-size:0.9rem;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu a:hover{color:var(--teal);}
+
+/* ===== PAGE ===== */
+.page{max-width:1280px;margin:0 auto;padding:74px 1.25rem 4rem;}
+
+/* ===== HERO ===== */
+.hero{padding:2.2rem 0 1.8rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem;text-align:center;}
+.hero-label{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:0.55rem;}
+.hero h1{font-size:2.4rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:0.7rem;}
+.hero h1 span{color:var(--teal);}
+.hero-desc{font-size:0.97rem;color:var(--text-dim);line-height:1.7;max-width:680px;margin:0 auto;}
+
+/* ===== CAT HEADER ===== */
+.cat-header{display:flex;align-items:center;gap:0.9rem;margin:2.2rem 0 1rem;}
+.cat-header:first-of-type{margin-top:0;}
+.cat-label{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);white-space:nowrap;}
+.cat-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-md),transparent);}
+
+/* ===== TOOLS GRID ===== */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:0.5rem;}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr;}}
+
+/* ===== TOOL CARD ===== */
+.tool-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1.5rem 1.35rem 1.2rem;
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--accent,var(--teal));opacity:0.6;transition:opacity 0.2s;}
+.tool-card:hover{transform:translateY(-3px);border-color:var(--border-md);box-shadow:0 8px 32px rgba(0,0,0,0.35);}
+.tool-card:hover::before{opacity:1;}
+
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.85rem;}
+.card-icon{font-size:1.9rem;line-height:1;}
+.card-arrow{color:var(--text-dim);font-size:1rem;transition:color 0.2s,transform 0.2s;}
+.tool-card:hover .card-arrow{color:var(--teal);transform:translateX(3px);}
+.card-title{font-size:0.98rem;font-weight:700;color:#fff;margin-bottom:0.3rem;line-height:1.3;}
+.card-subtitle{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;}
+.card-desc{font-size:0.86rem;color:var(--text-dim);line-height:1.65;flex:1;margin-bottom:0.9rem;}
+.card-footer{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:auto;}
+.card-tag{font-size:0.6rem;font-weight:700;padding:0.22rem 0.55rem;border-radius:3px;letter-spacing:0.07em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;}
+.tag-teal{background:rgba(110,231,183,0.09);color:var(--teal);border:1px solid rgba(110,231,183,0.18);}
+.tag-lime{background:rgba(173,255,47,0.08);color:var(--lime);border:1px solid rgba(173,255,47,0.2);}
+.tag-gold{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.22);}
+.tag-blue{background:rgba(96,165,250,0.1);color:#60a5fa;border:1px solid rgba(96,165,250,0.22);}
+.tag-purple{background:rgba(192,132,252,0.1);color:#c084fc;border:1px solid rgba(192,132,252,0.22);}
+.tag-red{background:rgba(248,113,113,0.1);color:#f87171;border:1px solid rgba(248,113,113,0.22);}
+.tag-white{background:rgba(255,255,255,0.06);color:var(--text-dim);border:1px solid rgba(255,255,255,0.12);}
+
+/* ===== FEATURED CARD (full width) ===== */
+.featured-tool{grid-column:span 2;background:linear-gradient(135deg,rgba(110,231,183,0.05),rgba(110,231,183,0.02));border-color:rgba(110,231,183,0.18);}
+.featured-tool:hover{border-color:var(--border-md);}
+@media(max-width:700px){.featured-tool{grid-column:span 1;}}
+.featured-inner{display:flex;gap:2rem;align-items:flex-start;}
+@media(max-width:600px){.featured-inner{flex-direction:column;}}
+.featured-content{flex:1;}
+.featured-side{display:flex;flex-direction:column;align-items:center;gap:0.6rem;min-width:150px;}
+.featured-cta{display:inline-flex;align-items:center;gap:0.4rem;background:var(--lime);color:var(--lime-text);padding:0.8rem 1.8rem;border-radius:6px;font-size:0.92rem;font-weight:700;text-decoration:none;transition:opacity 0.2s,transform 0.2s;white-space:nowrap;}
+.featured-cta:hover{opacity:0.88;transform:translateY(-1px);}
+.featured-link{color:var(--teal);font-size:0.82rem;font-weight:600;text-decoration:none;transition:text-decoration 0.18s;}
+.featured-link:hover{text-decoration:underline;}
+.featured-link-dim{color:var(--text-muted);font-size:0.78rem;font-weight:600;text-decoration:none;transition:color 0.18s;}
+.featured-link-dim:hover{color:var(--text-dim);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75rem;margin-top:3rem;}
+.footer-inner{max-width:1600px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.2rem;}
+.footer-brand{font-weight:700;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);margin-bottom:0.4rem;font-family:'IBM Plex Mono',monospace;}
+.footer-tagline{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+.footer-col h4{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;font-family:'IBM Plex Mono',monospace;}
+.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:0.74rem;margin-bottom:0.28rem;transition:color 0.18s;}
+.footer-col a:hover{color:var(--teal);}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.footer-copy,.footer-links a{font-size:0.7rem;color:var(--text-muted);}
+.footer-links{display:flex;gap:1rem;}
+.footer-links a:hover{color:var(--text);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero h1{font-size:1.8rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
 
-<canvas id="starfield"></canvas>
+<!-- Background layers -->
+<canvas id="bgCanvas"></canvas>
+<div class="bg-orb" style="width:780px;height:780px;top:-200px;right:-160px;background:radial-gradient(circle,rgba(110,231,183,0.15) 0%,transparent 70%);--dur:34s;--tx:65px;--ty:50px;--ts:1.06;"></div>
+<div class="bg-orb" style="width:600px;height:600px;bottom:-140px;left:-140px;background:radial-gradient(circle,rgba(192,132,252,0.12) 0%,transparent 70%);--dur:42s;--tx:-50px;--ty:-60px;--ts:1.1;"></div>
+<div class="bg-orb" style="width:400px;height:400px;top:40%;left:3%;background:radial-gradient(circle,rgba(96,165,250,0.08) 0%,transparent 70%);--dur:26s;--tx:40px;--ty:30px;--ts:0.94;"></div>
+<div class="bg-grid"></div>
+<div class="bg-scanlines"></div>
+<div class="bg-vignette"></div>
+
+<!-- Discord widget -->
+<a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener">
+  <button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button>
+  <svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg>
+  <div class="discord-text">
+    <span class="discord-title">Join Discord</span>
+    <span class="discord-sub">Free SC alerts &amp; tips</span>
+  </div>
+</a>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <img src="/logo.png" alt="Online Sidehustles" class="nav-logo">
@@ -141,9 +214,9 @@ body,.page-wrapper,html { background:#000 !important; }
       <a href="/getting-started" class="nav-link">Get Started</a>
       <a href="/sweepstakes-casino-list" class="nav-link">Sweepstakes Casinos List</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
-      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/tools" class="nav-link active">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
-      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">Join Discord</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">&#128225; Join Discord</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -151,6 +224,7 @@ body,.page-wrapper,html { background:#000 !important; }
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
   <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
@@ -160,154 +234,145 @@ body,.page-wrapper,html { background:#000 !important; }
   <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Join Discord</a>
 </div>
 
-<!-- PAGE CONTENT -->
-<div class="content-area" style="padding-top:80px;">
-  <div class="container">
+<div class="page">
 
-    <div class="space-background"></div>
-    <div class="stars" id="stars"></div>
-    <div class="shooting-star" style="top:12%;left:80%;animation-delay:0s;"></div>
-    <div class="shooting-star" style="top:40%;left:60%;animation-delay:3s;"></div>
-    <div class="shooting-star" style="top:65%;left:85%;animation-delay:6s;"></div>
-
-    <!-- Hero -->
-    <div class="portal-hero anim-fade-up">
-        <div class="hero-icon">&#9881;&#65039;</div>
-        <h1><span class="accent">Automation</span> Tools</h1>
-        <p>Bots, trackers, and software to automate your side hustles. Work smarter, earn more, spend less time doing the manual stuff.</p>
-    </div>
-
-    <!-- ===== FEATURED: BOOKIE BANDIT ===== -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#11088; Featured</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="tools-grid anim-fade-up">
-        <div class="tool-card featured-tool" style="--accent:#fff;">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem;">
-                <div style="font-size:2.5rem;">&#129302;</div>
-                <div style="flex:1;">
-                    <div class="card-title" style="font-size:1.5rem; margin-bottom:0.2rem;">Bookie Bandit</div>
-                    <div class="card-subtitle" style="margin-bottom:0;">AI Sports Betting Bot &mdash; 14+ Sportsbooks</div>
-                </div>
-                <span class="card-tag tag-white">FEATURED</span>
-            </div>
-            <div class="card-desc" style="font-size:0.92rem; margin-bottom:1.2rem;">
-                AI-powered desktop app that finds and places positive expected value (+EV) bets automatically 24/7.
-                Supports FanDuel, DraftKings, PrizePicks, Underdog, Bovada, and 9 more platforms.
-                No sports knowledge needed &mdash; the bot handles everything. Built-in analytics track your profit, win rate, and ROI.
-            </div>
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-bottom:1.2rem;">
-                <span class="card-tag tag-green">WINDOWS &amp; MAC</span>
-                <span class="card-tag tag-gold">14+ SPORTSBOOKS</span>
-                <span class="card-tag tag-cyan">24/7 AUTOMATED</span>
-            </div>
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1.2rem;">
-                <a href="https://shorturl.at/2CwIc" class="featured-cta" target="_blank" rel="noopener">
-                    Get Bookie Bandit
-                </a>
-                <a href="/sportsbetting-automation" style="color:rgba(6,182,212,0.8); font-size:0.9rem; font-weight:600; text-decoration:none;">Learn More &rarr;</a>
-                <a href="https://discord.gg/kFSctbB7JY" style="color:rgba(255,255,255,0.5); font-size:0.85rem; font-weight:600; text-decoration:none;" target="_blank" rel="noopener">Join Their Discord</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== SWEEPSTAKES AUTOMATION ===== -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#127920; Sweepstakes Automation</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="tools-grid anim-fade-up">
-        <a href="/bonus-collection-software" class="tool-card" style="--accent:#22d3ee;">
-            <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">Sweeps App &mdash; Daily Login Collection Software</div>
-            <div class="card-subtitle">Multi-Site Automation</div>
-            <div class="card-desc">Automate daily logins and bonus collection across dozens of sweepstakes sites at once. Handles the repetitive clicking so you don't have to.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-cyan">AUTOMATION</span>
-                <span class="card-tag tag-green">MULTI-SITE</span>
-            </div>
-        </a>
-        <a href="/openclaw-setup" class="tool-card" style="--accent:#34d399;">
-            <div class="card-top"><div class="card-icon">&#129302;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">OpenClaw AI</div>
-            <div class="card-subtitle">AI Desktop Assistant for Sweepstakes</div>
-            <div class="card-desc">An AI tool you install on your PC that helps automate and optimize your sweepstakes casino workflow. Runs locally on your machine.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-green">AI-POWERED</span>
-                <span class="card-tag tag-cyan">DESKTOP APP</span>
-            </div>
-        </a>
-    </div>
-
-    <!-- ===== TRACKING & ANALYTICS ===== -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#128202; Tracking &amp; Analytics</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="tools-grid anim-fade-up">
-        <a href="/sweepstats" class="tool-card" style="--accent:#a78bfa;">
-            <div class="card-top"><div class="card-icon">&#128202;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">SweepStats Tracker</div>
-            <div class="card-subtitle">Transaction &amp; Profit Tracking</div>
-            <div class="card-desc">Track deposits, redemptions, and profit across all your sweepstakes casinos with dashboards and charts. Know exactly what's working and what's not.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-purple">TRACKING</span>
-                <span class="card-tag tag-cyan">DASHBOARDS</span>
-            </div>
-        </a>
-    </div>
-
-    <!-- ===== SELLING & E-COMMERCE ===== -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#128722; Selling Automation</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="tools-grid anim-fade-up">
-        <a href="/sell-on-ebay-automated" class="tool-card" style="--accent:#60a5fa;">
-            <div class="card-top"><div class="card-icon">&#128722;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">eBay Automation</div>
-            <div class="card-subtitle">Automated Sourcing, Listing &amp; Shipping</div>
-            <div class="card-desc">Automated tools to source, list, and ship products on eBay without manual work. Scale your store while spending less time on it.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-cyan">AUTOMATED</span>
-                <span class="card-tag tag-gold">$500-$2K/MO</span>
-            </div>
-        </a>
-        <a href="/sell-on-tiktok-automated" class="tool-card" style="--accent:#f87171;">
-            <div class="card-top"><div class="card-icon">&#127925;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">TikTok Shop Automation</div>
-            <div class="card-subtitle">Automated Listing &amp; Fulfillment</div>
-            <div class="card-desc">TikTok Shop with automated product listing and fulfillment workflows. Leverage viral content to drive sales on autopilot.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-cyan">AUTOMATED</span>
-                <span class="card-tag tag-gold">$500-$3K/MO</span>
-            </div>
-        </a>
-    </div>
-
-    <!-- ===== GUIDES ===== -->
-    <div class="cat-header anim-fade-up">
-        <h2>&#128214; Automation Guides</h2>
-        <div class="cat-line"></div>
-    </div>
-    <div class="tools-grid anim-fade-up">
-        <a href="/automation" class="tool-card" style="--accent:#22d3ee;">
-            <div class="card-top"><div class="card-icon">&#9881;&#65039;</div><span class="card-arrow">&rarr;</span></div>
-            <div class="card-title">Automation Overview</div>
-            <div class="card-subtitle">General Guide</div>
-            <div class="card-desc">How to think about automating your side hustles. Tools, strategies, and workflows to earn more with less manual effort.</div>
-            <div class="card-footer">
-                <span class="card-tag tag-cyan">GUIDE</span>
-            </div>
-        </a>
-    </div>
-
+  <!-- HERO -->
+  <div class="hero dlg-fade">
+    <div class="hero-label">Automation &amp; Tools</div>
+    <h1>Work <span>Smarter</span>, Earn More</h1>
+    <p class="hero-desc">Bots, trackers, and software to automate your side hustles. Spend less time on the manual stuff and more time collecting.</p>
   </div>
-</div>
 
-<!-- Discord Float -->
+  <!-- ===== FEATURED: BOOKIE BANDIT ===== -->
+  <div class="cat-header dlg-fade">
+    <span class="cat-label">&#11088; Featured</span>
+    <div class="cat-line"></div>
+  </div>
 
+  <div class="tools-grid dlg-fade">
+    <div class="tool-card featured-tool" style="--accent:var(--lime);">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;">
+        <div style="font-size:2.2rem;line-height:1;">&#129302;</div>
+        <div style="flex:1;">
+          <div class="card-title" style="font-size:1.3rem;margin-bottom:0.2rem;">Bookie Bandit</div>
+          <div class="card-subtitle" style="margin-bottom:0;">AI Sports Betting Bot &mdash; 14+ Sportsbooks</div>
+        </div>
+        <span class="card-tag tag-lime">FEATURED</span>
+      </div>
+      <p class="card-desc">
+        AI-powered desktop app that finds and places positive expected value (+EV) bets automatically 24/7.
+        Supports FanDuel, DraftKings, PrizePicks, Underdog, Bovada, and 9 more platforms.
+        No sports knowledge needed &mdash; the bot handles everything. Built-in analytics track your profit, win rate, and ROI.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;margin-bottom:1.2rem;">
+        <span class="card-tag tag-teal">24/7 AUTOMATED</span>
+        <span class="card-tag tag-gold">14+ SPORTSBOOKS</span>
+        <span class="card-tag tag-white">WINDOWS &amp; MAC</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;">
+        <a href="https://shorturl.at/2CwIc" class="featured-cta" target="_blank" rel="noopener">Get Bookie Bandit</a>
+        <a href="/sportsbetting-automation" class="featured-link">Learn More &rarr;</a>
+        <a href="https://discord.gg/kFSctbB7JY" class="featured-link-dim" target="_blank" rel="noopener">Join Their Discord</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SWEEPSTAKES AUTOMATION ===== -->
+  <div class="cat-header dlg-fade">
+    <span class="cat-label">&#127920; Sweepstakes Automation</span>
+    <div class="cat-line"></div>
+  </div>
+
+  <div class="tools-grid dlg-fade">
+    <a href="/bonus-collection-software" class="tool-card" style="--accent:var(--teal);">
+      <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">Sweeps App &mdash; Daily Login Collection Software</div>
+      <div class="card-subtitle">Multi-Site Automation</div>
+      <p class="card-desc">Automate daily logins and bonus collection across dozens of sweepstakes sites at once. Handles the repetitive clicking so you don't have to.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-teal">AUTOMATION</span>
+        <span class="card-tag tag-lime">MULTI-SITE</span>
+      </div>
+    </a>
+    <a href="/openclaw-setup" class="tool-card" style="--accent:var(--lime);">
+      <div class="card-top"><div class="card-icon">&#129302;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">OpenClaw AI</div>
+      <div class="card-subtitle">AI Desktop Assistant for Sweepstakes</div>
+      <p class="card-desc">An AI tool you install on your PC that helps automate and optimize your sweepstakes casino workflow. Runs locally on your machine.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-lime">AI-POWERED</span>
+        <span class="card-tag tag-teal">DESKTOP APP</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ===== TRACKING & ANALYTICS ===== -->
+  <div class="cat-header dlg-fade">
+    <span class="cat-label">&#128202; Tracking &amp; Analytics</span>
+    <div class="cat-line"></div>
+  </div>
+
+  <div class="tools-grid dlg-fade">
+    <a href="/sweepstats" class="tool-card" style="--accent:var(--purple,#c084fc);">
+      <div class="card-top"><div class="card-icon">&#128202;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">SweepStats Tracker</div>
+      <div class="card-subtitle">Transaction &amp; Profit Tracking</div>
+      <p class="card-desc">Track deposits, redemptions, and profit across all your sweepstakes casinos with dashboards and charts. Know exactly what's working and what's not.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-purple">TRACKING</span>
+        <span class="card-tag tag-teal">DASHBOARDS</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ===== SELLING AUTOMATION ===== -->
+  <div class="cat-header dlg-fade">
+    <span class="cat-label">&#128722; Selling Automation</span>
+    <div class="cat-line"></div>
+  </div>
+
+  <div class="tools-grid dlg-fade">
+    <a href="/sell-on-ebay-automated" class="tool-card" style="--accent:#60a5fa;">
+      <div class="card-top"><div class="card-icon">&#128722;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">eBay Automation</div>
+      <div class="card-subtitle">Automated Sourcing, Listing &amp; Shipping</div>
+      <p class="card-desc">Automated tools to source, list, and ship products on eBay without manual work. Scale your store while spending less time on it.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-teal">AUTOMATED</span>
+        <span class="card-tag tag-gold">$500–$2K/MO</span>
+      </div>
+    </a>
+    <a href="/sell-on-tiktok-automated" class="tool-card" style="--accent:#f87171;">
+      <div class="card-top"><div class="card-icon">&#127925;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">TikTok Shop Automation</div>
+      <div class="card-subtitle">Automated Listing &amp; Fulfillment</div>
+      <p class="card-desc">TikTok Shop with automated product listing and fulfillment workflows. Leverage viral content to drive sales on autopilot.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-teal">AUTOMATED</span>
+        <span class="card-tag tag-gold">$500–$3K/MO</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ===== AUTOMATION GUIDES ===== -->
+  <div class="cat-header dlg-fade">
+    <span class="cat-label">&#128214; Automation Guides</span>
+    <div class="cat-line"></div>
+  </div>
+
+  <div class="tools-grid dlg-fade">
+    <a href="/automation" class="tool-card" style="--accent:var(--teal);">
+      <div class="card-top"><div class="card-icon">&#9881;&#65039;</div><span class="card-arrow">&rarr;</span></div>
+      <div class="card-title">Automation Overview</div>
+      <div class="card-subtitle">General Guide</div>
+      <p class="card-desc">How to think about automating your side hustles. Tools, strategies, and workflows to earn more with less manual effort.</p>
+      <div class="card-footer">
+        <span class="card-tag tag-teal">GUIDE</span>
+      </div>
+    </a>
+  </div>
+
+</div><!-- /page -->
 
 <!-- FOOTER -->
 <footer>
@@ -347,61 +412,103 @@ body,.page-wrapper,html { background:#000 !important; }
   </div>
 </footer>
 
-<script src="/js/dark-forest.js"></script>
-<script src="/js/analytics.js" defer></script>
-
 <script>
-// Nav
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
-});
-
-// Fade-in
-const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); } });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.anim-fade-up').forEach(el => fadeObs.observe(el));
-
-// Stars
+// ===== DISCORD DISMISS =====
 (function(){
-    const c = document.getElementById('stars');
-    if (!c) return;
-    for (let i = 0; i < 80; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        const sz = Math.random()*2+0.5;
-        s.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s;animation-duration:'+(2+Math.random()*3)+'s;';
-        c.appendChild(s);
-    }
+  var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');
+  if(!w)return;
+  if(localStorage.getItem('dcDismissed'))w.style.display='none';
+  if(c)c.addEventListener('click',function(e){
+    e.preventDefault();e.stopPropagation();
+    w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';
+    w.style.transform='translateX(-130%)';w.style.opacity='0';
+    setTimeout(function(){w.style.display='none';},300);
+    localStorage.setItem('dcDismissed','1');
+  });
 })();
 
-// Sparkles
+// ===== BACKGROUND STARFIELD =====
 (function(){
-    function pop(){
-        const el = document.createElement('div');
-        const sz = 5+Math.random()*8;
-        const dur = 0.8+Math.random()*0.6;
-        el.className = 'sparkle-p';
-        el.style.cssText = 'left:'+Math.random()*100+'vw;top:'+Math.random()*100+'vh;--sz:'+sz+'px;--dur:'+dur+'s;';
-        document.body.appendChild(el);
-        setTimeout(()=>el.remove(), dur*1000+100);
+  const c=document.getElementById('bgCanvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let W,H,stars=[],frame=0;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function init(){
+    stars=[];
+    const n=Math.floor(W*H/3200);
+    for(let i=0;i<n;i++){
+      const r=Math.random();
+      const col=r>0.93?'rgba(110,231,183,':r>0.85?'rgba(192,132,252,':r>0.80?'rgba(173,255,47,':'rgba(210,225,255,';
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.15,a:Math.random()*0.65+0.12,s:Math.random()*0.004+0.0008,p:Math.random()*Math.PI*2,col});
     }
-    setInterval(pop, 1200);
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    frame++;
+    stars.forEach(s=>{
+      const t=0.3+0.7*Math.sin(frame*s.s+s.p);
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=s.col+(s.a*t).toFixed(2)+')';ctx.fill();
+      if(s.r>1.2&&t>0.85&&s.col!=='rgba(210,225,255,'){
+        ctx.globalAlpha=(s.a*t*0.5);ctx.strokeStyle=s.col+'0.6)';ctx.lineWidth=0.5;
+        ctx.beginPath();ctx.moveTo(s.x-s.r*3,s.y);ctx.lineTo(s.x+s.r*3,s.y);
+        ctx.moveTo(s.x,s.y-s.r*3);ctx.lineTo(s.x,s.y+s.r*3);ctx.stroke();ctx.globalAlpha=1;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();init();draw();
+  window.addEventListener('resize',()=>{resize();init();},{passive:true});
+})();
+
+// ===== FLYING COINS =====
+(function(){
+  const svg='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="rgba(11,20,36,0.9)" stroke="rgba(110,231,183,0.8)" stroke-width="1.2"/><text x="14" y="19" text-anchor="middle" fill="rgba(110,231,183,0.85)" font-size="11" font-weight="900" font-family="Arial">$</text></svg>';
+  function spawn(){
+    const el=document.createElement('div');el.className='fly-coin';
+    const fromRight=Math.random()>0.45;
+    const y=(8+Math.random()*70).toFixed(1);
+    const drift=(Math.random()*60-30).toFixed(0)+'px';
+    const dur=(12+Math.random()*10).toFixed(1);
+    const sc=(0.5+Math.random()*0.6).toFixed(2);
+    el.style.setProperty('--drift',drift);el.style.setProperty('--cs',sc);
+    el.style.cssText+=fromRight?`top:${y}vh;right:-35px;animation:coinFlyRTL ${dur}s linear forwards;`:`top:${y}vh;left:-35px;animation:coinFlyLTR ${dur}s linear forwards;`;
+    el.innerHTML=svg;document.body.appendChild(el);
+    setTimeout(()=>{if(el.parentNode)el.parentNode.removeChild(el);},(parseFloat(dur)+2)*1000);
+    setTimeout(spawn,7000+Math.random()*11000);
+  }
+  setTimeout(spawn,2500);
+})();
+
+// ===== SCROLL FADE-IN =====
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.dlg-fade').forEach(function(el){io.observe(el);});
+})();
+
+// ===== NAV SCROLL =====
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20);},{passive:true});
+
+// ===== MOBILE MENU =====
+(function(){
+  var ham=document.getElementById('hamburger'),menu=document.getElementById('mobileMenu');
+  if(!ham||!menu)return;
+  ham.addEventListener('click',function(){
+    ham.classList.toggle('active');
+    menu.classList.toggle('open');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      ham.classList.remove('active');menu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
 })();
 </script>
-
-
-<!-- Discord widget -->
-<a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener"><button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button><svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg><div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div></a>
-<script>(function(){var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){w.style.display='none';},300);localStorage.setItem('dcDismissed','1');});})();</script>
 </body>
 </html>
