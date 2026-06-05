@@ -1237,7 +1237,7 @@ function getVisible(){
     if(filters.geo==='canada'&&!c.canada)return false;
     if(filters.geo==='ontario'&&!c.ontario)return false;
     // 'usa' = show all (default), no filtering needed
-    if(filters.quick==='best'&&c.tier!=='S'&&c.tier!=='A')return false;
+    if(filters.quick==='best'&&c.tier!=='S')return false;
     if(filters.quick==='new'&&c.tier!=='NEW')return false;
     if(filters.tier&&c.tier!==filters.tier)return false;
     if(filters.feat==='daily'&&c.daily!=='YES')return false;
