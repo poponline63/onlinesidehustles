@@ -296,16 +296,14 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .alert-bar-label{font-size:0.82rem;color:var(--text-dim);white-space:nowrap;}
 .alert-bar-label b{color:var(--teal);}
 .alert-form{display:flex;flex-wrap:wrap;gap:0.4rem;flex:1;}
-.alert-form input[type="email"],
-.alert-form select{
+.alert-form input[type="email"]{
   background:var(--bg-darker);border:1px solid var(--border-md);border-radius:5px;
   color:var(--text);font-family:'Inter',sans-serif;font-size:0.82rem;
   padding:0.38rem 0.75rem;outline:none;transition:border-color 0.18s;
 }
 .alert-form input[type="email"]{min-width:180px;flex:1;}
 .alert-form input[type="email"]::placeholder{color:var(--text-muted);}
-.alert-form input[type="email"]:focus,.alert-form select:focus{border-color:var(--teal);}
-.alert-form select{color:var(--text-muted);}
+.alert-form input[type="email"]:focus{border-color:var(--teal);}
 .alert-form button{
   padding:0.38rem 0.85rem;background:var(--teal);color:#050f1a;
   border:none;border-radius:5px;font-size:0.78rem;font-weight:700;
@@ -615,13 +613,8 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
       <span class="alert-bar-label"><b>📬 Get alerts</b> for new sites &amp; rule changes</span>
       <form class="alert-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/newsletter?subscribed=true">
         <input type="hidden" name="form-name" value="newsletter">
+        <input type="hidden" name="interest" value="new-sites">
         <input type="email" name="email" placeholder="you@example.com" required>
-        <select name="interest">
-          <option value="new-sites">New site drops</option>
-          <option value="daily-bonuses">Daily bonus alerts</option>
-          <option value="package-plays">Package strategies</option>
-          <option value="automation">Automation tools</option>
-        </select>
         <button type="submit">Get Alerts</button>
       </form>
     </div>
