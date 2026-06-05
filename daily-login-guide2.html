@@ -432,6 +432,8 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .yn-n{color:rgba(248,113,113,0.6);font-size:0.84rem;}
 .yn-d{color:rgba(110,231,183,0.25);font-size:0.84rem;}
 
+/* Daily $ value */
+.daily-val{color:#4ade80;font-weight:600;font-size:0.8rem;white-space:nowrap;}
 /* Min Redeem */
 .redeem-val{color:var(--teal);font-weight:700;font-size:0.82rem;}
 
@@ -736,7 +738,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
               <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
               <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
               <th onclick="sortBy('daily')">Daily SC</th>
-              <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
+              <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
               <th style="text-align:left">Welcome Package</th>
               <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
               <th class="notes-cell" style="text-align:left">Notes</th>
@@ -1084,8 +1086,7 @@ function buildData(rows){
       name:col1,
       tier:currentTier,
       daily,
-      dailyRaw:(row[2]||'').trim(),
-      dailyAmt:TIER_HML[currentTier]||'MED',
+      dailyRaw:(row[2]||'').trim().replace(/'$/, ''),
       welcome,
       redeemRaw,
       redeemNum,
@@ -1125,7 +1126,7 @@ function updateTableHeader(){
       <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
       <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
       <th onclick="sortBy('daily')">Daily SC</th>
-      <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
+      <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
       <th style="text-align:left">Welcome Package</th>
       <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
       <th class="notes-cell" style="text-align:left">Notes</th>
@@ -1178,7 +1179,7 @@ function renderTable(data){
       tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
       <td>${dailyBadge(c.daily)}</td>
-      <td>${hmlBadge(c.dailyAmt)}</td>
+      <td><span class="daily-val">${esc(c.dailyRaw)||'—'}</span></td>
       <td class="welcome-cell">${esc(c.welcome)||'—'}</td>
       <td><span class="redeem-val">${c.redeemRaw?esc(c.redeemRaw):'—'}</span></td>
       <td class="notes-cell">
@@ -1210,7 +1211,7 @@ function renderCards(data){
         ${tierBadge(c.tier)}
       </div>
       <div class="c-data">
-        <div><div class="c-k">Free Daily</div><div class="c-v">${dailyBadge(c.daily)} ${hmlBadge(c.dailyAmt)}</div></div>
+        <div><div class="c-k">Daily $</div><div class="c-v" style="color:#4ade80;font-weight:600;">${esc(c.dailyRaw)||'—'}</div></div>
         <div><div class="c-k">Min Redeem</div><div class="c-v" style="color:var(--teal);font-weight:700;">${c.redeemRaw||'—'}</div></div>
         <div><div class="c-k">Welcome Package</div><div class="c-v" style="font-size:0.72rem;">${esc(c.welcome)||'—'}</div></div>
         <div><div class="c-k">Eligible</div><div class="c-v">${c.canada?'🇨🇦 Canada ':''} ${c.ontario?'ON':''}&nbsp;</div></div>
@@ -1246,7 +1247,7 @@ function getVisible(){
     if(filters.sort==='tier')    r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0)||a.name.localeCompare(b.name);
     else if(filters.sort==='name')    r=a.name.localeCompare(b.name);
     else if(filters.sort==='daily')   r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0);
-    else if(filters.sort==='amt')     r=(['HIGH','MED','LOW'].indexOf(a.dailyAmt))-(['HIGH','MED','LOW'].indexOf(b.dailyAmt));
+    else if(filters.sort==='amt'){const pn=v=>{const m=(v||'').match(/[\d.]+/);return m?parseFloat(m[0]):0;};r=pn(b.dailyRaw)-pn(a.dailyRaw);}
     else if(filters.sort==='redeem')  r=(a.redeemNum||9999)-(b.redeemNum||9999);
     return r*sortDir;
   });
