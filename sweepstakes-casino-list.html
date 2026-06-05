@@ -635,6 +635,17 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 .faq-item.open .faq-a{display:block;}
 .faq-a a{color:var(--teal);text-decoration:none;}
 .faq-a a:hover{text-decoration:underline;}
+
+/* ===== REVIEW COLUMN ===== */
+.review-cell{white-space:nowrap;text-align:center;}
+.btn-review{
+  display:inline-block;padding:0.2rem 0.6rem;
+  background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.28);
+  border-radius:4px;color:var(--teal);font-size:0.72rem;font-weight:600;
+  text-decoration:none;font-family:'IBM Plex Mono',monospace;
+  transition:background 0.15s,border-color 0.15s;white-space:nowrap;
+}
+.btn-review:hover{background:rgba(110,231,183,0.18);border-color:var(--teal);}
 </style>
 </head>
 <body>
@@ -842,7 +853,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
               <th>🇨🇦</th>
               <th>ON</th>
               <th>Parent Company</th>
-              
+              <th>Review</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -1025,6 +1036,35 @@ const SIGNUP_LINKS = {
 "GoldTreasureCasino":"https://goldtreasurecasino.com/?referrer=AymNdsGB",
 "YayCasino .com":"https://track.yaycasino.fun/click?o=5&a=101612&c=28",
 "Ace .com":"https://www.ace.com/lp?r=256fce50%2F25500653"
+};
+
+// ===== REVIEW LINKS =====
+const REVIEW_LINKS = {
+  'Stake.us':           '/review-stake-us',
+  'WOW Vegas':          '/review-wow-vegas',
+  'Crown Coins':        '/review-crown-coins',
+  'Pulsz':              '/review-pulsz',
+  'High5Casino':        '/review-high5',
+  'Chumba Casino':      '/review-chumba',
+  'McLuck':             '/review-mcluck',
+  'Hello Millions':     '/review-hello-millions',
+  'NoLimitCoins':       '/review-nolimitcoins',
+  'Fortune Wins':       '/review-fortune-coins',
+  'FunRize':            '/review-funrize',
+  'Sportzino':          '/review-sportzino',
+  'Zula':               '/review-zula',
+  'TaoFortune':         '/review-tao-fortune',
+  'MoonSpin':           '/review-moonspin',
+  'Fliff':              '/review-fliff',
+  'Modo':               '/review-modo',
+  'Spree':              '/review-spree',
+  'Chanced.com':        '/review-chanced',
+  'Global Poker':       '/review-global-poker',
+  'Golden Hearts Games':'/review-golden-hearts',
+  'Realprize':          '/review-realprize',
+  'DinerSweeps':        '/review-dinersweeps',
+  'LuckyLandSlots':     '/review-luckyland',
+  'Sweeptastic':        '/review-sweeptastic',
 };
 
 // ===== CANADA / ONTARIO ELIGIBILITY =====
@@ -1317,6 +1357,7 @@ function updateTableHeader(){
       <th class="notes-cell">Notes</th>
       ${showCa?'<th>🇨🇦</th><th>ON</th>':''}
       <th>Parent Company</th>
+      <th>Review</th>
       `;
   }
 }
@@ -1332,7 +1373,7 @@ function renderTable(data){
   const tbl=document.getElementById('mainTable');
   tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
   tbl.classList.toggle('gp-mode', gameplayMode);
-  const colCount = gameplayMode ? 9 : (showCa ? 10 : 8);
+  const colCount = gameplayMode ? 9 : (showCa ? 11 : 9);
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1378,7 +1419,8 @@ function renderTable(data){
         ${c.restricted&&c.restricted!=='None listed'?`<div class="states-expand"><span class="states-toggle" onclick="this.parentElement.classList.toggle('open');this.textContent=this.parentElement.classList.contains('open')?'⚠ States ▲':'⚠ States ▼'">⚠ States ▼</span><div class="states-body">${esc(c.restricted)}</div></div>`:''}
       </td>
       ${showCa?`<td>${ynBadge(c.canada)}</td><td>${ynBadge(c.ontario)}</td>`:''}
-      <td class="parent-cell">${esc(c.parent)||'—'}</td>`;
+      <td class="parent-cell">${esc(c.parent)||'—'}</td>
+      <td class="review-cell">${(()=>{const url=REVIEW_LINKS[c.name];return url?`<a href="${url}" class="btn-review" target="_self">Review ▶</a>`:'—';})()}</td>`;
     }
     tb.appendChild(tr);
   });
