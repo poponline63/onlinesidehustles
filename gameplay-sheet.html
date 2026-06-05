@@ -360,7 +360,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 
 /* Tier section divider rows */
 .section-row td{
-  padding:6px 11px;font-weight:700;
+  padding:10px 14px;font-weight:800;
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
   font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
   border-right:none !important;border-bottom:1px solid var(--border) !important;
@@ -689,7 +689,7 @@ function detectTier(v){
   for(const [k,c] of Object.entries(TIER_KEYWORDS)) if(l.includes(k)) return c;
   return null;
 }
-const TIER_ORDER = {S:0,A:1,B:2,NEW:3};
+const TIER_ORDER = {NEW:0,S:1,A:2,B:3};
 const TIER_HML = {S:'HIGH',A:'MED',B:'LOW',NEW:'MED'};
 
 // ===== CSV PARSER =====

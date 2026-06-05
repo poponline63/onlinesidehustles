@@ -357,17 +357,17 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .gs-text{font-size:0.72rem;color:var(--text-dim);}
 .btn-outline.active{background:rgba(110,231,183,0.15);border-color:var(--teal);color:var(--teal);}
 
-/* Tier section divider rows */
+/* Tier section divider rows — gradient style matching original */
 .section-row td{
-  padding:6px 11px;font-weight:700;
+  padding:10px 14px;font-weight:800;
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
-  font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
-  border-right:none !important;border-bottom:1px solid var(--border) !important;
+  font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;
+  border:none !important;text-shadow:0 1px 3px rgba(0,0,0,0.45);
 }
-.sec-s  td{background:rgba(110,231,183,0.07);color:var(--tier-s);border-left:3px solid var(--tier-s) !important;}
-.sec-a  td{background:rgba(51,200,125,0.07);color:var(--tier-a);border-left:3px solid var(--tier-a) !important;}
-.sec-b  td{background:rgba(96,165,250,0.07);color:var(--tier-b);border-left:3px solid var(--tier-b) !important;}
-.sec-new td{background:rgba(192,132,252,0.07);color:var(--tier-new);border-left:3px solid var(--tier-new) !important;}
+.sec-new td{background:linear-gradient(90deg,rgba(170,100,220,0.35),rgba(170,100,220,0.06));color:#c8a0f0;}
+.sec-s  td{background:linear-gradient(90deg,rgba(173,255,47,0.35),rgba(173,255,47,0.06));color:#ADFF2F;}
+.sec-a  td{background:linear-gradient(90deg,rgba(82,183,136,0.32),rgba(82,183,136,0.06));color:#74c69d;}
+.sec-b  td{background:linear-gradient(90deg,rgba(70,130,220,0.32),rgba(70,130,220,0.06));color:#7fb3f0;}
 
 .no-results{padding:2.5rem;text-align:center;font-size:0.84rem;color:var(--text-muted);}
 .no-results b{color:var(--teal);}
@@ -709,7 +709,7 @@ function detectTier(v){
   for(const [k,c] of Object.entries(TIER_KEYWORDS)) if(l.includes(k)) return c;
   return null;
 }
-const TIER_ORDER = {S:0,A:1,B:2,NEW:3};
+const TIER_ORDER = {NEW:0,S:1,A:2,B:3};
 const TIER_HML = {S:'HIGH',A:'MED',B:'LOW',NEW:'MED'};
 
 // ===== CSV PARSER =====
@@ -956,10 +956,10 @@ function buildData(rows){
 
 // ===== RENDER TABLE =====
 const SECTION_LABELS={
-  S:'⭐ God Tier — Best Daily Value',
-  A:'● High Tier — Solid Picks',
-  B:'○ Medium Tier — Worth Trying',
-  NEW:'★ New Sites'
+  NEW:'★  New Casinos',
+  S:'⭐  God Tier',
+  A:'●  High Tier',
+  B:'○  Medium Tier'
 };
 const SECTION_CLS={S:'sec-s',A:'sec-a',B:'sec-b',NEW:'sec-new'};
 
