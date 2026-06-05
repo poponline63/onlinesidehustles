@@ -382,7 +382,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .table-wrap::-webkit-scrollbar-track{background:var(--bg-darker);}
 .table-wrap::-webkit-scrollbar-thumb{background:rgba(110,231,183,0.22);border-radius:4px;}
 
-#mainTable{width:100%;border-collapse:collapse;font-size:0.82rem;min-width:1200px;}
+#mainTable{width:100%;border-collapse:collapse;font-size:0.82rem;table-layout:fixed;}
 #mainTable thead{position:sticky;top:0;z-index:10;}
 #mainTable th{
   background:var(--bg-darker);color:var(--teal);
@@ -396,9 +396,19 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable th:last-child{border-right:none;}
 .th-sort{opacity:0.4;font-size:0.55em;margin-left:2px;}
 /* Compact rows */
-#mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);}
+#mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:top;text-align:center;font-size:0.84rem;color:var(--text);word-wrap:break-word;overflow-wrap:break-word;}
 #mainTable td:last-child{border-right:none;}
-#mainTable td.name-cell{text-align:left;min-width:160px;}
+#mainTable td.name-cell{text-align:left;}
+/* Column widths — fits 1300px+ without horizontal scroll */
+#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:15%;}  /* Casino */
+#mainTable th:nth-child(2),#mainTable td:nth-child(2){width:4%;}   /* Tier */
+#mainTable th:nth-child(3),#mainTable td:nth-child(3){width:6%;}   /* Daily SC */
+#mainTable th:nth-child(4),#mainTable td:nth-child(4){width:8%;}   /* Daily $ */
+#mainTable th:nth-child(5),#mainTable td:nth-child(5){width:11%;}  /* Welcome Pkg */
+#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:6%;}   /* Min Redeem */
+#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:28%;}  /* Notes */
+#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:13%;}  /* Parent Company */
+#mainTable th:nth-child(9),#mainTable td:nth-child(9){width:9%;}   /* Sign Up */
 #mainTable tbody tr:nth-child(odd){background:#0d1828;}
 #mainTable tbody tr:nth-child(even){background:#0b1422;}
 #mainTable tbody tr:hover{background:rgba(110,231,183,0.05);}
@@ -433,12 +443,12 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .yn-d{color:rgba(110,231,183,0.25);font-size:0.84rem;}
 
 /* Daily $ value */
-.daily-val{color:#4ade80;font-weight:600;font-size:0.78rem;white-space:nowrap;max-width:110px;display:inline-block;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;cursor:default;}
+.daily-val{color:#4ade80;font-weight:600;font-size:0.78rem;word-wrap:break-word;}
 /* Min Redeem */
 .redeem-val{color:var(--teal);font-weight:700;font-size:0.82rem;}
 
 /* Notes */
-.notes-cell{text-align:left !important;max-width:260px;min-width:160px;}
+.notes-cell{text-align:left !important;}
 .notes-inner{font-size:0.8rem;color:rgba(220,230,240,0.88);line-height:1.55;max-height:4em;overflow:hidden;cursor:pointer;transition:max-height 0.3s;white-space:normal;}
 .notes-inner.open{max-height:260px;}
 .notes-more{color:var(--teal);font-size:0.72rem;cursor:pointer;margin-top:3px;font-weight:700;display:inline-block;}
@@ -465,10 +475,10 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .btn-signup.no-link{background:rgba(110,231,183,0.12);color:var(--teal);border:1px solid var(--border-md);}
 
 /* Parent company col */
-.parent-cell{font-size:0.78rem;color:var(--text-dim);white-space:nowrap;}
+.parent-cell{font-size:0.78rem;color:var(--text-dim);}
 
 /* Welcome pkg */
-.welcome-cell{font-size:0.78rem;color:var(--text);text-align:left !important;min-width:100px;max-width:160px;}
+.welcome-cell{font-size:0.78rem;color:var(--text);text-align:left !important;}
 
 /* Loading / error states */
 .loading-state{padding:3rem;text-align:center;}
