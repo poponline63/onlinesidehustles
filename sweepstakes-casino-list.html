@@ -399,7 +399,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);word-wrap:break-word;overflow-wrap:break-word;}
 #mainTable td:last-child{border-right:none;}
 #mainTable td.name-cell{text-align:left;}
-/* Column widths — fits 1300px+ without horizontal scroll */
+/* Column widths — default 8 cols, no horizontal scroll */
 #mainTable th:nth-child(1),#mainTable td:nth-child(1){width:20%;}  /* Casino+Signup */
 #mainTable th:nth-child(2),#mainTable td:nth-child(2){width:4%;}   /* Tier */
 #mainTable th:nth-child(3),#mainTable td:nth-child(3){width:6%;}   /* Daily SC */
@@ -408,6 +408,29 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable th:nth-child(6),#mainTable td:nth-child(6){width:6%;}   /* Min Redeem */
 #mainTable th:nth-child(7),#mainTable td:nth-child(7){width:31%;}  /* Notes */
 #mainTable th:nth-child(8),#mainTable td:nth-child(8){width:13%;}  /* Parent Company */
+
+/* Canada mode — 10 cols (shrink notes/parent to fit 🇨🇦 + ON) */
+#mainTable.ca-mode th:nth-child(1),#mainTable.ca-mode td:nth-child(1){width:17%;}
+#mainTable.ca-mode th:nth-child(2),#mainTable.ca-mode td:nth-child(2){width:4%;}
+#mainTable.ca-mode th:nth-child(3),#mainTable.ca-mode td:nth-child(3){width:5%;}
+#mainTable.ca-mode th:nth-child(4),#mainTable.ca-mode td:nth-child(4){width:7%;}
+#mainTable.ca-mode th:nth-child(5),#mainTable.ca-mode td:nth-child(5){width:10%;}
+#mainTable.ca-mode th:nth-child(6),#mainTable.ca-mode td:nth-child(6){width:5%;}
+#mainTable.ca-mode th:nth-child(7),#mainTable.ca-mode td:nth-child(7){width:26%;}
+#mainTable.ca-mode th:nth-child(8),#mainTable.ca-mode td:nth-child(8){width:10%;}
+#mainTable.ca-mode th:nth-child(9),#mainTable.ca-mode td:nth-child(9){width:8%;}
+#mainTable.ca-mode th:nth-child(10),#mainTable.ca-mode td:nth-child(10){width:8%;}
+
+/* Gameplay mode — 9 cols (casino + tier + 6 game cols + other) */
+#mainTable.gp-mode th:nth-child(1),#mainTable.gp-mode td:nth-child(1){width:18%;}
+#mainTable.gp-mode th:nth-child(2),#mainTable.gp-mode td:nth-child(2){width:4%;}
+#mainTable.gp-mode th:nth-child(3),#mainTable.gp-mode td:nth-child(3){width:11%;}
+#mainTable.gp-mode th:nth-child(4),#mainTable.gp-mode td:nth-child(4){width:11%;}
+#mainTable.gp-mode th:nth-child(5),#mainTable.gp-mode td:nth-child(5){width:11%;}
+#mainTable.gp-mode th:nth-child(6),#mainTable.gp-mode td:nth-child(6){width:11%;}
+#mainTable.gp-mode th:nth-child(7),#mainTable.gp-mode td:nth-child(7){width:11%;}
+#mainTable.gp-mode th:nth-child(8),#mainTable.gp-mode td:nth-child(8){width:11%;}
+#mainTable.gp-mode th:nth-child(9),#mainTable.gp-mode td:nth-child(9){width:12%;}
 
 #mainTable tbody tr:nth-child(odd){background:#0d1828;}
 #mainTable tbody tr:nth-child(even){background:#0b1422;}
@@ -1071,7 +1094,7 @@ function dailyLabel(v){
 }
 function dailyBadge(v){
   if(v==='YES') return '<span class="daily d-yes">YES</span>';
-  if(v==='RNDM')return '<span class="daily d-rndm">RNDM</span>';
+  if(v==='RNDM')return '<span class="daily d-rndm">RANDOM</span>';
   return '<span class="daily d-no">NO</span>';
 }
 function tierBadge(t){
@@ -1305,6 +1328,10 @@ function renderTable(data){
   updateTableHeader();
 
   const showCa = filters.geo==='canada'||filters.geo==='ontario';
+  // Apply column-width mode class so CSS can keep table within viewport
+  const tbl=document.getElementById('mainTable');
+  tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
+  tbl.classList.toggle('gp-mode', gameplayMode);
   const colCount = gameplayMode ? 9 : (showCa ? 10 : 8);
   let lastTier=null;
   data.forEach(c=>{

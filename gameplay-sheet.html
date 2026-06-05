@@ -268,7 +268,17 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .table-wrap::-webkit-scrollbar-track{background:var(--bg-darker);}
 .table-wrap::-webkit-scrollbar-thumb{background:rgba(110,231,183,0.22);border-radius:4px;}
 
-#mainTable{width:100%;border-collapse:collapse;font-size:0.82rem;min-width:1200px;}
+#mainTable{width:100%;border-collapse:collapse;font-size:0.82rem;table-layout:fixed;}
+/* Gameplay sheet — 9 cols: casino + tier + 6 game cols + other */
+#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:18%;}
+#mainTable th:nth-child(2),#mainTable td:nth-child(2){width:4%;}
+#mainTable th:nth-child(3),#mainTable td:nth-child(3){width:11%;}
+#mainTable th:nth-child(4),#mainTable td:nth-child(4){width:11%;}
+#mainTable th:nth-child(5),#mainTable td:nth-child(5){width:11%;}
+#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:11%;}
+#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:11%;}
+#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:11%;}
+#mainTable th:nth-child(9),#mainTable td:nth-child(9){width:12%;}
 #mainTable thead{position:sticky;top:0;z-index:10;}
 #mainTable th{
   background:var(--bg-darker);color:var(--teal);
@@ -283,7 +293,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 /* Compact rows */
 #mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);}
 #mainTable td:last-child{border-right:none;}
-#mainTable td.name-cell{text-align:left;min-width:160px;}
+#mainTable td.name-cell{text-align:left;}
 #mainTable tbody tr:nth-child(odd){background:#0d1828;}
 #mainTable tbody tr:nth-child(even){background:#0b1422;}
 #mainTable tbody tr:hover{background:rgba(110,231,183,0.05);}
@@ -752,7 +762,7 @@ function dailyLabel(v){
 }
 function dailyBadge(v){
   if(v==='YES') return '<span class="daily d-yes">YES</span>';
-  if(v==='RNDM')return '<span class="daily d-rndm">RNDM</span>';
+  if(v==='RNDM')return '<span class="daily d-rndm">RANDOM</span>';
   return '<span class="daily d-no">NO</span>';
 }
 function tierBadge(t){
