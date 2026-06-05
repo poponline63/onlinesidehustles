@@ -482,6 +482,14 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .gs-unknown{color:rgba(110,231,183,0.18);font-size:0.9rem;}
 .gs-text{font-size:0.72rem;color:var(--text-dim);}
 .btn-outline.active{background:rgba(110,231,183,0.15);border-color:var(--teal);color:var(--teal);}
+/* Tier filter buttons */
+.tier-btn{display:inline-flex;align-items:center;gap:0.2rem;padding:0.27rem 0.72rem;border-radius:20px;font-size:0.76rem;font-weight:600;cursor:pointer;border:1px solid var(--border-md);background:transparent;color:var(--text-muted);transition:all 0.15s;user-select:none;white-space:nowrap;}
+.tier-btn:hover{border-color:var(--tc);color:var(--tc);}
+.tier-btn.active{border-color:var(--tc);color:var(--tc);background:rgba(128,128,128,0.1);}
+.tier-btn[data-tb="NEW"].active{background:rgba(192,132,252,0.12);}
+.tier-btn[data-tb="S"].active{background:rgba(173,255,47,0.1);}
+.tier-btn[data-tb="A"].active{background:rgba(82,183,136,0.1);}
+.tier-btn[data-tb="B"].active{background:rgba(96,165,250,0.1);}
 
 /* Tier section divider rows — gradient style matching original */
 .section-row td{
@@ -683,11 +691,12 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
       <button class="view-tab"        id="btnCard" onclick="setView('card')">Cards</button>
     </div>
 
-    <!-- All / Best / New -->
-    <div class="quick-tabs">
-      <span class="qt active" data-q="all"  onclick="setQuick(this)">All</span>
-      <span class="qt"        data-q="best" onclick="setQuick(this)">Best</span>
-      <span class="qt"        data-q="new"  onclick="setQuick(this)">New</span>
+    <!-- Tier filter buttons -->
+    <div class="filter-group">
+      <span class="tier-btn" data-tb="NEW" onclick="toggleTierBtn(this,'NEW')" style="--tc:var(--tier-new)">★ New Tier</span>
+      <span class="tier-btn" data-tb="S"   onclick="toggleTierBtn(this,'S')"   style="--tc:#ADFF2F">⭐ God Tier</span>
+      <span class="tier-btn" data-tb="A"   onclick="toggleTierBtn(this,'A')"   style="--tc:#74c69d">● High Tier</span>
+      <span class="tier-btn" data-tb="B"   onclick="toggleTierBtn(this,'B')"   style="--tc:var(--tier-b)">○ Medium Tier</span>
     </div>
 
     <!-- Search -->
@@ -704,14 +713,6 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
       
     </div>
 
-    <!-- Tier -->
-    <div class="filter-group">
-      <span class="filter-lbl">Tier</span>
-      <span class="chip" data-g="tier" data-v="S"   onclick="toggleChip(this,'tier')" style="color:var(--tier-s)">S</span>
-      <span class="chip" data-g="tier" data-v="A"   onclick="toggleChip(this,'tier')" style="color:var(--tier-a)">A</span>
-      <span class="chip" data-g="tier" data-v="B"   onclick="toggleChip(this,'tier')" style="color:var(--tier-b)">B</span>
-      <span class="chip" data-g="tier" data-v="NEW" onclick="toggleChip(this,'tier')" style="color:var(--tier-new)">★ New</span>
-    </div>
 
     <!-- Features -->
     <div class="filter-group">
@@ -923,7 +924,7 @@ function ynBadge(v){return v?'<span class="yn-y">YES</span>':'<span class="yn-d"
 
 // ===== CASINO DATA (built from CSV) =====
 let CASINOS = [];
-let filters = {geo:'usa', quick:'all', tier:null, feat:null, sort:'tier'};
+let filters = {geo:'usa', tier:null, feat:null, sort:'tier'};
 let sortDir = 1, lastSort = 'tier';
 let gameplayMode = false;
 let rtpHeaders = [];
@@ -1237,8 +1238,6 @@ function getVisible(){
     if(filters.geo==='canada'&&!c.canada)return false;
     if(filters.geo==='ontario'&&!c.ontario)return false;
     // 'usa' = show all (default), no filtering needed
-    if(filters.quick==='best'&&c.tier!=='S')return false;
-    if(filters.quick==='new'&&c.tier!=='NEW')return false;
     if(filters.tier&&c.tier!==filters.tier)return false;
     if(filters.feat==='daily'&&c.daily!=='YES')return false;
     return true;
@@ -1293,10 +1292,11 @@ function toggleChip(el,group){
   if(!was)el.classList.add('active');
   filterAll();
 }
-function setQuick(el){
-  document.querySelectorAll('.qt').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  filters.quick=el.dataset.q;
+function toggleTierBtn(el,val){
+  const wasActive=el.classList.contains('active');
+  document.querySelectorAll('[data-tb]').forEach(c=>c.classList.remove('active'));
+  filters.tier=wasActive?null:val;
+  if(!wasActive)el.classList.add('active');
   filterAll();
 }
 function setView(v){
