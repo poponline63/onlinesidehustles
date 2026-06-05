@@ -1094,7 +1094,7 @@ function buildData(rows){
     for(let gc=6;gc<=12;gc++) rtpGames.push((row[gc]||'').trim());
 
     CASINOS.push({
-      name:col1,
+      name:col1.replace(/ \.([a-zA-Z])/g,'.$1'),
       tier:currentTier,
       daily,
       dailyRaw:(row[2]||'').trim().replace(/'$/, ''),
