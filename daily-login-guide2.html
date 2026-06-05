@@ -38,7 +38,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Home","item":"https://onlinesidehustles.info/"},
-        {"@type":"ListItem","position":2,"name":"Best Sweepstakes Casinos 2026","item":"https://onlinesidehustles.info/daily-login-guide"}
+        {"@type":"ListItem","position":2,"name":"Best Sweepstakes Casinos 2026","item":"https://onlinesidehustles.info/daily-login-guide2"}
       ]
     },
     {
@@ -448,10 +448,11 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .redeem-val{color:var(--teal);font-weight:700;font-size:0.82rem;}
 
 /* Notes */
-.notes-cell{text-align:left !important;}
-.notes-inner{font-size:0.8rem;color:rgba(220,230,240,0.88);line-height:1.55;max-height:4em;overflow:hidden;cursor:pointer;transition:max-height 0.3s;white-space:normal;}
-.notes-inner.open{max-height:260px;}
-.notes-more{color:var(--teal);font-size:0.72rem;cursor:pointer;margin-top:3px;font-weight:700;display:inline-block;}
+.notes-cell{text-align:left !important;padding-top:9px !important;padding-bottom:9px !important;}
+.notes-inner{font-size:0.8rem;color:rgba(220,230,240,0.88);line-height:1.55;max-height:3.1em;overflow:hidden;transition:max-height 0.35s ease;white-space:normal;}
+.notes-inner.has-more{cursor:pointer;}
+.notes-inner.open{max-height:500px;padding-bottom:5px;}
+.notes-more{color:var(--teal);font-size:0.72rem;cursor:pointer;margin-top:5px;font-weight:700;display:inline-block;line-height:1;}
 
 /* Restricted states — inline expandable per row */
 .states-toggle{
@@ -462,9 +463,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 }
 .states-toggle:hover{color:#fde68a;}
 .states-body{
-  display:none;margin-top:4px;
-  font-size:0.71rem;color:var(--text-dim);line-height:1.55;
-  border-top:1px solid rgba(251,191,36,0.18);padding-top:4px;
+  display:none;margin-top:5px;
+  font-size:0.71rem;color:var(--text-dim);line-height:1.6;
+  border-top:1px solid rgba(251,191,36,0.18);padding-top:6px;padding-bottom:2px;
 }
 .states-expand.open .states-toggle{color:#fde68a;}
 .states-expand.open .states-body{display:block;}
@@ -592,7 +593,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
     </a>
     <div class="nav-links">
       <a href="/getting-started" class="nav-link">Get Started</a>
-      <a href="/daily-login-guide" class="nav-link active">Daily Login Guide</a>
+      <a href="/daily-login-guide2" class="nav-link active">Daily Login Guide</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
@@ -605,7 +606,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
-  <a href="/daily-login-guide">Daily Login Guide</a>
+  <a href="/daily-login-guide2">Daily Login Guide</a>
   <a href="/side-hustles">Side Hustles</a>
   <a href="/tools">Tools</a>
   <a href="/blog">Blog</a>
@@ -795,7 +796,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
       </div>
       <div class="footer-col">
         <h4>Guides</h4>
-        <a href="/daily-login-guide">Daily Login Guide</a>
+        <a href="/daily-login-guide2">Daily Login Guide</a>
         <a href="/getting-started">Getting Started</a>
         <a href="/side-hustles">Side Hustles</a>
         <a href="/blog">Blog</a>
@@ -1186,6 +1187,7 @@ function renderTable(data){
       tr.innerHTML=nameCell+`<td>${tierBadge(c.tier)}</td>`+rtpCells+`<td class="welcome-cell">${other}</td>`;
     } else {
       const noteId='n'+Math.random().toString(36).slice(2,8);
+      const moreId='m'+noteId;
       tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
       <td>${dailyBadge(c.daily)}</td>
@@ -1193,8 +1195,8 @@ function renderTable(data){
       <td class="welcome-cell">${esc(c.welcome)||'—'}</td>
       <td><span class="redeem-val">${c.redeemRaw?esc(c.redeemRaw):'—'}</span></td>
       <td class="notes-cell">
-        <div class="notes-inner" id="${noteId}" onclick="this.classList.toggle('open');this.nextElementSibling.textContent=this.classList.contains('open')?'▲ less':'▼ more'">${esc(c.notes)||'—'}</div>
-        ${c.notes&&c.notes.length>70?`<span class="notes-more" onclick="document.getElementById('${noteId}').classList.toggle('open');this.textContent=document.getElementById('${noteId}').classList.contains('open')?'▲ less':'▼ more'">▼ more</span>`:''}
+        <div class="notes-inner" id="${noteId}" onclick="toggleNotes('${noteId}','${moreId}')">${esc(c.notes)||'—'}</div>
+        <span class="notes-more" id="${moreId}" style="display:none" onclick="toggleNotes('${noteId}','${moreId}')">▼ more</span>
         ${c.restricted&&c.restricted!=='None listed'?`<div class="states-expand"><span class="states-toggle" onclick="this.parentElement.classList.toggle('open');this.textContent=this.parentElement.classList.contains('open')?'⚠ States ▲':'⚠ States ▼'">⚠ States ▼</span><div class="states-body">${esc(c.restricted)}</div></div>`:''}
       </td>
       ${showCa?`<td>${ynBadge(c.canada)}</td><td>${ynBadge(c.ontario)}</td>`:''}
@@ -1263,6 +1265,29 @@ function getVisible(){
   });
 }
 
+// ===== NOTES TOGGLE (overflow-aware) =====
+function toggleNotes(noteId, moreId){
+  const el=document.getElementById(noteId);
+  if(!el) return;
+  el.classList.toggle('open');
+  const btn=document.getElementById(moreId);
+  if(btn) btn.textContent=el.classList.contains('open')?'▲ less':'▼ more';
+}
+
+// After table renders: show "more" only when text actually overflows the collapsed height
+function checkNotesOverflow(){
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.notes-inner').forEach(el=>{
+      if(!el.id) return;
+      const btn=document.getElementById('m'+el.id);
+      if(!btn) return;
+      const overflows=el.scrollHeight>el.clientHeight+2;
+      btn.style.display=overflows?'inline-block':'none';
+      el.classList.toggle('has-more',overflows);
+    });
+  });
+}
+
 // ===== FILTER ALL =====
 function filterAll(){
   const v=getVisible();
@@ -1270,6 +1295,7 @@ function filterAll(){
     `Showing <b>${v.length} of ${CASINOS.length}</b> casinos <span class="upd">• Last updated: Jun 4, 2026</span>`;
   renderTable(v);
   renderCards(v);
+  checkNotesOverflow();
 }
 
 // ===== CHIP / FILTER CONTROLS =====
