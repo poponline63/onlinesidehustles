@@ -281,7 +281,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable th:last-child{border-right:none;}
 .th-sort{opacity:0.4;font-size:0.55em;margin-left:2px;}
 /* Compact rows */
-#mainTable td{padding:7px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.8rem;color:var(--text);}
+#mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);}
 #mainTable td:last-child{border-right:none;}
 #mainTable td.name-cell{text-align:left;min-width:160px;}
 #mainTable tbody tr:nth-child(odd){background:#0d1828;}
@@ -322,9 +322,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 
 /* Notes */
 .notes-cell{text-align:left !important;max-width:240px;min-width:140px;}
-.notes-inner{font-size:0.74rem;color:rgba(200,215,225,0.68);line-height:1.5;max-height:2.2em;overflow:hidden;cursor:pointer;transition:max-height 0.25s;white-space:normal;}
-.notes-inner.open{max-height:220px;}
-.notes-more{color:var(--teal);font-size:0.62rem;cursor:pointer;margin-top:2px;font-weight:600;display:inline-block;}
+.notes-inner{font-size:0.8rem;color:rgba(220,230,240,0.88);line-height:1.55;max-height:4em;overflow:hidden;cursor:pointer;transition:max-height 0.25s;white-space:normal;}
+.notes-inner.open{max-height:260px;}
+.notes-more{color:var(--teal);font-size:0.72rem;cursor:pointer;margin-top:3px;font-weight:700;display:inline-block;}
 
 /* Restricted states (hidden col) */
 .restricted-col{display:none;text-align:left !important;max-width:180px;}
@@ -337,10 +337,10 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .btn-signup.no-link{background:rgba(110,231,183,0.12);color:var(--teal);border:1px solid var(--border-md);}
 
 /* Parent company col */
-.parent-cell{font-size:0.7rem;color:var(--text-muted);white-space:nowrap;}
+.parent-cell{font-size:0.78rem;color:var(--text-dim);white-space:nowrap;}
 
 /* Welcome pkg */
-.welcome-cell{font-size:0.74rem;color:var(--text-dim);text-align:left !important;min-width:110px;}
+.welcome-cell{font-size:0.8rem;color:var(--text);text-align:left !important;min-width:130px;}
 
 /* Loading / error states */
 .loading-state{padding:3rem;text-align:center;}
@@ -591,9 +591,9 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
             <tr>
               <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
               <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-              <th onclick="sortBy('daily')">Free SC<br>Daily?</th>
+              <th onclick="sortBy('daily')">Daily SC</th>
               <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
-              <th style="text-align:left">Welcome Pkg</th>
+              <th style="text-align:left">Welcome Package</th>
               <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
               <th class="notes-cell" style="text-align:left">Notes</th>
               <th>🇨🇦</th>
@@ -955,9 +955,9 @@ function updateTableHeader(){
     thead.innerHTML=`
       <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
       <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-      <th onclick="sortBy('daily')">Free SC<br>Daily?</th>
+      <th onclick="sortBy('daily')">Daily SC</th>
       <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
-      <th style="text-align:left">Welcome Pkg</th>
+      <th style="text-align:left">Welcome Package</th>
       <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
       <th class="notes-cell" style="text-align:left">Notes</th>
       <th>🇨🇦</th>
@@ -1048,7 +1048,7 @@ function renderCards(data){
       <div class="c-data">
         <div><div class="c-k">Free Daily</div><div class="c-v">${dailyBadge(c.daily)} ${hmlBadge(c.dailyAmt)}</div></div>
         <div><div class="c-k">Min Redeem</div><div class="c-v" style="color:var(--teal);font-weight:700;">${c.redeemRaw||'—'}</div></div>
-        <div><div class="c-k">Welcome Pkg</div><div class="c-v" style="font-size:0.72rem;">${esc(c.welcome)||'—'}</div></div>
+        <div><div class="c-k">Welcome Package</div><div class="c-v" style="font-size:0.72rem;">${esc(c.welcome)||'—'}</div></div>
         <div><div class="c-k">Eligible</div><div class="c-v">${c.canada?'🇨🇦 Canada ':''} ${c.ontario?'ON':''}&nbsp;</div></div>
       </div>
       <div class="c-icons">
