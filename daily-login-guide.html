@@ -783,6 +783,9 @@ let filters = {geo:'all', quick:'all', tier:null, feat:null, sort:'tier'};
 let sortDir = 1, lastSort = 'tier';
 let gameplayMode = false;
 let rtpHeaders = [];
+let xlsxLoaded = false;
+
+const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=xlsx&gid=1759950549';
 
 function renderGameStatus(val){
   if(!val||val.trim()==='') return '<span class="gs-unknown">—</span>';
@@ -794,11 +797,86 @@ function renderGameStatus(val){
   return `<span class="gs-text">${esc(val)}</span>`;
 }
 
-function setGameplayMode(on){
+function loadSheetJS(){
+  return new Promise((resolve,reject)=>{
+    if(typeof XLSX!=='undefined'){resolve();return;}
+    const s=document.createElement('script');
+    s.src='https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js';
+    s.onload=resolve; s.onerror=reject;
+    document.head.appendChild(s);
+  });
+}
+
+async function loadXlsxForGameplay(){
+  if(xlsxLoaded) return;
+  await loadSheetJS();
+  const resp=await fetch(XLSX_URL);
+  if(!resp.ok) throw new Error('HTTP '+resp.status);
+  const buf=await resp.arrayBuffer();
+  const wb=XLSX.read(buf,{type:'array',cellFormula:true});
+  const sheet=wb.Sheets[wb.SheetNames[0]];
+  const range=XLSX.utils.decode_range(sheet['!ref']);
+  const rtpMap={};
+  const newHeaders=[];
+
+  for(let r=range.s.r;r<=range.e.r;r++){
+    const c0=sheet[XLSX.utils.encode_cell({r,c:0})];
+    const c1=sheet[XLSX.utils.encode_cell({r,c:1})];
+    const col0=c0?String(c0.v||c0.f||'').trim():'';
+    const col1=c1?String(c1.v||c1.f||'').trim():'';
+
+    // Header row: capture RTP column names (cols 6-12)
+    if(col0.toLowerCase().includes('signup')&&!newHeaders.length){
+      for(let c=6;c<=12;c++){
+        const hc=sheet[XLSX.utils.encode_cell({r,c})];
+        newHeaders.push(hc?String(hc.v||'').trim():'');
+      }
+    }
+    // Tier separator row: also try to get RTP headers
+    if(!col0&&col1&&detectTier(col1)&&!newHeaders.some(h=>h)){
+      for(let c=6;c<=12;c++){
+        const hc=sheet[XLSX.utils.encode_cell({r,c})];
+        newHeaders.push(hc?String(hc.v||'').trim():'');
+      }
+    }
+
+    if(!col0.toLowerCase().includes('signup')||!col1) continue;
+
+    // Casino row — extract RTP game cells (formula string for IMAGE detection)
+    const games=[];
+    for(let c=6;c<=12;c++){
+      const cell=sheet[XLSX.utils.encode_cell({r,c})];
+      if(!cell){games.push('');continue;}
+      const val=cell.f?'='+cell.f:(cell.v!=null?String(cell.v):'');
+      games.push(val);
+    }
+    rtpMap[col1]=games;
+  }
+
+  // Update CASINOS with XLSX gameplay data
+  if(newHeaders.some(h=>h)) rtpHeaders=newHeaders;
+  CASINOS.forEach(c=>{
+    const key=Object.keys(rtpMap).find(k=>k.toLowerCase()===c.name.toLowerCase())||c.name;
+    if(rtpMap[key]) c.rtpGames=rtpMap[key];
+  });
+  xlsxLoaded=true;
+}
+
+async function setGameplayMode(on){
   gameplayMode=on;
   const btn=document.getElementById('toggleGameplay');
-  if(on){ btn.textContent='🎮 Gameplay Mode: ON'; btn.classList.add('active'); }
-  else  { btn.textContent='🎮 Gameplay Mode: OFF'; btn.classList.remove('active'); }
+  if(on){
+    btn.textContent='🎮 Loading…';
+    btn.disabled=true;
+    try{ await loadXlsxForGameplay(); }
+    catch(e){ console.error('XLSX load failed:',e); }
+    btn.textContent='🎮 Gameplay Mode: ON';
+    btn.classList.add('active');
+    btn.disabled=false;
+  } else {
+    btn.textContent='🎮 Gameplay Mode: OFF';
+    btn.classList.remove('active');
+  }
   filterAll();
 }
 

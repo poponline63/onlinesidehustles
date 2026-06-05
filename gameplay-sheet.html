@@ -762,15 +762,83 @@ let filters = {geo:'all', quick:'all', tier:null, feat:null, sort:'tier'};
 let sortDir = 1, lastSort = 'tier';
 let gameplayMode = false;
 let rtpHeaders = [];
+let xlsxLoaded = false;
 
-function setGameplayMode(on){
-  gameplayMode = on;
-  const btn = document.getElementById('toggleGameplay');
+const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=xlsx&gid=1759950549';
+
+function loadSheetJS(){
+  return new Promise((resolve,reject)=>{
+    if(typeof XLSX!=='undefined'){resolve();return;}
+    const s=document.createElement('script');
+    s.src='https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js';
+    s.onload=resolve; s.onerror=reject;
+    document.head.appendChild(s);
+  });
+}
+
+async function loadXlsxForGameplay(){
+  if(xlsxLoaded) return;
+  await loadSheetJS();
+  const resp=await fetch(XLSX_URL);
+  if(!resp.ok) throw new Error('HTTP '+resp.status);
+  const buf=await resp.arrayBuffer();
+  const wb=XLSX.read(buf,{type:'array',cellFormula:true});
+  const sheet=wb.Sheets[wb.SheetNames[0]];
+  const range=XLSX.utils.decode_range(sheet['!ref']);
+  const rtpMap={};
+  const newHeaders=[];
+
+  for(let r=range.s.r;r<=range.e.r;r++){
+    const c0=sheet[XLSX.utils.encode_cell({r,c:0})];
+    const c1=sheet[XLSX.utils.encode_cell({r,c:1})];
+    const col0=c0?String(c0.v||c0.f||'').trim():'';
+    const col1=c1?String(c1.v||c1.f||'').trim():'';
+
+    if(col0.toLowerCase().includes('signup')&&!newHeaders.length){
+      for(let c=6;c<=12;c++){
+        const hc=sheet[XLSX.utils.encode_cell({r,c})];
+        newHeaders.push(hc?String(hc.v||'').trim():'');
+      }
+    }
+    if(!col0&&col1&&detectTier(col1)&&!newHeaders.some(h=>h)){
+      for(let c=6;c<=12;c++){
+        const hc=sheet[XLSX.utils.encode_cell({r,c})];
+        newHeaders.push(hc?String(hc.v||'').trim():'');
+      }
+    }
+    if(!col0.toLowerCase().includes('signup')||!col1) continue;
+
+    const games=[];
+    for(let c=6;c<=12;c++){
+      const cell=sheet[XLSX.utils.encode_cell({r,c})];
+      if(!cell){games.push('');continue;}
+      const val=cell.f?'='+cell.f:(cell.v!=null?String(cell.v):'');
+      games.push(val);
+    }
+    rtpMap[col1]=games;
+  }
+
+  if(newHeaders.some(h=>h)) rtpHeaders=newHeaders;
+  CASINOS.forEach(c=>{
+    const key=Object.keys(rtpMap).find(k=>k.toLowerCase()===c.name.toLowerCase())||c.name;
+    if(rtpMap[key]) c.rtpGames=rtpMap[key];
+  });
+  xlsxLoaded=true;
+}
+
+async function setGameplayMode(on){
+  gameplayMode=on;
+  const btn=document.getElementById('toggleGameplay');
   if(on){
-    btn.textContent = '🎮 Gameplay Mode: ON';
+    btn.textContent='🎮 Loading…';
+    btn.disabled=true;
+    try{ await loadXlsxForGameplay(); }
+    catch(e){ console.error('XLSX load failed:',e); }
+    btn.textContent='🎮 Gameplay Mode: ON';
     btn.classList.add('active');
+    btn.disabled=false;
   } else {
-    btn.textContent = '🎮 Gameplay Mode: OFF';
+    btn.textContent='🎮 Gameplay Mode: OFF';
     btn.classList.remove('active');
   }
   filterAll();
@@ -1143,7 +1211,13 @@ mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 })();
 
 // ===== INIT =====
-loadData();
+// On gameplay-sheet, auto-activate gameplay mode after data loads
+async function initGameplaySheet(){
+  await loadData();
+  // Small delay to let CSV render first, then load XLSX gameplay data
+  setTimeout(()=>setGameplayMode(true), 300);
+}
+initGameplaySheet();
 </script>
 </body>
 </html>
