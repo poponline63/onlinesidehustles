@@ -1023,6 +1023,7 @@ function updateTableHeader(){
       <th style="text-align:left">Other RTP Games</th>
       <th>Sign Up</th>`;
   } else {
+    const showCa = filters.geo==='canada'||filters.geo==='ontario';
     thead.innerHTML=`
       <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
       <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
@@ -1031,8 +1032,7 @@ function updateTableHeader(){
       <th style="text-align:left">Welcome Package</th>
       <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
       <th class="notes-cell" style="text-align:left">Notes</th>
-      <th>🇨🇦</th>
-      <th>ON</th>
+      ${showCa?'<th>🇨🇦</th><th>ON</th>':''}
       <th style="text-align:left">Parent Co.</th>
       <th class="restricted-col" style="text-align:left">Restricted States</th>
       <th>Sign Up</th>`;
@@ -1045,7 +1045,8 @@ function renderTable(data){
   document.getElementById('noRes').style.display=data.length?'none':'block';
   updateTableHeader();
 
-  const colCount = gameplayMode ? 10 : 12;
+  const showCa = filters.geo==='canada'||filters.geo==='ontario';
+  const colCount = gameplayMode ? 10 : (showCa ? 12 : 10);
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1087,8 +1088,7 @@ function renderTable(data){
         <div class="notes-inner" id="${noteId}" onclick="this.classList.toggle('open');this.nextElementSibling.textContent=this.classList.contains('open')?'▲ less':'▼ more'">${esc(c.notes)||'—'}</div>
         ${c.notes&&c.notes.length>70?`<span class="notes-more" onclick="document.getElementById('${noteId}').classList.toggle('open');this.textContent=document.getElementById('${noteId}').classList.contains('open')?'▲ less':'▼ more'">▼ more</span>`:''}
       </td>
-      <td>${ynBadge(c.canada)}</td>
-      <td>${ynBadge(c.ontario)}</td>
+      ${showCa?`<td>${ynBadge(c.canada)}</td><td>${ynBadge(c.ontario)}</td>`:''}
       <td class="parent-cell">${esc(c.parent)||'—'}</td>
       <td class="restricted-col"><div class="restricted-list">${esc(c.restricted)||'None listed'}</div></td>`+signupCell;
     }
