@@ -555,8 +555,8 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
     <!-- Region -->
     <div class="filter-group">
       <span class="filter-lbl">Region</span>
-      <span class="chip active" data-g="geo" data-v="all"     onclick="setChip(this,'geo')">All</span>
-      <span class="chip"        data-g="geo" data-v="usa"     onclick="setChip(this,'geo')">🇺🇸 USA</span>
+      
+      <span class="chip"        data-g="geo" data-v="usa" onclick="setChip(this,'geo')">🇺🇸 USA</span>
       <span class="chip"        data-g="geo" data-v="canada"  onclick="setChip(this,'geo')">🇨🇦 Canada</span>
       <span class="chip"        data-g="geo" data-v="ontario" onclick="setChip(this,'geo')">ON</span>
     </div>
@@ -758,7 +758,7 @@ function ynBadge(v){return v?'<span class="yn-y">YES</span>':'<span class="yn-d"
 
 // ===== CASINO DATA (built from CSV) =====
 let CASINOS = [];
-let filters = {geo:'all', quick:'all', tier:null, feat:null, sort:'tier'};
+let filters = {geo:'usa', quick:'all', tier:null, feat:null, sort:'tier'};
 let sortDir = 1, lastSort = 'tier';
 let gameplayMode = false;
 let rtpHeaders = [];
@@ -1073,7 +1073,7 @@ function getVisible(){
     if(q&&!(c.name.toLowerCase()+' '+(c.parent||'').toLowerCase()+' '+(c.notes||'').toLowerCase()+' '+(c.welcome||'').toLowerCase()).includes(q))return false;
     if(filters.geo==='canada'&&!c.canada)return false;
     if(filters.geo==='ontario'&&!c.ontario)return false;
-    if(filters.geo==='usa'&&c.canada===false)return false;
+    
     if(filters.quick==='best'&&c.tier!=='S'&&c.tier!=='A')return false;
     if(filters.quick==='new'&&c.tier!=='NEW')return false;
     if(filters.tier&&c.tier!==filters.tier)return false;
@@ -1104,6 +1104,19 @@ function setChip(el,group){
   document.querySelectorAll(`[data-g="${group}"]`).forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   filters[group]=el.dataset.v;
+  filterAll();
+}
+function toggleGeo(el,val){
+  const wasActive=el.classList.contains('active');
+  document.querySelectorAll('[data-g="geo"]').forEach(c=>c.classList.remove('active'));
+  if(wasActive){
+    const usa=document.querySelector('[data-g="geo"][data-v="usa"]');
+    if(usa) usa.classList.add('active');
+    filters.geo='usa';
+  } else {
+    el.classList.add('active');
+    filters.geo=val;
+  }
   filterAll();
 }
 function toggleChip(el,group){
