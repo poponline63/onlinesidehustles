@@ -113,13 +113,71 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 
 /* ===== HERO ===== */
 .hero{padding:2rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:0;}
+.hero-row{display:flex;align-items:center;gap:2rem;margin-bottom:1.4rem;}
+.hero-text{flex:1;min-width:0;}
 .hero-label{font-family:'IBM Plex Mono','Courier New',Courier,monospace;font-size:0.66rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;}
 .hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:#fff;margin-bottom:0.45rem;}
-.hero-desc{color:var(--text-dim);font-size:0.88rem;line-height:1.65;max-width:680px;margin-bottom:1.2rem;}
-.stats{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+.hero-desc{color:var(--text-dim);font-size:0.88rem;line-height:1.65;max-width:600px;margin-bottom:1.2rem;}
+.stats{display:flex;gap:1.75rem;flex-wrap:wrap;}
 .stat{border-left:2px solid var(--teal);padding-left:0.75rem;}
 .stat-val{font-size:1.45rem;font-weight:700;color:var(--teal);}
 .stat-lbl{font-family:'IBM Plex Mono','Courier New',Courier,monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-top:0.1rem;}
+
+/* ===== CARD & DICE VISUAL ===== */
+.hero-cards{
+  width:400px;min-width:400px;height:280px;
+  position:relative;flex-shrink:0;
+  pointer-events:none;
+}
+@media(max-width:960px){.hero-cards{display:none;}}
+
+/* Glow behind cards */
+.hero-cards::before{
+  content:'';position:absolute;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle, rgba(110,231,183,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* Playing card */
+.play-card{
+  position:absolute;
+  width:72px;height:102px;border-radius:9px;
+  background:linear-gradient(145deg,#0f1d30,#0b1525);
+  border:1px solid rgba(110,231,183,0.28);
+  box-shadow:0 6px 20px rgba(0,0,0,0.55),0 0 14px rgba(110,231,183,0.07),inset 0 1px 0 rgba(255,255,255,0.04);
+  padding:5px 6px;display:flex;flex-direction:column;justify-content:space-between;
+  transform:rotate(var(--rot,0deg));
+  animation:cFloat var(--dur,4s) ease-in-out infinite var(--delay,0s);
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
+}
+.pc-top{font-size:0.68rem;font-weight:700;line-height:1.15;letter-spacing:-0.02em;}
+.pc-mid{text-align:center;font-size:2.1rem;line-height:1;opacity:0.88;}
+.pc-bot{font-size:0.68rem;font-weight:700;line-height:1.15;letter-spacing:-0.02em;text-align:right;transform:rotate(180deg);}
+.suit-t .pc-top,.suit-t .pc-mid,.suit-t .pc-bot{color:rgba(110,231,183,0.88);}
+.suit-r .pc-top,.suit-r .pc-mid,.suit-r .pc-bot{color:rgba(248,113,113,0.8);}
+.suit-b .pc-top,.suit-b .pc-mid,.suit-b .pc-bot{color:rgba(251,191,36,0.82);}
+
+@keyframes cFloat{
+  0%,100%{transform:rotate(var(--rot)) translateY(0px);}
+  50%{transform:rotate(var(--rot)) translateY(-11px);}
+}
+
+/* Dice — using Unicode faces */
+.casino-die{
+  position:absolute;
+  font-size:2.6rem;line-height:1;
+  color:rgba(110,231,183,0.75);
+  filter:drop-shadow(0 0 8px rgba(110,231,183,0.35));
+  transform:rotate(var(--rot,0deg));
+  animation:dFloat var(--dur,4.5s) ease-in-out infinite var(--delay,0s);
+  font-family:'Segoe UI Symbol','Apple Color Emoji','Noto Color Emoji',sans-serif;
+}
+@keyframes dFloat{
+  0%,100%{transform:rotate(var(--rot)) translateY(0px) scale(1);}
+  50%{transform:rotate(var(--rot)) translateY(-9px) scale(1.04);}
+}
 
 /* Explainer cards */
 .explainer{display:grid;grid-template-columns:repeat(3,1fr);gap:0.65rem;margin-bottom:1.4rem;}
@@ -365,16 +423,47 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 
   <!-- HERO -->
   <div class="hero dlg-fade">
-    <div class="hero-label">Daily Login Guide</div>
-    <h1>Daily Login Guide 2026</h1>
-    <p class="hero-desc">Full list of sweepstakes casinos offering free daily SC. Live data from our spreadsheet — updated regularly as sites change their bonuses and rules.</p>
+    <div class="hero-row">
+      <!-- Text side -->
+      <div class="hero-text">
+        <div class="hero-label">Daily Login Guide</div>
+        <h1>Daily Login Guide 2026</h1>
+        <p class="hero-desc">Full list of sweepstakes casinos offering free daily SC. Live data from our spreadsheet — updated regularly as sites change their bonuses and rules.</p>
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat"><div class="stat-val">96</div><div class="stat-lbl">Sites Tracked</div></div>
+          <div class="stat"><div class="stat-val">$50.21</div><div class="stat-lbl">Daily SC Possible</div></div>
+          <div class="stat"><div class="stat-val">$1,506</div><div class="stat-lbl">Monthly SC</div></div>
+          <div class="stat"><div class="stat-val">$8,532</div><div class="stat-lbl">Welcome SC Total</div></div>
+        </div>
+      </div>
 
-    <!-- Stats -->
-    <div class="stats">
-      <div class="stat"><div class="stat-val">96</div><div class="stat-lbl">Sites Tracked</div></div>
-      <div class="stat"><div class="stat-val">$50.21</div><div class="stat-lbl">Daily SC Possible</div></div>
-      <div class="stat"><div class="stat-val">$1,506</div><div class="stat-lbl">Monthly SC</div></div>
-      <div class="stat"><div class="stat-val">$8,532</div><div class="stat-lbl">Welcome SC Total</div></div>
+      <!-- Cards & Dice visual -->
+      <div class="hero-cards">
+        <!-- Playing cards -->
+        <div class="play-card suit-t" style="left:2%;top:8%;--rot:-20deg;--dur:4.2s;--delay:0s;">
+          <div class="pc-top">A<br>♠</div><div class="pc-mid">♠</div><div class="pc-bot">A<br>♠</div>
+        </div>
+        <div class="play-card suit-r" style="left:20%;top:40%;--rot:12deg;--dur:3.7s;--delay:0.6s;">
+          <div class="pc-top">7<br>♥</div><div class="pc-mid">♥</div><div class="pc-bot">7<br>♥</div>
+        </div>
+        <div class="play-card suit-t" style="left:38%;top:5%;--rot:-7deg;--dur:4.8s;--delay:1.1s;">
+          <div class="pc-top">K<br>♣</div><div class="pc-mid">♣</div><div class="pc-bot">K<br>♣</div>
+        </div>
+        <div class="play-card suit-r" style="right:20%;top:18%;--rot:16deg;--dur:5.1s;--delay:0.3s;">
+          <div class="pc-top">Q<br>♦</div><div class="pc-mid">♦</div><div class="pc-bot">Q<br>♦</div>
+        </div>
+        <div class="play-card suit-t" style="right:2%;top:42%;--rot:-13deg;--dur:4s;--delay:0.85s;">
+          <div class="pc-top">K<br>♠</div><div class="pc-mid">♠</div><div class="pc-bot">K<br>♠</div>
+        </div>
+        <div class="play-card suit-b" style="left:55%;top:50%;--rot:8deg;--dur:3.5s;--delay:1.4s;">
+          <div class="pc-top">J<br>♦</div><div class="pc-mid">♦</div><div class="pc-bot">J<br>♦</div>
+        </div>
+        <!-- Dice (Unicode faces ⚀⚁⚂⚃⚄⚅) -->
+        <div class="casino-die" style="left:10%;top:70%;--rot:22deg;--dur:5.2s;--delay:0.4s;">⚅</div>
+        <div class="casino-die" style="left:48%;top:65%;--rot:-18deg;--dur:4.3s;--delay:1.0s;">⚃</div>
+        <div class="casino-die" style="right:12%;top:72%;--rot:10deg;--dur:3.9s;--delay:0.7s;">⚄</div>
+      </div>
     </div>
 
     <!-- Explainer cards -->
