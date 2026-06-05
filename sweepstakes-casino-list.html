@@ -399,27 +399,27 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);word-wrap:break-word;overflow-wrap:break-word;}
 #mainTable td:last-child{border-right:none;}
 #mainTable td.name-cell{text-align:left;}
-/* Column widths — default 8 cols, no horizontal scroll */
-#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:20%;}  /* Casino+Signup */
+/* Column widths — 8 cols (no Daily SC), fits PC screen without scroll */
+#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:21%;}  /* Casino+Signup */
 #mainTable th:nth-child(2),#mainTable td:nth-child(2){width:4%;}   /* Tier */
-#mainTable th:nth-child(3),#mainTable td:nth-child(3){width:6%;}   /* Daily SC */
-#mainTable th:nth-child(4),#mainTable td:nth-child(4){width:8%;}   /* Daily $ */
-#mainTable th:nth-child(5),#mainTable td:nth-child(5){width:11%;}  /* Welcome Pkg */
-#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:6%;}   /* Min Redeem */
-#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:31%;}  /* Notes */
-#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:13%;}  /* Parent Company */
+#mainTable th:nth-child(3),#mainTable td:nth-child(3){width:8%;}   /* Daily $ */
+#mainTable th:nth-child(4),#mainTable td:nth-child(4){width:12%;}  /* Welcome Pkg */
+#mainTable th:nth-child(5),#mainTable td:nth-child(5){width:7%;}   /* Min Redeem */
+#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:31%;}  /* Notes */
+#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:11%;}  /* Parent Company */
+#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:6%;}   /* Review */
 
-/* Canada mode — 10 cols (shrink notes/parent to fit 🇨🇦 + ON) */
-#mainTable.ca-mode th:nth-child(1),#mainTable.ca-mode td:nth-child(1){width:17%;}
+/* Canada mode — 10 cols (no Daily SC, fits screen) */
+#mainTable.ca-mode th:nth-child(1),#mainTable.ca-mode td:nth-child(1){width:18%;}
 #mainTable.ca-mode th:nth-child(2),#mainTable.ca-mode td:nth-child(2){width:4%;}
-#mainTable.ca-mode th:nth-child(3),#mainTable.ca-mode td:nth-child(3){width:5%;}
-#mainTable.ca-mode th:nth-child(4),#mainTable.ca-mode td:nth-child(4){width:7%;}
-#mainTable.ca-mode th:nth-child(5),#mainTable.ca-mode td:nth-child(5){width:10%;}
-#mainTable.ca-mode th:nth-child(6),#mainTable.ca-mode td:nth-child(6){width:5%;}
-#mainTable.ca-mode th:nth-child(7),#mainTable.ca-mode td:nth-child(7){width:26%;}
-#mainTable.ca-mode th:nth-child(8),#mainTable.ca-mode td:nth-child(8){width:10%;}
+#mainTable.ca-mode th:nth-child(3),#mainTable.ca-mode td:nth-child(3){width:7%;}
+#mainTable.ca-mode th:nth-child(4),#mainTable.ca-mode td:nth-child(4){width:10%;}
+#mainTable.ca-mode th:nth-child(5),#mainTable.ca-mode td:nth-child(5){width:6%;}
+#mainTable.ca-mode th:nth-child(6),#mainTable.ca-mode td:nth-child(6){width:27%;}
+#mainTable.ca-mode th:nth-child(7),#mainTable.ca-mode td:nth-child(7){width:8%;}
+#mainTable.ca-mode th:nth-child(8),#mainTable.ca-mode td:nth-child(8){width:8%;}
 #mainTable.ca-mode th:nth-child(9),#mainTable.ca-mode td:nth-child(9){width:8%;}
-#mainTable.ca-mode th:nth-child(10),#mainTable.ca-mode td:nth-child(10){width:8%;}
+#mainTable.ca-mode th:nth-child(10),#mainTable.ca-mode td:nth-child(10){width:4%;}
 
 /* Gameplay mode — 9 cols (casino + tier + 6 game cols + other) */
 #mainTable.gp-mode th:nth-child(1),#mainTable.gp-mode td:nth-child(1){width:18%;}
@@ -686,6 +686,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
     <div class="nav-links">
       <a href="/getting-started" class="nav-link">Get Started</a>
       <a href="/sweepstakes-casino-list" class="nav-link active">Sweepstakes Casinos List</a>
+      <a href="/casino-reviews" class="nav-link">Casino Reviews</a>
       <a href="/side-hustles" class="nav-link">Side Hustles</a>
       <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link">Blog</a>
@@ -699,6 +700,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
   <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
+  <a href="/casino-reviews">Casino Reviews</a>
   <a href="/side-hustles">Side Hustles</a>
   <a href="/tools">Tools</a>
   <a href="/blog">Blog</a>
@@ -845,13 +847,10 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
             <tr>
               <th onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
               <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-              <th onclick="sortBy('daily')">Daily SC</th>
               <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
               <th>Welcome Package</th>
               <th onclick="sortBy('redeem')">Min.<br>Redeem <span class="th-sort">↕</span></th>
               <th class="notes-cell">Notes</th>
-              <th>🇨🇦</th>
-              <th>ON</th>
               <th>Parent Company</th>
               <th>Review</th>
             </tr>
@@ -1350,7 +1349,6 @@ function updateTableHeader(){
     thead.innerHTML=`
       <th onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
       <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-      <th onclick="sortBy('daily')">Daily SC</th>
       <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
       <th>Welcome Package</th>
       <th onclick="sortBy('redeem')">Min.<br>Redeem <span class="th-sort">↕</span></th>
@@ -1373,7 +1371,7 @@ function renderTable(data){
   const tbl=document.getElementById('mainTable');
   tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
   tbl.classList.toggle('gp-mode', gameplayMode);
-  const colCount = gameplayMode ? 9 : (showCa ? 11 : 9);
+  const colCount = gameplayMode ? 9 : (showCa ? 10 : 8);
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1409,7 +1407,6 @@ function renderTable(data){
       const moreId='m'+noteId;
       tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
-      <td>${dailyBadge(c.daily)}</td>
       <td><span class="daily-val" title="${c.dailyRaw||''}">${esc(c.dailyRaw)||'—'}</span></td>
       <td class="welcome-cell">${esc(c.welcome)||'—'}</td>
       <td><span class="redeem-val">${c.redeemRaw?esc(c.redeemRaw):'—'}</span></td>
