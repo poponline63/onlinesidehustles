@@ -400,15 +400,15 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable td:last-child{border-right:none;}
 #mainTable td.name-cell{text-align:left;}
 /* Column widths — fits 1300px+ without horizontal scroll */
-#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:15%;}  /* Casino */
+#mainTable th:nth-child(1),#mainTable td:nth-child(1){width:20%;}  /* Casino+Signup */
 #mainTable th:nth-child(2),#mainTable td:nth-child(2){width:4%;}   /* Tier */
 #mainTable th:nth-child(3),#mainTable td:nth-child(3){width:6%;}   /* Daily SC */
 #mainTable th:nth-child(4),#mainTable td:nth-child(4){width:8%;}   /* Daily $ */
 #mainTable th:nth-child(5),#mainTable td:nth-child(5){width:11%;}  /* Welcome Pkg */
 #mainTable th:nth-child(6),#mainTable td:nth-child(6){width:6%;}   /* Min Redeem */
-#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:28%;}  /* Notes */
+#mainTable th:nth-child(7),#mainTable td:nth-child(7){width:31%;}  /* Notes */
 #mainTable th:nth-child(8),#mainTable td:nth-child(8){width:13%;}  /* Parent Company */
-#mainTable th:nth-child(9),#mainTable td:nth-child(9){width:9%;}   /* Sign Up */
+
 #mainTable tbody tr:nth-child(odd){background:#0d1828;}
 #mainTable tbody tr:nth-child(even){background:#0b1422;}
 #mainTable tbody tr:hover{background:rgba(110,231,183,0.05);}
@@ -755,7 +755,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
               <th>🇨🇦</th>
               <th>ON</th>
               <th>Parent Company</th>
-              <th>Sign Up</th>
+              
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -1129,7 +1129,7 @@ function updateTableHeader(){
       <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
       ${rtpHeaders.slice(0,6).map(h=>`<th>${esc(h)}</th>`).join('')}
       <th>Other RTP Games</th>
-      <th>Sign Up</th>`;
+      `;
   } else {
     const showCa = filters.geo==='canada'||filters.geo==='ontario';
     thead.innerHTML=`
@@ -1142,7 +1142,7 @@ function updateTableHeader(){
       <th class="notes-cell">Notes</th>
       ${showCa?'<th>🇨🇦</th><th>ON</th>':''}
       <th>Parent Company</th>
-      <th>Sign Up</th>`;
+      `;
   }
 }
 
@@ -1153,7 +1153,7 @@ function renderTable(data){
   updateTableHeader();
 
   const showCa = filters.geo==='canada'||filters.geo==='ontario';
-  const colCount = gameplayMode ? 10 : (showCa ? 11 : 9);
+  const colCount = gameplayMode ? 9 : (showCa ? 10 : 8);
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1167,6 +1167,9 @@ function renderTable(data){
     }
     const tr=document.createElement('tr');
     const isBest=c.tier==='S', isNew=c.tier==='NEW';
+    const signupBtn=c.signupUrl
+        ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup" style="margin-top:6px;display:inline-block;">SIGNUP</a>`
+        :`<span class="btn-signup no-link" style="margin-top:6px;display:inline-block;">Sign Up</span>`;
     const nameCell=`<td class="name-cell">
         <div class="casino-name-row">
           <span class="casino-name">${esc(c.name)}</span>
@@ -1174,15 +1177,13 @@ function renderTable(data){
           ${isNew?'<span class="badge-new">NEW</span>':''}
         </div>
         ${c.parent?`<div class="casino-parent-inline">${esc(c.parent)}</div>`:''}
+        ${signupBtn}
       </td>`;
-    const signupCell=`<td>${c.signupUrl
-        ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup">SIGNUP</a>`
-        :`<span class="btn-signup no-link">Sign Up</span>`}</td>`;
 
     if(gameplayMode){
       const rtpCells=(c.rtpGames||[]).slice(0,6).map(v=>`<td>${renderGameStatus(v)}</td>`).join('');
       const other=esc((c.rtpGames||[])[6]||'—');
-      tr.innerHTML=nameCell+`<td>${tierBadge(c.tier)}</td>`+rtpCells+`<td class="welcome-cell">${other}</td>`+signupCell;
+      tr.innerHTML=nameCell+`<td>${tierBadge(c.tier)}</td>`+rtpCells+`<td class="welcome-cell">${other}</td>`;
     } else {
       const noteId='n'+Math.random().toString(36).slice(2,8);
       tr.innerHTML=nameCell+`
@@ -1197,7 +1198,7 @@ function renderTable(data){
         ${c.restricted&&c.restricted!=='None listed'?`<div class="states-expand"><span class="states-toggle" onclick="this.parentElement.classList.toggle('open');this.textContent=this.parentElement.classList.contains('open')?'⚠ States ▲':'⚠ States ▼'">⚠ States ▼</span><div class="states-body">${esc(c.restricted)}</div></div>`:''}
       </td>
       ${showCa?`<td>${ynBadge(c.canada)}</td><td>${ynBadge(c.ontario)}</td>`:''}
-      <td class="parent-cell">${esc(c.parent)||'—'}</td>`+signupCell;
+      <td class="parent-cell">${esc(c.parent)||'—'}</td>`;
     }
     tb.appendChild(tr);
   });
