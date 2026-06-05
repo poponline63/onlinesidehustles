@@ -350,6 +350,13 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 .error-state button{margin-top:0.75rem;padding:0.4rem 1rem;background:var(--teal);color:#050f1a;border:none;border-radius:4px;font-weight:700;cursor:pointer;}
 
 /* No results */
+/* Gameplay status cells */
+.gs-yes{color:#4ade80;font-weight:700;font-size:1rem;}
+.gs-no{color:rgba(248,113,113,0.5);font-size:1rem;}
+.gs-unknown{color:rgba(110,231,183,0.18);font-size:0.9rem;}
+.gs-text{font-size:0.72rem;color:var(--text-dim);}
+.btn-outline.active{background:rgba(110,231,183,0.15);border-color:var(--teal);color:var(--teal);}
+
 /* Tier section divider rows */
 .section-row td{
   padding:6px 11px;font-weight:700;
@@ -499,7 +506,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
     <!-- Action buttons -->
     <div class="action-row">
       <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=1278774725#gid=1278774725" target="_blank" rel="noopener" class="btn-action btn-sheet">📊 Open Google Spreadsheet</a>
-      <a href="/gameplay-sheet" class="btn-action btn-outline">Gameplay Sheet</a>
+      <button class="btn-action btn-outline" id="toggleGameplay" type="button" onclick="setGameplayMode(!gameplayMode)">🎮 Gameplay Mode: OFF</button>
       <button class="btn-action btn-outline" id="toggleRestricted" type="button">Show Restricted States</button>
       <button class="btn-action btn-outline" onclick="loadData()" type="button">↻ Refresh Data</button>
     </div>
@@ -751,13 +758,53 @@ function ynBadge(v){return v?'<span class="yn-y">YES</span>':'<span class="yn-d"
 let CASINOS = [];
 let filters = {geo:'all', quick:'all', tier:null, feat:null, sort:'tier'};
 let sortDir = 1, lastSort = 'tier';
+let gameplayMode = false;
+let rtpHeaders = [];
+
+function renderGameStatus(val){
+  if(!val||val.trim()==='') return '<span class="gs-unknown">—</span>';
+  const l=val.toLowerCase();
+  if(l==='yes'||l==='y'||l==='true'||l==='1'||val.includes('PNbQx4N'))
+    return '<span class="gs-yes">✓</span>';
+  if(l==='no'||l==='n'||l==='false'||l==='0'||val.includes('gys4itG'))
+    return '<span class="gs-no">✗</span>';
+  return `<span class="gs-text">${esc(val)}</span>`;
+}
+
+function setGameplayMode(on){
+  gameplayMode=on;
+  const btn=document.getElementById('toggleGameplay');
+  if(on){ btn.textContent='🎮 Gameplay Mode: ON'; btn.classList.add('active'); }
+  else  { btn.textContent='🎮 Gameplay Mode: OFF'; btn.classList.remove('active'); }
+  filterAll();
+}
 
 // ===== BUILD DATA FROM CSV ROWS =====
 function buildData(rows){
-  CASINOS=[];
+  CASINOS=[];rtpHeaders=[];
   let currentTier='NEW';
   let dataStart=0;
-  if(rows[0]&&rows[0][0]&&rows[0][0].toLowerCase().includes('signup'))dataStart=1;
+  if(rows[0]&&rows[0][0]&&rows[0][0].toLowerCase().includes('signup')){
+    dataStart=1;
+    for(let c=6;c<=12&&c<rows[0].length;c++){
+      const h=(rows[0][c]||'').trim();
+      if(h) rtpHeaders.push(h);
+    }
+  }
+  // Fallback: get RTP headers from first tier separator row
+  if(!rtpHeaders.length){
+    for(let r=0;r<rows.length;r++){
+      const c0=(rows[r][0]||'').trim(), c1=(rows[r][1]||'').trim();
+      if(c1&&detectTier(c1)&&!c0.toLowerCase().includes('signup')){
+        for(let c=6;c<=12&&c<rows[r].length;c++){
+          const h=(rows[r][c]||'').trim();
+          if(h) rtpHeaders.push(h);
+        }
+        if(rtpHeaders.length) break;
+      }
+    }
+  }
+  while(rtpHeaders.length<7) rtpHeaders.push('Game '+(rtpHeaders.length+1));
 
   for(let r=dataStart;r<rows.length;r++){
     const row=rows[r];
@@ -784,6 +831,9 @@ function buildData(rows){
     const parent=(row[15]||'').trim();
     const restricted=(row[18]||'').trim();
 
+    const rtpGames=[];
+    for(let gc=6;gc<=12;gc++) rtpGames.push((row[gc]||'').trim());
+
     CASINOS.push({
       name:col1,
       tier:currentTier,
@@ -798,6 +848,7 @@ function buildData(rows){
       ontario:ONTARIO_YES.has(col1),
       parent,
       restricted,
+      rtpGames,
       signupUrl:getLink(col1)
     });
   }
@@ -811,39 +862,73 @@ const SECTION_LABELS={
   NEW:'★ New Sites'
 };
 const SECTION_CLS={S:'sec-s',A:'sec-a',B:'sec-b',NEW:'sec-new'};
-const COL_COUNT=12;
+
+function updateTableHeader(){
+  const thead=document.querySelector('#mainTable thead tr');
+  if(!thead) return;
+  if(gameplayMode){
+    thead.innerHTML=`
+      <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
+      <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
+      ${rtpHeaders.slice(0,6).map(h=>`<th>${esc(h)}</th>`).join('')}
+      <th style="text-align:left">Other RTP Games</th>
+      <th>Sign Up</th>`;
+  } else {
+    thead.innerHTML=`
+      <th style="text-align:left" onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
+      <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
+      <th onclick="sortBy('daily')">Free SC<br>Daily?</th>
+      <th onclick="sortBy('amt')">Daily<br>Amt <span class="th-sort">↕</span></th>
+      <th style="text-align:left">Welcome Pkg</th>
+      <th onclick="sortBy('redeem')">Min<br>Redeem <span class="th-sort">↕</span></th>
+      <th class="notes-cell" style="text-align:left">Notes</th>
+      <th>🇨🇦</th>
+      <th>ON</th>
+      <th style="text-align:left">Parent Co.</th>
+      <th class="restricted-col" style="text-align:left">Restricted States</th>
+      <th>Sign Up</th>`;
+  }
+}
 
 function renderTable(data){
   const tb=document.getElementById('tbody');
   tb.innerHTML='';
   document.getElementById('noRes').style.display=data.length?'none':'block';
+  updateTableHeader();
 
+  const colCount = gameplayMode ? 10 : 12;
   let lastTier=null;
   data.forEach(c=>{
-    // Section divider when tier changes
     if(c.tier!==lastTier){
       lastTier=c.tier;
       const sr=document.createElement('tr');
       sr.className='section-row '+(SECTION_CLS[c.tier]||'sec-new');
       const sd=document.createElement('td');
-      sd.colSpan=COL_COUNT;
+      sd.colSpan=colCount;
       sd.textContent=SECTION_LABELS[c.tier]||c.tier;
-      sr.appendChild(sd);
-      tb.appendChild(sr);
+      sr.appendChild(sd); tb.appendChild(sr);
     }
     const tr=document.createElement('tr');
-    const isBest=c.tier==='S';
-    const isNew=c.tier==='NEW';
-    const noteId='n'+Math.random().toString(36).slice(2,8);
-    tr.innerHTML=`
-      <td class="name-cell">
+    const isBest=c.tier==='S', isNew=c.tier==='NEW';
+    const nameCell=`<td class="name-cell">
         <div class="casino-name-row">
           <span class="casino-name">${esc(c.name)}</span>
           ${isBest?'<span class="badge-best">BEST</span>':''}
           ${isNew?'<span class="badge-new">NEW</span>':''}
         </div>
         ${c.parent?`<div class="casino-parent-inline">${esc(c.parent)}</div>`:''}
-      </td>
+      </td>`;
+    const signupCell=`<td>${c.signupUrl
+        ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup">SIGNUP</a>`
+        :`<span class="btn-signup no-link">Sign Up</span>`}</td>`;
+
+    if(gameplayMode){
+      const rtpCells=(c.rtpGames||[]).slice(0,6).map(v=>`<td>${renderGameStatus(v)}</td>`).join('');
+      const other=esc((c.rtpGames||[])[6]||'—');
+      tr.innerHTML=nameCell+`<td>${tierBadge(c.tier)}</td>`+rtpCells+`<td class="welcome-cell">${other}</td>`+signupCell;
+    } else {
+      const noteId='n'+Math.random().toString(36).slice(2,8);
+      tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
       <td>${dailyBadge(c.daily)}</td>
       <td>${hmlBadge(c.dailyAmt)}</td>
@@ -856,10 +941,8 @@ function renderTable(data){
       <td>${ynBadge(c.canada)}</td>
       <td>${ynBadge(c.ontario)}</td>
       <td class="parent-cell">${esc(c.parent)||'—'}</td>
-      <td class="restricted-col"><div class="restricted-list">${esc(c.restricted)||'None listed'}</div></td>
-      <td>${c.signupUrl
-        ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup">SIGNUP</a>`
-        :`<span class="btn-signup no-link">Sign Up</span>`}</td>`;
+      <td class="restricted-col"><div class="restricted-list">${esc(c.restricted)||'None listed'}</div></td>`+signupCell;
+    }
     tb.appendChild(tr);
   });
 }
