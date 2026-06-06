@@ -1,0 +1,825 @@
+#!/usr/bin/env python3
+"""
+regen_state_pages.py
+Regenerates all 50 casinos-in-*.html state pages to match casino-reviews.html visual style.
+"""
+import os
+
+OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# (name, domain, referral_url, daily, score, tier, age, initial, highlight, tags)
+CASINOS = [
+    # GOD TIER
+    ("Stake.us",       "stake.us",           "https://stake.us/?c=OnlineSideHustles",                                                          "$1.00 Free SC",     4.7, "god", 21, "S",  "Best Daily Value — Originals + Live",           ["Daily Free SC","Originals","Fast Payout"]),
+    ("WOW Vegas",      "wowvegas.com",        "https://www.wowvegas.com/?raf=4166140",                                                           "$0.10 Daily",       4.6, "god", 21, "WV", "Welcome: $10 for 30 SC (300%)",                 ["Daily SC","Welcome Bonus","US+CA"]),
+    ("Crown Coins",    "crowncoinscasino.com","https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends","$0.05–$1.50 Daily", 4.5, "god", 18, "CC", "High Daily SC — Fast $50 Cashout",              ["Strong Bonus","18+","Fast Pay"]),
+    ("Realprize",      "realprize.com",       "https://affiliates.routy.app/route/91184?affId=3353&ts=5005447",                                  "$0.30 Daily",       4.5, "god", 18, "RP", "$35 for 70 SC Welcome (200%)",                  ["18+","Daily SC","$100 Min Cash"]),
+    ("McLuck",         "mcluck.com",          "https://www.mcluck.com",                                                                          "$0.20–$2.00 Daily", 4.5, "god", 21, "ML", "Incremental Bonuses — Great Game Library",      ["Daily SC","Great Games","US+CA"]),
+    ("Chumba Casino",  "chumbacasino.com",    "https://www.chumbacasino.com",                                                                    "$1.00 Daily",       4.5, "god", 21, "C",  "Pioneer Since 2017 — Trusted Brand",            ["Since 2017","Free SC","Cash Prizes"]),
+    ("Pulsz",          "pulsz.com",           "https://www.pulsz.com",                                                                           "$0.30 Daily",       4.5, "god", 21, "P",  "$10 for 25 SC Welcome (250%)",                  ["Daily SC","US+CA","Slot Focus"]),
+    ("Sportzino",      "sportzino.com",       "https://www.sportzino.com",                                                                       "$1.00–$2.00 Daily", 4.5, "god", 18, "Sz", "Sports Betting + Casino Slots",                 ["Sports+Slots","18+","Daily SC"]),
+    ("Zula Casino",    "zulacasino.com",      "https://www.zulacasino.com",                                                                      "$1.00 Daily",       4.5, "god", 18, "Z",  "$300 for 600 SC Welcome (200%)",                ["18+","Wide Selection","US+CA"]),
+    ("SpinSaga",       "spinsagacasino.com",  "https://play.spinsagacasino.com/?ref=29904&campaign=referFriend",                                 "$1.00 Daily",       4.5, "god", 21, "SS", "$26 for 50 SC Welcome (192%)",                  ["Daily SC","$100 Min Cash","Referral"]),
+    # HIGH TIER
+    ("Global Poker",   "globalpoker.com",     "https://www.globalpoker.com",                                                                     "$0.25–$1.00 Daily", 4.4, "high",18, "GP", "Best Sweepstakes Poker Platform",               ["Poker Focus","18+","US+CA"]),
+    ("Lonestar Casino","lonestarcasino.com",  "https://affiliates.routy.app/route/114339?affId=3353&ts=5005447",                                 "$1.00 Daily",       4.4, "high",21, "LS", "RealPrize Sister — Stack for $1 SC/Day",        ["Daily SC","Routy Partner","Gift Cards"]),
+    ("Scarlet Sands",  "scarletsands.com",    "https://affiliates.routy.app/route/114302?affId=3353&ts=5005447",                                 "$0.50 Daily",       4.3, "high",21, "SC", "$15 for 35 SC Welcome (233%)",                  ["Daily SC","Routy Partner","21+"]),
+    ("Legendz Casino", "legendzcasino.com",   "https://affiliates.routy.app/route/91174?affId=3353&ts=5005447",                                  "$0.50 Daily",       4.3, "high",21, "Lz", "$20 for 50 SC Welcome (250%)",                  ["Daily SC","Routy Partner","Slots"]),
+    ("Sixty6",         "sixty6.com",          "https://www.sixty6.com",                                                                          "Daily Wheel $0.10–$5", 4.2, "high",21,"S6","Daily Spin Wheel — $100 Min Cash",             ["Daily Wheel","21+","Slots"]),
+    ("ReBet",          "rebet.com",           "https://www.rebet.com",                                                                           "$1.00 Daily",       4.2, "high",21, "Rb", "$20 Min Cashout — Sports + Casino",             ["$20 Min Cash","Sports","Fast Pay"]),
+    ("Fliff",          "getfliff.com",        "https://www.getfliff.com",                                                                        "$1.00 Daily",       4.2, "high",18, "Fl", "Best Social Sportsbook + Free SC",              ["18+","Sports Picks","Free SC"]),
+    ("RubySweeps",     "rubysweeps.com",      "https://www.rubysweeps.com",                                                                      "$0.10–$1.00",  4.1, "high",21, "RS", "100% Match Bonuses — $50 Min Cash",             ["Match Bonus","21+","Slots"]),
+    ("Fortune Coins",  "fortunecoins.com",    "https://www.fortunecoins.com",                                                                    "$0.75 Daily",       4.1, "high",21, "FC", "Blazesoft Platform — $50 Min Cash",             ["Daily SC","Blazesoft","21+"]),
+    ("LuckyLand Slots","luckylandslots.com",  "https://www.luckylandslots.com",                                                                  "Daily Coins",       4.1, "high",18, "LL", "Slots Focused — Reliable Daily Bonuses",        ["18+","Slot Focus","US+CA"]),
+    # MID TIER
+    ("Hello Millions", "hellomillions.com",   "https://www.hellomillions.com",                                                                   "$0.20–$0.40 Daily", 3.9, "mid", 18, "HM", "1st Purchase: $24.99 for 60 SC (240%)",         ["18+","B2 Group","$75 Min Cash"]),
+    ("Chanced",        "chanced.com",         "https://www.chanced.com",                                                                         "$1.00 Daily",       3.9, "mid", 18, "Ch", "Daily Login Bonus — 18+ Friendly",              ["18+","Daily Bonus","Slots"]),
+    ("SpinQuest",      "spinquest.com",       "http://spinquest.com/?u=WXSBTAN",                                                                 "$1.00 Daily",       3.8, "mid", 21, "SQ", "$10 for 30 SC Welcome (200%)",                  ["Daily SC","21+","$50 Min Cash"]),
+    ("FunRize",        "funrize.com",         "https://www.funrize.com",                                                                         "$0.10–$0.30 Daily", 3.8, "mid", 18, "FR", "1st Purchase: $24.99 for 60 SC (240%)",         ["18+","A1 Group","$100 Min Cash"]),
+    ("Moozi",          "moozi.com",           "https://www.moozi.com",                                                                           "$0.50 Daily",       3.7, "mid", 21, "Mz", "High Daily Bonus + Easy Verification",          ["21+","Easy KYC","Slots"]),
+    ("Jackpota",       "jackpota.com",        "https://www.jackpota.com",                                                                        "$0.30 Daily",       3.7, "mid", 21, "JP", "B2 Platform — 1st: $10 for 25 SC (250%)",       ["21+","B2 Group","$75 Min Cash"]),
+    ("WowVegas Bingo", "wowvegas.com",        "https://www.wowvegas.com/?raf=4166140",                                                           "$0.10 Daily",       3.6, "mid", 21, "WB", "Bingo + Slots — MW Services",                   ["Bingo","21+","MW Services"]),
+    ("DimeSweeps",     "dimesweeps.com",      "https://dimesweeps.com/?ref=r_poponline63",                                                       "Daily Bonus",       3.6, "mid", 21, "DS", "Referral Bonus — Low Entry Platform",           ["21+","Referral","Low Entry"]),
+    ("SpeedSweeps",    "speedsweeps.com",     "https://speedsweeps.com/?ref=r_poponline63",                                                      "Daily Bonus",       3.5, "mid", 21, "SP", "Referral Program — Growing Platform",           ["21+","Referral","Growing"]),
+    ("AmericanLuck",   "americanluck.com",    "https://americanluck.com/signup/90a4a8d4-856c-46e8-b853-26c91db2051e",                            "Daily Bonus",       3.5, "mid", 21, "AL", "UUID Signup Bonus — US Platform",               ["21+","US Only","Daily Bonus"]),
+]
+
+STATES = [
+    ("alabama",       "Alabama",        "AL", 109, 41, 14, 95,  "strict gambling laws, but sweepstakes operate under federal promotional law"),
+    ("alaska",        "Alaska",         "AK", 86,  33, 10, 76,  "few regulated gaming options, making sweepstakes casinos very popular"),
+    ("arizona",       "Arizona",        "AZ", 106, 40, 13, 93,  "sweepstakes platforms are legal under federal promotional law statewide"),
+    ("arkansas",      "Arkansas",       "AR", 99,  38, 12, 87,  "limited land-based gaming, sweepstakes casinos have grown rapidly in popularity"),
+    ("california",    "California",     "CA", 102, 39, 13, 89,  "no online casino gambling, sweepstakes casinos fill the gap legally"),
+    ("colorado",      "Colorado",       "CO", 112, 43, 14, 98,  "sweepstakes operate separately from CO's licensed gaming regulations"),
+    ("connecticut",   "Connecticut",    "CT", 103, 40, 13, 90,  "growing regulated market, sweepstakes casinos also fully legal and accessible"),
+    ("delaware",      "Delaware",       "DE", 99,  38, 12, 87,  "one of the first states to legalize online gambling; sweepstakes also available"),
+    ("florida",       "Florida",        "FL", 108, 41, 14, 94,  "sweepstakes operate legally alongside FL's existing tribal gaming options"),
+    ("georgia",       "Georgia",        "GA", 95,  36, 12, 83,  "no regulated casino gambling, making sweepstakes very popular in GA"),
+    ("hawaii",        "Hawaii",         "HI", 84,  32, 10, 74,  "most restrictive gambling state, but sweepstakes are legal as promotional contests"),
+    ("idaho",         "Idaho",          "ID", 91,  35, 10, 81,  "sweepstakes operate under federal promotional law — not Idaho gambling statutes"),
+    ("illinois",      "Illinois",       "IL", 113, 43, 14, 99,  "sweepstakes casinos complement IL's growing regulated gaming market"),
+    ("indiana",       "Indiana",        "IN", 98,  37, 12, 86,  "sweepstakes thrive alongside IN's extensive riverboat casino scene"),
+    ("iowa",          "Iowa",           "IA", 100, 39, 12, 88,  "sweepstakes operate under federal law separate from Iowa gambling statutes"),
+    ("kansas",        "Kansas",         "KS", 102, 39, 13, 89,  "sweepstakes casinos widely available to KS residents with no restrictions"),
+    ("kentucky",      "Kentucky",       "KY", 104, 40, 13, 91,  "limited casino gaming options have made sweepstakes extremely popular in KY"),
+    ("louisiana",     "Louisiana",      "LA", 101, 39, 13, 88,  "sweepstakes operate under federal promotional law — not Louisiana gambling statutes"),
+    ("maine",         "Maine",          "ME", 96,  37, 11, 85,  "limited regulated gaming makes ME residents embrace sweepstakes platforms"),
+    ("maryland",      "Maryland",       "MD", 104, 40, 13, 91,  "sweepstakes operate alongside MD's licensed casino and sports betting market"),
+    ("massachusetts", "Massachusetts",  "MA", 95,  36, 12, 83,  "sweepstakes operate legally separate from MA's licensed gaming framework"),
+    ("michigan",      "Michigan",       "MI", 88,  33, 10, 78,  "sweepstakes available even in MI's robust regulated online gaming market"),
+    ("minnesota",     "Minnesota",      "MN", 100, 38, 12, 88,  "no online casino gambling in MN; sweepstakes fill that gap legally"),
+    ("mississippi",   "Mississippi",    "MS", 99,  38, 12, 87,  "strong land-based gaming tradition; sweepstakes offer convenient home play"),
+    ("missouri",      "Missouri",       "MO", 102, 39, 12, 90,  "no online casino gambling; sweepstakes casinos are the legal option for MO"),
+    ("montana",       "Montana",        "MT", 94,  36, 11, 83,  "limited online gaming options; sweepstakes have grown rapidly in Big Sky Country"),
+    ("nebraska",      "Nebraska",       "NE", 98,  37, 11, 87,  "few regulated online options; NE residents have embraced sweepstakes platforms"),
+    ("nevada",        "Nevada",         "NV", 88,  34, 10, 78,  "even in the gambling capital, sweepstakes casinos are legal and popular"),
+    ("new-hampshire", "New Hampshire",  "NH", 97,  37, 12, 85,  "NH lottery operates separately from sweepstakes casino platforms"),
+    ("new-jersey",    "New Jersey",     "NJ", 98,  37, 12, 86,  "NJ has regulated online casinos, and sweepstakes platforms are also legal"),
+    ("new-mexico",    "New Mexico",     "NM", 100, 38, 12, 88,  "sweepstakes complement NM's existing tribal gaming options"),
+    ("new-york",      "New York",       "NY", 89,  34, 11, 78,  "sweepstakes operate legally alongside NY's sports betting market"),
+    ("north-carolina","North Carolina", "NC", 113, 43, 14, 99,  "sweepstakes thriving as NC rolls out regulated sports betting"),
+    ("north-dakota",  "North Dakota",   "ND", 93,  36, 11, 82,  "limited online gaming in ND; sweepstakes have become increasingly popular"),
+    ("ohio",          "Ohio",           "OH", 101, 38, 12, 89,  "sweepstakes available alongside OH's regulated sports betting and casinos"),
+    ("oklahoma",      "Oklahoma",       "OK", 98,  37, 12, 86,  "strong tribal gaming state; sweepstakes operate under separate federal law"),
+    ("oregon",        "Oregon",         "OR", 97,  37, 11, 86,  "OR has a state lottery; sweepstakes casinos operate under different legal framework"),
+    ("pennsylvania",  "Pennsylvania",   "PA", 104, 40, 13, 91,  "PA has regulated online casinos; sweepstakes also legal and widely used"),
+    ("rhode-island",  "Rhode Island",   "RI", 98,  38, 12, 86,  "sweepstakes operate legally alongside RI's regulated gaming options"),
+    ("south-carolina","South Carolina", "SC", 99,  38, 12, 87,  "strict gambling laws; sweepstakes are legal as promotional contests in SC"),
+    ("south-dakota",  "South Dakota",   "SD", 95,  37, 11, 84,  "sweepstakes are legal under federal promotional law for SD residents"),
+    ("tennessee",     "Tennessee",      "TN", 103, 39, 13, 90,  "no casino gambling in TN; sweepstakes casinos are the legal alternative"),
+    ("texas",         "Texas",          "TX", 114, 44, 14, 100, "strict gambling laws; sweepstakes operate under entirely separate federal law"),
+    ("utah",          "Utah",           "UT", 82,  31, 9,  73,  "most restrictive gambling state; sweepstakes legal as promotional contests"),
+    ("vermont",       "Vermont",        "VT", 93,  36, 11, 82,  "sweepstakes operate freely with no VT-specific restrictions"),
+    ("virginia",      "Virginia",       "VA", 111, 42, 14, 97,  "sweepstakes thrive alongside VA's growing regulated gaming market"),
+    ("washington",    "Washington",     "WA", 97,  38, 12, 85,  "sweepstakes operate under federal promotional law — not WA gambling statutes"),
+    ("west-virginia", "West Virginia",  "WV", 101, 39, 13, 88,  "WV has legal online casinos; sweepstakes also popular for no-purchase play"),
+    ("wisconsin",     "Wisconsin",      "WI", 98,  37, 12, 86,  "strong tribal gaming presence; sweepstakes operate under separate federal law"),
+    ("wyoming",       "Wyoming",        "WY", 96,  37, 12, 84,  "sweepstakes fully legal; WY players enjoy free daily coins and real prizes"),
+]
+
+SCORE_FILL = {
+    4.7: "94%", 4.6: "92%", 4.5: "90%", 4.4: "88%", 4.3: "86%",
+    4.2: "84%", 4.1: "82%", 4.0: "80%", 3.9: "78%", 3.8: "76%",
+    3.7: "74%", 3.6: "72%", 3.5: "70%",
+}
+
+TIER_LABELS = {"god": "&#127775; God Tier", "high": "&#128293; High Tier", "mid": "&#128201; Mid Tier"}
+
+def favicon_url(domain):
+    return f"https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://{domain}&size=256"
+
+def score_fill(score):
+    s = round(float(score), 1)
+    return SCORE_FILL.get(s, "70%")
+
+def render_card(casino, rank):
+    name, domain, ref_url, daily, score, tier, age, initial, highlight, tags = casino
+    fill = score_fill(score)
+    tier_label_map = {"god": "God Tier", "high": "High Tier", "mid": "Mid Tier"}
+    tier_text = tier_label_map[tier]
+    name_lower = name.lower()
+    age_class = "age18" if age == 18 else ""
+    age_label = "18+" if age == 18 else "21+"
+    age_tag_class = "hot" if age == 18 else ""
+
+    tags_html = ""
+    for t in tags:
+        tags_html += f'<span class="rc-tag">{t}</span>'
+    # Add age tag
+    if age == 18:
+        tags_html += f'<span class="rc-tag hot">18+</span>'
+    else:
+        tags_html += f'<span class="rc-tag">21+</span>'
+
+    fav = favicon_url(domain)
+    score_str = f"{score:.1f}"
+
+    return f'''      <a href="{ref_url}" class="review-card {tier} dlg-fade" data-name="{name_lower}" data-tier="{tier}" target="_blank" rel="noopener sponsored">
+        <div class="rc-logo-wrap">
+          <span class="rc-rank">#{rank}</span>
+          <div class="rc-score-badge">{score_str}<span>/5</span></div>
+          <img class="rc-logo-img" src="{fav}" alt="{name} logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="rc-logo-fallback" style="display:none">{initial}</div>
+          <span class="rc-badge {tier}">{tier_text}</span>
+          <span class="rc-age {age_class}">{age_label}</span>
+        </div>
+        <div class="rc-body">
+          <div class="rc-name">{name}</div>
+          <div class="rc-rating-row">
+            <div class="star-bar" aria-label="{score_str} out of 5 stars">
+              <div class="star-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="star-fg" style="--fill:{fill}">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <span class="rc-score">{score_str}/5</span>
+          </div>
+          <div class="rc-highlight">&#9654; {highlight}</div>
+          <div class="rc-tags">{tags_html}</div>
+          <div class="rc-cta-btn">Sign Up Free &#8594;</div>
+        </div>
+      </a>'''
+
+def build_faq(state_name, state_abbr, legal_note):
+    return f'''  <!-- FAQ -->
+  <section class="faq-section dlg-fade">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">Are sweepstakes casinos legal in {state_name}?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Yes. Sweepstakes casinos are legal in {state_name} because they operate under federal promotional sweepstakes law, not state gambling statutes. {state_name} has {legal_note}. You can play for free using Gold Coins, and Sweep Coins can be redeemed for real cash prizes.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do I need to pay to play at sweepstakes casinos in {state_name}?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">No purchase is ever required. All sweepstakes casinos listed here offer free daily bonuses — just log in each day to collect your free Sweep Coins. You can also mail in a request for free coins (AMOE). Most platforms offer welcome bonuses just for signing up.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What is the minimum age to play sweepstakes casinos in {state_name}?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Most sweepstakes casinos require players to be 21+ in {state_abbr}, though several platforms (Crown Coins, Realprize, Sportzino, Zula, Global Poker, Fliff, Hello Millions, Chanced, FunRize, LuckyLand Slots) accept players who are 18+. Always check the individual platform's terms before signing up.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How do I cash out my winnings from sweepstakes casinos in {state_name}?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Once you accumulate Sweep Coins through free play, you can redeem them for real cash prizes via PayPal, bank transfer, crypto, or gift cards depending on the platform. Minimum cashout thresholds vary: Stake.us ($50), Crown Coins ($50), SpinSaga ($100), WOW Vegas ($75+). Most platforms process payouts within 1–7 business days.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Which sweepstakes casino has the best daily bonus for {state_name} players?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Stake.us leads with $1.00 free SC daily plus rake-back rewards. McLuck offers $0.20–$2.00 in incremental daily bonuses. Crown Coins provides $0.05–$1.50 daily. For stacking, combining Stake.us + McLuck + Crown Coins + SpinSaga gives you $3–$5+ in free SC every single day — all completely free.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I play on mobile in {state_name}?<span class="faq-toggle">+</span></div>
+      <div class="faq-answer">Yes, all sweepstakes casinos listed here are fully mobile-compatible. Most work great in your browser on iPhone or Android without downloading anything. Stake.us, Pulsz, Chumba Casino, and WOW Vegas also have dedicated mobile apps available for download.</div>
+    </div>
+  </section>'''
+
+def build_page(state_data):
+    slug, state_name, abbr, total, god_count, age18_count, age21_count, legal_note = state_data
+
+    # Separate by tier
+    god_casinos  = [c for c in CASINOS if c[5] == "god"]
+    high_casinos = [c for c in CASINOS if c[5] == "high"]
+    mid_casinos  = [c for c in CASINOS if c[5] == "mid"]
+
+    # Build god tier cards (ranks 1-10)
+    god_cards = ""
+    for i, c in enumerate(god_casinos, 1):
+        god_cards += render_card(c, i) + "\n"
+
+    # Build high tier cards (ranks 11-20)
+    high_cards = ""
+    for i, c in enumerate(high_casinos, 1):
+        high_cards += render_card(c, 10 + i) + "\n"
+
+    # Build mid tier cards (ranks 21-30)
+    mid_cards = ""
+    for i, c in enumerate(mid_casinos, 1):
+        mid_cards += render_card(c, 20 + i) + "\n"
+
+    faq_html = build_faq(state_name, abbr, legal_note)
+
+    canonical_url = f"https://onlinesidehustles.info/casinos-in-{slug}"
+
+    page = f'''<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9MKJR8494"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-D9MKJR8494');</script>
+<script src="/js/analytics.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<title>Best Sweepstakes Casinos in {state_name} 2026 — {total} Free SC Sites | Online Sidehustles</title>
+<meta name="description" content="Top {total} sweepstakes casinos available in {state_name} ({abbr}) — ranked by daily bonuses, payout speed, and real cash value. All platforms are free to play and legal in {state_name}.">
+<meta name="keywords" content="sweepstakes casinos {state_name}, best sweepstakes casino {abbr} 2026, free sweeps coins {state_name}, online casino {state_name}, sweepstakes casino list {state_name}">
+<meta name="author" content="Online Sidehustles">
+<link rel="canonical" href="{canonical_url}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:site_name" content="Online Sidehustles">
+<meta property="og:title" content="Best Sweepstakes Casinos in {state_name} 2026 — {total} Free SC Sites">
+<meta property="og:description" content="Top {total} sweepstakes casinos ranked for {state_name} players. God Tier, High Tier, Mid Tier rankings. All free to play, updated June 2026.">
+<meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Best Sweepstakes Casinos in {state_name} 2026 — {total} Free SC Sites">
+<meta name="twitter:description" content="{total} sweepstakes casinos ranked for {state_name} players. God Tier, High Tier, Mid Tier. Free to play. Updated June 2026.">
+<meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+<link rel="icon" type="image/gif" href="/favicon.gif">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111c2e">
+<script type="application/ld+json">{{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Best Sweepstakes Casinos in {state_name} 2026",
+  "description":"{total} sweepstakes casinos ranked for {state_name} players by daily bonuses, payout speed, and real cash value.",
+  "url":"{canonical_url}",
+  "numberOfItems":30,
+  "itemListElement":[
+    {{"@type":"ListItem","position":1,"name":"Stake.us","url":"https://stake.us/?c=OnlineSideHustles","description":"Rated 4.7/5. Best daily value sweepstakes casino with $1 free SC daily."}},
+    {{"@type":"ListItem","position":2,"name":"WOW Vegas","url":"https://www.wowvegas.com/?raf=4166140","description":"Rated 4.6/5. Welcome bonus: $10 for 30 SC (300%). Daily SC included."}},
+    {{"@type":"ListItem","position":3,"name":"Crown Coins","url":"https://crowncoinscasino.com/?utm_campaign=364f186b-7369-428b-a22c-dbeaf57940c7&utm_source=friends","description":"Rated 4.5/5. High daily SC with fast $50 cashout minimum."}}
+  ]
+}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{{
+  --bg:#111c2e;--bg-card:#0f1723;--bg-nav:#0c1526;--bg-card2:#131e30;
+  --teal:#6ee7b7;--teal-dim:rgba(110,231,183,.55);--teal-faint:rgba(110,231,183,.10);
+  --lime:#ADFF2F;--lime-text:#060a0f;
+  --text:#e8e6e0;--text-muted:#7a8fa8;--text-dim:#94a3b8;
+  --border:rgba(110,231,183,.12);--border-md:rgba(110,231,183,.22);
+  --tier-god:#6ee7b7;--tier-high:#60a5fa;--tier-mid:#94a3b8;
+  --shadow:0 4px 24px rgba(0,0,0,.45);
+}}
+*,*::before,*::after{{margin:0;padding:0;box-sizing:border-box;}}
+html{{scroll-behavior:smooth;}}
+body{{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;position:relative;}}
+
+/* ===== BACKGROUND ===== */
+#bgCanvas{{position:fixed;inset:0;z-index:-100;pointer-events:none;}}
+.bg-orb{{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:-99;}}
+.bg-orb-1{{width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(110,231,183,.07) 0%,transparent 70%);}}
+.bg-orb-2{{width:500px;height:500px;bottom:-150px;right:-150px;background:radial-gradient(circle,rgba(110,231,183,.06) 0%,transparent 70%);}}
+.bg-orb-3{{width:400px;height:400px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(110,231,183,.04) 0%,transparent 70%);}}
+.bg-grid{{position:fixed;inset:0;z-index:-98;pointer-events:none;background:linear-gradient(rgba(110,231,183,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,.018) 1px,transparent 1px);background-size:56px 56px;}}
+.bg-vignette{{position:fixed;inset:0;z-index:-97;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(5,9,18,.5) 72%,rgba(4,8,16,.85) 100%);}}
+.bg-scanlines{{position:fixed;inset:0;z-index:-97;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);}}
+
+/* ===== FADE ===== */
+.dlg-fade{{opacity:0;transform:translateY(18px);transition:opacity .5s ease-out,transform .5s ease-out;}}
+.dlg-fade.visible{{opacity:1;transform:translateY(0);}}
+
+/* ===== NAV ===== */
+nav{{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-nav);border-bottom:1px solid var(--border);height:54px;display:flex;align-items:center;padding:0 1.5rem;transition:box-shadow .2s;}}
+nav.scrolled{{box-shadow:0 2px 20px rgba(0,0,0,.4);}}
+.nav-inner{{max-width:1600px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}}
+.nav-brand{{display:flex;align-items:center;gap:.45rem;text-decoration:none;font-weight:700;font-size:.82rem;color:var(--text);letter-spacing:.08em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;}}
+.nav-logo{{height:22px;width:auto;}}
+.nav-links{{display:flex;align-items:center;gap:.05rem;}}
+.nav-link{{color:var(--text-dim);text-decoration:none;padding:.3rem .7rem;font-size:.78rem;font-weight:500;border-bottom:2px solid transparent;transition:all .18s;}}
+.nav-link:hover{{color:var(--teal);}}
+.nav-link.active{{color:var(--teal);border-bottom-color:var(--teal);}}
+.nav-cta{{background:var(--lime);color:var(--lime-text);text-decoration:none;padding:.35rem 1rem;font-size:.78rem;font-weight:700;border-radius:4px;margin-left:.6rem;transition:opacity .2s;}}
+.nav-cta:hover{{opacity:.88;}}
+.nav-hamburger{{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}}
+.nav-hamburger span{{display:block;width:22px;height:2px;background:var(--text-dim);border-radius:2px;transition:all .2s;}}
+.nav-hamburger.active span:nth-child(1){{transform:translateY(7px) rotate(45deg);}}
+.nav-hamburger.active span:nth-child(2){{opacity:0;}}
+.nav-hamburger.active span:nth-child(3){{transform:translateY(-7px) rotate(-45deg);}}
+@media(max-width:768px){{.nav-links{{display:none;}}.nav-hamburger{{display:flex;}}}}
+.mobile-menu{{display:none;position:fixed;top:54px;left:0;right:0;z-index:999;background:var(--bg-nav);border-bottom:1px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:.25rem;}}
+.mobile-menu.open{{display:flex;}}
+.mobile-menu a{{color:var(--text-dim);text-decoration:none;padding:.5rem 0;font-size:.9rem;border-bottom:1px solid var(--border);}}
+.mobile-menu a:last-child{{border-bottom:none;}}
+.mobile-menu a:hover{{color:var(--teal);}}
+
+/* ===== DISCORD WIDGET ===== */
+.discord-widget{{position:fixed;bottom:1.25rem;left:1.25rem;z-index:900;background:#5865F2;border-radius:14px;padding:.7rem 1rem .7rem .85rem;display:flex;align-items:center;gap:.65rem;box-shadow:0 4px 22px rgba(88,101,242,.45),0 0 0 1px rgba(255,255,255,.08);text-decoration:none;color:#fff;animation:discordIn .55s cubic-bezier(.22,1,.36,1) 2.5s both;transition:transform .18s,box-shadow .18s;max-width:230px;}}
+.discord-widget:hover{{transform:translateY(-2px);}}
+@keyframes discordIn{{from{{transform:translateX(-130%) scale(.9);opacity:0;}}to{{transform:none;opacity:1;}}}}
+.discord-icon{{flex-shrink:0;width:28px;height:28px;}}
+.discord-text{{display:flex;flex-direction:column;line-height:1.25;}}
+.discord-title{{font-weight:700;font-size:.82rem;}}
+.discord-sub{{font-size:.68rem;opacity:.82;}}
+.discord-x{{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:rgba(20,20,40,.75);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}}
+.discord-x:hover{{background:rgba(248,113,113,.8);}}
+
+/* ===== PAGE SHELL ===== */
+.page{{max-width:1280px;margin:0 auto;padding:74px 1.25rem 5rem;position:relative;isolation:isolate;}}
+
+/* ===== HERO ===== */
+.hero{{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}}
+.hero-label{{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.55rem;}}
+.hero h1{{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:.65rem;}}
+.hero h1 span{{color:var(--teal);}}
+.hero-sub{{color:var(--text-dim);font-size:.98rem;line-height:1.75;max-width:660px;margin-bottom:1.4rem;}}
+.hero-stats{{display:flex;gap:1.5rem;flex-wrap:wrap;}}
+.hero-stat{{border-left:2px solid var(--teal);padding-left:.75rem;}}
+.hero-stat-val{{font-size:1.5rem;font-weight:800;color:var(--teal);font-family:'IBM Plex Mono',monospace;line-height:1;}}
+.hero-stat-lbl{{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;margin-top:.15rem;}}
+
+/* ===== FILTER + SEARCH BAR ===== */
+.controls{{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem;padding:.75rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;}}
+.filter-tabs{{display:flex;gap:.4rem;flex-wrap:wrap;flex:1;}}
+.ftab{{background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.08em;padding:.35rem .85rem;border-radius:6px;cursor:pointer;transition:all .18s;white-space:nowrap;}}
+.ftab:hover{{border-color:var(--teal-dim);color:var(--teal);}}
+.ftab.active{{background:var(--teal-faint);border-color:var(--border-md);color:var(--teal);}}
+.search-box{{position:relative;flex-shrink:0;}}
+.search-box::before{{content:'';position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:14px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237a8fa8' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") no-repeat center/contain;pointer-events:none;}}
+.search-input{{background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:.84rem;padding:.38rem 1rem .38rem 2.2rem;outline:none;width:190px;transition:border-color .18s;}}
+.search-input:focus{{border-color:var(--teal);}}
+.search-input::placeholder{{color:var(--text-muted);}}
+
+/* ===== TIER SECTION ===== */
+.tier-section{{margin-bottom:2.75rem;}}
+.tier-header{{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem;}}
+.tier-pill{{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .8rem;border-radius:5px;white-space:nowrap;}}
+.tier-pill.god{{background:rgba(110,231,183,.14);color:var(--teal);border:1px solid rgba(110,231,183,.28);}}
+.tier-pill.high{{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.26);}}
+.tier-pill.mid{{background:rgba(148,163,184,.09);color:var(--text-dim);border:1px solid rgba(148,163,184,.2);}}
+.tier-count{{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--text-muted);}}
+.tier-line{{flex:1;height:1px;background:var(--border);}}
+
+/* ===== REVIEW GRID ===== */
+.review-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;}}
+@media(max-width:480px){{.review-grid{{grid-template-columns:1fr 1fr;gap:.6rem;}}}}
+@media(max-width:340px){{.review-grid{{grid-template-columns:1fr;}}}}
+
+/* ===== REVIEW CARD ===== */
+.review-card{{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transition:border-color .22s,transform .22s,box-shadow .22s;
+  position:relative;
+}}
+.review-card:hover{{
+  border-color:var(--card-accent,var(--teal-dim));
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,.65),0 0 0 1px var(--card-accent-faint,var(--border));
+}}
+.review-card.god{{--card-accent:var(--tier-god);--card-accent-faint:rgba(110,231,183,.25);--card-glow:rgba(110,231,183,.18);}}
+.review-card.high{{--card-accent:var(--tier-high);--card-accent-faint:rgba(96,165,250,.22);--card-glow:rgba(96,165,250,.15);}}
+.review-card.mid{{--card-accent:var(--tier-mid);--card-accent-faint:rgba(148,163,184,.18);--card-glow:rgba(148,163,184,.08);}}
+.review-card.hidden{{display:none;}}
+
+/* Logo header */
+.rc-logo-wrap{{
+  height:150px;
+  background:linear-gradient(160deg,var(--bg-card2) 0%,var(--bg) 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}}
+.rc-logo-wrap::before{{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:radial-gradient(circle at 50% 55%, var(--card-glow,rgba(110,231,183,.12)) 0%, transparent 68%);
+}}
+.rc-logo-wrap::after{{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;z-index:3;
+  background:var(--card-accent,transparent);opacity:.9;
+}}
+.rc-logo-img{{
+  width:84px;height:84px;object-fit:contain;
+  border-radius:18px;
+  position:relative;z-index:2;
+  background:rgba(5,9,18,.55);
+  border:2px solid rgba(255,255,255,.14);
+  padding:6px;
+  box-shadow:0 6px 28px rgba(0,0,0,.7);
+}}
+.rc-logo-fallback{{
+  width:84px;height:84px;border-radius:18px;
+  background:var(--card-accent,var(--teal-faint));
+  color:#fff;font-size:1.55rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:2;
+  border:2px solid rgba(255,255,255,.14);
+  box-shadow:0 6px 28px rgba(0,0,0,.7);
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
+}}
+.rc-rank{{
+  position:absolute;top:.65rem;left:.7rem;z-index:4;
+  font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:700;
+  letter-spacing:.08em;color:rgba(255,255,255,.7);
+  background:rgba(5,9,18,.65);
+  border:1px solid rgba(255,255,255,.12);
+  padding:.18rem .5rem;border-radius:4px;
+}}
+.rc-score-badge{{
+  position:absolute;top:.5rem;right:.75rem;z-index:4;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:1.65rem;font-weight:700;
+  color:#fff;line-height:1;
+  text-shadow:0 2px 14px rgba(0,0,0,.95);
+  letter-spacing:-.02em;
+}}
+.rc-score-badge span{{font-size:.68rem;color:rgba(255,255,255,.5);font-weight:400;letter-spacing:0;}}
+.rc-badge{{
+  position:absolute;bottom:.65rem;left:.7rem;z-index:4;
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.2rem .55rem;border-radius:4px;
+}}
+.rc-badge.god{{background:rgba(110,231,183,.25);color:var(--teal);border:1px solid rgba(110,231,183,.45);}}
+.rc-badge.high{{background:rgba(96,165,250,.2);color:#60a5fa;border:1px solid rgba(96,165,250,.4);}}
+.rc-badge.mid{{background:rgba(148,163,184,.15);color:var(--text-dim);border:1px solid rgba(148,163,184,.3);}}
+
+/* Card body */
+.rc-body{{padding:.85rem 1rem 1rem;display:flex;flex-direction:column;gap:.5rem;flex:1;}}
+.rc-name{{font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;}}
+
+/* Star rating */
+.rc-rating-row{{display:flex;align-items:center;gap:.55rem;}}
+.star-bar{{position:relative;display:inline-block;font-size:.9rem;letter-spacing:.08em;line-height:1;}}
+.star-bg{{color:rgba(110,231,183,.16);}}
+.star-fg{{position:absolute;top:0;left:0;color:var(--teal);overflow:hidden;white-space:nowrap;width:var(--fill,0%);}}
+.rc-score{{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;color:var(--text-muted);}}
+
+/* Key highlight */
+.rc-highlight{{
+  background:rgba(110,231,183,.06);
+  border:1px solid rgba(110,231,183,.18);
+  border-left:3px solid var(--card-accent,var(--teal));
+  border-radius:0 6px 6px 0;
+  padding:.32rem .65rem;
+  font-size:.73rem;font-weight:600;
+  color:var(--teal);
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:.04em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}}
+.review-card.high .rc-highlight{{border-left-color:var(--tier-high);color:#60a5fa;background:rgba(96,165,250,.06);border-color:rgba(96,165,250,.18);}}
+.review-card.mid  .rc-highlight{{border-left-color:var(--tier-mid);color:var(--text-dim);background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.18);}}
+
+/* Feature tags */
+.rc-tags{{display:flex;flex-wrap:wrap;gap:.3rem;}}
+.rc-tag{{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.06em;
+  padding:.2rem .5rem;border-radius:4px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  color:var(--text-muted);white-space:nowrap;
+}}
+.rc-tag.hot{{background:var(--teal-faint);border-color:var(--border-md);color:var(--teal);}}
+.rc-tag.ca{{background:rgba(96,165,250,.08);border-color:rgba(96,165,250,.2);color:#60a5fa;}}
+
+/* CTA */
+.rc-cta-btn{{
+  margin-top:auto;
+  background:transparent;
+  border:1px solid var(--card-accent,var(--border-md));
+  color:var(--card-accent,var(--teal));
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  border-radius:8px;
+  padding:.58rem 1rem;
+  text-align:center;
+  transition:all .18s;
+}}
+.review-card:hover .rc-cta-btn{{
+  background:var(--card-accent,var(--teal));
+  color:var(--bg);
+  border-color:var(--card-accent,var(--teal));
+}}
+
+/* ===== FOOTER ===== */
+footer{{background:var(--bg-nav);border-top:1px solid var(--border);padding:2.5rem 1.5rem 1.5rem;position:relative;}}
+.footer-inner{{max-width:1280px;margin:0 auto;}}
+.footer-grid{{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}}
+@media(max-width:768px){{.footer-grid{{grid-template-columns:1fr 1fr;}}}}
+@media(max-width:480px){{.footer-grid{{grid-template-columns:1fr;}}}}
+.footer-brand{{font-family:'IBM Plex Mono',monospace;font-size:.82rem;font-weight:700;letter-spacing:.08em;color:var(--text);text-transform:uppercase;margin-bottom:.6rem;}}
+.footer-tagline{{font-size:.8rem;color:var(--text-muted);line-height:1.6;max-width:280px;}}
+.footer-col h4{{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem;}}
+.footer-col a{{display:block;color:var(--text-dim);text-decoration:none;font-size:.82rem;margin-bottom:.4rem;}}
+.footer-col a:hover{{color:var(--teal);}}
+.footer-bottom{{border-top:1px solid var(--border);padding-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}}
+.footer-copy{{font-size:.75rem;color:var(--text-muted);font-family:'IBM Plex Mono',monospace;}}
+.footer-links{{display:flex;gap:1rem;}}
+.footer-links a{{color:var(--text-muted);text-decoration:none;font-size:.75rem;font-family:'IBM Plex Mono',monospace;}}
+.footer-links a:hover{{color:var(--teal);}}
+
+/* ===== STATE PAGE EXTRAS ===== */
+.rc-age{{position:absolute;top:.65rem;right:.7rem;z-index:4;font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.7);background:rgba(5,9,18,.65);border:1px solid rgba(255,255,255,.12);padding:.18rem .5rem;border-radius:4px;}}
+.rc-age.age18{{color:#6ee7b7;border-color:rgba(110,231,183,.3);}}
+.faq-section{{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}}
+.faq-section h2{{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:1.25rem;}}
+.faq-item{{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;margin-bottom:.6rem;overflow:hidden;transition:border-color .2s;}}
+.faq-item.open{{border-color:var(--border-md);}}
+.faq-question{{padding:1rem 1.2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:#fff;font-size:.92rem;gap:1rem;user-select:none;}}
+.faq-question:hover{{color:var(--teal);}}
+.faq-toggle{{color:var(--teal);font-size:1.3rem;line-height:1;flex-shrink:0;transition:transform .3s;}}
+.faq-item.open .faq-toggle{{transform:rotate(45deg);}}
+.faq-answer{{display:none;padding:0 1.2rem 1rem;color:var(--text-dim);font-size:.88rem;line-height:1.75;}}
+.faq-item.open .faq-answer{{display:block;}}
+.cta-section{{text-align:center;padding:3rem 1rem;margin-top:2rem;border-top:1px solid var(--border);}}
+.cta-section h2{{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:.5rem;}}
+.cta-section p{{color:var(--text-dim);margin-bottom:1.5rem;}}
+.btn-cta{{display:inline-block;background:var(--teal);color:#060a0f;font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:.9rem;padding:.75rem 2rem;border-radius:8px;text-decoration:none;transition:opacity .2s;}}
+.btn-cta:hover{{opacity:.88;}}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<canvas id="bgCanvas"></canvas>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="bg-grid"></div>
+<div class="bg-scanlines"></div>
+<div class="bg-vignette"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="Online Sidehustles" class="nav-logo" style="height:22px;width:auto;">
+      ONLINE SIDEHUSTLES
+    </a>
+    <div class="nav-links">
+      <a href="/getting-started" class="nav-link">Get Started</a>
+      <a href="/sweepstakes-casino-list" class="nav-link active">Sweepstakes Casinos List</a>
+      <a href="/casino-reviews" class="nav-link">Casino Reviews</a>
+      <a href="/side-hustles" class="nav-link">Side Hustles</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/blog" class="nav-link">Blog</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">&#128225; Join Discord</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/getting-started">Get Started</a>
+  <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
+  <a href="/casino-reviews">Casino Reviews</a>
+  <a href="/side-hustles">Side Hustles</a>
+  <a href="/tools">Tools</a>
+  <a href="/blog">Blog</a>
+  <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">&#128225; Join Discord</a>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero dlg-fade">
+    <div class="hero-label">&#128205; {state_name} Casinos</div>
+    <h1>Sweepstakes Casinos<br><span>in {state_name}</span></h1>
+    <p class="hero-sub">The best sweepstakes casinos available to {state_name} ({abbr}) players — ranked by daily bonuses, payout speed, and real cash value. All free to play, no real-money gambling required. {state_name} has {legal_note}.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">{total}</div>
+        <div class="hero-stat-lbl">Sites Available</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">{god_count}</div>
+        <div class="hero-stat-lbl">God Tier</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">{age18_count}</div>
+        <div class="hero-stat-lbl">Age 18+</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">{age21_count}</div>
+        <div class="hero-stat-lbl">Age 21+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER + SEARCH -->
+  <div class="controls dlg-fade">
+    <div class="filter-tabs">
+      <button class="ftab active" data-f="all">All (30)</button>
+      <button class="ftab" data-f="god">&#127775; God Tier (10)</button>
+      <button class="ftab" data-f="high">&#128293; High Tier (10)</button>
+      <button class="ftab" data-f="mid">&#128201; Mid Tier (10)</button>
+    </div>
+    <div class="search-box">
+      <input type="search" class="search-input" id="reviewSearch" placeholder="Search casinos..." autocomplete="off">
+    </div>
+  </div>
+
+  <!-- GOD TIER -->
+  <div class="tier-section" id="sec-god">
+    <div class="tier-header dlg-fade">
+      <span class="tier-pill god">&#127775; God Tier</span>
+      <span class="tier-count">4.5+ Stars</span>
+      <div class="tier-line"></div>
+      <span class="tier-count">10 casinos</span>
+    </div>
+    <div class="review-grid">
+{god_cards}    </div>
+  </div>
+
+  <!-- HIGH TIER -->
+  <div class="tier-section" id="sec-high">
+    <div class="tier-header dlg-fade">
+      <span class="tier-pill high">&#128293; High Tier</span>
+      <span class="tier-count">4.0 – 4.4 Stars</span>
+      <div class="tier-line"></div>
+      <span class="tier-count">10 casinos</span>
+    </div>
+    <div class="review-grid">
+{high_cards}    </div>
+  </div>
+
+  <!-- MID TIER -->
+  <div class="tier-section" id="sec-mid">
+    <div class="tier-header dlg-fade">
+      <span class="tier-pill mid">&#128201; Mid Tier</span>
+      <span class="tier-count">Under 4.0 Stars</span>
+      <div class="tier-line"></div>
+      <span class="tier-count">10 casinos</span>
+    </div>
+    <div class="review-grid">
+{mid_cards}    </div>
+  </div>
+
+{faq_html}
+
+  <!-- CTA -->
+  <div class="cta-section dlg-fade">
+    <h2>Ready to Start Earning Free SC in {state_name}?</h2>
+    <p>Sign up for multiple platforms to stack daily bonuses. All are free to join — no purchase required.</p>
+    <a href="https://stake.us/?c=OnlineSideHustles" class="btn-cta" target="_blank" rel="noopener sponsored">Start with Stake.us &#8594;</a>
+  </div>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">&#127794; ONLINE SIDEHUSTLES</div>
+        <p class="footer-tagline">Free guides, community tips, and automation tools for earning from sweepstakes casinos and daily login sites.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <a href="/sweepstakes-casino-list">Casino List</a>
+        <a href="/getting-started">Getting Started</a>
+        <a href="/side-hustles">Side Hustles</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Top Reviews</h4>
+        <a href="/review-stake-us">Stake.us</a>
+        <a href="/review-pulsz">Pulsz</a>
+        <a href="/review-zula">Zula Casino</a>
+        <a href="/review-crown-coins">Crown Coins</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Discord</a>
+        <a href="/tools">Tools</a>
+        <a href="/faq">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&#169; 2026 Online Sidehustles &middot; All rights reserved</span>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Discord widget -->
+<a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener">
+  <button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button>
+  <svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg>
+  <div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div>
+</a>
+<script>(function(){{var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){{e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){{w.style.display='none';}},300);localStorage.setItem('dcDismissed','1');}});}})();</script>
+
+<script>
+/* ===== BGCANVAS ===== */
+(function(){{
+  const cv=document.getElementById('bgCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d');let W,H,stars=[];
+  function resize(){{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}}
+  function mk(){{return{{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+.2,a:Math.random(),da:(Math.random()*.004+.001)*(Math.random()<.5?1:-1)}};}}
+  function init(){{resize();stars=[];for(let i=0;i<100;i++)stars.push(mk());}}
+  function draw(){{ctx.clearRect(0,0,W,H);for(const s of stars){{s.a+=s.da;if(s.a<=0||s.a>=1)s.da*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(110,231,183,'+s.a.toFixed(2)+')';ctx.fill();}}requestAnimationFrame(draw);}}
+  window.addEventListener('resize',()=>{{resize();stars=[];for(let i=0;i<100;i++)stars.push(mk());}},{{passive:true}});
+  init();draw();
+}})();
+
+/* ===== NAV ===== */
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>20),{{passive:true}});
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{{
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+}});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{{
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}}));
+
+/* ===== FADE OBSERVER ===== */
+const fo=new IntersectionObserver(entries=>{{
+  entries.forEach(e=>{{if(e.isIntersecting){{e.target.classList.add('visible');fo.unobserve(e.target);}}}});
+}},{{threshold:.05,rootMargin:'0px 0px -20px 0px'}});
+document.querySelectorAll('.dlg-fade').forEach(el=>fo.observe(el));
+
+/* ===== FILTER TABS ===== */
+document.querySelectorAll('.ftab').forEach(btn=>{{
+  btn.addEventListener('click',()=>{{
+    document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.f;
+    document.querySelectorAll('.review-card').forEach(card=>{{
+      card.classList.toggle('hidden', f!=='all' && card.dataset.tier!==f);
+    }});
+    document.querySelectorAll('.tier-section').forEach(sec=>{{
+      const visible=sec.querySelectorAll('.review-card:not(.hidden)').length>0;
+      sec.style.display=f==='all'||visible?'':'none';
+    }});
+    document.getElementById('reviewSearch').value='';
+  }});
+}});
+
+/* ===== SEARCH ===== */
+document.getElementById('reviewSearch').addEventListener('input',function(){{
+  const q=this.value.toLowerCase().trim();
+  if(q){{document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+        document.querySelector('.ftab[data-f="all"]').classList.add('active');}}
+  document.querySelectorAll('.review-card').forEach(card=>{{
+    const name=card.dataset.name||'';
+    const title=card.querySelector('.rc-name')?.textContent||'';
+    card.classList.toggle('hidden',q&&!name.includes(q)&&!title.toLowerCase().includes(q));
+    card.style.display='';
+  }});
+  document.querySelectorAll('.tier-section').forEach(sec=>{{
+    sec.style.display=sec.querySelectorAll('.review-card:not(.hidden)').length?'':'none';
+  }});
+}});
+
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.faq-question').forEach(q=>{{
+  q.addEventListener('click',()=>{{
+    const item=q.closest('.faq-item');
+    item.classList.toggle('open');
+  }});
+}});
+</script>
+</body>
+</html>'''
+    return page
+
+def main():
+    count = 0
+    for state_data in STATES:
+        slug = state_data[0]
+        state_name = state_data[1]
+        filename = f"casinos-in-{slug}.html"
+        filepath = os.path.join(OUTPUT_DIR, filename)
+        html = build_page(state_data)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html)
+        count += 1
+        print(f"  [{count:02d}/50] Written: {filename}")
+
+    print(f"\nDone! Generated {count} state pages.")
+
+if __name__ == "__main__":
+    main()
