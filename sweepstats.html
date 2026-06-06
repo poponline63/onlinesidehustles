@@ -31,7 +31,7 @@
     <meta name="twitter:title" content="SweepStats - Free Sweepstakes Transaction Tracker | Community Spotlight">
     <meta name="twitter:description" content="Free sweepstakes transaction tracker. Track deposits, redemptions, and profit across all your casinos with dashboards, charts, and CSV import.">
     <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
-    <meta name="theme-color" content="#050810">
+    <meta name="theme-color" content="#111c2e">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -186,6 +186,79 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 .footer-links{display:flex;gap:1rem;}
 .footer-links a:hover{color:var(--text);}
 </style>
+<style>
+/* ===== SWEEPSTATS PAGE - RSA STYLE ===== */
+
+/* Hero */
+.ss-hero { text-align:center; padding:88px 2rem 60px; max-width:1200px; margin:0 auto; }
+.ss-badge { display:inline-flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%); padding:0.5rem 1.2rem; border-radius:20px; color:#060a0f; font-family:'IBM Plex Mono',monospace; font-size:0.85rem; font-weight:700; letter-spacing:0.05em; animation:pulseBadge 2s infinite; box-shadow:0 0 30px rgba(110,231,183,0.4); margin-bottom:1.5rem; }
+@keyframes pulseBadge { 0%,100%{box-shadow:0 0 30px rgba(110,231,183,0.4);} 50%{box-shadow:0 0 50px rgba(110,231,183,0.7);} }
+.ss-hero h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:900; font-family:'IBM Plex Mono',monospace; margin:0 0 1rem; line-height:1.15; }
+.ss-gradient { background:linear-gradient(135deg,#6ee7b7,#a7f3d0,#34d399); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.ss-hero p { color:var(--text-dim); font-size:1.1rem; max-width:680px; margin:0 auto 2rem; line-height:1.7; }
+.ss-hero-btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+.btn-teal { display:inline-flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%); color:#060a0f; text-decoration:none; padding:0.9rem 2.2rem; border-radius:50px; font-size:1rem; font-weight:700; box-shadow:0 0 25px rgba(110,231,183,0.4); transition:transform 0.2s,box-shadow 0.2s; animation:ctaPulse 2.5s ease-in-out infinite; }
+.btn-teal:hover { transform:translateY(-2px); box-shadow:0 0 40px rgba(110,231,183,0.6); }
+@keyframes ctaPulse { 0%,100%{box-shadow:0 0 25px rgba(110,231,183,0.4);} 50%{box-shadow:0 0 45px rgba(110,231,183,0.65);} }
+.btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--teal); text-decoration:none; padding:0.9rem 2.2rem; border-radius:50px; font-size:1rem; font-weight:700; border:2px solid rgba(110,231,183,0.35); transition:all 0.2s; }
+.btn-ghost:hover { border-color:var(--teal); background:rgba(110,231,183,0.07); }
+
+/* Stats */
+.ss-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; max-width:1200px; margin:0 auto 3rem; padding:0 2rem; }
+.ss-stat { background:var(--bg-card); border:1px solid var(--border); border-radius:15px; padding:1.5rem; text-align:center; transition:all 0.3s; }
+.ss-stat:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+.ss-stat-num { font-size:1.8rem; font-weight:bold; background:linear-gradient(135deg,#6ee7b7,#a7f3d0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'IBM Plex Mono',monospace; margin-bottom:0.25rem; }
+.ss-stat-lbl { color:var(--text-dim); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* Content sections */
+.ss-section { background:var(--bg-card); border:1px solid var(--border); border-left:4px solid var(--teal); border-radius:20px; padding:3rem; margin-bottom:3rem; max-width:1200px; margin-left:auto; margin-right:auto; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
+.ss-section-title { font-size:1.75rem; font-weight:bold; color:var(--teal); font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; }
+.ss-section-sub { color:var(--text-dim); font-size:0.95rem; line-height:1.8; margin-bottom:2rem; }
+
+/* Feature grid */
+.feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+.feature-card { background:rgba(110,231,183,0.04); border:1px solid var(--border); border-radius:14px; padding:1.6rem; transition:all 0.3s; position:relative; overflow:hidden; }
+.feature-card::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:linear-gradient(90deg,var(--teal),#34d399); transform:translateX(-100%); transition:transform 0.5s; }
+.feature-card:hover::before { transform:translateX(0); }
+.feature-card:hover { border-color:var(--border-md); transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,0,0,0.3); }
+.feature-icon { font-size:1.8rem; margin-bottom:0.8rem; }
+.feature-card h3 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.5rem; font-family:'IBM Plex Mono',monospace; }
+.feature-card p { font-size:0.85rem; color:var(--text-dim); line-height:1.65; }
+
+/* Steps */
+.ss-steps { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+.ss-step { background:rgba(110,231,183,0.03); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.5rem; display:flex; gap:1.2rem; align-items:flex-start; transition:border-color 0.2s,transform 0.2s; position:relative; overflow:hidden; }
+.ss-step::before { content:''; position:absolute; top:0;left:0;bottom:0;width:3px; background:linear-gradient(180deg,var(--teal),#34d399); opacity:0.7; }
+.ss-step:hover { border-color:var(--border-md); transform:translateX(4px); }
+.ss-step-num { width:40px; height:40px; min-width:40px; background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; color:#060a0f; box-shadow:0 0 15px rgba(110,231,183,0.4); }
+.ss-step-body h3 { font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.4rem; }
+.ss-step-body p { font-size:0.88rem; color:var(--text-dim); line-height:1.65; margin:0; }
+
+/* Why use box */
+.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem; }
+.why-item { background:rgba(110,231,183,0.04); border:1px solid var(--border); border-radius:12px; padding:1.25rem 1.5rem; display:flex; gap:1rem; align-items:flex-start; }
+.why-check { color:var(--teal); font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+.why-item h4 { font-size:0.92rem; font-weight:700; color:#fff; margin-bottom:0.3rem; }
+.why-item p { font-size:0.82rem; color:var(--text-dim); line-height:1.55; margin:0; }
+
+/* CTA */
+.ss-cta { background:rgba(110,231,183,0.06); border:2px solid rgba(110,231,183,0.25); border-radius:20px; padding:4rem 3rem; text-align:center; max-width:1200px; margin:0 auto 3rem; }
+.ss-cta h2 { font-size:2rem; font-weight:900; background:linear-gradient(135deg,#6ee7b7,#a7f3d0,#34d399); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'IBM Plex Mono',monospace; margin-bottom:1rem; }
+.ss-cta p { color:var(--text-dim); font-size:1rem; line-height:1.7; max-width:620px; margin:0 auto 2rem; }
+
+/* Fade */
+.fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease-out,transform 0.6s ease-out; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:768px){
+  .ss-hero { padding:80px 1.25rem 40px; }
+  .ss-stats { grid-template-columns:repeat(2,1fr); padding:0 1.25rem; }
+  .ss-section { padding:2rem 1.25rem; border-radius:16px; }
+  .feature-grid { grid-template-columns:1fr 1fr; }
+  .ss-cta { padding:2.5rem 1.25rem; }
+  .why-grid { grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
@@ -248,37 +321,184 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 </div>
 
 <!-- PAGE CONTENT -->
-<div class="content-area" style="padding-top:80px;">
+<div class="content-area">
   <div class="container">
-<section class="page-hero">
-        <div class="container">
-            <span class="badge fade-in">Community Spotlight</span>
-            <h1 class="fade-in fade-in-delay-1"><span class="emerald">SweepStats</span> Transaction Tracker</h1>
-            <p class="subtitle fade-in fade-in-delay-2">A free sweepstakes transaction tracker built by the community. Track deposits, redemptions, and profit across all your sweepstakes casinos with dashboards, charts, and CSV import.</p>
+
+    <!-- HERO -->
+    <div class="ss-hero fade-in">
+      <div class="ss-badge">&#x1F4CA; Community-Built Tool</div>
+      <h1><span class="ss-gradient">SweepStats</span><br>Transaction Tracker</h1>
+      <p>The free sweepstakes portfolio tracker built by the community. Track every deposit, redemption, and profit across all your casinos &mdash; with dashboards, charts, per-casino breakdowns, and CSV import. No account required.</p>
+      <div class="ss-hero-btns">
+        <a href="https://www.sweepstats.com/" class="btn-teal" target="_blank" rel="noopener">&#x1F680; Open SweepStats</a>
+        <a href="https://discord.gg/W9bPGH8crh" class="btn-ghost" target="_blank" rel="noopener">Join Community</a>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="ss-stats fade-in">
+      <div class="ss-stat">
+        <div class="ss-stat-num">$0</div>
+        <div class="ss-stat-lbl">Cost &mdash; Free Forever</div>
+      </div>
+      <div class="ss-stat">
+        <div class="ss-stat-num">100%</div>
+        <div class="ss-stat-lbl">Privacy &mdash; Data Stays Local</div>
+      </div>
+      <div class="ss-stat">
+        <div class="ss-stat-num">All</div>
+        <div class="ss-stat-lbl">Casinos Supported</div>
+      </div>
+      <div class="ss-stat">
+        <div class="ss-stat-num">Live</div>
+        <div class="ss-stat-lbl">Charts &amp; Dashboard</div>
+      </div>
+    </div>
+
+    <!-- WHAT IS IT -->
+    <div class="ss-section fade-in">
+      <div class="ss-section-title">&#x1F4CA; What is SweepStats?</div>
+      <p class="ss-section-sub">SweepStats is a free web-based tool built specifically for sweepstakes casino players. It solves one of the biggest pain points in sweepstakes: <strong style="color:#fff;">knowing your actual numbers.</strong></p>
+      <p style="color:var(--text-dim);font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">Most players have a rough idea of whether they're up or down, but no clear picture of their ROI per casino, which sites are actually paying out, or what their total profit/loss is across the board. SweepStats gives you that clarity &mdash; in real time, for free, with no signup required.</p>
+      <div style="background:rgba(110,231,183,0.06);border:1px solid rgba(110,231,183,0.2);border-left:4px solid var(--teal);border-radius:10px;padding:1.5rem;margin-top:1rem;">
+        <h4 style="color:var(--teal);font-size:0.95rem;font-weight:700;margin-bottom:0.6rem;">&#x1F4A1; Built by the Community</h4>
+        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.7;margin:0;">SweepStats was created by a member of the sweepstakes community who wanted a better way to track profits. It's free, open, and continuously improved based on community feedback. Find it and discuss it in our Discord server.</p>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="ss-section fade-in">
+      <div class="ss-section-title">&#x26A1; Features</div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4C8;</div>
+          <h3>Dashboard Overview</h3>
+          <p>See your total deposits, redemptions, and net profit across all casinos in one clean view. Know your overall numbers at a glance.</p>
         </div>
-    </section>
-
-    <hr class="divider">
-    <section class="section">
-        <div class="container">
-            <p class="section-label fade-in">Features</p>
-            <div class="feature-grid fade-in">
-                <div class="feature-card"><h3>Dashboard Overview</h3><p>See your total deposits, redemptions, and net profit across all casinos in one clean dashboard view.</p></div>
-                <div class="feature-card"><h3>Per-Casino Tracking</h3><p>Break down performance by individual casino to see which sites are most profitable for you.</p></div>
-                <div class="feature-card"><h3>Charts & Trends</h3><p>Visualize your earnings over time with interactive charts. Spot trends and optimize your strategy.</p></div>
-                <div class="feature-card"><h3>CSV Import</h3><p>Import your transaction history from bank statements or casino exports to get started quickly.</p></div>
-                <div class="feature-card"><h3>Free & Open</h3><p>Built by the community, for the community. Completely free to use with no hidden fees or premium tiers.</p></div>
-                <div class="feature-card"><h3>Privacy First</h3><p>Your data stays on your device. No account required, no data sent to external servers.</p></div>
-            </div>
-
-            <div style="text-align:center;margin-top:48px;" class="fade-in">
-                <a href="https://discord.gg/W9bPGH8crh" class="btn-primary" target="_blank">Join Discord to Access SweepStats</a>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F3B0;</div>
+          <h3>Per-Casino Breakdown</h3>
+          <p>See exactly which casinos are profitable for you and which aren't. Stop wasting time on sites with poor ROI and double down on winners.</p>
         </div>
-    </section>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4C9;</div>
+          <h3>Charts &amp; Trends</h3>
+          <p>Visualize your earnings over time with interactive charts. Spot seasonal trends, track your growth, and identify your best months.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4C2;</div>
+          <h3>CSV Import</h3>
+          <p>Import your transaction history from bank statements or casino transaction exports. Get started in minutes with your existing data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F512;</div>
+          <h3>Privacy First</h3>
+          <p>Your financial data stays on your device. No account required, no data sent to external servers. Your numbers are yours alone.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F193;</div>
+          <h3>Free &amp; Open</h3>
+          <p>Built by the community, for the community. Completely free to use with no hidden fees, no premium tiers, no paywalls &mdash; ever.</p>
+        </div>
+      </div>
+    </div>
 
+    <!-- HOW TO USE -->
+    <div class="ss-section fade-in">
+      <div class="ss-section-title">&#x1F680; How to Get Started</div>
+      <p class="ss-section-sub">Takes less than 5 minutes to set up. No account, no downloads, no credit card.</p>
+      <div class="ss-steps">
+        <div class="ss-step">
+          <div class="ss-step-num">1</div>
+          <div class="ss-step-body">
+            <h3>Visit sweepstats.com</h3>
+            <p>Open the tool directly in your browser at sweepstats.com. No installation, no signup. It runs entirely in your browser using local storage to keep your data private.</p>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-step-num">2</div>
+          <div class="ss-step-body">
+            <h3>Add Your Casinos</h3>
+            <p>Create entries for each sweepstakes casino you play. Add the casino name and start logging your transactions, or use CSV import if you have existing data ready.</p>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-step-num">3</div>
+          <div class="ss-step-body">
+            <h3>Log Deposits &amp; Redemptions</h3>
+            <p>Every time you buy a package or cash out, add the transaction. Takes 10 seconds per entry. The dashboard updates instantly to show your running profit/loss.</p>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-step-num">4</div>
+          <div class="ss-step-body">
+            <h3>Review Your Dashboard</h3>
+            <p>Check your dashboard regularly to see which casinos are performing best, your overall ROI, and trends over time. Use this data to optimize where you spend your time and money.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    
+    <!-- WHY TRACK -->
+    <div class="ss-section fade-in">
+      <div class="ss-section-title">&#x2705; Why Tracking Matters</div>
+      <p class="ss-section-sub">Most people think they're making more than they are &mdash; or don't know they're losing on certain sites. Data changes everything.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Know Your Actual ROI</h4>
+            <p>Package welcome bonuses look attractive on paper. Tracking reveals which ones actually pay off after wagering requirements and time spent.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Cut Losing Sites</h4>
+            <p>Some casinos simply pay out less for you. Data lets you identify which sites to drop and reallocate that bankroll to better performers.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Optimize Your Bankroll</h4>
+            <p>See which sites give the best returns and shift more of your capital there. Small optimizations compound significantly over time.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Tax Record Keeping</h4>
+            <p>A clean log of all deposits and redemptions makes tax time straightforward. Know exactly what you earned and spent on each platform.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Track Multiple Accounts</h4>
+            <p>Running the Player 2 strategy? Track each account separately and see which of your managed accounts are the most profitable.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check">&#x2713;</div>
+          <div>
+            <h4>Motivation &amp; Accountability</h4>
+            <p>Seeing your profit chart grow over time is motivating. Seeing a loss on a site is the accountability you need to change your approach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="ss-cta fade-in">
+      <h2>Start Tracking Your Profits</h2>
+      <p>SweepStats is free, takes 5 minutes to set up, and will immediately give you clarity on your sweepstakes portfolio. Join our Discord to connect with others using the tool and get tips on optimizing your strategy.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <a href="https://www.sweepstats.com/" class="btn-teal" target="_blank" rel="noopener">&#x1F680; Open SweepStats Free</a>
+        <a href="https://discord.gg/W9bPGH8crh" class="btn-ghost" target="_blank" rel="noopener">&#x1F4AC; Join Discord Community</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -325,6 +545,14 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 
 
 <script>
+// Fade-in observer
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
 // ===== BACKGROUND STARFIELD =====
 (function(){
   const c=document.getElementById('bgCanvas');
