@@ -28,15 +28,15 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:title" content="Best Welcome Packages 2026 - Highest Bonus Sweepstakes | Online Side Hustles">
     <meta property="og:description" content="Best sweepstakes casino welcome packages ranked by bonus percentage. Find the highest ROI packages for churning in 2026.">
-    <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
+    <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@onlinesidehustles">
     <meta name="twitter:title" content="Best Welcome Packages 2026 - Highest Bonus Sweepstakes | Online Side Hustles">
     <meta name="twitter:description" content="Best sweepstakes casino welcome packages ranked by bonus percentage. Find the highest ROI packages for churning in 2026.">
-    <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.png">
-    <meta name="theme-color" content="#050810">
+    <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.jpg">
+    <meta name="theme-color" content="#111c2e">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -65,26 +65,191 @@
     </script>
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/dark-forest-theme.css?v=2">
 <style>
-.discord-widget{position:fixed;bottom:1.25rem;left:1.25rem;z-index:9997;background:#5865F2;border-radius:14px;padding:.7rem 1rem .7rem .85rem;display:flex;align-items:center;gap:.65rem;box-shadow:0 4px 22px rgba(88,101,242,.45),0 0 0 1px rgba(255,255,255,.08);text-decoration:none;color:#fff;animation:discordIn .55s cubic-bezier(.22,1,.36,1) 2.5s both;transition:transform .18s,box-shadow .18s;max-width:230px;}
-.discord-widget:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(88,101,242,.55);}
-@keyframes discordIn{from{transform:translateX(-130%) scale(.9);opacity:0;}to{transform:translateX(0) scale(1);opacity:1;}}
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --bg:        #111c2e;
+  --bg-card:   #0f1723;
+  --bg-nav:    #0c1526;
+  --bg-darker: #0a1120;
+  --teal:      #6ee7b7;
+  --teal-dim:  rgba(110,231,183,0.55);
+  --teal-faint:rgba(110,231,183,0.10);
+  --green:     hsl(150,60%,52%);
+  --lime:      #ADFF2F;
+  --lime-text: #060a0f;
+  --text:      #e8e6e0;
+  --text-muted:#7a8fa8;
+  --text-dim:  #94a3b8;
+  --border:    rgba(110,231,183,0.12);
+  --border-md: rgba(110,231,183,0.22);
+  --tier-s:    #6ee7b7;
+  --tier-a:    hsl(150,60%,52%);
+  --tier-b:    #60a5fa;
+  --tier-new:  #c084fc;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;
+}
+.mono{font-family:'IBM Plex Mono','Courier New',Courier,monospace;}
+
+/* ===== DISCORD WIDGET ===== */
+.discord-widget{
+  position:fixed;bottom:1.25rem;left:1.25rem;z-index:9997;
+  background:#5865F2;
+  border-radius:14px;padding:0.7rem 1rem 0.7rem 0.85rem;
+  display:flex;align-items:center;gap:0.65rem;
+  box-shadow:0 4px 22px rgba(88,101,242,0.45),0 0 0 1px rgba(255,255,255,0.08);
+  text-decoration:none;color:#fff;
+  animation:discordIn 0.55s cubic-bezier(0.22,1,0.36,1) 2.5s both;
+  transition:transform 0.18s,box-shadow 0.18s;
+  max-width:230px;
+}
+.discord-widget:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(88,101,242,0.55);}
+@keyframes discordIn{
+  from{transform:translateX(-130%) scale(0.9);opacity:0;}
+  to  {transform:translateX(0) scale(1);opacity:1;}
+}
 .discord-icon{flex-shrink:0;width:28px;height:28px;}
 .discord-text{display:flex;flex-direction:column;line-height:1.25;}
-.discord-title{font-weight:700;font-size:.82rem;}
-.discord-sub{font-size:.68rem;opacity:.82;}
-.discord-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:rgba(20,20,40,.75);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-.discord-x:hover{background:rgba(248,113,113,.8);}
+.discord-title{font-weight:700;font-size:0.82rem;letter-spacing:0.01em;}
+.discord-sub{font-size:0.68rem;opacity:0.82;font-family:'IBM Plex Mono',monospace;}
+.discord-x{
+  position:absolute;top:-7px;right:-7px;
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(20,20,40,0.75);border:1px solid rgba(255,255,255,0.18);
+  color:#fff;font-size:11px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  line-height:1;transition:background 0.15s;
+}
+.discord-x:hover{background:rgba(248,113,113,0.8);}
+
+/* ===== BACKGROUND VISUALS ===== */
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-4;pointer-events:none;}
+.bg-orb{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:-3;
+  filter:blur(100px);
+  animation:orbDrift var(--dur,26s) ease-in-out infinite alternate;
+}
+@keyframes orbDrift{
+  0%  {transform:translate(0,0) scale(1);}
+  100%{transform:translate(var(--tx,40px),var(--ty,-30px)) scale(var(--ts,1.08));}
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    linear-gradient(rgba(110,231,183,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(110,231,183,0.025) 1px,transparent 1px);
+  background-size:56px 56px;
+}
+.bg-vignette{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(5,9,18,0.45) 72%,rgba(4,8,16,0.82) 100%);
+}
+.bg-scanlines{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);
+}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--bg-nav);border-bottom:1px solid var(--border);
+  height:54px;display:flex;align-items:center;padding:0 1.5rem;
+  transition:box-shadow 0.2s;
+}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
+.nav-inner{max-width:1600px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{
+  display:flex;align-items:center;gap:0.45rem;text-decoration:none;
+  font-weight:700;font-size:0.82rem;color:var(--text);
+  letter-spacing:0.08em;text-transform:uppercase;
+  font-family:'IBM Plex Mono','Courier New',Courier,monospace;
+}
+.nav-brand svg{color:var(--teal);}
+.nav-links{display:flex;align-items:center;gap:0.05rem;}
+.nav-link{color:var(--text-dim);text-decoration:none;padding:0.3rem 0.7rem;font-size:0.78rem;font-weight:500;border-bottom:2px solid transparent;transition:all 0.18s;}
+.nav-link:hover{color:var(--teal);}
+.nav-link.active{color:var(--teal);border-bottom-color:var(--teal);}
+.nav-cta{background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%);color:#060a0f;text-decoration:none;padding:0.35rem 1rem;font-size:0.78rem;font-weight:700;border-radius:6px;margin-left:0.6rem;transition:transform 0.18s,box-shadow 0.18s;box-shadow:0 2px 10px rgba(110,231,183,.28);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(110,231,183,.45);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text-dim);border-radius:2px;transition:all 0.2s;}
+.nav-hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.active span:nth-child(2){opacity:0;}
+.nav-hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+}
+.mobile-menu{
+  display:none;position:fixed;top:54px;left:0;right:0;z-index:999;
+  background:var(--bg-nav);border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem;flex-direction:column;gap:0.25rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text-dim);text-decoration:none;padding:0.5rem 0;font-size:0.9rem;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu a:hover{color:var(--teal);}
+
+/* ===== PAGE LAYOUT ===== */
+.page{max-width:1600px;margin:0 auto;padding:68px 1.25rem 3rem;position:relative;z-index:1;}
+.content-area{max-width:1600px;margin:0 auto;padding:68px 1.25rem 3rem;position:relative;z-index:1;}
+.container{max-width:1200px;margin:0 auto;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75rem;margin-top:3rem;}
+.footer-inner{max-width:1600px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.2rem;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+.footer-brand{font-weight:700;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);margin-bottom:0.4rem;}
+.footer-tagline{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+.footer-col h4{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;}
+.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:0.74rem;margin-bottom:0.28rem;transition:color 0.18s;}
+.footer-col a:hover{color:var(--teal);}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.footer-copy,.footer-links a{font-size:0.7rem;color:var(--text-muted);}
+.footer-links{display:flex;gap:1rem;}
+.footer-links a:hover{color:var(--text);}
+</style>
+<style>
+.page-hero{text-align:center;padding:80px 2rem 40px;max-width:1200px;margin:0 auto;}
+.page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;font-family:'IBM Plex Mono',monospace;color:#fff;margin-bottom:.75rem;}
+.page-hero p{color:var(--text-dim);font-size:1.1rem;line-height:1.7;max-width:700px;margin:0 auto;}
+.info-box{background:rgba(110,231,183,.06);border:1px solid rgba(110,231,183,.2);border-left:4px solid var(--teal);border-radius:12px;padding:1.5rem 2rem;margin:0 auto 2rem;max-width:1200px;}
+.info-box h3{color:var(--teal);font-size:1rem;font-weight:700;margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace;}
+.info-box p{color:var(--text-dim);font-size:.9rem;line-height:1.7;}
+.info-box a{color:var(--teal);}
+.pkg-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:16px;padding:2rem;margin:0 auto 1.5rem;max-width:1200px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .2s;}
+.pkg-card:hover{transform:translateY(-2px);}
+.pkg-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;gap:1rem;flex-wrap:wrap;}
+.pkg-name{font-size:1.15rem;font-weight:800;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.pkg-bonus{font-size:1.35rem;font-weight:900;background:linear-gradient(135deg,#6ee7b7,#a7f3d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'IBM Plex Mono',monospace;}
+.pkg-details{color:var(--text-dim);font-size:.92rem;line-height:1.7;margin-bottom:1.25rem;}
+.pkg-breakdown{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem;}
+@media(max-width:700px){.pkg-breakdown{grid-template-columns:repeat(2,1fr);}}
+.pkg-stat{background:rgba(110,231,183,.04);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;text-align:center;}
+.pkg-stat .label{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;}
+.pkg-stat .value{font-size:.9rem;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.pkg-stat .value.gold{background:linear-gradient(135deg,#6ee7b7,#a7f3d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pkg-cta{text-align:right;}
+.pkg-cta a{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%);color:#060a0f;text-decoration:none;padding:.7rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:700;box-shadow:0 0 15px rgba(110,231,183,.3);transition:all .2s;}
+.pkg-cta a:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(110,231,183,.5);}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
-<canvas id="starfield"></canvas>
+
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <img src="/logo.png" alt="Online Sidehustles" class="nav-logo" style="height:22px;width:auto;">
@@ -104,8 +269,6 @@
     </button>
   </div>
 </nav>
-
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/getting-started">Get Started</a>
   <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
@@ -115,60 +278,11 @@
   <a href="/blog">Blog</a>
   <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Join Discord</a>
 </div>
+
 <div class="content-area" style="padding-top:80px;">
   <div class="container">
 <div class="content-wrapper">
-
-
-    <div class="slide-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="slide-menu" id="slideMenu">
-            <button class="slide-menu-close" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
-
-            <div class="slide-menu-title">🎰 Daily Collection Sidehustle</div>
-            <a href="../daily-login-guide.html">💲 Daily Collection Sites Guide</a>
-            <a href="../jupiter-post.html">🚀 Jupiter Post Letterwriting</a>
-            <a href="../complete-guide-list.html">✏️ Written Guides</a>
-            <a href="../daily-free-sc.html">🎁 Daily Free Rewards</a>
-            <a href="../package-sales.html">📦 Package Sales</a>
-            <a href="../skrill-casinos.html">💳 Skrill Eligible Sites</a>
-            <a href="../bonus-collection-software.html">🤖 Daily Bonus Collection Software</a>
-            <a href="../auto-giveaways-software.html">✨ Auto Giveaways Signup Software</a>
-            <a href="../daily-login-reviews.html">⭐ Site Reviews</a>
-            <a href="../new-sites.html">🆕 New Sites This Month</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">📚 Resources & Tools</div>
-            <a href="../getting-started.html">🗺️ Getting Started Roadmap</a>
-            <a href="../tools.html">🔧 Calculators & Tools</a>
-            <a href="../sweepstats.html">📊 SweepStats Tracker</a>
-            <a href="../faq.html">❓ FAQ / Help Center</a>
-            <a href="../glossary.html">📖 Glossary of Terms</a>
-            <a href="../earnings-potential.html">💰 Earnings Potential</a>
-            <a href="../comparisons/best-welcome-packages.html">🎁 Best Welcome Packages</a>
-            <a href="../comparisons/fastest-payout-sites.html">⚡ Fastest Payout Sites</a>
-            <a href="../newsletter.html">📩 Newsletter Signup</a>
-            <a href="../best-sweepstakes-card.html">🃏 Best Sweepstakes Card</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">🧳 Online Selling</div>
-            <a href="../sell-on-ebay-automated.html">🤖 Sell on eBay Automated</a>
-            <a href="../sell-on-tiktok-automated.html">📱 Sell on TikTok Automated</a>
-            <a href="../tracking-number-generator.html">📦 Tracking Number Generator</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">💸 Online Sidehustles</div>
-            <a href="../reverse-stock-arbitrage.html">📊 Reverse Stock Arbitrage</a>
-            <a href="../bookie-bandit-sportsbetting.html">🎲 Sportsbetting Automated</a>
-            <a href="../credit-card-churning.html">💳 Credit Card Churning</a>
-            <a href="../credit-cards.html">💰 Best Credit Cards</a>
-            <a href="../matched-betting.html">⚽ Matched Betting</a>
-            <a href="../openclaw-setup.html">🤖 OpenClaw AI Setup</a>
-            <a href="../reward-apps.html">🎁 Reward Apps</a>
-
-            <div class="slide-menu-title" style="margin-top: 16px;">📊 More</div>
-            <a href="../blog.html">📝 Blog</a>
-            <a href="../comparisons/chumba-vs-stake.html">🔥 Chumba vs Stake.us</a>
-            <a href="../income-reports.html">📈 Income Reports</a>
-            <a href="../about.html">ℹ️ About Us</a>
-            <a href="../contact.html">📧 Contact</a>
-        </div>
+    
 
     <section class="page-hero">
         <h1>&#127873; Best Welcome Packages (2026)</h1>
@@ -266,12 +380,7 @@
 
 </div>
 
-    <script>
-    function toggleMenu() {
-        document.getElementById('slideMenu').classList.toggle('open');
-        document.getElementById('menuOverlay').classList.toggle('open');
-    }
-    </script>
+    
   </div>
 </div>
 <!-- FOOTER -->
@@ -279,7 +388,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">🌲 ONLINE SIDEHUSTLES</div>
+        <div class="footer-brand">Online Sidehustles</div>
         <p class="footer-tagline">Free guides, community tips, and automation tools for earning from sweepstakes casinos and daily login sites.</p>
       </div>
       <div class="footer-col">
@@ -304,7 +413,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Online Sidehustles · All rights reserved</span>
+      <span class="footer-copy">&#169; 2026 Online Sidehustles &#xB7; All rights reserved</span>
       <div class="footer-links">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
@@ -313,11 +422,88 @@
     </div>
   </div>
 </footer>
-<script src="/js/dark-forest.js"></script>
+
+
 <script src="/js/analytics.js" defer></script>
 
 <!-- Discord widget -->
 <a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener"><button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button><svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg><div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div></a>
 <script>(function(){var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){w.style.display='none';},300);localStorage.setItem('dcDismissed','1');});})();</script>
+<script>
+const _fi=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");_fi.unobserve(x.target);}});},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".fade-in").forEach(el=>_fi.observe(el));
+</script>
+<script>
+// ===== BACKGROUND STARFIELD =====
+(function(){
+  const c=document.getElementById('bgCanvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let W,H,stars=[],frame=0;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function init(){
+    stars=[];
+    const n=Math.floor(W*H/3200);
+    for(let i=0;i<n;i++){
+      const r=Math.random();
+      const col = r>0.93 ? 'rgba(110,231,183,' :
+                  r>0.85 ? 'rgba(192,132,252,' :
+                  r>0.80 ? 'rgba(173,255,47,'  : 'rgba(210,225,255,';
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.15,a:Math.random()*0.65+0.12,s:Math.random()*0.004+0.0008,p:Math.random()*Math.PI*2,col});
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);frame++;
+    stars.forEach(s=>{
+      const t=0.3+0.7*Math.sin(frame*s.s+s.p);
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=s.col+(s.a*t).toFixed(2)+')';ctx.fill();
+      if(s.r>1.2&&t>0.85&&s.col!=='rgba(210,225,255,'){
+        ctx.globalAlpha=(s.a*t*0.5);ctx.strokeStyle=s.col+'0.6)';ctx.lineWidth=0.5;
+        ctx.beginPath();ctx.moveTo(s.x-s.r*3,s.y);ctx.lineTo(s.x+s.r*3,s.y);
+        ctx.moveTo(s.x,s.y-s.r*3);ctx.lineTo(s.x,s.y+s.r*3);ctx.stroke();ctx.globalAlpha=1;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();init();draw();
+  window.addEventListener('resize',()=>{resize();init();},{passive:true});
+})();
+
+// ===== NAV SCROLL =====
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);},{passive:true});
+
+// ===== HAMBURGER MENU =====
+(function(){
+  const ham=document.getElementById('hamburger');
+  const mMenu=document.getElementById('mobileMenu');
+  if(!ham||!mMenu)return;
+  ham.addEventListener('click',()=>{
+    ham.classList.toggle('active');
+    mMenu.classList.toggle('open');
+    document.body.style.overflow=mMenu.classList.contains('open')?'hidden':'';
+  });
+  mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    ham.classList.remove('active');mMenu.classList.remove('open');document.body.style.overflow='';
+  }));
+})();
+
+// ===== DISCORD WIDGET =====
+(function(){
+  const widget=document.getElementById('discordWidget');
+  const closeBtn=document.getElementById('discordClose');
+  if(!widget)return;
+  if(localStorage.getItem('dcDismissed'))widget.style.display='none';
+  closeBtn.addEventListener('click',e=>{
+    e.preventDefault();e.stopPropagation();
+    widget.style.animation='none';
+    widget.style.transition='transform 0.3s,opacity 0.3s';
+    widget.style.transform='translateX(-130%)';
+    widget.style.opacity='0';
+    setTimeout(()=>widget.style.display='none',300);
+    localStorage.setItem('dcDismissed','1');
+  });
+})();
+</script>
 </body>
 </html>
