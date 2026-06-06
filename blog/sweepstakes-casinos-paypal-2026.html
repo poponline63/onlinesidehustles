@@ -72,8 +72,19 @@
 }
 #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--accent-bright)); background-size: 200% 100%; animation: progressShimmer 2s linear infinite; z-index: 99999; transition: width 0.1s linear; box-shadow: 0 0 10px rgba(56,189,248,0.7); }
 @keyframes progressShimmer { 0%{background-position:200% 0;} 100%{background-position:-200% 0;} }
-body { background: linear-gradient(160deg, #060a14 0%, #080e1c 40%, #060a12 100%) !important; }
-body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; background: radial-gradient(circle at 15% 25%, rgba(56,189,248,0.05) 0%, transparent 45%), radial-gradient(circle at 85% 75%, rgba(2,132,199,0.04) 0%, transparent 45%); }
+body { background: #111c2e; }
+#bgCanvas{position:fixed;inset:0;z-index:-4;pointer-events:none;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:-3;}
+.bg-orb-1{width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(110,231,183,.08) 0%,transparent 70%);}
+.bg-orb-2{width:500px;height:500px;bottom:-150px;right:-150px;background:radial-gradient(circle,rgba(110,231,183,.07) 0%,transparent 70%);}
+.bg-orb-3{width:400px;height:400px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(110,231,183,.05) 0%,transparent 70%);}
+.bg-orb-4{width:350px;height:350px;top:20%;right:10%;background:radial-gradient(circle,rgba(110,231,183,.04) 0%,transparent 70%);}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background:linear-gradient(rgba(110,231,183,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,.025) 1px,transparent 1px);background-size:56px 56px;}
+.bg-vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(5,9,18,.45) 72%,rgba(4,8,16,.82) 100%);}
+.bg-scanlines{position:fixed;inset:0;z-index:-2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.07) 3px,rgba(0,0,0,.07) 4px);}
+@keyframes coinFlyRTL{0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:1;}80%{opacity:1;}100%{transform:translateX(-110vw) translateY(var(--dy,20px)) rotate(-720deg);opacity:0;}}
+@keyframes coinFlyLTR{0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:1;}80%{opacity:1;}100%{transform:translateX(110vw) translateY(var(--dy,-20px)) rotate(720deg);opacity:0;}}
+.fly-coin{position:fixed;pointer-events:none;z-index:9999;font-size:1.4rem;animation-timing-function:linear;animation-fill-mode:forwards;}
 .article-wrap { max-width: 900px; margin: 100px auto 60px; padding: 0 1.5rem; }
 article { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 0; overflow: hidden; box-shadow: 0 0 0 1px rgba(56,189,248,0.06), 0 8px 48px rgba(0,0,0,0.55), 0 1px 0 rgba(56,189,248,0.1) inset; }
 .article-body { padding: 2.5rem 3rem 3rem; }
@@ -161,6 +172,10 @@ article { background: var(--surface); border: 1px solid var(--border); border-ra
 </head>
 <body>
 <div id="progress-bar"></div>
+<canvas id="bgCanvas"></canvas>
+<div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div><div class="bg-orb bg-orb-4"></div>
+<div class="bg-grid"></div><div class="bg-scanlines"></div><div class="bg-vignette"></div>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
@@ -432,21 +447,35 @@ article { background: var(--surface); border: 1px solid var(--border); border-ra
 </div>
 
 <script>
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const el = document.documentElement;
-    const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
-    bar.style.width = Math.min(pct, 100) + '%';
-  }, { passive: true });
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-    });
-  }
+(function(){
+ const nav=document.getElementById('nav');
+ if(nav) window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);},{passive:true});
+ const bar=document.getElementById('progress-bar');
+ window.addEventListener('scroll',()=>{const el=document.documentElement;bar.style.width=Math.min(el.scrollTop/(el.scrollHeight-el.clientHeight)*100,100)+'%';},{passive:true});
+ const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
+ if(hb&&mm){hb.addEventListener('click',()=>{hb.classList.toggle('active');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
+ mm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow=''}));}
+})();
+(function(){
+ const c=document.getElementById('bgCanvas');if(!c)return;
+ const ctx=c.getContext('2d');let W,H,stars=[];
+ function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+ function mk(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+0.2,a:Math.random(),da:(Math.random()*0.004+0.001)*(Math.random()<0.5?1:-1)};}
+ function init(){resize();stars=[];for(let i=0;i<120;i++)stars.push(mk());}
+ function draw(){ctx.clearRect(0,0,W,H);stars.forEach(s=>{s.a+=s.da;if(s.a<=0||s.a>=1)s.da*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(110,231,183,'+s.a.toFixed(2)+')';ctx.fill();});requestAnimationFrame(draw);}
+ window.addEventListener('resize',()=>{resize();stars=[];for(let i=0;i<120;i++)stars.push(mk());});init();draw();
+})();
+(function(){
+ const COINS=['💰','🪙','💵','💎'];
+ function spawn(){const el=document.createElement('div');el.className='fly-coin';
+  const rtl=Math.random()<0.5,dy=(Math.random()*80-40)+'px',dur=(4+Math.random()*4).toFixed(1)+'s';
+  el.textContent=COINS[Math.floor(Math.random()*COINS.length)];
+  el.style.cssText='top:'+(10+Math.random()*80)+'vh;'+(rtl?'right:-60px':'left:-60px')+';--dy:'+dy+';animation:coin'+(rtl?'FlyRTL':'FlyLTR')+' '+dur+' linear forwards;';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),(parseFloat(dur)+0.3)*1000);}
+ setTimeout(()=>spawn(),2000);setInterval(spawn,7000);
+})();
 </script>
+<script src="/js/analytics.js" defer></script>
 <a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener"><button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button><svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg><div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div></a>
 <script>(function(){var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){w.style.display='none';},300);localStorage.setItem('dcDismissed','1');});})();</script>
 </body>
