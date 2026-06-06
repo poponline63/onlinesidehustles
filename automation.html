@@ -181,25 +181,69 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 .footer-links a:hover{color:var(--text);}
 </style>
 <style>
-/* ===== AUTOMATION PAGE CONTENT ===== */
-section.hero{text-align:center;padding:3rem 1rem 2rem;}
-section.hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin:0 0 0.8rem;}
-.hero-subtitle{color:var(--text-dim);font-size:1.05rem;max-width:620px;margin:0 auto;line-height:1.7;}
-.section{padding:0 0 2.5rem;}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.8rem 1.6rem;text-decoration:none;display:block;position:relative;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;overflow:hidden;}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent);opacity:0;transition:opacity 0.2s;}
-.card:hover{transform:translateY(-4px);border-color:var(--border-md);box-shadow:0 12px 30px rgba(0,0,0,0.3);}
-.card:hover::before{opacity:1;}
-.card-arrow{position:absolute;top:1.4rem;right:1.4rem;color:var(--text-muted);font-size:1.1rem;transition:color 0.2s,transform 0.2s;}
-.card:hover .card-arrow{color:var(--teal);transform:translateX(3px);}
-.card-title{font-size:1.05rem;font-weight:800;color:#fff;margin:0 0 0.6rem;padding-right:1.5rem;}
-.card-desc{font-size:0.88rem;color:var(--text-dim);line-height:1.7;margin:0;}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease-out,transform 0.5s ease-out;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-.fade-in-delay-1{transition-delay:0.12s;}
-.fade-in-delay-2{transition-delay:0.24s;}
-@media(max-width:768px){section.hero{padding:2rem 1rem 1.5rem;}.cards-grid{grid-template-columns:1fr;}}
+/* ===== AUTOMATION PAGE CONTENT — RSA STYLE ===== */
+
+/* Hero */
+.hero-section { text-align: center; padding: 88px 2rem 60px; max-width: 1200px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
+  padding: 0.5rem 1.2rem; border-radius: 20px; color: #060a0f;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+  animation: pulseBadge 2s infinite; box-shadow: 0 0 30px rgba(110,231,183,0.4); margin-bottom: 1.5rem;
+}
+@keyframes pulseBadge { 0%,100%{box-shadow:0 0 30px rgba(110,231,183,0.4);} 50%{box-shadow:0 0 50px rgba(110,231,183,0.7);} }
+.hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+  background: linear-gradient(135deg, #6ee7b7, #a7f3d0, #34d399);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-family: 'IBM Plex Mono', monospace; margin: 0 0 1rem; line-height: 1.15;
+}
+.hero-subtitle { color: var(--text-dim); font-size: 1.1rem; max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+@media(max-width:700px){ .stat-row { grid-template-columns: repeat(2,1fr); } }
+.stat-card-sm {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px;
+  padding: 1.2rem 0.75rem; text-align: center; position: relative; overflow: hidden; transition: all 0.3s;
+}
+.stat-card-sm::before { content:''; position:absolute; top:0;left:-100%;width:100%;height:100%; background:linear-gradient(90deg,transparent,rgba(110,231,183,0.07),transparent); animation:shimmerA 3s infinite; }
+@keyframes shimmerA { 0%{left:-100%;} 100%{left:100%;} }
+.stat-card-sm:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+.stat-val { font-size:1.5rem; font-weight:bold; background:linear-gradient(135deg,#6ee7b7,#a7f3d0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'IBM Plex Mono',monospace; margin-bottom:0.3rem; }
+.stat-lbl { font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; }
+
+/* Content Section */
+.content-section {
+  background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--teal);
+  border-radius: 20px; padding: 3rem; margin-bottom: 3rem;
+  max-width: 1200px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.section-title { font-size:1.6rem; font-weight:bold; color:var(--teal); font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem; }
+
+/* Tools Grid */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.2rem; }
+.tool-card {
+  background: rgba(110,231,183,0.04); border: 1px solid var(--border); border-radius: 15px;
+  padding: 1.8rem 1.6rem; text-decoration: none; display: block;
+  position: relative; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; overflow: hidden;
+}
+.tool-card::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:linear-gradient(90deg,var(--teal),#34d399); transform:translateX(-100%); transition:transform 0.5s; }
+.tool-card:hover { transform:translateY(-4px); border-color:var(--border-md); box-shadow:0 12px 30px rgba(0,0,0,0.3); }
+.tool-card:hover::before { transform:translateX(0); }
+.card-arrow { position:absolute; top:1.4rem; right:1.4rem; color:var(--text-muted); font-size:1.1rem; transition:color 0.2s,transform 0.2s; }
+.tool-card:hover .card-arrow { color:var(--teal); transform:translateX(3px); }
+.card-title { font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.6rem; padding-right:1.5rem; }
+.card-desc { font-size:0.88rem; color:var(--text-dim); line-height:1.7; margin:0; }
+
+/* Fade in */
+.anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease-out,transform 0.6s ease-out; }
+.anim-fade-up.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:768px){
+  .hero-section { padding:80px 1.25rem 40px; }
+  .content-section { padding:2rem 1.25rem; border-radius:16px; }
+  .tools-grid { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
@@ -265,43 +309,47 @@ section.hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;marg
 <!-- PAGE CONTENT -->
 <div class="content-area">
   <div class="container">
-<section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Automation Tools</h1>
-            <p class="hero-subtitle fade-in fade-in-delay-1">Software to automate your daily collections and online selling.</p>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="cards-grid">
-                <a href="/bonus-collection-software" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Bonus Collection Software</h3>
-                    <p class="card-desc">Automate your daily bonus collections across dozens of sweepstakes casino sites at once.</p>
-                </a>
-                <a href="/auto-giveaways-software" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Auto Giveaways Software</h3>
-                    <p class="card-desc">Automatically enter online giveaways and sweepstakes to maximize your chances of winning.</p>
-                </a>
-                <a href="/tracking-number-generator" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Tracking Number Generator</h3>
-                    <p class="card-desc">Generate and manage tracking numbers for your online selling operations.</p>
-                </a>
-                <a href="/sweepstats" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">SweepStats</h3>
-                    <p class="card-desc">Track and analyze your sweepstakes casino earnings, bonuses, and performance over time.</p>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- HERO -->
+    <div class="hero-section anim-fade-up">
+      <div class="hero-badge">⚙️ Automation Suite</div>
+      <h1 class="hero-title">Automation Tools</h1>
+      <p class="hero-subtitle">Software to automate your daily collections and online selling. Cut manual work to near-zero while your side hustles run in the background.</p>
+      <div class="stat-row">
+        <div class="stat-card-sm"><div class="stat-val">4+</div><div class="stat-lbl">Tools Available</div></div>
+        <div class="stat-card-sm"><div class="stat-val">Daily</div><div class="stat-lbl">Collection Runs</div></div>
+        <div class="stat-card-sm"><div class="stat-val">Auto</div><div class="stat-lbl">Fulfillment</div></div>
+        <div class="stat-card-sm"><div class="stat-val">24/7</div><div class="stat-lbl">Background Work</div></div>
+      </div>
+    </div>
 
+    <!-- TOOLS SECTION -->
+    <div class="content-section anim-fade-up">
+      <div class="section-title">⚙️ Available Tools</div>
+      <div class="tools-grid">
+        <a href="/bonus-collection-software" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Bonus Collection Software</h3>
+          <p class="card-desc">Automate your daily bonus collections across dozens of sweepstakes casino sites at once.</p>
+        </a>
+        <a href="/auto-giveaways-software" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Auto Giveaways Software</h3>
+          <p class="card-desc">Automatically enter online giveaways and sweepstakes to maximize your chances of winning.</p>
+        </a>
+        <a href="/tracking-number-generator" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Tracking Number Generator</h3>
+          <p class="card-desc">Generate and manage tracking numbers for your online selling operations.</p>
+        </a>
+        <a href="/sweepstats" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">SweepStats</h3>
+          <p class="card-desc">Track and analyze your sweepstakes casino earnings, bonuses, and performance over time.</p>
+        </a>
+      </div>
+    </div>
 
-
-    
   </div>
 </div>
 
@@ -424,7 +472,7 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
   },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.anim-fade-up').forEach(el=>obs.observe(el));
 })();
 </script>
 </body>

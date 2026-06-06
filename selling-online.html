@@ -180,6 +180,72 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 .footer-links{display:flex;gap:1rem;}
 .footer-links a:hover{color:var(--text);}
 </style>
+<style>
+/* ===== SELL ONLINE PAGE CONTENT — RSA STYLE ===== */
+
+/* Hero */
+.hero-section { text-align: center; padding: 88px 2rem 60px; max-width: 1200px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
+  padding: 0.5rem 1.2rem; border-radius: 20px; color: #060a0f;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+  animation: pulseBadge 2s infinite; box-shadow: 0 0 30px rgba(110,231,183,0.4); margin-bottom: 1.5rem;
+}
+@keyframes pulseBadge { 0%,100%{box-shadow:0 0 30px rgba(110,231,183,0.4);} 50%{box-shadow:0 0 50px rgba(110,231,183,0.7);} }
+.hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+  background: linear-gradient(135deg, #6ee7b7, #a7f3d0, #34d399);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-family: 'IBM Plex Mono', monospace; margin: 0 0 1rem; line-height: 1.15;
+}
+.hero-subtitle { color: var(--text-dim); font-size: 1.1rem; max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+@media(max-width:700px){ .stat-row { grid-template-columns: repeat(2,1fr); } }
+.stat-card-sm {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px;
+  padding: 1.2rem 0.75rem; text-align: center; position: relative; overflow: hidden; transition: all 0.3s;
+}
+.stat-card-sm::before { content:''; position:absolute; top:0;left:-100%;width:100%;height:100%; background:linear-gradient(90deg,transparent,rgba(110,231,183,0.07),transparent); animation:shimmerA 3s infinite; }
+@keyframes shimmerA { 0%{left:-100%;} 100%{left:100%;} }
+.stat-card-sm:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.stat-val { font-size:1.5rem; font-weight:bold; background:linear-gradient(135deg,#6ee7b7,#a7f3d0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-family:'IBM Plex Mono',monospace; margin-bottom:0.3rem; }
+.stat-lbl { font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; }
+
+/* Content Section */
+.content-section {
+  background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--teal);
+  border-radius: 20px; padding: 3rem; margin-bottom: 3rem;
+  max-width: 1200px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.section-title { font-size:1.6rem; font-weight:bold; color:var(--teal); font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem; }
+
+/* Tools Grid */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.2rem; }
+.tool-card {
+  background: rgba(110,231,183,0.04); border: 1px solid var(--border); border-radius: 15px;
+  padding: 1.8rem 1.6rem; text-decoration: none; display: block;
+  position: relative; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; overflow: hidden;
+}
+.tool-card::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:linear-gradient(90deg,var(--teal),#34d399); transform:translateX(-100%); transition:transform 0.5s; }
+.tool-card:hover { transform: translateY(-4px); border-color: var(--border-md); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+.tool-card:hover::before { transform: translateX(0); }
+.card-arrow { position:absolute; top:1.4rem; right:1.4rem; color:var(--text-muted); font-size:1.1rem; transition:color 0.2s,transform 0.2s; }
+.tool-card:hover .card-arrow { color:var(--teal); transform:translateX(3px); }
+.card-title { font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.6rem; padding-right:1.5rem; }
+.card-desc { font-size:0.88rem; color:var(--text-dim); line-height:1.7; margin:0 0 0.75rem; }
+.card-earning { display:inline-block; font-size:0.82rem; font-weight:700; color:var(--teal); font-family:'IBM Plex Mono',monospace; background:rgba(110,231,183,0.1); border:1px solid rgba(110,231,183,0.25); border-radius:6px; padding:0.2rem 0.6rem; }
+
+/* Fade in */
+.anim-fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease-out,transform 0.6s ease-out; }
+.anim-fade-up.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:768px){
+  .hero-section { padding:80px 1.25rem 40px; }
+  .content-section { padding:2rem 1.25rem; border-radius:16px; }
+  .tools-grid { grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
@@ -242,43 +308,47 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 </div>
 
 <!-- PAGE CONTENT -->
-<div class="content-area" style="padding-top:80px;">
+<div class="content-area">
   <div class="container">
-<section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Sell Online</h1>
-            <p class="hero-subtitle fade-in fade-in-delay-1">Automated selling strategies for eBay, TikTok Shop, and dropshipping.</p>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="cards-grid">
-                <a href="/sell-on-ebay-automated" class="card fade-in fade-in-delay-1">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Sell on eBay (Automated)</h3>
-                    <p class="card-desc">Automated sourcing, listing, and shipping tools to scale your eBay store with minimal hands-on work.</p>
-                    <span class="card-earning">$500 - $2,000 / month</span>
-                </a>
-                <a href="/sell-on-tiktok-automated" class="card fade-in fade-in-delay-2">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Sell on TikTok (Automated)</h3>
-                    <p class="card-desc">Leverage TikTok Shop with automated product listing, content creation, and fulfillment workflows.</p>
-                    <span class="card-earning">$500 - $3,000 / month</span>
-                </a>
-                <a href="/dropshipping" class="card fade-in fade-in-delay-3">
-                    <span class="card-arrow">&rarr;</span>
-                    <h3 class="card-title">Dropshipping</h3>
-                    <p class="card-desc">Sell products online without holding inventory. Suppliers ship directly to your customers.</p>
-                    <span class="card-earning">$500 - $3,000 / month</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- HERO -->
+    <div class="hero-section anim-fade-up">
+      <div class="hero-badge">🛒 Online Selling Strategies</div>
+      <h1 class="hero-title">Sell Online</h1>
+      <p class="hero-subtitle">Automated selling strategies for eBay, TikTok Shop, and dropshipping. Build a scalable online store with minimal hands-on work.</p>
+      <div class="stat-row">
+        <div class="stat-card-sm"><div class="stat-val">$500+</div><div class="stat-lbl">Monthly Potential</div></div>
+        <div class="stat-card-sm"><div class="stat-val">3</div><div class="stat-lbl">Proven Channels</div></div>
+        <div class="stat-card-sm"><div class="stat-val">$0</div><div class="stat-lbl">Inventory Needed</div></div>
+        <div class="stat-card-sm"><div class="stat-val">Auto</div><div class="stat-lbl">Fulfillment</div></div>
+      </div>
+    </div>
 
+    <!-- STRATEGIES SECTION -->
+    <div class="content-section anim-fade-up">
+      <div class="section-title">🛒 Choose Your Selling Strategy</div>
+      <div class="tools-grid">
+        <a href="/sell-on-ebay-automated" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Sell on eBay (Automated)</h3>
+          <p class="card-desc">Automated sourcing, listing, and shipping tools to scale your eBay store with minimal hands-on work.</p>
+          <span class="card-earning">$500 – $2,000 / month</span>
+        </a>
+        <a href="/sell-on-tiktok-automated" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Sell on TikTok (Automated)</h3>
+          <p class="card-desc">Leverage TikTok Shop with automated product listing, content creation, and fulfillment workflows.</p>
+          <span class="card-earning">$500 – $3,000 / month</span>
+        </a>
+        <a href="/dropshipping" class="tool-card">
+          <span class="card-arrow">&rarr;</span>
+          <h3 class="card-title">Dropshipping</h3>
+          <p class="card-desc">Sell products online without holding inventory. Your supplier ships directly to your customers.</p>
+          <span class="card-earning">$500 – $3,000 / month</span>
+        </a>
+      </div>
+    </div>
 
-
-    
   </div>
 </div>
 
@@ -394,6 +464,14 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
     setTimeout(()=>widget.style.display='none',300);
     localStorage.setItem('dcDismissed','1');
   });
+})();
+
+// ===== FADE-IN OBSERVER =====
+(function(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.anim-fade-up').forEach(el=>obs.observe(el));
 })();
 </script>
 </body>
