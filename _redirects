@@ -35,7 +35,8 @@
 /new-sites                  /new-sites.html                     200
 
 # Side hustles
-/sportsbetting-automation   /sportsbetting-automation.html      200
+/sportsbetting-automation   /bookie-bandit-sportsbetting              301
+/bookie-bandit-sportsbetting   /bookie-bandit-sportsbetting.html   200
 /dropshipping               /dropshipping.html                  200
 /sell-on-ebay-automated     /sell-on-ebay-automated.html        200
 /sell-on-tiktok-automated   /sell-on-tiktok-automated.html      200
