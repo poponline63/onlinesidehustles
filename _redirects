@@ -56,7 +56,8 @@
 
 # Sweepstakes casino pages
 /sweepstakes-casino-list    /sweepstakes-casino-list.html       200
-/casino-ratings             /casino-ratings.html                200
+/casino-reviews             /casino-reviews.html                200
+/casino-ratings             /casino-reviews                     301
 /reviews-hub                /reviews-hub.html                   200
 /daily-login-reviews        /daily-login-reviews.html           200
 /daily-free-sc              /daily-free-sc.html                 200
