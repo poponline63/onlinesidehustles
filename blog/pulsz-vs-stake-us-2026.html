@@ -184,13 +184,29 @@ article { background: var(--surface); border: 1px solid var(--border); border-ra
     </a>
     <div class="nav-links">
       <a href="/getting-started" class="nav-link">Get Started</a>
-      <a href="/sweepstakes-casino-list" class="nav-link">Casino List</a>
-      <a href="/casino-reviews" class="nav-link">Reviews</a>
+      <a href="/sweepstakes-casino-list" class="nav-link">Sweepstakes Casinos List</a>
+      <a href="/casino-reviews" class="nav-link">Casino Reviews</a>
+      <a href="/side-hustles" class="nav-link">Side Hustles</a>
+      <a href="/tools" class="nav-link">Tools</a>
       <a href="/blog" class="nav-link active">Blog</a>
-      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">&#128225; Discord</a>
+      <a href="https://discord.gg/W9bPGH8crh" class="nav-cta" target="_blank" rel="noopener">&#128225; Join Discord</a>
     </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/getting-started">Get Started</a>
+  <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
+  <a href="/casino-reviews">Casino Reviews</a>
+  <a href="/side-hustles">Side Hustles</a>
+  <a href="/tools">Tools</a>
+  <a href="/blog">Blog</a>
+  <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">&#128225; Join Discord</a>
+</div>
 
 <div class="article-wrap">
 <article>
@@ -544,53 +560,21 @@ article { background: var(--surface); border: 1px solid var(--border); border-ra
 </article>
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">🌲 Online Sidehustles</div>
-        <p class="footer-tagline">Free guides, community tips, and tools for earning from sweepstakes casinos and daily login sites.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Guides</h4>
-        <a href="/sweepstakes-casino-list">Sweepstakes Casinos List</a>
-        <a href="/getting-started">Getting Started</a>
-        <a href="/side-hustles">Side Hustles</a>
-        <a href="/blog">Blog</a>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="/tools">Tools</a>
-        <a href="/casino-reviews">Reviews</a>
-        <a href="/faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Community</h4>
-        <a href="https://discord.gg/W9bPGH8crh" target="_blank" rel="noopener">Discord</a>
-        <a href="https://onlinesidehustles.info">Website</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Online Sidehustles · All rights reserved</span>
-      <div class="footer-links">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/disclaimer">Disclaimer</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/dark-forest.js"></script>
-<script src="/js/analytics.js" defer></script>
 <script>
-// Reading progress
-window.addEventListener('scroll', () => {
-  const el = document.getElementById('progress-bar');
-  if (!el) return;
-  const total = document.body.scrollHeight - window.innerHeight;
-  el.style.width = (window.scrollY / total * 100) + '%';
-});
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+  }
 </script>
 <a class="discord-widget" id="discordWidget" href="https://discord.com/invite/W9bPGH8crh" target="_blank" rel="noopener"><button class="discord-x" id="discordClose" aria-label="Dismiss">&#x2715;</button><svg class="discord-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.12 5.48A22.36 22.36 0 0 0 17.7 3.8a15.3 15.3 0 0 0-.7 1.44 20.67 20.67 0 0 0-6.02 0A15.3 15.3 0 0 0 10.3 3.8a22.41 22.41 0 0 0-5.44 1.68C1.88 10.04 1.1 14.48 1.5 18.86a22.6 22.6 0 0 0 6.82 3.42c.55-.74 1.04-1.53 1.46-2.36a14.66 14.66 0 0 1-2.3-1.1c.19-.14.38-.28.56-.43a16.06 16.06 0 0 0 13.92 0c.18.15.37.29.56.43a14.6 14.6 0 0 1-2.31 1.1c.42.83.91 1.62 1.46 2.36a22.53 22.53 0 0 0 6.82-3.42c.47-4.96-.8-9.36-3.37-13.38ZM9.68 16.28c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.05 2.64-2.36 2.64Zm8.64 0c-1.3 0-2.36-1.18-2.36-2.64s1.04-2.64 2.36-2.64 2.38 1.18 2.36 2.64c0 1.46-1.04 2.64-2.36 2.64Z" fill="white"/></svg><div class="discord-text"><span class="discord-title">Join Discord</span><span class="discord-sub">Free SC alerts &amp; tips</span></div></a>
 <script>(function(){var w=document.getElementById('discordWidget'),c=document.getElementById('discordClose');if(!w)return;if(localStorage.getItem('dcDismissed'))w.style.display='none';if(c)c.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();w.style.animation='none';w.style.transition='transform 0.3s,opacity 0.3s';w.style.transform='translateX(-130%)';w.style.opacity='0';setTimeout(function(){w.style.display='none';},300);localStorage.setItem('dcDismissed','1');});})();</script>
