@@ -64,15 +64,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* ==============================
    BACKGROUND SYSTEM
 ============================== */
-#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+#bgCanvas{position:fixed;inset:0;z-index:-4;pointer-events:none;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:-3;}
 .bg-orb-1{width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(110,231,183,0.08) 0%,transparent 70%);}
 .bg-orb-2{width:500px;height:500px;bottom:-150px;right:-150px;background:radial-gradient(circle,rgba(110,231,183,0.07) 0%,transparent 70%);}
 .bg-orb-3{width:400px;height:400px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(110,231,183,0.05) 0%,transparent 70%);}
 .bg-orb-4{width:350px;height:350px;top:20%;right:10%;background:radial-gradient(circle,rgba(110,231,183,0.04) 0%,transparent 70%);}
-.bg-grid{position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:0.4;z-index:0;pointer-events:none;}
-.bg-scanlines{position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);z-index:0;pointer-events:none;}
-.bg-vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(7,11,20,0.6) 100%);z-index:0;pointer-events:none;}
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:0.4;z-index:-3;pointer-events:none;}
+.bg-scanlines{position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);z-index:-2;pointer-events:none;}
+.bg-vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(7,11,20,0.6) 100%);z-index:-2;pointer-events:none;}
 
 /* ==============================
    COIN ANIMATIONS
