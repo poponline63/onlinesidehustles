@@ -386,29 +386,56 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:2.5re
       </div>
     </div>
 
-<div class="shb-wrap">
+<div class="state-cta-card">
 <style>
-.shb-wrap{margin:1.4rem 0 0;}
-.shb-btn{
-  display:inline-flex;align-items:center;gap:.55rem;
+.state-cta-card{
+  margin:1.6rem 0 0;
+  background:rgba(110,231,183,.06);
+  border:1px solid rgba(110,231,183,.22);
+  border-left:3px solid #6ee7b7;
+  border-radius:12px;
+  padding:1rem 1.4rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  max-width:540px;
+  box-shadow:0 0 28px rgba(110,231,183,.07);
+}
+.state-cta-card__text{display:flex;flex-direction:column;gap:.22rem;}
+.state-cta-card__label{
+  font-family:'IBM Plex Mono','Courier New',monospace;
+  font-size:.67rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#6ee7b7;opacity:.7;
+}
+.state-cta-card__title{
+  font-family:'Inter','IBM Plex Mono',sans-serif;
+  font-size:.95rem;font-weight:700;color:#e2e8f0;
+}
+.state-cta-card__btn{
+  display:inline-flex;align-items:center;gap:.5rem;
   background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%);
   color:#060a0f;
   font-family:'IBM Plex Mono','Courier New',monospace;
-  font-size:.82rem;font-weight:700;letter-spacing:.05em;
-  padding:.68rem 1.45rem;border-radius:9px;
-  text-decoration:none;
-  box-shadow:0 4px 22px rgba(110,231,183,.38),0 0 0 1px rgba(110,231,183,.2);
+  font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  padding:.55rem 1.2rem;border-radius:7px;
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  box-shadow:0 3px 14px rgba(110,231,183,.35);
   transition:transform .18s,box-shadow .18s;
-  white-space:nowrap;
 }
-.shb-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(110,231,183,.55),0 0 0 1px rgba(110,231,183,.35);}
-.shb-btn svg{flex-shrink:0;}
+.state-cta-card__btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(110,231,183,.55);}
+.state-cta-card__btn svg{flex-shrink:0;}
 </style>
-<a href="/states-hub.html" class="shb-btn">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-  Browse Casinos by Your State
-  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-</a>
+  <div class="state-cta-card__text">
+    <span class="state-cta-card__label">Availability check</span>
+    <span class="state-cta-card__title">Not all casinos accept every state</span>
+  </div>
+  <a href="/states-hub.html" class="state-cta-card__btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Browse by State
+    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 </div>
   </section>
 
