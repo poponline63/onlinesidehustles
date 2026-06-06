@@ -1314,7 +1314,7 @@ async function setGameplayMode(on){
 
 // ===== BUILD DATA FROM CSV ROWS =====
 function buildData(rows){
-  CASINOS=[];rtpHeaders=[];
+  CASINOS=[];rtpHeaders=[];xlsxLoaded=false; // reset so gameplay XLSX reloads after data refresh
   let currentTier='NEW';
   let dataStart=0;
   if(rows[0]&&rows[0][0]&&rows[0][0].toLowerCase().includes('signup')){
@@ -1619,6 +1619,7 @@ function setView(v){
   const bt=document.getElementById('btnTbl'),bc=document.getElementById('btnCard');
   if(v==='table'){tv.style.display='';cg.style.display='none';bt.classList.add('active');bc.classList.remove('active');}
   else{tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
+  filterAll(); // re-render so gameplay marks are always correct on view switch
 }
 function sortBy(col){
   if(lastSort===col)sortDir*=-1;else sortDir=1;
