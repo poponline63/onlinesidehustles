@@ -1,41 +1,37 @@
 /* ==========================================================================
    Online Sidehustles — Community Casino Ratings backend (Google Apps Script)
 
-   Stores user star ratings in a "Ratings" tab of your casino spreadsheet and
-   serves running averages + a computed community tier back to the website.
+   Stores user star ratings in a "Ratings" tab of your casino spreadsheet.
+   Low (1-2 star) votes are de-weighted to blunt trolling. The website blends
+   these community numbers with an editorial "house" rating per tier, so the
+   crowd can only nudge the score (see js/casino-ratings.js).
 
-   Deploy as a Web App (Execute as: Me, Who has access: Anyone). See SETUP.md.
+   Stored per casino:
+     WeightedSum     = Σ stars_i * weight(stars_i)
+     WeightedWeight  = Σ weight(stars_i)
+     Votes           = raw number of votes
+     CommunityAvg    = WeightedSum / WeightedWeight  (for your own insight)
 
-   All requests come in via JSONP GET (?callback=...) so there are zero CORS
-   problems from onlinesidehustles.info.
+   Deploy as a Web App (Execute as: Me, Who has access: Anyone). All requests
+   arrive via JSONP GET (?callback=...) so there are zero CORS problems.
    ========================================================================== */
 
-// Your existing casino spreadsheet (same one the list page reads).
 var SPREADSHEET_ID = '1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328';
 var SHEET_NAME = 'Ratings';
 
-// Average (1-5) -> tier. Keep in sync with js/casino-ratings.js CFG.
-var THRESHOLDS = [[4.5, 'S'], [3.8, 'A'], [2.5, 'B']];
-var NEW_TIER = 'NEW';
+// Anti-troll weighting — keep in sync with js/casino-ratings.js LOW_STAR_WEIGHT.
+var LOW_STAR_WEIGHT = { 1: 0.3, 2: 0.6, 3: 1.0, 4: 1.0, 5: 1.0 };
 
-// Columns in the Ratings sheet.
-var COL = { KEY: 1, NAME: 2, SUM: 3, COUNT: 4, AVG: 5, TIER: 6, UPDATED: 7 };
-var HEADERS = ['NormKey', 'Casino', 'Sum', 'Count', 'Average', 'CommunityTier', 'LastUpdated'];
+var COL = { KEY: 1, NAME: 2, WSUM: 3, WWEIGHT: 4, VOTES: 5, AVG: 6, UPDATED: 7 };
+var HEADERS = ['NormKey', 'Casino', 'WeightedSum', 'WeightedWeight', 'Votes', 'CommunityAvg', 'LastUpdated'];
 
 function doGet(e) {
-  var params = (e && e.params) ? e.params : ((e && e.parameter) ? e.parameter : {});
-  // GAS gives single values in e.parameter; normalize.
   var p = (e && e.parameter) ? e.parameter : {};
   var action = (p.action || 'list').toLowerCase();
   var callback = p.callback || '';
-
   var result;
   try {
-    if (action === 'vote') {
-      result = handleVote(p);
-    } else {
-      result = handleList();
-    }
+    result = (action === 'vote') ? handleVote(p) : handleList();
   } catch (err) {
     result = { ok: false, error: String(err) };
   }
@@ -45,12 +41,10 @@ function doGet(e) {
 function respond(obj, callback) {
   var json = JSON.stringify(obj);
   if (callback) {
-    return ContentService
-      .createTextOutput(callback + '(' + json + ');')
+    return ContentService.createTextOutput(callback + '(' + json + ');')
       .setMimeType(ContentService.MimeType.JAVASCRIPT);
   }
-  return ContentService
-    .createTextOutput(json)
+  return ContentService.createTextOutput(json)
     .setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -61,6 +55,15 @@ function getSheet() {
     sh = ss.insertSheet(SHEET_NAME);
     sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
     sh.setFrozenRows(1);
+    return sh;
+  }
+  // Self-heal: make sure the header row matches the current schema.
+  var hdr = sh.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+  var ok = true;
+  for (var i = 0; i < HEADERS.length; i++) { if (String(hdr[i]) !== HEADERS[i]) { ok = false; break; } }
+  if (!ok) {
+    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+    sh.setFrozenRows(1);
   }
   return sh;
 }
@@ -69,12 +72,12 @@ function normName(n) {
   return String(n || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-function scoreToTier(avg) {
-  for (var i = 0; i < THRESHOLDS.length; i++) {
-    if (avg >= THRESHOLDS[i][0]) return THRESHOLDS[i][1];
-  }
-  return NEW_TIER;
+function starWeight(stars) {
+  var w = LOW_STAR_WEIGHT[stars];
+  return (w === undefined) ? 1.0 : w;
 }
+
+function round2(x) { return Math.round(x * 100) / 100; }
 
 function handleList() {
   var sh = getSheet();
@@ -86,13 +89,11 @@ function handleList() {
       var row = values[i];
       var key = String(row[COL.KEY - 1] || '');
       if (!key) continue;
-      var count = Number(row[COL.COUNT - 1]) || 0;
-      var avg = Number(row[COL.AVG - 1]) || 0;
       out[key] = {
         n: String(row[COL.NAME - 1] || ''),
-        a: Math.round(avg * 100) / 100,
-        c: count,
-        t: String(row[COL.TIER - 1] || '')
+        cs: Number(row[COL.WSUM - 1]) || 0,
+        cw: Number(row[COL.WWEIGHT - 1]) || 0,
+        c: Number(row[COL.VOTES - 1]) || 0
       };
     }
   }
@@ -107,6 +108,7 @@ function handleVote(p) {
   if (!key) return { ok: false, error: 'missing casino' };
   var prev = parseInt(p.prev, 10);
   var isChange = (prev >= 1 && prev <= 5);
+  var w = starWeight(stars);
 
   var lock = LockService.getScriptLock();
   lock.waitLock(15000);
@@ -121,42 +123,46 @@ function handleVote(p) {
       }
     }
 
-    var sum, count;
+    var wsum, wweight, votes;
     if (rowIndex === -1) {
-      // New casino row.
-      sum = stars;
-      count = 1;
+      wsum = stars * w;
+      wweight = w;
+      votes = 1;
       rowIndex = (last < 1 ? 1 : last) + 1;
-      writeRow(sh, rowIndex, key, name, sum, count);
+      writeRow(sh, rowIndex, key, name, wsum, wweight, votes);
     } else {
-      sum = Number(sh.getRange(rowIndex, COL.SUM).getValue()) || 0;
-      count = Number(sh.getRange(rowIndex, COL.COUNT).getValue()) || 0;
-      if (isChange && count >= 1) {
-        sum = sum - prev + stars; // same voter changed their mind: count unchanged
+      wsum = Number(sh.getRange(rowIndex, COL.WSUM).getValue()) || 0;
+      wweight = Number(sh.getRange(rowIndex, COL.WWEIGHT).getValue()) || 0;
+      votes = Number(sh.getRange(rowIndex, COL.VOTES).getValue()) || 0;
+      if (isChange && votes >= 1) {
+        var pw = starWeight(prev);
+        wsum = wsum - prev * pw + stars * w; // same voter changed their mind
+        wweight = wweight - pw + w;
+        if (wweight < w) wweight = w; // guard against drift
       } else {
-        sum = sum + stars;
-        count = count + 1;
+        wsum = wsum + stars * w;
+        wweight = wweight + w;
+        votes = votes + 1;
       }
       var existingName = String(sh.getRange(rowIndex, COL.NAME).getValue() || '');
-      writeRow(sh, rowIndex, key, existingName || name, sum, count);
+      writeRow(sh, rowIndex, key, existingName || name, wsum, wweight, votes);
     }
 
-    var avg = count > 0 ? sum / count : 0;
     return {
       ok: true,
       n: String(sh.getRange(rowIndex, COL.NAME).getValue() || name),
-      a: Math.round(avg * 100) / 100,
-      c: count,
-      t: scoreToTier(avg)
+      cs: round2(wsum),
+      cw: round2(wweight),
+      c: votes
     };
   } finally {
     lock.releaseLock();
   }
 }
 
-function writeRow(sh, rowIndex, key, name, sum, count) {
-  var avg = count > 0 ? sum / count : 0;
+function writeRow(sh, rowIndex, key, name, wsum, wweight, votes) {
+  var avg = wweight > 0 ? wsum / wweight : 0;
   sh.getRange(rowIndex, 1, 1, HEADERS.length).setValues([[
-    key, name, sum, count, Math.round(avg * 100) / 100, scoreToTier(avg), new Date()
+    key, name, round2(wsum), round2(wweight), votes, round2(avg), new Date()
   ]]);
 }
