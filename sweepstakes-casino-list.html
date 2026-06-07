@@ -850,7 +850,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 
     <!-- Action buttons -->
     <div class="action-row">
-      <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=1278774725#gid=1278774725" target="_blank" rel="noopener" class="btn-action btn-sheet">📊 Open Google Spreadsheet</a>
+      <a href="https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit?gid=1136185769#gid=1136185769" target="_blank" rel="noopener" class="btn-action btn-sheet">📊 Open Google Spreadsheet</a>
       <button class="btn-action btn-outline" id="toggleGameplay" type="button" onclick="setGameplayMode(!gameplayMode)">🎮 Gameplay Mode: OFF</button>
       <button class="btn-action btn-outline" onclick="loadData()" type="button">↻ Refresh Data</button>
     </div>
@@ -1089,7 +1089,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
   </div>
 </footer>
 
-<script src="/js/casino-ratings.js?v=20260607d"></script>
+<script src="/js/casino-ratings.js?v=20260607e"></script>
 <script>
 // ===== SIGNUP LINKS =====
 const SIGNUP_LINKS = {
@@ -1391,7 +1391,7 @@ let gameplayMode = false;
 let rtpHeaders = [];
 let xlsxLoaded = false;
 
-const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=xlsx&gid=1759950549';
+const XLSX_URL = 'https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/export?format=xlsx&gid=1136185769';
 
 function renderGameStatus(val){
   if(!val||val.trim()==='') return '<span class="gs-unknown">—</span>';
@@ -1820,7 +1820,7 @@ function setSortRating(){
   filterAll();
 }
 // ===== LOAD DATA =====
-const CSV_URL='https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=csv&gid=1759950549';
+const CSV_URL='https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/export?format=csv&gid=1136185769';
 
 async function loadData(){
   const ls=document.getElementById('loadingState');

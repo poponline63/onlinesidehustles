@@ -21,7 +21,7 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV_URL = ("https://docs.google.com/spreadsheets/d/"
-           "1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=csv&gid=1759950549")
+           "1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/export?format=csv&gid=1136185769")
 TIER_SCORE = {"S": 5.0, "A": 4.8, "B": 4.6, "NEW": 4.5, "SKIP": 4.0}
 FALLBACK = 4.5  # review casino not found on the list
 # Review-page name -> list-name normKey, where the list uses a suffix (.us/.io/.com)
