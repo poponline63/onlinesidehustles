@@ -226,6 +226,7 @@ function getListSheet(ss) {
 }
 
 function syncRatingsToList() {
+  setupRankingTabs();   // ensure the frozen Editorial Anchor exists (idempotent)
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   var list = getListSheet(ss);
   var last = list.getLastRow();
@@ -260,6 +261,7 @@ function syncRatingsToList() {
       stamped++;
     }
   }
+  reorderByRatings();   // then physically move rows into their rating-based tiers
   return stamped;
 }
 
@@ -268,6 +270,133 @@ function syncRatingsToList() {
 // We intentionally do NOT create the trigger in code, so the project only needs
 // the spreadsheet scope (no extra script.scriptapp consent prompt).
 // To refresh manually, just Run syncRatingsToList from the editor.
+
+/* ---------- Community-driven row reordering (test on a copy first) ----------
+   Casinos physically move between tier sections based on their rating. Baselines
+   are read from a FROZEN "Editorial Anchor" tab, never from the live order, so
+   there is no feedback loop. Only casino rows (col A = "signup") are moved; the
+   link-less trash sites at the bottom are left untouched. moveRows relocates the
+   whole row so image formulas / formatting come along.                        */
+
+var ANCHOR_SHEET_NAME = 'Editorial Anchor';
+
+// Tier band lower edges + ranking, and a hysteresis dead-band so a casino does
+// not flip-flop between tiers when its score hovers on a boundary.
+var TIER_LOWER = { S: 4.90, A: 4.70, B: 4.55, NEW: 4.25, SKIP: 0 };
+var TIER_RANK  = { SKIP: 0, NEW: 1, B: 2, A: 3, S: 4 };
+var HYSTERESIS = 0.03;
+
+// Which tier a blended score earns — mirror of the website's tierFromScore.
+function tierFromScore(score, editorial) {
+  if (score === null || score === undefined) return editorial;
+  if (score >= 4.90) return 'S';                              // God
+  if (score >= 4.70) return 'A';                              // High
+  if (score >= 4.55) return 'B';                              // Medium
+  return (editorial === 'NEW') ? 'NEW' : (editorial === 'SKIP' ? 'SKIP' : 'B');
+}
+
+// Target tier with hysteresis: only leave the current tier once the score is
+// clearly (>= HYSTERESIS) past the boundary, so the sheet does not churn hourly.
+function targetTier(score, anchor, current) {
+  if (score === null || score === undefined) return current || anchor;
+  var raw = tierFromScore(score, anchor);
+  if (!current || raw === current) return raw;
+  if (TIER_RANK[raw] > TIER_RANK[current]) {                 // moving up
+    return (score >= TIER_LOWER[raw] + HYSTERESIS) ? raw : current;
+  }
+  return (score <= TIER_LOWER[current] - HYSTERESIS) ? raw : current;  // moving down
+}
+
+// One-time: freeze the current editorial order into an "Editorial Anchor" tab.
+// The reorderer reads baselines from here, never from the live (reordered)
+// order, so moving rows on the live list can never feed back on the scores.
+function setupRankingTabs() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var leftover = ss.getSheetByName('TEST Rankings'); if (leftover) ss.deleteSheet(leftover);
+  if (!ss.getSheetByName(ANCHOR_SHEET_NAME)) { getListSheet(ss).copyTo(ss).setName(ANCHOR_SHEET_NAME); }
+  return 'anchor ready';
+}
+
+// Each casino's frozen baseline tier, read from the anchor sheet (keyed by name).
+function readAnchorTiers(ss) {
+  var sh = ss.getSheetByName(ANCHOR_SHEET_NAME);
+  var map = {};
+  if (!sh) return map;
+  var last = sh.getLastRow();
+  var aV = sh.getRange(1, 1, last, 1).getValues();
+  var bV = sh.getRange(1, 2, last, 1).getValues();
+  var cur = 'NEW';
+  for (var r = 0; r < last; r++) {
+    var a = String(aV[r][0] || '');
+    var bFull = String(bV[r][0] || '');
+    var b = bFull.split('\n')[0].trim();
+    if (a.toLowerCase().indexOf('signup') === -1) { var t = tierFromLabel(b); if (t) cur = t; continue; }
+    if (!b) continue;
+    map[normName(stripRatingLines(bFull))] = cur;
+  }
+  return map;
+}
+
+// Scan a sheet: first separator row per tier + casino rows with their section.
+function scanList(sheet) {
+  var last = sheet.getLastRow();
+  var aV = sheet.getRange(1, 1, last, 1).getValues();
+  var bV = sheet.getRange(1, 2, last, 1).getValues();
+  var sepRow = {}, cur = null, casinos = [];
+  for (var r = 0; r < last; r++) {
+    var a = String(aV[r][0] || '');
+    var bFull = String(bV[r][0] || '');
+    var b = bFull.split('\n')[0].trim();
+    if (a.toLowerCase().indexOf('signup') === -1) {
+      var t = tierFromLabel(b);
+      if (t) { cur = t; if (sepRow[t] === undefined) sepRow[t] = r + 1; }
+      continue;
+    }
+    if (!b) continue;
+    casinos.push({ row: r + 1, section: cur, key: normName(stripRatingLines(bFull)), name: b });
+  }
+  return { sepRow: sepRow, casinos: casinos };
+}
+
+// Reorder casino rows into rating-based tiers. overrides {key:tier} forces a
+// target (used by the test harness). Moves one row at a time, re-scanning each
+// time because row indices shift after every move.
+function reorderByRatings(sheetName, overrides) {
+  overrides = overrides || {};
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = sheetName ? ss.getSheetByName(sheetName) : getListSheet(ss);
+  if (!sheet) return { error: 'no sheet: ' + sheetName };
+  var anchors = readAnchorTiers(ss);
+  var ratings = handleList().ratings;
+  var width = sheet.getMaxColumns();
+
+  var s = scanList(sheet);
+  var moves = [];
+  for (var i = 0; i < s.casinos.length; i++) {
+    var c = s.casinos[i];
+    if (!c.section) continue;
+    var anchor = anchors[c.key] || c.section;
+    var target = overrides[c.key] || targetTier(blendedValue(anchor, ratings[c.key], c.key), anchor, c.section);
+    if (target && target !== c.section) moves.push({ key: c.key, name: c.name, from: c.section, to: target });
+  }
+
+  var applied = 0, log = [];
+  for (var m = 0; m < moves.length; m++) {
+    var sc = scanList(sheet);
+    var cur = null;
+    for (var j = 0; j < sc.casinos.length; j++) { if (sc.casinos[j].key === moves[m].key) { cur = sc.casinos[j]; break; } }
+    if (!cur) continue;
+    var sep = sc.sepRow[moves[m].to];
+    if (sep === undefined) continue;
+    // Land just under the target separator. Moving down, the row vacates first
+    // (shifting indices up), so the pre-move destination index needs +2.
+    var dest = (cur.row < sep) ? sep + 2 : sep + 1;
+    sheet.moveRows(sheet.getRange(cur.row, 1, 1, width), dest);
+    applied++;
+    log.push(moves[m].name + ' ' + moves[m].from + '->' + moves[m].to);
+  }
+  return { planned: moves.length, applied: applied, moves: log };
+}
 
 function onOpen() {
   SpreadsheetApp.getUi()
