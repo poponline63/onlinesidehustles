@@ -381,7 +381,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 
 /* ===== TABLE SECTION ===== */
 .table-section{background:var(--bg-card);border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px;overflow:hidden;}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.table-wrap{overflow-x:hidden;}
 .table-wrap::-webkit-scrollbar{height:6px;}
 .table-wrap::-webkit-scrollbar-track{background:var(--bg-darker);}
 .table-wrap::-webkit-scrollbar-thumb{background:rgba(110,231,183,0.22);border-radius:4px;}
@@ -407,9 +407,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable th:nth-child(3),#mainTable td:nth-child(3){width:8%;}   /* Daily $ */
 #mainTable th:nth-child(4),#mainTable td:nth-child(4){width:12%;}  /* Welcome Pkg */
 #mainTable th:nth-child(5),#mainTable td:nth-child(5){width:7%;}   /* Min Redeem */
-#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:31%;}  /* Notes */
+#mainTable th:nth-child(6),#mainTable td:nth-child(6){width:29%;}  /* Notes */
 #mainTable th:nth-child(7),#mainTable td:nth-child(7){width:11%;}  /* Parent Company */
-#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:6%;}   /* Review */
+#mainTable th:nth-child(8),#mainTable td:nth-child(8){width:8%;}   /* Review */
 
 /* Canada/Ontario mode — 9 cols (swap Parent Company for CA+ON eligibility columns) */
 #mainTable.ca-mode th:nth-child(1),#mainTable.ca-mode td:nth-child(1){width:20%;}  /* Casino */
@@ -419,8 +419,8 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable.ca-mode th:nth-child(5),#mainTable.ca-mode td:nth-child(5){width:7%;}   /* Min Redeem */
 #mainTable.ca-mode th:nth-child(6),#mainTable.ca-mode td:nth-child(6){width:32%;}  /* Notes */
 #mainTable.ca-mode th:nth-child(7),#mainTable.ca-mode td:nth-child(7){width:6%;}   /* 🇨🇦 Canada */
-#mainTable.ca-mode th:nth-child(8),#mainTable.ca-mode td:nth-child(8){width:6%;}   /* 🍁 Ontario */
-#mainTable.ca-mode th:nth-child(9),#mainTable.ca-mode td:nth-child(9){width:6%;}   /* Review */
+#mainTable.ca-mode th:nth-child(8),#mainTable.ca-mode td:nth-child(8){width:5%;}   /* 🍁 Ontario */
+#mainTable.ca-mode th:nth-child(9),#mainTable.ca-mode td:nth-child(9){width:8%;}   /* Review */
 
 /* Gameplay mode — 9 cols (casino + tier + 6 game cols + other) */
 #mainTable.gp-mode th:nth-child(1),#mainTable.gp-mode td:nth-child(1){width:18%;}
@@ -639,13 +639,15 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 .faq-a a:hover{text-decoration:underline;}
 
 /* ===== REVIEW COLUMN ===== */
-.review-cell{white-space:nowrap;text-align:center;}
+.review-cell{text-align:center;padding:6px 3px !important;}
 .btn-review{
-  display:inline-block;padding:0.2rem 0.6rem;
+  display:block;width:100%;box-sizing:border-box;
+  padding:0.18rem 0.25rem;
   background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.28);
-  border-radius:4px;color:var(--teal);font-size:0.72rem;font-weight:600;
+  border-radius:4px;color:var(--teal);font-size:0.64rem;font-weight:600;
   text-decoration:none;font-family:'IBM Plex Mono',monospace;
-  transition:background 0.15s,border-color 0.15s;white-space:nowrap;
+  transition:background 0.15s,border-color 0.15s;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
 }
 .btn-review:hover{background:rgba(110,231,183,0.18);border-color:var(--teal);}
 </style>
