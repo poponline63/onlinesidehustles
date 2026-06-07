@@ -205,11 +205,20 @@ function ratingLine(tierCode, r) {
 }
 
 function getListSheet(ss) {
-  var sh = ss.getSheetByName(LIST_SHEET_NAME);
-  if (sh) return sh;
+  // Find the sheet that actually contains "Signup" rows (robust against tab
+  // renames / sheet order), falling back to name then first sheet.
   var all = ss.getSheets();
-  for (var i = 0; i < all.length; i++) { if (all[i].getName() !== SHEET_NAME) return all[i]; }
-  return all[0];
+  for (var i = 0; i < all.length; i++) {
+    var sh = all[i];
+    if (sh.getName() === SHEET_NAME) continue;
+    var lr = sh.getLastRow();
+    if (lr < 2) continue;
+    var col = sh.getRange(1, 1, Math.min(lr, 300), 1).getValues();
+    for (var r = 0; r < col.length; r++) {
+      if (String(col[r][0] || '').toLowerCase().indexOf('signup') !== -1) return sh;
+    }
+  }
+  return ss.getSheetByName(LIST_SHEET_NAME) || all[0];
 }
 
 function syncRatingsToList() {
