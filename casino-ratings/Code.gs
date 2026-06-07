@@ -224,6 +224,7 @@ function syncRatingsToList() {
   var currentTier = 'NEW';
   var stamped = 0;
   for (var r = 0; r < last; r++) {
+    if (r === 0) continue; // skip the header row ("Signups"/"Casinos")
     var a = String(aVals[r][0] || '');
     var bRaw = String(bVals[r][0] || '');
     var bFirst = bRaw.split('\n')[0].trim();
