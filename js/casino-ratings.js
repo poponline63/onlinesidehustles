@@ -28,13 +28,14 @@
   var CFG = {
     ENDPOINT: 'https://script.google.com/macros/s/AKfycbzPbH1tgaYiQ1xBgAG0QfTMt4KqBy7VhSWyxN74dSuG3reewr0DmfrDGcdRVdhgpYrZLA/exec',
 
-    // Artificial "house" starting rating per editorial tier (S=God, A=High,
-    // B=Medium). NEW casinos have no seed — their score is community-only.
+    // Each casino's own editorial review score is the anchor (see EDITORIAL
+    // below). These tier values are only a FALLBACK for casinos that have no
+    // review page (S=God, A=High, B=Medium). NEW with no review = community-only.
     SEED: { S: 5.0, A: 4.85, B: 4.7 },
 
-    // How strongly the house rating resists community movement (phantom votes).
-    // Higher tier = harder to move (God +40%, High +30%, Medium +20% over base).
-    SEED_WEIGHT: { S: 140, A: 130, B: 120 },
+    // How strongly the editorial anchor resists community movement (phantom
+    // votes). Flat across casinos so the blend is identical everywhere.
+    WEIGHT: 130,
 
     // Anti-troll: weight applied to each star value when accumulating votes.
     // 1- and 2-star votes count less than 3/4/5-star votes.
@@ -42,6 +43,11 @@
 
     JSONP_TIMEOUT_MS: 12000
   };
+
+  // Per-casino editorial review scores (the anchor). Keyed by normalized name.
+  // Generated from review pages by build_editorial_anchors.py — keep in sync
+  // with casino-ratings/editorial-scores.json.
+  var EDITORIAL = {"acebetcc": 3.6, "acecasino": 4.0, "acornfun": 3.3, "americanluck": 4.1, "babacasino": 3.2, "bangcoins": 3.6, "bankrolla": 3.3, "betr": 4.1, "cardcrush": 3.3, "casinoclick": 4.0, "cazino": 3.7, "chancedcom": 4.3, "chipnwin": 3.7, "chumbacasino": 4.5, "clubspoker": 4.1, "cluck": 3.2, "coinfrenzy": 3.8, "coinsback": 4.1, "coinwizardgames": 3.3, "courtside": 3.7, "crashduel": 3.8, "crowncoins": 4.5, "daracasino": 3.7, "dexyplay": 3.7, "diambet": 3.7, "dimesweeps": 4.2, "dogghousecasino": 4.6, "epicsweep": 3.8, "fliff": 4.4, "fortunarush": 4.1, "fortunewheelz": 3.8, "fortunewins": 4.3, "funrize": 4.2, "funzcity": 3.6, "getzoot": 3.6, "globalpoker": 4.4, "goldenheartsgames": 4.2, "goldrushcity": 3.6, "goldtreasurecasino": 3.8, "goodvibescasino": 3.7, "hellomillions": 4.3, "high5casino": 4.2, "jackpota": 4.5, "jackpotdaily": 4.1, "jackpotgo": 4.1, "jackpotrabbit": 3.7, "jefebet": 3.7, "lavishluck": 4.0, "legacyarcade": 4.0, "legendz": 3.8, "lonestar": 4.4, "lucklake": 3.8, "luckparty": 3.7, "luckybird": 4.1, "luckybitsvegas": 3.7, "luckyhands": 4.4, "luckylandslots": 4.4, "luckyrush": 4.2, "luckyslots": 3.7, "luckystake": 3.8, "lunalandcasino": 3.7, "mcluck": 4.4, "megabonanza": 4.6, "megafrenzy": 3.7, "megaspinz": 3.7, "modo": 4.1, "moonspin": 4.2, "moozi": 4.1, "myprize": 4.4, "nioplay": 3.3, "nolimitcoins": 4.2, "novig": 4.0, "oceanking": 3.8, "peakplay": 3.8, "playfame": 4.5, "pulsz": 4.6, "pulszbingo": 4.5, "puntcasino": 4.2, "realprize": 4.3, "rebet": 4.5, "richsweeps": 4.1, "rolla": 4.0, "rollingriches": 4.0, "rubysweeps": 3.9, "scarletsands": 3.8, "scoopcasino": 3.8, "scroogecasino": 3.7, "sheeshcasino": 3.3, "shuffleus": 4.7, "sidepot": 3.7, "sixty6": 3.7, "smilescasino": 3.7, "sorceryreels": 3.7, "speedsweeps": 4.3, "spinblitz": 4.3, "spindoo": 3.6, "spinfinite": 3.7, "spinpals": 3.7, "spinquest": 3.6, "spinsaga": 3.8, "sportzino": 4.5, "spree": 4.1, "stackr": 3.7, "stakeus": 4.7, "sweepico": 3.8, "sweepjungle": 4.0, "sweepnext": 3.7, "sweepshark": 3.7, "sweepsroyal": 4.2, "sweeptastic": 4.1, "sweetsweeps": 3.7, "taofortune": 4.0, "taosweeps": 3.7, "thebossus": 3.7, "themoneyfactory": 4.0, "thrillcoins": 4.2, "thrillz": 4.2, "vegawin": 3.3, "wildworldcasino": 3.6, "winbonanza": 4.1, "winera": 3.3, "wowvegas": 4.2, "yaycasino": 3.8, "zonko": 3.2, "zula": 4.6, "zumo": 3.7};
 
   var enabled = !!CFG.ENDPOINT;
 
@@ -69,20 +75,19 @@
   // RATINGS[normKey] = { n:name, cs:weightedSum, cw:weightedWeight, c:rawVotes }
   var RATINGS = {};
 
-  // Blend the editorial house rating with community votes for a given tier.
+  // Blend a casino's editorial review score (anchor) with community votes.
+  // anchor = its own review score if it has one, else the tier fallback.
   // Returns { value:Number, votes:Number, seeded:Boolean }.
-  function blendedRating(tier, r) {
-    var code = tierCode(tier);
+  function blendedRating(tier, r, name) {
     var cs = r ? (r.cs || 0) : 0;
     var cw = r ? (r.cw || 0) : 0;
     var votes = r ? (r.c || 0) : 0;
-    var sv = CFG.SEED[code];
-    var sw = CFG.SEED_WEIGHT[code];
-    if (sv === undefined) {
-      // NEW tier: community-only, no house rating.
-      return { value: cw > 0 ? cs / cw : 0, votes: votes, seeded: false };
+    var anchor = EDITORIAL[normName(name)];
+    if (anchor === undefined) anchor = CFG.SEED[tierCode(tier)]; // tier fallback (no review page)
+    if (anchor === undefined) {
+      return { value: cw > 0 ? cs / cw : 0, votes: votes, seeded: false }; // community-only
     }
-    return { value: (sv * sw + cs) / (sw + cw), votes: votes, seeded: true };
+    return { value: (anchor * CFG.WEIGHT + cs) / (CFG.WEIGHT + cw), votes: votes, seeded: true };
   }
 
   // ---- JSONP transport (no CORS issues with Apps Script) ------------------
@@ -155,7 +160,7 @@
   function widgetHTML(name, opts) {
     opts = opts || {};
     var tier = tierCode(opts.tier);
-    var br = blendedRating(tier, get(name));
+    var br = blendedRating(tier, get(name), name);
     var mine = myVote(name);
     var filled = Math.round(br.value);
     var stars = '';

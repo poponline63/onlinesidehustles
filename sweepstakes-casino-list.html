@@ -1089,7 +1089,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
   </div>
 </footer>
 
-<script src="/js/casino-ratings.js?v=20260607a"></script>
+<script src="/js/casino-ratings.js?v=20260607b"></script>
 <script>
 // ===== SIGNUP LINKS =====
 const SIGNUP_LINKS = {
@@ -1569,7 +1569,7 @@ function applyCommunityTiers(){
   if(!window.OSHRatings||!OSHRatings.enabled)return;
   CASINOS.forEach(c=>{
     c.tier=c.editorialTier; // locked to editorial order
-    const br=OSHRatings.blendedRating(c.editorialTier,OSHRatings.get(c.name));
+    const br=OSHRatings.blendedRating(c.editorialTier,OSHRatings.get(c.name),c.name);
     c.commValue=br.value;
     c.commVotes=br.votes;
   });

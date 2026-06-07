@@ -22,9 +22,12 @@ var LIST_SHEET_NAME = 'Daily Casinos List';
 // Anti-troll weighting — keep in sync with js/casino-ratings.js LOW_STAR_WEIGHT.
 var LOW_STAR_WEIGHT = { 1: 0.3, 2: 0.6, 3: 1.0, 4: 1.0, 5: 1.0 };
 
-// House "seed" per tier — keep in sync with js/casino-ratings.js CFG.
+// Per-casino editorial review scores (the anchor). Tier SEED is only a fallback
+// for casinos with no review page. Flat WEIGHT so the blend matches the website
+// and the daily updater. Keep EDITORIAL in sync with editorial-scores.json.
 var SEED = { S: 5.0, A: 4.85, B: 4.7 };          // NEW = community-only (no seed)
-var SEED_WEIGHT = { S: 140, A: 130, B: 120 };
+var WEIGHT = 130;
+var EDITORIAL = {"acebetcc": 3.6, "acecasino": 4.0, "acornfun": 3.3, "americanluck": 4.1, "babacasino": 3.2, "bangcoins": 3.6, "bankrolla": 3.3, "betr": 4.1, "cardcrush": 3.3, "casinoclick": 4.0, "cazino": 3.7, "chancedcom": 4.3, "chipnwin": 3.7, "chumbacasino": 4.5, "clubspoker": 4.1, "cluck": 3.2, "coinfrenzy": 3.8, "coinsback": 4.1, "coinwizardgames": 3.3, "courtside": 3.7, "crashduel": 3.8, "crowncoins": 4.5, "daracasino": 3.7, "dexyplay": 3.7, "diambet": 3.7, "dimesweeps": 4.2, "dogghousecasino": 4.6, "epicsweep": 3.8, "fliff": 4.4, "fortunarush": 4.1, "fortunewheelz": 3.8, "fortunewins": 4.3, "funrize": 4.2, "funzcity": 3.6, "getzoot": 3.6, "globalpoker": 4.4, "goldenheartsgames": 4.2, "goldrushcity": 3.6, "goldtreasurecasino": 3.8, "goodvibescasino": 3.7, "hellomillions": 4.3, "high5casino": 4.2, "jackpota": 4.5, "jackpotdaily": 4.1, "jackpotgo": 4.1, "jackpotrabbit": 3.7, "jefebet": 3.7, "lavishluck": 4.0, "legacyarcade": 4.0, "legendz": 3.8, "lonestar": 4.4, "lucklake": 3.8, "luckparty": 3.7, "luckybird": 4.1, "luckybitsvegas": 3.7, "luckyhands": 4.4, "luckylandslots": 4.4, "luckyrush": 4.2, "luckyslots": 3.7, "luckystake": 3.8, "lunalandcasino": 3.7, "mcluck": 4.4, "megabonanza": 4.6, "megafrenzy": 3.7, "megaspinz": 3.7, "modo": 4.1, "moonspin": 4.2, "moozi": 4.1, "myprize": 4.4, "nioplay": 3.3, "nolimitcoins": 4.2, "novig": 4.0, "oceanking": 3.8, "peakplay": 3.8, "playfame": 4.5, "pulsz": 4.6, "pulszbingo": 4.5, "puntcasino": 4.2, "realprize": 4.3, "rebet": 4.5, "richsweeps": 4.1, "rolla": 4.0, "rollingriches": 4.0, "rubysweeps": 3.9, "scarletsands": 3.8, "scoopcasino": 3.8, "scroogecasino": 3.7, "sheeshcasino": 3.3, "shuffleus": 4.7, "sidepot": 3.7, "sixty6": 3.7, "smilescasino": 3.7, "sorceryreels": 3.7, "speedsweeps": 4.3, "spinblitz": 4.3, "spindoo": 3.6, "spinfinite": 3.7, "spinpals": 3.7, "spinquest": 3.6, "spinsaga": 3.8, "sportzino": 4.5, "spree": 4.1, "stackr": 3.7, "stakeus": 4.7, "sweepico": 3.8, "sweepjungle": 4.0, "sweepnext": 3.7, "sweepshark": 3.7, "sweepsroyal": 4.2, "sweeptastic": 4.1, "sweetsweeps": 3.7, "taofortune": 4.0, "taosweeps": 3.7, "thebossus": 3.7, "themoneyfactory": 4.0, "thrillcoins": 4.2, "thrillz": 4.2, "vegawin": 3.3, "wildworldcasino": 3.6, "winbonanza": 4.1, "winera": 3.3, "wowvegas": 4.2, "yaycasino": 3.8, "zonko": 3.2, "zula": 4.6, "zumo": 3.7};
 
 var COL = { KEY: 1, NAME: 2, WSUM: 3, WWEIGHT: 4, VOTES: 5, AVG: 6, UPDATED: 7 };
 var HEADERS = ['NormKey', 'Casino', 'WeightedSum', 'WeightedWeight', 'Votes', 'CommunityAvg', 'LastUpdated'];
@@ -168,11 +171,12 @@ function writeRow(sh, rowIndex, key, name, wsum, wweight, votes) {
 
 /* ---------- Stamp ratings under each name in Daily Casinos List ---------- */
 
-function blendedValue(tierCode, r) {
+function blendedValue(tierCode, r, key) {
   var cs = r ? (r.cs || 0) : 0, cw = r ? (r.cw || 0) : 0;
-  var sv = SEED[tierCode], sw = SEED_WEIGHT[tierCode];
-  if (sv === undefined) return (cw > 0) ? (cs / cw) : null; // NEW: community-only
-  return (sv * sw + cs) / (sw + cw);
+  var anchor = EDITORIAL[key];                       // per-casino review score
+  if (anchor === undefined) anchor = SEED[tierCode]; // tier fallback (no review)
+  if (anchor === undefined) return (cw > 0) ? (cs / cw) : null; // community-only
+  return (anchor * WEIGHT + cs) / (WEIGHT + cw);
 }
 
 function tierFromLabel(label) {
@@ -197,9 +201,9 @@ function stripRatingLines(text) {
   return keep.join('\n').trim();
 }
 
-function ratingLine(tierCode, r) {
+function ratingLine(tierCode, r, key) {
   var votes = r ? (r.c || 0) : 0;
-  var val = blendedValue(tierCode, r);
+  var val = blendedValue(tierCode, r, key);
   if (val === null) return '☆ no votes yet'; // ☆
   return '★ ' + (Math.round(val * 10) / 10).toFixed(1) + (votes > 0 ? ' (' + votes + ')' : '');
 }
@@ -249,7 +253,7 @@ function syncRatingsToList() {
     var base = stripRatingLines(bRaw);
     if (!base) continue;
     var key = normName(base);
-    var line = ratingLine(currentTier, ratings[key]);
+    var line = ratingLine(currentTier, ratings[key], key);
     var newVal = base + '\n' + line;
     if (newVal !== bRaw) {
       list.getRange(r + 1, 2).setValue(newVal);
