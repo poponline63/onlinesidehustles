@@ -393,12 +393,10 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
   font-family:'IBM Plex Mono','Courier New',Courier,monospace;
   font-size:0.57rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;
   padding:9px 11px;border-bottom:1px solid var(--border-md);border-right:1px solid var(--border);
-  white-space:nowrap;cursor:pointer;user-select:none;transition:background 0.15s;
+  white-space:nowrap;cursor:default;user-select:none;
   text-align:center;
 }
-#mainTable th:hover{background:rgba(110,231,183,0.06);}
 #mainTable th:last-child{border-right:none;}
-.th-sort{opacity:0.4;font-size:0.55em;margin-left:2px;}
 /* Compact rows */
 #mainTable td{padding:8px 11px;border-bottom:1px solid rgba(110,231,183,0.07);border-right:1px solid rgba(110,231,183,0.05);vertical-align:middle;text-align:center;font-size:0.84rem;color:var(--text);word-wrap:break-word;overflow-wrap:break-word;}
 #mainTable td:last-child{border-right:none;}
@@ -890,11 +888,11 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
         <table id="mainTable">
           <thead>
             <tr>
-              <th onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
-              <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-              <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
+              <th>Casino</th>
+              <th>Tier</th>
+              <th>Daily $</th>
               <th>Welcome Package</th>
-              <th onclick="sortBy('redeem')">Min.<br>Redeem <span class="th-sort">↕</span></th>
+              <th>Min.<br>Redeem</th>
               <th class="notes-cell">Notes</th>
               <th>Parent Company</th>
               <th>Review</th>
@@ -1006,7 +1004,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
           <span class="faq-arrow">▼</span>
         </div>
         <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <p itemprop="text">Minimum redemption varies by site — typically between $10 and $100 in SC equivalent. The Min. Redeem column on this list shows each site's exact threshold. God Tier sites tend to have lower minimums relative to their daily SC output, which means faster payouts. Sort by Min. Redeem using the column header to find the easiest sites to cash out from.</p>
+          <p itemprop="text">Minimum redemption varies by site — typically between $10 and $100 in SC equivalent. The Min. Redeem column on this list shows each site's exact threshold. God Tier sites tend to have lower minimums relative to their daily SC output, which means faster payouts.</p>
         </div>
       </div>
 
@@ -1426,19 +1424,19 @@ function updateTableHeader(){
   if(!thead) return;
   if(gameplayMode){
     thead.innerHTML=`
-      <th onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
-      <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
+      <th>Casino</th>
+      <th>Tier</th>
       ${rtpHeaders.slice(0,6).map(h=>`<th>${esc(h)}</th>`).join('')}
       <th>Other RTP Games</th>
       `;
   } else {
     const showCa = filters.geo==='canada'||filters.geo==='ontario';
     thead.innerHTML=`
-      <th onclick="sortBy('name')">Casino <span class="th-sort">↕</span></th>
-      <th onclick="sortBy('tier')">Tier <span class="th-sort">↕</span></th>
-      <th onclick="sortBy('amt')">Daily $ <span class="th-sort">↕</span></th>
+      <th>Casino</th>
+      <th>Tier</th>
+      <th>Daily $</th>
       <th>Welcome Package</th>
-      <th onclick="sortBy('redeem')">Min.<br>Redeem <span class="th-sort">↕</span></th>
+      <th>Min.<br>Redeem</th>
       <th class="notes-cell">Notes</th>
       ${showCa?'<th>🇨🇦</th><th>🍁 ON</th>':''}
       ${showCa?'':'<th>Parent Company</th>'}
@@ -1647,12 +1645,6 @@ function setView(v){
   else{tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
   filterAll(); // re-render so gameplay marks are always correct on view switch
 }
-function sortBy(col){
-  if(lastSort===col)sortDir*=-1;else sortDir=1;
-  lastSort=col;filters.sort=col;filterAll();
-}
-
-
 // ===== LOAD DATA =====
 const CSV_URL='https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=csv&gid=1759950549';
 
