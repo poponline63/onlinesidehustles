@@ -134,6 +134,15 @@
   function get(name) { return RATINGS[normName(name)] || null; }
 
   // ---- per-device vote memory --------------------------------------------
+  // Stable anonymous device id so the backend can spot a single user mass-
+  // downvoting every site (troll) and drop their votes from the average.
+  function clientId() {
+    try {
+      var k = 'oshr_uid', v = localStorage.getItem(k);
+      if (!v) { v = 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10); localStorage.setItem(k, v); }
+      return v;
+    } catch (e) { return 'nostore'; }
+  }
   function voteKey(name) { return 'oshvote_' + normName(name); }
   function myVote(name) {
     try { var v = localStorage.getItem(voteKey(name)); return v ? parseInt(v, 10) : 0; } catch (e) { return 0; }
@@ -145,7 +154,7 @@
     if (!enabled || !(stars >= 1 && stars <= 5)) return Promise.reject(new Error('invalid vote'));
     var prev = myVote(name);
     setMyVote(name, stars);
-    return jsonp({ action: 'vote', casino: name, key: normName(name), stars: stars, prev: prev || '' })
+    return jsonp({ action: 'vote', casino: name, key: normName(name), stars: stars, prev: prev || '', uid: clientId() })
       .then(function (res) {
         if (res && res.ok) {
           RATINGS[normName(name)] = { n: res.n || name, cs: res.cs, cw: res.cw, c: res.c };

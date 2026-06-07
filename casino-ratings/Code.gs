@@ -108,65 +108,109 @@ function handleList() {
   return { ok: true, ratings: out };
 }
 
+/* ---------- Per-user vote log + troll filter ----------------------------
+   Every vote is logged per (device id, casino). The community average is
+   recomputed from this log, dropping any user who rates a lot of sites and
+   almost all of them 1-2 stars (obvious mass-downvote trolling). Users who
+   rate everything high are kept — lots of 4-5 star reviews are legit/good.   */
+
+var VOTELOG_NAME = 'VoteLog';
+var VL = { UID: 1, KEY: 2, NAME: 3, STARS: 4, UPDATED: 5 };
+var VL_HEADERS = ['UserId', 'NormKey', 'Casino', 'Stars', 'Updated'];
+var TROLL_MIN_SITES = 5;     // need at least this many of a user's votes to judge
+var TROLL_LOW_FRAC  = 0.9;   // >= 90% of them being 1-2 stars => ignore that user
+
+function getVoteLog() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sh = ss.getSheetByName(VOTELOG_NAME);
+  if (!sh) {
+    sh = ss.insertSheet(VOTELOG_NAME);
+    sh.getRange(1, 1, 1, VL_HEADERS.length).setValues([VL_HEADERS]);
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+// Aggregate vote rows [{uid,key,name,stars}] into {key:{n,cs,cw,c}}, dropping
+// users flagged as mass-downvote trolls.
+function aggregateFromVotes(rows) {
+  var byUser = {};
+  for (var i = 0; i < rows.length; i++) {
+    var v = rows[i];
+    if (!v.uid || !v.key) continue;
+    (byUser[v.uid] = byUser[v.uid] || []).push(v);
+  }
+  var agg = {};
+  for (var u in byUser) {
+    if (!byUser.hasOwnProperty(u)) continue;
+    var votes = byUser[u], lows = 0;
+    for (var j = 0; j < votes.length; j++) if (votes[j].stars <= 2) lows++;
+    if (votes.length >= TROLL_MIN_SITES && lows / votes.length >= TROLL_LOW_FRAC) continue; // troll: skip all
+    for (var j = 0; j < votes.length; j++) {
+      var vv = votes[j], w = starWeight(vv.stars);
+      var a = agg[vv.key] || (agg[vv.key] = { n: vv.name, cs: 0, cw: 0, c: 0 });
+      if (vv.name) a.n = vv.name;
+      a.cs += vv.stars * w; a.cw += w; a.c += 1;
+    }
+  }
+  return agg;
+}
+
+// Recompute the "Ratings" aggregate tab from the full vote log (troll-filtered).
+function rebuildAggregates() {
+  var log = getVoteLog();
+  var last = log.getLastRow();
+  var rows = [];
+  if (last >= 2) {
+    var vals = log.getRange(2, 1, last - 1, VL_HEADERS.length).getValues();
+    for (var i = 0; i < vals.length; i++) {
+      rows.push({ uid: String(vals[i][VL.UID - 1] || ''), key: String(vals[i][VL.KEY - 1] || ''),
+                  name: String(vals[i][VL.NAME - 1] || ''), stars: Number(vals[i][VL.STARS - 1]) || 0 });
+    }
+  }
+  var agg = aggregateFromVotes(rows);
+  var sh = getSheet();
+  var lastR = sh.getLastRow();
+  if (lastR >= 2) sh.getRange(2, 1, lastR - 1, HEADERS.length).clearContent();
+  var out = [];
+  for (var k in agg) {
+    if (!agg.hasOwnProperty(k)) continue;
+    var a = agg[k], avg = a.cw > 0 ? a.cs / a.cw : 0;
+    out.push([k, a.n, round2(a.cs), round2(a.cw), a.c, round2(avg), new Date()]);
+  }
+  if (out.length) sh.getRange(2, 1, out.length, HEADERS.length).setValues(out);
+  return agg;
+}
+
 function handleVote(p) {
   var stars = parseInt(p.stars, 10);
   if (!(stars >= 1 && stars <= 5)) return { ok: false, error: 'invalid stars' };
   var name = String(p.casino || '').trim();
   var key = normName(p.key || name);
   if (!key) return { ok: false, error: 'missing casino' };
-  var prev = parseInt(p.prev, 10);
-  var isChange = (prev >= 1 && prev <= 5);
-  var w = starWeight(stars);
+  var uid = String(p.uid || '').trim() || ('anon-' + key);
 
   var lock = LockService.getScriptLock();
   lock.waitLock(15000);
   try {
-    var sh = getSheet();
-    var last = sh.getLastRow();
+    var log = getVoteLog();
+    var last = log.getLastRow();
     var rowIndex = -1;
     if (last >= 2) {
-      var keys = sh.getRange(2, COL.KEY, last - 1, 1).getValues();
-      for (var i = 0; i < keys.length; i++) {
-        if (String(keys[i][0]) === key) { rowIndex = i + 2; break; }
+      var pairs = log.getRange(2, 1, last - 1, 2).getValues(); // UID, KEY
+      for (var i = 0; i < pairs.length; i++) {
+        if (String(pairs[i][0]) === uid && String(pairs[i][1]) === key) { rowIndex = i + 2; break; }
       }
     }
+    if (rowIndex === -1) rowIndex = (last < 1 ? 1 : last) + 1;
+    log.getRange(rowIndex, 1, 1, VL_HEADERS.length).setValues([[uid, key, name, stars, new Date()]]);
 
-    var wsum, wweight, votes;
-    if (rowIndex === -1) {
-      wsum = stars * w; wweight = w; votes = 1;
-      rowIndex = (last < 1 ? 1 : last) + 1;
-      writeRow(sh, rowIndex, key, name, wsum, wweight, votes);
-    } else {
-      wsum = Number(sh.getRange(rowIndex, COL.WSUM).getValue()) || 0;
-      wweight = Number(sh.getRange(rowIndex, COL.WWEIGHT).getValue()) || 0;
-      votes = Number(sh.getRange(rowIndex, COL.VOTES).getValue()) || 0;
-      if (isChange && votes >= 1) {
-        var pw = starWeight(prev);
-        wsum = wsum - prev * pw + stars * w;
-        wweight = wweight - pw + w;
-        if (wweight < w) wweight = w;
-      } else {
-        wsum = wsum + stars * w; wweight = wweight + w; votes = votes + 1;
-      }
-      var existingName = String(sh.getRange(rowIndex, COL.NAME).getValue() || '');
-      writeRow(sh, rowIndex, key, existingName || name, wsum, wweight, votes);
-    }
-
-    return {
-      ok: true,
-      n: String(sh.getRange(rowIndex, COL.NAME).getValue() || name),
-      cs: round2(wsum), cw: round2(wweight), c: votes
-    };
+    var agg = rebuildAggregates();
+    var r = agg[key] || { n: name, cs: 0, cw: 0, c: 0 };
+    return { ok: true, n: r.n || name, cs: round2(r.cs), cw: round2(r.cw), c: r.c };
   } finally {
     lock.releaseLock();
   }
-}
-
-function writeRow(sh, rowIndex, key, name, wsum, wweight, votes) {
-  var avg = wweight > 0 ? wsum / wweight : 0;
-  sh.getRange(rowIndex, 1, 1, HEADERS.length).setValues([[
-    key, name, round2(wsum), round2(wweight), votes, round2(avg), new Date()
-  ]]);
 }
 
 /* ---------- Stamp ratings under each name in Daily Casinos List ---------- */
@@ -227,6 +271,7 @@ function getListSheet(ss) {
 
 function syncRatingsToList() {
   setupRankingTabs();   // ensure the frozen Editorial Anchor exists (idempotent)
+  rebuildAggregates();  // refresh the troll-filtered community averages
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   var list = getListSheet(ss);
   var last = list.getLastRow();
