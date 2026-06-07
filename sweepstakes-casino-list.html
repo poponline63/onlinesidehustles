@@ -1429,7 +1429,7 @@ async function loadXlsxForGameplay(){
     const c0=sheet[XLSX.utils.encode_cell({r,c:0})];
     const c1=sheet[XLSX.utils.encode_cell({r,c:1})];
     const col0=c0?String(c0.v||c0.f||'').trim():'';
-    const col1=c1?String(c1.v||c1.f||'').trim():'';
+    const col1=c1?String(c1.v||c1.f||'').split('\n')[0].trim():'';
 
     // Header row: capture RTP column names (cols 6-12)
     if(col0.toLowerCase().includes('signup')&&!newHeaders.length){
@@ -1516,7 +1516,7 @@ function buildData(rows){
   for(let r=dataStart;r<rows.length;r++){
     const row=rows[r];
     const col0=(row[0]||'').trim();
-    const col1=(row[1]||'').trim();
+    const col1=(row[1]||'').split('\n')[0].trim(); // first line only (rating is stamped on line 2 in the sheet)
 
     // Tier separator
     const t=col1?detectTier(col1):null;
