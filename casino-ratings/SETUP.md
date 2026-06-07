@@ -44,7 +44,7 @@ the widget hides itself when no backend is configured.
 ## Step 1 — Create the Apps Script
 
 1. Open your casino spreadsheet:
-   <https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/edit>
+   <https://docs.google.com/spreadsheets/d/1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog/edit>
 2. Menu: **Extensions → Apps Script**.
 3. Delete the default `Code.gs` contents and paste the entire contents of
    [`Code.gs`](Code.gs) from this folder.

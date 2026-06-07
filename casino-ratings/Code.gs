@@ -15,7 +15,7 @@
    once to populate the list + install the hourly trigger.
    ========================================================================== */
 
-var SPREADSHEET_ID = '1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328';
+var SPREADSHEET_ID = '1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog';
 var SHEET_NAME = 'Ratings';
 var LIST_SHEET_NAME = 'Daily Casinos List';
 
