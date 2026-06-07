@@ -1,29 +1,35 @@
 /* ==========================================================================
    Online Sidehustles — Community Casino Ratings backend (Google Apps Script)
 
-   Stores user star ratings in a "Ratings" tab of your casino spreadsheet.
-   Low (1-2 star) votes are de-weighted to blunt trolling. The website blends
-   these community numbers with an editorial "house" rating per tier, so the
-   crowd can only nudge the score (see js/casino-ratings.js).
+   1) Web App (doGet): stores/serves community votes in the "Ratings" tab.
+      Low (1-2 star) votes are de-weighted to blunt trolling.
+   2) syncRatingsToList(): stamps the blended rating ("house" seed per tier +
+      community votes) as a 2nd line under each casino name in the
+      "Daily Casinos List" tab. Runs hourly via a trigger, and from a menu.
 
-   Stored per casino:
-     WeightedSum     = Σ stars_i * weight(stars_i)
-     WeightedWeight  = Σ weight(stars_i)
-     Votes           = raw number of votes
-     CommunityAvg    = WeightedSum / WeightedWeight  (for your own insight)
+   Ratings tab columns:
+     WeightedSum = Σ stars_i*weight(stars_i)   WeightedWeight = Σ weight(stars_i)
+     Votes = raw count   CommunityAvg = WeightedSum/WeightedWeight
 
-   Deploy as a Web App (Execute as: Me, Who has access: Anyone). All requests
-   arrive via JSONP GET (?callback=...) so there are zero CORS problems.
+   Deploy as a Web App (Execute as: Me, Who has access: Anyone). Run setup()
+   once to populate the list + install the hourly trigger.
    ========================================================================== */
 
 var SPREADSHEET_ID = '1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328';
 var SHEET_NAME = 'Ratings';
+var LIST_SHEET_NAME = 'Daily Casinos List';
 
 // Anti-troll weighting — keep in sync with js/casino-ratings.js LOW_STAR_WEIGHT.
 var LOW_STAR_WEIGHT = { 1: 0.3, 2: 0.6, 3: 1.0, 4: 1.0, 5: 1.0 };
 
+// House "seed" per tier — keep in sync with js/casino-ratings.js CFG.
+var SEED = { S: 5.0, A: 4.85, B: 4.7 };          // NEW = community-only (no seed)
+var SEED_WEIGHT = { S: 140, A: 130, B: 120 };
+
 var COL = { KEY: 1, NAME: 2, WSUM: 3, WWEIGHT: 4, VOTES: 5, AVG: 6, UPDATED: 7 };
 var HEADERS = ['NormKey', 'Casino', 'WeightedSum', 'WeightedWeight', 'Votes', 'CommunityAvg', 'LastUpdated'];
+
+/* ---------- Web app ---------- */
 
 function doGet(e) {
   var p = (e && e.parameter) ? e.parameter : {};
@@ -57,7 +63,6 @@ function getSheet() {
     sh.setFrozenRows(1);
     return sh;
   }
-  // Self-heal: make sure the header row matches the current schema.
   var hdr = sh.getRange(1, 1, 1, HEADERS.length).getValues()[0];
   var ok = true;
   for (var i = 0; i < HEADERS.length; i++) { if (String(hdr[i]) !== HEADERS[i]) { ok = false; break; } }
@@ -125,9 +130,7 @@ function handleVote(p) {
 
     var wsum, wweight, votes;
     if (rowIndex === -1) {
-      wsum = stars * w;
-      wweight = w;
-      votes = 1;
+      wsum = stars * w; wweight = w; votes = 1;
       rowIndex = (last < 1 ? 1 : last) + 1;
       writeRow(sh, rowIndex, key, name, wsum, wweight, votes);
     } else {
@@ -136,13 +139,11 @@ function handleVote(p) {
       votes = Number(sh.getRange(rowIndex, COL.VOTES).getValue()) || 0;
       if (isChange && votes >= 1) {
         var pw = starWeight(prev);
-        wsum = wsum - prev * pw + stars * w; // same voter changed their mind
+        wsum = wsum - prev * pw + stars * w;
         wweight = wweight - pw + w;
-        if (wweight < w) wweight = w; // guard against drift
+        if (wweight < w) wweight = w;
       } else {
-        wsum = wsum + stars * w;
-        wweight = wweight + w;
-        votes = votes + 1;
+        wsum = wsum + stars * w; wweight = wweight + w; votes = votes + 1;
       }
       var existingName = String(sh.getRange(rowIndex, COL.NAME).getValue() || '');
       writeRow(sh, rowIndex, key, existingName || name, wsum, wweight, votes);
@@ -151,9 +152,7 @@ function handleVote(p) {
     return {
       ok: true,
       n: String(sh.getRange(rowIndex, COL.NAME).getValue() || name),
-      cs: round2(wsum),
-      cw: round2(wweight),
-      c: votes
+      cs: round2(wsum), cw: round2(wweight), c: votes
     };
   } finally {
     lock.releaseLock();
@@ -165,4 +164,108 @@ function writeRow(sh, rowIndex, key, name, wsum, wweight, votes) {
   sh.getRange(rowIndex, 1, 1, HEADERS.length).setValues([[
     key, name, round2(wsum), round2(wweight), votes, round2(avg), new Date()
   ]]);
+}
+
+/* ---------- Stamp ratings under each name in Daily Casinos List ---------- */
+
+function blendedValue(tierCode, r) {
+  var cs = r ? (r.cs || 0) : 0, cw = r ? (r.cw || 0) : 0;
+  var sv = SEED[tierCode], sw = SEED_WEIGHT[tierCode];
+  if (sv === undefined) return (cw > 0) ? (cs / cw) : null; // NEW: community-only
+  return (sv * sw + cs) / (sw + cw);
+}
+
+function tierFromLabel(label) {
+  var l = String(label || '').toLowerCase();
+  if (l.indexOf('god tier') !== -1) return 'S';
+  if (l.indexOf('high tier') !== -1) return 'A';
+  if (l.indexOf('medium tier') !== -1) return 'B';
+  if (l.indexOf('trash') !== -1) return 'SKIP';
+  if (l.indexOf('new website') !== -1 || l.indexOf('new casino') !== -1) return 'NEW';
+  return null;
+}
+
+// Remove any previously-stamped rating line(s); return the base name.
+function stripRatingLines(text) {
+  var parts = String(text || '').split('\n');
+  var keep = [];
+  for (var i = 0; i < parts.length; i++) {
+    var t = parts[i].trim();
+    if (t.charAt(0) === '★' || t.charAt(0) === '☆') continue; // ★ or ☆
+    keep.push(parts[i]);
+  }
+  return keep.join('\n').trim();
+}
+
+function ratingLine(tierCode, r) {
+  var votes = r ? (r.c || 0) : 0;
+  var val = blendedValue(tierCode, r);
+  if (val === null) return '☆ no votes yet'; // ☆
+  return '★ ' + (Math.round(val * 10) / 10).toFixed(1) + (votes > 0 ? ' (' + votes + ')' : '');
+}
+
+function getListSheet(ss) {
+  var sh = ss.getSheetByName(LIST_SHEET_NAME);
+  if (sh) return sh;
+  var all = ss.getSheets();
+  for (var i = 0; i < all.length; i++) { if (all[i].getName() !== SHEET_NAME) return all[i]; }
+  return all[0];
+}
+
+function syncRatingsToList() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var list = getListSheet(ss);
+  var last = list.getLastRow();
+  if (last < 1) return;
+  var ratings = handleList().ratings;
+  var aVals = list.getRange(1, 1, last, 1).getValues();
+  var bVals = list.getRange(1, 2, last, 1).getValues();
+
+  var currentTier = 'NEW';
+  var stamped = 0;
+  for (var r = 0; r < last; r++) {
+    var a = String(aVals[r][0] || '');
+    var bRaw = String(bVals[r][0] || '');
+    var bFirst = bRaw.split('\n')[0].trim();
+    var isSignup = a.toLowerCase().indexOf('signup') !== -1;
+
+    if (!isSignup) {
+      var t = tierFromLabel(bFirst);
+      if (t) currentTier = t;
+      continue;
+    }
+    if (!bFirst) continue;
+
+    var base = stripRatingLines(bRaw);
+    if (!base) continue;
+    var key = normName(base);
+    var line = ratingLine(currentTier, ratings[key]);
+    var newVal = base + '\n' + line;
+    if (newVal !== bRaw) {
+      list.getRange(r + 1, 2).setValue(newVal);
+      stamped++;
+    }
+  }
+  return stamped;
+}
+
+function installHourlyTrigger() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'syncRatingsToList') ScriptApp.deleteTrigger(triggers[i]);
+  }
+  ScriptApp.newTrigger('syncRatingsToList').timeBased().everyHours(1).create();
+}
+
+// Run this once from the editor: stamps ratings now + installs the hourly trigger.
+function setup() {
+  syncRatingsToList();
+  installHourlyTrigger();
+}
+
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('Casino Ratings')
+    .addItem('Sync ratings to list now', 'syncRatingsToList')
+    .addToUi();
 }
