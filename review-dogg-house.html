@@ -53,7 +53,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 @keyframes coinFlyLTR{0%{transform:translateX(0) translateY(0) rotate(0deg);opacity:1;}80%{opacity:1;}100%{transform:translateX(110vw) translateY(var(--dy,-20px)) rotate(720deg);opacity:0;}}
 .fly-coin{position:fixed;pointer-events:none;z-index:9999;font-size:1.4rem;animation-timing-function:linear;animation-fill-mode:forwards;}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity .55s ease-out,transform .55s ease-out;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
+.fade-in.visible{opacity:1;transform:translateY(0);}@media (prefers-reduced-motion:reduce){.fade-in{opacity:1!important;transform:none!important;transition:none!important;}}
 .fade-in-delay-1{transition-delay:.1s;}.fade-in-delay-2{transition-delay:.2s;}
 nav,.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-nav);border-bottom:1px solid var(--border);height:54px;display:flex;align-items:center;padding:0 1.5rem;transition:box-shadow .2s;}
 nav.scrolled,.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.4);}
@@ -369,14 +369,30 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:2.5re
  </div>
 </footer>
 <script>
+/* Failsafe content reveal: keep .fade-in content visible no matter what else
+   on the page throws. Independent of the nav/hamburger script below. */
+(function(){
+ function revealAll(){try{var n=document.querySelectorAll('.fade-in');for(var i=0;i<n.length;i++)n[i].classList.add('visible');}catch(e){}}
+ function setup(){
+  try{
+   if(!('IntersectionObserver' in window)){revealAll();return;}
+   var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+   var n=document.querySelectorAll('.fade-in');for(var i=0;i<n.length;i++)obs.observe(n[i]);
+  }catch(e){revealAll();}
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+ window.addEventListener('error',revealAll);
+ window.addEventListener('load',function(){setTimeout(revealAll,400);});
+ setTimeout(revealAll,2500);
+})();
+</script>
+<script>
 (function(){
  const nav=document.getElementById('nav');
  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20);},{passive:true});
  const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
  hb.addEventListener('click',()=>{hb.classList.toggle('active');mm.classList.toggle('active');document.body.style.overflow=mm.classList.contains('active')?'hidden':'';});
  mm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{hb.classList.remove('active');mm.classList.remove('active');document.body.style.overflow=''}));
- const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
- document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 })();
 (function(){
  const c=document.getElementById('bgCanvas');if(!c)return;
