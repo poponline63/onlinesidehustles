@@ -1373,7 +1373,7 @@ function dailyBadge(v){
 }
 function tierBadge(t){
   const c={S:'t-s',A:'t-a',B:'t-b',NEW:'t-n'}[t]||'t-n';
-  const l={S:'S',A:'A',B:'B',NEW:'★'}[t]||t;
+  const l={S:'👑',A:'🔥',B:'🎯',NEW:'✨'}[t]||t;
   return `<span class="tier-badge ${c}">${l}</span>`;
 }
 function hmlBadge(v){
@@ -1546,7 +1546,7 @@ function buildData(rows){
       tier:currentTier,
       editorialTier:currentTier,
       daily,
-      dailyRaw:(row[2]||'').trim().replace(/'$/, ''),
+      dailyRaw:(row[2]||'').trim().replace(/['’]/g, ''), // strip sheet-only apostrophes (e.g. $0.10')
       welcome,
       redeemRaw,
       redeemNum,
