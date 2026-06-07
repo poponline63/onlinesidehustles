@@ -13,7 +13,7 @@
 
   var CFG = {
     // <<< PASTE YOUR DEPLOYED APPS SCRIPT /exec URL HERE >>>
-    ENDPOINT: '',
+    ENDPOINT: 'https://script.google.com/macros/s/AKfycbzPbH1tgaYiQ1xBgAG0QfTMt4KqBy7VhSWyxN74dSuG3reewr0DmfrDGcdRVdhgpYrZLA/exec',
 
     // Minimum community votes before a casino's tier can be overridden by the
     // crowd. Below this it keeps your editorial (sheet) tier.
