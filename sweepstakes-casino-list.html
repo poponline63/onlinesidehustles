@@ -1089,7 +1089,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
   </div>
 </footer>
 
-<script src="/js/casino-ratings.js?v=20260607e"></script>
+<script src="/js/casino-ratings.js?v=20260607f"></script>
 <script>
 // ===== SIGNUP LINKS =====
 const SIGNUP_LINKS = {
@@ -1562,16 +1562,26 @@ function buildData(rows){
 }
 
 // ===== COMMUNITY RATINGS =====
-// Editorial tier stays king — the community score is shown next to the name but
-// never reorders the tiers. We just compute the blended (house + community)
-// score per casino for display and optional rating-sort.
+// Ratings move casinos: each casino's tier is derived from its blended (house +
+// community) score. Boundaries are the midpoints between tier anchors, so at
+// zero votes every casino keeps its editorial tier, and ~55 votes rating it one
+// tier off pushes it across. "New" is a recency category, not a quality rank, so
+// quality casinos won't drop into it (they floor at Medium); new casinos can
+// graduate up with good votes.
+function tierFromScore(score, editorial){
+  if(score==null) return editorial;
+  if(score>=4.90) return 'S';   // God
+  if(score>=4.70) return 'A';   // High
+  if(score>=4.55) return 'B';   // Medium
+  return editorial==='NEW' ? 'NEW' : (editorial==='SKIP' ? 'SKIP' : 'B');
+}
 function applyCommunityTiers(){
   if(!window.OSHRatings||!OSHRatings.enabled)return;
   CASINOS.forEach(c=>{
-    c.tier=c.editorialTier; // locked to editorial order
     const br=OSHRatings.blendedRating(c.editorialTier,OSHRatings.get(c.name),c.name);
     c.commValue=br.value;
     c.commVotes=br.votes;
+    c.tier=tierFromScore(c.commValue,c.editorialTier); // rating decides the tier
   });
 }
 
@@ -1726,7 +1736,7 @@ function getVisible(){
     return true;
   }).sort((a,b)=>{
     let r=0;
-    if(filters.sort==='tier')    r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0)||a.name.localeCompare(b.name);
+    if(filters.sort==='tier')    r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0)||(b.commValue||0)-(a.commValue||0)||a.name.localeCompare(b.name);
     else if(filters.sort==='name')    r=a.name.localeCompare(b.name);
     else if(filters.sort==='daily')   r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0);
     else if(filters.sort==='amt'){const pn=v=>{const m=(v||'').match(/[\d.]+/);return m?parseFloat(m[0]):0;};r=pn(b.dailyRaw)-pn(a.dailyRaw);}

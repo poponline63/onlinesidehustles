@@ -17,8 +17,10 @@
      Low votes are de-weighted to blunt trolling: a 1-star vote counts ~0.3 of
      a normal vote, a 2-star ~0.6, and 3/4/5-star count fully.
 
-     Tiers stay locked to your editorial order (Daily Casinos List sheet) — the
-     community score is shown next to the name but never reorders the tiers.
+     Tiers now MOVE with the score: each casino's tier is derived from its
+     blended score via midpoint boundaries (see tierFromScore on the list page),
+     so enough community votes can raise or lower a casino's tier and position.
+     At zero votes every casino keeps its editorial tier.
 
    SETUP: paste the deployed Apps Script /exec URL into ENDPOINT below.
    ========================================================================== */
@@ -34,8 +36,10 @@
     SEED: { S: 5.0, A: 4.8, B: 4.6, NEW: 4.5 },
 
     // How strongly the editorial anchor resists community movement (phantom
-    // votes). Flat across casinos so the blend is identical everywhere.
-    WEIGHT: 130,
+    // votes). Flat across casinos so the blend is identical everywhere. Tuned so
+    // that ~55 genuine votes rating a casino one tier off will push its blended
+    // score across the midpoint boundary to the next tier.
+    WEIGHT: 55,
 
     // Anti-troll: weight applied to each star value when accumulating votes.
     // 1- and 2-star votes count less than 3/4/5-star votes.
