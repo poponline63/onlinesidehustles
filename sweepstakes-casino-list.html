@@ -650,6 +650,39 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
 }
 .btn-review:hover{background:rgba(110,231,183,0.18);border-color:var(--teal);}
+
+/* ===== MOBILE RESPONSIVE — TABLE & TOOLBAR ===== */
+@media(max-width:768px){
+  /* Enable horizontal table scroll on mobile */
+  .table-section{overflow:visible;}
+  .table-wrap{overflow-x:auto !important;-webkit-overflow-scrolling:touch;}
+  /* Min-width forces horizontal scroll cleanly instead of crushing columns */
+  #mainTable{min-width:680px;font-size:0.75rem;}
+  #mainTable td{padding:6px 7px;}
+  #mainTable th{padding:7px 7px;}
+  /* Toolbar: let search grow to fill space */
+  .search-wrap{flex:1;min-width:130px;max-width:none;}
+  /* Tier buttons & region chips: slightly smaller */
+  .tier-btn{font-size:0.70rem;padding:0.22rem 0.55rem;}
+  .chip{font-size:0.68rem;padding:0.20rem 0.50rem;}
+  /* Move "showing X of Y" to its own line */
+  .showing{margin-left:0;order:99;width:100%;}
+  /* Review button: compact */
+  .btn-review{font-size:0.60rem;padding:0.14rem 0.2rem;}
+}
+@media(max-width:480px){
+  /* Extra compact on small phones */
+  #mainTable{min-width:560px;font-size:0.68rem;}
+  #mainTable td{padding:5px 5px;}
+  #mainTable th{padding:6px 5px;font-size:0.50rem;}
+  .toolbar{padding:0.4rem 0.6rem;gap:0.25rem;}
+  .tier-btn{font-size:0.63rem;padding:0.18rem 0.42rem;}
+  .chip{font-size:0.62rem;padding:0.16rem 0.40rem;}
+  /* Hide "Region:" text label on tiny screens to save space */
+  .filter-lbl{display:none;}
+  .view-tab{padding:0.22rem 0.65rem;font-size:0.70rem;}
+  .showing{font-size:0.64rem;}
+}
 </style>
 </head>
 <body>
@@ -1056,6 +1089,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
   </div>
 </footer>
 
+<script src="/js/casino-ratings.js"></script>
 <script>
 // ===== SIGNUP LINKS =====
 const SIGNUP_LINKS = {
@@ -1510,6 +1544,7 @@ function buildData(rows){
     CASINOS.push({
       name:col1.replace(/ \.([a-zA-Z])/g,'.$1'),
       tier:currentTier,
+      editorialTier:currentTier,
       daily,
       dailyRaw:(row[2]||'').trim().replace(/'$/, ''),
       welcome,
@@ -1524,6 +1559,21 @@ function buildData(rows){
       signupUrl:getLink(col1)
     });
   }
+}
+
+// ===== COMMUNITY RATINGS: override editorial tier by crowd score =====
+function applyCommunityTiers(){
+  if(!window.OSHRatings||!OSHRatings.enabled)return;
+  CASINOS.forEach(c=>{
+    const r=OSHRatings.get(c.name);
+    c.commAvg=r?r.a:0;
+    c.commCount=r?r.c:0;
+    if(r&&r.c>=OSHRatings.CFG.MIN_VOTES){
+      c.tier=OSHRatings.scoreToTier(r.a); // crowd moves it between tiers
+    }else{
+      c.tier=c.editorialTier; // not enough votes yet — keep curated tier
+    }
+  });
 }
 
 // ===== RENDER TABLE =====
@@ -1547,9 +1597,11 @@ function updateTableHeader(){
       `;
   } else {
     const showCa = filters.geo==='canada'||filters.geo==='ontario';
+    const ratingTh = (window.OSHRatings&&OSHRatings.enabled)?'<th class="rating-th" onclick="setSortRating()" title="Sort by community rating" style="cursor:pointer">Community ▾</th>':'';
     thead.innerHTML=`
       <th>Casino</th>
       <th>Tier</th>
+      ${ratingTh}
       <th>Daily $</th>
       <th>Welcome Package</th>
       <th>Min.<br>Redeem</th>
@@ -1572,7 +1624,8 @@ function renderTable(data){
   const tbl=document.getElementById('mainTable');
   tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
   tbl.classList.toggle('gp-mode', gameplayMode);
-  const colCount = gameplayMode ? 9 : (showCa ? 9 : 8);
+  const ratingCol = (!gameplayMode&&window.OSHRatings&&OSHRatings.enabled)?1:0;
+  const colCount = (gameplayMode ? 9 : (showCa ? 9 : 8)) + ratingCol;
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1606,8 +1659,10 @@ function renderTable(data){
     } else {
       const noteId='n'+Math.random().toString(36).slice(2,8);
       const moreId='m'+noteId;
+      const ratingTd=(window.OSHRatings&&OSHRatings.enabled)?`<td class="rating-cell">${OSHRatings.widgetHTML(c.name,{compact:true})}</td>`:'';
       tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
+      ${ratingTd}
       <td><span class="daily-val" title="${c.dailyRaw||''}">${esc(c.dailyRaw)||'—'}</span></td>
       <td class="welcome-cell">${esc(c.welcome)||'—'}</td>
       <td><span class="redeem-val">${c.redeemRaw?esc(c.redeemRaw):'—'}</span></td>
@@ -1640,6 +1695,7 @@ function renderCards(data){
         </div>
         ${tierBadge(c.tier)}
       </div>
+      ${(window.OSHRatings&&OSHRatings.enabled)?`<div class="c-rating">${OSHRatings.widgetHTML(c.name)}</div>`:''}
       <div class="c-data">
         <div><div class="c-k">Daily $</div><div class="c-v" style="color:#4ade80;font-weight:600;">${esc(c.dailyRaw)||'—'}</div></div>
         <div><div class="c-k">Min Redeem</div><div class="c-v" style="color:var(--teal);font-weight:700;">${c.redeemRaw||'—'}</div></div>
@@ -1679,6 +1735,7 @@ function getVisible(){
     else if(filters.sort==='daily')   r=(TIER_ORDER[a.tier]||0)-(TIER_ORDER[b.tier]||0);
     else if(filters.sort==='amt'){const pn=v=>{const m=(v||'').match(/[\d.]+/);return m?parseFloat(m[0]):0;};r=pn(b.dailyRaw)-pn(a.dailyRaw);}
     else if(filters.sort==='redeem')  r=(a.redeemNum||9999)-(b.redeemNum||9999);
+    else if(filters.sort==='rating')  r=(b.commAvg||0)-(a.commAvg||0)||(b.commCount||0)-(a.commCount||0)||a.name.localeCompare(b.name);
     return r*sortDir;
   });
 }
@@ -1710,7 +1767,7 @@ function checkNotesOverflow(){
 function filterAll(){
   const v=getVisible();
   document.getElementById('showingEl').innerHTML=
-    `Showing <b>${v.length} of ${CASINOS.length}</b> casinos <span class="upd">• Last updated: Jun 4, 2026</span>`;
+    `Showing <b>${v.length} of ${CASINOS.length}</b> casinos <span class="upd">• Last updated: Jun 6, 2026</span>`;
   renderTable(v);
   renderCards(v);
   checkNotesOverflow();
@@ -1761,6 +1818,11 @@ function setView(v){
   else{tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
   filterAll(); // re-render so gameplay marks are always correct on view switch
 }
+function setSortRating(){
+  filters.sort = (filters.sort==='rating')?'tier':'rating';
+  sortDir = 1;
+  filterAll();
+}
 // ===== LOAD DATA =====
 const CSV_URL='https://docs.google.com/spreadsheets/d/1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328/export?format=csv&gid=1759950549';
 
@@ -1777,6 +1839,10 @@ async function loadData(){
     ls.style.display='none';
     document.getElementById('lastUpdated').textContent='Loaded '+new Date().toLocaleTimeString();
     filterAll();
+    // Community ratings load independently; re-apply tiers + re-render when ready.
+    if(window.OSHRatings&&OSHRatings.enabled){
+      OSHRatings.load().then(()=>{applyCommunityTiers();filterAll();});
+    }
   }catch(e){
     console.error(e);
     ls.style.display='none';
@@ -1908,6 +1974,11 @@ mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 })();
 
 // ===== INIT =====
+// Delegated vote handling: after any successful vote, recompute crowd tiers
+// and re-render so a casino can visibly jump between tiers.
+if(window.OSHRatings&&OSHRatings.enabled){
+  OSHRatings.attach(document.body,()=>{applyCommunityTiers();filterAll();});
+}
 loadData();
 </script>
 </body>
