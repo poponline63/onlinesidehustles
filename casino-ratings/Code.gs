@@ -259,19 +259,11 @@ function syncRatingsToList() {
   return stamped;
 }
 
-function installHourlyTrigger() {
-  var triggers = ScriptApp.getProjectTriggers();
-  for (var i = 0; i < triggers.length; i++) {
-    if (triggers[i].getHandlerFunction() === 'syncRatingsToList') ScriptApp.deleteTrigger(triggers[i]);
-  }
-  ScriptApp.newTrigger('syncRatingsToList').timeBased().everyHours(1).create();
-}
-
-// Run this once from the editor: stamps ratings now + installs the hourly trigger.
-function setup() {
-  syncRatingsToList();
-  installHourlyTrigger();
-}
+// NOTE: The hourly auto-refresh is set up via the Apps Script Triggers UI
+// (clock icon -> Add Trigger -> syncRatingsToList -> Time-driven -> Hour timer).
+// We intentionally do NOT create the trigger in code, so the project only needs
+// the spreadsheet scope (no extra script.scriptapp consent prompt).
+// To refresh manually, just Run syncRatingsToList from the editor.
 
 function onOpen() {
   SpreadsheetApp.getUi()
