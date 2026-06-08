@@ -13,6 +13,8 @@
 /sweepstakes                /sweepstakes.html                   200
 /faq                        /faq.html                           200
 /about                      /about.html                         200
+/author/nate-sterling       /author-nate-sterling.html          200
+/author                     /author-nate-sterling.html          301
 /contact                    /contact.html                       200
 /glossary                   /glossary.html                      200
 /newsletter                 /newsletter.html                    200
