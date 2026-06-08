@@ -15,7 +15,8 @@
    once to populate the list + install the hourly trigger.
    ========================================================================== */
 
-var SPREADSHEET_ID = '1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog';
+var SPREADSHEET_ID = '1a202Ul8JDL21ikdYet9ieUeTKHFAsDTXLm2HIkI4328';  // BACKEND: votes, tallies, anchor — kept OFF the public list
+var LIST_ID        = '1yJAKLouHPn3AvV2PKEhulepc6HQ4uj9hfEPkl3WaMog';  // OFFICIAL public list — gets the star stamps + row reordering
 var SHEET_NAME = 'Ratings';
 var LIST_SHEET_NAME = 'Daily Casinos List';
 
@@ -309,7 +310,7 @@ function syncRatingsToList() {
   setupRankingTabs();   // ensure the frozen Editorial Anchor exists (idempotent)
   rebuildAggregates();  // refresh the troll-filtered community averages
   try { buildVoteTally(); } catch (e) {}   // tally is non-critical; never break the sync
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var ss = SpreadsheetApp.openById(LIST_ID);   // stamp the official public list
   var list = getListSheet(ss);
   var last = list.getLastRow();
   if (last < 1) return;
@@ -393,9 +394,10 @@ function targetTier(score, anchor, current) {
 // The reorderer reads baselines from here, never from the live (reordered)
 // order, so moving rows on the live list can never feed back on the scores.
 function setupRankingTabs() {
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  var leftover = ss.getSheetByName('TEST Rankings'); if (leftover) ss.deleteSheet(leftover);
-  if (!ss.getSheetByName(ANCHOR_SHEET_NAME)) { getListSheet(ss).copyTo(ss).setName(ANCHOR_SHEET_NAME); }
+  var data = SpreadsheetApp.openById(SPREADSHEET_ID);   // backend
+  var listSS = SpreadsheetApp.openById(LIST_ID);        // official public list
+  var leftover = data.getSheetByName('TEST Rankings'); if (leftover) data.deleteSheet(leftover);
+  if (!data.getSheetByName(ANCHOR_SHEET_NAME)) { getListSheet(listSS).copyTo(data).setName(ANCHOR_SHEET_NAME); }
   return 'anchor ready';
 }
 
@@ -445,10 +447,10 @@ function scanList(sheet) {
 // time because row indices shift after every move.
 function reorderByRatings(sheetName, overrides) {
   overrides = overrides || {};
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  var sheet = sheetName ? ss.getSheetByName(sheetName) : getListSheet(ss);
+  var listSS = SpreadsheetApp.openById(LIST_ID);   // reorder rows on the official list
+  var sheet = sheetName ? listSS.getSheetByName(sheetName) : getListSheet(listSS);
   if (!sheet) return { error: 'no sheet: ' + sheetName };
-  var anchors = readAnchorTiers(ss);
+  var anchors = readAnchorTiers(SpreadsheetApp.openById(SPREADSHEET_ID));   // baselines from backend
   var ratings = handleList().ratings;
   var width = sheet.getMaxColumns();
 
