@@ -182,6 +182,41 @@ function rebuildAggregates() {
   return agg;
 }
 
+// Per-user summary: one row per device with their vote counts + troll flag,
+// written to a readable "Vote Tally" tab (most active voters first).
+var TALLY_NAME = 'Vote Tally';
+function buildVoteTally() {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var log = getVoteLog();
+  var last = log.getLastRow();
+  var sh = ss.getSheetByName(TALLY_NAME) || ss.insertSheet(TALLY_NAME);
+  sh.clear();
+  var headers = ['UserId', 'Total Votes', '1-2 star', '3 star', '4-5 star', 'Avg Stars', 'Troll?', 'Last Vote'];
+  sh.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sh.setFrozenRows(1);
+  if (last < 2) return 0;
+  var rows = log.getRange(2, 1, last - 1, VL_HEADERS.length).getValues();
+  var byUser = {};
+  for (var i = 0; i < rows.length; i++) {
+    var uid = String(rows[i][VL.UID - 1] || ''); if (!uid) continue;
+    var stars = Number(rows[i][VL.STARS - 1]) || 0, when = rows[i][VL.UPDATED - 1];
+    var u = byUser[uid] || (byUser[uid] = { total: 0, low: 0, mid: 0, high: 0, sum: 0, last: null });
+    u.total++; u.sum += stars;
+    if (stars <= 2) u.low++; else if (stars === 3) u.mid++; else u.high++;
+    if (when && (!u.last || when > u.last)) u.last = when;
+  }
+  var out = [];
+  for (var k in byUser) {
+    if (!byUser.hasOwnProperty(k)) continue;
+    var x = byUser[k];
+    var troll = (x.total >= TROLL_MIN_SITES && x.low / x.total >= TROLL_LOW_FRAC) ? 'YES (ignored)' : '';
+    out.push([k, x.total, x.low, x.mid, x.high, Math.round(x.sum / x.total * 100) / 100, troll, x.last || '']);
+  }
+  out.sort(function (a, b) { return b[1] - a[1]; });   // most votes first
+  if (out.length) sh.getRange(2, 1, out.length, headers.length).setValues(out);
+  return out.length;
+}
+
 function handleVote(p) {
   var stars = parseInt(p.stars, 10);
   if (!(stars >= 1 && stars <= 5)) return { ok: false, error: 'invalid stars' };
@@ -206,6 +241,7 @@ function handleVote(p) {
     log.getRange(rowIndex, 1, 1, VL_HEADERS.length).setValues([[uid, key, name, stars, new Date()]]);
 
     var agg = rebuildAggregates();
+    try { buildVoteTally(); } catch (e) {}   // tally update is non-critical
     var r = agg[key] || { n: name, cs: 0, cw: 0, c: 0 };
     return { ok: true, n: r.n || name, cs: round2(r.cs), cw: round2(r.cw), c: r.c };
   } finally {
@@ -272,6 +308,7 @@ function getListSheet(ss) {
 function syncRatingsToList() {
   setupRankingTabs();   // ensure the frozen Editorial Anchor exists (idempotent)
   rebuildAggregates();  // refresh the troll-filtered community averages
+  try { buildVoteTally(); } catch (e) {}   // tally is non-critical; never break the sync
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   var list = getListSheet(ss);
   var last = list.getLastRow();
