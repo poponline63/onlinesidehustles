@@ -529,6 +529,22 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:2.5re
 </a>
 </div>
     </div>
+  <!-- email-capture -->
+<div style="margin:2.5rem 0;padding:1.75rem 1.5rem;background:linear-gradient(135deg,rgba(110,231,183,0.10) 0%,rgba(52,211,153,0.04) 100%);border:1px solid rgba(110,231,183,0.28);border-radius:14px;text-align:center;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#6ee7b7;margin-bottom:.5rem;">&#128236; Free Newsletter</div>
+  <h3 style="color:#fff;font-size:1.25rem;font-weight:800;margin:0 0 .4rem;">Never Miss a Free Sweeps Coins Drop</h3>
+  <p style="color:#94a3b8;font-size:.9rem;line-height:1.6;margin:0 auto 1.1rem;max-width:460px;">Get new no-deposit bonuses, fresh sweepstakes casinos, and daily collection reminders sent straight to your inbox.</p>
+  <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/newsletter?subscribed=true" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;max-width:440px;margin:0 auto;">
+    <input type="hidden" name="form-name" value="newsletter">
+    <input type="hidden" name="interest" value="Blog signup">
+    <p style="display:none;"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+    <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" style="flex:1;min-width:200px;padding:.7rem .9rem;border-radius:8px;border:1px solid rgba(110,231,183,0.3);background:#0c1526;color:#e8e6e0;font-size:.9rem;">
+    <button type="submit" style="padding:.7rem 1.4rem;border:none;border-radius:8px;background:linear-gradient(135deg,#6ee7b7 0%,#34d399 100%);color:#060a0f;font-weight:700;font-size:.9rem;cursor:pointer;white-space:nowrap;">Get Free Alerts &rarr;</button>
+  </form>
+  <div style="color:#7a8fa8;font-size:.7rem;margin-top:.7rem;">No spam. Unsubscribe anytime.</div>
+</div>
+<!-- /email-capture -->
+
   </article>
 </div>
 
