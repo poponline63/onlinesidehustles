@@ -117,7 +117,7 @@ function handleList() {
 var VOTELOG_NAME = 'VoteLog';
 var VL = { UID: 1, KEY: 2, NAME: 3, STARS: 4, UPDATED: 5 };
 var VL_HEADERS = ['UserId', 'NormKey', 'Casino', 'Stars', 'Updated'];
-var TROLL_MIN_SITES = 5;     // need at least this many of a user's votes to judge
+var TROLL_MIN_SITES = 15;    // need at least this many of a user's votes to judge
 var TROLL_LOW_FRAC  = 0.9;   // >= 90% of them being 1-2 stars => ignore that user
 
 function getVoteLog() {
