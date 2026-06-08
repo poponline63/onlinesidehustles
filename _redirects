@@ -178,7 +178,7 @@
 /complete-casino-list               /daily-login-guide                      301
 /sweeps-app-automate-daily-bonuses  /bonus-collection-software              301
 /how-to-automate-daily-collection   /bonus-collection-software              301
-/make-50-day-from-your-phone        /blog/make-50-day-from-your-phone       301
+/make-50-day-from-your-phone        /blog/how-to-make-50-dollars-a-day-from-phone-2026       301
 
 # RSS feed
 /rss            /feed.xml           200
@@ -201,12 +201,14 @@
 /blog/how-to-make-money-with-stocks-falling-under-$1   /blog/how-to-make-money-with-stocks-falling-under-$1.html  200
 /blog/how-to-start-sweepstakes-casinos-complete-beginner-2026   /blog/how-to-start-sweepstakes-casinos-complete-beginner-2026.html  200
 /blog/luckyland-slots-vip-quacky-hours-guide-2026   /blog/luckyland-slots-vip-quacky-hours-guide-2026.html  200
-/blog/make-50-day-from-your-phone   /blog/make-50-day-from-your-phone.html  200
+/blog/make-50-day-from-your-phone        /blog/how-to-make-50-dollars-a-day-from-phone-2026   301!
+/blog/make-50-day-from-your-phone.html   /blog/how-to-make-50-dollars-a-day-from-phone-2026   301!
 /blog/make-money-daily-on-stake   /blog/make-money-daily-on-stake.html  200
 /blog/matched-betting-guide-2026   /blog/matched-betting-guide-2026.html  200
 /blog/maximize-sweepstakes-casino-winnings-2026   /blog/maximize-sweepstakes-casino-winnings-2026.html  200
 /blog/new-sweepstakes-casinos-2026   /blog/new-sweepstakes-casinos-2026.html  200
-/blog/openclaw-ai-setup-tutorial-2026   /blog/openclaw-ai-setup-tutorial-2026.html  200
+/blog/openclaw-ai-setup-tutorial-2026        /blog/openclaw-setup-guide-2026   301!
+/blog/openclaw-ai-setup-tutorial-2026.html   /blog/openclaw-setup-guide-2026   301!
 /blog/openclaw-setup-guide-2026   /blog/openclaw-setup-guide-2026.html  200
 /blog/skrill-sweepstakes-casinos-2026   /blog/skrill-sweepstakes-casinos-2026.html  200
 /blog/sweepstakes-casino-autopilot-automation-2026   /blog/sweepstakes-casino-autopilot-automation-2026.html  200
@@ -216,5 +218,23 @@
 /blog/sweepstakes-vs-real-money-casinos-2026   /blog/sweepstakes-vs-real-money-casinos-2026.html  200
 /blog/sweepstats-sweepstakes-transaction-tracker-2026   /blog/sweepstats-sweepstakes-transaction-tracker-2026.html  200
 /blog/zula-casino-vs-fortune-coins-vs-sportzino   /blog/zula-casino-vs-fortune-coins-vs-sportzino.html  200
+
+# ============================================================
+# Removed duplicate/test pages -> 301 to canonical (SEO cleanup)
+# ============================================================
+/index2.html              /                   301!
+/index2                   /                   301!
+/blog2.html               /blog               301!
+/blog2                    /blog               301!
+/side-hustles2.html       /side-hustles       301!
+/side-hustles2            /side-hustles       301!
+/tools2.html              /tools              301!
+/tools2                   /tools              301!
+/getting-started2.html    /getting-started    301!
+/getting-started2         /getting-started    301!
+/logo_test.html           /                   301!
+/logo_test                /                   301!
+/logo_test2.html          /                   301!
+/logo_test2               /                   301!
 
 

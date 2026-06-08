@@ -46,7 +46,7 @@ jobs:
           # Find indexable root HTML files. Keep review pages in sitemap-reviews.xml
           # and keep demo/example files out of search sitemaps.
           for file in *.html; do
-            if [ -f "$file" ] && [ "$file" != "index.html" ] && [[ "$file" != review-*.html ]] && [[ "$file" != *example* ]] && [[ "$file" != *-old* ]]; then
+            if [ -f "$file" ] && [ "$file" != "index.html" ] && [[ "$file" != review-*.html ]] && [[ "$file" != *example* ]] && [[ "$file" != *-old* ]] && [[ "$file" != *test* ]]; then
               filename="${file%.html}"
               echo "  <url>
             <loc>${SITE_URL}/${file}</loc>
