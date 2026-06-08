@@ -1842,6 +1842,9 @@ async function loadData(){
     if(!r.ok)throw new Error('HTTP '+r.status);
     const text=await r.text();
     buildData(parseCSV(text));
+    // buildData clears the gameplay (RTP) data + resets xlsxLoaded; if the user
+    // is in gameplay mode, reload it BEFORE rendering so the ✓/✗ never blank out.
+    if(gameplayMode){ try{ await loadXlsxForGameplay(); }catch(e){ console.error('gameplay reload failed:',e); } }
     ls.style.display='none';
     document.getElementById('lastUpdated').textContent='Loaded '+new Date().toLocaleTimeString();
     filterAll();
