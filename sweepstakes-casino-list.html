@@ -302,8 +302,8 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 }
 
 /* Explainer cards */
-.explainer{display:grid;grid-template-columns:repeat(3,1fr);gap:0.65rem;margin-bottom:1.4rem;}
-@media(max-width:700px){.explainer{grid-template-columns:1fr;}}
+.explainer{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.4rem;}
+@media(max-width:900px){.explainer{grid-template-columns:1fr 1fr;}}@media(max-width:560px){.explainer{grid-template-columns:1fr;}}
 .exp-card{background:rgba(110,231,183,0.04);border:1px solid var(--border);border-radius:8px;padding:0.85rem 1rem;}
 .exp-card h3{color:var(--teal);font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;font-family:'IBM Plex Mono','Courier New',Courier,monospace;}
 .exp-card p{color:var(--text-dim);font-size:0.8rem;line-height:1.55;}
@@ -848,12 +848,10 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
         <h3>3 &middot; Redeem for real cash</h3>
         <p>Once you hit a site's minimum, your SC convert to real cash prizes. Stack every site and that's <strong>$50+ per day</strong> in free SC.</p>
       </div>
-    </div>
-
-    <!-- Make more money -> package churning guide -->
-    <div style="margin:1.1rem 0 0;padding:1rem 1.25rem;background:linear-gradient(135deg,rgba(251,191,36,.10) 0%,rgba(245,158,11,.04) 100%);border:1px solid rgba(251,191,36,.28);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:.55rem;flex-wrap:wrap;text-align:center;">
-      <span style="color:#e8e6e0;font-size:.92rem;">&#128176; Already collecting daily and want to earn a lot more?</span>
-      <a href="/package-sales" style="color:#fbbf24;font-weight:700;font-size:.92rem;text-decoration:none;white-space:nowrap;">Read the Package Churning Guide &rarr;</a>
+      <div class="exp-card" style="background:linear-gradient(135deg,rgba(251,191,36,.10) 0%,rgba(245,158,11,.04) 100%);border-color:rgba(251,191,36,.30);">
+        <h3 style="color:#fbbf24;">4 &middot; Want more? &#128176;</h3>
+        <p>Want to earn more than just daily SC? <a href="/package-sales" style="color:#fbbf24;font-weight:700;text-decoration:none;">Read the Package Churning Guide &rarr;</a></p>
+      </div>
     </div>
 
     <!-- Action buttons -->
