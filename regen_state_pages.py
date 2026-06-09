@@ -95,6 +95,7 @@ STATES = [
     ("west-virginia", "West Virginia",  "WV", 101, 39, 13, 88,  "WV has legal online casinos; sweepstakes also popular for no-purchase play"),
     ("wisconsin",     "Wisconsin",      "WI", 98,  37, 12, 86,  "strong tribal gaming presence; sweepstakes operate under separate federal law"),
     ("wyoming",       "Wyoming",        "WY", 96,  37, 12, 84,  "sweepstakes fully legal; WY players enjoy free daily coins and real prizes"),
+    ("washington-dc", "Washington D.C.","DC", 104, 40, 13, 91,  "limited local casino options, making sweepstakes casinos a popular and legal way to play"),
 ]
 
 SCORE_FILL = {
