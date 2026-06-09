@@ -13,21 +13,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="language" content="English">
-<title>Wagering / Playthrough Calculator 2026 | Sweepstakes Casino Bonus Value | Online Sidehustles</title>
-<meta name="description" content="Free wagering requirement calculator. Enter your bonus Sweeps Coins, playthrough multiplier, and game RTP to see your real cost to clear and expected profit before you play.">
+<title>Sweepstakes Bonus Package Calculator 2026 | Is a Package Worth It? | Online Sidehustles</title>
+<meta name="description" content="Free sweepstakes bonus package calculator. Enter the package price and Sweeps Coins you receive to instantly see your bonus, the playthrough/wagering cost, and your real net profit before you buy.">
 <meta name="author" content="Nate Sterling">
 <link rel="canonical" href="https://onlinesidehustles.info/wagering-calculator">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://onlinesidehustles.info/wagering-calculator">
 <meta property="og:site_name" content="Online Sidehustles">
-<meta property="og:title" content="Wagering / Playthrough Calculator 2026 — Sweepstakes Casino Bonus Value">
-<meta property="og:description" content="See your real cost to clear a bonus and expected profit before you play. Free, instant, no signup.">
+<meta property="og:title" content="Sweepstakes Bonus Package Calculator 2026 — Is a Package Worth It?">
+<meta property="og:description" content="Enter the price and Sweeps Coins you get; see your bonus, playthrough cost, and real net profit before you buy. Free, instant, no signup.">
 <meta property="og:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wagering / Playthrough Calculator 2026">
-<meta name="twitter:description" content="Calculate the real cost to clear a sweepstakes casino bonus and your expected profit.">
+<meta name="twitter:title" content="Sweepstakes Bonus Package Calculator 2026">
+<meta name="twitter:description" content="See your bonus, playthrough cost, and real net profit on any sweepstakes package before you buy.">
 <meta name="twitter:image" content="https://onlinesidehustles.info/onlinesidehustlesbanner.jpg">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#111c2e">
@@ -35,12 +35,12 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Wagering / Playthrough Calculator",
+  "name": "Sweepstakes Bonus Package Calculator",
   "url": "https://onlinesidehustles.info/wagering-calculator",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "description": "Free calculator that estimates the real cost to clear a sweepstakes casino bonus and the expected profit, based on bonus amount, playthrough multiplier, and game RTP.",
+  "description": "Free calculator that shows whether a sweepstakes casino package is worth buying. Enter the package price and Sweeps Coins received to see the bonus, playthrough cost, and expected net profit.",
   "author": { "@type": "Person", "name": "Nate Sterling", "url": "https://onlinesidehustles.info/author/nate-sterling" },
   "publisher": { "@type": "Organization", "name": "Online Sidehustles", "url": "https://onlinesidehustles.info" }
 }
@@ -184,16 +184,20 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
 
   <div class="page-hero">
     <div class="eyebrow">Free Tool &middot; No Signup</div>
-    <h1>Wagering / Playthrough Calculator</h1>
-    <p>Before you buy a package or play through a bonus, find out the <strong>real</strong> cost to clear it and what you can expect to keep &mdash; based on the playthrough requirement and the game you play.</p>
+    <h1>Sweepstakes Bonus Package Calculator</h1>
+    <p>Thinking about buying a package? Enter what you <strong>pay</strong> and the <strong>Sweeps Coins</strong> you get back. Since 1 SC redeems for $1, this shows your real bonus, the playthrough cost, and whether the package actually profits &mdash; before you spend a cent.</p>
   </div>
 
   <div class="calc">
     <div class="calc-panel">
-      <h2>&#9881;&#65039; Your Bonus</h2>
+      <h2>&#128230; Your Package</h2>
       <div class="field">
-        <label>Bonus Sweeps Coins (SC) <span class="hint">the bonus SC you received</span></label>
-        <input type="number" id="bonus" value="30" min="0" step="1" inputmode="decimal">
+        <label>Package price <span class="hint">what you pay, in $</span></label>
+        <input type="number" id="price" value="100" min="0" step="0.01" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label>Sweeps Coins received (SC) <span class="hint">total SC the package gives you (1 SC = $1)</span></label>
+        <input type="number" id="sc" value="130" min="0" step="1" inputmode="decimal">
       </div>
       <div class="field">
         <label>Playthrough multiplier <span class="hint">e.g. 1x, 5x, 10x wagering</span></label>
@@ -209,37 +213,36 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
           <button type="button" data-rtp="96">Slots 96%</button>
         </div>
       </div>
-      <div class="field">
-        <label>Package price (optional) <span class="hint">what you paid, to see net profit</span></label>
-        <input type="number" id="price" value="10" min="0" step="0.01" inputmode="decimal">
-      </div>
     </div>
 
     <div class="calc-panel">
       <h2>&#128202; Your Result</h2>
       <div style="text-align:center;margin-bottom:1rem;">
-        <div class="big-num" id="retainOut">29.40 SC</div>
-        <div style="color:var(--text-muted);font-size:.78rem;">expected SC left after clearing</div>
+        <div class="big-num" id="profitBig">$28.70</div>
+        <div style="color:var(--text-muted);font-size:.78rem;">expected net profit</div>
       </div>
-      <div class="result-row"><span class="lbl">Total you must wager</span><span class="val" id="wagerOut">30 SC</span></div>
+      <div class="result-row"><span class="lbl">Bonus (free SC)</span><span class="val" id="bonusOut">30 SC</span></div>
+      <div class="result-row"><span class="lbl">Total you must wager</span><span class="val" id="wagerOut">130 SC</span></div>
       <div class="result-row"><span class="lbl">House edge of game</span><span class="val" id="edgeOut">1.0%</span></div>
-      <div class="result-row"><span class="lbl">Expected loss clearing it</span><span class="val" id="lossOut">0.60 SC</span></div>
-      <div class="result-row"><span class="lbl">Net profit (after price)</span><span class="val" id="profitOut">$19.40</span></div>
-      <div class="verdict good" id="verdict">Profitable &#9989;<small>You should come out ahead on this one.</small></div>
+      <div class="result-row"><span class="lbl">Expected loss clearing it</span><span class="val" id="lossOut">1.30 SC</span></div>
+      <div class="result-row"><span class="lbl">SC left to redeem</span><span class="val" id="redeemOut">128.70 SC</span></div>
+      <div class="result-row"><span class="lbl">Return on investment</span><span class="val" id="roiOut">28.7%</span></div>
+      <div class="verdict good" id="verdict">Worth it &#9989;<small>Solid bonus margin after playthrough.</small></div>
     </div>
   </div>
 
   <div class="content-section">
     <h2>How this calculator works</h2>
-    <p>Every figure updates instantly as you type. The math behind it:</p>
+    <p>Every figure updates instantly as you type. Using a <strong>$100 package that gives 130 SC</strong> as the example (1 SC redeems for $1):</p>
     <ul>
-      <li><strong>Total you must wager</strong> = bonus SC &times; playthrough multiplier. A 30 SC bonus at 1x means you wager 30 SC before redeeming.</li>
+      <li><strong>Bonus (free SC)</strong> = SC received &minus; price = 130 &minus; 100 = <strong>30 SC</strong>. That's your built-in edge before playthrough.</li>
+      <li><strong>Total you must wager</strong> = SC received &times; playthrough multiplier. At 1x, you wager 130 SC before redeeming.</li>
       <li><strong>House edge</strong> = 100% &minus; the game's RTP. A 99% RTP game has a 1% edge against you.</li>
-      <li><strong>Expected loss</strong> = total wagered &times; house edge. This is what you statistically give back to the casino while clearing.</li>
-      <li><strong>SC left</strong> = bonus &minus; expected loss. What you can expect to redeem.</li>
-      <li><strong>Net profit</strong> = SC left &minus; package price (treating 1 SC as roughly $1 at redemption).</li>
+      <li><strong>Expected loss</strong> = total wagered &times; house edge = 130 &times; 1% = 1.30 SC given back while clearing.</li>
+      <li><strong>SC left to redeem</strong> = SC received &minus; expected loss = 128.70 SC.</li>
+      <li><strong>Net profit</strong> = SC left &minus; price = 128.70 &minus; 100 = <strong>$28.70</strong> (a 28.7% return).</li>
     </ul>
-    <p>The takeaway: <strong>low playthrough + high-RTP games = more SC kept.</strong> This is the core of profitable package churning.</p>
+    <p>The takeaway: <strong>a bigger bonus, low playthrough, and high-RTP games = more profit kept.</strong> This is the core of profitable package churning.</p>
 
     <h2>Why high-RTP games matter</h2>
     <p>Clearing a bonus on a 96% slot instead of a 99.5% blackjack table can cost you several times more in expected loss for the same bonus. That gap is exactly where churners win or lose. Always clear playthrough on the highest-RTP game a site allows.</p>
@@ -303,34 +306,41 @@ const $=id=>document.getElementById(id);
 function num(id){const v=parseFloat($(id).value);return isNaN(v)?0:v;}
 function fmt(n){return (Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function calc(){
-  const bonus=num('bonus'), pt=num('playthrough'), price=num('price');
+  const price=num('price'), sc=num('sc'), pt=num('playthrough');
   let rtp=num('rtp'); if(rtp>100)rtp=100; if(rtp<0)rtp=0;
-  const wager=bonus*pt;
+  const bonus=sc-price;            // free SC, since 1 SC = $1
+  const wager=sc*pt;               // total you must wager
   const edge=(100-rtp)/100;
   const loss=wager*edge;
-  let retain=bonus-loss; if(retain<0)retain=0;
-  const profit=retain-price;
+  let redeem=sc-loss; if(redeem<0)redeem=0;
+  const profit=redeem-price;
+  const roi=price>0?(profit/price*100):0;
+  $('bonusOut').textContent=fmt(bonus)+' SC';
   $('wagerOut').textContent=fmt(wager)+' SC';
   $('edgeOut').textContent=fmt(100-rtp)+'%';
   $('lossOut').textContent=fmt(loss)+' SC';
-  $('retainOut').textContent=fmt(retain)+' SC';
-  $('profitOut').textContent=(profit<0?'-$':'$')+fmt(Math.abs(profit));
+  $('redeemOut').textContent=fmt(redeem)+' SC';
+  $('roiOut').textContent=fmt(roi)+'%';
+  $('profitBig').textContent=(profit<0?'-$':'$')+fmt(Math.abs(profit));
   const v=$('verdict');
-  if(price<=0){
-    v.className='verdict good';
-    v.innerHTML='Expected to keep '+fmt(retain)+' SC &#9989;<small>Lower playthrough or higher RTP keeps more.</small>';
+  if(sc<=0){
+    v.className='verdict mid';
+    v.innerHTML='Enter your package &#9998;<small>Fill in the price and the SC you receive.</small>';
+  } else if(bonus<=0){
+    v.className='verdict bad';
+    v.innerHTML='No bonus &#10060;<small>You&rsquo;re paying full price or more for the SC.</small>';
   } else if(profit>price*0.10){
     v.className='verdict good';
-    v.innerHTML='Profitable &#9989;<small>You should come out ahead on this one.</small>';
+    v.innerHTML='Worth it &#9989;<small>Solid bonus margin after playthrough.</small>';
   } else if(profit>=0){
     v.className='verdict mid';
-    v.innerHTML='Marginal &#9888;&#65039;<small>Thin margin &mdash; use the highest-RTP game allowed.</small>';
+    v.innerHTML='Marginal &#9888;&#65039;<small>Thin margin &mdash; clear it on the highest-RTP game allowed.</small>';
   } else {
     v.className='verdict bad';
-    v.innerHTML='Likely a loss &#10060;<small>Playthrough is too high for this RTP/price.</small>';
+    v.innerHTML='Skip it &#10060;<small>Playthrough eats the bonus at this RTP.</small>';
   }
 }
-['bonus','playthrough','rtp','price'].forEach(id=>$(id).addEventListener('input',calc));
+['price','sc','playthrough','rtp'].forEach(id=>$(id).addEventListener('input',calc));
 document.querySelectorAll('.rtp-presets button').forEach(b=>b.addEventListener('click',()=>{$('rtp').value=b.dataset.rtp;calc();}));
 calc();
 
