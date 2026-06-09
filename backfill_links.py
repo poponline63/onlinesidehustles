@@ -35,6 +35,7 @@ CASINO_LINKS = {
     "stackr": "https://www.stackrcasino.com/?referralcode=bbde20f1-7e87-497b-862b-c49b3f11024c",
     "cazino": "https://affiliates.routy.app/route/114303?affId=3353&ts=5005447",
     "legendz": "https://affiliates.routy.app/route/91174?affId=3353&ts=5005447",
+    "kickr": "https://affiliates.routy.app/route/91173?affId=3353&ts=5005447",
     "luckybitsveg": "https://affiliates.routy.app/route/114338?affId=3353&ts=5005447",
     "luckybits": "https://affiliates.routy.app/route/114338?affId=3353&ts=5005447",
     "lucky bits": "https://affiliates.routy.app/route/114338?affId=3353&ts=5005447",

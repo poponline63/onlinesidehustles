@@ -481,6 +481,13 @@ CASINOS = [
    "restricted":["MI","WA","ID","NV"],
    "pros":["Daily bonus wheel for variety","Gift card redemption option ($50 min)","Holiday/scrooge-themed branding","No purchase required for free play"],
    "cons":["High $100 SC minimum redemption ($50 for gift cards)","SC expires after 7 days — tight window","Higher redemption barrier than most competitors"]},
+
+  {"name":"Kickr","slug":"kickr","url":"https://affiliates.routy.app/route/91173?affId=3353&ts=5005447",
+   "tier":"A","rating":4.0,"parent":"Kickr Games Pty Ltd","year":2023,
+   "daily":"0.30 SC/day","welcome":"4 SC + 150K GC free","min_redeem":"$50 SC (gift cards)","payout":"2–5 business days","games":"Casino + Sportsbook",
+   "restricted":["WA","MI","ID","NV","MT"],
+   "pros":["Full sportsbook + casino on one platform","1x playthrough on Bucks (SC) — low wagering to redeem","Frequent free coin drops (Bits every 2 min, 5K Bits every 30 min)","Gift card redemptions from just $50","Established operator (Kickr Games) since 2023"],
+   "cons":["Higher $200 minimum for bank/cash redemptions","'Bucks' (SC) and 'Bits' (GC) naming can confuse newcomers","Restricted in roughly a dozen states","Sportsbook-forward — fewer pure slots than casino-only rivals"]},
 ]
 
 # ----- HTML Generator -----
