@@ -22,6 +22,18 @@
 /newsletter                 /newsletter.html                    200
 /vote                       /vote.html                          200
 
+# Casinos like X (alternatives pages)
+/casinos-like-chumba          /casinos-like-chumba.html           200
+/casinos-like-stake-us        /casinos-like-stake-us.html         200
+/casinos-like-pulsz           /casinos-like-pulsz.html            200
+/casinos-like-luckyland       /casinos-like-luckyland.html        200
+/casinos-like-funrize         /casinos-like-funrize.html          200
+/casinos-like-wow-vegas       /casinos-like-wow-vegas.html        200
+/casinos-like-mcluck          /casinos-like-mcluck.html           200
+/casinos-like-fortune-coins   /casinos-like-fortune-coins.html    200
+/casinos-like-crown-coins     /casinos-like-crown-coins.html      200
+/casinos-like-global-poker    /casinos-like-global-poker.html     200
+
 # Guides & strategies
 /24-to-1000-guide           /24-to-1000-guide.html              200
 /earnings-potential         /earnings-potential.html            200
