@@ -961,7 +961,7 @@ footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75r
     </div>
 
     <!-- CARD VIEW -->
-    <div id="cardGrid"></div>
+    <div id="cardGrid"><div class="no-results" style="grid-column:1/-1;color:var(--text-muted);">Loading live spreadsheet data…</div></div>
 
   </div>
 
@@ -1825,13 +1825,26 @@ function toggleTierBtn(el,val){
   if(!wasActive)el.classList.add('active');
   filterAll();
 }
+let viewManuallySet=false;
 function setView(v){
+  viewManuallySet=true; // user picked a view — stop auto-switching on resize
   const tv=document.getElementById('tableView'),cg=document.getElementById('cardGrid');
   const bt=document.getElementById('btnTbl'),bc=document.getElementById('btnCard');
   if(v==='table'){tv.style.display='';cg.style.display='none';bt.classList.add('active');bc.classList.remove('active');}
   else{tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
   filterAll(); // re-render so gameplay marks are always correct on view switch
 }
+// Mobile gets the card view by default (the wide table is unusable on phones);
+// desktop keeps the table. Respects the user's manual choice if they tap List/Cards.
+function applyDefaultView(){
+  if(viewManuallySet) return;
+  const mobile=window.matchMedia('(max-width:768px)').matches;
+  const tv=document.getElementById('tableView'),cg=document.getElementById('cardGrid');
+  const bt=document.getElementById('btnTbl'),bc=document.getElementById('btnCard');
+  if(mobile){tv.style.display='none';cg.style.display='grid';bc.classList.add('active');bt.classList.remove('active');}
+  else{tv.style.display='';cg.style.display='none';bt.classList.add('active');bc.classList.remove('active');}
+}
+window.addEventListener('resize',applyDefaultView,{passive:true});
 function setSortRating(){
   filters.sort = (filters.sort==='rating')?'tier':'rating';
   sortDir = 1;
@@ -1996,6 +2009,7 @@ mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 if(window.OSHRatings&&OSHRatings.enabled){
   OSHRatings.attach(document.body,()=>{applyCommunityTiers();filterAll();});
 }
+applyDefaultView(); // pick table/cards based on screen size before data loads
 loadData();
 </script>
 </body>
