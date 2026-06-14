@@ -576,6 +576,7 @@ th.notes-cell{text-align:center !important;}
 .c-notes{font-size:0.72rem;color:var(--text-muted);line-height:1.45;border-top:1px solid var(--border);padding-top:0.55rem;margin-bottom:0.65rem;}
 .c-footer{display:flex;justify-content:space-between;align-items:center;}
 .c-footer-parent{font-size:0.62rem;color:var(--text-muted);}
+.c-footer-actions{display:flex;gap:0.4rem;align-items:center;flex-shrink:0;}
 
 /* ===== FOOTER ===== */
 footer{background:var(--bg-nav);border-top:1px solid var(--border);padding:1.75rem;margin-top:3rem;}
@@ -1801,9 +1802,12 @@ function renderCards(data){
       ${c.notes?`<div class="c-notes">${esc(c.notes)}</div>`:''}
       <div class="c-footer">
         <span class="c-footer-parent">${esc(c.parent)||''}</span>
-        ${c.signupUrl
-          ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup">SIGNUP</a>`
-          :`<span class="btn-signup no-link">Sign Up</span>`}
+        <span class="c-footer-actions">
+          ${(()=>{const u=REVIEW_LINKS[c.name];return u?`<a href="${u}" class="btn-review" target="_self">Review ▶</a>`:'';})()}
+          ${c.signupUrl
+            ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup">SIGNUP</a>`
+            :`<span class="btn-signup no-link">Sign Up</span>`}
+        </span>
       </div>`;
     g.appendChild(d);
   });
