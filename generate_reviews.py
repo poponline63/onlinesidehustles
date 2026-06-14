@@ -4,7 +4,7 @@ Generate review pages for all sweepstakes casinos without reviews.
 Writes review-*.html and updates REVIEW_LINKS in sweepstakes-casino-list.html.
 Run: py generate_reviews.py
 """
-import os, re, sys, json
+import os, re, sys, json, hashlib
 sys.stdout.reconfigure(encoding='utf-8')
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -747,6 +747,53 @@ def rating_sub(r, offset):
     return f"{v}/5"
 
 
+def _pick(slug, options, salt=''):
+    """Deterministically choose one option from the slug (so a page's intro is stable across rebuilds)."""
+    h = int(hashlib.md5((slug + salt).encode()).hexdigest(), 16)
+    return options[h % len(options)]
+
+
+def compose_intro(c):
+    """Build a unique, data-grounded intro for casinos without a hand-written one.
+    Uses only fields already on the page (no new facts) and rotates sentence
+    structures per slug so pages don't read as duplicates."""
+    name = c['name']; parent = c['parent']; year = c['year']; daily = c['daily']
+    welcome = c['welcome']; mn = c['min_redeem']; games = c['games']; slug = c['slug']
+    pros = c.get('pros', [])
+    clean = lambda s: s.replace('—', ',').replace(' - ', ', ').strip()
+
+    opener = _pick(slug, [
+        f"{name} is a sweepstakes casino from {parent}, live since {year}.",
+        f"Launched in {year}, {name} is {parent}'s entry into the sweepstakes casino space.",
+        f"{name} runs on the standard sweepstakes model: free to play, with Sweep Coins you can redeem for real prizes.",
+        f"Operated by {parent}, {name} has offered free-to-play sweepstakes gaming since {year}.",
+    ], 'o')
+    offer = _pick(slug, [
+        f"New players start with {welcome}, and logging in daily adds {daily}.",
+        f"The signup offer is {welcome}, backed by a {daily} daily login bonus.",
+        f"You get {welcome} to begin, then {daily} every day you return.",
+        f"Expect {welcome} up front and {daily} as a recurring daily reward.",
+    ], 'f')
+    low = any(x in mn for x in ['$20', '$25', '$5 ', '$10'])
+    if low:
+        red = _pick(slug, [
+            f"Its {mn} minimum redemption sits on the lower, more accessible end.",
+            f"A {mn} cash-out floor makes it friendlier than sites that gate redemptions at $100.",
+        ], 'r')
+    else:
+        red = _pick(slug, [
+            f"Redemptions begin at {mn}.",
+            f"The minimum to cash out is {mn}.",
+        ], 'r')
+    pro = clean(pros[0]).lower() if pros else "its no-purchase-required model"
+    tail = _pick(slug, [
+        f"Across {games} games, the main draw is {pro}.",
+        f"With {games} games on the platform, what stands out is {pro}.",
+        f"It carries {games} games, and its strongest point is {pro}.",
+    ], 't')
+    return " ".join([opener, offer, red, tail])
+
+
 def make_html(c):
     name     = c['name']
     slug     = c['slug']
@@ -765,8 +812,8 @@ def make_html(c):
     pros     = c['pros']
     cons     = c['cons']
     verdict_label = c.get('verdict_label', 'LEGIT')
-    intro    = c.get('intro', '').strip()
-    intro_block = f"<p>{intro}</p>\n    " if intro else ""
+    intro    = c.get('intro', '').strip() or compose_intro(c)
+    intro_block = f'<p class="rev-intro">{intro}</p>\n    ' if intro else ""
 
     # Auto-derived fields
     headline = c.get('headline', f'Is {name} Legit? Full {YEAR} Review')
