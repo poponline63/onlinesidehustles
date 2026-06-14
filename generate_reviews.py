@@ -308,6 +308,7 @@ CASINOS = [
    "cons":["High $100 minimum redemption","Lower base welcome offer","Large library can feel overwhelming"]},
 
   {"name":"CoinsBack","slug":"coinsback","url":"https://coinsback.com/",
+   "intro":"CoinsBack takes a different approach to dailies, skipping a traditional login bonus in favor of a 50 percent cashback program and Race Rewards. It comes from MW Services, the team behind WOW Vegas, Rolla and MetaWin, so the operator track record is strong. The cashback model rewards active players more than casual daily collectors, which is worth keeping in mind.",
    "tier":"A","rating":4.1,"parent":"MW Services","year":2023,
    "daily":"Daily SC rewards","welcome":"500K GC + 2 SC free","min_redeem":"$100 SC","payout":"3–5 business days","games":"1,400+",
    "restricted":["MI","WA","ID","NV"],
@@ -315,6 +316,7 @@ CASINOS = [
    "cons":["High $100 minimum redemption","Complex cashback system for new players","Higher barrier to first redemption"]},
 
   {"name":"DexyPlay","slug":"dexyplay","url":"https://dexyplay.com/",
+   "intro":"DexyPlay is a UTech Solutions site with a progressive daily that can reach 65 SC across a full week, one of the more rewarding login structures in this batch. The free welcome is a large gold coin drop, with the best SC value unlocked on a first purchase. As a newer brand it is still building its reputation, but the operator pedigree is reassuring.",
    "tier":"B","rating":3.8,"parent":"UTech Solutions","year":2025,
    "daily":"progressive, up to 65 SC over 7 days","welcome":"300K GC free, plus 30 SC on first purchase","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -357,6 +359,7 @@ CASINOS = [
    "cons":["Higher redemption floor","Average daily bonus","Less established brand"]},
 
   {"name":"TheBoss.us","slug":"theboss","url":"https://theboss.us/",
+   "intro":"TheBoss.us is operated by Jefe Ltd and has been running since 2024, giving it a slightly longer track record than most sites in this group. The daily is a simple wheel spin and the 2 SC no deposit welcome is a fair starting point. The library is smaller than top tier sites, so it reads as a steady option rather than a standout.",
    "tier":"B","rating":3.7,"parent":"Jefe Ltd","year":2024,
    "daily":"daily wheel spin","welcome":"2K GC + 2 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -392,6 +395,7 @@ CASINOS = [
    "cons":["Less established than VGW platforms","No live dealer section","Moderate community size"]},
 
   {"name":"Jackpot Go","slug":"jackpot-go","url":"https://jackpotgo.com/",
+   "intro":"Jackpot Go has quietly earned one of the better reputations among newer sweeps sites, with more than 1,651 Trustpilot reviews and players reporting clean payouts in around three days with no minimum or maximum cashout limit. The daily login is progressive, so it grows the more you return. Operator details are thin, which is the main reason it sits mid pack rather than higher in our rankings.",
    "tier":"B","rating":3.8,"parent":"Jackpot Go","year":2025,
    "daily":"progressive daily login","welcome":"10K GC + 2 SC free","min_redeem":"$100 SC","payout":"around 3 business days","games":"hundreds of",
    "restricted":[],
@@ -483,6 +487,7 @@ CASINOS = [
    "cons":["Higher $200 minimum for bank/cash redemptions","'Bucks' (SC) and 'Bits' (GC) naming can confuse newcomers","Restricted in roughly a dozen states","Sportsbook-forward — fewer pure slots than casino-only rivals"]},
 
   {"name":"Stormrush","slug":"stormrush","url":"https://stormrushcasino.com/",
+   "intro":"Stormrush shares an operator with Funrize, NoLimitCoins and TaoFortune, three sites with an established payout history, which makes it one of the safer new launches to try. In our checks the standout was how fast PayPal redemptions cleared, often inside 36 hours. The daily login stays modest until you build a six day streak, but the low gift card floor makes it friendly for casual daily collectors.",
    "tier":"A","rating":4.1,"parent":"A1 Development LLC","year":2025,
    "daily":"0.50 SC/day (day 6 streak)","welcome":"500K GC free, or 750K GC + 40 SC for $19.99","min_redeem":"$25 SC (gift cards)","payout":"around 36 hours via PayPal","games":"hundreds of",
    "restricted":[],
@@ -490,6 +495,7 @@ CASINOS = [
    "cons":["SC daily only reaches full value after a 6 day streak","Game library smaller than the biggest social casinos","Higher $100 floor for card cash outs"]},
 
   {"name":"Cider","slug":"cider","url":"https://cidercasino.com/",
+   "intro":"Cider has built an unusually strong reputation for a newer sweepstakes casino, with more than 2,276 Trustpilot reviews and payouts that typically clear in under two days. The progressive daily that climbs from 0.30 to 0.60 SC rewards players who log in consistently. It is available in 39 states, so confirm your state on the official site before signing up.",
    "tier":"A","rating":4.2,"parent":"Mystic Mirror Studio","year":2025,
    "daily":"progressive 0.30 to 0.60 SC/day","welcome":"20K GC + 0.30 SC free","min_redeem":"$50 SC (gift cards)","payout":"under 2 business days","games":"hundreds of",
    "restricted":[],
@@ -497,6 +503,7 @@ CASINOS = [
    "cons":["Welcome SC bonus is small at 0.30 SC","Not available in roughly 11 states","Newer brand still building a track record"]},
 
   {"name":"Mr. Goodwin","slug":"mr-goodwin","url":"https://mrgoodwin.com/",
+   "intro":"Mr. Goodwin comes from UTech Solutions, the same studio behind Sweepico and SweepShark, which gives it instant credibility on payouts and game quality. The library runs past 1,000 slots and gift card redemptions usually clear within a day or two. The seven day reward cycle is the main daily draw, so value builds the longer you stick with it.",
    "tier":"B","rating":3.9,"parent":"UTech Solutions","year":2025,
    "daily":"7 day daily reward cycle","welcome":"160K GC + 2 SC free","min_redeem":"$100 SC","payout":"24 to 48 hours for gift cards, 3 to 5 days for bank","games":"1,000+",
    "restricted":[],
@@ -504,6 +511,7 @@ CASINOS = [
    "cons":["$100 minimum redemption","Daily reward runs on a fixed 7 day cycle","Bank payouts take 3 to 5 days"]},
 
   {"name":"Gleaming Slots","slug":"gleaming-slots","url":"https://gleamingcasino.com/",
+   "intro":"Gleaming Slots stands out for its mobile experience, holding a 4.8 star rating across 81,000 App Store reviews and a 4.6 on Trustpilot. The daily login adds up to roughly 5.8 SC across a week and it supports both PayPal and bank redemptions. It is not available in California or New York, so check your state before joining.",
    "tier":"A","rating":4.2,"parent":"Eternal Boom Ltd","year":2025,
    "daily":"2K GC + 0.5 SC/day (around 5.8 SC per week)","welcome":"10K GC + 0.30 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -511,6 +519,7 @@ CASINOS = [
    "cons":["$100 minimum redemption","Not available in California or New York","Small 0.30 SC welcome bonus"]},
 
   {"name":"Coinz.us","slug":"coinz","url":"https://coinz.us/",
+   "intro":"Coinz.us keeps things simple with a daily scratchcard worth up to 2 SC and a catalog of more than 500 games. Run by Nickle Tech LLC, it offers a low 50 dollar gift card redemption floor that lets you cash out sooner than most. It is a smaller operation than the big social casinos, so expect lighter promotions.",
    "tier":"C","rating":3.5,"parent":"Nickle Tech LLC","year":2025,
    "daily":"scratchcard, up to 2 SC/day","welcome":"10K GC + 1 SC free","min_redeem":"$50 SC (gift cards)","payout":"3 to 5 business days","games":"500+",
    "restricted":[],
@@ -518,6 +527,7 @@ CASINOS = [
    "cons":["Smaller operator, Nickle Tech LLC","$100 floor for cash redemptions","Limited promotions compared to bigger sites"]},
 
   {"name":"FireSevens","slug":"firesevens","url":"https://firesevenscasino.com/",
+   "intro":"FireSevens is part of the UTech Solutions family and pairs that pedigree with a large library of more than 1,300 games. The daily login plus a random bonus keeps things varied, and gift card redemptions start at a low 25 dollar floor. We could not confirm independent RNG certification, so treat it as a solid but still maturing option.",
    "tier":"B","rating":3.7,"parent":"UTech Solutions","year":2025,
    "daily":"daily login plus a random bonus","welcome":"250K GC + 1 SC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,300+",
    "restricted":[],
@@ -525,6 +535,7 @@ CASINOS = [
    "cons":["RNG certification not confirmed","$100 floor for cash redemptions","Daily bonus value varies with the random element"]},
 
   {"name":"Jumbo88","slug":"jumbo88","url":"https://jumbo88.com/",
+   "intro":"Jumbo88 builds its daily around a wheel that scales up to 3 SC by day three, rewarding a short streak. Operated by InspireCore Inc, it carries a mixed reputation with a Trustpilot score near 3.3, which is why it sits lower in our rankings. It is fine for collecting dailies, but we would watch the payout experience closely before committing real time to it.",
    "tier":"C","rating":3.4,"parent":"InspireCore Inc","year":2025,
    "daily":"wheel, up to 3 SC by day 3","welcome":"10K GC + 1 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -532,6 +543,7 @@ CASINOS = [
    "cons":["Mixed reputation, Trustpilot around 3.3","$100 minimum redemption","Smaller and newer operator"]},
 
   {"name":"Playtana","slug":"playtana","url":"https://playtana.com/",
+   "intro":"Playtana is another UTech Solutions site and brings one of the larger libraries in this group at over 1,700 slots. The daily is small at 0.2 SC, but the 5 percent playback on losses and a low 25 dollar gift card floor add real value for active players. The free welcome is gold coins only, so the SC value comes from playing rather than signing up.",
    "tier":"B","rating":3.8,"parent":"UTech Solutions","year":2025,
    "daily":"2K GC + 0.2 SC/day plus 5% playback","welcome":"125K GC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,700+",
    "restricted":[],
@@ -539,6 +551,7 @@ CASINOS = [
    "cons":["Small 0.2 SC daily login","No SC in the free welcome, gold coins only","$100 floor for cash redemptions"]},
 
   {"name":"VegasWay","slug":"vegasway","url":"https://vegasway.com/",
+   "intro":"VegasWay leans into a Vegas theme with a two part daily, a Vegas Route streak plus a Treasure Flip mini game. It comes from UTech Solutions, carries around 1,000 slots and keeps a low 25 dollar gift card redemption floor. The daily SC value is modest, so it works best as one site within a wider daily collection routine.",
    "tier":"B","rating":3.7,"parent":"UTech Solutions","year":2025,
    "daily":"Vegas Route streak plus Treasure Flip","welcome":"up to 350K GC + 1 SC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,000+",
    "restricted":[],
@@ -546,6 +559,7 @@ CASINOS = [
    "cons":["Daily SC value is modest","$100 floor for cash redemptions","Newer brand"]},
 
   {"name":"PICKEM","slug":"pickem","url":"https://pickem.com/",
+   "intro":"PICKEM is notable for its reach, available in 42 states, which is wider than most sweepstakes casinos. Run by Joyloop Inc out of Delaware, it offers a daily that climbs to 0.5 SC from day seven onward. The game catalog is smaller than the leaders, so it works better as a complement than a main site.",
    "tier":"C","rating":3.6,"parent":"Joyloop Inc","year":2025,
    "daily":"up to 0.5 SC/day from day 7","welcome":"50K GC + 1 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -553,6 +567,7 @@ CASINOS = [
    "cons":["Daily SC only reaches full value from day 7","$100 minimum redemption","Smaller game catalog"]},
 
   {"name":"Big Shot Games","slug":"big-shot-games","url":"https://bigshotgames.com/",
+   "intro":"Big Shot Games offers a generous 2 SC no deposit welcome for a newer site from BSG Interactive LLC. The daily login is tiny at 0.01 SC, so the real value here is the welcome offer and trying the platform rather than daily grinding. It is clean and simple, but the limited track record keeps it lower in our rankings.",
    "tier":"C","rating":3.5,"parent":"BSG Interactive LLC","year":2025,
    "daily":"0.01 SC/day","welcome":"10K GC + 2 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
    "restricted":[],
@@ -750,6 +765,8 @@ def make_html(c):
     pros     = c['pros']
     cons     = c['cons']
     verdict_label = c.get('verdict_label', 'LEGIT')
+    intro    = c.get('intro', '').strip()
+    intro_block = f"<p>{intro}</p>\n    " if intro else ""
 
     # Auto-derived fields
     headline = c.get('headline', f'Is {name} Legit? Full {YEAR} Review')
@@ -815,7 +832,7 @@ def make_html(c):
     review_schema = json.dumps({
         "@context":"https://schema.org","@type":"Review",
         "itemReviewed":{"@type":"Organization","name":name,"url":base_site_url},
-        "author":{"@type":"Organization","name":"Online Sidehustles","url":"https://onlinesidehustles.info"},
+        "author":{"@type":"Person","name":"Nate Sterling","url":"https://onlinesidehustles.info/author/nate-sterling","jobTitle":"Sweepstakes Casino Writer"},
         "reviewRating":{"@type":"Rating","ratingValue":str(rating),"bestRating":"5","worstRating":"1"},
         "name":meta_title,"reviewBody":summary,
         "datePublished":f"{YEAR}-06-01","dateModified":f"{YEAR}-06-06",
@@ -860,7 +877,7 @@ def make_html(c):
 <title>{meta_title}</title>
 <meta name="description" content="{meta_desc}">
 <meta name="keywords" content="{keywords}">
-<meta name="author" content="Online Sidehustles"><meta name="publisher" content="Online Sidehustles">
+<meta name="author" content="Nate Sterling"><meta name="publisher" content="Online Sidehustles">
 <link rel="canonical" href="{page_url}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_url}">
@@ -928,7 +945,7 @@ def make_html(c):
    </div>
    <div class="page-header fade-in">
     <h1>{name} Review {YEAR}: <span class="highlight">{headline}</span></h1>
-    <p class="last-updated">&#128197; Last Updated: June {YEAR} &nbsp;|&nbsp; Reviewed by Online Sidehustles</p>
+    <p class="last-updated">&#128197; Last Updated: June {YEAR} &nbsp;|&nbsp; Reviewed by <a href="/author/nate-sterling" style="color:var(--teal);text-decoration:none;">Nate Sterling</a>, Sweepstakes Casino Writer</p>
    </div>
    <div class="verdict-card fade-in fade-in-delay-1">
     <div class="verdict-label">{verdict_label}</div>
@@ -948,7 +965,7 @@ def make_html(c):
    </div>
    <section class="review-block fade-in">
     <h2>What is {name}?</h2>
-    <p>{name} is a sweepstakes casino operating under US social gaming laws, offering players the chance to enjoy casino-style games and redeem prizes for real cash — all with no purchase required. Launched in {year} by <strong>{parent}</strong>, the platform provides {games} games spanning slots, table games, and more.</p>
+    {intro_block}<p>{name} is a sweepstakes casino operating under US social gaming laws, offering players the chance to enjoy casino-style games and redeem prizes for real cash — all with no purchase required. Launched in {year} by <strong>{parent}</strong>, the platform provides {games} games spanning slots, table games, and more.</p>
     <p>The <strong>{daily} daily login bonus</strong> keeps accumulating sweep coins over time, and the <strong>{welcome} welcome offer</strong> gives new players a strong starting point. At a <strong>{min_red} minimum redemption</strong>, {name} aims to keep the path to first payout accessible for regular players.</p>
     <p>Like all legitimate sweepstakes casinos, {name} operates with a dual-currency system: Gold Coins for fun play and Sweep Coins (SC) that can be redeemed for real prizes. No purchase is ever required — you can earn SC through daily logins, referrals, and social promotions.</p>
    </section>
@@ -1092,9 +1109,11 @@ print(f"\nWrote {len(written)} files, skipped {len(skipped)} existing.")
 with open('sweepstakes-casino-list.html', 'r', encoding='utf-8') as f:
     main_html = f.read()
 
-# Build new entries
+# Build new entries (skip names already present so regeneration doesn't duplicate keys)
 new_entries = []
 for name, slug in written:
+    if f"'{name}'" in main_html:
+        continue
     new_entries.append(f"  '{name}':'/review-{slug}.html'")
 
 if not new_entries:
