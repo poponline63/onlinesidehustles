@@ -539,10 +539,16 @@ th.notes-cell{text-align:center !important;}
   border:none !important;text-shadow:0 1px 3px rgba(0,0,0,0.45);
 }
 .sec-new td{background:linear-gradient(90deg,rgba(170,100,220,0.35),rgba(170,100,220,0.06));color:#c8a0f0;}
-.new-toggle-row td{cursor:pointer;user-select:none;}
-.new-toggle-row:hover td{filter:brightness(1.18);}
+.new-toggle-row td{cursor:pointer;user-select:none;transition:filter 0.15s;}
+.new-toggle-row:hover td{filter:brightness(1.28);}
+.new-toggle-row.collapsed td{box-shadow:inset 0 0 0 1.5px rgba(200,160,240,0.45);}
 .new-count{opacity:0.75;font-weight:600;margin-left:5px;}
-.new-caret{float:right;font-size:0.7rem;opacity:0.9;letter-spacing:0.04em;}
+.new-tap{display:inline-block;font-size:0.6rem;font-weight:700;padding:2px 7px;margin-right:6px;border-radius:999px;background:rgba(200,160,240,0.25);color:#efe2ff;letter-spacing:0.04em;vertical-align:middle;}
+.new-toggle-row:not(.collapsed) .new-tap{display:none;}
+.new-caret{float:right;font-size:0.6rem;font-weight:700;padding:3px 11px;border:1px solid rgba(200,160,240,0.6);border-radius:999px;background:rgba(200,160,240,0.22);color:#efe2ff;letter-spacing:0.06em;}
+.new-toggle-row:hover .new-caret{background:rgba(200,160,240,0.42);border-color:rgba(200,160,240,0.9);}
+.new-toggle-row.collapsed .new-caret{animation:newPulse 1.8s ease-in-out infinite;}
+@keyframes newPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,160,240,0);}50%{box-shadow:0 0 0 5px rgba(200,160,240,0.28);}}
 .sec-s  td{background:linear-gradient(90deg,rgba(173,255,47,0.35),rgba(173,255,47,0.06));color:#ADFF2F;}
 .sec-a  td{background:linear-gradient(90deg,rgba(82,183,136,0.32),rgba(82,183,136,0.06));color:#74c69d;}
 .sec-b  td{background:linear-gradient(90deg,rgba(70,130,220,0.32),rgba(70,130,220,0.06));color:#7fb3f0;}
@@ -1667,7 +1673,7 @@ function renderTable(data){
   const tbl=document.getElementById('mainTable');
   tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
   tbl.classList.toggle('gp-mode', gameplayMode);
-  const colCount = gameplayMode ? 9 : (showCa ? 9 : 8);
+  const colCount = gameplayMode ? 9 : (showCa ? 10 : 9);
   const newCount=data.filter(c=>c.tier==='NEW').length;
   let lastTier=null;
   data.forEach(c=>{
@@ -1679,7 +1685,8 @@ function renderTable(data){
       sd.colSpan=colCount;
       if(c.tier==='NEW'){
         sr.classList.add('new-toggle-row');
-        sd.innerHTML=`${SECTION_LABELS[c.tier]} <span class="new-count">(${newCount})</span><span class="new-caret">${newSectionCollapsed?'▼ show':'▲ hide'}</span>`;
+        if(newSectionCollapsed) sr.classList.add('collapsed');
+        sd.innerHTML=`<span class="new-tap">👆 Tap</span> ${SECTION_LABELS[c.tier]} <span class="new-count">(${newCount})</span><span class="new-caret">${newSectionCollapsed?'▼ Click to show':'▲ Hide'}</span>`;
         sr.addEventListener('click',toggleNewSection);
       } else {
         sd.textContent=SECTION_LABELS[c.tier]||c.tier;
@@ -1733,8 +1740,12 @@ function renderTable(data){
 function toggleNewSection(){
   newSectionCollapsed=!newSectionCollapsed;
   document.querySelectorAll('#tbody .new-row').forEach(r=>{r.style.display=newSectionCollapsed?'none':'';});
-  const caret=document.querySelector('#tbody .new-toggle-row .new-caret');
-  if(caret) caret.textContent=newSectionCollapsed?'▼ show':'▲ hide';
+  const row=document.querySelector('#tbody .new-toggle-row');
+  if(row){
+    row.classList.toggle('collapsed',newSectionCollapsed);
+    const caret=row.querySelector('.new-caret');
+    if(caret) caret.textContent=newSectionCollapsed?'▼ Click to show':'▲ Hide';
+  }
 }
 
 // ===== RENDER CARDS =====
