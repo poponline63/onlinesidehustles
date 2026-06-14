@@ -377,13 +377,6 @@ CASINOS = [
    "pros":["Vegas-themed experience","Free-to-play model","No purchase required"],
    "cons":["High minimum redemption","Small game library","Slow payouts","Minimal daily bonus"]},
 
-  {"name":"Courtside","slug":"courtside","url":"https://courtsidegames.com/",
-   "tier":"B","rating":3.7,"parent":"Courtside Games Inc","year":2023,
-   "daily":"0.45 SC/day","welcome":"4 SC + 50K GC free","min_redeem":"$25 SC","payout":"3–7 business days","games":"300+",
-   "restricted":["MI","WA","ID","NV"],
-   "pros":["Sports-themed sweepstakes casino","Daily SC rewards","Decent game library","No purchase required"],
-   "cons":["Higher redemption floor","Average daily bonus","Less established brand"]},
-
   {"name":"Dogg House Casino","slug":"dogg-house","url":"https://dogghousecasino.com/",
    "tier":"S","rating":4.6,"parent":"Death Row Games / Trivelta","year":2023,
    "daily":"Daily SC rewards + free spins","welcome":"1,000 DC + 1 Dogg Cash free","min_redeem":"$20 SC","payout":"2–5 business days","games":"500+",
