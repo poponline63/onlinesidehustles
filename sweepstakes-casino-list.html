@@ -1506,9 +1506,14 @@ function buildData(rows){
   CASINOS=[];rtpHeaders=[];xlsxLoaded=false; // reset so gameplay XLSX reloads after data refresh
   let currentTier='NEW';
   let dataStart=0;
+  // Detect an inserted "Redeemed From" column (between Daily Bonuses and Notes
+  // in the sheet). If present, every column to its right shifts right by OFF.
+  const _hdr=(rows[0]||[]).map(x=>String(x||'').toLowerCase());
+  const REDEEM_IDX=_hdr.findIndex(h=>h.includes('redeemed'));
+  const OFF = REDEEM_IDX>=0 ? 1 : 0;
   if(rows[0]&&rows[0][0]&&rows[0][0].toLowerCase().includes('signup')){
     dataStart=1;
-    for(let c=6;c<=12&&c<rows[0].length;c++){
+    for(let c=6+OFF;c<=12+OFF&&c<rows[0].length;c++){
       const h=(rows[0][c]||'').trim();
       if(h) rtpHeaders.push(h);
     }
@@ -1518,7 +1523,7 @@ function buildData(rows){
     for(let r=0;r<rows.length;r++){
       const c0=(rows[r][0]||'').trim(), c1=(rows[r][1]||'').trim();
       if(c1&&detectTier(c1)&&!c0.toLowerCase().includes('signup')){
-        for(let c=6;c<=12&&c<rows[r].length;c++){
+        for(let c=6+OFF;c<=12+OFF&&c<rows[r].length;c++){
           const h=(rows[r][c]||'').trim();
           if(h) rtpHeaders.push(h);
         }
@@ -1546,17 +1551,21 @@ function buildData(rows){
 
     // Extract fields
     const daily=dailyLabel(row[2]||'');
-    const redeemRaw=(row[5]||'').trim();
+    const redeemRaw=(row[5+OFF]||'').trim();
     const redeemNum=parseRedeemNum(redeemRaw);
-    const notes=(row[3]||'').trim();
-    const welcome=(row[4]||'').trim();
-    const parent=(row[15]||'').trim();
-    const restricted=(row[18]||'').trim();
-    const _rv=(row[21]||'').trim().toLowerCase();
-    const redeemed = _rv!=='' ? !['no','n','false','0','-','—'].includes(_rv) : REDEEMED_BASELINE.has(normName(col1));
+    const notes=(row[3+OFF]||'').trim();
+    const welcome=(row[4+OFF]||'').trim();
+    const parent=(row[15+OFF]||'').trim();
+    const restricted=(row[18+OFF]||'').trim();
+    // When the sheet has the Redeemed From column, it's the source of truth;
+    // otherwise fall back to the baked-in baseline list.
+    const _rv=(REDEEM_IDX>=0?(row[REDEEM_IDX]||''):'').trim().toLowerCase();
+    const redeemed = (REDEEM_IDX>=0)
+      ? (_rv!=='' && !['no','n','false','0','-','—'].includes(_rv))
+      : REDEEMED_BASELINE.has(normName(col1));
 
     const rtpGames=[];
-    for(let gc=6;gc<=12;gc++) rtpGames.push((row[gc]||'').trim());
+    for(let gc=6+OFF;gc<=12+OFF;gc++) rtpGames.push((row[gc]||'').trim());
 
     CASINOS.push({
       _idx:CASINOS.length, // preserve sheet order for tie-breaking
