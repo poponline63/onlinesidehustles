@@ -1560,8 +1560,10 @@ function buildData(rows){
     // When the sheet has the Redeemed From column, it's the source of truth;
     // otherwise fall back to the baked-in baseline list.
     const _rv=(REDEEM_IDX>=0?(row[REDEEM_IDX]||''):'').trim().toLowerCase();
-    const redeemed = (REDEEM_IDX>=0)
-      ? (_rv!=='' && !['no','n','false','0','-','—'].includes(_rv))
+    // Explicit cell value (✓/Yes/No) wins; an empty cell falls back to the
+    // baked baseline, so an empty/half-filled column can never blank everything.
+    const redeemed = _rv!==''
+      ? !['no','n','false','0','-','—'].includes(_rv)
       : REDEEMED_BASELINE.has(normName(col1));
 
     const rtpGames=[];
