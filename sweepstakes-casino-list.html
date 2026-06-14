@@ -411,8 +411,6 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.4);}
 #mainTable th:nth-child(7),#mainTable td:nth-child(7){width:24%;}  /* Notes */
 #mainTable th:nth-child(8),#mainTable td:nth-child(8){width:11%;}  /* Parent Company */
 #mainTable th:nth-child(9),#mainTable td:nth-child(9){width:8%;}   /* Review */
-.redeemed-yes{color:#4ade80;font-weight:800;font-size:1rem;}
-.redeemed-no{color:var(--text-muted);}
 
 /* Canada/Ontario mode — 10 cols (added Redeemed From; swap Parent for CA+ON) */
 #mainTable.ca-mode th:nth-child(1),#mainTable.ca-mode td:nth-child(1){width:19%;}  /* Casino */
@@ -1321,6 +1319,9 @@ const ONTARIO_YES = new Set(['WOW Vegas','Crown Coins','Pulsz','Rolla','SpinQues
 
 // ===== EXCLUDED CASINOS =====
 const EXCLUDED = new Set(['dorados','kingprize','splashcoins','bigpirate','dealornodealwin','blitzmania','luckybunny','thewinzone','zunado']);
+// Sites we've personally redeemed from (baseline as of 2026-06). New sites stay
+// unchecked until marked "Yes" in sheet column V; column V overrides this list.
+const REDEEMED_BASELINE = new Set(['acecom','acornfun','americanluck','babacasino','bangcoins','bankrolla','cardcrush','casinoclick','cazino','chancedcom','chipnwin','chumbacasino','clubspoker','cluck','crowncoins','daracasino','dimesweeps','epicsweep','fliff','fortunewheelz','fortunewins','funrize','funzcity','getzoot','globalpoker','goldenheartsgames','goldrushcity','goldtreasurecasino','goodvibescasino','hellomillions','high5casino','jackpota','jackpotrabbit','jefebet','kickr','lavishluck','legendz','lonestar','lucklake','luckybitsvegas','luckyhands','luckylandcasino','luckylandslots','luckyslotsus','luckystake','lunalandcasino','mcluck','megabonanza','megafrenzy','megaspinz','modo','moonspin','moozi','myprize','nioplay','nolimitcoins','peakplay','playfame','pulsz','pulszbingo','realprize','rebet','richsweeps','rolla','rollingriches','rubysweeps','scarletsands','sheeshcasino','shuffleus','sidepot','sixty6','smilescasino','sorceryreels','speedsweeps','spinblitz','spindoo','spinfinite','spinpals','spinquest','spinsaga','sportzino','spree','stackr','stakeus','sweepico','sweepjungle','sweepnext','sweepshark','sweepsroyal','sweetsweeps','taofortune','themoneyfactory','wildworldcasino','wowvegas','yaycasinocom','zonko','zula']);
 function normName(n){ return String(n||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
 
 // ===== TIER MAPPING =====
@@ -1552,7 +1553,7 @@ function buildData(rows){
     const parent=(row[15]||'').trim();
     const restricted=(row[18]||'').trim();
     const _rv=(row[21]||'').trim().toLowerCase();
-    const redeemed=_rv!==''&&!['no','n','false','0','-','—'].includes(_rv);
+    const redeemed = _rv!=='' ? !['no','n','false','0','-','—'].includes(_rv) : REDEEMED_BASELINE.has(normName(col1));
 
     const rtpGames=[];
     for(let gc=6;gc<=12;gc++) rtpGames.push((row[gc]||'').trim());
@@ -1688,7 +1689,7 @@ function renderTable(data){
       const moreId='m'+noteId;
       tr.innerHTML=nameCell+`
       <td>${tierBadge(c.tier)}</td>
-      <td>${c.redeemed?'<span class="redeemed-yes" title="We have personally redeemed from this site">&#10004;</span>':'<span class="redeemed-no">&mdash;</span>'}</td>
+      <td>${c.redeemed?'<span class="gs-yes" title="We have personally redeemed from this site">✓</span>':'<span class="gs-unknown">&mdash;</span>'}</td>
       <td><span class="daily-val" title="${c.dailyRaw||''}">${esc(c.dailyRaw)||'—'}</span></td>
       <td class="welcome-cell">${esc(c.welcome)||'—'}</td>
       <td><span class="redeem-val">${c.redeemRaw?esc(c.redeemRaw):'—'}</span></td>
@@ -1723,7 +1724,7 @@ function renderCards(data){
       </div>
       ${(window.OSHRatings&&OSHRatings.enabled)?`<div class="c-rating">${OSHRatings.widgetHTML(c.name,{tier:c.editorialTier})}</div>`:''}
       <div class="c-data">
-        <div><div class="c-k">Redeemed From</div><div class="c-v">${c.redeemed?'<span class="redeemed-yes">&#10004; Yes</span>':'<span class="redeemed-no">&mdash;</span>'}</div></div>
+        <div><div class="c-k">Redeemed From</div><div class="c-v">${c.redeemed?'<span class="gs-yes">✓ Yes</span>':'<span class="gs-unknown">&mdash;</span>'}</div></div>
         <div><div class="c-k">Daily $</div><div class="c-v" style="color:#4ade80;font-weight:600;">${esc(c.dailyRaw)||'—'}</div></div>
         <div><div class="c-k">Min Redeem</div><div class="c-v" style="color:var(--teal);font-weight:700;">${c.redeemRaw||'—'}</div></div>
         <div><div class="c-k">Welcome Package</div><div class="c-v" style="font-size:0.72rem;">${esc(c.welcome)||'—'}</div></div>
