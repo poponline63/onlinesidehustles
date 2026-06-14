@@ -311,7 +311,7 @@ CASINOS = [
    "intro":"CoinsBack takes a different approach to dailies, skipping a traditional login bonus in favor of a 50 percent cashback program and Race Rewards. It comes from MW Services, the team behind WOW Vegas, Rolla and MetaWin, so the operator track record is strong. The cashback model rewards active players more than casual daily collectors, which is worth keeping in mind.",
    "tier":"A","rating":4.1,"parent":"MW Services","year":2023,
    "daily":"Daily SC rewards","welcome":"500K GC + 2 SC free","min_redeem":"$100 SC","payout":"3–5 business days","games":"1,400+",
-   "restricted":["MI","WA","ID","NV"],
+   "restricted":["CA","CT","ID","IL","LA","MD","MI","MT","NV","NJ","NY","TN","WA"],
    "pros":["1,400+ games — massive library","50% SC cashback on losses — unique feature","500K GC + 2 SC welcome offer","MW Services network backing"],
    "cons":["High $100 minimum redemption","Complex cashback system for new players","Higher barrier to first redemption"]},
 
@@ -319,7 +319,7 @@ CASINOS = [
    "intro":"DexyPlay is a UTech Solutions site with a progressive daily that can reach 65 SC across a full week, one of the more rewarding login structures in this batch. The free welcome is a large gold coin drop, with the best SC value unlocked on a first purchase. As a newer brand it is still building its reputation, but the operator pedigree is reassuring.",
    "tier":"B","rating":3.8,"parent":"UTech Solutions","year":2025,
    "daily":"progressive, up to 65 SC over 7 days","welcome":"300K GC free, plus 30 SC on first purchase","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["UTech Solutions family, same group as Sweepico","Progressive daily that can reach 65 SC across a week","Large 300K GC no deposit welcome","No purchase required to play or win"],
    "cons":["$100 minimum redemption","Best welcome value needs a first purchase","Newer brand still building reputation"]},
 
@@ -362,7 +362,7 @@ CASINOS = [
    "intro":"TheBoss.us is operated by Jefe Ltd and has been running since 2024, giving it a slightly longer track record than most sites in this group. The daily is a simple wheel spin and the 2 SC no deposit welcome is a fair starting point. The library is smaller than top tier sites, so it reads as a steady option rather than a standout.",
    "tier":"B","rating":3.7,"parent":"Jefe Ltd","year":2024,
    "daily":"daily wheel spin","welcome":"2K GC + 2 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CA","CT","ID","LA","MI","MS","MT","NV","NJ","NY","WA"],
    "pros":["Established operator, Jefe Ltd since 2024","Solid 2 SC no deposit welcome","Daily wheel spin for variety","No purchase required to play or win"],
    "cons":["$100 minimum redemption","Cyprus based operator","Game library smaller than top tier sites"]},
 
@@ -398,7 +398,7 @@ CASINOS = [
    "intro":"Jackpot Go has quietly earned one of the better reputations among newer sweeps sites, with more than 1,651 Trustpilot reviews and players reporting clean payouts in around three days with no minimum or maximum cashout limit. The daily login is progressive, so it grows the more you return. Operator details are thin, which is the main reason it sits mid pack rather than higher in our rankings.",
    "tier":"B","rating":3.8,"parent":"Jackpot Go","year":2025,
    "daily":"progressive daily login","welcome":"10K GC + 2 SC free","min_redeem":"$100 SC","payout":"around 3 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CT","DE","ID","KY","MI","MT","NV","NJ","NY","WA"],
    "pros":["Strong reputation, 1,651 Trustpilot reviews","Reported legit payouts in around 3 days with no min or max limit","1x playthrough","Solid 2 SC no deposit welcome"],
    "cons":["$100 minimum redemption","Operator details are thin","Newer brand"]},
 
@@ -490,7 +490,7 @@ CASINOS = [
    "intro":"Stormrush shares an operator with Funrize, NoLimitCoins and TaoFortune, three sites with an established payout history, which makes it one of the safer new launches to try. In our checks the standout was how fast PayPal redemptions cleared, often inside 36 hours. The daily login stays modest until you build a six day streak, but the low gift card floor makes it friendly for casual daily collectors.",
    "tier":"A","rating":4.1,"parent":"A1 Development LLC","year":2025,
    "daily":"0.50 SC/day (day 6 streak)","welcome":"500K GC free, or 750K GC + 40 SC for $19.99","min_redeem":"$25 SC (gift cards)","payout":"around 36 hours via PayPal","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["Run by A1 Development, the same operator as Funrize, NoLimitCoins and TaoFortune","Fast PayPal payouts, often around 36 hours","1x playthrough requirement","Low $25 gift card redemption floor"],
    "cons":["SC daily only reaches full value after a 6 day streak","Game library smaller than the biggest social casinos","Higher $100 floor for card cash outs"]},
 
@@ -498,7 +498,7 @@ CASINOS = [
    "intro":"Cider has built an unusually strong reputation for a newer sweepstakes casino, with more than 2,276 Trustpilot reviews and payouts that typically clear in under two days. The progressive daily that climbs from 0.30 to 0.60 SC rewards players who log in consistently. It is available in 39 states, so confirm your state on the official site before signing up.",
    "tier":"A","rating":4.2,"parent":"Mystic Mirror Studio","year":2025,
    "daily":"progressive 0.30 to 0.60 SC/day","welcome":"20K GC + 0.30 SC free","min_redeem":"$50 SC (gift cards)","payout":"under 2 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CT","DE","ID","KY","MI","MT","NV","NJ","WA"],
    "pros":["Strong reputation with 2,276 Trustpilot reviews","Fast payouts, often under 2 days","Progressive daily login that grows to 0.60 SC","1x playthrough"],
    "cons":["Welcome SC bonus is small at 0.30 SC","Not available in roughly 11 states","Newer brand still building a track record"]},
 
@@ -506,7 +506,7 @@ CASINOS = [
    "intro":"Mr. Goodwin comes from UTech Solutions, the same studio behind Sweepico and SweepShark, which gives it instant credibility on payouts and game quality. The library runs past 1,000 slots and gift card redemptions usually clear within a day or two. The seven day reward cycle is the main daily draw, so value builds the longer you stick with it.",
    "tier":"B","rating":3.9,"parent":"UTech Solutions","year":2025,
    "daily":"7 day daily reward cycle","welcome":"160K GC + 2 SC free","min_redeem":"$100 SC","payout":"24 to 48 hours for gift cards, 3 to 5 days for bank","games":"1,000+",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["Operated by UTech Solutions, the same family as Sweepico and SweepShark","1,000+ slots","Solid 2 SC no deposit welcome","Fast gift card redemptions"],
    "cons":["$100 minimum redemption","Daily reward runs on a fixed 7 day cycle","Bank payouts take 3 to 5 days"]},
 
@@ -514,7 +514,7 @@ CASINOS = [
    "intro":"Gleaming Slots stands out for its mobile experience, holding a 4.8 star rating across 81,000 App Store reviews and a 4.6 on Trustpilot. The daily login adds up to roughly 5.8 SC across a week and it supports both PayPal and bank redemptions. It is not available in California or New York, so check your state before joining.",
    "tier":"A","rating":4.2,"parent":"Eternal Boom Ltd","year":2025,
    "daily":"2K GC + 0.5 SC/day (around 5.8 SC per week)","welcome":"10K GC + 0.30 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CA","CT","DE","ID","KY","MI","MT","NV","NJ","NY","WA"],
    "pros":["Highly rated app, 4.8 stars on the App Store across 81k ratings","4.6 Trustpilot score","Daily login that adds up to around 5.8 SC per week","PayPal and bank redemptions"],
    "cons":["$100 minimum redemption","Not available in California or New York","Small 0.30 SC welcome bonus"]},
 
@@ -522,7 +522,7 @@ CASINOS = [
    "intro":"Coinz.us keeps things simple with a daily scratchcard worth up to 2 SC and a catalog of more than 500 games. Run by Nickle Tech LLC, it offers a low 50 dollar gift card redemption floor that lets you cash out sooner than most. It is a smaller operation than the big social casinos, so expect lighter promotions.",
    "tier":"C","rating":3.5,"parent":"Nickle Tech LLC","year":2025,
    "daily":"scratchcard, up to 2 SC/day","welcome":"10K GC + 1 SC free","min_redeem":"$50 SC (gift cards)","payout":"3 to 5 business days","games":"500+",
-   "restricted":[],
+   "restricted":["CA","CT","ID","LA","MI","MT","NV","NJ","NY","WA","WV"],
    "pros":["Fun daily scratchcard worth up to 2 SC","500+ games","Low $50 gift card redemption floor","No purchase required to play or win"],
    "cons":["Smaller operator, Nickle Tech LLC","$100 floor for cash redemptions","Limited promotions compared to bigger sites"]},
 
@@ -530,7 +530,7 @@ CASINOS = [
    "intro":"FireSevens is part of the UTech Solutions family and pairs that pedigree with a large library of more than 1,300 games. The daily login plus a random bonus keeps things varied, and gift card redemptions start at a low 25 dollar floor. We could not confirm independent RNG certification, so treat it as a solid but still maturing option.",
    "tier":"B","rating":3.7,"parent":"UTech Solutions","year":2025,
    "daily":"daily login plus a random bonus","welcome":"250K GC + 1 SC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,300+",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["UTech Solutions family, same group as Sweepico","Large 1,300+ game library","Generous 250K GC welcome","Low $25 gift card redemption floor"],
    "cons":["RNG certification not confirmed","$100 floor for cash redemptions","Daily bonus value varies with the random element"]},
 
@@ -538,7 +538,7 @@ CASINOS = [
    "intro":"Jumbo88 builds its daily around a wheel that scales up to 3 SC by day three, rewarding a short streak. Operated by InspireCore Inc, it carries a mixed reputation with a Trustpilot score near 3.3, which is why it sits lower in our rankings. It is fine for collecting dailies, but we would watch the payout experience closely before committing real time to it.",
    "tier":"C","rating":3.4,"parent":"InspireCore Inc","year":2025,
    "daily":"wheel, up to 3 SC by day 3","welcome":"10K GC + 1 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MD","MI","MT","NV","NJ","NY","PA","RI","WA","WV"],
    "pros":["Daily wheel scales up to 3 SC by day 3","No purchase required to play or win","Straightforward sign up"],
    "cons":["Mixed reputation, Trustpilot around 3.3","$100 minimum redemption","Smaller and newer operator"]},
 
@@ -546,7 +546,7 @@ CASINOS = [
    "intro":"Playtana is another UTech Solutions site and brings one of the larger libraries in this group at over 1,700 slots. The daily is small at 0.2 SC, but the 5 percent playback on losses and a low 25 dollar gift card floor add real value for active players. The free welcome is gold coins only, so the SC value comes from playing rather than signing up.",
    "tier":"B","rating":3.8,"parent":"UTech Solutions","year":2025,
    "daily":"2K GC + 0.2 SC/day plus 5% playback","welcome":"125K GC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,700+",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["UTech Solutions family, same group as Sweepico","Big 1,700+ slot library","5% playback on losses","Low $25 gift card redemption floor"],
    "cons":["Small 0.2 SC daily login","No SC in the free welcome, gold coins only","$100 floor for cash redemptions"]},
 
@@ -554,7 +554,7 @@ CASINOS = [
    "intro":"VegasWay leans into a Vegas theme with a two part daily, a Vegas Route streak plus a Treasure Flip mini game. It comes from UTech Solutions, carries around 1,000 slots and keeps a low 25 dollar gift card redemption floor. The daily SC value is modest, so it works best as one site within a wider daily collection routine.",
    "tier":"B","rating":3.7,"parent":"UTech Solutions","year":2025,
    "daily":"Vegas Route streak plus Treasure Flip","welcome":"up to 350K GC + 1 SC free","min_redeem":"$25 SC (gift cards)","payout":"3 to 5 business days","games":"1,000+",
-   "restricted":[],
+   "restricted":["CT","DE","ID","LA","MI","MT","NV","NJ","NY","RI","TN","WA","WV","WY"],
    "pros":["UTech Solutions family","Two part daily with a streak and a flip game","1,000 slots","Low $25 gift card redemption floor"],
    "cons":["Daily SC value is modest","$100 floor for cash redemptions","Newer brand"]},
 
@@ -562,7 +562,7 @@ CASINOS = [
    "intro":"PICKEM is notable for its reach, available in 42 states, which is wider than most sweepstakes casinos. Run by Joyloop Inc out of Delaware, it offers a daily that climbs to 0.5 SC from day seven onward. The game catalog is smaller than the leaders, so it works better as a complement than a main site.",
    "tier":"C","rating":3.6,"parent":"Joyloop Inc","year":2025,
    "daily":"up to 0.5 SC/day from day 7","welcome":"50K GC + 1 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CA","CT","ID","LA","MI","MT","NV","NJ","NY","UT","WA"],
    "pros":["Available in 42 states, wider than most sweeps casinos","Delaware based operator, Joyloop Inc","No purchase required to play or win"],
    "cons":["Daily SC only reaches full value from day 7","$100 minimum redemption","Smaller game catalog"]},
 
@@ -570,7 +570,7 @@ CASINOS = [
    "intro":"Big Shot Games offers a generous 2 SC no deposit welcome for a newer site from BSG Interactive LLC. The daily login is tiny at 0.01 SC, so the real value here is the welcome offer and trying the platform rather than daily grinding. It is clean and simple, but the limited track record keeps it lower in our rankings.",
    "tier":"C","rating":3.5,"parent":"BSG Interactive LLC","year":2025,
    "daily":"0.01 SC/day","welcome":"10K GC + 2 SC free","min_redeem":"$100 SC","payout":"3 to 5 business days","games":"hundreds of",
-   "restricted":[],
+   "restricted":["CA","CT","ID","LA","MI","MT","NV","NJ","NY","WA"],
    "pros":["Solid 2 SC no deposit welcome bonus","No purchase required to play or win","Simple, clean platform"],
    "cons":["Very small 0.01 SC daily login","$100 minimum redemption","New operator with a limited track record"]},
 ]
