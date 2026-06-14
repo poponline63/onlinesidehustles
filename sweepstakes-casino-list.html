@@ -539,6 +539,10 @@ th.notes-cell{text-align:center !important;}
   border:none !important;text-shadow:0 1px 3px rgba(0,0,0,0.45);
 }
 .sec-new td{background:linear-gradient(90deg,rgba(170,100,220,0.35),rgba(170,100,220,0.06));color:#c8a0f0;}
+.new-toggle-row td{cursor:pointer;user-select:none;}
+.new-toggle-row:hover td{filter:brightness(1.18);}
+.new-count{opacity:0.75;font-weight:600;margin-left:5px;}
+.new-caret{float:right;font-size:0.7rem;opacity:0.9;letter-spacing:0.04em;}
 .sec-s  td{background:linear-gradient(90deg,rgba(173,255,47,0.35),rgba(173,255,47,0.06));color:#ADFF2F;}
 .sec-a  td{background:linear-gradient(90deg,rgba(82,183,136,0.32),rgba(82,183,136,0.06));color:#74c69d;}
 .sec-b  td{background:linear-gradient(90deg,rgba(70,130,220,0.32),rgba(70,130,220,0.06));color:#7fb3f0;}
@@ -1623,6 +1627,7 @@ const SECTION_LABELS={
   B:'🎯  Medium Tier'
 };
 const SECTION_CLS={S:'sec-s',A:'sec-a',B:'sec-b',NEW:'sec-new'};
+let newSectionCollapsed=true; // New Casinos collapses into a bar so the main sheet sits right below
 
 function updateTableHeader(){
   const thead=document.querySelector('#mainTable thead tr');
@@ -1663,6 +1668,7 @@ function renderTable(data){
   tbl.classList.toggle('ca-mode', !gameplayMode && showCa);
   tbl.classList.toggle('gp-mode', gameplayMode);
   const colCount = gameplayMode ? 9 : (showCa ? 9 : 8);
+  const newCount=data.filter(c=>c.tier==='NEW').length;
   let lastTier=null;
   data.forEach(c=>{
     if(c.tier!==lastTier){
@@ -1671,11 +1677,18 @@ function renderTable(data){
       sr.className='section-row '+(SECTION_CLS[c.tier]||'sec-new');
       const sd=document.createElement('td');
       sd.colSpan=colCount;
-      sd.textContent=SECTION_LABELS[c.tier]||c.tier;
+      if(c.tier==='NEW'){
+        sr.classList.add('new-toggle-row');
+        sd.innerHTML=`${SECTION_LABELS[c.tier]} <span class="new-count">(${newCount})</span><span class="new-caret">${newSectionCollapsed?'▼ show':'▲ hide'}</span>`;
+        sr.addEventListener('click',toggleNewSection);
+      } else {
+        sd.textContent=SECTION_LABELS[c.tier]||c.tier;
+      }
       sr.appendChild(sd); tb.appendChild(sr);
     }
     const tr=document.createElement('tr');
     const isBest=c.tier==='S', isNew=c.tier==='NEW';
+    if(isNew){ tr.classList.add('new-row'); if(newSectionCollapsed) tr.style.display='none'; }
     const signupBtn=c.signupUrl
         ?`<a href="${esc(c.signupUrl)}" target="_blank" rel="noopener" class="btn-signup" style="margin-top:6px;display:inline-block;">SIGNUP</a>`
         :`<span class="btn-signup no-link" style="margin-top:6px;display:inline-block;">Sign Up</span>`;
@@ -1715,6 +1728,13 @@ function renderTable(data){
     }
     tb.appendChild(tr);
   });
+}
+
+function toggleNewSection(){
+  newSectionCollapsed=!newSectionCollapsed;
+  document.querySelectorAll('#tbody .new-row').forEach(r=>{r.style.display=newSectionCollapsed?'none':'';});
+  const caret=document.querySelector('#tbody .new-toggle-row .new-caret');
+  if(caret) caret.textContent=newSectionCollapsed?'▼ show':'▲ hide';
 }
 
 // ===== RENDER CARDS =====
